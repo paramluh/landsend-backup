@@ -1,0 +1,23 @@
+[Unit]
+Description=Parallel pose inference request dispatcher
+After=network-online.target
+Wants=network-online.target
+ConditionHost=landsend-1
+
+[Service]
+Type=simple
+User=param
+Group=param
+WorkingDirectory=/home/param/pose-repo
+Environment=CUDA_VISIBLE_DEVICES=
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/param/pose-repo/.venv/bin/python -u /home/param/pose-repo/infer/transcript_pose/request_dispatcher.py run
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+# Detached GPU executors are launched through SSH in separate sessions, outside
+# this service's control group. Restarting this CPU service leaves them alive.
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target

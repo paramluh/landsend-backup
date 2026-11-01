@@ -1,0 +1,91 @@
+root_dir = '/home/param/datasets/aloe-studio-10shards'
+clipnames_root = '/home/param/datasets/aloe-studio-10shards'
+train_csv = '/home/param/datasets/aloe-studio-10shards/shard.csv'
+node_sharded = true
+pose_latents = 'pose_latents_electron_v3.safetensors'
+mimi_codes = 'mimi_local.safetensors'
+bad_audio = 1
+output_dir = '/mnt/paramfs/param/outputs/stabilizer-dmd-20261015/plan2'
+seed = 42
+
+critic_updates = 4
+critic_rows = 4
+student_kinds = ['stab', 'stab', 'stab', 'stab']
+pool_micro_batch = 16
+critic_warmup_steps = 150
+save_warmed_critic = false
+critic_warmup_only = false
+max_outer_steps = 1050
+
+band_steps = [2, 2, 2, 2]
+resolve_steps = 2
+history_t = 0.2
+t_start = 0.4
+
+stab_t_min = 0.22
+stab_t_max = 0.98
+res_t_min = 0.02
+res_t_max = 0.4
+fm_weight_stab = 1.0
+fm_weight_res = 0.0
+normalizer_epsilon = 1e-8
+
+gradient_clipping = 2.0
+lr_warmup_steps = 50
+critic_lr_warmup_steps = 200
+ema_decay_steps = 0
+
+rollout = 'fused'
+pool_rollout = 'fused'
+compile_mode = 'block'
+compile_blocks = true
+checkpoint = 'block'
+student_micro_rows = 4
+critic_combined = false
+num_dataloader_workers = 8
+prefetch_factor = 4
+save_every_n_steps = 200
+
+critic_resume_from = '/mnt/paramfs/param/outputs/stabilizer-dmd-20261015/bootstrap/critic-warmup'
+critic_resume_optimizer = 'reset'
+critic_resume_allow_data_change = true
+
+[lora]
+rank = 32
+alpha = 32
+base_dtype = 'bfloat16'
+fused_qkv = true
+targets = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+
+[checkpoint_by_role.student]
+mode = 'block'
+skip_blocks = [0, 1, 2, 3, 5, 6, 8]
+
+[checkpoint_by_role.critic]
+mode = 'none'
+
+[model]
+checkpoint_path = '/home/param/richmond-assets/teacher-pose-v3-step200/model.safetensors'
+
+[model.audio]
+model_name = '/home/param/richmond-assets/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+
+[optimizer]
+lr = 4e-5
+betas = [0.9, 0.99]
+weight_decay = 1e-4
+eps = 1e-8
+
+[wandb]
+enabled = true
+project = 'param-distillation'
+run_name = 'stabilizer-dmd-pose-v3-plan2-lora32-b160'

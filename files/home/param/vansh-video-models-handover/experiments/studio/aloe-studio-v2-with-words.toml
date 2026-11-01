@@ -1,0 +1,104 @@
+root_dir = '/home/vansh/aloe-studio/conv-4.3k-5mins-muon-neutrino-256x480-v1'
+clipnames_root = '/home/vansh/vansh-video-models/csvs'
+train_csv = '/home/vansh/aloe-studio/shard.csv'
+node_sharded = true
+pose_latents = 'pose_latents_electron.safetensors'
+mimi_codes = 'mimi.safetensors'
+llm_hiddens_root = '/home/vansh/aloe-studio/llm-hiddens-akv13-42021'
+eval_csvs.seen = 'aloe-studio-seen-eval'
+eval_csvs.unseen = 'aloe-studio-unseen-eval'
+
+eval_every_n_steps = 500
+eval_step_zero = true
+num_dataloader_workers = 8
+eval_num_dataloader_workers = 4
+save_every_n_steps = 2387
+save_optimizer_every_n_steps = 2387
+output_dir = '/home/vansh/vansh-video-models/pose-checkpoints/universal-low-resolution/aloe-studio-v2-with-words'
+
+num_history = 4
+num_present = 5
+history_dropout = [0.1, 0.1, 0.0, 0.0]
+sink_pose = true
+bad_audio = 1
+
+epochs = 3
+micro_batch_size_per_gpu = 2
+eval_micro_batch_size_per_gpu = 1
+gradient_accumulation_steps = 8
+gradient_clipping = 1.0
+warmup_steps = 1000
+lr = 5e-5
+min_lr = 7e-6
+ema_decay = 0.9995
+
+activation_checkpointing = true
+activation_checkpoint_skip = 30
+flex_attention = true
+compile_blocks = true
+
+[refs]
+bank = '/home/vansh/aloe-studio/reference-bank-256x480-muon-v2'
+eval_banks.unseen = 'eval-unseen'
+drop_counts = [0]
+drop_p = [1.0]
+
+[history_corruption]
+color_p = 0.467
+person_color = [0.018, 0.2]
+background_color = [0.059, 1.2]
+mosaic_p = 0.233
+mosaic = [0.35, 1.8]
+mosaic_dc = 0.8
+mosaic_coverage = [0.7, 1.0]
+directions = [0.4, 0.4, 0.2]
+mask_tau = 0.8
+mask_tau_pose = 0.3
+slots = [0.4, 0.3, 0.3]
+
+[model]
+type = 'universal_wide'
+arch = 'wan_5b_wide'
+checkpoint_path = '/home/vansh/vansh-video-models/pose-checkpoints/universal-low-resolution/h6-squeaky/run_3/step44675/model_ema.safetensors'
+dtype = 'bfloat16'
+transformer_dtype = 'bfloat16'
+debug_shapes = true
+ref_patch_embedding = true
+
+[model.audio]
+model_name = 'kyutai/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+initialization = 'zero'
+audio_dropout = 0.0
+
+[model.hidden]
+in_dim = 4096
+projection_tokens = 2
+injection_offset = 11
+injection_interval = 3
+max_blocks = 4
+initialization = 'zero'
+
+[wandb]
+project = 'universal-aloe-new-ablations'
+run_name = 'aloe-studio-v2-with-words'
+
+[optimizer]
+type = 'stableadamw'
+betas = [0.9, 0.99]
+weight_decay = 1e-3
+eps = 1e-8
+
+[[optimizer.groups]]
+prefix = 'hidden_adapter.'
+lr = 1e-4
+warmup_steps = 250
+decay_start = 1000

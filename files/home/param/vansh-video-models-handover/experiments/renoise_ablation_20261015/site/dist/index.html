@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f1f2ed">
+  <title>Bimodal teacher · Resolver noise ablation</title>
+  <meta name="description" content="A paired comparison of bimodal teacher rollouts with and without resolver re-noising, with AutoBench measurements.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="Bimodal experiments home"><span class="mark" aria-hidden="true">b.</span> BIMODAL <span class="wordmark-secondary">/ RESEARCH NOTES</span></a>
+    <span class="experiment-date">15 OCT 2026</span>
+  </header>
+
+  <main id="top">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> TEACHER SAMPLING · EXPERIMENT 01</p>
+      <h1 id="page-title">Does the resolver<br>need fresh noise?</h1>
+      <div class="intro-bottom">
+        <p class="lede">The same clips. Two paths from the stabilizer to the resolver.<br>Inspect paired rollouts, then compare drift over time.</p>
+        <div class="run-stats" aria-label="Experiment size"><div><strong id="pair-count">—</strong><span>evaluated pairs</span></div><div><strong id="view-count">—</strong><span>shown here</span></div><div><strong id="run-length">—</strong><span>per rollout</span></div></div>
+      </div>
+    </section>
+
+    <section class="comparison" aria-labelledby="comparison-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / VISUAL COMPARISON</p><h2 id="comparison-title">Watch the handoff play out.</h2></div><p id="selection-note" class="section-note">Clips are selected by a fixed rule before inspecting outcomes.</p></div>
+      <div class="experiment-status" id="experiment-status" role="status">Loading experiment manifest…</div>
+      <div class="clip-picker" id="clip-picker" aria-label="Select a paired clip"></div>
+      <div class="pair-heading"><div><span class="clip-number" id="clip-number">CLIP —</span><h3 id="clip-title">Waiting for generated rollouts</h3><p class="clip-id" id="clip-id"></p></div><div class="pair-navigation"><button class="icon-button" id="previous-clip" aria-label="Previous clip" disabled>←</button><button class="icon-button" id="next-clip" aria-label="Next clip" disabled>→</button></div></div>
+      <div class="video-grid">
+        <article class="video-card baseline">
+          <div class="strategy-heading"><span class="strategy-letter">A</span><div><h4 id="baseline-title">Re-noise</h4><p id="baseline-path">Stabilizer → re-noise → resolver</p></div><span class="strategy-tag">BASELINE</span></div>
+          <div class="video-frame"><video id="baseline-video" preload="metadata" playsinline muted aria-label="Baseline teacher rollout with resolver re-noising"></video><span class="video-placeholder" id="baseline-placeholder">Generation pending</span><button class="fullscreen-button" data-video="baseline-video" aria-label="Show baseline video full screen">↗</button></div>
+          <div class="video-footer"><span id="baseline-description">A fresh noise draw at the resolver handoff.</span><a id="baseline-original" hidden target="_blank" rel="noopener">Open video ↗</a></div>
+        </article>
+        <article class="video-card direct">
+          <div class="strategy-heading"><span class="strategy-letter">B</span><div><h4 id="direct-title">Direct handoff</h4><p id="direct-path">Stabilizer → resolver</p></div><span class="strategy-tag">ABLATION</span></div>
+          <div class="video-frame"><video id="direct-video" preload="metadata" playsinline muted aria-label="Teacher rollout without resolver re-noising"></video><span class="video-placeholder" id="direct-placeholder">Generation pending</span><button class="fullscreen-button" data-video="direct-video" aria-label="Show direct video full screen">↗</button></div>
+          <div class="video-footer"><span id="direct-description">Continue from the stabilizer’s terminal state.</span><a id="direct-original" hidden target="_blank" rel="noopener">Open video ↗</a></div>
+        </article>
+      </div>
+      <div class="playback-panel">
+        <div class="main-controls"><button id="play-toggle" class="play-button" disabled><span id="play-icon" aria-hidden="true">▶</span><span id="play-label">Play pair</span></button><output id="time-display" for="timeline">0:00 / —</output><div class="sync-indicator"><span aria-hidden="true">⇄</span> Linked playback</div><label class="speed-label">Speed <select id="playback-speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option><option value="4">4×</option></select></label><label class="audio-label">Audio <select id="audio-source"><option value="mute">Muted</option><option value="baseline">A · Re-noise</option><option value="direct">B · Direct</option></select></label></div>
+        <label class="sr-only" for="timeline">Seek both videos</label><input id="timeline" type="range" min="0" max="100" step="0.05" value="0" disabled>
+        <div class="seek-controls"><div class="seek-presets"><span>JUMP TO</span><button data-seek="start" disabled>Start</button><button data-seek="early" disabled>Early</button><button data-seek="middle" disabled>Middle</button><button data-seek="late" disabled>Late</button></div><p id="media-note">Evaluation uses the original generation files.</p></div>
+      </div>
+      <div class="inspection-cues"><p class="eyebrow">WHAT TO LOOK FOR</p><p><strong>Identity & detail</strong><span>Facial structure, hair, clothing, and sharpness.</span></p><p><strong>Background drift</strong><span>Color and structure relative to the initial frame.</span></p><p><strong>Late behavior</strong><span>Accumulated noise, smoothing, and instability.</span></p></div>
+    </section>
+
+    <section class="metrics-section" aria-labelledby="metrics-title">
+      <div class="section-heading"><div><p class="eyebrow">02 / AUTOBENCH</p><h2 id="metrics-title">Measure the long view.</h2></div><p class="section-note" id="metrics-scope">All evaluated pairs; the gallery is a fixed subset.</p></div>
+      <div id="metrics-pending" class="metrics-pending"><span class="pending-symbol" aria-hidden="true">⌁</span><div><h3>Measurements pending</h3><p>Only completed AutoBench results will be displayed here.</p></div></div>
+      <div id="metrics-results" hidden>
+        <p id="metrics-summary" class="metrics-summary"></p>
+        <div class="metric-table-wrap"><table class="metric-table"><thead><tr><th scope="col">Metric / window</th><th scope="col">A · Re-noise</th><th scope="col">B · Direct</th><th scope="col">GT reconstruction</th><th scope="col">B − A</th><th scope="col">95% CI</th></tr></thead><tbody id="aggregate-metrics"></tbody></table></div>
+        <p class="metric-footnote" id="metrics-method"></p>
+        <div id="curve-panel" hidden><div class="curve-heading"><h3>Drift over the selected clip</h3><label>Metric <select id="curve-metric"></select></label></div><div class="curve-legend"><span><i class="baseline-key"></i>A · Re-noise</span><span><i class="direct-key"></i>B · Direct</span><span><i class="gt-key"></i>GT reconstruction</span></div><div id="curve-plot" class="curve-plot"></div><p id="curve-description" class="metric-footnote"></p></div>
+        <details class="per-clip-details"><summary>Measurements for this clip <span id="per-clip-title"></span></summary><div class="metric-table-wrap"><table class="metric-table"><thead><tr><th scope="col">Metric / window</th><th scope="col">A · Re-noise</th><th scope="col">B · Direct</th><th scope="col">GT reconstruction</th><th scope="col">B − A</th></tr></thead><tbody id="per-clip-metrics"></tbody></table></div></details>
+      </div>
+    </section>
+
+    <section class="metrics-section" id="supplemental-section" aria-labelledby="supplemental-title" hidden>
+      <div class="section-heading"><div><p class="eyebrow">SUPPLEMENT / EXPLORATORY CHECKS</p><h2 id="supplemental-title">A small temporal difference.</h2></div><p class="section-note">Decoded background pixels · all 16 pairs.<br>Perceptual significance remains unresolved.</p></div>
+      <p id="supplemental-summary" class="metrics-summary"></p>
+      <div class="metric-table-wrap"><table class="metric-table"><thead><tr><th scope="col">Measurement</th><th scope="col">A · Re-noise</th><th scope="col">B · Direct</th><th scope="col">GT reconstruction</th><th scope="col">B − A</th><th scope="col">95% CI</th></tr></thead><tbody id="supplemental-rows"></tbody></table></div>
+      <p class="metric-footnote" id="supplemental-method"></p>
+      <div id="raw-control" class="raw-control" hidden><h3>Pre-H.264 follow-up · four predefined pairs</h3><p id="raw-control-summary"></p><a id="raw-control-download" target="_blank" rel="noopener">Pre-encoding control data ↗</a></div>
+      <p class="metric-footnote"><a id="supplemental-download" target="_blank" rel="noopener">Full temporal measurements ↗</a></p>
+      <details class="per-clip-details" id="reference-details" hidden><summary>Common-reference sensitivity check</summary><p id="reference-summary" class="metrics-summary"></p><div class="metric-table-wrap"><table class="metric-table"><thead><tr><th scope="col">Measurement</th><th scope="col">A · Re-noise</th><th scope="col">B · Direct</th><th scope="col">GT reconstruction</th><th scope="col">B − A</th><th scope="col">95% CI</th></tr></thead><tbody id="reference-rows"></tbody></table></div><p class="metric-footnote" id="reference-method"></p><p class="metric-footnote"><a id="reference-download" target="_blank" rel="noopener">Full common-reference sensitivity data ↗</a></p></details>
+    </section>
+
+    <section class="metrics-section" id="probe-section" aria-labelledby="probe-title" hidden><div class="section-heading"><div><p class="eyebrow">03 / CONTROLLED HANDOVER PROBES</p><h2 id="probe-title">How strongly can history steer?</h2></div><p class="section-note">Finite perturbations with fixed GT context.<br>Separate from rollout quality measurements.</p></div><p class="metrics-summary" id="probe-summary"></p><div id="probe-plot" class="curve-plot" hidden></div><p class="metric-footnote" id="probe-plot-note" hidden>Gain relative to the same clip at t = 0.2. Thin lines: individual clips. Thick lines: pointwise medians.</p><div class="metric-table-wrap probe-table"><table class="metric-table"><thead><tr id="probe-columns"></tr></thead><tbody id="probe-rows"></tbody></table></div><p class="metric-footnote" id="probe-method"></p><p class="metric-footnote"><a id="probe-download" hidden target="_blank" rel="noopener">Controlled probe data ↗</a></p></section>
+
+    <section class="protocol" aria-labelledby="protocol-title"><div><p class="eyebrow">04 / EXPERIMENT RECORD</p><h2 id="protocol-title">The comparison contract.</h2></div><dl id="protocol-details"><div><dt>Model</dt><dd>Teacher checkpoint awaiting manifest.</dd></div><div><dt>Pairing</dt><dd>Same predefined clip set for both strategies.</dd></div></dl><div class="data-links"><a href="experiment.json" target="_blank" rel="noopener">Experiment manifest ↗</a><a id="metrics-download" hidden target="_blank" rel="noopener">Full evaluation results ↗</a></div></section>
+  </main>
+  <footer><span>BIMODAL / SAMPLING RESEARCH</span><span>Observed results are separated from hypotheses.</span></footer>
+  <script src="app.js" defer></script>
+</body>
+</html>

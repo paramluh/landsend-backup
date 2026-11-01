@@ -1,0 +1,207 @@
+<title>PPM Aloe pose fine-tune</title>
+<!-- ppm_aloe_pose live page (10-16, standard live-curve format = ppm_aloe.tpl.html / s4qqa.tpl.html / stage3.html: same CSS, Chart.js engine, hover,
+     legend toggles, ⋯ controls, drag-zoom). One run: the newest ppm/aloe-pose-ft/runs/ppm-aloe-pose-ft-j<JOB> (PPM fine-tune on the Aloe handover rows,
+     POSE on channel B); ★ = that run while its job is live (derived from squeue in build_ppm_aloe_pose.py). Muted grey overlay on the main chart = the finished
+     no-pose Aloe FT 21980 (reference). Eval = combined only (eval_speech/*; per-side eval_userB_ / eval_asstB_ deliberately not shown). Run parameters
+     (total steps, rows/step, eval cadence, saves) come from ppm/aloe-pose-ft/PAGE_CFG.json on every rebuild; every chart's x axis runs to the last step.
+     build_ppm_aloe_pose.py fills __DATA__; the page polls ppm_aloe_pose_live.json every 60 s and reloads when ver_ppm_aloe_pose.txt (= template hash)
+     changes. marker: ppm-aloe-pose-stdformat-v1 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.1/chartjs-plugin-zoom.min.js"></script>
+<style>
+:root{--bg:#f5f6f8;--rc1:#9c36b5;--rc2:#0c8599;--rt1:#f76707;--rt2:#2f9e44;--rt3:#e64980;--rt4:#a07c10;--ref:#8a919c;--card:#fff;--fg:#1d2330;--muted:#6b7280;--line:#e4e7ec;--one:#1f6fd1;--two:#e8590c;--evb:#7048e8;--btn:#eef1f5;--on:#1f6fd1;--onfg:#fff;--warn:#b7791f}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1115;--card:#171a21;--fg:#e6e8ec;--muted:#9aa1ad;--line:#2a2f3a;--one:#6aa8ff;--two:#ff922b;--rc1:#da77f2;--rc2:#3bc9db;--rt1:#ff922b;--rt2:#69db7c;--rt3:#f783ac;--rt4:#ffd43b;--ref:#7d8592;--evb:#b197fc;--btn:#232834;--on:#6aa8ff;--onfg:#0f1115;--warn:#f6c453}}
+:root[data-theme=dark]{--bg:#0f1115;--card:#171a21;--fg:#e6e8ec;--muted:#9aa1ad;--line:#2a2f3a;--one:#6aa8ff;--two:#ff922b;--rc1:#da77f2;--rc2:#3bc9db;--rt1:#ff922b;--rt2:#69db7c;--rt3:#f783ac;--rt4:#ffd43b;--ref:#7d8592;--evb:#b197fc;--btn:#232834;--on:#6aa8ff;--onfg:#0f1115;--warn:#f6c453}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1440px;margin:0 auto;padding:10px 16px 40px}
+.hdr{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;padding:4px 0 6px;font-variant-numeric:tabular-nums}
+.hdr .nm{font-weight:700}
+.hdr .big{font-weight:650}
+.sub{display:flex;flex-wrap:wrap;gap:4px 16px;color:var(--muted);font-size:13px;margin:0 0 10px;font-variant-numeric:tabular-nums}
+.wait{color:var(--warn);font-weight:650}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2e9e5b;margin-right:6px;vertical-align:1px}
+.dot.off{background:#c0392b}.dot.wt{background:#d4a017}
+.bar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:0 0 12px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:var(--btn);color:var(--fg);padding:6px 14px;font:inherit;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed=true]{background:var(--on);color:var(--onfg)}
+.lbl{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(560px,100%),1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px 6px;min-width:0}
+.card.big{grid-column:1/-1}
+.ct{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ct h3{margin:0;font-size:14px;font-weight:600}
+.card.big .ct h3{font-size:16px}
+.ct .nt{color:var(--muted);font-size:12px;font-weight:400;margin-left:6px}
+.more{border:1px solid transparent;background:none;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;padding:0 8px;border-radius:6px}
+.card.open .more{border-color:var(--line)}
+.ctl{display:none;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0 2px;font-size:12px}
+.card.open .ctl{display:flex}
+.ctl button{border:1px solid var(--line);background:var(--btn);color:var(--fg);border-radius:6px;padding:3px 8px;font:inherit;cursor:pointer}
+.ctl button[aria-pressed=true]{background:var(--on);color:var(--onfg)}
+.ctl input{width:64px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;padding:3px 5px;font:inherit}
+.cv{position:relative;height:300px}
+.card.big .cv{height:420px}
+@media (max-width:640px){.cv{height:250px}.card.big .cv{height:320px}.seg button{padding:6px 10px}}
+</style>
+<div class="wrap">
+<div class="hdr" id="hdr"></div>
+<div class="sub" id="sub"></div>
+<div class="bar"><span class="lbl">x axis</span><span class="seg" id="xm"></span>
+<label class="lbl" style="display:inline-flex;gap:6px;align-items:center">smooth train <select id="smw" style="font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);padding:3px 4px"><option value="1">1</option><option value="5">5</option><option value="10">10</option><option value="25">25</option></select> steps</label></div>
+<div id="panes"></div>
+<p class="lbl" style="margin-top:14px" id="foot"></p>
+</div>
+<script>
+const D=__DATA__;
+try{if(window.ChartZoom)Chart.register(window.ChartZoom)}catch(e){}
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const S=()=>D.s||{};
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const VIS=LS.get('ppmap_vis',{}),OPT=LS.get('ppmap_opt',{});let XM=LS.get('ppmap_xm','st'),SM=+LS.get('ppmap_sm',5)||5;
+if(XM!=='st'&&XM!=='fr'&&XM!=='cv')XM='st';
+const C=(cols,k)=>(cols||[]).indexOf(k);const f=v=>(+v).toLocaleString('en-US');
+const MS=()=>S().max_steps||440,RW=()=>S().rows||64;
+const roll=(p,w)=>{const o=[];let t=0;for(let q=0;q<p.length;q++){t+=p[q].y;if(q>=w)t-=p[q-w].y;o.push(Object.assign({},p[q],{y:t/Math.min(q+1,w)}))}return o};
+/* x: optimiser step | fraction of the epoch (step / that run's total steps) | rows seen (step × rows per step) */
+const xOf=(r,M)=>XM==='cv'?(r[1]||0):XM==='fr'?r[0]/(M||1):r[0];
+const ser=(rows,cols,k,M)=>{const i=C(cols,k);return i<0?[]:(rows||[]).filter(r=>r[i]!=null&&isFinite(r[i])).map(r=>({x:xOf(r,M),y:r[i],s:r[0],fr:r[0]/(M||1),cv:r[1]||0}))};
+const L=(label,data,color,o={})=>({label,data,borderColor:color,backgroundColor:color,borderWidth:o.w||1.6,borderDash:o.dash||[],pointRadius:o.pts||0,pointHoverRadius:4,pointHitRadius:6,tension:0,parsing:false,spanGaps:true,_ev:!!o.ev,_sm:!!o.sm,_pin:o.pin!==false,_det:o.det||''});
+const NB=()=>(S().live?'★ ':'')+'job '+(S().jobid||'?');
+const EVD=()=>{const s=S();return ' · eval: '+(s.eval_items?f(s.eval_items)+' held-out items, ':'held-out, ')+'combined'};
+const DLIVE=()=>{const s=S();return `${s.run||''} · job ${s.jobid||'?'} · ${f(MS())} steps × ${RW()} rows · pose on B`};
+/* one chart: for each metric [col, name, colour var]: the run's train (smoothed, solid) + eval (dashed + points, combined held-out eval only) */
+function lines(ms,o={}){const s=S(),out=[],tc=s.tcols,ec=s.ecols,M=MS();
+  ms.forEach(([c,n,cv],i)=>{const sfx=n?' '+n:'',col=css(cv||(i%2?'--rc2':'--rc1')),hasE=o.ev!==false&&C(ec,c)>=0,tw=hasE||o.tw?' train':'';
+    if(o.tr!==false){const d=ser(s.train,tc,c,M);out.push(L(NB()+sfx+tw,o.raw?d:roll(d,SM),col,{sm:!o.raw,w:2.4,det:DLIVE()}))}
+    if(hasE)out.push(L(NB()+sfx+' eval',ser(s.eval,ec,c,M),o.ec?css(o.ec):col,{w:2.4,dash:[6,4],pts:3,ev:1,det:DLIVE()+EVD()}))});
+  return out}
+const AL=(c,a)=>/^#[0-9a-f]{6}$/i.test(c)?c+a:c;
+const REFN='21980 Aloe FT, no pose (reference)';
+/* main chart: live eval combined (dashed + points) + live train normalised word CE as a fixed 25-step moving average (solid) and the raw per-step line (faint)
+   + the finished no-pose run 21980, muted grey thin (eval dashed, train 25-step avg), at its own steps (fraction-of-epoch mode: step / 366) */
+function main(){const s=S(),M=MS(),d=ser(s.train,s.tcols,'nword',M),c1=css('--rc1'),c2=css('--rc2'),cr=css('--ref'),RM=s.ref_total||366;
+  const rdet=`ppm-aloe-ft-j21980 · finished · ${RM} steps × 64 rows · no pose`;
+  return [L(NB()+' eval (combined)',ser(s.eval,s.ecols,'nword',M),c1,{w:2.4,dash:[6,4],pts:3,ev:1,det:DLIVE()+EVD()}),
+    L(NB()+' train (25-step avg)',roll(d,25),c2,{sm:1,w:2.4,det:DLIVE()}),
+    L(NB()+' train (raw)',d,AL(c2,'55'),{w:1,det:DLIVE()+' · raw per-step'}),
+    L(REFN+' · eval',ser(s.ref_eval,s.rcols,'nword',RM),AL(cr,'b3'),{w:1.2,dash:[4,4],pts:1.5,ev:1,det:rdet+' · eval: held-out, combined'}),
+    L(REFN+' · train (25-step avg)',roll(ser(s.ref_train,s.rcols,'nword',RM),25),AL(cr,'8c'),{sm:1,w:1.2,det:rdet})]}
+const SPEC={
+  nword:{t:'B normalised word CE',nt:'eval = held-out, combined, dashed with points · train = 25-step moving average, raw faint · grey = 21980 no-pose reference · main metric',big:1,fn:main},
+  loss:{t:'Training loss',nt:'train/loss',fn:()=>lines([['loss','']],{ev:false,tw:true})},
+  pcb0:{t:'B pose cb0 CE',nt:'pose tower, eval + train',fn:()=>lines([['pcb0','']])},
+  plight:{t:'B pose light CE',nt:'pose decoder, eval + train',fn:()=>lines([['plight','']])},
+  cb0:{t:'B cb0 CE',nt:'speech tower',fn:()=>lines([['cb0','']])},
+  light:{t:'B light CE',nt:'0.6B speech decoder, codebooks 1–31',fn:()=>lines([['light','']])},
+  ptop1:{t:'B pose cb0 top-1',nt:'eval only',fn:()=>lines([['ptop1','']],{tr:false})},
+  st:{t:'Step time (s)',nt:'excl. evals',fn:()=>lines([['step_s','']],{ev:false,raw:true}),zero:1},
+  lr:{t:'LR',allY:1,nt:'backbone · speech tower · pose tower · audio / spec · pose decoder backbone · speech decoder (last) · pose decoder (last)',
+    fn:()=>lines([['lr_trunk','backbone','--rc1'],['lr_tower_s','speech tower','--rc2'],['lr_tower_p','pose tower','--rt1'],['lr_audio','audio / spec','--rt2'],
+      ['lr_decp_bb','pose decoder backbone','--rt3'],['lr_dec','speech decoder (last)','--rt4'],['lr_dec_p','pose decoder (last)','--one']],{ev:false,raw:true}),log:1}};
+const O=k=>OPT[k]||(OPT[k]={fit:false,log:!!SPEC[k].log,ymin:null,ymax:null});
+const vkey=(k,l)=>k+'|'+l.replace(/^★ /,'');
+const isHid=(k,d)=>{const v=VIS[vkey(k,d.label)];return v===undefined?!d._pin:!v};
+const ch={};
+const xTitle=()=>XM==='cv'?'rows seen':XM==='fr'?'fraction of the epoch':'optimiser step';
+/* x axis: 0 .. the run's last step (total_steps from PAGE_CFG.json) unless "Fit x to data" is on */
+function fitRange(k){const c=ch[k];if(!c)return;const o=O(k),sx=c.options.scales.x,sy=c.options.scales.y;sy.type=o.log?'logarithmic':'linear';
+  let xm=0;for(const d of c.data.datasets)if(!isHid(k,d))for(const p of d.data)if(isFinite(p.x))xm=Math.max(xm,p.x);
+  const M_=MS(),R_=RW(),full=XM==='fr'?1:XM==='st'?M_:M_*R_,floor=0.1*full;
+  sx.min=0;sx.max=o.fit&&xm>0?Math.max(xm*1.08,floor):full;
+  const x1=sx.max==null?Infinity:sx.max;let lo=Infinity,hi=-Infinity;
+  const pts=[];for(const d of c.data.datasets){if(isHid(k,d))continue;for(const p of d.data)if(p.x<=x1&&isFinite(p.y)&&(!o.log||p.y>0))pts.push([p.y,!SPEC[k].allY&&IGN(d,p)])}
+  for(const [y,t] of pts)if(!t){lo=Math.min(lo,y);hi=Math.max(hi,y)}
+  if(isFinite(lo)){const T=o.log?[lo/Math.sqrt(hi/lo),hi*Math.sqrt(hi/lo)]:[lo-(hi-lo)/2,hi+(hi-lo)/2];let l2=lo,h2=hi;
+    for(const [y,t] of pts)if(t&&y>=T[0]&&y<=T[1]){l2=Math.min(l2,y);h2=Math.max(h2,y)}lo=l2;hi=h2}
+  else for(const [y] of pts){lo=Math.min(lo,y);hi=Math.max(hi,y)}
+  if(isFinite(lo)){if(o.log){sy.min=lo/1.3;sy.max=hi*1.3}else{const pad=(hi-lo)*0.08||Math.abs(hi)*0.05||1;sy.min=SPEC[k].zero?0:lo-pad;sy.max=hi+pad}}else{delete sy.min;delete sy.max}
+  if(o.ymin!=null)sy.min=o.ymin;if(o.ymax!=null)sy.max=o.ymax}
+const IGN=(d,p)=>d._ev?false:p.s<(d._sm?4+(/25-step/.test(d.label)?25:SM):5);
+/* weight-save steps (PAGE_CFG.json exports): dotted vertical tick at each save, labelled "save N" at the bottom */
+const XPX=st=>XM==='fr'?st/MS():XM==='cv'?st*RW():st;
+const MPLUG={id:'ppmapmk',afterDatasetsDraw(c){const a=c.chartArea,x=c.scales.x,g=c.ctx,k=c.canvas.id;
+  {const y=c.scales.y;g.save();for(const d of c.data.datasets){if(isHid(k,d))continue;for(const p of d.data){if(!IGN(d,p))continue;const px=x.getPixelForValue(p.x);
+      if(!(px>=a.left&&px<=a.right))continue;const up=p.y>y.max,dn=p.y<y.min;if(!up&&!dn)continue;const ey=up?a.top+1:a.bottom-1,s=up?1:-1;
+      g.fillStyle=d.borderColor;g.beginPath();g.moveTo(px,ey);g.lineTo(px-4,ey+7*s);g.lineTo(px+4,ey+7*s);g.closePath();g.fill();break}}g.restore()}
+  {const X=S().exports||[];g.save();g.font='10px system-ui,sans-serif';
+    for(const e of X){const px=x.getPixelForValue(XPX(e));if(!(px>=a.left-0.5&&px<=a.right+0.5))continue;g.strokeStyle=css('--muted');g.globalAlpha=0.55;g.lineWidth=1;g.setLineDash([1,3]);
+      g.beginPath();g.moveTo(px,a.top);g.lineTo(px,a.bottom);g.stroke();g.setLineDash([]);g.globalAlpha=1;g.lineWidth=1.5;g.beginPath();g.moveTo(px,a.bottom-7);g.lineTo(px,a.bottom);g.stroke();
+      g.fillStyle=css('--muted');const lab='save '+e,tw=g.measureText(lab).width;g.fillText(lab,Math.min(px+3,a.right-tw-1),a.bottom-9)}g.restore()}}};
+const yfmt=(k,v)=>k==='lr'?(+v).toExponential(2):(+v).toPrecision(4);
+function mkChart(k){const cv=document.getElementById(k);if(!cv||ch[k])return;
+  const c=new Chart(cv,{type:'line',plugins:[MPLUG],data:{datasets:[]},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false,axis:'xy'},
+    scales:{x:{type:'linear',min:0,title:{display:true,text:'',color:css('--muted')},grid:{color:css('--line')},ticks:{color:css('--muted'),maxTicksLimit:8}},y:{grid:{color:css('--line')},ticks:{color:css('--muted'),callback:function(v){if(this.type!=='logarithmic')return this.getLabelForValue?Chart.Ticks.formatters.numeric.apply(this,arguments):v;const e=Math.log10(v);return Math.abs(e-Math.round(e))<1e-6?(+v).toExponential(0):''}}}},
+    plugins:{legend:{position:'bottom',labels:{boxWidth:16,boxHeight:2,color:css('--fg'),font:{size:11}},onClick:(e,it,lg)=>{const d=lg.chart.data.datasets[it.datasetIndex];VIS[vkey(k,d.label)]=isHid(k,d);LS.set('ppmap_vis',VIS);d.hidden=isHid(k,d);if(!c.$z)fitRange(k);lg.chart.update('none')}},
+      tooltip:{mode:'nearest',intersect:false,axis:'xy',callbacks:{title:it=>{if(!it.length)return '';const r=it[0].raw||{};return `step ${r.s} · ${(100*r.fr).toFixed(1)} % of the epoch · ${f(r.cv)} rows`},
+        label:t=>`${t.dataset.label}: ${yfmt(k,t.parsed.y)}`,afterLabel:t=>t.dataset._det?'   '+t.dataset._det:''}},
+      zoom:{zoom:{drag:{enabled:true,threshold:10,backgroundColor:'rgba(31,111,209,0.12)',borderColor:'rgba(31,111,209,0.6)',borderWidth:1},mode:'xy',onZoomComplete:()=>{c.$z=true}}}}}});
+  cv.ondblclick=()=>{try{c.resetZoom('none')}catch(e){}c.$z=false;fitRange(k);c.update('none')};ch[k]=c;upd(k)}
+function upd(k){const c=ch[k];if(!c)return;let z=null;if(c.$z){const s=c.scales;z=[s.x.min,s.x.max,s.y.min,s.y.max]}
+  let ds=[];try{ds=SPEC[k].fn().filter(d=>d.data.length)}catch(e){console.error(k,e)}
+  for(const d of ds)d.hidden=isHid(k,d);c.data.datasets=ds;c.options.scales.x.title.text=xTitle();fitRange(k);
+  if(z){const o=c.options.scales;o.x.min=z[0];o.x.max=z[1];o.y.min=z[2];o.y.max=z[3]}c.update('none')}
+function ctlRow(k){const o=O(k);return `<button data-a="fit" aria-pressed="${o.fit}">Fit x to data</button><button data-a="zr">Reset zoom</button><button data-a="log" aria-pressed="${o.log}">y log</button>`+
+  `<span>y</span><input data-a="ymin" placeholder="min" inputmode="decimal" value="${o.ymin??''}"><input data-a="ymax" placeholder="max" inputmode="decimal" value="${o.ymax??''}"><button data-a="ya">Apply</button><button data-a="yz">Auto</button><button data-a="vis">Reset legend</button>`}
+document.getElementById('panes').innerHTML='<div class="grid">'+Object.entries(SPEC).map(([k,sp])=>`<div class="card${sp.big?' big':''}" id="cd_${k}"><div class="ct"><h3>${sp.t}${sp.nt?`<span class="nt">${sp.nt}</span>`:''}</h3><button class="more" title="chart controls" aria-label="chart controls">⋯</button></div><div class="ctl">${ctlRow(k)}</div><div class="cv"><canvas id="${k}"></canvas></div></div>`).join('')+'</div>';
+for(const k in SPEC){const card=document.getElementById('cd_'+k);card.querySelector('.more').onclick=()=>card.classList.toggle('open');
+  card.querySelector('.ctl').onclick=e=>{const a=e.target.dataset&&e.target.dataset.a;if(!a||e.target.tagName!=='BUTTON')return;const o=O(k),c=ch[k];
+    if(a==='fit'||a==='log'){o[a]=!o[a];e.target.setAttribute('aria-pressed',String(o[a]))}
+    if(a==='ya'){const g=n=>{const v=parseFloat(card.querySelector(`input[data-a=${n}]`).value);return isFinite(v)?v:null};o.ymin=g('ymin');o.ymax=g('ymax')}
+    if(a==='yz'){o.ymin=o.ymax=null;card.querySelectorAll('input').forEach(i=>i.value='')}
+    if(a==='vis'){for(const key of Object.keys(VIS))if(key.startsWith(k+'|'))delete VIS[key];LS.set('ppmap_vis',VIS)}
+    LS.set('ppmap_opt',OPT);if(c){try{c.resetZoom('none')}catch(x){}c.$z=false;upd(k)}}}
+const all=()=>{for(const k in ch){try{ch[k].resetZoom('none')}catch(e){}ch[k].$z=false;upd(k)}};
+function bar(){const xe=document.getElementById('xm');xe.innerHTML=[['st','Step'],['fr','Fraction of epoch'],['cv','Rows seen']].map(([v,n])=>`<button data-x="${v}" aria-pressed="${XM===v}">${n}</button>`).join('');
+  xe.querySelectorAll('button').forEach(b=>b.onclick=()=>{XM=b.dataset.x;LS.set('ppmap_xm',XM);bar();all()})}
+const dt=t=>new Date(t*1000).toLocaleString('en-US',{timeZone:'America/Los_Angeles',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false})+' PT';
+const dur=s=>s>=3600?`${Math.floor(s/3600)} h ${Math.round(s%3600/60)} min`:`${Math.round(s/60)} min`;
+const n4=v=>v!=null&&isFinite(v)?(+v).toFixed(4):'–';
+function hdr(){const s=S(),now=Date.now()/1000,ph=s.phase||'waiting',M=MS(),R=RW(),P=s.prep||{};
+  const PH={waiting:['wt','waiting for launch'],pending:['wt','job '+s.jobid+' pending in the queue'],starting:['wt',`job ${s.jobid} running, starting up (model load, step-0 eval next)`],
+    training:['',''],done:['off','done'],ended:['off',`job ${s.jobid} ended (${s.state||'?'}) before the last step`],
+    building:['wt',`building rows: ${P.done||0}/${P.n||8} stores done${P.running?` (${P.running} building)`:''}`],built:['wt',`rows built (${P.n||8}/${P.n||8} stores), staging to nodes next`],
+    staging:['wt',`staging stores to nodes (job ${(P.stage||{}).job||'?'}${(P.stage||{}).st==='pending'?', pending':''})`],staged:['wt','stores staged to nodes, training launch next'],
+    stage_failed:['off',`staging job ${(P.stage||{}).job||'?'} ${(P.stage||{}).st||'?'}`]}[ph]||['off',ph];
+  const stale=ph==='training'&&s.t_last&&now-s.t_last>900;
+  let eta=null;if(ph==='training'&&s.mean_s!=null&&s.step!=null){const left=Math.max(0,(M-s.step)*s.mean_s+(s.evals_left||0)*(s.eval_s||16)-(now-(s.t_last||now)));eta=now+left;s._left=left}
+  const H=[`<span><span class="dot ${stale?'off':PH[0]}"></span><span class="nm">${s.live?'★ ':''}PPM Aloe pose fine-tune${s.run?' · '+s.run:''}</span>${s.jobid?' · job '+s.jobid:''}</span>`];
+  if(PH[1])H.push(`<span class="${ph==='done'||ph==='ended'?'':'wait'}">${PH[1]}</span>`);
+  H.push(`<span class="big">step ${s.step!=null?f(s.step):'–'} / ${f(M)}</span>`);
+  if(s.ev_last!=null)H.push(`<span class="big">eval B norm word CE ${n4(s.ev_last)} (step ${s.ev_last_step})</span>`);
+  if(s.ev_pcb0!=null)H.push(`<span class="big">eval pose cb0 CE ${n4(s.ev_pcb0)}</span>`);
+  H.push(`<span>${s.mean_s!=null?s.mean_s+' s/step':'– s/step'}</span>`);
+  H.push(`<span>ETA ${eta?dt(eta)+' ('+dur(s._left)+')':ph==='done'?'done':'–'}</span>`);
+  if(stale)H.push(`<span class="wait">no new metrics for ${dur(now-s.t_last)}</span>`);
+  document.getElementById('hdr').innerHTML=H.join('');
+  const U=[];
+  if(P.stores&&!s.run)U.push('stores: '+P.stores.map(x=>`p${x.k} ${x.st}`).join(' · '));
+  if(s.data_note)U.push(s.data_note);
+  U.push(`${R} rows / step`);
+  if(s.step!=null)U.push(`${f(s.step*R)} rows seen`);
+  if(s.ev_last_step!=null){const E=[];if(s.ev_ptop1!=null)E.push(`pose cb0 top-1 ${n4(s.ev_ptop1)}`);if(s.ev_plight!=null)E.push(`pose light ${n4(s.ev_plight)}`);
+    if(s.ev_cb0!=null)E.push(`cb0 ${n4(s.ev_cb0)}`);if(s.ev_light!=null)E.push(`light ${n4(s.ev_light)}`);
+    if(E.length)U.push(`eval @ ${s.ev_last_step}${s.ev_last_pt?' ('+s.ev_last_pt+')':''}: ${E.join(' · ')}`)}
+  if(s.ref_ev_last!=null)U.push(`21980 no-pose final eval B norm word CE ${n4(s.ref_ev_last)} (step ${s.ref_ev_last_step})`);
+  if(s.last_pt)U.push(`last step ${s.last_pt}`);
+  if(s.peak_gib!=null)U.push(`peak ${s.peak_gib} GiB`);
+  if(s.step!=null)U.push(`ETA = last 20 steps' s/step × steps left + ${s.evals_left!=null?s.evals_left:'remaining'} evals (excl. final save)`);
+  if(s.nodes)U.push(`${(s.state||'').toLowerCase()} on ${s.nodes}`);
+  if(s.next_job)U.push(`next job ${s.next_job} ${(s.next_state||'').toLowerCase()}`);
+  if(!s.cfg)U.push('run parameters not published yet (PAGE_CFG.json), defaults shown');
+  U.push(`updated ${s.updated||''}`);
+  document.getElementById('sub').innerHTML=U.map(x=>`<span>${x}</span>`).join('');
+  const X=s.exports||[];
+  document.getElementById('foot').textContent=`★ = the fine-tune running now (no ★ once its job has ended). PPM fine-tune on Model 1’s Aloe handover rows with POSE on channel B`+
+    (s.train_items?` (${f(s.train_items)} train items)`:'')+`, 1 epoch = ${f(M)} steps × ${R} rows. Eval: `+(s.eval_items?`${f(s.eval_items)} held-out items`:'held-out rows')+
+    `, every ${s.eval_every||25} steps, reported combined. Grey = the finished no-pose Aloe FT 21980 (reference, ${s.ref_total||366} steps × 64 rows; eval dashed, train 25-step avg), plotted at its own steps. `+
+    (X.length?`Dotted vertical ticks = weight saves (steps ${X.join(' / ')}). `:'')+
+    `Train curves smoothed (solid); eval curves dashed with points. Every chart’s x axis runs to the last step (⋯ → Fit x to data to zoom to the data). Auto y range ignores the start transient (first train steps); off-scale start points are clipped with an arrow at the edge. Drag to zoom, double-click to reset.`}
+{const e=document.getElementById('smw');e.value=String(SM);e.onchange=()=>{SM=+e.value||5;LS.set('ppmap_sm',SM);for(const k in ch)upd(k)}}
+hdr();bar();for(const k in SPEC)mkChart(k);
+async function poll(){try{const r=await fetch('ppm_aloe_pose_live.json?t='+Date.now(),{cache:'no-store'});if(r.ok){D.s=await r.json();hdr();for(const k in ch)upd(k)}}catch(e){}
+  try{const v=await fetch('ver_ppm_aloe_pose.txt?t='+Date.now(),{cache:'no-store'});if(v.ok){const t=(await v.text()).trim();if(t&&t!==D.ver)location.reload()}}catch(e){}}
+setInterval(poll,60000);setInterval(hdr,30000);
+</script>

@@ -1,0 +1,96 @@
+# dataloading
+root_dir = '/mnt/somfs/pretrain-ds'
+clipnames_root = '/mnt/somfs/pretrain-ds/csvs'
+eval_clipnames_root = '/mnt/somfs/pretrain-ds/csvs'
+
+buckets.hands = ['squeaky-clean-orig']
+buckets.hands_good_framing = ['squeaky-clean-orig']
+buckets.perfect_framing = ['squeaky-clean-orig']
+buckets.face = ['squeaky-clean-orig']
+pose = 'v2'
+
+dup_seconds = 3.0
+
+# eval (eval set was not in the clean-audit; use the original manifest)
+eval_buckets.perfect_framing = ['clean-orig-eval']
+eval_every_n_steps = 2000
+eval_step_zero = true
+num_dataloader_workers = 8
+eval_num_dataloader_workers = 4
+save_every_n_steps = 4000
+save_optimizer_every_n_steps = 8000
+output_dir = '/home/vansh/vansh-wan-models/pose-checkpoints/wan22-wide-production-model/stage-3-squeaky-audiodrop/'
+
+# video continuation (must match the checkpoint)
+attention_sink = true
+bounded_history = true
+num_history = 8
+num_present = 4
+
+# hyperparameters
+epochs = 2
+micro_batch_size_per_gpu = 3
+eval_micro_batch_size_per_gpu = 3
+gradient_accumulation_steps = 5
+gradient_clipping = 1.0
+warmup_steps = 5000
+lr_scheduler = 'cosine'
+lr = 8e-6
+min_lr = 1e-6
+ema_decay = 0.9995
+
+# deepspeed
+master_port = 29521
+activation_checkpointing = true
+activation_checkpoint_skip = 30
+compile_blocks = true
+partition_method = 'parameters'
+pipeline_stages = 1
+zero_stage = 1
+
+[model]
+type = 'wan_5b_vidcon_variable'
+arch = 'wan_5b_wide'
+checkpoint_path = '/mnt/somfs/hands/pose-checkpoints/wan22-wide-production-model/stage-3/step150000/model_ema.safetensors'
+audio_conditioning = true
+pose_conditioning = true
+s = 1.5
+extra_t = [1.0, 0.99]
+
+[model.audio]
+model_name = 'kyutai/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+initialization = 'zero'
+audio_dropout = 0.2
+
+[wandb]
+project = 'wan22-5b-low-resolution-pretrain'
+run_name = 'wide-squeaky-s-1.5-audiodrop-p-0.2'
+
+[optimizer]
+type = 'adamw'
+betas = [0.9, 0.99]
+weight_decay = 1e-6
+eps = 1e-8
+
+[[optimizer.groups]]
+prefix = 'audio_encoder.no_audio_tokens'
+lr = 8e-6
+min_lr = 1e-6
+warmup_steps = 1000
+decay_start = 5000
+
+[[optimizer.groups]]
+prefix = 'audio_adapter.'
+lr = 8e-6
+min_lr = 1e-6
+warmup_steps = 1000
+decay_start = 5000

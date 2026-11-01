@@ -1,0 +1,182 @@
+--- /data/home/amartyavarma/ppm/aloe-posedup-live/genweb/worker.py	2026-10-27 11:29:23.672172282 +0000
++++ /data/home/amartyavarma/ppm/pose6/worker/worker_s2pg0.py	2026-10-27 19:16:27.050366997 +0000
+@@ -9,6 +9,13 @@
+ g < N (N = 2 x round(s / 0.16) + 2, = mono.py / the live server), words + audio sampled from frame 0; the feed's start carries person +
+ prefill_s so the render prefills the actor's real video for s. The first worker writes OPTIONS.json + SCHEMA.json (every engine knob).
+ usage: worker.py <worker id>   (CUDA_VISIBLE_DEVICES = 2 GPUs; env as posefix/sim/mono_run.sh)"""
++# POSE6 VARIANT (ppm/pose6/worker, 10-27; NOT deployed): the deployed genweb worker.py byte for byte except the lines marked "pose6":
++#  - the engine is pose6/infer (= pose-s2p engine + G0COND; absolute path), which serves a checkpoint carrying s2p cb0 + G0COND
++#    (tower_p.s_emb + inp.g0); the worker refuses any other checkpoint (check_mods);
++#  - every run passes g0f = the frame-0 features of the frame its pose is decoded / rendered against (g0src.g0_from_opening; g0_source
++#    below), or the request's explicit "g0f" override (8 finite floats); a missing source fails THAT run loudly (never f = 0);
++#  - this file lives in pose6/worker, so the playground dir is the absolute genweb path (+ genweb on sys.path for stick.py, as the deployed
++#    script dir); GENWEB_CK is required; GENWEB_WEIGHTS defaults to "s2pg0" (claims only runs with mono_weights "s2pg0", never base / rosie).
+ import base64
+ import json
+ import os
+@@ -16,7 +23,9 @@
+ import time
+ import traceback
+ 
+-MI = "/data/home/amartyavarma/ppm/aloe-pose-monoplex-infer"
++MI = "/data/home/amartyavarma/ppm/pose6/infer"                         # pose6: the pose6 engine (s2p cb0 + G0COND) + g0src.py
++GW = "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb"            # pose6: the playground dir (the deployed worker's own dir)
++sys.path.insert(0, GW)                                                  # pose6: = the deployed script dir on sys.path (import stick)
+ sys.path.insert(0, MI)
+ sys.path.insert(0, f"{MI}/ppm")
+ os.environ.setdefault("PPM_CD", "2")
+@@ -25,17 +34,21 @@
+ import infer as MIF  # noqa: E402
+ import fast_ppm as FP  # noqa: E402
+ import ppm_io as IO  # noqa: E402
++import g0src as G0S  # noqa: E402   (pose6: pose6/infer/g0src.py, A2)
+ from safetensors.numpy import load_file  # noqa: E402
+ 
+-G = os.path.dirname(os.path.abspath(__file__))
++G0_KINDS = ("openings", "openings-sam", "clip")                          # pose6: the kinds this worker passes (briefs/CONTRACT.md)
++assert all(k in G0S.KINDS for k in G0_KINDS), ("pose6: g0src.KINDS lacks a kind this worker passes", G0S.KINDS, G0_KINDS)
++G = GW                                                                  # pose6 (deployed: os.path.dirname(os.path.abspath(__file__)))
+ LIVE = "/data/home/amartyavarma/ppm/aloe-posedup-live"
+ RUNS, RJOBS, ROUT = f"{G}/runs", f"{G}/render/jobs", f"{G}/render/out"
+ RJOBS_V = f"{G}/render/jobs_vansh"   # 10-26 user: Vansh-weights runs render from their own queue (videort's Vansh renderers)
+ RJOBS_V50 = f"{G}/render/jobs_vansh50"   # 10-26 user: Vansh at 20 steps is the default (jobs_vansh); 50 steps on request (vansh_steps 50)
+-CK = os.environ.get("GENWEB_CK", "/data/home/amartyavarma/ppm/aloe-pose-mono-8020/exports/export-357")
++CK = os.environ.get("GENWEB_CK", "")                                   # pose6: no default (export-357 has neither mod); required by Worker
+ # 10-27 user ("put up rosie"): a worker serves ONE set of monoplex weights; runs pick theirs with request "mono_weights" (base | rosie)
+-WEIGHTS = os.environ.get("GENWEB_WEIGHTS", "base")
++WEIGHTS = os.environ.get("GENWEB_WEIGHTS", "s2pg0")                     # pose6: own weights id by default (never claims base / rosie runs)
+ WEIGHTS_LABEL = {"base": "export-357", "rosie": "Rosie FT (aloe-pose-rosie export-18)"}
++WEIGHTS_LABEL[WEIGHTS] = "s2p cb0 + G0COND (" + (os.path.relpath(CK.rstrip("/"), "/data/home/amartyavarma/ppm") if CK else "GENWEB_CK unset") + ")"   # pose6
+ PEOPLE = ["/data/home/amartyavarma/video/demo-data/prompts", "/data/home/amartyavarma/video/dmd-rt/actors/pkg",
+           "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/people_extra"]   # 10-27: speakers with real data but no avatar (Rosie)
+ CD, OFF, PAD, DEPTH, SPF = FP.CD, FP.OFF, FP.PAD, FP.DEPTH, 1920
+@@ -86,6 +99,74 @@
+         return None
+ 
+ 
++def package_dir(person):
++    """pose6: the person's avatar package dir (the one holding gt/pose_tokens.safetensors: demo-data/prompts/<p>, people_extra/<p> = Rosie)."""
++    return os.path.dirname(os.path.dirname(person_file(person, "gt/pose_tokens.safetensors")))
++
++
++def g0_source(person, src, po, proot, noav, f0gs):
++    """pose6 G0COND: the run's frame-0 source = the frame 0 its pose is decoded / rendered against, exactly the deployed f0gs / sgs choice
++    in run(): pose only -> the pose-only source (openings-sam / openings dir, else the actor clip); an avatar run whose start prefill carries
++    the opening's own frame 0 (f0gs) -> that opening; a no-avatar person (Rosie) with src start -> the opening when its meta has frame-0
++    fields (= the stick figure's sgs); everything else (clip prefill, no pose prefill, openings cut at the package's own frame 0) -> the
++    avatar package. -> (dir, kind) for g0src.g0_from_opening."""
++    if po:
++        return (proot, os.path.basename(os.path.dirname(proot))) if proot else (package_dir(person), "clip")
++    if f0gs is not None or (noav and src == "start" and opening_frame0_gs(person) is not None):
++        return f"{G}/openings/{person}", "openings"
++    return package_dir(person), "clip"
++
++
++def run_g0f(req, person, src, po, proot, noav, f0gs):
++    """pose6: -> (g0f np.float32[8], source dict). request "g0f" (optional, 8 finite floats) overrides the source; otherwise
++    g0src.g0_from_opening(dir, kind) of g0_source(); any failure raises a short, clear error for this run (never f = 0)."""
++    if req.get("g0f") is not None:
++        try:
++            f = np.asarray([float(v) for v in req["g0f"]], np.float32)
++        except (TypeError, ValueError) as e:
++            raise ValueError(f"G0COND: request g0f must be 8 numbers: {e}") from None
++        if f.shape != (8,) or not np.isfinite(f).all():
++            raise ValueError(f"G0COND: request g0f must be 8 finite numbers, got {req['g0f']!r}"[:300])
++        return f, {"kind": "request override", "dir": None}
++    d, kind = g0_source(person, src, po, proot, noav, f0gs)
++    assert kind in G0_KINDS, kind
++    try:
++        f = np.asarray(G0S.g0_from_opening(d, kind), np.float32)
++    except Exception as e:  # noqa: BLE001   (re-raised with the source named: the page shows it as the run's error)
++        raise ValueError(f"G0COND: no frame-0 features for {kind} {os.path.basename(d)}: {type(e).__name__}: {e}"[:380]) from e
++    if f.shape != (8,) or not np.isfinite(f).all():
++        raise ValueError(f"G0COND: g0src returned a bad f for {kind} {os.path.basename(d)}: {f.tolist()}"[:380])
++    return f, {"kind": kind, "dir": d}
++
++
++def g0_warm(pp):
++    """pose6: warm g0src's caches at worker start (its first call scans the v2 items, ~1.4 s), over every source a run can pick for the
++    playground's persons. A source that fails here is only logged: the run that picks it still fails loudly in run_g0f."""
++    ok, bad = 0, []
++    for p in pp:
++        srcs = [(f"{G}/{r}/{p['id']}", r) for r in ("openings", "openings-sam") if os.path.isfile(f"{G}/{r}/{p['id']}/meta.json")]
++        try:
++            srcs.append((package_dir(p["id"]), "clip"))
++        except FileNotFoundError as e:
++            bad.append(f"{p['id']} clip: {e}")
++        for d, kind in srcs:
++            try:
++                G0S.g0_from_opening(d, kind)
++                ok += 1
++            except Exception as e:  # noqa: BLE001
++                bad.append(f"{p['id']} {kind}: {type(e).__name__}: {str(e)[:120]}")
++    return ok, bad
++
++
++def check_mods(m, binfo):
++    """pose6: this worker serves ONLY a checkpoint that carries BOTH mods as trained weights: s2p cb0 (tower_p.s_emb) and G0COND (inp.g0).
++    A zero-filled / missing term (the engine's flag-on-without-key path) is refused."""
++    zi = sorted(k for k, v in binfo.items() if "zero_init" in str(k) and v)
++    assert binfo.get("s2p") == "cb0", ("pose6 worker: the checkpoint must carry tower_p.s_emb in mode cb0", binfo.get("s2p"), CK)
++    assert bool(binfo.get("g0cond", True)) and hasattr(m.inp, "g0"), ("pose6 worker: the checkpoint must carry inp.g0 (G0COND)", CK)
++    assert not zi, ("pose6 worker: new params zero-filled, not loaded from the checkpoint", zi, CK)
++
++
+ def persons():
+     out = []
+     for r in PEOPLE[:1]:
+@@ -179,9 +260,11 @@
+         devs = [torch.device("cuda:0"), torch.device("cuda:1")]
+         torch.cuda.set_device(devs[-1])
+         self.pp = persons()
++        assert CK, "pose6 worker: set GENWEB_CK to an s2p cb0 + G0COND checkpoint (export / w- path)"   # pose6
+         with torch.inference_mode():
+             m, ldev, cfgs, binfo = FP.build_model(CK, devs)
+             assert binfo["pose"] and binfo["decp_bb"], binfo
++            check_mods(m, binfo)                                        # pose6: both mods, loaded from the checkpoint
+             self.step = binfo.get("step")
+             self.mimi = IO.Mimi(devs[-1])
+             self.max_s = MAX_CLIP_S + MAX_PF_S + 2
+@@ -189,6 +272,8 @@
+             sil = self.mimi.encode(np.zeros((2048 + nfr) * SPF, np.float32))[:, :2048 + nfr]
+             self.eng = FP.FastPPM(m, ldev, cfgs, devs, n_inst=1, cfg_rows=True, max_s=self.max_s, mimi_stream=False, silence=sil)
+             self.eng.capture()
++        g0ok, g0bad = g0_warm(self.pp)                                  # pose6: g0src caches warm before the first claim
++        log(f"g0src warm: {g0ok} sources ok, {len(g0bad)} failing (their runs will fail loudly){': ' + '; '.join(g0bad[:8]) if g0bad else ''}")
+         log(f"model step {self.step} loaded + captured ({CK})")
+ 
+     def feed_client(self):
+@@ -232,7 +317,7 @@
+             return
+         rows = schema_rows(self.pp)
+         jwrite(f"{G}/SCHEMA.json", rows)
+-        o = {"models": ["monoplex"], "model_label": f"pose monoplex (aloe-pose-mono-8020 export-357, step {self.step})",
++        o = {"models": ["monoplex"], "model_label": f"pose monoplex ({WEIGHTS_LABEL[WEIGHTS]}, step {self.step})",   # pose6: this worker's weights
+              "persons": self.pp, "defaults": {r["name"]: r["default"] for r in rows}, "max_clip_s": MAX_CLIP_S,
+              "max_prefill_s": MAX_PF_S, "written_by": WID, "t": time.time()}
+         try:                                                            # 10-25: keep the duplex worker's keys (worker_dup.py writes them)
+@@ -402,6 +487,7 @@
+             if n < N + int(round(clip_s * 12.5)):
+                 notes.append(f"pose only: the actor's real speech on disk is {T / 12.5:.1f} s, so the clip is {n / 12.5:.1f} s")
+             vpf, f0gs = 0.0, None
++        g0f, g0s = run_g0f(req, person, src, po, proot if po else None, noav, f0gs)   # pose6: G0COND f (a missing source fails this run)
+         lane = np.full(n + CD, PAD, np.int64)
+         x = MIF.assemble(sp, lane, np.zeros((DEPTH, 0), np.int64), np.zeros((DEPTH, 0), np.int64), n, 0)
+         P = int(x["P"])
+@@ -415,7 +501,7 @@
+                 and not req.get("no_live") and not po and not noav)                     # 10-26 user: never livestream unless the request asks for it
+         sent = 0
+         with torch.inference_mode():
+-            self.eng.start([dict(x, a_mode="empty")], seed, params, f0=0)
++            self.eng.start([dict(x, a_mode="empty", g0f=g0f)], seed, params, f0=0)   # pose6: g0f per instance (engine: SLOT = P - 1)
+             if live:
+                 self.feed.put("start", rid, json.dumps({"type": "start", "session": rid, "model": "genweb-mono", "voice": person, "fps": 12.5,
+                                                          "person": person, "prefill_s": vpf, "prefill_src": src, "record": f"{rd}/avatar.mp4",
+@@ -486,6 +572,7 @@
+                 "pose_prefill_frames": N if pp is not None else 0, "prefill_frames": N, "prefill_s": pfs,
+                 "prefill_streams": [k for k, v in (("pose", pp is not None), ("audio", pa is not None), ("words", words_used)) if v],
+                 "prefill_notes": notes, "prefill_source": src, "pose_only": po, "forced_audio_frames": NA if pa is not None else 0, "frame0_global_state": f0gs, "clip_s": clip_s, "voice": vsrc, "persona": persona, "params": params,
++                "g0f": [float(v) for v in g0f], "g0_source": g0s,                                        # pose6: the G0COND f this run used
+                 "wall_s": round(wall, 1), "ms_per_frame": round(1e3 * wall / (n + CD), 1), "gen_cb0_change": chg,
+                 "cfg_guided_frames": int(self.eng.pcfg_guided[0].item()) if getattr(self.eng, "pcfg_guided", None) is not None else None,
+                 "cfg_frames_total": n,

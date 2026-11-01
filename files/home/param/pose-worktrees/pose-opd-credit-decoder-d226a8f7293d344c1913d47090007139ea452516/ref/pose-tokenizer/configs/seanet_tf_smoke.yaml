@@ -1,0 +1,81 @@
+# Smoke test for the SEANet+transformer backend: tiny data subset, ~80 steps.
+# Verifies the model trains (loss down, codebook usage up, no NaN) and that the
+# new per-keypoint / per-timestep validation logging runs. NOT for real results.
+
+data_dir: /mnt/somfs/pose_cond/pose_cond_npy/
+manifest: /mnt/somfs/pose_cond/pose_cond_npy_manifest.txt
+dims_csv: /mnt/somfs/pose_cond/dims_upperbody_ideal_fresh.csv
+test_dir: ""
+n_test_clips: 0
+num_files: 6000
+val_count: 200
+
+source_fps: 30
+target_fps: 25
+segment_frames: 200
+random_segment_offset: true
+first_frame_root: true
+
+model_type: seanet_transformer
+num_keypoints: 55
+keypoint_dim: 2
+input_features: 165
+causal: true
+conv_weight_norm: true
+latent_dim: 512
+st_seanet_dim: 512
+st_n_filters: 64
+st_n_residual_layers: 1
+st_ratios: [1]
+st_seanet_kernel: 7
+st_residual_kernel: 3
+st_compress: 2
+st_d_model: 1024
+st_num_heads: 16
+st_num_layers: 8
+st_dim_feedforward: 3584
+st_layer_scale: 0.01
+st_rope_max_period: 10000.0
+st_downsample: 2
+
+n_codebooks: 32
+codebook_size: 2048
+codebook_dim: 16
+vq_strides: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+apply_rotation_trick: false
+enable_quantization: true
+quantizer_dropout: 0.5
+normalize_codes: true
+dead_code_threshold: 2.0
+dead_code_ema_decay: 0.99
+
+epochs: 9999
+max_steps: 80
+batch_size: 8
+lr: 1.0e-4
+lr_schedule: cosine
+lr_min: 1.0e-5
+warmup_steps: 10
+
+reconstruction_weight: 1.0
+velocity_weight: 2.0
+confidence_loss_weight: 0.25
+confidence_loss_type: "smooth_l1"
+causal_loss_shift: 1
+commitment_weight: 0.0225
+codebook_weight: 0.09
+confidence_weight_mode: "soft"
+confidence_mask_threshold: 0.3
+pose_corruption_prob: 0.3
+pose_corruption_modes: ["temporal_joint_flicker", "part_flicker"]
+
+num_workers: 4
+log_interval: 10
+val_batch_size: 16
+validation_interval: 40
+save_interval: 100000
+render_interval: 0
+output_dir: /home/james/pose_tokenizer_smoke
+
+wandb_project: pose-tokenizer
+wandb_run_name: seanet-tf-smoke

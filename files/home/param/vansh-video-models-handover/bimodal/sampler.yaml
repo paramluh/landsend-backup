@@ -1,0 +1,38 @@
+csv: /mnt/paramfs/vansh/aloe-conversational/csvs/aloe-studio-seen-eval.csv
+root_dir: /mnt/paramfs/vansh/aloe-conversational/conv-4.3k-5mins-muon-neutrino-256x480-v1
+pose_file: pose_latents_electron.safetensors
+mimi_file: mimi.safetensors
+rows: [0, 1, 2, 3, 4, 5, 6, 7]
+output_dir: /mnt/paramfs/vansh/bimodal/samples/stabiliser-step19119-raw-resolver-step4000-raw/seen8
+type: universal_wide_bimodal
+seed: 2026
+batch_size: 2
+max_latent_frames: null
+compile: true
+cuda_graph: true
+wavefront: true
+
+stabilising:
+  checkpoint_path: /mnt/paramfs/vansh/hands/pose-checkpoints/universal-experiments/aloe-bimodel/run_1/step19119/model.safetensors
+  num_history: 3
+  num_present: 4
+  history_t: 0.2
+  substeps: 10
+
+resolving:
+  checkpoint_path: /mnt/paramfs/vansh/easy/checkpoints/aloe-studio-easy-h2-p1/run_1/step4000/model.safetensors
+  num_history: 2
+  num_present: 1
+  t_start: 0.4
+  num_steps: 10
+
+audio:
+  model_name: kyutai/mimi
+  in_dim: 512
+  num_codebooks: 16
+  num_layers: 4
+  cross_attention_codes: 4
+  drop: 2
+  injection_offset: 4
+  injection_interval: 3
+  max_blocks: 8

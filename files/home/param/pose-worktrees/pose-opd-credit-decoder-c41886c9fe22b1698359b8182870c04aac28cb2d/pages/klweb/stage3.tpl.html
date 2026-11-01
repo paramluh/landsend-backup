@@ -1,0 +1,470 @@
+<title>Qwen Stage 3 Curves</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.1/chartjs-plugin-zoom.min.js"></script>
+<style>
+/* One column: status tiles, controls, then stacked chart panels. Color = channel (A user orange, B assistant blue); line style = run (★ live solid, hestia dashed). */
+:root{--bg:#f4f5f7;--panel:#fff;--fg:#1a2130;--muted:#5c6575;--line:#dfe3ea;--chA:#c8640c;--chB:#1f6fd1;--one:#1f6fd1;--ref:#1a2130;--s2:#b5367a;--ok:#2e7d4f;--warn:#a15c00;--dm:#0f8a7a;--lose:#c0392b;
+  --f-display:"Fraunces",Georgia,serif;--f-body:"IBM Plex Sans",system-ui,sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,monospace}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10141b;--panel:#171d26;--fg:#e3e7ee;--muted:#98a1b1;--line:#2a323e;--chA:#d4762a;--chB:#4a8ae0;--one:#4a8ae0;--ref:#e3e7ee;--s2:#e477b4;--ok:#5fbf86;--warn:#e0a24a;--dm:#3cc2ae;--lose:#e06b5f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10141b;--panel:#171d26;--fg:#e3e7ee;--muted:#98a1b1;--line:#2a323e;--chA:#d4762a;--chB:#4a8ae0;--one:#4a8ae0;--ref:#e3e7ee;--s2:#e477b4;--ok:#5fbf86;--warn:#e0a24a;--dm:#3cc2ae;--lose:#e06b5f;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:14px;line-height:1.5;margin:0}
+.wrap{max-width:min(1200px,100%);margin:0 auto;padding:24px 16px 56px;display:grid;gap:16px}
+h1{font-family:var(--f-display);font-weight:600;font-size:clamp(26px,4vw,34px);margin:0}
+.sub{color:var(--muted);font-size:13px;max-width:100ch}
+a{color:var(--one)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:2px;min-width:0}
+.tile .k{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tile .v{font-family:var(--f-mono);font-size:20px;font-variant-numeric:tabular-nums}
+.tile .d{color:var(--muted);font-size:12.5px;overflow-wrap:anywhere}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.si{background:var(--panel);padding:10px 12px;display:grid;gap:1px;min-width:0}.si .k{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.si .v{font-family:var(--f-mono);font-size:18px;font-variant-numeric:tabular-nums}.si .d{color:var(--muted);font-size:12px;overflow-wrap:anywhere}
+details.more{display:grid;gap:16px}details.more>summary{cursor:pointer;font-weight:600;padding:10px 14px;background:var(--panel);border:1px solid var(--line);border-radius:10px}.morewrap{display:grid;gap:16px;margin-top:16px}
+.rng{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;font-size:12px;color:var(--muted)}.rng label{display:inline-flex;gap:3px;align-items:center}.rng input{width:72px;font:12px var(--f-mono);padding:2px 5px;border:1px solid var(--line);border-radius:4px;background:var(--panel);color:var(--fg)}.rng button{padding:2px 9px;font-size:11.5px}.rng .on{color:var(--fg);font-weight:600}
+.ctl{display:flex;gap:6px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--muted)}
+button{font:500 12px var(--f-body);color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:999px;padding:4px 11px;cursor:pointer}
+button[aria-pressed="true"]{background:var(--one);border-color:var(--one);color:#fff}
+button:focus-visible{outline:2px solid var(--one);outline-offset:2px}
+section{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;display:grid;gap:10px;min-width:0}
+h2{font-size:16px;font-weight:600;margin:0}
+.cv{position:relative;height:340px;min-width:0}
+.note{color:var(--muted);font-size:12.5px;margin:0}
+.live{font-weight:600}.live[data-ok="1"]::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-right:6px}
+.empty{border:1px dashed var(--line);border-radius:10px;padding:14px;color:var(--muted);background:var(--panel)}
+.empty b{color:var(--fg)}
+.map{border-collapse:collapse;font-size:12.5px;width:100%}.map th,.map td{border-bottom:1px solid var(--line);padding:4px 8px;text-align:left;vertical-align:top}.tw{overflow-x:auto}
+code{font-family:var(--f-mono);font-size:12px}
+@media (max-width:560px){.cv{height:280px}}
+.rng .grp{display:inline-flex;flex-wrap:wrap;gap:4px;align-items:center}.rng .gw{flex-basis:100%;display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}.rng [hidden]{display:none!important}
+.chip{display:inline-flex;align-items:center;gap:4px;max-width:100%;border:1px solid var(--line);border-radius:999px;padding:1px 2px 1px 8px;font:11.5px var(--f-mono);color:var(--fg);overflow-wrap:anywhere}.rng .chip button{padding:0 6px;border:0;font-size:13px;line-height:1.2}
+.rng[data-stale="1"]::after{content:"saved y range hid every line, so it is ignored; press Auto to clear it";color:var(--muted);font-size:12px;margin-left:8px}
+.runs{display:grid;gap:8px;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--panel)}
+.rl{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:4px;font-size:14px}
+.rsw{display:inline-block;width:14px;height:4px;border-radius:2px;margin-right:8px;vertical-align:middle}
+.rm{color:var(--muted);font-size:12px;margin-left:22px}
+.runs .lab{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.gbg{display:grid;gap:8px}.gbg[hidden],.gbtx[hidden]{display:none}.gbg h3{font-size:14px;font-weight:600;margin:6px 0 0}
+.gbt{border-collapse:collapse;font:11px var(--f-mono);color:var(--muted)}.gbt th{font-weight:400;padding:0 1px;text-align:center}.gbt th.r{text-align:right;padding-right:6px;cursor:pointer;white-space:nowrap}.gbt tr.sel th.r{color:var(--fg);font-weight:600}
+.gbt td{padding:1px}.gbt td.n{padding-left:6px;white-space:nowrap}.gc{display:flex;gap:1px;width:22px;height:16px}.g60 .gc{width:11px}.gc i{flex:1;cursor:pointer;border-radius:2px;background:var(--line)}.gc i.on{outline:2px solid var(--fg);outline-offset:-1px}
+.gbtx{border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:6px;font-size:13px;max-height:480px;overflow:auto}.gbtx .h{display:flex;justify-content:space-between;gap:8px;font-weight:600}.gbtx p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}.gbtx .u{color:var(--muted)}
+</style>
+<div class="wrap">
+<div class="strip" id="strip">
+ <div class="si"><span class="k">Step</span><span class="v" id="sm_step">–</span><span class="d" id="sm_stepd">–</span></div>
+ <div class="si"><span class="k">Step time</span><span class="v" id="sm_time">–</span><span class="d" id="sm_timed">–</span></div>
+ <div class="si"><span class="k">Steps with persona text</span><span class="v" id="sm_pt">–</span><span class="d" id="sm_ptd">–</span></div>
+ <div class="si"><span class="k">Now</span><span class="v" id="sm_now">–</span><span class="d" id="sm_nowd">–</span></div>
+ <div class="si"><span class="k">Hours elapsed</span><span class="v" id="sm_el">–</span><span class="d" id="sm_eld">–</span></div>
+ <div class="si"><span class="k">Hours left</span><span class="v" id="sm_left">–</span><span class="d" id="sm_leftd">–</span></div>
+ <div class="si"><span class="k">Text KL · latest eval</span><span class="v" id="sm_kl">–</span><span class="d" id="sm_kld">target ≤ 0.02 (stage-2 final)</span></div>
+ <div class="si" id="si_gb"><span class="k">GenghisBench (latest) · own end-of-turn / ? end</span><span class="v" id="sm_gb">–</span><span class="d" id="sm_gbd">–</span></div><!-- GenghisBench section: tile (filled by gbTile()) -->
+ <div class="si" id="si_ib"><span class="k">InteractionBench (latest) · 0-100</span><span class="v" id="sm_ib">–</span><span class="d" id="sm_ibd">–</span></div><!-- InteractionBench section: tile (filled by ibTile()) -->
+ <div class="si" id="si_ibf"><span class="k">Faff (latest) · 0-100</span><span class="v" id="sm_ibf">–</span><span class="d" id="sm_ibfd">–</span></div><!-- InteractionBench section: faff tile -->
+ <div class="si" id="si_mb"><span class="k">MathBench (text) · GSM8K / MATH-500</span><span class="v" id="sm_mb">–</span><span class="d" id="sm_mbd">–</span></div><!-- MathBench section: tile (filled by mbTile()) -->
+ <div class="si"><span class="k">Normalised word CE · A user / B assistant</span><span class="v" id="sm_nw">–</span><span class="d" id="sm_nwd">–</span></div>
+ <div class="si"><span class="k">cb0 CE · A / B</span><span class="v" id="sm_cb0">–</span><span class="d" id="sm_cb0d">–</span></div>
+ <div class="si"><span class="k">Hestia normalised word CE · A / B</span><span class="v" id="sm_h">–</span><span class="d" id="sm_hd">–</span></div>
+</div>
+<header><h1>Qwen stage 3 curves</h1>
+<div class="sub"><span class="live" id="live">-</span> · <span id="upd">-</span><br>
+<b id="lvname">★ live stage-3 run</b>: Qwen3-32B duplex (both channels' text + Mimi codes summed per frame; predicts A = user and B = assistant at equal weight), initialised from stage 2, with the stage-2 text-KL anchor. <b>Reference: Hestia</b> = the 32B duplex pretraining run <code>demeter-32b-ga3</code> (wandb <code>canopy-labs/demeter</code>, 4 resumed pieces stitched into one run, steps 1–20,505 = 0.82 epoch; its step-19500 checkpoint is <code>hestia-ctx-19500</code>). It ends there because its last piece crashed at step 20,505 and was never resumed; no later piece exists in wandb or on Hugging Face. Hestia's later text fine-tunes can be shown from the legend. <a href="__TUN__/stage2.html">stage-2 curves</a> · <a href="__TUN__/mega.html">project page</a><br><span id="brnote"></span></div></header>
+<div id="empty" class="empty" hidden><b>Stage 3 not started.</b> Only the Hestia reference is shown. The ★ live run appears here on its own once the stage-3 trainer logs its first step (<code>qwen-1ch/stage3/logs/q1ch-s3-&lt;job&gt;.log</code>).</div>
+<div class="ctl">All charts: <button id="x-ep" aria-pressed="true">Epochs</button><button id="x-st" aria-pressed="false">Steps</button> &nbsp; <button id="fit" aria-pressed="true">Fit to ★ run</button><button id="zr">Reset zoom</button><button id="rc">Reset curves</button><button id="gsc">Clear shifts</button>
+<span>Each chart also has its own row of these controls above it, plus <b>Move horizontally</b> / <b>Move vertically</b>: while one is on, drag any line to slide it left/right or up/down (saved in this browser, listed as chips with an × to undo). Epoch = each run's own: ★ stage 3 = conversational rows consumed / <span id="eprows">5,183,000</span> trainable rows (rows per step = GPUs × rows per GPU, <span id="rps">304 at 152 GPUs × 2</span>); Hestia = 192 speech rows per step (96 GPUs × 2 speech micro-batches; plus 96 text-duplex rows), 1 epoch = its planned 25,117 steps = 4.82M speech rows, so 20,505 steps = 0.816 epoch. Hidden extras (text fine-tunes from hestia-ctx-19500) use their own 1-epoch runs. Click a legend entry to show or hide it; drag a box to zoom, double-click to reset.</span></div>
+<div id="runs" class="runs"></div>
+<section><h2>Text word KL vs the Qwen3-32B teacher</h2><p class="note fitnote" hidden></p><div class="cv"><canvas id="c_kl"></canvas></div><p class="note">Two lines: <b>solid</b> = ★ training (10-step moving average), <b>dashed</b> = ★ eval on held-out text rows. Log scale. Target ≈ 0.02 (stage-2 final).</p></section>
+<section><h2>Speech word CE, normalised: ★ run vs Demeter, same eval</h2><p class="note fitnote" hidden></p><div class="cv"><canvas id="c_nword"></canvas></div><p class="note"><b>Solid</b> = live training curve (10-step moving average, mean of both channels; training rows, so it sits a little above eval). <b>Dashed</b> = evals, both scored on the same held-out stage-3 rows with the same metric (word-piece-normalised CE, mean of the two channels): <b>★ run eval</b> and <b>Demeter (Hestia) checkpoints</b> (1500*, 3000 … 19500; *the first point is an earlier archived run). x = epoch fraction of each run's own data. Third line (long dashes) = <b>Demeter's own logged eval</b> during training, on its own eval rows (every ~300 of its steps). Demeter never logged a training-set normalised word CE (only total speech loss), so this logged eval is its densest curve; it sits about 0.04–0.08 lower than on our rows because its eval rows are easier. Use <b>Move vertically</b> / <b>Move horizontally</b> above the chart to drag either Demeter curve along x or y, e.g. up about 0.06 to put the logged curve on our rows' level.</p></section>
+<section><h2>Cross-channel dependence: how much each channel relies on the other</h2><div class="cv"><canvas id="c_xdep"></canvas></div><p class="note">How much worse each channel predicts its own words when the <b>other</b> speaker's channel is taken away: the rise in normalised word CE over the real conversation, on 32 held-out stage-3 conversations with both speaker placements and both channels' words pooled. Higher = more reliance on the other speaker; 0 = ignores them. <b>Orange</b> = other speaker <b>silent</b>: their text track has no words at all and their audio is the codec's real silence. <b>Green</b> = other speaker <b>absent</b>: their channel is left out of the input entirely. <b>Blue</b> (diamond points) = other speaker's <b>whole track swapped for another conversation's</b>: both their text track and their audio come from a different held-out conversation (same speaker role), so the partner is plausible but wrong; branches draw this as long dashes with diamonds. If the model really listens to the other speaker, this should hurt more than silent / absent. <b>Short dashes</b> = ★ stage-3 checkpoints; <b>long dashes with dots</b> = Demeter (Hestia) checkpoints through the identical test (same conversations, same silence codes, our word CE) in Demeter's own input format. When fitted, the x-range reaches Demeter's last measured checkpoint.</p></section>
+<!-- ==== GenghisBench section (added 10-07) ====
+  Three self-contained pieces: (1) tile #si_gb in the top strip, (2) this section with charts c_gb (wins %) and c_gbkl (game KL),
+  (3) the JS block marked "GenghisBench section" (sets.c_gb / sets.c_gbkl / gbTile / TIP). Data: s3live.json "gb", written by
+  build_stage3.py gb_doc() on every refresh (so the 60 s poll picks up new watcher results): pts rows [step, job, eot, eot_n, qm, qm_n, n60, n60_n, kl]
+  per ★-chain export, plus "base" (stage-3 init = stage-2 final w-4289). Other sections (e.g. an interaction bench) can be added beside it the same way. -->
+<section id="sec_gb"><h2>GenghisBench and teacher agreement per checkpoint</h2><div class="cv"><canvas id="c_gb"></canvas></div><div class="cv" style="height:220px"><canvas id="c_gbkl"></canvas></div><p class="note"><b>Top</b>: share of 20-questions games won (GenghisBench: a simulated user thinks of Genghis Khan; v6 oracle) by each exported ★ stage-3 checkpoint, one dot per checkpoint. <b>Blue solid</b> = 20 games, the assistant's turn ends at the model's own end-of-turn. <b>Orange dashed</b> = the same 20 games with the turn forced to end at a question mark. <b>Green large dots</b> = 60-game runs (own end-of-turn), where run. <b>Thin pink line</b> = the stage-3 init (stage-2 final, w-4289) on 60 games, <span id="gb_base">42/60 = 70%</span>. With 20 games one game = 5 points and the noise is about ±10 points, so read the trend, not single dots. <b>Bottom</b>: game KL = disagreement with the Qwen3-32B teacher on 40 real GenghisBench dialogs (lower = better); thin pink line = the stage-3 init (<span id="gb_basekl">0.0965</span>).</p><div class="gbg" id="gbg"><h3>Per game</h3><div class="ctl" id="gbpick"></div><div class="cv" style="height:240px"><canvas id="c_gbg"></canvas></div><div class="tw"><table class="gbt" id="gbgrid"></table></div><div class="gbtx" id="gbtx" hidden></div>
+<p class="note" id="gbgnote">Bar height = questions used; green = won, red = lost. Left bar = own end-of-turn, right (lighter) = question-mark end. Grid: one row per checkpoint, darker green = won in fewer questions; click a cell for its transcript, a step to chart it.</p></div></section>
+<!-- ==== InteractionBench section (added 10-07) ====
+  Three self-contained pieces: (1) tile #si_ib in the top strip, (2) this section with charts c_ib (score) and c_ibk (key metrics vs real),
+  (3) the JS block marked "InteractionBench section" (sets.c_ib / sets.c_ibk / ibTile / TIP entries). Data: s3live.json "ib", written by
+  build_stage3.py ib_doc() on every refresh: pts rows [step, job, total, lo, hi, td, rs, dg, sw, lat, resp, dead, clips, xw]; ref.{real,shift,mismatch}.
+  Code + method: /data/home/amartyavarma/qwen-1ch/infer/ibench (ibench.py docstring). -->
+<section id="sec_ib"><h2>InteractionBench: how good the back-and-forth is, per checkpoint</h2><div class="cv"><canvas id="c_ib"></canvas></div><div class="cv" style="height:240px"><canvas id="c_ibk"></canvas></div><div class="cv" style="height:240px"><canvas id="c_ibf"></canvas></div><p class="note">Each checkpoint continues 24 fixed held-out conversations (20 s of the real conversation, then 120 s where the model generates <b>both</b> speakers; 4 samples each; the training system prompt) and is scored 0-100 against the real continuations of the same conversations. <b>Turn dynamics (40)</b>: how real the timing is (switches per minute, response gaps, overlaps, backchannels and where they fall, interruptions, monologue length, floor balance, shared silence). <b>Responsiveness (40)</b>: a Qwen3-32B judge reads each turn change and asks whether the new turn answers or builds on what was just said, whether questions get answered, and whether the topic jumps. <b>Degeneration / dead air (20)</b>: both silent for more than 2 s, a muted speaker, loops, filler runs, text vs audio agreement. <b>Top</b>: total score (★ thick line, one dot per checkpoint; whiskers in the tooltip = 90% bootstrap interval) and the three parts ×100 (thin). <b>Green line</b> = the real conversations themselves (the ceiling); <b>grey dashed</b> = real speakers paired with the wrong partner (B from another episode), the score of no interaction at all; <b>grey dotted</b> = the right partner 150 s out of sync. Checkpoints before step 3021 were trained without persona text, so they get the voice-clip-only system prompt they were trained with. <b>Bottom</b>: three key numbers as a ratio to the real conversations (1.0 = real): speaker switches per minute, median response gap, and the share of turn changes the judge calls responsive.</p></section>
+<!-- ==== MathBench (text) section (added 10-07): tile #si_mb, chart c_mb, JS block "MathBench section". Data: s3live.json "mb" from build_stage3.py mb_doc()
+  (infer/mathbench/out/<tag>/summary.json; code + method: /data/home/amartyavarma/qwen-1ch/infer/mathbench/mathbench.py docstring). -->
+<section id="sec_mb"><h2>MathBench (text): accuracy per checkpoint</h2><div class="cv" style="height:260px"><canvas id="c_mb"></canvas></div></section>
+<details class="more" id="more"><summary>More charts (13, hidden by default): cb0, step time, full-softmax word CE, light, NEW_WORD, PAD, by dataset, cloning, grad norm, Hestia-only panels</summary><div class="morewrap">
+<section><h2>Gemma text-duplex word CE: our text-duplex branch vs Demeter</h2><div class="cv"><canvas id="c_txd"></canvas></div><p class="note">Normalised word CE on held-out Gemma text-duplex conversations (both channels, no speech codes), mean of the two channels. <b>Branch</b> (dashed) = our text-duplex branch from step 750, scored on our held-out packs with our word-timing rule. <b>Solid</b> = our branch's live training curve. <b>Orange</b> (long dashes) = Demeter's own logged text-duplex EVAL during training (Demeter never logged a training-set normalised word CE; its only training metric was total text-duplex loss, a different quantity) (its own 80 eval rows, its timing rule: round + shift-left). <b>Demeter checkpoints</b> (teal, dots = checkpoints) = Demeter checkpoints scored by its own exact code and metric on OUR 192 held-out conversations (the branch's eval packs, same channel assignment, one segment per conversation, its own timing rule); the same code on its own 80 eval rows reproduces its logged values within 0.002. Same source datasets (gemma-synth-2m-wlts-high-overlap + gemma-synth-r2-wlts), different eval rows and packing, so compare shape more than exact level.</p></section>
+<section><h2>cb0 CE (voice tower, codebook 0), per channel</h2><div class="cv"><canvas id="c_cb0"></canvas></div><p class="note">Hestia logged no audio-token (cb0 / light) CE in wandb.</p></section>
+<section><h2>Step time</h2><div class="cv" style="height:260px"><canvas id="c_time"></canvas></div><p class="note">Seconds per optimiser step. Save and eval steps are dropped (Hestia: steps over 5× its median).</p></section>
+<section><h2>Speech word CE, full softmax, per channel</h2><div class="cv"><canvas id="c_word"></canvas></div><p class="note">Full softmax, which also counts probability on PAD / NEW_WORD / EOB (stage 3 <code>word_ce</code> = Hestia <code>text_word_a/b</code>).</p></section>
+<section><h2>Light tower CE (mean over light codebooks), per channel</h2><div class="cv"><canvas id="c_light"></canvas></div></section>
+<section><h2>NEW_WORD CE, per channel</h2><div class="cv"><canvas id="c_nw"></canvas></div><p class="note">Stage 3 <code>nw_ce</code> = Hestia <code>new_word_a/b</code>.</p></section>
+<section><h2>PAD (timing) CE, per channel</h2><div class="cv"><canvas id="c_pad"></canvas></div><p class="note">Stage 3 <code>tim_ce</code> = Hestia <code>pad_a/b</code>.</p></section>
+<!-- ==== Pose section (added 10-10; pose runs from train_pose_s3q.py, page instance stage3_pose.html): charts c_pose / c_posecb / c_codep, hidden unless a run logs them.
+  Data: s3_doc.py eval cols pose_nword / pose_cb0 / pose_light / cd_<codependence key>, train cols pose_nword / pose_cb0 / pose_light. -->
+<section id="sec_pose" hidden><h2>Pose rows: speech word CE, normalised (assistant channel)</h2><div class="cv"><canvas id="c_pose"></canvas></div><p class="note"><b>Dashed</b> = eval on held-out pose rows, <b>solid</b> = training (10-step moving average). Same normalised word CE as the conversation chart, but on the pose clips (B speaks while its body pose is predicted).</p></section>
+<section id="sec_posecb" hidden><h2>Pose codes: pose cb0 CE and pose light (cb1+) CE</h2><div class="cv"><canvas id="c_posecb"></canvas></div><p class="note">CE of the predicted pose tokens on the pose rows: cb0 (first pose codebook) and light (the remaining codebooks, mean). <b>Dashed</b> = eval, <b>solid</b> = training (10-step moving average).</p></section>
+<section id="sec_codep" hidden><h2>Codependence: how much speech and pose rely on each other</h2><div class="cv"><canvas id="c_codep"></canvas></div><p class="note">Eval CE change when the other stream is taken away, minus real (positive = the model was using it). <b>pose → speech</b>: speech normalised word / cb0 / light when the pose is shuffled from another clip (shuf) or zeroed (zero). <b>speech → pose</b>: pose cb0 / light when the speech is shuffled (shuf) or silenced (sil). <b>timing r</b>: correlation of P(new word) with the real motion, real input vs pose-shuffled input. Same held-out pose clips at every eval.</p></section>
+<section><h2>Word CE by dataset (eval), per channel</h2><div class="cv"><canvas id="c_ds"></canvas></div><p class="note">Stage 3 eval rows split by source set: dsA (700k podcasts) solid, dsB (intelligent podcasts) dashed; color = channel. Full-softmax word CE. ★ run only.</p></section>
+<section id="sec_clone"><h2>Cloning check: CE with the voice prompt minus without</h2><div class="cv"><canvas id="c_clone"></canvas></div><p class="note" id="clone_note">cb0 CE change when the system prompt carries a voice clip, per (prompt → target) state; negative = the prompt helps. Solid = all frames, dashed = inside the clip's source window. Logged only when S3_SYSPROMPT=1.</p></section>
+<section><h2>Gradient norm (pre-clip)</h2><div class="cv"><canvas id="c_gn"></canvas></div><p class="note">Log scale. ★ total = root sum of squares over the clip groups; per-group norms (trunk, towers, new, proj, spec, adapter, audio) can be shown from the legend. Hestia: its single global norm (clip 0.5).</p></section>
+<section><h2>Hestia: training loss (reference only)</h2><div class="cv"><canvas id="c_loss"></canvas></div><p class="note">Hestia's train-time CE on its speech conversation micro-batches (solid) and text-duplex micro-batches (dashed), 50-step mean. Stage 3's train losses are split per channel and head in the charts above.</p></section>
+<section><h2>Hestia: text-duplex eval rows, normalised word CE (reference only)</h2><div class="cv"><canvas id="c_td"></canvas></div><p class="note">Hestia's second eval set (text-only duplex rows, a third of its training micro-batches). Stage 3 has no counterpart: its text anchor is the KL above.</p></section>
+</div></details>
+<section><h2>Metric mapping</h2><div class="tw"><table class="map">
+<tr><th>Chart</th><th>Stage 3 (metrics.jsonl / log)</th><th>Hestia (wandb)</th></tr>
+<tr><td>Text KL</td><td><code>eval/kl_word_invariant</code>, <code>train/kl_word_invariant</code></td><td>not logged (no teacher)</td></tr>
+<tr><td>Word CE, normalised</td><td><code>eval_speech_{A,B}/word_ce_norm</code></td><td><code>eval/speech_tokens/normalized_word_{a,b}</code> (prod4: <code>eval/tokens/normalized_word_b</code>)</td></tr>
+<tr><td>Word CE, full softmax</td><td><code>eval_speech_{A,B}/word_ce</code></td><td><code>eval/speech_tokens/text_word_{a,b}</code></td></tr>
+<tr><td>NEW_WORD / PAD</td><td><code>eval_speech_{A,B}/nw_ce</code>, <code>/tim_ce</code></td><td><code>eval/speech_tokens/new_word_{a,b}</code>, <code>/pad_{a,b}</code></td></tr>
+<tr><td>cb0 / light</td><td><code>eval_speech_{A,B}/cb0_ce</code>, <code>/light_ce</code></td><td>not logged</td></tr>
+<tr><td>Text-duplex rows</td><td>none</td><td><code>eval/text_duplex_tokens/*_{a,b}</code></td></tr>
+<tr><td>Train loss</td><td>per channel / head (charts above)</td><td><code>train/speech_conversational_duplex_loss</code>, <code>train/text_conversational_duplex_loss</code></td></tr>
+<tr><td>Grad norm / step time</td><td><code>train/grad_norm</code>, <code>train/gn_*</code>, <code>train/step_time</code></td><td><code>train/grad_norm</code>, Δ<code>_runtime</code></td></tr>
+<tr><td>Channels</td><td>A = user, B = assistant</td><td>a = user, b = model</td></tr>
+</table></div><p class="note" id="srcnote"></p></section>
+</div>
+<script>
+const D=__DATA__;
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+Chart.defaults.font.family='"IBM Plex Sans",system-ui,sans-serif';Chart.defaults.animation=false;Chart.defaults.color=css('--muted');Chart.defaults.borderColor=css('--line');
+if(window.ChartZoom)Chart.register(window.ChartZoom);
+const fmt=t=>new Date(t).toLocaleString('en-US',{timeZone:'America/Los_Angeles',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false})+' PT';
+const hm=s=>{s=Math.max(0,Math.round(s));const h=Math.floor(s/3600),m=Math.floor(s%3600/60);return h?`${h}h ${String(m).padStart(2,'0')}m`:`${m}m`};
+const DEFXM=(D.default_xm==='st')?'st':'ep';const CUR={xm:DEFXM,fit:true};   /* the CURRENT chart's x mode and fit flag: at(k) loads them from MODE[k] before any per-chart work (an object field, not a reassigned let: node 20's optimiser served stale let values) */
+let MODE={};try{MODE=JSON.parse(localStorage.getItem('s3modes1'+(DEFXM==='st'?'st':''))||'{}')||{}}catch(e){MODE={}}
+const saveM=()=>{try{localStorage.setItem('s3modes1'+(DEFXM==='st'?'st':''),JSON.stringify(MODE))}catch(e){}};
+const MD=k=>{let m=MODE[k];if(!m||typeof m!=='object')m=MODE[k]={};if(m.xm!=='ep'&&m.xm!=='st')m.xm=DEFXM;if(typeof m.fit!=='boolean')m.fit=true;return m};
+const at=k=>{const m=MD(k);CUR.xm=m.xm;CUR.fit=m.fit;return m};
+const allK=()=>Object.keys(sets),allOf=f=>allK().every(f);
+const S=()=>D.s3||{};const LIVE_ON=()=>!!(S().started);
+const EPR=()=>S().epoch_rows||5183000;
+const SC=k=>(S().cols||[]).indexOf(k),ST=k=>(S().train_cols||[]).indexOf(k);
+const HE=D.hestia||{runs:[]},HC=k=>(HE.eval_cols||[]).indexOf(k),HT=k=>(HE.train_cols||[]).indexOf(k);
+const lx=r=>CUR.xm==='ep'?(r[1]||0)/EPR():r[0];                 // live rows: [step, rows, ...]
+const hx=r=>CUR.xm==='ep'?r[1]:r[0];                            // hestia rows: [step, epoch, ...]
+const LV=()=>'★ stage 3 · '+((S().run_tags||[]).slice(-1)[0]||('job '+(S().jobs||[]).join(',')));
+const ds=(l,data,c,w,dash,o)=>Object.assign({label:l,data,borderColor:c,backgroundColor:c,borderWidth:w||2,borderDash:dash||[],pointRadius:data.length<16?3.5:0,pointHoverRadius:5,tension:0,parsing:false,spanGaps:true},o||{});
+const liveEval=col=>(S().pts||[]).filter(r=>r[SC(col)]!=null).map(r=>({x:lx(r),y:r[SC(col)]}));
+const liveRoll=(col,w=20)=>{const r=(S().train||[]).filter(x=>x[ST(col)]!=null);const o=[];let s=0;for(let i=0;i<r.length;i++){s+=r[i][ST(col)];if(i>=w)s-=r[i-w][ST(col)];o.push({x:lx(r[i]),y:s/Math.min(i+1,w)})}return o};
+const liveRaw=col=>(S().train||[]).filter(r=>r[ST(col)]!=null).map(r=>({x:lx(r),y:r[ST(col)]}));
+const HSTY=[[[7,4],'triangle'],[[5,4],'rectRot'],[[12,5],'crossRot']];
+const hEval=(col,color,suffix)=>HE.runs.map((r,i)=>ds(r.label+' · '+suffix,r.eval.filter(e=>e[HC(col)]!=null).map(e=>({x:hx(e),y:e[HC(col)]})),color,1.8,HSTY[i%3][0],{pointRadius:4,pointStyle:HSTY[i%3][1]}));
+const hTrain=(col,color,suffix,filt,w=50)=>HE.runs.map((r,i)=>{let rows=r.train.filter(e=>e[HT(col)]!=null);if(filt)rows=filt(rows);const o=[];let t=0;for(let q=0;q<rows.length;q++){t+=rows[q][HT(col)];if(q>=w)t-=rows[q-w][HT(col)];o.push({x:hx(rows[q]),y:t/Math.min(q+1,w)})}return ds(r.label+' · '+suffix+' ('+w+'-step mean)',o,color,1.3,i?HSTY[i%3][0]:[6,3],{pointRadius:0})});
+const s2v=k=>(D.s2ref||{})[k];
+const DMO=D.dmour||null,DMC=k=>((DMO||{}).cols||[]).indexOf(k);       // Demeter checkpoints re-evaluated on OUR eval rows (s3ref_demeter_ourrows.json)
+const dmLines=col=>{if(!DMO||!DMO.pts)return[];return [['A','A user',[6,4]],['B','B assistant',[12,5]]].map(([c,n,dash])=>ds(`Demeter on our eval rows · ${n}`,DMO.pts.filter(r=>r[DMC(c+'_'+col)]!=null).map(r=>({x:CUR.xm==='ep'?r[1]:r[0],y:r[DMC(c+'_'+col)]})),css('--dm'),c==='A'?2.4:2,dash,{pointRadius:0,pointHoverRadius:4}))};
+const XMAX=()=>{let m=CUR.xm==='ep'?1:0;for(const r of HE.runs)m=Math.max(m,CUR.xm==='ep'?1:r.epoch_steps);for(const r of (S().train||[]))m=Math.max(m,lx(r));return m};
+const refLine=(k,lab)=>{const v=s2v(k);if(v==null)return[];return[ds(`stage-2 final · ${lab} ${(+v).toPrecision(4)} (${(D.s2ref||{}).src||''})`,[{x:0,y:v},{x:XMAX(),y:v}],css('--s2'),1.4,[4,4],{pointRadius:0})]};
+const DOT={showLine:false,pointRadius:4.5,pointHoverRadius:6,pointBorderWidth:1.5};
+const perCh=(col,lab,o={})=>{const out=[],w=o.w||20;for(const [c,v,n] of [['A','--chA','A user'],['B','--chB','B assistant']]){const cc=css(v);
+  out.push(ds(`${LV()} · ${n} · eval`+(o.lines?' (dashed)':''),liveEval(`${c}_${col}`),cc,o.lines?2:2.6,o.lines?[6,4]:[],o.lines?{pointRadius:0,pointHoverRadius:4}:{}));
+  if(o.train!==false)out.push(ds(`${LV()} · ${n} · train (${w}-step moving average${o.lines?', solid':''})`,liveRoll(`${c}_${col}`,w),cc,o.lines?1.8:1.1,[],{pointRadius:0}));
+  if(o.train!==false)out.push(ds(`${LV()} · ${n} · train (per step)`,liveRaw(`${c}_${col}`),cc+'40',1,[],{pointRadius:0}));
+  if(o.h)out.push(...(o.lines?HE.runs.map((r,i)=>ds(r.label+' · '+n+' · eval',r.eval.filter(e=>e[HC(`${c}_${o.h}`)]!=null).map(e=>({x:hx(e),y:e[HC(`${c}_${o.h}`)]})),css('--ref'),1.6,c==='A'?[16,6]:[22,6],{pointRadius:0,pointHoverRadius:4})):hEval(`${c}_${o.h}`,cc,`${n} · eval`)))}
+  if(o.s2)out.push(...refLine(o.s2,lab));return out};
+const sets={
+ c_kl:()=>[ds(LV()+' · eval (dashed)',liveEval('kl'),css('--one'),2.2,[6,4],{pointRadius:0,pointHoverRadius:4}),ds(LV()+' · train (10-step moving average, solid)',liveRoll('kl',10),css('--one'),1.8,[],{pointRadius:0}),...brKL()],
+ c_nword:()=>{const a=liveEval('A_nword'),b=liveEval('B_nword'),bm=new Map(b.map(p=>[p.x,p.y]));const ours=a.filter(p=>bm.has(p.x)).map(p=>({x:p.x,y:(p.y+bm.get(p.x))/2}));const R0=HE.runs.find(r=>r.visible)||HE.runs[0]; const dm=DMO&&DMO.pts?DMO.pts.filter(r=>r[DMC('A_nword')]!=null&&r[DMC('B_nword')]!=null).map(r=>({x:(CUR.xm==='ep'?r[1]:r[0]),y:(r[DMC('A_nword')]+r[DMC('B_nword')])/2})):[];const lg=R0?R0.eval.filter(e=>e[HC('A_nword')]!=null&&e[HC('B_nword')]!=null).map(e=>({x:hx(e),y:(e[HC('A_nword')]+e[HC('B_nword')])/2})):[];const FE=(()=>{const a=liveEval('A_nword'),m=new Map(liveEval('B_nword').map(p=>[p.x,p.y]));return a.filter(p=>m.has(p.x)).map(p=>({x:p.x,y:(p.y+m.get(p.x))/2}))})();const FC=(()=>{if(FE.length<4)return [];const rps=(S().rows_per_step||304),u=rps/EPR(),ep=MD('c_nword').xm==='ep',stp=p=>ep?p.x/u:p.x,toX=s=>ep?s*u:s;const Q=FE.filter(p=>stp(p)>=850);if(Q.length<3)return [];const S0=740,lxv=Q.map(p=>Math.log(stp(p)-S0)),ys=Q.map(p=>p.y),n=Q.length,mx=lxv.reduce((a,b)=>a+b,0)/n,my=ys.reduce((a,b)=>a+b,0)/n;const kk=lxv.reduce((a,x,i)=>a+(x-mx)*(ys[i]-my),0)/lxv.reduce((a,x)=>a+(x-mx)**2,0);const L=FE[FE.length-1],s0=stp(L);const now=FE.filter(p=>stp(p)>s0-100),prev=FE.filter(p=>stp(p)>s0-200&&stp(p)<=s0-100);const m=a=>a.reduce((x,p)=>x+p.y,0)/a.length;const pace=(now.length&&prev.length)?(m(now)-m(prev)):0;/* ESTIMATE, not measured on this run: extra normalised-word gain from the end-of-run WSD decay (LR linear to 0 over 13640->17050). Taken from the earlier decay probe (about -0.03 when decaying from 1.0x peak); we use -0.025 because this run decays from the 0.3x level. Bonus accrues in proportion to the cumulative LR reduction: -0.025*((step-13640)/3410)^2. */const NW_WSD_DECAY_GAIN_EST=-0.025,NW_DECAY_START=13640,NW_DECAY_END=17050;const dBon=s=>{const f=Math.min(1,Math.max(0,(s-NW_DECAY_START)/(NW_DECAY_END-NW_DECAY_START)));return NW_WSD_DECAY_GAIN_EST*f*f};const lg=[],ln=[],ld=[];const SS=[];for(let st=Math.round(s0);st<17050;st+=50)SS.push(st);SS.push(NW_DECAY_START,17050);const STS=[...new Set(SS)].filter(s=>s>=Math.round(s0)).sort((x,y)=>x-y);for(const st of STS){const yl=L.y+kk*(Math.log(st-S0)-Math.log(s0-S0));lg.push({x:toX(st),y:yl});ln.push({x:toX(st),y:L.y+pace*(st-s0)/100});ld.push({x:toX(st),y:yl+dBon(st)-dBon(s0)})}return [ds(`forecast if it keeps slowing like now (log fit to the ★ evals from step 850, refit live: ${kk.toFixed(4)}·ln(step), anchored at the latest eval)`,lg,'#6b7280',1.8,[2,4],{pointRadius:0,pointHoverRadius:3}),ds('forecast with end-of-run LR decay (ESTIMATE: log fit + ~−0.025 decay gain from step 13,640)',ld,'#4b5563',1.6,[8,3,2,3],{pointRadius:0,pointHoverRadius:3}),ds(`forecast if the current pace holds (${pace>0?'+':''}${pace.toPrecision(3)} per 100 steps = 100-step moving average of the eval, anchored at the latest eval)`,ln,'#9ca3af',1.4,[2,6],{pointRadius:0,pointHoverRadius:3})]})();return [...FC,ds(LV()+' · eval on our rows (mean of both channels)',ours,css('--one'),2.4,[6,4],{pointRadius:0,pointHoverRadius:4}),...(()=>{const a=liveEval('v1_A_nword'),m=new Map(liveEval('v1_B_nword').map(p=>[p.x,p.y])),v=a.filter(p=>m.has(p.x)).map(p=>({x:p.x,y:(p.y+m.get(p.x))/2}));return v.length?[ds(LV()+' · second eval: old v1 512-row with-script set (mean of both channels)',v,css('--one'),2,[2,3],{pointRadius:3.5,pointHoverRadius:5,pointStyle:'rectRot'})]:[]})(),...(()=>{const v=liveEval('v3off_nword');return v.length?[ds(LV()+' · v3-script eval (offline on saves; the tt-v3 512-row set, mean of both channels)',v,css('--one'),2,[1,3],{pointRadius:4.5,pointHoverRadius:6,pointStyle:'triangle'})]:[]})(),ds(LV()+' · train (10-step moving average, mean of both channels, solid)',rollMeanNW(S().train,S().train_cols,10),css('--one'),1.6,[],{pointRadius:0}),...brNW(),ds('Demeter (Hestia) checkpoints · eval on our rows (mean of both channels; dot = a checkpoint we evaluated)',dm,css('--dm'),2.4,[6,4],{pointRadius:4,pointHoverRadius:6,pointStyle:'circle'}),ds('Demeter (Hestia) · its own logged eval during training, its own eval rows (mean of both channels)',lg,css('--ref'),1.8,[14,5],{pointRadius:0,pointHoverRadius:4})]},
+ c_txd:()=>{const R0=HE.runs.find(r=>r.visible)||HE.runs[0];const lg=R0?R0.eval.filter(e=>e[HC('td_A_nword')]!=null&&e[HC('td_B_nword')]!=null).map(e=>({x:hx(e),y:(e[HC('td_A_nword')]+e[HC('td_B_nword')])/2})):[];return [...BR().map(b=>ds(b.label+' · eval, held-out Gemma text-duplex (mean of both channels)',bEval(b,'txd_nword'),brc(b),2.4,[6,4],{pointRadius:0,pointHoverRadius:4})).filter(d=>d.data.length),...BR().map(b=>ds(b.label+' · train (live, 10-step moving average, solid)',bRoll(b,'txd_nword',10),brc(b),1.6,[],{pointRadius:0})).filter(d=>d.data.length),ds('Demeter (Hestia) · its own logged text-duplex eval (mean of both channels)',lg,'#d95f02',2.6,[14,5],{pointRadius:0,pointHoverRadius:4}),...(()=>{const T=D.dmtxd,TC=k=>((T||{}).cols||[]).indexOf(k);if(!T||!T.pts)return[];return [ds('Demeter checkpoints · eval on OUR held-out text-duplex packs (mean of both channels)',T.pts.filter(r=>r[TC('mean')]!=null).map(r=>({x:(CUR.xm==='ep'?r[1]:r[0]),y:r[TC('mean')]})),css('--dm'),2.4,[6,4],{pointRadius:4,pointHoverRadius:6,pointStyle:'circle'})]})()]},
+ c_xdep:()=>{const X=D.xdep||[],pt=c=>X.filter(r=>r[c]!=null).map(r=>({x:lx(r),y:r[c]}));const M=D.dmxdep,MC=k=>((M||{}).cols||[]).indexOf(k),mp=k=>(M&&M.pts?M.pts:[]).filter(r=>MC(k)>=0&&r[MC(k)]!=null).map(r=>({x:CUR.xm==='ep'?r[1]:r[0],y:r[MC(k)]}));
+   const SL='other channel silent (no words, silence audio)',AB='other channel absent (removed from the input)',WR="other speaker's whole track swapped for another conversation's";
+   return [ds(LVS()+SL+' · rise in word CE',pt(2),css('--chA'),2.4,[6,4],{pointRadius:4,pointHoverRadius:6}),ds(LVS()+AB+' · rise in word CE',pt(3),'#2e9e5b',2.4,[6,4],{pointRadius:4,pointHoverRadius:6}),ds(LVS()+WR+' · rise in word CE',pt(5),css('--chB'),2.4,[6,4],{pointRadius:4.5,pointHoverRadius:6,pointStyle:'rectRot'}),...brXD(SL,AB,WR),
+     ...(M?[ds('Demeter (Hestia) · '+SL+' · rise in word CE',mp('gap_oth_silent'),css('--chA'),2,[14,5],{pointRadius:3.5,pointHoverRadius:5}),ds('Demeter (Hestia) · '+AB+' · rise in word CE',mp('gap_oth_absent'),'#2e9e5b',2,[14,5],{pointRadius:3.5,pointHoverRadius:5})]:[])]},
+ c_word:()=>perCh('word','B word CE',{h:'word',s2:'word_ce'}),
+ c_cb0:()=>perCh('cb0','B cb0',{s2:'cb0'}),
+ c_light:()=>perCh('light','B light',{s2:'light'}),
+ c_nw:()=>perCh('nw','B NEW_WORD',{h:'nw',s2:'nw_ce'}),
+ c_pad:()=>perCh('pad','B PAD',{h:'pad',s2:'pad_ce'}),
+ c_pose:()=>[ds(LV()+' · pose rows · eval (dashed)',liveEval('pose_nword'),css('--chB'),2.4,[6,4],{pointRadius:3.5,pointHoverRadius:5}),ds(LV()+' · pose rows · train (10-step moving average, solid)',liveRoll('pose_nword',10),css('--chB'),1.6,[],{pointRadius:0}),...BR().flatMap(b=>[ds(b.label+' · pose rows · eval (dashed)',bEval(b,'pose_nword'),brc(b),2.2,[6,4],{pointRadius:3,pointHoverRadius:5}),ds(b.label+' · pose rows · train (10-step moving average, solid)',bRoll(b,'pose_nword',10),brc(b),1.4,[],{pointRadius:0})])],
+ c_posecb:()=>{const o=[];for(const [c,n,v] of [['pose_cb0','pose cb0','--chB'],['pose_light','pose light','--chA']]){o.push(ds(`${LV()} · ${n} · eval (dashed)`,liveEval(c),css(v),2.4,[6,4],{pointRadius:3.5,pointHoverRadius:5}),ds(`${LV()} · ${n} · train (10-step moving average, solid)`,liveRoll(c,10),css(v),1.6,[],{pointRadius:0}));for(const b of BR())o.push(ds(`${b.label} · ${n} · eval (dashed)`,bEval(b,c),brc(b),2,c==='pose_cb0'?[6,4]:[2,3],{pointRadius:3,pointHoverRadius:5}))}return o},
+ c_codep:()=>{const P=[['pose_to_speech/d_word_ce_norm_pose_shuf','pose → speech · Δ word (pose shuf)','--chB',[]],['pose_to_speech/d_word_ce_norm_pose_zero','pose → speech · Δ word (pose zero)','--chB',[6,4]],['pose_to_speech/d_cb0_ce_pose_shuf','pose → speech · Δ cb0 (pose shuf)','--one',[]],['pose_to_speech/d_cb0_ce_pose_zero','pose → speech · Δ cb0 (pose zero)','--one',[6,4]],['pose_to_speech/d_light_ce_pose_shuf','pose → speech · Δ light (pose shuf)','--ref',[]],['pose_to_speech/d_light_ce_pose_zero','pose → speech · Δ light (pose zero)','--ref',[6,4]],['speech_to_pose/d_pose_cb0_ce_speech_shuf','speech → pose · Δ pose cb0 (speech shuf)','--chA',[]],['speech_to_pose/d_pose_cb0_ce_speech_sil','speech → pose · Δ pose cb0 (speech sil)','--chA',[6,4]],['speech_to_pose/d_pose_light_ce_speech_shuf','speech → pose · Δ pose light (speech shuf)','--dm',[]],['speech_to_pose/d_pose_light_ce_speech_sil','speech → pose · Δ pose light (speech sil)','--dm',[6,4]],['timing/r_pnw_real_motion_real_input','timing r(P(NW), motion) · real input','--s2',[]],['timing/r_pnw_real_motion_pose_shuf_input','timing r(P(NW), motion) · pose-shuffled input','--s2',[6,4]]];const o=[];for(const [k,n,v,dash] of P){o.push(ds(`${LV()} · ${n}`,liveEval('cd_'+k),css(v),2.2,dash,{pointRadius:3.5,pointHoverRadius:5}));for(const b of BR())o.push(ds(`${b.label} · ${n}`,bEval(b,'cd_'+k),brc(b),1.6,dash,{pointRadius:3,pointHoverRadius:5}))}return o},
+ c_ds:()=>{const o=[];for(const d of ['A','B'])for(const [c,v,n] of [['A','--chA','A user'],['B','--chB','B assistant']])o.push(ds(`${LV()} · ds${d} · ${n} · eval`,liveEval(`ds${d}_${c}_word`),css(v),2.2,d==='B'?[6,3]:[]));return o},
+ c_clone:()=>{const o=[],P=[['A_A','A → A','--chA'],['B_B','B → B','--chB'],['BOTH_A','both → A','--chA'],['BOTH_B','both → B','--chB']];for(const [k,n,v] of P){o.push(ds(`${LV()} · ${n} · Δ cb0 (all)`,liveEval(`clone_${k}_d_cb0_all`),css(v),k.startsWith('BOTH')?1.4:2.4));o.push(ds(`${LV()} · ${n} · Δ cb0 (clip window)`,liveEval(`clone_${k}_d_cb0_clip`),css(v),1.4,[5,3]))}return o},
+ c_loss:()=>HE.runs.flatMap((r,i)=>{const roll=(col,w)=>{const rows=r.train.filter(e=>e[HT(col)]!=null);const o=[];let t=0;for(let q=0;q<rows.length;q++){t+=rows[q][HT(col)];if(q>=w)t-=rows[q-w][HT(col)];o.push({x:hx(rows[q]),y:t/Math.min(q+1,w)})}return o};return [ds(r.label+' · speech loss (50-step mean)',roll('loss',50),css('--ref'),1.6,HSTY[i%3][0].length&&i?HSTY[i%3][0]:[],{pointRadius:0}),ds(r.label+' · text-duplex loss (50-step mean)',roll('text_loss',50),css('--muted'),1.4,[6,3],{pointRadius:0})]}),
+ c_td:()=>[...hEval('td_A_nword',css('--chA'),'A user · text-duplex eval'),...hEval('td_B_nword',css('--chB'),'B assistant · text-duplex eval')],
+ c_gn:()=>[ds(LV()+' · total (20-step mean)',liveRoll('gn'),css('--one'),2,[],{pointRadius:0}),ds(LV()+' · total (per step)',liveRaw('gn'),css('--one')+'40',1,[],{pointRadius:0}),
+   ...['trunk','towers','new','proj','spec','adapter','audio'].map(g=>ds(`${LV()} · ${g} (20-step mean)`,liveRoll('gn_'+g),css('--muted'),1.1,[],{pointRadius:0})),...hTrain('grad_norm',css('--ref'),'grad norm')],
+ c_time:()=>{const t=liveRaw('step_s');const med=a=>{const s=a.map(p=>p.y).sort((x,y)=>x-y);return s.length?s[s.length>>1]:0};const m=med(t);
+   return [ds(LV()+' · s / step',t.filter(p=>p.y<5*m),css('--one'),1.4,[],{pointRadius:0}),...hTrain('step_s',css('--ref'),'s / step',rows=>{const v=rows.map(r=>r[HT('step_s')]).sort((a,b)=>a-b),md=v[v.length>>1]||0;return rows.filter(r=>r[HT('step_s')]<5*md)})]}};
+const Y={c_kl:{type:'logarithmic',title:{display:true,text:'KL (nats, log)'}},c_gn:{type:'logarithmic',title:{display:true,text:'grad norm (log)'}},c_time:{min:0,title:{display:true,text:'s / step'}},c_pad:{min:0,title:{display:true,text:'CE (nats)'}},c_clone:{title:{display:true,text:'Δ CE (nats)'}}};
+const yOf=k=>Object.assign({grid:{color:css('--line')}},Y[k]||{title:{display:true,text:'CE (nats)'}});
+// visibility: default = ★ live (eval + 20-step mean, total grad norm) + the primary Hestia run + stage-2 reference lines; everything else toggles
+let HID={};try{HID=JSON.parse(localStorage.getItem('s3hidden1')||'{}')||{}}catch(e){HID={}}
+const saveH=()=>{try{localStorage.setItem('s3hidden1',JSON.stringify(HID))}catch(e){}};
+const PRIM=(HE.runs.find(r=>r.visible)||{}).label||'';
+const defHidden=l=>{if(l.startsWith('★'))return /\(per step\)|^★[^·]*·[^·]*· (trunk|towers|new|proj|spec|adapter|audio) /.test(l);if(PRIM&&l.startsWith(PRIM))return false;if(/^other channel/.test(l))return false;if(l.startsWith('forecast'))return false;if(l.startsWith('InteractionBench ref'))return false;if(l.startsWith('MathBench ref'))return false;/* InteractionBench section: reference lines visible */if(l.startsWith('branch:')||l.startsWith('main run continued'))return false;if(l.startsWith('stage-2 final')||l.startsWith('target 0.02')||l.startsWith('Demeter on our eval rows')||l.startsWith('Demeter (Hestia)')||l.startsWith('Demeter checkpoints'))return false;return true};
+const key=l=>l.replace(/^★ stage 3 · [^·]*/,'★');                // hide-state survives a new job id
+const isHid=(k,l)=>{const h=(HID[k]||{})[key(l)];return h===undefined?defHidden(l):h};
+const xs=()=>({type:'linear',min:0,title:{display:true,text:CUR.xm==='ep'?'epochs (each run\'s own epoch)':'optimiser steps'},grid:{color:css('--line')}});
+const opts=k=>({responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',intersect:false},
+  plugins:{legend:{position:'bottom',labels:{boxWidth:18,boxHeight:3,color:css('--fg')},onClick:(e,item,lg)=>{const c=lg.chart,d=c.data.datasets[item.datasetIndex],H=HID[k]||(HID[k]={});H[key(d.label)]=!isHid(k,d.label);saveH();d.hidden=isHid(k,d.label);c.update('none');fit()}},
+   zoom:{zoom:{drag:{enabled:!MV[k],threshold:12,backgroundColor:'rgba(31,111,209,0.12)',borderColor:'rgba(31,111,209,0.6)',borderWidth:1},mode:'xy'}},
+   tooltip:{callbacks:{title:()=>'',label:t=>(TIP[k]?TIP[k](t):`${(+t.parsed.y).toPrecision(4)}`)+(SLP[k]?slopeShort(k,t.dataset,t.parsed.x):'')}}},
+  scales:{x:xs(),y:yOf(k)}});
+const SLP={};
+/* local slope: least-squares fit over the N points of this series nearest the hovered x; reported per 100 steps of x in steps mode, and in epoch mode per 100 ★ steps of data (rows_per_step / epoch_rows) */
+function slopeTxt(k,d,x){const P=(d.data||[]).filter(p=>p&&p.y!=null&&isFinite(p.y)&&isFinite(p.x));if(P.length<3)return '';const ep=MD(k).xm==='ep',u=ep?((S().rows_per_step||304)/EPR()):1,W=100*u;const avg=(a,b)=>{const q=P.filter(p=>p.x>a&&p.x<=b);return q.length?[q.reduce((s,p)=>s+p.y,0)/q.length,q.length]:null};const now=avg(x-W,x+1e-12),prev=avg(x-2*W,x-W);if(now&&prev&&now[1]>=2&&prev[1]>=2){const per=now[0]-prev[0];return `  |  slope (100-step moving average): ${per>0?'+':''}${per.toPrecision(3)} per 100 ${ep?'★ steps of data':'steps'}  [mean of last 100 steps minus the 100 before]`}const Q=P.map(p=>[Math.abs(p.x-x),p]).sort((a,b)=>a[0]-b[0]).slice(0,Math.min(5,P.length)).map(a=>a[1]);const n=Q.length,mx=Q.reduce((a,p)=>a+p.x,0)/n,my=Q.reduce((a,p)=>a+p.y,0)/n,sxx=Q.reduce((a,p)=>a+(p.x-mx)**2,0);if(!(sxx>0))return '';const b=Q.reduce((a,p)=>a+(p.x-mx)*(p.y-my),0)/sxx,per=b*100*u;return `  |  slope (sparse curve, fit over nearest ${n} pts): ${per>0?'+':''}${per.toPrecision(3)} per 100 ${ep?'★ steps of data':'steps'}`}
+function slopeShort(k,d,x){const t=slopeTxt(k,d,x);const m=t.match(/([+-]?[0-9.]+(?:e[+-]?[0-9]+)?) per 100/);return m?`  (${m[1]}/100 steps)`:''}
+const ch={};
+/* curve shifts (Move curves): GS[chart][key(label)] = {ep: dx in epochs, st: dx in steps, y: additive dy, yl: log10 factor for log-y charts} */
+let GS={};try{GS=JSON.parse(localStorage.getItem('s3gshift1')||'{}')||{}}catch(e){GS={}}
+const saveGS=()=>{try{localStorage.setItem('s3gshift1',JSON.stringify(GS))}catch(e){}};
+const DMK='Demeter (Hestia) checkpoints · eval on our rows (mean of both channels; dot = a checkpoint we evaluated)',LGK='Demeter (Hestia) · its own logged eval during training, its own eval rows (mean of both channels)';
+try{const o=JSON.parse(localStorage.getItem('s3shift1')||'null');if(o&&typeof o==='object'){const R0=HE.runs.find(r=>r.visible)||HE.runs[0],ES=(R0&&R0.epoch_steps)||25117,G=GS.c_nword||(GS.c_nword={});for(const [kk,a,b] of [[DMK,o.dmx,o.dmy],[LGK,o.lgx,o.lgy]]){const x=+a||0,y=+b||0;if((x||y)&&!G[kk])G[kk]={ep:x,st:x*ES,y:y}}if(!Object.keys(G).length)delete GS.c_nword;saveGS()}localStorage.removeItem('s3shift1')}catch(e){}
+const RAW=new WeakMap(),MV={},DS={g:null};   /* DS.g = the drag in progress */
+const shOf=(k,l)=>(GS[k]||{})[key(l)]||null;
+const shPts=(pts,dx,dy,dl)=>{const f=Math.pow(10,dl||0);return pts.map(p=>p?{x:p.x+(dx||0),y:p.y==null?p.y:(p.y+(dy||0))*f}:p)};
+const applyShift=(k,d,ex)=>{const raw=RAW.get(d)||d.data,s=shOf(k,d.label)||{},e=ex||{};const dx=(+s[CUR.xm]||0)+(e.dx||0),dy=(+s.y||0)+(e.dy||0),dl=(+s.yl||0)+(e.dl||0);d.data=(dx||dy||dl)?shPts(raw,dx,dy,dl):raw;return d};
+const addShift=(k,lab,xm,dd)=>{const G=GS[k]||(GS[k]={}),kk=key(lab),s=G[kk]||(G[kk]={});const r6=v=>+(+v).toPrecision(6);if(dd.dx)s[xm]=r6((+s[xm]||0)+dd.dx);if(dd.dy)s.y=r6((+s.y||0)+dd.dy);if(dd.dl)s.yl=r6((+s.yl||0)+dd.dl);for(const f of ['ep','st','y','yl'])if(!s[f])delete s[f];if(!Object.keys(s).length)delete G[kk];if(!Object.keys(G).length)delete GS[k]};
+const segD=(px,py,x1,y1,x2,y2)=>{const vx=x2-x1,vy=y2-y1,L=vx*vx+vy*vy;let t=L?((px-x1)*vx+(py-y1)*vy)/L:0;t=Math.max(0,Math.min(1,t));return Math.hypot(px-x1-t*vx,py-y1-t*vy)};
+function pick(c,px,py){const a=c.chartArea;if(!a||px<a.left-4||px>a.right+4||py<a.top-4||py>a.bottom+4)return -1;const X=c.scales.x,Yc=c.scales.y;let best=-1,bd=Infinity;
+  c.data.datasets.forEach((d,i)=>{if(d.hidden||(c.isDatasetVisible&&!c.isDatasetVisible(i)))return;let q=null;for(const p of d.data){if(!p||p.y==null||!isFinite(p.y))continue;const x=X.getPixelForValue(p.x),y=Yc.getPixelForValue(p.y);if(!isFinite(x)||!isFinite(y))continue;let dd=Math.hypot(x-px,y-py);if(q&&d.showLine!==false)dd=Math.min(dd,segD(px,py,q[0],q[1],x,y));if(dd<bd){bd=dd;best=i}q=[x,y]}});return bd<=60?best:-1}
+const dragDelta=(c,k,x0,y0,x1,y1)=>{const X=c.scales.x,Yc=c.scales.y,dx=X.getValueForPixel(x1)-X.getValueForPixel(x0),a=Yc.getValueForPixel(y0),b=Yc.getValueForPixel(y1);if(yLog(k))return {dx,dy:0,dl:(a>0&&b>0)?Math.log10(b/a):0};return {dx,dy:b-a,dl:0}};
+function setMove(k,on){MV[k]=on||false;const c=ch[k],cv=document.getElementById(k);for(const [id,m] of [['mvh_','h'],['mvv_','v']]){const b=document.getElementById(id+k);if(b)b.setAttribute('aria-pressed',String(MV[k]===m))}if(cv&&cv.style){cv.style.cursor=MV[k]?'grab':'';cv.style.touchAction=MV[k]?'none':''}
+  const z=c&&c.options&&c.options.plugins&&c.options.plugins.zoom;if(z&&z.zoom){z.zoom.drag=Object.assign({},z.zoom.drag,{enabled:!MV[k]});c.update('none')}}
+function wireDrag(k){const cv=document.getElementById(k);if(!cv||cv.dataset.wd)return;cv.dataset.wd='1';
+  const pos=e=>{const r=cv.getBoundingClientRect();return [e.clientX-r.left,e.clientY-r.top]};
+  cv.addEventListener('pointerdown',e=>{if(!MV[k]||!ch[k])return;const c=ch[k];at(k);const [px,py]=pos(e);const i=pick(c,px,py);if(i<0)return;e.preventDefault();e.stopPropagation();try{cv.setPointerCapture(e.pointerId)}catch(_){}
+    const sx=c.options.scales.x,sy=c.options.scales.y;sx.min=c.scales.x.min;sx.max=c.scales.x.max;sy.min=c.scales.y.min;sy.max=c.scales.y.max;
+    DS.g={k,px,py,xm:CUR.xm,lab:c.data.datasets[i].label,d:{dx:0,dy:0,dl:0}};cv.style.cursor='grabbing'});
+  cv.addEventListener('pointermove',e=>{if(!DS.g||DS.g.k!==k||!ch[k])return;e.preventDefault();const c=ch[k],[px,py]=pos(e);at(k);DS.g.d=dragDelta(c,k,DS.g.px,DS.g.py,px,py);if(MV[k]==='h'){DS.g.d.dy=0;DS.g.d.dl=0}else if(MV[k]==='v'){DS.g.d.dx=0}const d=c.data.datasets.find(x=>x.label===DS.g.lab);if(d){applyShift(k,d,DS.g.d);c.update('none')}});
+  const end=e=>{if(!DS.g||DS.g.k!==k)return;const g=DS.g;DS.g=null;cv.style.cursor=MV[k]?'grab':'';try{cv.releasePointerCapture(e.pointerId)}catch(_){}if(g.d.dx||g.d.dy||g.d.dl){addShift(k,g.lab,g.xm,g.d);saveGS()}gsShow(k)};
+  cv.addEventListener('pointerup',end);cv.addEventListener('pointercancel',end)}
+function gsShow(k){const el=document.getElementById('gs_'+k),w=document.getElementById('gw_'+k);if(!el)return;const G=GS[k]||{},sg=v=>(v>0?'+':'')+(Math.abs(v)>=100?Math.round(v):+(+v).toPrecision(3));el.innerHTML='';let n=0;
+  for(const kk of Object.keys(G)){const s=G[kk]||{},p=[];if(s.ep)p.push('x '+sg(s.ep)+' ep');if(s.st)p.push('x '+sg(s.st)+' steps');if(s.y)p.push('y '+sg(s.y));if(s.yl)p.push('y ×'+(+Math.pow(10,s.yl).toPrecision(3)));if(!p.length)continue;
+    const c=document.createElement('span');c.className='chip';c.title=kk;c.textContent=(kk.length>26?kk.slice(0,25)+'…':kk)+' '+p.join(', ');const b=document.createElement('button');b.textContent='×';b.setAttribute('aria-label','clear this shift');b.onclick=()=>{delete G[kk];if(!Object.keys(G).length)delete GS[k];saveGS();build(k);fit()};c.appendChild(b);el.appendChild(c);n++}
+  if(w)w.hidden=!n}
+let RNG={};try{RNG=JSON.parse(localStorage.getItem('s3ranges1')||'{}')||{}}catch(e){RNG={}}
+const saveR=()=>{try{localStorage.setItem('s3ranges1',JSON.stringify(RNG))}catch(e){}};
+const num=v=>{if(v==null||String(v).trim()==='')return null;const x=Number(v);return isFinite(x)?x:null};
+const yLog=k=>{const r=RNG[k]||{};return r.ylog!=null?!!r.ylog:(Y[k]||{}).type==='logarithmic'};
+const zSave=c=>{try{if(c&&c.$noZ){delete c.$noZ;return null}return c&&c.isZoomedOrPanned&&c.isZoomedOrPanned()&&c.scales&&c.scales.x?{x0:c.scales.x.min,x1:c.scales.x.max,y0:c.scales.y.min,y1:c.scales.y.max}:null}catch(e){return null}};
+const zReset=c=>{if(!c)return;try{c.resetZoom&&c.resetZoom('none')}catch(e){}const o=c.options.scales;delete o.x.max;o.x.min=0;delete o.y.min;delete o.y.max;c.$noZ=1};   // clear zoom for good: resetZoom + drop the min/max zPut wrote + make the next zSave skip
+const zPut=(c,z)=>{if(!z)return;const o=c.options.scales;o.x.min=z.x0;o.x.max=z.x1;o.y.min=z.y0;o.y.max=z.y1};
+function build(k){at(k);const data=sets[k]().filter(d=>LIVE_ON()||!d.label.startsWith('★')).filter(d=>!(D.norefs&&/^Demeter/.test(d.label)&&!(d.data||[]).length)).map(d=>{Object.assign(d,{hidden:isHid(k,d.label)});RAW.set(d,d.data);return applyShift(k,d)});
+  /* D.norefs (s3branches.json "refs": false) drops empty Demeter series; D.empty_notes[k] (s3branches.json "empty_notes") = one-line note shown instead of chart k while all its series are empty */
+  {const en=(D.empty_notes||{})[k],cv=document.getElementById(k),box=cv&&cv.closest&&cv.closest('.cv');if(en&&box){const emp=!data.some(d=>(d.data||[]).length);let n=document.getElementById('en_'+k);if(!n){n=document.createElement('p');n.id='en_'+k;n.className='note';n.textContent=en;box.before(n)}n.hidden=!emp;box.style.display=emp?'none':''}}
+  if(ch[k]){const z=zSave(ch[k]);ch[k].data.datasets=data;ch[k].options.scales.x=Object.assign(xs(),CUR.fit?{max:fitMaxK(k)}:{});fitY(ch[k],k);zPut(ch[k],z);ch[k].update('none');return}
+  const el=document.getElementById(k);ch[k]=new Chart(el,{type:'line',data:{datasets:data},options:opts(k)});el.ondblclick=()=>{zReset(ch[k]);fit()};wireDrag(k)}
+const H1=()=>{const r=HE.runs.find(r=>r.visible)||HE.runs[0];const e=r&&r.eval.find(x=>x[HC('B_nword')]!=null);return e?{x:hx(e),step:e[0],ep:e[1]}:null};
+const liveMax=()=>{let m=0;for(const r of (S().train||[]))m=Math.max(m,lx(r));for(const r of (S().pts||[]))m=Math.max(m,lx(r));for(const b of BR().filter(b=>b.fit!==false))for(const r of [...(b.train||[]),...(b.pts||[])])m=Math.max(m,lx(r));return m};   /* branch "fit": false (s3branches.json) = not counted in Fit to ★ run */
+const LVS=()=>'★ stage-3 checkpoints · ';
+// branches (s3branches.json -> s3live.json "branches"): each its own series, never chained into ★; colour from the config (dark variant in dark mode)
+let ARCH={};try{ARCH=JSON.parse(localStorage.getItem('s3arch1')||'{}')||{}}catch(e){ARCH={}}
+const saveArch=()=>{try{localStorage.setItem('s3arch1',JSON.stringify(ARCH))}catch(e){}};
+const RUN_TOTAL_DUPLEX=17050;const RT=()=>S().max_steps||RUN_TOTAL_DUPLEX;   // planned total = the ★ run's own max_steps
+const PT_START=3021;   // persona text (S3_PERSONA_TEXT) entered the system prompt at this step (job 8815)   // planned full run = one duplex epoch (HORIZON_S3)
+const BRALL=()=>S().branches||[];
+const BR=()=>BRALL().filter(b=>!b.archived||ARCH[b.run]);
+function runsPanel(){const el=document.getElementById('runs');if(!el)return;const A=BRALL().filter(b=>!b.archived),Z=BRALL().filter(b=>b.archived);const sw=b=>`<span class="rsw" style="background:${brc(b)}"></span>`;el.innerHTML=`<div><span class="lab">Active runs</span><ul class="rl"><li><span class="rsw" style="background:${css('--one')}"></span>${LV()}</li>${A.map(b=>`<li>${sw(b)}${b.label}${b.step!=null?` <span class="rm">· step ${b.step}${b.done?' · finished':''}</span>`:''}</li>`).join('')}</ul></div>`+(Z.length?`<details class="arch"><summary><span class="lab">Archived runs (${Z.length})</span> — past experiments, hidden from the charts unless ticked</summary><ul class="rl">${Z.map(b=>`<li><label><input type="checkbox" data-run="${b.run}" ${ARCH[b.run]?'checked':''}> ${sw(b)}${b.label}</label>${b.note?`<div class="rm">${b.note}</div>`:''}</li>`).join('')}</ul></details>`:'');el.querySelectorAll('input[data-run]').forEach(i=>i.onchange=()=>{ARCH[i.dataset.run]=i.checked;saveArch();render()});const d=el.querySelector('details.arch');if(d){d.open=!!ARCH.__open;d.ontoggle=()=>{ARCH.__open=d.open;saveArch()}}}
+const isDark=()=>{const t=(document.documentElement.dataset||{}).theme;if(t)return t==='dark';try{return !!(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)}catch(e){return false}};
+const brc=b=>(isDark()&&b.color_dark)||b.color||'#7b4fd6';
+const bEval=(b,col)=>{const i=(b.cols||[]).indexOf(col);return i<0?[]:(b.pts||[]).filter(r=>r[i]!=null).map(r=>({x:lx(r),y:r[i]}))};
+const bRoll=(b,col,w=20)=>{const i=(b.train_cols||[]).indexOf(col);if(i<0)return[];const r=(b.train||[]).filter(x=>x[i]!=null);const o=[];let s=0;for(let q=0;q<r.length;q++){s+=r[q][i];if(q>=w)s-=r[q-w][i];o.push({x:lx(r[q]),y:s/Math.min(q+1,w)})}return o};
+const bMean=b=>{const a=bEval(b,'A_nword'),m=new Map(bEval(b,'B_nword').map(p=>[p.x,p.y]));return a.filter(p=>m.has(p.x)).map(p=>({x:p.x,y:(p.y+m.get(p.x))/2}))};
+const brKL=()=>BR().flatMap(b=>[ds(b.label+' · eval (dashed)',bEval(b,'kl'),brc(b),2.2,[6,4],{pointRadius:0,pointHoverRadius:4}),ds(b.label+' · train (10-step moving average, solid)',bRoll(b,'kl',10),brc(b),1.8,[],{pointRadius:0})]);
+const rollMeanNW=(rows,cols,w=10)=>{const ia=(cols||[]).indexOf('A_nword'),ib=(cols||[]).indexOf('B_nword');if(ia<0||ib<0)return[];const r=(rows||[]).filter(x=>x[ia]!=null&&x[ib]!=null);const o=[];let t=0;for(let q=0;q<r.length;q++){t+=(r[q][ia]+r[q][ib])/2;if(q>=w)t-=(r[q-w][ia]+r[q-w][ib])/2;o.push({x:lx(r[q]),y:t/Math.min(q+1,w)})}return o};
+const brNW=()=>BR().flatMap(b=>[ds(b.label+' · eval on our rows (mean of both channels)',bMean(b),brc(b),2.4,[6,4],{pointRadius:0,pointHoverRadius:4}),ds(b.label+' · train (10-step moving average, mean of both channels, solid)',rollMeanNW(b.train,b.train_cols,10),brc(b),1.6,[],{pointRadius:0})]);
+const brXD=(SL,AB,WR)=>BR().flatMap(b=>{const X=b.xdep||[],pt=c=>X.filter(r=>r[c]!=null).map(r=>({x:lx(r),y:r[c]}));return [ds(b.label+' · '+SL+' · rise in word CE',pt(2),brc(b),2.4,[6,4],{pointRadius:4.5,pointHoverRadius:6,pointStyle:'circle'}),ds(b.label+' · '+AB+' · rise in word CE',pt(3),brc(b),2.4,[2,3],{pointRadius:5,pointHoverRadius:7,pointStyle:'triangle'}),ds(b.label+' · '+WR+' · rise in word CE',pt(5),brc(b),2.4,[14,4],{pointRadius:5,pointHoverRadius:7,pointStyle:'rectRot'})]});
+const dmxMax=()=>{const M=D.dmxdep;if(!M||!M.pts)return 0;const ci=(M.cols||[]).indexOf('gap_oth_silent'),P=M.pts.filter(r=>ci>=0&&r[ci]!=null);if(!P.length)return 0;const r=P[P.length-1];return (CUR.xm==='ep'?r[1]:r[0])*1.04};
+const fitMaxK=k=>{let x=fitMax();if(x==null)return x;if(k==='c_nword'){const dp=DMO&&DMO.pts&&DMO.pts[1];if(dp){const dx=CUR.xm==='ep'?dp[1]:dp[0];if(dx>x)x=dx*1.08}}if(k==='c_txd'){const T=D.dmtxd,tp=T&&T.pts&&T.pts.find(r=>r[0]>=3000)||(T&&T.pts&&T.pts[0]);if(tp){const dx=CUR.xm==='ep'?tp[1]:tp[0];if(dx>x)x=dx*1.08}}return k==='c_xdep'?Math.max(x,dmxMax()):x};   // only the Demeter charts extend past the ★ run; every other chart = 1.5x the ★ run
+const fitMax=()=>{const m=liveMax();if(!(m>0))return undefined;let x=m*1.5;const h=H1();if(h&&h.x>x&&h.x<x*3)x=h.x*1.08;return x};   // always show Demeter-on-our-rows through its first same-run checkpoint (3000 = 0.12 ep)
+function fitY(c,k){const y=c.options.scales.y,xm=c.options.scales.x.max,xl=c.options.scales.x.min;delete y.min;delete y.max;if(xm==null)return;const x0=xl>0?xl:(D.fit_y_from0?0:0.2*liveMax());   /* D.fit_y_from0 (s3branches.json): y-range fitted over the whole run from step 0 */let lo=Infinity,hi=-Infinity;
+  for(const d of c.data.datasets){if(d.hidden||/^target|^stage-2 final|^forecast/.test(d.label))continue;for(const p of d.data)if(p.x<=xm&&p.y!=null&&isFinite(p.y)&&p.x>=x0){lo=Math.min(lo,p.y);hi=Math.max(hi,p.y)}}
+  for(const d of c.data.datasets)if(!d.hidden&&/^target|^stage-2 final/.test(d.label)&&d.data.length){const v=d.data[0].y;if(v>=lo*0.5&&v<=hi*2){lo=Math.min(lo,v);hi=Math.max(hi,v)}}
+  if(!isFinite(lo))return;const log=yLog(k);if(log&&lo<=0)lo=hi/1e3;if(log){y.min=lo/1.25;y.max=hi*1.25}else{const pad=(hi-lo)*0.08||Math.abs(hi)*0.05||1;y.min=(Y[k]||{}).min===0?0:lo-pad;y.max=hi+pad}}
+function fit(){for(const k in ch){at(k);const xm=CUR.fit?fitMaxK(k):undefined;const c=ch[k],r=RNG[k]||{},u=r[CUR.xm]||{};const ZZ=zSave(c);const sx=c.options.scales.x,sy=c.options.scales.y;
+    sx.min=u.min!=null?u.min:0;sx.max=u.max!=null?u.max:(k==='c_xdep'&&xm!=null?Math.max(xm,dmxMax()):xm);if(sx.max!=null&&sx.min>=sx.max)sx.max=undefined;
+    sy.type=yLog(k)?'logarithmic':'linear';fitY(c,k);
+    {const x0=sx.min==null?-Infinity:sx.min,x1=sx.max==null?Infinity:sx.max,y0=r.ymin==null?-Infinity:r.ymin,y1=r.ymax==null?Infinity:r.ymax;const anyIn=(r.ymin==null&&r.ymax==null)||c.data.datasets.some(d=>!d.hidden&&d.data.some(p=>p&&p.y!=null&&p.x>=x0&&p.x<=x1&&p.y>=y0&&p.y<=y1));const g=document.getElementById('rg_'+k);if(g)g.dataset.stale=anyIn?'':'1';if(anyIn){if(r.ymin!=null)sy.min=r.ymin;if(r.ymax!=null)sy.max=r.ymax}}zPut(c,ZZ);c.update('none');rngShow(k);fitNote(k)}gShow()}
+function fitNote(k){at(k);const cv=document.getElementById(k),sec=cv&&cv.closest?cv.closest('section'):null,e=sec&&sec.querySelector?sec.querySelector('.fitnote'):null;if(!e)return;const xm0=CUR.fit?fitMax():undefined,h=H1();e.hidden=!(CUR.fit&&h&&xm0!=null);if(h&&xm0!=null)e.textContent=`Fit to ★ run: x shows 0 to ${CUR.xm==='ep'?(+xm0).toPrecision(2)+' epochs':Math.round(xm0)+' steps'} (1.5× the ★ run so far; the Demeter charts extend further to show its checkpoints). Hestia's first eval is at ${h.ep.toFixed(3)} epochs (its step ${h.step}); turn "Fit to ★ run" off to see Hestia's full 0–0.82 epoch span.`}
+function tiles(){const s=S(),set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+  set('eprows',EPR().toLocaleString('en-US'));if(s.rows_per_step)set('rps',`${s.rows_per_step} live`+(s.world&&s.s3_rows?` = ${s.world} GPUs × ${s.s3_rows}`:''));
+  document.getElementById('empty').hidden=LIVE_ON();
+  const L=document.getElementById('live');
+  if(!LIVE_ON()){L.textContent='Stage 3 not started';L.dataset.ok='0';set('lvname','★ live stage-3 run (none yet)')}
+  else{const done=s.done||s.stopped!=null;L.textContent=(D.live?'Live':'Snapshot')+(done?(s.done?' · finished':' · stopped at step '+s.stopped):'');L.dataset.ok=D.live&&!done?'1':'0';set('lvname',LV())}
+  set('brnote',BR().map(b=>`Separate line: ${b.label}, run ${b.run} (job ${(b.jobs||[]).join(',')}), ${b.rel||`resumed from the ★ run's step ${b.from_step} checkpoint`}; at step ${b.step??'–'}${b.max_steps?' / '+b.max_steps:''}${b.done?' · finished':(b.stopped!=null?' · stopped at step '+b.stopped:'')}. Not part of the ★ chain.`).join(' '));
+  set('upd','last updated '+(D.live&&s.updated?s.updated:D.built)+(D.live?'':' (snapshot; the tunnel page refreshes every minute)'));
+  if(LIVE_ON()){const ep=s.epoch||0,mx=s.max_steps;set('tp',`${ep>=0.01?ep.toFixed(3):ep.toPrecision(2)} ep`);set('tpd',`step ${s.step} / ${RT().toLocaleString('en-US')}${mx&&mx<RT()?' (this leg ends '+mx.toLocaleString('en-US')+')':''} · ${Math.round((s.rows||0)/1000).toLocaleString('en-US')}k rows of ${(EPR()/1e6).toFixed(3)}M`+(s.mean50_s?` · ${s.mean50_s} s/step (last 50)`:''));
+    const now=Date.now()/1000,t1=s.t_step1||s.t_job0,tl=s.t_last;if(t1&&tl){const el=(s.done?tl:now)-t1;const left=(mx&&s.mean50_s)?Math.max(0,(mx-s.step)*s.mean50_s-(now-tl)):null;
+      set('te',`${hm(el)} / ${left==null?'–':(s.done?'done':hm(left))}`);set('ted',left!=null&&!s.done?`ETA ${fmt((now+left)*1000)} at the current pace`+(now-tl>900?` · no step logged for ${hm(now-tl)}`:''):'-')}else{set('te','–');set('ted','no timestamps in the log yet')}}
+  else{set('tp','–');set('tpd','waiting for the first step');set('te','–');set('ted','-')}
+  const lastEv=c=>{const p=(s.pts||[]).filter(r=>r[SC(c)]!=null);return p.length?p[p.length-1]:null};
+  const k=lastEv('kl');set('tk',k?k[SC('kl')].toFixed(5):'–');set('tkd',(k?`step ${k[0]}`:'no eval yet')+(s2v('text_kl')!=null?` · stage-2 final ${(+s2v('text_kl')).toFixed(5)}`:''));
+  const H0=HE.runs.find(r=>r.visible)||HE.runs[0];const hl=c=>{if(!H0)return null;const e=H0.eval.filter(r=>r[HC(c)]!=null);return e.length?e[e.length-1][HC(c)]:null};
+  for(const [c,id] of [['B','tb'],['A','ta']]){const e=lastEv(c+'_nword');const hv=hl(c+'_nword');set(id,e?e[SC(c+'_nword')].toFixed(4):'–');set(id+'d',(e?`step ${e[0]} (${(e[1]/EPR()).toPrecision(3)} ep)`:'no eval yet')+(hv!=null?` · Hestia last eval ${hv.toFixed(4)}`:''))}
+  const cn=document.getElementById('clone_note');const anyClone=(s.pts||[]).some(r=>r[SC('clone_A_A_d_cb0_all')]!=null);document.getElementById('sec_clone').style.opacity=anyClone||!LIVE_ON()?1:0.6;
+  if(LIVE_ON()&&!anyClone)cn.textContent='No cloning eval in this run (S3_SYSPROMPT=0): the trainer logs these only when the system prompt carries a voice clip.';
+  set('srcnote',`Hestia data: ${HE.source||''}, fetched ${HE.fetched||'-'}; ${HE.runs.map(r=>`${r.name} (${r.path}, ${r.epoch_steps} steps × ${r.rows_per_step} rows)`).join('; ')}. Stage-2 reference: ${(D.s2ref||{}).src||'-'}.`)}
+function strip(){const s=S(),set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};const f4=v=>v==null?'–':(+v).toFixed(3);
+  const lastEv=c=>{const p=(s.pts||[]).filter(r=>r[SC(c)]!=null);return p.length?p[p.length-1]:null};
+  if(!LIVE_ON()){set('sm_step','–');set('sm_stepd','stage 3 not started');}
+  else{set('sm_step',`${s.step} / ${RT().toLocaleString('en-US')}`);const ep=s.epoch||0;set('sm_stepd',`${ep>=0.01?ep.toFixed(3):ep.toPrecision(2)} epochs${s.max_steps&&s.max_steps<RT()?' · this leg ends at '+s.max_steps.toLocaleString('en-US'):''} · ${Math.round((s.rows||0)/1000).toLocaleString('en-US')}k rows`);
+    set('sm_time',s.mean50_s?`${s.mean50_s} s`:'–');const t1=s.t_step1||s.t_job0,tl=s.t_last,now=Date.now()/1000;
+    const left=(s.max_steps&&s.mean50_s&&!s.done)?Math.max(0,(s.max_steps-s.step)*s.mean50_s-(now-tl||0)):null;const leftAll=(s.mean50_s&&!s.done)?Math.max(0,(RT()-s.step)*s.mean50_s-(now-tl||0)):null;const dt=t=>new Date(t*1000).toLocaleString('en-US',{timeZone:'America/Los_Angeles',weekday:'short',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hour12:false})+' PT';const H=x=>(x/3600).toFixed(1)+' h';set('sm_now',new Date(now*1000).toLocaleTimeString('en-US',{timeZone:'America/Los_Angeles',hour:'2-digit',minute:'2-digit',hour12:false})+' PT');set('sm_nowd',new Date(now*1000).toLocaleDateString('en-US',{timeZone:'America/Los_Angeles',weekday:'long',month:'long',day:'numeric',year:'numeric'})+(tl?` · last step logged ${Math.max(0,Math.round((now-tl)/60))} min ago`:''));{const n=Math.max(0,s.step-PT_START);set('sm_pt',n.toLocaleString('en-US'));set('sm_ptd',`since persona text joined the system prompt at step ${PT_START.toLocaleString('en-US')} (Oct 6, 19:26 PT) · ${(n*(s.rows_per_step||304)/1000).toFixed(0)}k rows · ${(n*(s.rows_per_step||304)/EPR()).toFixed(3)} epoch`+(s.mean50_s?` · ~${(n*s.mean50_s/3600).toFixed(1)} h of training`:''))}set('sm_el',t1?H((s.done?tl:now)-t1):'–');set('sm_eld',t1?`since stage 3 started ${dt(t1)} (wall clock, incl. evals, saves, restarts)`:'–');set('sm_left',leftAll!=null?H(leftAll):'–');set('sm_leftd',(left!=null?`this leg (to ${s.max_steps.toLocaleString('en-US')}): ${H(left)}, ends ${dt(now+left)}`:'')+(leftAll!=null?` · full run (to ${RT().toLocaleString('en-US')}): ends ${dt(now+leftAll)}; training time at ${s.mean50_s} s/step, +~2.5 h teacher-data fill at 8,628 not included`:''));set('sm_timed','mean of last 50 steps'+(left!=null&&tl?` · leg ETA ${fmt((now+left)*1000)}`:'')+(leftAll!=null&&tl&&s.max_steps<RT()?` · full run ETA ${fmt((now+leftAll)*1000)} (training time only; excludes teacher-cache fill pauses)`:'')+(t1&&tl?` · ${hm((s.done?tl:now)-t1)} so far`:''))}
+  const k=lastEv('kl');set('sm_kl',k?(+k[SC('kl')]).toFixed(4):'–');set('sm_kld',(k?`step ${k[0]} · `:'')+'target ≤ 0.02 (stage-2 final '+(s2v('text_kl')!=null?(+s2v('text_kl')).toFixed(4):'≈0.020')+')'+(k?(k[SC('kl')]<=0.02?' · on target':' · above target'):''));
+  const a=lastEv('A_nword'),b=lastEv('B_nword');set('sm_nw',`${f4(a&&a[SC('A_nword')])} / ${f4(b&&b[SC('B_nword')])}`);set('sm_nwd',b?`eval at step ${b[0]} (${(b[1]/EPR()).toPrecision(2)} ep)`:'no eval yet');
+  const ca=lastEv('A_cb0'),cb=lastEv('B_cb0');set('sm_cb0',`${f4(ca&&ca[SC('A_cb0')])} / ${f4(cb&&cb[SC('B_cb0')])}`);set('sm_cb0d',cb?`eval at step ${cb[0]}`+(s2v('cb0')!=null?` · stage-2 final B ${(+s2v('cb0')).toFixed(3)}`:''):'no eval yet');
+  const H=HE.runs.find(r=>r.visible)||HE.runs[0];if(H){const ev=H.eval.filter(r=>r[HC('B_nword')]!=null);const tgt=b?b[1]/EPR():0;let n=ev[0];for(const r of ev)if(Math.abs(r[1]-tgt)<Math.abs(n[1]-tgt))n=r;
+    set('sm_h',`${f4(n[HC('A_nword')])} / ${f4(n[HC('B_nword')])}`);set('sm_hd',`nearest Hestia eval: ${n[1].toFixed(3)} epochs (its step ${n[0]})`+(b?` vs ★ ${tgt.toPrecision(2)}`:''))}}
+function poseSecs(){for(const [id,c] of [['sec_pose','pose_nword'],['sec_posecb','pose_cb0'],['sec_codep','cd_pose_to_speech/d_word_ce_norm_pose_shuf']]){const e=document.getElementById(id);if(e)e.hidden=!(liveEval(c).length||BR().some(b=>bEval(b,c).length))}}
+function render(){runsPanel();poseSecs();tiles();strip();gbTile();ibTile();mbTile();try{gbGames()}catch(e){console.error(e)}for(const k of Object.keys(sets))build(k);fit()}
+function rngShow(k){const b=document.getElementById('rg_'+k);if(!b)return;const m=at(k);for(const [id,on] of [['mxe_',m.xm==='ep'],['mxs_',m.xm==='st'],['mf_',m.fit],['mv_',!!MV[k]]]){const e=document.getElementById(id+k);if(e)e.setAttribute('aria-pressed',String(on))}gsShow(k);const r=RNG[k]||{},u=r[CUR.xm]||{};const v=(id,x)=>{const e=document.getElementById(id);if(e&&document.activeElement!==e)e.value=x==null?'':x};
+  v(`rx0_${k}`,u.min);v(`rx1_${k}`,u.max);v(`ry0_${k}`,r.ymin);v(`ry1_${k}`,r.ymax);const lg=document.getElementById(`rl_${k}`);if(lg){lg.textContent='y: '+(yLog(k)?'log':'linear');lg.setAttribute('aria-pressed',String(yLog(k)))}
+  const un=document.getElementById(`ru_${k}`);if(un)un.textContent=CUR.xm==='ep'?'x (epochs)':'x (steps)';const st=document.getElementById(`rs_${k}`);if(st){const set=u.min!=null||u.max!=null||r.ymin!=null||r.ymax!=null||r.ylog!=null;st.textContent=set?'custom':'auto';st.className=set?'on':''}}
+const XLINK=['c_kl','c_nword','c_xdep','c_txd'];   // the three main charts share their x range: setting x on one sets it on all
+function rngUI(k){const cv=document.getElementById(k);if(!cv)return;const box=cv.closest('.cv');if(!box||!box.before)return;const d=document.createElement('div');d.className='rng';d.id='rg_'+k;
+  d.innerHTML=`<span class="grp"><button id="mxe_${k}" aria-pressed="true">Epochs</button><button id="mxs_${k}" aria-pressed="false">Steps</button><button id="mf_${k}" aria-pressed="true">Fit to ★ run</button><button id="mzr_${k}">Reset zoom</button><button id="mrc_${k}">Reset curves</button><button id="mvh_${k}" aria-pressed="false" title="While on, drag a line left/right">Move horizontally</button><button id="mvv_${k}" aria-pressed="false" title="While on, drag a line up/down">Move vertically</button><button id="msl_${k}" aria-pressed="false" title="While on, hovering a curve shows its slope per 100 steps: mean of the last 100 steps minus the mean of the 100 before">Slope on hover</button></span><span style="flex-basis:100%;height:0"></span>`+
+    `<span id="ru_${k}">x</span><label>min <input id="rx0_${k}" inputmode="decimal" placeholder="auto"></label><label>max <input id="rx1_${k}" inputmode="decimal" placeholder="auto"></label>`+
+    `<span>y</span><label>min <input id="ry0_${k}" inputmode="decimal" placeholder="auto"></label><label>max <input id="ry1_${k}" inputmode="decimal" placeholder="auto"></label>`+
+    `<button id="ra_${k}">Apply</button><button id="rz_${k}">Auto</button><button id="rl_${k}" aria-pressed="false">y: linear</button><span id="rs_${k}">auto</span>`+
+    `<span class="gw" id="gw_${k}" hidden><span id="gs_${k}" class="grp"></span><button id="gc_${k}">Clear shifts</button></span>`;
+  box.before(d);const g=id=>num((document.getElementById(id)||{}).value);
+  const apply=()=>{const xm=MD(k).xm,r=RNG[k]||(RNG[k]={});r[xm]={min:g(`rx0_${k}`),max:g(`rx1_${k}`)};if(XLINK.includes(k))for(const o of XLINK)if(o!==k&&MD(o).xm===xm){const ro=RNG[o]||(RNG[o]={});ro[xm]={...r[xm]};rngShow(o)}r.ymin=g(`ry0_${k}`);r.ymax=g(`ry1_${k}`);if(yLog(k)&&((r.ymin!=null&&r.ymin<=0)||(r.ymax!=null&&r.ymax<=0))){r.ymin=r.ymin>0?r.ymin:null;r.ymax=r.ymax>0?r.ymax:null}saveR();zReset(ch[k]);fit()};
+  document.getElementById(`ra_${k}`).onclick=apply;for(const id of [`rx0_${k}`,`rx1_${k}`,`ry0_${k}`,`ry1_${k}`]){const e=document.getElementById(id);if(e)e.onkeydown=ev=>{if(ev.key==='Enter')apply()}}
+  document.getElementById(`rz_${k}`).onclick=()=>{const xm=MD(k).xm;delete RNG[k];if(XLINK.includes(k))for(const o of XLINK)if(o!==k&&RNG[o]&&MD(o).xm===xm){delete RNG[o][xm];rngShow(o)}saveR();zReset(ch[k]);fit()};
+  document.getElementById(`rl_${k}`).onclick=()=>{const r=RNG[k]||(RNG[k]={});r.ylog=!yLog(k);if(r.ylog===((Y[k]||{}).type==='logarithmic'))delete r.ylog;if(yLog(k)){if(r.ymin!=null&&r.ymin<=0)r.ymin=null}saveR();fit()};
+  const $=id=>document.getElementById(id),zr=()=>{zReset(ch[k])},setX=m=>{MD(k).xm=m;saveM();zr();build(k);fit()};
+  $(`mxe_${k}`).onclick=()=>setX('ep');$(`mxs_${k}`).onclick=()=>setX('st');$(`mf_${k}`).onclick=()=>{const m=MD(k);m.fit=!m.fit;saveM();zr();fit()};
+  $(`mzr_${k}`).onclick=()=>{zr();fit()};$(`mrc_${k}`).onclick=()=>{delete HID[k];saveH();delete GS[k];saveGS();zr();build(k);fit()};$(`mvh_${k}`).onclick=()=>setMove(k,MV[k]==='h'?false:'h');$(`mvv_${k}`).onclick=()=>setMove(k,MV[k]==='v'?false:'v');$(`msl_${k}`).onclick=()=>{SLP[k]=!SLP[k];$(`msl_${k}`).setAttribute('aria-pressed',String(SLP[k]))};
+  $(`gc_${k}`).onclick=()=>{delete GS[k];saveGS();build(k);fit()};rngShow(k)}
+/* ==== GenghisBench section (see the HTML comment above #sec_gb) ==== */
+const GB=()=>S().gb||{cols:[],pts:[]},GC=k=>(GB().cols||[]).indexOf(k);
+const gbRows=s=>{const T=S().train||[];let lo=null;for(const r of T){if(r[0]<=s)lo=r;else break}const rps=S().rows_per_step||304;return lo?(lo[1]||0)+(s-lo[0])*rps:s*rps};   // cumulative rows at an export step (same epoch as the other charts)
+const gx=s=>CUR.xm==='ep'?gbRows(s)/EPR():s;
+const gbPts=(w,n,tag)=>(GB().pts||[]).filter(r=>r[GC(w)]!=null&&r[GC(n)]).map(r=>({x:gx(r[0]),y:100*r[GC(w)]/r[GC(n)],w:r[GC(w)],n:r[GC(n)],s:r[0],tag}));
+const gbBase=()=>GB().base||{};
+sets.c_gb=()=>{const B=gbBase(),o=[ds(LVS()+'GenghisBench wins %, 20 games, turn ends at the model\'s own end-of-turn',gbPts('eot','eot_n','EOT'),css('--one'),2.2,[],{pointRadius:4,pointHoverRadius:6}),
+  ds(LVS()+'GenghisBench wins %, 20 games, turn forced to end at a question mark',gbPts('qm','qm_n','qmark'),css('--chA'),2,[6,4],{pointRadius:4,pointHoverRadius:6,pointStyle:'rectRot'}),
+  ds(LVS()+'GenghisBench wins %, 60 games (own end-of-turn)',gbPts('n60','n60_n','60 games'),'#2e9e5b',2,[],{showLine:false,pointRadius:7,pointHoverRadius:9,pointBorderWidth:1.5})];
+  if(B.n60!=null&&B.n60_n)o.push(ds(`stage-2 final · stage-3 init, 60 games: ${B.n60}/${B.n60_n} = ${(100*B.n60/B.n60_n).toFixed(0)}%`,[{x:0,y:100*B.n60/B.n60_n},{x:XMAX(),y:100*B.n60/B.n60_n}],css('--s2'),1.2,[],{pointRadius:0,pointHoverRadius:0}));return o};
+sets.c_gbkl=()=>{const B=gbBase(),i=GC('kl'),o=[ds(LVS()+'game KL vs the teacher, 40 GenghisBench dialogs (lower = better)',(GB().pts||[]).filter(r=>i>=0&&r[i]!=null).map(r=>({x:gx(r[0]),y:r[i],s:r[0]})),css('--one'),2.2,[],{pointRadius:4,pointHoverRadius:6})];
+  if(B.kl!=null)o.push(ds(`stage-2 final · stage-3 init game KL ${(+B.kl).toFixed(4)}`,[{x:0,y:B.kl},{x:XMAX(),y:B.kl}],css('--s2'),1.2,[],{pointRadius:0,pointHoverRadius:0}));return o};
+Object.assign(Y,{c_gb:{min:0,title:{display:true,text:'games won (%)'}},c_gbkl:{title:{display:true,text:'game KL (nats)'}}});
+const TIP={c_gb:t=>{const p=t.raw||{};return p.n?`${p.tag}: ${p.w}/${p.n} = ${(+t.parsed.y).toFixed(0)}% · step ${p.s}`:`${(+t.parsed.y).toFixed(1)}%`},c_gbkl:t=>{const p=t.raw||{};return `${(+t.parsed.y).toFixed(4)}`+(p.s!=null?` · step ${p.s}`:'')}};
+function gbTile(){const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};const P=GB().pts||[],c=GC,B=gbBase();
+  const last=f=>{for(let i=P.length-1;i>=0;i--)if(f(P[i]))return P[i];return null};const fr=(r,w,n)=>r&&r[c(w)]!=null?`${r[c(w)]}/${r[c(n)]}`:'–';
+  const g=last(r=>r[c('eot')]!=null||r[c('qm')]!=null),s=last(r=>r[c('n60')]!=null),k=last(r=>r[c('kl')]!=null);
+  set('sm_gb',g?`${fr(g,'eot','eot_n')} / ${fr(g,'qm','qm_n')}`:'–');
+  set('sm_gbd',(g?`step ${g[0]}: own end-of-turn ${fr(g,'eot','eot_n')}, question-mark end ${fr(g,'qm','qm_n')}`:'no result yet')+(s?` · 60 games ${s[c('n60')]}/${s[c('n60_n')]} (step ${s[0]})`:'')+(k?` · game KL ${(+k[c('kl')]).toFixed(4)} (step ${k[0]})`:'')+(B.n60!=null?` · init: 60 games ${B.n60}/${B.n60_n}, game KL ${(+B.kl).toFixed(4)}`:''));
+  if(B.n60!=null&&B.n60_n)set('gb_base',`${B.n60}/${B.n60_n} = ${(100*B.n60/B.n60_n).toFixed(0)}%`);if(B.kl!=null)set('gb_basekl',(+B.kl).toFixed(4))}
+/* per-game GenghisBench (s3live.json gb.games / gb.base_games, from gb_doc()): picker -> one bar chart for the picked checkpoint; grid = checkpoints x games;
+   cell click -> transcript fetched from gbtx/gb_<tag><suffix>.json (written by gb_doc). GBS.set 'g20' | 'g60'; GBS.step null = follow the latest checkpoint. */
+let GBS={set:'g20',step:null};try{const o=JSON.parse(localStorage.getItem('s3gbsel1')||'null');if(o&&(o.set==='g20'||o.set==='g60'))GBS={set:o.set,step:o.step==null?null:+o.step}}catch(e){}
+const saveGBS=()=>{try{localStorage.setItem('s3gbsel1',JSON.stringify(GBS))}catch(e){}};
+const GBM={g20:[['eot','','own end-of-turn'],['qm','-qmark','question-mark end']],g60:[['n60','-n60','60 games, own end-of-turn']]};
+let GBG=null,GBSIG='',GBTX=null;const TXC={};
+const gbSteps=()=>{const G=GB().games||{};return Object.keys(G).map(Number).filter(n=>GBM[GBS.set].some(([k])=>G[n][k])).sort((a,b)=>a-b)};
+const gbSel=()=>{const st=gbSteps();return st.includes(GBS.step)?GBS.step:(st.length?st[st.length-1]:null)};
+const gbHex=(c,a)=>c+Math.round(Math.max(0,Math.min(1,a))*255).toString(16).padStart(2,'0');
+const gbCol=(g,a)=>g?gbHex(g[0]?css('--ok'):css('--lose'),a):'transparent';
+const gbShade=g=>!g?css('--line'):g[0]?gbHex(css('--ok'),0.3+0.7*Math.max(0,Math.min(1,(20-g[1])/10))):gbHex(css('--lose'),0.85);   // win: darker = fewer questions
+const gbQ=g=>g?(g[1]>0?g[1]:20):null;
+const gbTxt=g=>!g?'not run':g[0]?`won in ${g[1]} questions`:(g[1]>0?`lost (${g[1]} questions)`:'lost (game aborted)');
+function gbGames(){const box=document.getElementById('gbg');if(!box)return;const G=GB().games||{},B=GB().base_games||{},st=gbSteps(),sel=gbSel(),M=GBM[GBS.set],n=GBS.set==='g60'?60:20;
+  box.hidden=!Object.keys(G).length;if(box.hidden)return;
+  const sig=JSON.stringify([G,B.n60,GBS,sel,isDark()]);if(sig===GBSIG)return;GBSIG=sig;
+  const pk=document.getElementById('gbpick');pk.innerHTML='';const btn=(t,on,f)=>{const b=document.createElement('button');b.textContent=t;b.setAttribute('aria-pressed',String(on));b.onclick=f;pk.appendChild(b);return b};
+  const has60=Object.values(G).some(r=>r.n60);
+  if(has60){btn('20 games',GBS.set==='g20',()=>{GBS.set='g20';saveGBS();gbGames()});btn('60 games',GBS.set==='g60',()=>{GBS.set='g60';saveGBS();gbGames()});const s=document.createElement('span');s.textContent='·';pk.appendChild(s)}
+  for(const s of st)btn(String(s),s===sel,()=>{GBS.step=s===st[st.length-1]?null:s;saveGBS();gbGames()});
+  // chart
+  const R=G[sel]||{},lab=Array.from({length:n},(_,i)=>String(i+1)),base=GBS.set==='g60'?B.n60:null,ds=[];
+  if(base)ds.push({label:'init (stage-2 final w-4289)',data:base.map(gbQ),backgroundColor:base.map(g=>gbCol(g,0.22)),G:base,borderWidth:0});
+  M.forEach(([k],i)=>{const a=R[k]||[];ds.push({label:k,data:lab.map((_,j)=>gbQ(a[j])),backgroundColor:lab.map((_,j)=>gbCol(a[j],i?0.5:1)),G:a,borderWidth:0})});
+  const tip=t=>{const d=t.dataset,g=(d.G||[])[t.dataIndex],m=M.find(x=>x[0]===d.label);return `${m?m[2]:d.label}: ${gbTxt(g)}`};
+  if(GBG){GBG.data.labels=lab;GBG.data.datasets=ds;GBG.update('none')}
+  else{const el=document.getElementById('c_gbg');GBG=new Chart(el,{type:'bar',data:{labels:lab,datasets:ds},options:{responsive:true,maintainAspectRatio:false,animation:false,
+    plugins:{legend:{display:false},tooltip:{callbacks:{title:t=>`step ${gbSel()} · game ${t[0].label}`,label:tip}}},
+    scales:{x:{title:{display:true,text:'game'},grid:{display:false}},y:{min:0,max:20,ticks:{stepSize:5},title:{display:true,text:'questions used'},grid:{color:css('--line')}}},
+    onClick:(e,els)=>{if(!els.length)return;const d=GBG.data.datasets[els[0].datasetIndex],m=M.find(x=>x[0]===d.label);if(m)gbOpen(gbSel(),m[0],els[0].index);else if(base)gbOpen('init','n60',els[0].index)}}})}
+  document.getElementById('gbgnote').textContent=GBS.set==='g60'
+    ?'Bar height = questions used; green = won, red = lost. Faint left bar = the stage-3 init on the same game. Grid: one row per checkpoint, darker green = won in fewer questions; click a cell for its transcript, a step to chart it.'
+    :'Bar height = questions used; green = won, red = lost. Left bar = own end-of-turn, right (lighter) = question-mark end. Grid: one row per checkpoint, darker green = won in fewer questions; click a cell for its transcript, a step to chart it.';
+  // grid
+  const tb=document.getElementById('gbgrid');tb.className='gbt'+(GBS.set==='g60'?' g60':'');
+  const rows=st.map(s=>[s,G[s]]);if(base)rows.push(['init',{n60:base}]);
+  let h='<tr><th></th>'+lab.map(l=>`<th>${n===60&&(+l)%5&&l!=='1'?'':l}</th>`).join('')+'<th></th></tr>';
+  for(const [s,r] of rows){const w=M.map(([k])=>r[k]?r[k].filter(g=>g[0]).length+'/'+r[k].length:'–').join(' · ');
+    h+=`<tr class="${s===sel?'sel':''}"><th class="r" data-s="${s}">${s==='init'?'init':s}</th>`+lab.map((_,j)=>`<td><span class="gc">${M.map(([k])=>{const g=(r[k]||[])[j];return `<i data-s="${s}" data-k="${k}" data-j="${j}" style="background:${gbShade(g)}" title="${s==='init'?'init':'step '+s} · game ${j+1} · ${M.find(x=>x[0]===k)[2]}: ${gbTxt(g)}"></i>`}).join('')}</span></td>`).join('')+`<td class="n">${w}</td></tr>`}
+  tb.innerHTML=h;
+  tb.onclick=e=>{const t=e.target;if(t.dataset.k)gbOpen(t.dataset.s==='init'?'init':+t.dataset.s,t.dataset.k,+t.dataset.j);else if(t.dataset.s&&t.dataset.s!=='init'){const s=+t.dataset.s;GBS.step=s===st[st.length-1]?null:s;saveGBS();gbGames()}};
+  gbMark()}
+function gbMark(){for(const i of document.querySelectorAll('#gbgrid i'))i.classList.toggle('on',!!GBTX&&String(GBTX.s)===i.dataset.s&&GBTX.k===i.dataset.k&&GBTX.j===+i.dataset.j)}
+async function gbOpen(s,k,j){const P=document.getElementById('gbtx');if(GBTX&&GBTX.s===s&&GBTX.k===k&&GBTX.j===j){GBTX=null;P.hidden=true;gbMark();return}
+  GBTX={s,k,j};gbMark();const G=GB().games||{},B=GB().base_games||{},seeds=k==='n60'?GB().seeds60:GB().seeds20,m=[...GBM.g20,...GBM.g60].find(x=>x[0]===k);
+  const g=s==='init'?(B.n60||[])[j]:((G[s]||{})[k]||[])[j],url=s==='init'?B.tx:`gbtx/gb_${(G[s]||{}).tag}${m[1]}.json`,esc=t=>String(t??'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c]);
+  const head=`<div class="h"><span>${s==='init'?'init (stage-2 final w-4289)':'step '+s} · game ${j+1} · ${m[2]} · ${gbTxt(g)}</span><button id="gbtxx" aria-label="close transcript">×</button></div>`;
+  P.hidden=false;P.innerHTML=head+'<p class="u">loading…</p>';document.getElementById('gbtxx').onclick=()=>gbOpen(s,k,j);
+  let conv=null;try{if(!TXC[url]){const r=await fetch(url,{cache:'no-store'});if(r.ok)TXC[url]=await r.json()}conv=TXC[url]&&TXC[url][String((seeds||[])[j])]}catch(e){}
+  if(!GBTX||GBTX.s!==s||GBTX.k!==k||GBTX.j!==j)return;
+  P.innerHTML=head+(conv&&conv.length?conv.map(t=>`<p class="u"><b>user:</b> ${esc(t.user)}</p><p><b>model:</b> ${esc(t.model)}</p>`).join(''):'<p class="u">Transcript not available here (it loads from the live tunnel page).</p>');
+  document.getElementById('gbtxx').onclick=()=>gbOpen(s,k,j)}
+/* ==== end GenghisBench section ==== */
+/* ==== InteractionBench section (see the HTML comment above #sec_ib) ==== */
+const IB=()=>S().ib||{cols:[],pts:[],ref:{}},IBC=k=>(IB().cols||[]).indexOf(k);
+const ibRows=s=>{const T=S().train||[];let lo=null;for(const r of T){if(r[0]<=s)lo=r;else break}const rps=S().rows_per_step||304;return lo?(lo[1]||0)+(s-lo[0])*rps:s*rps};
+const ibx=s=>CUR.xm==='ep'?ibRows(s)/EPR():s;
+const ibPts=(k,f)=>(IB().pts||[]).filter(r=>r[IBC(k)]!=null).map(r=>({x:ibx(r[0]),y:f?f(r[IBC(k)]):r[IBC(k)],s:r[0],r}));
+const ibH=(lab,y,c,dash)=>ds(lab,[{x:0,y},{x:XMAX(),y}],c,1.4,dash||[],{pointRadius:0,pointHoverRadius:0});
+sets.c_ib=()=>{const R=IB().ref||{},o=[ds(LVS()+'InteractionBench total (0-100)',ibPts('total'),css('--one'),2.6,[],{pointRadius:4.5,pointHoverRadius:7}),
+  ds(LVS()+'turn dynamics ×100',ibPts('td',v=>100*v),css('--chA'),1.2,[],{pointRadius:3,pointHoverRadius:5}),
+  ds(LVS()+'responsiveness ×100',ibPts('rs',v=>100*v),'#8a5cd0',1.2,[],{pointRadius:3,pointHoverRadius:5,pointStyle:'rectRot'}),
+  ds(LVS()+'degeneration / dead air ×100',ibPts('dg',v=>100*v),'#b08900',1.2,[4,3],{pointRadius:3,pointHoverRadius:5,pointStyle:'triangle'})];
+  if(R.real&&R.real.total!=null)o.push(ibH(`InteractionBench ref · real conversations (ceiling): ${R.real.total.toFixed(1)}`,R.real.total,'#2e9e5b'));
+  if(R.mismatch&&R.mismatch.total!=null)o.push(ibH(`InteractionBench ref · wrong partner, no interaction (floor): ${R.mismatch.total.toFixed(1)}`,R.mismatch.total,'#888',[6,4]));
+  if(R.shift&&R.shift.total!=null)o.push(ibH(`InteractionBench ref · right partner, 150 s out of sync: ${R.shift.total.toFixed(1)}`,R.shift.total,'#888',[2,3]));return o};
+sets.c_ibk=()=>{const R=(IB().ref||{}).real||{},q=(k,lab,c,st)=>R[k]?ds(LVS()+lab,ibPts(k,v=>v/R[k]).map(p=>Object.assign(p,{raw:p.r[IBC(k)],real:R[k],k})),c,1.8,[],{pointRadius:4,pointHoverRadius:6,pointStyle:st||'circle'}):null;
+  return [q('sw','speaker switches / min ÷ real',css('--one')),q('lat','median response gap ÷ real',css('--chA'),'rectRot'),q('resp','judged responsive turn changes ÷ real','#8a5cd0','triangle'),
+    ibH('InteractionBench ref · real conversations = 1.0',1,'#2e9e5b')].filter(Boolean)};
+sets.c_ibf=()=>{const R=(IB().ref||{}).real||{},o=[ds(LVS()+'Faff score (0-100)',ibPts('faff'),css('--one'),2.4,[],{pointRadius:4.5,pointHoverRadius:7}),
+  ds(LVS()+'judged waffle 0-3 ×25',ibPts('waf',v=>25*v),'#8a5cd0',1.4,[4,3],{pointRadius:3,pointHoverRadius:5,pointStyle:'rectRot'})];
+  if(R.faff!=null)o.push(ibH(`InteractionBench ref · real conversations, faff score: ${R.faff.toFixed(1)}`,R.faff,'#2e9e5b'));
+  if(R.waf!=null)o.push(ibH(`InteractionBench ref · real conversations, waffle ×25: ${(25*R.waf).toFixed(1)}`,25*R.waf,'#2e9e5b',[4,3]));return o};
+Object.assign(Y,{c_ibf:{min:0,max:100,title:{display:true,text:'faff'}}});
+Object.assign(Y,{c_ib:{min:0,max:100,title:{display:true,text:'score (0-100)'}},c_ibk:{min:0,title:{display:true,text:'ratio to real'}}});
+Object.assign(TIP,{c_ib:t=>{const p=t.raw||{},r=p.r;if(!r)return `${(+t.parsed.y).toFixed(1)}`;const c=IBC;return `${(+t.parsed.y).toFixed(1)} · step ${p.s}`+(t.datasetIndex===0&&r[c('lo')]!=null?` (90% CI ${r[c('lo')]}–${r[c('hi')]})`:'')+(r[c('clips')]?' · voice-clip-only prompt':'')},
+  c_ibk:t=>{const p=t.raw||{};if(p.raw==null)return `${(+t.parsed.y).toFixed(2)}`;const u=p.k==='lat'?' s':p.k==='resp'?'':' /min';return `${(+t.parsed.y).toFixed(2)}× real · ${(+p.raw).toFixed(2)}${u} vs real ${(+p.real).toFixed(2)}${u} · step ${p.s}`}});
+function ibfTile(){const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};const P=IB().pts||[],c=IBC,R=(IB().ref||{}).real||{};let g=null;for(let i=P.length-1;i>=0;i--)if(P[i][c('faff')]!=null){g=P[i];break}
+  const f=(v,n)=>v==null?'–':(+v).toFixed(n);set('sm_ibf',g?f(g[c('faff')],1):'–');
+  set('sm_ibfd',g?`step ${g[0]}: waffle ${f(g[c('waf')],2)} (real ${f(R.waf,2)}) · new content words ${f(g[c('info')],0)}/min (real ${f(R.info,0)}) · fillers ${f(g[c('fill')],1)}/min (real ${f(R.fill,1)})`:'no result yet')}
+function ibTile(){ibfTile();const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};const P=IB().pts||[],c=IBC,R=IB().ref||{};const g=P.length?P[P.length-1]:null;
+  set('sm_ib',g&&g[c('total')]!=null?(+g[c('total')]).toFixed(1):'–');
+  const f=(v,n)=>v==null?'–':(+v).toFixed(n==null?2:n);
+  set('sm_ibd',(g?`step ${g[0]}: turn dynamics ${f(g[c('td')])}, responsiveness ${f(g[c('rs')])}, dead air / degeneration ${f(g[c('dg')])}`:'no result yet')+(R.real?` · real conversations ${f(R.real.total,1)}, wrong partner ${f((R.mismatch||{}).total,1)}`:''))}
+/* ==== end InteractionBench section ==== */
+/* ==== MathBench section (see the HTML comment above #sec_mb) ==== */
+const MB=()=>S().mb||{cols:[],pts:[],ref:{}},MBC=k=>(MB().cols||[]).indexOf(k);
+const mbPts=k=>(MB().pts||[]).filter(r=>r[MBC(k)]!=null).map(r=>({x:gx(r[0]),y:r[MBC(k)],lo:r[MBC(k+'_lo')],hi:r[MBC(k+'_hi')],s:r[0]}));
+const mbRef=(w,k)=>{const R=(MB().ref||{})[w],i=MBC(k)-2;return R&&R.v&&i>=0&&R.v[i]!=null?R.v[i]:null};
+sets.c_mb=()=>{const o=[ds(LVS()+'GSM8K · greedy',mbPts('g_gsm'),css('--one'),2.4,[],{pointRadius:4.5,pointHoverRadius:6}),
+  ds(LVS()+'MATH-500 · greedy',mbPts('g_math'),css('--chA'),2.4,[],{pointRadius:4.5,pointHoverRadius:6,pointStyle:'rectRot'}),
+  ds(LVS()+'GSM8K · T1.0 top-k 60',mbPts('s_gsm'),css('--one')+'80',1.2,[],{pointRadius:3,pointHoverRadius:5}),
+  ds(LVS()+'MATH-500 · T1.0 top-k 60',mbPts('s_math'),css('--chA')+'80',1.2,[],{pointRadius:3,pointHoverRadius:5,pointStyle:'rectRot'})];
+  for(const [w,lab,dash] of [['base','base Qwen3-32B',[2,3]],['init','stage-3 init',[10,4]]])for(const [k,n,c] of [['g_gsm','GSM8K','--one'],['g_math','MATH-500','--chA']]){const v=mbRef(w,k);
+    if(v!=null)o.push(ds(`MathBench ref · ${lab} · ${n} greedy ${v.toFixed(1)}%`,[{x:0,y:v},{x:XMAX(),y:v}],css(c),1.3,dash,{pointRadius:0,pointHoverRadius:0}))}
+  return o};
+Object.assign(Y,{c_mb:{min:0,title:{display:true,text:'accuracy (%)'}}});
+Object.assign(TIP,{c_mb:t=>{const p=t.raw||{};return `${(+t.parsed.y).toFixed(1)}%`+(p.lo!=null?` [95% CI ${p.lo}–${p.hi}]`:'')+(p.s!=null?` · step ${p.s}`:'')}});
+function mbTile(){const set=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};const P=MB().pts||[],c=MBC,f=v=>v==null?'–':(+v).toFixed(1)+'%';
+  let g=null;for(let i=P.length-1;i>=0;i--)if(P[i][c('g_gsm')]!=null||P[i][c('g_math')]!=null){g=P[i];break}
+  const rf=w=>mbRef(w,'g_gsm')!=null||mbRef(w,'g_math')!=null?`${f(mbRef(w,'g_gsm'))} / ${f(mbRef(w,'g_math'))}`:null;
+  set('sm_mb',g?`${f(g[c('g_gsm')])} / ${f(g[c('g_math')])}`:'–');
+  set('sm_mbd',(g?`step ${g[0]} greedy`:'no result yet')+(rf('init')?` · init ${rf('init')}`:'')+(rf('base')?` · base Qwen ${rf('base')}`:''))}
+/* ==== end MathBench section ==== */
+for(const k of Object.keys(sets))rngUI(k);
+render();
+document.getElementById('more').addEventListener('toggle',()=>{for(const k in ch){ch[k].resize();fit()}});
+function gShow(){const p=(id,on)=>{const e=document.getElementById(id);if(e)e.setAttribute('aria-pressed',String(on))};p('x-ep',allOf(k=>MD(k).xm==='ep'));p('x-st',allOf(k=>MD(k).xm==='st'));p('fit',allOf(k=>MD(k).fit));const g=document.getElementById('gsc');if(g)g.hidden=!Object.keys(GS).length}
+for(const [b,m] of [['x-ep','ep'],['x-st','st']])document.getElementById(b).onclick=()=>{for(const k of allK())MD(k).xm=m;saveM();for(const k in ch)zReset(ch[k]);render()};
+document.getElementById('fit').onclick=()=>{const v=!allOf(k=>MD(k).fit);for(const k of allK())MD(k).fit=v;saveM();fit()};
+document.getElementById('zr').onclick=()=>{for(const k in ch)zReset(ch[k]);fit()};
+document.getElementById('rc').onclick=()=>{HID={};saveH();for(const x of Object.keys(GS))delete GS[x];saveGS();for(const k in ch)zReset(ch[k]);render()};
+document.getElementById('gsc').onclick=()=>{for(const x of Object.keys(GS))delete GS[x];saveGS();render()};
+gShow();
+async function poll(){try{const r=await fetch('s3live.json?t='+Date.now(),{cache:'no-store'});if(r.ok){D.s3=await r.json();D.live=true}
+  const v=await fetch('ver_s3.txt?t='+Date.now(),{cache:'no-store'});if(v.ok){const vv=(await v.text()).trim();if(D.ver&&vv&&vv!==D.ver){location.reload();return}}}catch(e){}render()}
+if(location.protocol.startsWith('http')&&!/claude|anthropic/.test(location.hostname)){setInterval(poll,60000);poll()}
+</script>

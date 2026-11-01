@@ -1,0 +1,79 @@
+# Bimodal DMD: student, frozen teacher and critic all from the 1k-step local-Mimi audio fine-tune of
+# aloe-bimodal-studio step 10606 EMA (saved at step 850). learn_dmd_bimodal.py.
+root_dir = '/mnt/paramfs/vansh/aloe-conversational/conv-4.3k-5mins-muon-neutrino-256x480-v1'
+clipnames_root = '/mnt/paramfs/vansh/aloe-conversational/csvs'
+train_csv = 'aloe-studio-no-blackbands-high-quality'
+pose_latents = 'pose_latents_electron_v2.safetensors'
+mimi_codes = 'mimi_local.safetensors'
+bad_audio = 1
+output_dir = '/mnt/paramfs/param/outputs/bimodal-dmd'
+seed = 42
+
+# Per rank per outer step: critic_updates x critic_rows pool rows, then one student update over student_kinds
+# (one row each). 40 ranks: critic and student effective batch 160.
+critic_updates = 4
+critic_rows = 4
+student_kinds = ['stab', 'stab', 'res', 'res']
+pool_micro_batch = 16
+critic_warmup_steps = 150
+max_outer_steps = 9550
+
+# Student schedule: 2 Euler steps in each of the 4 stabilising bands, 2 resolving steps from t_start.
+band_steps = [2, 2, 2, 2]
+resolve_steps = 2
+history_t = 0.2
+t_start = 0.4
+
+# Scoring / critic times: stabilising bands of (0.2, 1] within [stab_t_min, stab_t_max]; resolving t ~ U.
+stab_t_min = 0.22
+stab_t_max = 0.98
+res_t_min = 0.02
+res_t_max = 0.4
+fm_weight_stab = 0.8
+fm_weight_res = 0.2
+normalizer_epsilon = 1e-8
+
+gradient_clipping = 2.0
+lr_warmup_steps = 100
+critic_lr_warmup_steps = 200
+ema_decay_steps = 200
+
+# Benchmarked on 40 H100s: one static padded pass layout ([4 stabilising | resolving | 2 commits]) with whole blocks
+# compiled at static shapes runs 18.5 s per outer step after ~5 min of compilation, as fast as per-pass trimmed
+# layouts (18.5 s, ~21 min / 904 graphs) and faster than dynamic-shape partial compilation (23.7 s).
+rollout = 'uniform'
+pool_rollout = 'fused'  # no-grad batch-16 pool: trimmed per-pass layouts (compute-bound, padding costs ~2 s/step)
+compile_mode = 'block'
+compile_blocks = true
+checkpoint = 'block'
+student_micro_rows = 1
+critic_combined = true  # stabilising + resolving critic FM in one pass (shared sink): -0.3 s/step
+num_dataloader_workers = 8
+prefetch_factor = 4
+save_every_n_steps = 200
+
+[model]
+checkpoint_path = '/mnt/paramfs/param/outputs/mimi-local-ft/aloe-bimodal-studio-mimi-local-audio-1k/run_1/step850/model.safetensors'
+
+[model.audio]
+model_name = 'kyutai/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+
+[optimizer]
+lr = 2e-6
+betas = [0.9, 0.99]
+weight_decay = 1e-4
+eps = 1e-8
+
+[wandb]
+enabled = true
+project = 'param-distillation'
+run_name = 'aloe-studio-bimodal-dmd-ft850-10step-b160'

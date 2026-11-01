@@ -1,0 +1,120 @@
+--- /data/home/amartyavarma/ppm/aloe-pose-rosie/code/model_ppm.py	2026-10-27 09:06:02.591452844 +0000
++++ code/model_ppm.py	2026-10-27 12:18:25.743999222 +0000
+@@ -78,6 +78,35 @@
+ DEPTH, CBS = SP.DEPTH, SP.CBS
+ 
+ 
++def s2p_mode(v):
++    """pose-s2p (10-27, user: "speech now conditions pose also"): PPM_S2P / cfg value -> None (off: no module, no key, today's maths), 'full'
++    (all 32 speech codebooks) or 'cb0' (speech cb0 only)."""
++    v = str(v if v is not None else "0").strip().lower()
++    if v in ("", "0", "off", "none", "false"):
++        return None
++    if v in ("1", "full", "on", "true"):
++        return "full"
++    assert v == "cb0", ("PPM_S2P must be 0 | 1 | full | cb0", v)
++    return "cb0"
++
++
++class S2PEmb(nn.Module):
++    """pose-s2p: the pose tower's NEW input term at T = sum over the speech codebooks used of a per-code row (= a linear map of the one-hot
++    speech codes of the SAME position T, i.e. channel B's Mimi codes of the very frame whose pose cb0 is predicted at T). Weight ZERO at init
++    (the table IS the term's output projection): the tower input is bit-identical to today's at step 0 and every used row gets a non-zero
++    gradient from step 0. 'full' = all 32 codebooks (32 x 2048 rows, global ids = code + 2048 c), 'cb0' = cb0 only (2048 rows). -1 = no
++    speech codes at T (system block outside the voice clip, conversation frames 0, 1, text rows) -> 0 (H2.code_feedback)."""
++
++    def __init__(self, H, mode):
++        super().__init__()
++        assert mode in ("full", "cb0"), mode
++        self.mode = mode
++        self.weight = nn.Parameter(torch.empty((DEPTH if mode == "full" else 1) * CBS, H))
++
++    def forward(self, depth):
++        return H2.code_feedback(depth if self.mode == "full" else depth[..., :1], self.weight)
++
++
+ # ------------------------------------------------------------------------------------------------ configs
+ def _sdpa(c, layers=None):
+     c._attn_implementation = "sdpa"           # construction only: every PPM attention runs the explicit FA3 varlen path below
+@@ -256,9 +285,10 @@
+         self.norm = Q3.Qwen3RMSNorm(Hv, eps=cfg.rms_norm_eps)
+         self.cb0_head = nn.Linear(Hv, CBS, bias=False)
+ 
+-    def forward(self, ids, depth, hn, pid, ctx, rot, lab, wpos, info=None):
++    def forward(self, ids, depth, hn, pid, ctx, rot, lab, wpos, info=None, sdep=None):
+         """ids [M] lane, depth [M, 32] codes of frame T - 3 at T, hn [M, Ht] backbone final-normed states at the same positions, lab [M]
+-        cb0 labels (-100 none), wpos [M] fp32 -> (hv [M, Hv] final-normed, sum wpos CE, CE sum (detached), n labels, top-1 hits)."""
++        cb0 labels (-100 none), wpos [M] fp32 -> (hv [M, Hv] final-normed, sum wpos CE, CE sum (detached), n labels, top-1 hits).
++        pose-s2p: sdep [M, 32] = channel B's SPEECH codes at the same positions (NOT shifted; the pose tower only, when it has s_emb)."""
+         prof = TPROF["on"] and torch.is_grad_enabled()
+         if prof:
+             ef0 = _ev()
+@@ -268,7 +298,13 @@
+         if info is not None:
+             info.update(tower_rms_text=float(e.float().pow(2).mean().sqrt()), tower_rms_codes=float(ce_.float().pow(2).mean().sqrt()),
+                         tower_rms_cond=float(cnd.float().pow(2).mean().sqrt()), backbone_rms_hn=float(hn.float().pow(2).mean().sqrt()))
+-        e = (e + ce_.to(e.dtype) + cnd.to(e.dtype))[None]
++        e = e + ce_.to(e.dtype) + cnd.to(e.dtype)
++        if sdep is not None and hasattr(self, "s_emb"):           # pose-s2p (flag off: no s_emb, this line never runs)
++            se = self.s_emb(sdep)
++            if info is not None:
++                info.update(tower_rms_s2p=float(se.float().pow(2).mean().sqrt()))
++            e = e + se.to(e.dtype)
++        e = e[None]
+         if prof:
+             rec = {"name": getattr(self, "_pname", "tower")}
+             e.register_hook(lambda g, rec=rec: rec.__setitem__("b1", _ev()))        # tower backward finished (grad of its input)
+@@ -421,7 +457,7 @@
+ 
+ 
+ class PPM(nn.Module):
+-    def __init__(self, c32, c4, c06, proj_r=2048, tower_vocab=TOWER_VOCAB, pose_head=False, decp_bb=False):
++    def __init__(self, c32, c4, c06, proj_r=2048, tower_vocab=TOWER_VOCAB, pose_head=False, decp_bb=False, s2p=None):
+         super().__init__()
+         self.inp = Inp(c32.vocab_size, c32.hidden_size)
+         self.layers = nn.ModuleList([Block(c32, i) for i in range(c32.num_hidden_layers)])
+@@ -438,6 +474,9 @@
+         if decp_bb:                                                # D33 (flag off: no such module, no key, no optimizer group)
+             self.decp_bb = nn.Linear(c32.hidden_size, c06.hidden_size, bias=True)
+             self.decp_bb_alpha = 1.0                               # the link's scale (the trainer sets it every step: PPM_DECP_BB_ALPHA / fade)
++        self.s2p = s2p_mode(s2p)
++        if self.s2p:                                               # pose-s2p (flag off: no such module, no key; tower_p group, zero init)
++            self.tower_p.s_emb = S2PEmb(c4.hidden_size, self.s2p)
+ 
+     def forward(self, b, rot, rot_t, want_logits=False, info=None):
+         """one micro (data_ppm common format, on the device, + trainer weights wt / wn / cb0_w / pcb0_w) -> dict of terms. The decoders
+@@ -463,7 +502,8 @@
+             hv, l0, s0, n0, k0 = self.tower_s(b["ids"][1], b["depth"][1], hn, b["pid"], ctx, rot_t, b["cb0"], b["cb0_w"], info)
+             out.update(hv_s=hv, cb0=l0, cb0_sum=s0, cb0_n=n0, cb0_hit=k0)
+         if kind == "pose":
+-            hv, l0, s0, n0, k0 = self.tower_p(b["ids"][1], b["pdepth"], hn, b["pid"], ctx, rot_t, b["pcb0"], b["pcb0_w"])
++            hv, l0, s0, n0, k0 = self.tower_p(b["ids"][1], b["pdepth"], hn, b["pid"], ctx, rot_t, b["pcb0"], b["pcb0_w"],
++                                              sdep=b["depth"][1] if self.s2p else None)   # pose-s2p: B's speech codes at T (teacher-forced)
+             out.update(hv_p=hv, pcb0=l0, pcb0_sum=s0, pcb0_n=n0, pcb0_hit=k0)
+             if hasattr(self, "pose_head") and self.pose_head_on:   # D32: same (hn[T - 1], pcb0[T]) pairs and weights as the pose tower (D36: off = skipped)
+                 l1, s1, n1, k1 = pose_head_ce(self.pose_head, posehead_in(hn, self.pose_head_bbgrad), ctx, b["pcb0"], b["pcb0_w"])
+@@ -543,6 +583,8 @@
+         return "zeros", 0.0
+     if n in ("head.proj.G", "head.proj.V"):
+         return "normal", 1.0 / shape[1] ** 0.5
++    if n == "tower_p.s_emb.weight":                          # pose-s2p: zero init (step 0 = today's model exactly)
++        return "zeros", 0.0
+     for t in ("tower_s.", "tower_p."):
+         if n.startswith(t):
+             k = n[len(t):]
+@@ -663,13 +705,13 @@
+ 
+ # ------------------------------------------------------------------------------------------------ build (FSDP2)
+ def build(c32, c4, c06, dev, log=print, partial=False, proj_r=2048, tower_vocab=TOWER_VOCAB, init=True, dec_ac=False, dec_mode="replicate",
+-          pose_head=False, decp_bb=False):
++          pose_head=False, decp_bb=False, s2p=None):
+     from torch.distributed.fsdp import MixedPrecisionPolicy, fully_shard
+     from torch.distributed.algorithms._checkpoint.checkpoint_wrapper import CheckpointImpl, checkpoint_wrapper
+     mp = MixedPrecisionPolicy(param_dtype=torch.bfloat16, reduce_dtype=torch.float32)
+     mpn = MixedPrecisionPolicy(param_dtype=torch.bfloat16, reduce_dtype=torch.float32, cast_forward_inputs=False)
+     with torch.device("meta"):
+-        model = PPM(c32, c4, c06, proj_r, tower_vocab, pose_head=pose_head, decp_bb=decp_bb)
++        model = PPM(c32, c4, c06, proj_r, tower_vocab, pose_head=pose_head, decp_bb=decp_bb, s2p=s2p)
+     assert dec_mode in ("replicate", "fsdp"), dec_mode
+     rep = dec_mode == "replicate"                                  # T14: decoders REPLICATED per GPU (default): no FSDP, one grad all-reduce per update
+     for dec in (model.dec_s, model.dec_p) if (dec_ac and not rep) else ():   # decoder activation checkpointing off by default (chunks are small)

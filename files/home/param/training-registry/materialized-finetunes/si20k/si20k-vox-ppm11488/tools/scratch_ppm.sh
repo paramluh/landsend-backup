@@ -1,0 +1,2 @@
+#!/bin/bash
+H=$(hostname -s); echo "$H free $(df -BG --output=avail /scratch | tail -1 | tr -dc 0-9)G; 11488 exports: $(ls /scratch/amartyavarma/si20k-vox-ppm11488/exports 2>/dev/null | tr '\n' ' ') $(du -s --block-size=1G /scratch/amartyavarma/si20k-vox-ppm11488/exports 2>/dev/null | cut -f1)G; COMPLETE: $(for d in /scratch/amartyavarma/si20k-vox-ppm11488/exports/export-*; do [ -f $d/COMPLETE ] && echo -n "$(basename $d) "; done); ranks198: $(ls /scratch/amartyavarma/si20k-vox-ppm11488/exports/export-198 2>/dev/null | wc -l)"

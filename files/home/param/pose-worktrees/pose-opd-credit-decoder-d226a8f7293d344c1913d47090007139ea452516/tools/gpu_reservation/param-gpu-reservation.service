@@ -1,0 +1,18 @@
+[Unit]
+Description=Param GPU reservation on landsend-1 through landsend-4
+After=nvidia-persistenced.service nvidia-fabricmanager.service
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/python3 -u /usr/local/lib/param-gpu-reservation/guard.py --interval 3 --grace 3
+Restart=always
+RestartSec=2
+StateDirectory=param-gpu-reservation
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/param-gpu-reservation
+
+[Install]
+WantedBy=multi-user.target

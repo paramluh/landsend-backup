@@ -1,0 +1,27 @@
+samples_dir: ../validation-clean-ds/samples
+output_dir: ../samples/universal-h6-squeaky-step-44675
+checkpoint_path: ../pose-checkpoints/universal-low-resolution/h6-squeaky/run_3/step44675/model_ema.safetensors
+type: universal_wide
+
+num_history: 6
+num_present: 5
+substeps: 10
+num_steps: 50
+max_latent_frames: null
+seed: 123
+audio_guidance_scale: 1.0
+audio_guidance_steps: 0
+
+max_samples: 16
+sample_seed: null
+
+audio:
+  model_name: kyutai/mimi
+  in_dim: 512
+  num_codebooks: 8
+  num_layers: 4
+  cross_attention_codes: 4
+  drop: 2
+  injection_offset: 4
+  injection_interval: 3
+  max_blocks: 8

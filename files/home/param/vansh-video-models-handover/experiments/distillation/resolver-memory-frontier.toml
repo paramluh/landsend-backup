@@ -1,0 +1,22 @@
+# Same global batch160 and objective throughout. Proceed only after explicit OOM.
+[[cases]]
+name = 'no-checkpoint'
+[cases.set]
+checkpoint = 'none'
+
+[[cases]]
+name = 'critic-checkpoint'
+[cases.set]
+checkpoint = 'none'
+'checkpoint_by_role.critic.mode' = 'block'
+
+[[cases]]
+name = 'all-checkpoint'
+[cases.set]
+checkpoint = 'block'
+
+[[cases]]
+name = 'all-checkpoint-poolmicro1'
+[cases.set]
+checkpoint = 'block'
+pool_micro_batch = 1

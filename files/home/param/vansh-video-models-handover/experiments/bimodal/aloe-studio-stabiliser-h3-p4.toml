@@ -1,0 +1,72 @@
+root_dir = '/mnt/paramfs/vansh/aloe-conversational/conv-4.3k-5mins-muon-neutrino-256x480-v1'
+clipnames_root = '/mnt/paramfs/vansh/aloe-conversational/csvs'
+train_csv = 'aloe-studio-no-blackbands-high-quality'
+pose_latents = 'pose_latents_electron.safetensors'
+mimi_codes = 'mimi.safetensors'
+eval_csvs.seen = 'aloe-studio-seen-eval'
+eval_csvs.unseen = 'aloe-studio-unseen-eval'
+
+eval_every_n_steps = 500
+eval_step_zero = true
+num_dataloader_workers = 8
+eval_num_dataloader_workers = 4
+save_every_n_steps = 6373
+save_optimizer_every_n_steps = 6373
+output_dir = '/mnt/paramfs/vansh/hands/pose-checkpoints/universal-experiments/aloe-bimodel'
+
+num_history = 3
+num_present = 4
+history_dropout = [0.0, 0.0, 0.0]
+sink_pose = true
+bad_audio = 1
+history_t = 0.2
+history_raise_p = 0.25
+history_t_max = 0.4
+present_t_min = 0.2
+
+epochs = 3
+micro_batch_size_per_gpu = 6
+eval_micro_batch_size_per_gpu = 2
+gradient_accumulation_steps = 5
+gradient_clipping = 1.0
+warmup_steps = 1000
+lr = 5e-5
+min_lr = 8e-6
+ema_decay = 0.9995
+
+activation_checkpointing = true
+activation_checkpoint_skip = 30
+flex_attention = true
+compile_blocks = true
+
+[model]
+type = 'universal_wide_stabiliser'
+arch = 'wan_5b_wide'
+checkpoint_path = '/mnt/paramfs/vansh/richmond-7/pose-checkpoints/universal-low-resolution/h6-squeaky/run_3/step44675/model_ema.safetensors'
+dtype = 'bfloat16'
+transformer_dtype = 'bfloat16'
+debug_shapes = true
+
+[model.audio]
+model_name = 'kyutai/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+initialization = 'zero'
+audio_dropout = 0.0
+
+[wandb]
+project = 'universal-2-models'
+run_name = 'aloe-studio-stabiliser-h3-p4'
+
+[optimizer]
+type = 'stableadamw'
+betas = [0.9, 0.99]
+weight_decay = 1e-3
+eps = 1e-8

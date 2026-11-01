@@ -1,0 +1,49 @@
+<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><title>Live pose preview</title>
+<style>body{margin:0;background:#131619;color:#dce4ec;font:13px system-ui;display:grid;place-items:center;height:100vh;overflow:hidden}canvas{height:calc(100vh - 42px);max-width:100%;object-fit:contain}footer{height:38px;text-align:center}small{color:#a4b4c3}</style>
+<canvas id="pose" width="256" height="480"></canvas><footer><b>Live pose preview</b><br><small id="status">Waiting for generated pose…</small></footer>
+<script>
+const canvas=document.getElementById('pose'),ctx=canvas.getContext('2d'),status=document.getElementById('status');
+const sid=new URLSearchParams(location.search).get('live')||new URLSearchParams(location.search).get('session')||'';
+let after=-1,frames=[],edges=null,anchor=null,delay=410,first=false,painted=0,dropped=0,bounds=null;
+const now=()=>performance.timeOrigin+performance.now();
+function send(type,data={}){parent.postMessage({type,session:sid,...data},'*')}
+window.addEventListener('message',e=>{const d=e.data||{};if(e.source!==parent||d.type!=='playout'||d.session!==sid)return;anchor=+d.t0_abs_ms;delay=+d.d_ms||410;send('playout-ack')});
+function viewport(f){
+ const pts=f.pos.filter((p,i)=>p.every(Number.isFinite)&&f.conf[i]>=.12);
+ if(!pts.length)return p=>[p[1]*256,p[0]*480];
+ const xs=pts.map(p=>p[1]*256),ys=pts.map(p=>p[0]*480);
+ const b=[Math.min(...xs),Math.min(...ys),Math.max(...xs),Math.max(...ys)];
+ if(!bounds)bounds=b;else for(let i=0;i<4;i++){const edge=i<2?Math.min(bounds[i],b[i]):Math.max(bounds[i],b[i]);bounds[i]+=(edge-bounds[i])*.4}
+ const w=Math.max(80,bounds[2]-bounds[0]),h=Math.max(120,bounds[3]-bounds[1]),scale=Math.min(216/w,430/h),cx=(bounds[0]+bounds[2])/2,cy=(bounds[1]+bounds[3])/2;
+ return p=>[128+(p[1]*256-cx)*scale,240+(p[0]*480-cy)*scale];
+}
+function draw(){
+ if(frames.length){
+  const f=frames[0],target=anchor===null?now():anchor+delay+f.frame*40;
+  if(now()>=target){
+   frames.shift();const xy=viewport(f);ctx.fillStyle='#181818';ctx.fillRect(0,0,256,480);
+   for(const[g,es]of Object.entries(edges)){
+    const color={face:[200,200,200],body:[80,170,255],lh:[90,220,120],rh:[255,140,80]}[g];
+    for(const[i,j]of es){const c=Math.min(f.conf[i],f.conf[j]);if(c<.12)continue;const a=.14+.86*c,p=xy(f.pos[i]),q=xy(f.pos[j]);ctx.strokeStyle=`rgba(${color.join(',')},${a})`;ctx.lineWidth=g==='body'?3:1.3;ctx.beginPath();ctx.moveTo(...p);ctx.lineTo(...q);ctx.stroke()}
+    for(const i of new Set(es.flat())){if(f.conf[i]<.12)continue;const p=xy(f.pos[i]);ctx.fillStyle=`rgba(${color.join(',')},${.2+.8*f.conf[i]})`;ctx.beginPath();ctx.arc(...p,g==='body'?2.5:1.4,0,Math.PI*2);ctx.fill()}
+   }
+   painted++;send('avatar-ready',{painted:true});send('avatar-clock',{f_feed:f.frame/2,at_ms:now()});send('avatar-playing');
+  }
+ }
+ requestAnimationFrame(draw)
+}
+async function poll(){
+ try{
+  const r=await fetch('api/frame?live='+encodeURIComponent(sid)+'&after='+after);const j=await r.json();
+  if(j.frames?.length){
+   edges=j.edges;if(after>=0)dropped+=Math.max(0,j.frames[0].frame-after-1);after=j.sequence;
+   if(!first){first=true;send('avatar-first-frame',{j:j.frames[0].frame,ready_abs_ms:now()})}
+   frames.push(...j.frames);if(frames.length>32){dropped+=frames.length-32;frames=frames.slice(-32)}
+   status.textContent=j.ended?'Call finished · decoded pose':'Decoded pose · confidence filtered';
+  }else if(!first)status.textContent=j.message||'Waiting for generated pose…';
+ }catch(e){status.textContent='Connecting to pose preview…'}
+ setTimeout(poll,120)
+}
+setInterval(()=>send('playout-status',{d_ms:delay,painted,lost:dropped}),1000);
+draw();poll();
+</script>

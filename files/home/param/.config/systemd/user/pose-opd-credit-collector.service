@@ -1,0 +1,16 @@
+[Unit]
+Description=Read-only rank-zero pose OPD production telemetry mirror
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/home/param/websites/pose-opd-credit-dashboard
+ExecStart=/usr/bin/python3 /home/param/websites/pose-opd-credit-dashboard/collect_live.py --source-run-dir /home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2 --mirror /home/param/outputs/pose-opd-credit-live-attempt2
+Restart=always
+RestartSec=5
+Nice=10
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

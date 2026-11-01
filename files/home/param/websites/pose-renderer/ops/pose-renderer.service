@@ -1,0 +1,13 @@
+[Unit]
+Description=Pose playground avatar render queue on GPU6
+After=network.target
+[Service]
+Type=simple
+WorkingDirectory=/home/param/websites/pose-renderer
+ExecStart=/home/param/websites/pose-renderer/run_renderer.sh
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/home/param/runs/pose-runs/pose-sites-20261030/render/renderer.log
+StandardError=append:/home/param/runs/pose-runs/pose-sites-20261030/render/renderer.log
+[Install]
+WantedBy=default.target

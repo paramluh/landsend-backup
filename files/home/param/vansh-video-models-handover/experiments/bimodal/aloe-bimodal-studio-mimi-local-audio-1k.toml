@@ -1,0 +1,80 @@
+root_dir = '/mnt/paramfs/vansh/aloe-conversational/conv-4.3k-5mins-muon-neutrino-256x480-v1'
+clipnames_root = '/mnt/paramfs/vansh/aloe-conversational/csvs'
+train_csv = 'aloe-studio-no-blackbands-high-quality'
+node_sharded = false
+pose_latents = 'pose_latents_electron_v2.safetensors'
+mimi_codes = 'mimi_local.safetensors'
+eval_csvs.seen = 'aloe-studio-seen-eval'
+eval_csvs.unseen = 'aloe-studio-unseen-eval'
+
+eval_every_n_steps = 100
+eval_step_zero = true
+num_dataloader_workers = 8
+eval_num_dataloader_workers = 4
+save_every_n_steps = 200
+output_dir = '/mnt/paramfs/param/outputs/mimi-local-ft/aloe-bimodal-studio-mimi-local-audio-1k'
+
+bad_audio = 1
+
+epochs = 1
+windows_per_epoch = 1440000
+micro_batch_size_per_gpu = 6
+eval_micro_batch_size_per_gpu = 2
+gradient_accumulation_steps = 6
+gradient_clipping = 1.0
+warmup_steps = 40
+lr = 5e-5
+min_lr = 1e-5
+
+trainable = ['audio_encoder.', 'audio_adapter.']
+
+activation_checkpointing = false
+activation_checkpoint_skip = 30
+flex_attention = true
+compile_blocks = true
+
+[stabilising]
+num_history = 3
+num_present = 4
+history_dropout = [0.1, 0.1, 0.0]
+history_t = 0.2
+history_raise_p = 0.25
+history_t_max = 0.4
+
+[resolving]
+num_history = 2
+num_present = 1
+present_t_bands = [0.2, 0.4]
+present_t_weights = [1.0, 2.0]
+
+[model]
+type = 'universal_wide_bimodal'
+arch = 'wan_5b_wide'
+checkpoint_path = '/mnt/paramfs/param/outputs/bimodal-inference/checkpoints/aloe-bimodal-studio/run_1/step10606/model_ema.safetensors'
+dtype = 'bfloat16'
+transformer_dtype = 'bfloat16'
+debug_shapes = true
+
+[model.audio]
+model_name = 'kyutai/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+initialization = 'zero'
+audio_dropout = 0.0
+
+[wandb]
+project = 'param-distillation'
+run_name = 'aloe-bimodal-studio-mimi-local-audio-1k'
+
+[optimizer]
+type = 'stableadamw'
+betas = [0.9, 0.99]
+weight_decay = 1e-3
+eps = 1e-8

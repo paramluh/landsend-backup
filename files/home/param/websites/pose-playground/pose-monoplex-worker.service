@@ -1,0 +1,14 @@
+[Unit]
+Description=Pose monoplex raw bandfix export-355 worker
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/param/websites/pose-playground
+ExecStart=/bin/bash /home/param/websites/pose-playground/serve_monoplex.sh
+Restart=on-failure
+RestartSec=10
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target

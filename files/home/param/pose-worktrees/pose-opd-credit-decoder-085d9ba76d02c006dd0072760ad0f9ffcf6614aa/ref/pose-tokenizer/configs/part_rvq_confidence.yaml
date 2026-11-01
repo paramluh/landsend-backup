@@ -1,0 +1,119 @@
+# Body-part RVQ tokenizer WITH confidence baked into the tokens.
+#
+# Same N=13/M=5 body-part decomposition, shared encoder/decoder, shared 2048-code
+# book at 3 residual depths (39 streams), and PRQ per-part loss as configs/part_rvq.yaml,
+# but the feature layout is (y, x, confidence) per joint -> input_features = 165.
+# The decoder predicts the confidence channel too, so the discrete tokens carry
+# detector visibility/quality. Trained with the dedicated confidence script:
+#
+#   CUDA_VISIBLE_DEVICES=0 accelerate launch --num_processes 1 \
+#       train_confidence.py --config configs/part_rvq_confidence.yaml
+#
+# (train_confidence.py always loads data with include_confidence=True.)
+
+# Data (/mnt/somfs is a symlink to the mounted /mnt/filesystem-b6).
+data_dir: /mnt/somfs/pose_cond/pose_cond_npy/
+manifest: /mnt/somfs/pose_cond/pose_cond_npy_manifest.txt
+dims_csv: /mnt/somfs/pose_cond/dims_upperbody_ideal_fresh.csv
+test_manifest: ""
+test_dir: "test_set"
+n_test_clips: 8
+test_max_seconds: 10.0
+num_files: 0
+val_count: 2000
+norm_stats: ""
+
+# Data framing.
+source_fps: 30
+target_fps: 25
+segment_frames: 80
+max_frames: 0
+random_crop_frames: false
+random_segment_offset: true
+inference_chunk_stride: 0
+# Root convention (explicit). True = fixed frame-0 mid-shoulder root, so the root
+# joints carry body translation/drift. False = per-frame mid-shoulder root
+# (translation-invariant, legacy).
+first_frame_root: true
+
+# Model architecture (conv encoder/decoder reused per part; (y,x,conf) per joint).
+model_type: part_rvq
+num_keypoints: 55
+keypoint_dim: 2
+input_features: 165
+first_channel_size: 384
+num_blocks: 3
+downsampling_rates: [1, 2, 2]
+kernel_size: [3, 3, 3]
+num_residual_blocks: 2
+residual_units_per_block: 2
+d_model: 1536
+num_groups: false
+norm: "LN"
+conv_weight_norm: true
+causal: false
+
+# Body-part RVQ quantizer + aggregator.
+part_scheme: n13_m5
+part_n_layers: 3
+part_codebook_size: 1024
+codebook_dim: 8
+# Per-part vs whole-body layer supervision (coarse->fine prefix counts; -1 = all).
+#   layer i is in the per-part loss (term B) iff i < part_loss_layers
+#   layer i is in the whole-body loss (term A) iff i < whole_loss_layers
+# Experiment: L0,L1 supervised by BOTH; L2 (finest) supervised ONLY by the
+# whole-body loss. Keep whole_loss_layers = part_n_layers so no layer goes dead.
+part_loss_layers: 2
+whole_loss_layers: 3
+# Aggregation: "mean" (uniform mean, default) or "cnn" (mean + learned CNN).
+part_aggregation: mean
+part_agg_channels: 256
+part_agg_layers: 2
+part_agg_kernel: 3
+apply_rotation_trick: false
+enable_quantization: true
+normalize_codes: true
+dead_code_threshold: 2.0
+dead_code_ema_decay: 0.99
+
+# Optimizer + schedule.
+epochs: 9999
+max_steps: 200000
+batch_size: 64
+lr: 3.0e-4
+lr_schedule: cosine
+lr_min: 3.0e-5
+warmup_steps: 1000
+weight_decay: 0.01
+
+# Loss weights.
+reconstruction_weight: 1.0
+velocity_weight: 2.0
+part_loss_weight: 1.0
+commitment_weight: 0.1
+codebook_weight: 0.4
+hand_loss_weight: 1.0
+# Confidence channel supervision (predicted alongside xy).
+confidence_loss_weight: 0.25
+confidence_loss_type: "smooth_l1"
+# Confidence-weighting of the coordinate (and per-part) reconstruction loss.
+confidence_weight_mode: "soft"
+confidence_mask_threshold: 0.3
+
+# Runtime.
+num_workers: 10
+log_interval: 10
+
+# Eval / checkpointing.
+val_batch_size: 16
+val_confidence_threshold: 0.5
+validation_interval: 1000
+save_interval: 5000
+save_optimizer_state: true
+render_interval: 0
+test_frame_idx: 0
+output_dir: checkpoints
+
+# Wandb.
+wandb_project: pose-tokenizer
+wandb_run_name: part-rvq-n13m5-confidence-L2wholeonly-1024cb-fixedroot

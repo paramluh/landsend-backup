@@ -1,0 +1,83 @@
+
+wandb:
+  project: pose-llm
+  entity: canopy-labs                     # set to wandb team/user
+  run_name: pose-llm-test-interleaved     # overridable per run with RUN_NAME env var
+
+
+training:
+  lr: 5e-5
+  seed: 47
+  gpu_minibatch_size: 1
+  eval_rows: 10000
+  target_frames: 3000             # per-rank token budget for length-packed batches; set equal to max_sequence_length so every step is the same shape across ranks (no FSDP straggler bubble)
+  max_sequence_length: 3000       # hard cap on post-concat sequence length; longer sequences are truncated
+  keep_checkpoints: 2             # HF Trainer keeps at most this many checkpoint-* dirs; older ones get deleted on each save
+  logging_steps: 1                # how often to flush loss/lr/grad_norm to wandb (HF Trainer default is 500, way too sparse)
+  bf16: true
+  gradient_checkpointing: false   # use fsdp_config.activation_checkpointing instead
+  dataloader_num_workers: 16                # parallel batch prefetch processes
+  dataloader_persistent_workers: true # todo
+  attn_implementation: flash_attention_2   # broadcast to backbone + depth models
+  liger_kernels: true                      # patch Qwen3 backbone + both Llama depth models
+  liger_kernel_config:
+    rope: true
+    rms_norm: true
+    swiglu: true
+    cross_entropy: true
+    fused_linear_cross_entropy: false
+  fsdp: "full_shard auto_wrap"
+  fsdp_config:
+    activation_checkpointing: false
+    transformer_layer_cls_to_wrap:
+      - Qwen3DecoderLayer
+      - LlamaDecoderLayer
+    use_orig_params: true
+
+  # depth loss scalers
+  alpha_audio: 0.3
+  alpha_pose: 0.3
+
+special_tokens:
+  separator: 151936
+  
+  # used in interleaved setting
+  new_word: 151943
+  word_pad: 151944
+
+  audio_tokens_start: 151946 # first audio token
+  audio_tokens_end: 153993 # 2048 zeroth codebook tokens
+
+  lookahead_padding_token: 153995  # used for text/audio cb0/pose cb0 pad slots when backbone.lookahead is an int
+
+  sog_token: 153997 # used just before triple interleaving starts (after pose cb0)
+
+  pose_padding_token: 153999 # used if pose fps != audio fps
+  pose_tokens_start: 154000 # first pose token
+  pose_tokens_end: 155023 # 1024 zeroth codebook tokens
+
+
+backbone:
+  weights_path: Qwen/Qwen3-4B   # if set, load pretrained weights from here; architecture is fixed (see DEFAULT_BACKBONE_ARCH)
+  # InternalCan/qwen-multitask-ckpt-29000
+  hidden_size: 2560
+  use_reference_pose: true
+
+  lookahead: null  # null -> opportunistic shift_left in collator; int K -> K-frame audio/pose pad-shift
+
+
+audio_depth_model:
+  weights_path: null   # if set, load pretrained weights from here; architecture is fixed (see DEFAULT_DEPTH_ARCH)
+  hidden_size: 960   # latent dim for the audio depth llm (override of the checkpoint default)
+  residual_depth: 8
+  codebook_size: 2048
+  training_split: 0.25
+  frame_duration: 0.08  # audio tokenizer at 12.5 fps -- collator anchors on this
+
+
+pose_depth_model:
+  weights_path: null   # if set, load pretrained weights from here; architecture is fixed (see DEFAULT_DEPTH_ARCH)
+  hidden_size: 960   # latent dim for the pose depth llm (override of the checkpoint default)
+  residual_depth: 8
+  codebook_size: 1024
+  training_split: 0.25

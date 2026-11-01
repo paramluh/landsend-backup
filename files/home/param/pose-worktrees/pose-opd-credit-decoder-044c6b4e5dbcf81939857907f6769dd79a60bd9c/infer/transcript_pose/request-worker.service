@@ -1,0 +1,20 @@
+[Unit]
+Description=Serial speech and pose inference request worker
+After=network-online.target
+Wants=network-online.target
+ConditionHost=landsend-1
+
+[Service]
+Type=simple
+User=param
+Group=param
+WorkingDirectory=/home/param/pose-repo
+ExecStart=/home/param/pose-repo/.venv/bin/python -u /home/param/pose-repo/infer/transcript_pose/request_worker.py run --poll-seconds 2
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=45
+KillMode=control-group
+
+[Install]
+WantedBy=multi-user.target

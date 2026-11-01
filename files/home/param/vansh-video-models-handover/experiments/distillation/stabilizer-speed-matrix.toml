@@ -1,0 +1,213 @@
+[[cases]]
+name = 'dense-baseline'
+
+[cases.set]
+critic_rows = 4
+student_kinds = ['stab', 'stab', 'stab', 'stab']
+pool_micro_batch = 16
+student_micro_rows = 1
+checkpoint = 'block'
+
+[[cases]]
+name = 'dense-small'
+
+[cases.set]
+critic_rows = 1
+student_kinds = ['stab']
+pool_micro_batch = 4
+student_micro_rows = 1
+checkpoint = 'block'
+
+[[cases]]
+name = 'lora32-small'
+
+[cases.set]
+critic_rows = 1
+student_kinds = ['stab']
+pool_micro_batch = 4
+student_micro_rows = 1
+checkpoint = 'block'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+
+[[cases]]
+name = 'lora32-no-checkpoint'
+
+[cases.set]
+critic_rows = 1
+student_kinds = ['stab']
+pool_micro_batch = 4
+student_micro_rows = 1
+checkpoint = 'none'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+
+[[cases]]
+name = 'lora32-compact'
+
+[cases.set]
+critic_rows = 1
+student_kinds = ['stab']
+pool_micro_batch = 4
+student_micro_rows = 1
+checkpoint = 'block'
+rollout = 'uniform_stab'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+
+[[cases]]
+name = 'lora32-compact-skip6'
+
+[cases.set]
+critic_rows = 1
+student_kinds = ['stab']
+pool_micro_batch = 4
+student_micro_rows = 1
+checkpoint = 'block'
+rollout = 'uniform_stab'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+'checkpoint_by_role.student.skip_blocks' = [0, 1, 2, 3, 4, 5]
+'checkpoint_by_role.critic.mode' = 'none'
+
+[[cases]]
+name = 'lora32-compact-b80'
+
+[cases.set]
+critic_rows = 2
+student_kinds = ['stab', 'stab']
+pool_micro_batch = 8
+student_micro_rows = 2
+checkpoint = 'block'
+rollout = 'uniform_stab'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+
+
+[[cases]]
+name = 'lora32-compact-b160'
+
+[cases.set]
+critic_rows = 4
+student_kinds = ['stab', 'stab', 'stab', 'stab']
+pool_micro_batch = 16
+student_micro_rows = 4
+checkpoint = 'block'
+rollout = 'uniform_stab'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+
+
+[[cases]]
+name = 'lora32-compact-no-checkpoint'
+
+[cases.set]
+critic_rows = 1
+student_kinds = ['stab']
+pool_micro_batch = 4
+student_micro_rows = 1
+checkpoint = 'none'
+rollout = 'uniform_stab'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+
+
+[[cases]]
+name = 'lora32-compact-b80-skip12'
+
+[cases.set]
+critic_rows = 2
+student_kinds = ['stab', 'stab']
+pool_micro_batch = 8
+student_micro_rows = 2
+checkpoint = 'block'
+rollout = 'uniform_stab'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+
+
+'checkpoint_by_role.student.skip_blocks' = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+'checkpoint_by_role.critic.mode' = 'none'
+'lora.base_dtype' = 'bfloat16'
+
+[[cases]]
+name = 'lora32-compact-skip6-cudagraph'
+
+[cases.set]
+critic_rows = 1
+student_kinds = ['stab']
+pool_micro_batch = 4
+student_micro_rows = 1
+checkpoint = 'block'
+rollout = 'uniform_stab'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+'checkpoint_by_role.student.skip_blocks' = [0, 1, 2, 3, 4, 5]
+'checkpoint_by_role.critic.mode' = 'none'
+
+compile_mode = 'block_cudagraph'
+
+[[cases]]
+name = 'lora32-compact-student160-critic80'
+
+[cases.set]
+critic_rows = 2
+student_kinds = ['stab', 'stab', 'stab', 'stab']
+pool_micro_batch = 8
+student_micro_rows = 4
+checkpoint = 'block'
+rollout = 'uniform_stab'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+
+
+
+[[cases]]
+name = 'lora32-trimmed-student160-critic80-skip4'
+
+[cases.set]
+critic_rows = 2
+student_kinds = ['stab', 'stab', 'stab', 'stab']
+pool_micro_batch = 8
+student_micro_rows = 4
+checkpoint = 'block'
+rollout = 'fused'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+
+
+
+'checkpoint_by_role.student.skip_blocks' = [0, 1, 2, 3]
+'checkpoint_by_role.critic.mode' = 'none'
+'lora.base_dtype' = 'bfloat16'
+
+[[cases]]
+name = 'lora32-trimmed-student160-critic40-skip4'
+
+[cases.set]
+critic_rows = 1
+student_kinds = ['stab', 'stab', 'stab', 'stab']
+pool_micro_batch = 4
+student_micro_rows = 4
+checkpoint = 'block'
+rollout = 'fused'
+'lora.rank' = 32
+'lora.alpha' = 32
+'lora.targets' = ['transformer\.blocks\.\d+\.(?:self_attn\.(?:q|k|v|o)|ffn\.(?:0|2))', 'audio_adapter\..*(?:q_proj|kv_proj|out_proj)']
+
+
+
+'checkpoint_by_role.student.skip_blocks' = [0, 1, 2, 3]
+'checkpoint_by_role.critic.mode' = 'none'
+'lora.base_dtype' = 'bfloat16'

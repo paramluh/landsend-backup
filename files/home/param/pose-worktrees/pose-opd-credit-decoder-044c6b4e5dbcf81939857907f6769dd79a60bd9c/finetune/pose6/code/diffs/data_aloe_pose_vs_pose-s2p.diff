@@ -1,0 +1,149 @@
+--- /data/home/amartyavarma/ppm/pose-s2p/code/data_aloe_pose.py	2026-10-27 09:06:14.456209173 +0000
++++ /data/home/amartyavarma/ppm/pose6/code/data_aloe_pose.py	2026-10-27 19:14:11.210147105 +0000
+@@ -35,7 +35,21 @@
+ frames per step, every item its own attention segment, channel A empty) over the ALOE HANDOVER POSE stores of job 22091 (ALOE_STORE_DIR =
+ aloe-pose-ft/stores): one MONOPLEX item per qualifying track (pose ok, no crossbleed into it) = (store, row, swap) exactly as 22091 / 22317
+ select them; plus the 10-18 prompt rule (env ALOE_PERSONA_RULE / ALOE_PERSONA_P10 / ALOE_PERSONA_TAG, ALOE_DRAW_KEY=item): voice clip and
+-persona text drawn independently per item (key row_key|data side). Section at the end of the file."""
++persona text drawn independently per item (key row_key|data side). Section at the end of the file.
++pose6 G0COND (10-27, workstream B1; env PPM_G0COND=1 + ALOE_G0_SIDECAR; default 0 = every micro byte-identical to aloe-pose-mono-8020's): every
++pose micro additionally carries g0pos [K] int64 + g0f [K, 8] float32, one entry per packed item (K = the micro's items, in pack order):
++  SLOT  (decision D1) = the item's OWN P - 1 at its packed offset: the system block's last position, i.e. the '\\n' (198) of the footer
++        '<|im_end|> \\n' just before conversation frame 0 (position P). The SAME token on every prompt type (empty block P = 5, voice clip,
++        persona, both: sysprompt.build_prefix always ends with the codes-free footer), channel B present, NO speech codes (depth -1 on both
++        channels), NO pose (pdepth -1), channel A PAD / present 0, no text target (targets start at P). Asserted per item (g0_slot_check).
++        Timing vs the base (job 31101, pose_s3q): base SLOT = gpos (a PAD-lane, codes-free segment start), clip frame f's lane at gpos + 1 + f,
++        its pose label at gpos + 1 + f + pose_delay; here frame f's lane at P + f = SLOT + 1 + f, its pose label at P + pose_delay + f = SLOT +
++        1 + f + pose_delay (pose_arrays): the same SLOT -> frame-0 offset (asserted: first pose label at SLOT + 1 + CD).
++  f     = data_ppm.g0_feat (the base's function, byte-identical copy) of the item's record in the frame-0 SIDECAR (pose6/g0aloe/g0aloe.parquet,
++        workstream B2: one row per train / eval item, keyed (store, row, swap), item_key = row_key|b_side). FAIL LOUD (assert) on: an item
++        missing from the sidecar, a record whose row_key / b_side / item_key differ from the store's, a missing G0 field or no frame-0 source
++        (frame0_ok None), frame0_ok true with unusable values, or the sidecar's stored f != g0_feat(fields) byte-exactly. f = 0 ONLY where the
++        base's rule gives 0 (frame0_ok false: logged, counted in G0_STATS)."""
+ import json
+ import os
+ import sys
+@@ -63,6 +77,10 @@
+ assert os.environ.get("QQA_POSE_B", "1") in ("0", "1")
+ A_EMPTY = os.environ.get("QQA_A_EMPTY", "0") == "1"   # aloe-uncond-ft: 1 = channel A empty (module doc)
+ assert os.environ.get("QQA_A_EMPTY", "0") in ("0", "1")
++assert os.environ.get("PPM_G0COND", "0") in ("0", "1"), ("PPM_G0COND must be 0 | 1", os.environ.get("PPM_G0COND"))
++G0 = os.environ.get("PPM_G0COND", "0") == "1"           # pose6 G0COND (module doc); 0 = no g0 keys anywhere (mono8020's micros exactly)
++G0_SIDECAR = os.environ.get("ALOE_G0_SIDECAR", "")
++assert not G0 or (POSE_B and G0_SIDECAR), ("PPM_G0COND=1 needs QQA_POSE_B=1 and ALOE_G0_SIDECAR", POSE_B, G0_SIDECAR)
+ 
+ 
+ def aloe_cfg():
+@@ -295,6 +313,9 @@
+             m["pdepth"], m["pcb0"], m["plight"] = pose_arrays(m, row, pz[bside][int(r)], cfg)
+         m["row_key"] = row["row_key"]
+         m["item"] = [int(k), int(r), int(sw)]
++        if G0:                                                    # pose6 G0COND: this item's frame-0 features + its SLOT checked (module doc)
++            m["g0f"], _ = g0_item(m["item"], row["row_key"])
++            g0_slot_check(m)
+         return m
+ 
+ 
+@@ -311,6 +332,8 @@
+     if POSE_B:
+         out["kind"] = "pose"
+         out["pdepth"], out["pcb0"], out["plight"] = m["pdepth"], m["pcb0"], m["plight"]
++        if G0:                                                    # pose6 G0COND: one item -> its SLOT = P - 1
++            out["g0pos"], out["g0f"] = g0_arrays([m])
+     else:
+         assert out["kind"] == "speech" and "pdepth" not in m, "no-pose micro must be a plain speech micro"
+     out["own"] = np.asarray([own_counts(m)], np.float64)
+@@ -538,6 +561,8 @@
+         assert out["pdepth"].shape == (N, D.DEPTH) and len(out["pcb0"]) == N
+         for m, ok, t in zip(ms, o, T):
+             assert (m["plight"] < t).all() and (m["plight"] >= int(m["P"]) + D.CD).all()
++        if G0:                                                    # pose6 G0COND: one SLOT per packed item, at its offset + its own P - 1
++            out["g0pos"], out["g0f"] = g0_arrays(ms)
+     out["own"] = np.asarray([own_counts(m) for m in ms], np.float64)
+     sws = {int(m["swap"]) for m in ms}
+     out["swap"] = sws.pop() if len(sws) == 1 else -1
+@@ -635,3 +660,84 @@
+         out += [1, vd, pd, cl, pe, cl and pe, cl and not pe, pe and not cl, not cl and not pe,
+                 rcl, rpe, rcl and rpe, rcl and not rpe, rpe and not rcl, not rcl and not rpe]
+     return out
++
++
++# ================================================================================================ pose6 G0COND (10-27; module doc)
++G0_STATS = {"items": 0, "invalid": 0}                            # this process's counts (g0_item; the trainer logs coverage at startup)
++_G0TAB = {}
++
++
++def g0_table(path=None):
++    """the frame-0 sidecar (pose6/g0aloe/g0aloe.parquet, B2) -> {(store, row, swap): record}; read once per process. Duplicate keys: FAIL."""
++    path = path or G0_SIDECAR
++    if path not in _G0TAB:
++        import pyarrow.parquet as pq
++        cols = ["split", "store", "row", "swap", "row_key", "b_side", "item_key", *D.G0_FIELDS, "f", "g0_ok", "problem"]
++        tab = {}
++        for rec in pq.read_table(path, columns=cols).to_pylist():
++            key = (int(rec["store"]), int(rec["row"]), int(rec["swap"]))
++            assert key not in tab, ("G0COND sidecar: duplicate item", key, path)
++            tab[key] = rec
++        _G0TAB[path] = tab
++    return _G0TAB[path]
++
++
++def g0_item(item, row_key, path=None):
++    """one Aloe item (store, row, swap) -> (f [G0_DIM] float32 = data_ppm.g0_feat of its sidecar record, ok). FAIL LOUD (module doc)."""
++    k, r, sw = (int(x) for x in item)
++    rec = g0_table(path).get((k, r, sw))
++    assert rec is not None, ("G0COND: item missing from the frame-0 sidecar (fail loud, D6)", (k, r, sw), row_key, path or G0_SIDECAR)
++    side = "user" if sw else "assistant"                          # B's data side (swap 0 -> assistant)
++    assert rec["row_key"] == row_key and rec["b_side"] == side and rec["item_key"] == f"{row_key}|{side}", \
++        ("G0COND: sidecar record is not this item", (k, r, sw), row_key, side, rec["row_key"], rec["b_side"], rec["item_key"])
++    miss = [f_ for f_ in D.G0_FIELDS if f_ not in rec]
++    assert not miss, ("G0COND: sidecar record lacks G0 fields", (k, r, sw), miss)
++    assert rec["frame0_ok"] is not None, ("G0COND: item has NO frame-0 source (fail loud, D6)", (k, r, sw), row_key, rec.get("problem"))
++    f, ok = D.g0_feat({f_: rec[f_] for f_ in D.G0_FIELDS})
++    assert ok or not rec["frame0_ok"], ("G0COND: frame0_ok true but g0_feat cannot use the values", (k, r, sw), D.g0_problem(rec))
++    assert np.array_equal(np.asarray(rec["f"], np.float32), f) and bool(rec["g0_ok"]) == bool(ok), \
++        ("G0COND: sidecar f != data_ppm.g0_feat(fields) (byte-exact)", (k, r, sw), rec["f"], f.tolist())
++    G0_STATS["items"] += 1
++    if not ok:                                                     # frame0_ok false: f = 0 = the base's rule (never silent)
++        G0_STATS["invalid"] += 1
++        print(f"[g0cond] WARNING item {(k, r, sw)} {row_key}: {D.g0_problem(rec) or 'invalid'} -> f = 0 (SLOT input as flag off); "
++              f"process counts {G0_STATS}", file=sys.stderr, flush=True)
++    return f, ok
++
++
++def g0_coverage(items, path=None):
++    """every (store, row, swap) of `items` has a usable sidecar record (g0_item's asserts) -> (n items, n with f = 0 (frame0_ok false))."""
++    tab = g0_table(path)
++    n_inv = 0
++    for it in items:
++        k, r, sw = (int(x) for x in it[:3])
++        rec = tab.get((k, r, sw))
++        assert rec is not None, ("G0COND: item missing from the frame-0 sidecar (fail loud, D6)", (k, r, sw), path or G0_SIDECAR)
++        assert rec["frame0_ok"] is not None and all(f_ in rec for f_ in D.G0_FIELDS), ("G0COND: item without a frame-0 source", (k, r, sw))
++        f, ok = D.g0_feat({f_: rec[f_] for f_ in D.G0_FIELDS})
++        assert (ok or not rec["frame0_ok"]) and np.array_equal(np.asarray(rec["f"], np.float32), f), ("G0COND: sidecar record", (k, r, sw))
++        n_inv += int(not ok)
++    return len(items), n_inv
++
++
++def g0_slot_check(m):
++    """D1: what sits at the item's SLOT P - 1 (module doc), and the SLOT -> frame-0 pose-label offset = the base's (1 + pose_delay = 1 + CD)."""
++    P = int(m["P"])
++    ids, dep, pres = np.asarray(m["ids"]), np.asarray(m["depth"]), np.asarray(m["present"])
++    assert P >= 5 and ids[1, P - 2] == D.SPR.IM_END and ids[1, P - 1] == D.SPR.NL and pres[1, P - 1] == 1.0, ("G0COND SLOT: footer", P, ids[1, P - 2:P])
++    assert ids[0, P - 1] == D.PAD_ID and pres[0, P - 1] == 0.0 and (dep[:, P - 1] < 0).all(), ("G0COND SLOT: channel A / codes", P)
++    if POSE_B:
++        pcb0 = np.asarray(m["pcb0"])
++        assert (np.asarray(m["pdepth"])[P - 1] < 0).all() and (pcb0[:P + D.CD] < 0).all() and pcb0[P + D.CD] >= 0, \
++            ("G0COND SLOT: pose frame 0 must be labelled at SLOT + 1 + CD", P)
++    assert not (np.asarray(m["sel"]) < P).any(), "G0COND SLOT: no text target inside the system block"
++
++
++def g0_arrays(ms):
++    """packed items -> (g0pos [K] int64 = offset_k + P_k - 1, g0f [K, G0_DIM] float32), pack order (= Q.pack's offsets)."""
++    T = [len(m["pid"]) for m in ms]
++    o = np.concatenate([[0], np.cumsum(T)[:-1]]).astype(np.int64)
++    gpos = np.asarray([int(ok) + int(m["P"]) - 1 for m, ok in zip(ms, o)], np.int64)
++    gf = np.stack([np.asarray(m["g0f"], np.float32) for m in ms]).astype(np.float32)
++    assert gf.shape == (len(ms), D.G0_DIM), gf.shape
++    return gpos, gf

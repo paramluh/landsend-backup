@@ -1,0 +1,131 @@
+# SEANet + causal-transformer pose tokenizer (~200M), 2x downsample, 32 codebooks.
+#
+# A/B target: the 16cb conv tokenizer
+#   .../cb_size_2048/base-causal-2x-wide-16cb-qd0.5-lr1e-4-lossshift1-root-frame-0-cb_size_2048
+# Same RVQ (codebook_size=2048, codebook_dim=16, qd0.5, dead-code revival),
+# same 2x downsample -> 12.5 Hz token rate, same first_frame_root + lossshift1.
+# Differences under test: (1) SEANet+transformer encoder/decoder instead of
+# conv-TCN, (2) 32 codebooks (4400 bps full; evaluate the 16-prefix at 2200 bps
+# for the matched A/B), (3) 200-frame (8 s) segments for long-range context.
+#
+# Run:
+#   CUDA_VISIBLE_DEVICES=0,1,2,3 accelerate launch train_confidence.py \
+#       --config configs/seanet_tf_2x_32cb_2048_200M.yaml
+
+# Data.
+data_dir: /mnt/somfs/pose_cond/pose_cond_npy/
+manifest: /mnt/somfs/pose_cond/pose_cond_npy_manifest.txt
+dims_csv: /mnt/somfs/pose_cond/dims_upperbody_ideal_fresh.csv
+test_manifest: ""
+test_dir: "test_set"
+n_test_clips: 0
+test_max_seconds: 10.0
+num_files: 0
+val_count: 2000
+norm_stats: ""
+
+# Data framing. segment_frames must be a multiple of the downsampling factor (2)
+# to avoid zero-padding (which NaNs the quantizer L2-normalize backward).
+# 80 (3.2 s -> 40 tokens) exactly matches the conv baseline's training context
+# (~96.8% of clips qualify) -> cleanest architecture A/B.
+source_fps: 30
+target_fps: 25
+segment_frames: 80
+max_frames: 0
+random_crop_frames: false
+random_segment_offset: true
+inference_chunk_stride: 0
+first_frame_root: true
+
+# Model architecture: SEANet conv front/back end + causal transformer bottleneck.
+model_type: seanet_transformer
+num_keypoints: 55
+keypoint_dim: 2
+input_features: 165
+causal: true
+conv_weight_norm: true
+latent_dim: 512                 # RVQ input width (bottleneck)
+# SEANet conv front/back end (modest; the transformer is the part under test).
+st_seanet_dim: 512
+st_n_filters: 64
+st_n_residual_layers: 1
+st_ratios: [1]                  # no conv downsample; the 2x is the separate resample below
+st_seanet_kernel: 7
+st_residual_kernel: 3
+st_compress: 2
+# Causal transformer bottleneck (param-heavy -> ~200M total, enc == dec).
+st_d_model: 1024
+st_num_heads: 16
+st_num_layers: 8
+st_dim_feedforward: 3584        # tuned so total ~= 198M (enc == dec)
+st_layer_scale: 0.01
+st_rope_max_period: 10000.0
+st_downsample: 2                # net token rate = 25 / 2 = 12.5 Hz
+
+# Quantizer (identical to the 16cb conv A/B target, but 32 codebooks).
+n_codebooks: 32
+codebook_size: 2048
+codebook_dim: 16
+vq_strides: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+apply_rotation_trick: false
+enable_quantization: true
+quantizer_dropout: 0.5
+normalize_codes: true
+dead_code_threshold: 2.0
+dead_code_ema_decay: 0.99
+
+# Optimizer + schedule.
+epochs: 9999
+max_steps: 200000
+batch_size: 64
+gradient_accumulation_steps: 1
+lr: 1.0e-4
+lr_schedule: cosine
+lr_min: 1.0e-5
+warmup_steps: 1000
+weight_decay: 0.01
+
+# Loss weights: use the conv baseline's values verbatim (apples-to-apples).
+reconstruction_weight: 1.0
+velocity_weight: 2.0
+confidence_loss_weight: 0.25
+confidence_loss_type: "smooth_l1"
+causal_loss_shift: 1            # fixed = conv baseline (apples-to-apples)
+commitment_weight: 0.06
+codebook_weight: 0.24
+hand_loss_weight: 1.0
+relative_l1_weight: 0.0
+confidence_weight_mode: "soft"
+confidence_mask_threshold: 0.3
+
+# Denoising input corruption (matches the conv baseline).
+pose_corruption_prob: 0.3
+pose_corruption_modes: ["temporal_joint_flicker", "part_flicker"]
+pose_corruption_min_conf: 0.7
+pose_corruption_span_min: 1
+pose_corruption_span_max: 4
+pose_corruption_joints_min: 2
+pose_corruption_joints_max: 6
+pose_corruption_conf_min: 0.05
+pose_corruption_conf_max: 0.35
+pose_corruption_xy_noise_std: 0.015
+pose_corruption_xy_outlier_prob: 0.0
+pose_corruption_xy_outlier_std: 0.0
+
+# Runtime.
+num_workers: 10
+log_interval: 10
+
+# Eval / checkpointing.
+val_batch_size: 32
+val_confidence_threshold: 0.5
+validation_interval: 1000
+save_interval: 5000
+save_optimizer_state: true
+render_interval: 0
+test_frame_idx: 0
+output_dir: /mnt/somfs/james-checkpoints/pose-tokenizer-james/seanet_transformer
+
+# Wandb.
+wandb_project: pose-tokenizer
+wandb_run_name: seanet-tf-2x-32cb-2048-200M-lossshift1-root-frame-0

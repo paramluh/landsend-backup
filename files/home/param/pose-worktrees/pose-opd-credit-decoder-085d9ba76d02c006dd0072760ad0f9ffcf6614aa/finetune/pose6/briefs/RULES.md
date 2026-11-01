@@ -1,0 +1,13 @@
+# pose6 HARD RULES (every subagent; violating any = stop and report)
+- bf16 only. Never change the maths of any existing path or deployed service. Work ONLY in your own subdir of /data/home/amartyavarma/ppm/pose6/ (copies). Everything outside pose6/ is READ-ONLY to you.
+- Never touch the live pose run 31101 (ppm811 + its companions 31102-31105), MoT, motasr2 (31088-31090), or any demo/playground/genweb/klweb process or dir: no scancel, no kill, no restart, no writes.
+- No compute on the login node (reading files with cat/grep/python -c on small files is fine; anything that loads models/data, runs tests, or takes >30 s goes to a compute node via sbatch/srun). Every srun/sbatch sets --mem. NEVER slinky-9. The cluster is FULL: never take GPUs or CPUs yourself; when you need compute, SendMessage to "main" (that is pose6, your parent) with exact needs (CPUs, mem, GPUs, minutes, script path) and keep working on code meanwhile. pose6 gets resources from the main session.
+- No `cd ... &&`; use absolute paths.
+- Every rm uses "${VAR:?}" for each variable or a literal path. Never `pkill -f` a pattern from inside a `bash -c` containing it.
+- No smoke checkpoints on /data (node /scratch only). No downloads except our own private HF repos when needed; never print the HF token; never GCS.
+- No checkpoint deletion of any kind. Never approve prompts in other sessions. Never message other sessions; report only to "main" (pose6).
+- Time stamps: run `TZ=America/Los_Angeles date +%H:%M` just before writing any stamp; never estimate.
+- Fail loud: never silently substitute, zero-fill or skip anything that training would not.
+- Final report to pose6: short (<= 25 lines): what is done, proof results with numbers, files written, open issues/decisions needed. Detail goes in your subdir's README.md / TESTS.md.
+- UPDATE 12:16 PT: small CPU-only test jobs (<=4 CPUs, <=32G, <=20 min, --nice=100, node where scontrol shows room, never slinky-9, no GPUs) may be submitted by any agent directly; log job ids. Bigger CPU jobs and ALL GPU needs go through pose6.
+- UPDATE 12:30 PT (main): test data NEVER on slinky-18 /scratch (full, motasr2). Use slinky-4 /scratch or /data within its 300 GB floor.

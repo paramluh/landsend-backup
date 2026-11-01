@@ -1,0 +1,16 @@
+[Unit]
+Description=pose-playground-front on landsend-12
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/home/param/websites/pose-playground
+ExecStart=/bin/bash /home/param/websites/pose-playground/ops/serve_front.sh
+Restart=always
+RestartSec=5
+StandardOutput=append:/home/param/runs/pose-runs/pose-sites-20261030/pose-playground-front.log
+StandardError=append:/home/param/runs/pose-runs/pose-sites-20261030/pose-playground-front.log
+
+[Install]
+WantedBy=default.target

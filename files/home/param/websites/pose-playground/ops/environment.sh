@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+export CANOPY_ROOT=/home/param
+export GENWEB=/home/param/websites/pose-playground
+export GENWEB_ROOT="$GENWEB"
+export GENWEB_RUNTIME=systemd
+export GENWEB_LIVE=/home/param/websites/pose-duplex-engine
+export GENWEB_LIVE_STATE=/home/param/runs/pose-runs/pose-sites-20261030/duplex-live
+export GENWEB_PYTHON=/home/param/pose-repo/.venv/bin/python
+export GENWEB_PEOPLE=/home/param/datasets/pose-demo/prompts
+export GENWEB_FFMPEG=/usr/bin/ffmpeg
+export GENWEB_RENDERERS=param
+export GENWEB_BATCH_STREAM=0
+export QWEN32_DIR=/home/param/models/ppm-811-17850-base-bf16/configs/Qwen3-32B
+export MIMI_DIR=/home/param/models/mimi
+export FA3_DIR=/home/param/pose-repo/.cache/kernels/vllm-flash-attn3
+export PPM_FA3_ROOT="$FA3_DIR"
+export VOXTRAL_DIR=/home/param/models/aloe-ft-vox17127-nopersona/assets/voxtral-realtime
+export S4_VOXTRAL_PATH="$VOXTRAL_DIR"
+export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 PYTHONUNBUFFERED=1 TOKENIZERS_PARALLELISM=false
+export OMP_NUM_THREADS=4
+export CPATH="/home/param/pose-repo/.venv/include/python3.12:/home/param/pose-repo/.venv/include${CPATH:+:$CPATH}"

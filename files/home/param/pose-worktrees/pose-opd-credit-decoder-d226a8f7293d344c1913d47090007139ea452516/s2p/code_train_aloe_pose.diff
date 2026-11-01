@@ -1,0 +1,43 @@
+--- /data/home/amartyavarma/ppm/aloe-pose-rosie/code/train_aloe_pose.py	2026-10-27 09:30:41.147102849 +0000
++++ code/train_aloe_pose.py	2026-10-27 12:19:56.006152152 +0000
+@@ -143,6 +143,9 @@
+ if A.MONO:                                                        # aloe-pose-mono-8020: the data source + its micro layout (data module)
+     CFG["data_src"] = "aloe-mono"
+     CFG["micro_layout"] = "row_per_rank" if A.ROWS_PER_STEP <= int(os.environ["WORLD_SIZE"]) else "lpt"
++S2P = M.s2p_mode(os.environ.get("PPM_S2P", "0"))                  # pose-s2p (10-27): speech codes at T -> pose tower at T (model_ppm.S2PEmb)
++if S2P:                                                           # flag off: no cfg key, no module, today's trainer exactly
++    CFG["s2p"] = S2P
+ POSE = CFG["pose_b"]
+ assert POSE == A.POSE_B, "trainer and data must agree on QQA_POSE_B"
+ assert CFG["a_empty"] == A.A_EMPTY, "trainer and data must agree on QQA_A_EMPTY"
+@@ -488,6 +491,8 @@
+     for n, p in params.items():
+         if n in rep:
+             p.copy_(rep[n].to(device=dev, dtype=p.dtype)); done.add(n); continue
++        if n == "tower_p.s_emb.weight" and n not in src(0):          # pose-s2p: not in this init (zero-filled below); every other key as before
++            continue
+         R = p.shape[0]
+         c0 = -(-R // W0)                                          # source chunk rows (torch.chunk)
+         a, r = M._rows(p)
+@@ -505,6 +510,11 @@
+         assert got == r, ("rows not covered", n, got, r)
+         done.add(n)
+     miss = sorted(set(params) - done)
++    new = [n for n in miss if n == "tower_p.s_emb.weight"]          # pose-s2p: an init without the new term (e.g. local-11488) -> ZERO (the rule)
++    for n in new:
++        M._loc(params[n]).zero_()
++    meta["s2p_zero_init"] = new
++    miss = [n for n in miss if n not in new]
+     assert not miss, ("init: parameters not in the checkpoint", miss[:6])
+     ck = set(rep) | set(src(0))                                   # aloe-uncond: checkpoint tensors the model does not have (not loaded)
+     unl = sorted(ck - set(params))
+@@ -952,7 +962,8 @@
+     # ---- model
+     c32, c4, c06 = M.cfg32(64), M.cfg4b(36), M.cfg06(28)
+     model, _ = M.build(c32, c4, c06, dev, log, partial=False, proj_r=2048, tower_vocab=M.TOWER_VOCAB, init=False, dec_ac=False,
+-                       dec_mode="replicate", pose_head=CFG["pose_head_build"], decp_bb=True)
++                       dec_mode="replicate", pose_head=CFG["pose_head_build"], decp_bb=True, s2p=S2P)
++    assert bool(S2P) == hasattr(model.tower_p, "s_emb") and (not S2P or POSE), ("pose-s2p needs the pose path", S2P, POSE)
+     if CFG["pose_head_build"]:
+         model.pose_head_on = False                                # PPM main D36: the D32 pose head is off (frozen)
+     assert hasattr(model, "pose_head") == CFG["pose_head_build"], "pose head built iff QQA_POSE_HEAD_BUILD"

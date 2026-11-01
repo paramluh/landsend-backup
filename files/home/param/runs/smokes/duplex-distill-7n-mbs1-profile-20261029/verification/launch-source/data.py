@@ -1,0 +1,272 @@
+"""Production duplex examples shared by the student and its frozen teachers.
+
+No separate teacher prompt sampling occurs. B's prefix, audio history, text
+history, pose history, positions and targets remain identical. The native
+monoplex teacher receives empty A, as in its production fine-tune. Student and
+audio teacher receive the same raw A waveform; the trainer can encode it once.
+Training pose depth uses the existing speech depth frame sample. Input histories
+and codebook-0 targets remain complete; evaluation retains production selection.
+"""
+from __future__ import annotations
+
+import argparse
+import importlib
+import json
+import os
+from pathlib import Path
+import sys
+
+import numpy as np
+
+from .recipe import (DEFAULT_CHECKPOINT_CFG, DEFAULT_DATA_ROOT, EVAL_ITEMS,
+                     PRODUCTION_DIR, TRAIN_ITEMS_PER_EPOCH,
+                     configure_environment, load_recipe)
+
+
+def teacher_views(student, pad_id):
+    """Return three aligned numpy micros without resampling or altering student."""
+    mono = dict(student)
+    for key in ("ids", "depth", "present"):
+        mono[key] = np.array(student[key], copy=True)
+    mono["ids"][0] = int(pad_id)
+    mono["depth"][0] = -1
+    mono["present"][0] = 0
+    for key in ("vin", "wav", "aref"):
+        mono.pop(key, None)
+    audio = dict(student)
+    for key in ("pdepth", "pcb0", "plight", "pose_ok", "pose_src"):
+        audio.pop(key, None)
+    audio["kind"] = "speech"
+    audio["own"] = np.asarray(student["own"])[:, :3]
+    return {"student": student, "pose_teacher": mono, "audio_teacher": audio}
+
+
+def shared_training_depth_frames(student, *, speech_delay, pose_delay):
+    """Copy only pose depth indices/counts; reuse the existing speech sample.
+
+    Speech ``light`` already includes prefix + speech delay. Mapping the same
+    conversation frames therefore adds only (pose delay - speech delay), not a
+    second full delay. Production uses two for both, so valid indices coincide.
+    Missing pose is excluded by the original pose mask. This helper consumes no
+    random draws and never changes conditioning, histories, or cb0 supervision.
+    """
+    light = np.asarray(student["light"])
+    labels = np.asarray(student["pcb0"])
+    own = np.asarray(student["own"])
+    if light.ndim != 1 or not np.issubdtype(light.dtype, np.integer):
+        raise ValueError("Speech light must be a one-dimensional integer index")
+    if own.shape != (1, 5):
+        raise ValueError("Expected one production conversation with five counts")
+    positions = light.astype(np.int64, copy=False) + int(pose_delay) - int(speech_delay)
+    if ((positions < 0) | (positions >= len(labels))).any():
+        raise ValueError("Shared pose frame indices fall outside the timeline")
+    out = dict(student)
+    out["plight"] = positions[labels[positions] >= 0]
+    out["own"] = own.copy()
+    out["own"][0, 4] = 0 if student.get("dummy", False) else len(out["plight"])
+    return out
+
+
+class ProductionData:
+    """Thin adapter around the unchanged production data implementation."""
+
+    def __init__(self, data_root=DEFAULT_DATA_ROOT, checkpoint_cfg=DEFAULT_CHECKPOINT_CFG,
+                 *, world=48, epochs=2, micro_batch_size=1):
+        self.data_root = Path(data_root).resolve()
+        self.recipe = load_recipe(checkpoint_cfg, world=world, epochs=epochs,
+                                  micro_batch_size=micro_batch_size)
+        # The effective recipe advertises shared 10% pose selection. Construct
+        # original production inputs first, then change only decoder indices.
+        self.cfg = self.recipe["source_loader_data"]
+        self.eval_cfg = self.recipe["eval_data"]
+        old = sys.modules.get("data_aloe_posedup")
+        if old is not None and Path(old.POSE_INDEX) != self.data_root / "pose/POSE_INDEX.json":
+            raise RuntimeError("Production data was already imported for a different data root")
+        configure_environment(self.data_root)
+        for path in (PRODUCTION_DIR / "lib", PRODUCTION_DIR):
+            if str(path) not in sys.path:
+                sys.path.insert(0, str(path))
+        self.module = importlib.import_module("data_aloe_posedup")
+        if Path(self.module.__file__).resolve().parent != PRODUCTION_DIR:
+            raise RuntimeError("A different data_aloe_posedup module is already loaded")
+        if self.module.aloe_cfg() != self.cfg or self.module.eval_cfg() != self.eval_cfg:
+            raise ValueError("Resolved data config differs from production export-498")
+        self._stores = None
+
+    @property
+    def stores(self):
+        if self._stores is None:
+            self._stores = self.module.Stores()
+        return self._stores
+
+    def make_plan(self, world=None, epochs=None, micro_batch_size=None):
+        """Plan optimizer updates, retaining every oriented example each epoch.
+
+        The production plan uses a logical world of physical GPUs times local
+        examples. The public world remains physical; rank_dataset maps slots.
+        """
+        world = self.recipe["world"] if world is None else world
+        epochs = self.recipe["epochs"] if epochs is None else epochs
+        micro_batch_size = self.recipe["micro_batch_size"] if micro_batch_size is None else micro_batch_size
+        if int(world) != world or world < 1 or int(epochs) != epochs or epochs < 1:
+            raise ValueError("world and epochs must be positive integers")
+        if micro_batch_size not in (1, 2) or int(micro_batch_size) != micro_batch_size:
+            raise ValueError("micro_batch_size must be one or two")
+        logical_world = int(world) * int(micro_batch_size)
+        steps = ((TRAIN_ITEMS_PER_EPOCH + logical_world - 1) // logical_world) * int(epochs)
+        plan = self.module.make_plan(logical_world, steps=steps)
+        if plan["n_items0"] != TRAIN_ITEMS_PER_EPOCH or len(plan["eval"]) != EVAL_ITEMS:
+            raise ValueError("Dataset split membership differs from the production run")
+        if plan["n_train_micros"] != TRAIN_ITEMS_PER_EPOCH * int(epochs):
+            raise ValueError("Epoch padding dropped or duplicated real training examples")
+        plan["digest"], plan["epoch0_digest"] = self.module.plan_digest(plan)
+        if plan["epoch0_digest"] != "d1a3e3721328da0a":
+            raise ValueError("First-epoch item order differs from production")
+        plan["world"] = int(world)
+        plan["logical_world"] = plan["global_batch_size"] = logical_world
+        plan["micro_batch_size"] = int(micro_batch_size)
+        plan["micro_steps_per_rank"] = steps * int(micro_batch_size)
+        return plan
+
+    def batch(self, item, rank, *, load_audio=True, dummy=False, evaluation=False):
+        """Load one production item; dummy requires a real fallback item."""
+        if item is None:
+            raise ValueError("Supply a real fallback item when dummy=True")
+        if load_audio and not os.environ.get("S4_FFMPEG"):
+            raise RuntimeError("Set S4_FFMPEG to production FFmpeg 7.0.2, or install imageio-ffmpeg==0.6.0")
+        cfg = self.eval_cfg if evaluation else self.cfg
+        micro = self.stores.conv(tuple(map(int, item)), cfg, int(rank), audio=load_audio)
+        student = self.module.as_micro(micro, dummy=bool(dummy))
+        if not evaluation:
+            sampling = self.recipe["depth_frame_sampling"]
+            student = shared_training_depth_frames(
+                student, speech_delay=sampling["speech_delay"], pose_delay=sampling["pose_delay"])
+        student["row_key"] = micro["row_key"]
+        student["conditioning"] = {
+            "voice_drawn": int(micro["voice_drawn"]), "voice_clip": int(micro["voice_clip"]),
+            "prefix_frames": int(micro["P"]), "pose_teacher_a": "native_empty",
+        }
+        return teacher_views(student, self.module.D.PAD_ID)
+
+    def smoke_items(self, plan, count=8, *, frames=7500, require_pose=True):
+        """Deterministic real full-length rows for memory/conditioning GPU checks."""
+        if count < 1:
+            raise ValueError("count must be positive")
+        index = self.module.pose_index()["rows"]
+        selected = []
+        for item in plan["items0"]:
+            k, row, _ = item
+            if int(index[str(k)][str(row)]["n"]) != int(frames):
+                continue
+            if require_pose and not self.module.pose_ok_item(item):
+                continue
+            selected.append(item)
+            if len(selected) == count:
+                return selected
+        raise ValueError(f"Only {len(selected)} qualifying rows have {frames} frames")
+
+    def rank_dataset(self, plan, rank, world, *, start=0, load_audio=True):
+        return RankDataset(self, plan, rank, world, start=start, load_audio=load_audio)
+
+
+class RankDataset:
+    """Flat local example slots; DataLoader groups micro_batch_size per update.
+
+    start is always an optimizer-update index, including when batching two.
+    Slot s on physical rank r uses logical rank s*world+r, so two-example
+    updates retain each rank's consecutive one-example stream where padding
+    permits it. Held-out items stay independent, one example at a time.
+    """
+
+    def __init__(self, data, plan, rank, world, *, start=0, load_audio=True):
+        if int(rank) != rank or not 0 <= int(rank) < int(world) or plan.get("world", world) != world:
+            raise ValueError("Rank/world do not match the data plan")
+        if int(start) != start or not 0 <= int(start) <= plan["steps"]:
+            raise ValueError("Resume step lies outside the data plan")
+        self.data, self.rank, self.world = data, int(rank), int(world)
+        self.micro_batch_size = int(plan.get("micro_batch_size", 1))
+        logical_world = self.world * self.micro_batch_size
+        if plan.get("logical_world", logical_world) != logical_world:
+            raise ValueError("Logical world does not match physical world and microbatch")
+        self.items = [plan["items"][step * logical_world + slot * self.world + self.rank]
+                      for step in range(plan["steps"]) for slot in range(self.micro_batch_size)]
+        self.eval_items = plan["eval"][self.rank::self.world]
+        self.fallback = plan["items0"][0]
+        self.start, self.load_audio = int(start), bool(load_audio)
+
+    def __len__(self):
+        return len(self.items) - self.start * self.micro_batch_size
+
+    def __getitem__(self, index):
+        if not 0 <= int(index) < len(self):
+            raise IndexError(index)
+        micro_index = self.start * self.micro_batch_size + int(index)
+        step, slot = divmod(micro_index, self.micro_batch_size)
+        item = self.items[micro_index]
+        bundle = self.data.batch(item if item is not None else self.fallback, self.rank,
+                                 load_audio=self.load_audio, dummy=item is None)
+        for micro in bundle.values():
+            micro["step"] = step
+            micro["slot"] = slot
+        return bundle
+
+
+def smoke_report(data_root=DEFAULT_DATA_ROOT, checkpoint_cfg=DEFAULT_CHECKPOINT_CFG,
+                 *, load_audio=False):
+    """Exercise complete epochs and representative real conditioning branches."""
+    data = ProductionData(data_root, checkpoint_cfg)
+    plan = data.make_plan()
+    cases = {}
+    for item in plan["items0"][:512]:
+        batch = data.batch(item, 0, load_audio=load_audio)
+        s, p, a = (batch[k] for k in ("student", "pose_teacher", "audio_teacher"))
+        case = ("pose_missing" if not s["pose_ok"] else
+                "voice_clip" if s["voice_clip"] else
+                "voice_draw_missing" if s["voice_drawn"] else "unconditioned")
+        if case in cases:
+            continue
+        assert np.array_equal(s["ids"][1], p["ids"][1])
+        assert np.array_equal(s["depth"][1], p["depth"][1])
+        assert np.array_equal(s["present"][1], p["present"][1])
+        assert p["pdepth"] is s["pdepth"]
+        assert (p["depth"][0] == -1).all() and (p["present"][0] == 0).all()
+        assert (p["ids"][0] == data.module.D.PAD_ID).all()
+        assert a["ids"] is s["ids"] and a["depth"] is s["depth"]
+        assert "pdepth" not in a and "vin" not in p and "wav" not in p
+        assert s["segs"] == p["segs"] == a["segs"]
+        if load_audio:
+            assert s["wav"] is a["wav"]
+        # Compare against a fresh invocation of the original production loader.
+        reference = data.module.as_micro(data.stores.conv(item, data.cfg, 0, audio=load_audio))
+        for key, value in reference.items():
+            if key in ("plight", "own"):
+                continue
+            if isinstance(value, np.ndarray):
+                assert np.array_equal(s[key], value), key
+            else:
+                assert s[key] == value, key
+        expected_pose = reference["light"][reference["pcb0"][reference["light"]] >= 0]
+        assert np.array_equal(s["plight"], expected_pose)
+        assert np.array_equal(s["own"][:, :4], reference["own"][:, :4])
+        assert s["own"][0, 4] == len(expected_pose)
+        cases[case] = {"item": list(item), "frames": len(s["pid"]),
+                       "pose_ok": int(s["pose_ok"]), "conditioning": s["conditioning"]}
+        if {"pose_missing", "voice_clip", "unconditioned"}.issubset(cases):
+            break
+    assert {"pose_missing", "voice_clip", "unconditioned"}.issubset(cases)
+    dummy = data.batch(plan["items0"][0], 0, load_audio=False, dummy=True)
+    assert all(not np.asarray(m["own"]).any() for m in dummy.values())
+    return {"ok": True, "steps": plan["steps"], "epoch_steps": plan["epoch_steps"],
+            "real_micros": plan["n_train_micros"], "dummy_micros": plan["n_dummy"],
+            "eval_micros": len(plan["eval"]), "plan_digest": plan["digest"],
+            "epoch0_digest": plan["epoch0_digest"], "raw_audio_tested": load_audio,
+            "cases": cases, "dummy_zero_counts": True}
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data-root", default=str(DEFAULT_DATA_ROOT))
+    parser.add_argument("--checkpoint-cfg", default=str(DEFAULT_CHECKPOINT_CFG))
+    parser.add_argument("--audio", action="store_true")
+    args = parser.parse_args()
+    print(json.dumps(smoke_report(args.data_root, args.checkpoint_cfg, load_audio=args.audio), indent=2))

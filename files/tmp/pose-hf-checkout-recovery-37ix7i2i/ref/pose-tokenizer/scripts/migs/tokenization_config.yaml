@@ -1,0 +1,39 @@
+worker:
+  project_id: speechsdk
+  topic_id: chatterbox-tts
+  subscription_id: chatterbox-tts-sub
+
+  bucket: tiktok-pipeline-processed
+  clips_folder: clips
+  output_folder: speech-tokens
+  output_filename_template: "{video_id}.parquet"
+  manifest_path: ../../pose_cond_npy_manifest.txt
+
+  max_duration_seconds: 30.0
+  native_duration_threshold_seconds: 30.0
+  min_chunk_duration_seconds: 5.0
+  boundary_search_seconds: 4.0
+  random_boundary_jitter_seconds: 0.0
+  random_seed: 17
+
+  download_workers: 16
+  local_work_dir: gcs_data/speech_tokenizer
+  log_interval: 25
+  ack_deadline_seconds: 600
+  lease_heartbeat_seconds: 60
+  max_lease_duration_seconds: 43200
+  health_port: 8090
+
+  mimi_model_id: kyutai/mimi
+  mimi_local_files_only: true
+
+publisher:
+  project_id: speechsdk
+  topic_id: chatterbox-tts
+  subscription_id: chatterbox-tts-sub
+  manifest_path: ../../pose_cond_npy_manifest.txt
+  min_video_ids_per_message: 4
+  max_video_ids_per_message: 8
+  enable_message_ordering: true
+  publish_batch_messages: 1000
+  dry_run_limit: 0

@@ -1,0 +1,231 @@
+_wandb:
+    value:
+        cli_version: 0.31.0
+        m: []
+        python_version: 3.12.3
+        t:
+            "1":
+                - 1
+                - 11
+                - 49
+                - 71
+            "2":
+                - 1
+                - 11
+                - 49
+                - 71
+            "3":
+                - 2
+                - 13
+                - 14
+                - 16
+                - 61
+            "4": 3.12.3
+            "5": 0.31.0
+            "6": 5.13.0
+            "12": 0.31.0
+            "13": linux-x86_64
+a_empty:
+    value: true
+adam_beta2:
+    value: 0.95
+cd:
+    value: 2
+checkpoint_policy:
+    value: final-only
+checkpoint_steps:
+    value:
+        - 200
+clip:
+    value:
+        audio: 1
+        decp_bb: 1
+        proj: 1
+        spec: 1
+        tower_p: 1
+        tower_s: 1
+        trunk: 0.5
+control_dir:
+    value: /home/param/pose-runs/compact-transcript-text-audio-pose-20261028/control
+data:
+    value:
+        chat_eob: true
+        chat_side: assistant
+        clip_max: 125
+        clip_min: 38
+        crop_conv: false
+        eob_gap_s: 0
+        light_frac: 1
+        light_seed: 20261001
+        min_cov: 0.5
+        new_word: true
+        pack_attn: segments
+        persona_sides: both
+        pose_delay: 2
+        pose_light_frac: 1
+        seed: 20261011
+        sp_cap: 2000
+        stride: 4
+        top_frac: 0.9
+        txt_cap: 7500
+        voice_mod: 3
+        wpid: both
+dec_clip:
+    value: 1
+dec_compile_mode:
+    value: default
+dec_dyn:
+    value: true
+dec_even:
+    value: true
+dec_fast:
+    value: true
+dec_k:
+    value: 8
+dec_lr:
+    value: 1.5e-05
+dec_mb_max:
+    value: 470
+dec_micro_frames:
+    value: 300
+dec_p_clip:
+    value: 1
+dec_p_lr:
+    value: 2e-05
+dec_sched:
+    value:
+        horizon: 1600
+        min_lr_rate: 0
+        s3_sched: wsd
+        warmup: 56
+        wsd_decay_end: 1600
+        wsd_decay_start: 56
+        wsd_floor: 0
+        wsd_shape: linear
+dec_seed:
+    value: 20261011
+decp_bb_alpha:
+    value: 1
+dl_workers:
+    value: 3
+eval_every:
+    value: 25
+eval_light_max:
+    value: 2048
+eval_pack_frames:
+    value: 2048
+export:
+    value: /home/param/pose-runs/compact-transcript-text-audio-pose-20261028/exports/export-200
+export_min_free_gb:
+    value: 300
+export_steps:
+    value: []
+export_wait_min:
+    value: 0
+final_save:
+    value: 1
+gradient_accumulation:
+    value: 1
+init:
+    value: /home/param/models/ppm-811-17850-base-bf16/weights
+local_export_root:
+    value: /home/param/pose-runs/compact-transcript-text-audio-pose-20261028/exports
+log_root:
+    value: /home/param/pose-runs
+losscheck:
+    value: 0
+losscheck_tol:
+    value: 0.002
+lr:
+    value:
+        audio: 6e-05
+        decp_bb: 1e-05
+        proj: 3e-05
+        spec: 6e-05
+        tower_p: 1.5e-05
+        tower_s: 1.5e-05
+        trunk: 3e-06
+lw_pose:
+    value: 1
+lw_speech:
+    value: 1
+lw_word:
+    value: 1
+micro_tok:
+    value: 6000
+mode:
+    value: train
+plan_digest:
+    value: 7060f1e9c10492ff8a0a9938b30cea3a5fb2431fb3770f124de3ebe331cf533d
+plan_dir:
+    value: /home/param/pose-runs/compact-transcript-text-audio-pose-20261028
+pose_b:
+    value: true
+pose_head_build:
+    value: false
+recipe:
+    value: compact-all
+resume:
+    value: never
+retain_full_checkpoints:
+    value: 2
+row_cap:
+    value: 7500
+rows_per_step:
+    value: 64
+run_tag:
+    value: compact-transcript-text-audio-pose-20261028
+save_every_min:
+    value: 100000
+save_root:
+    value: /home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves
+sched:
+    value:
+        horizon: 200
+        min_lr_rate: 0
+        s3_sched: wsd
+        warmup: 7
+        wsd_decay_end: 200
+        wsd_decay_start: 7
+        wsd_floor: 0
+        wsd_shape: linear
+sequence_budget:
+    value: 7500
+source_cache:
+    value: /home/param/datasets/xabi-v2pure-cache
+steps:
+    value: 200
+stores:
+    value:
+        - /home/param/datasets/xabi-v2pure-cache/provenance/original/ppm/aloe-v2pure-ft/stores/p0
+        - /home/param/datasets/xabi-v2pure-cache/provenance/original/ppm/aloe-v2pure-ft/stores/p1
+        - /home/param/datasets/xabi-v2pure-cache/provenance/original/ppm/aloe-v2pure-ft/stores/p2
+        - /home/param/datasets/xabi-v2pure-cache/provenance/original/ppm/aloe-v2pure-ft/stores/p3
+        - /home/param/datasets/xabi-v2pure-cache/provenance/original/ppm/aloe-v2pure-ft/stores/p4
+        - /home/param/datasets/xabi-v2pure-cache/provenance/original/ppm/aloe-v2pure-ft/stores/p5
+        - /home/param/datasets/xabi-v2pure-cache/provenance/original/ppm/aloe-v2pure-ft/stores/p6
+        - /home/param/datasets/xabi-v2pure-cache/provenance/original/ppm/aloe-v2pure-ft/stores/p7
+task:
+    value: compact-transcript-text-audio-pose
+v2pure:
+    value: true
+w_cat_word:
+    value: 1
+w_cb:
+    value: 1
+w_cb0:
+    value: 1
+w_eob:
+    value: 1
+w_nw:
+    value: 1
+w_pcb:
+    value: 1
+w_pcb0:
+    value: 1
+w_text:
+    value: 1
+w_tim:
+    value: 1
+warmup:
+    value: 7

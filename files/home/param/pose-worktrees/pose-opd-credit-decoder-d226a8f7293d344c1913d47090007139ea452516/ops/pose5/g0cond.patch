@@ -1,0 +1,331 @@
+--- a/data_ppm.py	2026-10-22 03:55:58.424743507 +0000
++++ b/data_ppm.py	2026-10-27 13:05:26.480622792 +0000
+@@ -240,15 +240,46 @@
+     return out
+ 
+ 
++G0_DIM = 8                          # G0COND (pose5 10-27, user change #2): per-clip frame-0 features (g0_feat), pose rows only
++
++
++def g0_feat(clip):
++    """G0COND: one pose clip's frame-0 conditioning features (computed in float64, stored float32) -> (f [G0_DIM], ok).
++    r = frame0_root (y, x; image-normalised: y / orig_h, x / orig_w), w = frame0_width (horizontal shoulder width, x / orig_w), H, W =
++    orig_h, orig_w (the source video's pixel size, parquet pose struct; every clip record of the fresh plans and of PPM's samdata stores):
++      f = [r_y, r_x, log w, -r_y / w, (1 - r_y) / w, -r_x / w, (1 - r_x) / w, log(H / W)]
++    (f[3:7] = the distances from the root to the top / bottom / left / right frame edges in shoulder widths = pose_s3q.global_features'
++    edge term e; f[7] = the aspect ratio, log so portrait / landscape are symmetric). Invalid frame 0 (frame0_ok false, a non-finite value,
++    w <= 0, H <= 0 or W <= 0) -> f = 0 (ok False): with g_proj bias-free the clip's SLOT input is then exactly today's."""
++    try:
++        ry, rx = (float(x) for x in clip["frame0_root"])
++        w, H, W = float(clip["frame0_width"]), float(clip["orig_h"]), float(clip["orig_w"])
++        ok = bool(clip.get("frame0_ok", True)) and all(np.isfinite([ry, rx, w, H, W])) and w > 0 and H > 0 and W > 0
++    except (KeyError, TypeError, ValueError):
++        ok = False
++    if not ok:
++        return np.zeros(G0_DIM, np.float32), False
++    f = np.array([ry, rx, np.log(w), -ry / w, (1.0 - ry) / w, -rx / w, (1.0 - rx) / w, np.log(H / W)], np.float64)
++    return f.astype(np.float32), True
++
++
+ def pose_micro_ppm(prow, cfg, rank):
+-    """one pose row (channel B speaker) -> the common micro."""
++    """one pose row (channel B speaker) -> the common micro. G0COND (cfg 'g0cond' truthy; the trainer passes it to the pose datasets only
++    when PPM_G0COND=1, never in CFG['data']): + g0pos [K] int64 = each clip's SLOT position (pose_s3q's gpos: its segment's first position,
++    unchanged by packed()) and g0f [K, G0_DIM] float32 = g0_feat of that clip; absent = the micro exactly as before."""
+     m = PS.pose_micro([prow], {"new_word": cfg["new_word"], "pose_delay": cfg["pose_delay"], "light_seed": cfg["light_seed"]}, rank,
+                       float(cfg["light_frac"]), float(cfg["pose_light_frac"]))
+     assert (m["ch"] == 1).all()
+-    return {"kind": "pose", "ids": m["ids"], "depth": m["depth"], "present": m["present"], "pdepth": m["pdepth"], "pid": m["pid"],
+-            "segs": [int(x) for x in m["segs"]], "sel": m["sel"], "y": m["y"], "word": m["word"], "pad": m["pad"], "eob": m["eob"],
+-            "nw": m["nw"], "n_text": float(len(m["sel"])), "cb0": m["cb0"], "light": m["light"], "pcb0": m["pcb0"], "plight": m["plight"],
+-            "prov": m["prov"]}
++    out = {"kind": "pose", "ids": m["ids"], "depth": m["depth"], "present": m["present"], "pdepth": m["pdepth"], "pid": m["pid"],
++           "segs": [int(x) for x in m["segs"]], "sel": m["sel"], "y": m["y"], "word": m["word"], "pad": m["pad"], "eob": m["eob"],
++           "nw": m["nw"], "n_text": float(len(m["sel"])), "cb0": m["cb0"], "light": m["light"], "pcb0": m["pcb0"], "plight": m["plight"],
++           "prov": m["prov"]}
++    if cfg.get("g0cond"):
++        fs = [g0_feat(c) for c in prow["clips"]]
++        assert len(fs) == len(m["gpos"]) and (np.asarray(prow["kind"])[m["gpos"]] == PS.KIND_SLOT).all(), "G0COND: clip SLOT positions"
++        out["g0pos"] = np.asarray(m["gpos"], np.int64)
++        out["g0f"] = np.stack([f for f, _ in fs]).astype(np.float32)
++    return out
+ 
+ 
+ def flatten_segments(m):
+--- a/model_ppm.py	2026-10-21 06:06:44.133936325 +0000
++++ b/model_ppm.py	2026-10-27 13:05:47.494857559 +0000
+@@ -51,7 +51,13 @@
+           under torch.no_grad (forward only: Block.ac recompute needs grad, so none; no trunk backward / reduce-scatter) and the towers (and the
+           D33 decp_bb link) get hn.detach(); NOTHING is cached. bb "full": the production graph, the towers / link read GradScale(hn, bridge)
+           (forward identity; gradient into the trunk x bridge = c_bb / c_tw, so tower-side losses rooted with the tower weight c_tw reach the
+-          trunk with the backbone weight c_bb). sp_parts False (pose rows only): the speech tower (and so the speech decoder) is not run."""
++          trunk with the backbone weight c_bb). sp_parts False (pose rows only): the speech tower (and so the speech decoder) is not run.
++G0COND    (pose5, 10-27, user change #2; trainer PPM_G0COND=1; default OFF = no module, no state-dict key, the graph above exactly): each pose
++          clip is conditioned on its frame-0 root xy, shoulder width and frame aspect. PPM(.., g0cond=True) adds inp.g0 = Linear(G0_DIM = 8 ->
++          5120, NO bias), weight ZERO at init (step 0 = today's model; main-AdamW group 'audio' = inp.pose's). Pose micros carry g0pos [K] (each
++          clip's SLOT position: the [SLOT 1 | clip | GAP 4] framing's empty PAD position just before the clip's first frame) and g0f [K, 8]
++          (data_ppm.g0_feat, fp32; cast to the table's bf16 like every trunk input); the TRUNK input at g0pos[k] += g0(g0f[k]) (Inp.forward,
++          inside the inp FSDP unit; frozen 8,1,1 micros run it under no_grad like the rest of the trunk). Speech / text rows: never."""
+ import json
+ import os
+ import sys
+@@ -186,6 +192,9 @@
+         return H2.code_feedback(depth, self.weight)
+ 
+ 
++G0_DIM = 8                                    # G0COND features per clip (data_ppm.g0_feat)
++
++
+ class Inp(nn.Module):
+     def __init__(self, V, H):
+         super().__init__()
+@@ -193,7 +202,7 @@
+         self.aud = nn.ModuleList([CodeTable(H) for _ in range(2)])
+         self.pose = CodeTable(H)
+ 
+-    def forward(self, ids, depth=None, present=None, pdepth=None):
++    def forward(self, ids, depth=None, present=None, pdepth=None, g0=None):
+         out = None
+         for c in range(2):
+             x = self.emb[c](ids[c])
+@@ -204,6 +213,9 @@
+             out = x if out is None else out + x
+         if pdepth is not None:
+             out = out + self.pose(pdepth).to(out.dtype)
++        if g0 is not None:                                         # G0COND (flag off: no self.g0, g0 never passed): each clip's SLOT position
++            gpos, gf = g0                                          #   += g0(f), f cast to the table's (bf16) dtype; other positions untouched
++            out = out.index_add(0, gpos, self.g0(gf.to(self.g0.weight.dtype)).to(out.dtype))
+         return out
+ 
+ 
+@@ -440,9 +452,12 @@
+ 
+ 
+ class PPM(nn.Module):
+-    def __init__(self, c32, c4, c06, proj_r=2048, tower_vocab=TOWER_VOCAB, pose_head=False, decp_bb=False):
++    def __init__(self, c32, c4, c06, proj_r=2048, tower_vocab=TOWER_VOCAB, pose_head=False, decp_bb=False, g0cond=False):
+         super().__init__()
+         self.inp = Inp(c32.vocab_size, c32.hidden_size)
++        self.g0cond = bool(g0cond)
++        if self.g0cond:                                            # G0COND (flag off: no such module, no key; inp FSDP unit, group 'audio', zero init)
++            self.inp.g0 = nn.Linear(G0_DIM, c32.hidden_size, bias=False)
+         self.layers = nn.ModuleList([Block(c32, i) for i in range(c32.num_hidden_layers)])
+         self.head = Head(c32, proj_r)
+         self.tower_s = Tower(c4, c32.hidden_size, tower_vocab)
+@@ -487,8 +502,13 @@
+         kind = b["kind"]
+         # 10-12 dependence probes (train_ppm codependence / xdep evals): optional TRUNK-input overrides ids_t / depth_t / present_t / pdepth_t;
+         # the towers, decoders and every label keep the micro's own ids[1] / depth / pdepth / cb0 / pcb0. Absent keys = unchanged behaviour.
++        g0 = None
++        if self.g0cond and kind == "pose":                         # G0COND: every pose micro carries its clips' frame-0 features (asserted)
++            assert "g0pos" in b and "g0f" in b, "G0COND on: a pose micro without g0pos / g0f (built without the pose datasets' g0cond cfg)"
++            g0 = (b["g0pos"], b["g0f"])
+         e = self.inp(b["ids_t"] if "ids_t" in b else b["ids"], b["depth_t"] if "depth_t" in b else b.get("depth"),
+-                     b["present_t"] if "present_t" in b else b.get("present"), b["pdepth_t"] if "pdepth_t" in b else b.get("pdepth"))[None]
++                     b["present_t"] if "present_t" in b else b.get("present"), b["pdepth_t"] if "pdepth_t" in b else b.get("pdepth"),
++                     **({"g0": g0} if g0 is not None else {}))[None]
+         ctx = Ctx(b["segs"], e.device)
+         pe = rot(e, b["pid"])
+         h = e
+@@ -539,7 +559,7 @@
+         return "spec"
+     if n.startswith("head.proj."):
+         return "proj"
+-    if n.startswith("inp.aud.") or n.startswith("inp.pose."):
++    if n.startswith("inp.aud.") or n.startswith("inp.pose.") or n == "inp.g0.weight":   # (inp.g0: G0COND, the pose input embedding's group)
+         return "audio"
+     if n.startswith("pose_head."):
+         return "pose_head"
+@@ -593,6 +613,8 @@
+         return "zeros", 0.0
+     if n in ("decp_bb.weight", "decp_bb.bias"):              # D33: zero init (zb = 0 exactly: the pose decoder's input unchanged at enable)
+         return "zeros", 0.0
++    if n == "inp.g0.weight":                                 # G0COND: zero init (step 0 = today's model exactly)
++        return "zeros", 0.0
+     if n in ("head.proj.G", "head.proj.V"):
+         return "normal", 1.0 / shape[1] ** 0.5
+     for t in ("tower_s.", "tower_p."):
+@@ -715,13 +737,13 @@
+ 
+ # ------------------------------------------------------------------------------------------------ build (FSDP2)
+ def build(c32, c4, c06, dev, log=print, partial=False, proj_r=2048, tower_vocab=TOWER_VOCAB, init=True, dec_ac=False, dec_mode="replicate",
+-          pose_head=False, decp_bb=False):
++          pose_head=False, decp_bb=False, g0cond=False):
+     from torch.distributed.fsdp import MixedPrecisionPolicy, fully_shard
+     from torch.distributed.algorithms._checkpoint.checkpoint_wrapper import CheckpointImpl, checkpoint_wrapper
+     mp = MixedPrecisionPolicy(param_dtype=torch.bfloat16, reduce_dtype=torch.float32)
+     mpn = MixedPrecisionPolicy(param_dtype=torch.bfloat16, reduce_dtype=torch.float32, cast_forward_inputs=False)
+     with torch.device("meta"):
+-        model = PPM(c32, c4, c06, proj_r, tower_vocab, pose_head=pose_head, decp_bb=decp_bb)
++        model = PPM(c32, c4, c06, proj_r, tower_vocab, pose_head=pose_head, decp_bb=decp_bb, **({"g0cond": True} if g0cond else {}))
+     assert dec_mode in ("replicate", "fsdp"), dec_mode
+     rep = dec_mode == "replicate"                                  # T14: decoders REPLICATED per GPU (default): no FSDP, one grad all-reduce per update
+     for dec in (model.dec_s, model.dec_p) if (dec_ac and not rep) else ():   # decoder activation checkpointing off by default (chunks are small)
+--- a/train_ppm.py	2026-10-22 17:17:18.513131304 +0000
++++ b/train_ppm.py	2026-10-27 13:06:48.145616421 +0000
+@@ -61,6 +61,14 @@
+   PPM_SPEECH_EP2_SEED. The run never deletes the switch checkpoint dcp-S0 (PPM_PROTECT_SWITCH=1). Checks: PPM_811_CHECK_STEPS=N asserts
+   for the first N steps that every frozen micro leaves the backbone gradients bit-identical, full micros change them, tower grads accumulate;
+   PPM_811_LOG_ROWS=N logs the rows of the first N steps; PPM_811_EVAL_REF=<metrics.jsonl glob> compares the start eval with PPM's at S0.
++G0COND (pose5, 10-27, user change #2: "condition every pose clip on its frame-0 root xy and shoulder width"): PPM_G0COND=1 -> model_ppm
++  inp.g0 (Linear 8 -> 5120, no bias, ZERO init, main-AdamW group 'audio' = the pose input embedding inp.pose's: LR / clip / schedule =
++  that group's) adds g0(f) to the TRUNK input at every pose clip's SLOT position (data_ppm.g0_feat: f = r_y, r_x, log w, the 4 root-to-edge
++  distances in shoulder widths, log(orig_h / orig_w); invalid frame 0 -> 0). Pose rows only: the pose datasets (train + eval) get
++  dict(CFG['data'], g0cond=1) (CFG['data'] itself unchanged), the codependence micros carry the same features (pose_shuf: the partner
++  clip's, pose_zero: 0 = codep_s3q's gfeat rule). cfg keys g0cond (+ g0cond_from_step) present only when set: unset / 0 = no module, no
++  key, the cfg and maths of job 27653 exactly. Resume from a checkpoint without it (dcp-17850): ONLY inp.g0.weight may be missing (kept at
++  its zero init, AdamW state fresh), everything else exact (digest); a checkpoint with it refuses a config without it. Exports record it.
+ LINK OFF (ported 10-20 23:10 PT from ppm/link-exp/code = job 26303 arm A; user: "can we get this training without the adapter straight
+   away"): PPM_DECP_BB_OFF=1 (needs PPM_DECP_BB=1) removes the D33 backbone -> pose-decoder link: decp_bb stays in the module (weights loaded
+   exactly, frozen, unchanged, in NO optimizer: its saved AdamW state set aside with the digest check, its LambdaLR entry removed), it is NOT
+@@ -217,6 +225,12 @@
+     CFG["s811_log_rows"] = int(E("PPM_811_LOG_ROWS", "0"))
+     CFG["s811_eval_ref"] = E("PPM_811_EVAL_REF", "")
+ S811 = "s811" in CFG
++assert E("PPM_G0COND", "0") in ("0", "1"), ("PPM_G0COND must be 0 | 1", E("PPM_G0COND", "0"))
++G0 = E("PPM_G0COND", "0") == "1"                             # G0COND (doc above)
++if G0:                                                       # keys present only when on (off = the production cfg exactly)
++    CFG["g0cond"] = 1
++    CFG["g0cond_from_step"] = 0                             # the step inp.g0's AdamW state started (set by load() on a resume; saved in the cfg)
++G0_KEYS = ("inp.g0.weight",)
+ # 10-21 FRESH-DATA RESUME FLIPS (user, for the 8,1,1 resume from dcp-17012 only; overrides the no-swap rule there; data_ppm FLIP_BIT doc):
+ #   PPM_SPEECH_FLIP=1: speech TRAINING rows of 8,1,1 speech epoch >= 2 (the repeats; s811.speech_stream marks) are built with the sides
+ #     flipped (swap = 1 - side_of: the row's other speaker on the predicted channel B); the unseen rest of PPM's epoch 1 is unchanged.
+@@ -387,7 +401,8 @@
+ 
+ # ------------------------------------------------------------------------------------------------ micro -> device + weights
+ ARR = ("ids", "depth", "present", "pdepth", "pid", "sel", "y", "word", "pad", "eob", "nw", "cb0", "light", "pcb0", "plight",
+-       "ids_t", "depth_t", "present_t", "pdepth_t")                 # *_t: trunk-input overrides of the dependence probes (model_ppm.PPM.forward)
++       "ids_t", "depth_t", "present_t", "pdepth_t",                 # *_t: trunk-input overrides of the dependence probes (model_ppm.PPM.forward)
++       "g0pos", "g0f")                                              # G0COND pose micros only (absent otherwise)
+ 
+ 
+ def prep(b, dev):
+@@ -486,6 +501,21 @@
+     return D.packed(m, dcfg)
+ 
+ 
++def codep_g0(cdp, rows):
++    """G0COND: + g0pos / g0f on every codependence micro. The subset = codep_s3q.select_clips(rows, budget) (the clips build() packed, in
++    order; their SLOT positions = the base micro's gpos); per variant the features follow codep_s3q's gfeat rule: real / speech_* = the
++    clip's own, pose_shuf = the partner clip's (perm), pose_zero = 0."""
++    sel = CDP.select_clips(rows, CFG["codep_frames"])
++    assert [c.get("clip_id", "") for _, c in sel] == list(cdp["info"]["clips"]), "G0COND: codep subset != the built one"
++    f = np.stack([D.g0_feat(c)[0] for _, c in sel]).astype(np.float32)
++    perm = np.asarray(cdp["info"]["perm"], np.int64)
++    gpos = np.asarray(cdp["base"]["gpos"], np.int64)
++    assert len(gpos) == len(f) == len(perm), (len(gpos), len(f), len(perm))
++    for v, m in zip(CDP.VARIANTS, cdp["micros"]):
++        m["g0pos"] = gpos
++        m["g0f"] = f[perm] if v == "pose_shuf" else (np.zeros_like(f) if v == "pose_zero" else f)
++
++
+ def codep_vals(v):
+     """PPM pose stats vector -> codep_s3q.reduce_variant's 10 sums: word norm (sum, n), cb0, light (frame-mean over 31 cb), pose cb0, pose light."""
+     return [v[1], v[2], v[10], v[11], v[13] / 31.0, v[14] / 31.0, v[15], v[16], v[18] / 31.0, v[19] / 31.0]
+@@ -909,8 +939,11 @@
+     drop_bb = bool(BB_OFF and bb_old and not bboff_old)           # LINK OFF applied at this resume: the link's AdamW state set aside
+     assert not (BB_OFF and add_bb), "PPM_DECP_BB_OFF=1: the checkpoint has no D33 link to remove"
+     assert BB_OFF or not bboff_old, "the checkpoint's link is OFF (no AdamW state): reviving it needs its own code path"
++    g0_old = int(ts0["cfg"].get("g0cond", 0))                     # G0COND (doc above): added at a resume -> ONLY inp.g0.weight may be missing
++    assert G0 or not g0_old, ("resume: the checkpoint has G0COND (inp.g0); this config has PPM_G0COND=0 (removing it is not supported)", path)
++    add_g0 = bool(G0 and not g0_old)
+     ts = SF.load_local(model, opts_of(opt, dos), sched, path, RANK, log,
+-                       allow_missing=(POSE_HEAD_KEYS if add_head else ()) + (DECP_BB_KEYS if add_bb else ()),
++                       allow_missing=(POSE_HEAD_KEYS if add_head else ()) + (DECP_BB_KEYS if add_bb else ()) + (G0_KEYS if add_g0 else ()),
+                        drop_opt=(POSE_HEAD_KEYS if drop_head else ()) + (DECP_BB_KEYS if drop_bb else ()),
+                        drop_model=(POSE_HEAD_KEYS if rm_head else ()))
+     assert ts["world"] == WORLD and ts["hosts"] == hosts, ("resume needs the same world and rank -> host map", ts["world"], ts["hosts"], hosts)
+@@ -976,6 +1009,12 @@
+         pg["lr"] = lr_                                             #   optimizer, whose groups kept the constructor's lam(0) LRs (= 0 with a
+                                                                    #   warmup): the first step after every resume ran at LR 0. Now = the
+                                                                    #   saved schedule's next LRs (added groups: their lam at their first step)
++    if G0:                                                         # G0COND: inp.g0 lives in the existing 'audio' group (no group / LambdaLR change)
++        CFG["g0cond_from_step"] = int(ts["step"]) if add_g0 else int(ts["cfg"]["g0cond_from_step"])
++        if add_g0:
++            log(f"[resume] G0COND ADDED at step {ts['step']}: inp.g0.weight = zeros (init), AdamW state fresh (bias correction from its own "
++                f"step 1), in main-AdamW group '{M.group_of('inp.g0.weight')}' (LR {CFG['lr']['audio']:g} x the group's schedule, clip "
++                f"{CFG['clip']['audio']:g}); every other tensor + optimizer state restored exactly")
+     def _rk(cfg, k):                                               # D31 (10-11 night): the decoder-update spec (dec_k, data.light_frac,
+         v = cfg.get(k)                                             #   data.pose_light_frac) is resume-CHANGEABLE, nothing else: these only
+         if k == "dec_k":                                           #   choose which frames / how many chunks the 0.6B decoders update on;
+@@ -1115,6 +1154,7 @@
+             + "; ".join(f"{c['kind']} {c['mode']} {int(c['sp'])} {c['c_bb']:.6g} {c['c_s']:.6g} {c['c_p']:.6g}" for c in COEF))
+     # ---- data plans (node-local stores)
+     dcfg = CFG["data"]
++    pcfg = dict(dcfg, g0cond=1) if G0 else dcfg                   # G0COND: the pose datasets' cfg (+ g0pos / g0f per micro); CFG['data'] unchanged
+     pnode = D.PS.load_node(CFG["pose_root"])
+     snode = D.R3.load_node(CFG["speech_root"])
+     for nm_, nd in (("pose", pnode), ("speech", snode)):
+@@ -1294,7 +1334,11 @@
+     c32, c4, c06 = M.cfg32(CFG["layers"]), M.cfg4b(CFG["tower_layers"]), M.cfg06(CFG["dec_layers"])
+     partial = CFG["layers"] != 64
+     model, info = M.build(c32, c4, c06, dev, log, partial=partial, proj_r=CFG["proj_r"], tower_vocab=CFG["tower_vocab"], dec_ac=CFG["dec_ac"], dec_mode=CFG["dec_mode"],
+-                          pose_head=bool(CFG["pose_head"]), **({"decp_bb": True} if CFG["decp_bb"] else {}))
++                          pose_head=bool(CFG["pose_head"]), **({"decp_bb": True} if CFG["decp_bb"] else {}), **({"g0cond": True} if G0 else {}))
++    assert G0 == hasattr(model.inp, "g0") == model.g0cond, ("G0COND: module presence != PPM_G0COND", G0)
++    if G0:
++        log(f"[g0cond] G0COND on: inp.g0 {tuple(model.inp.g0.weight.shape)} (zero init, no bias; main-AdamW group '{M.group_of('inp.g0.weight')}'): "
++            f"trunk input at each pose clip's SLOT position += g0(frame-0 features, {D.G0_DIM}-d); pose rows only")
+     if PH_OFF:                                                     # D36: the head stays in the module (weights saved), skipped in forward
+         model.pose_head_on = False
+     if BB_OFF:                                                     # LINK OFF: the link is never computed in training
+@@ -1360,10 +1404,10 @@
+             assert start >= Sf_, ("resume before the fresh-pose start", start, Sf_)
+             pstream = frows_[(start - Sf_) * npm:(max_steps - Sf_) * npm]
+             assert len(pstream) == (max_steps - start) * npm, ("fresh pose rows short of max_steps", len(pstream), max_steps, start)
+-            ld["pose"] = loaders_for(FP.FreshPoseDS(fpl_, pstream, dcfg, RANK) if not FRESH_POSE2 else FP.FreshPoseMultiDS(fpls_, pstream, dcfg, RANK), W_)
++            ld["pose"] = loaders_for(FP.FreshPoseDS(fpl_, pstream, pcfg, RANK) if not FRESH_POSE2 else FP.FreshPoseMultiDS(fpls_, pstream, pcfg, RANK), W_)
+             pstream = np.concatenate([np.full((start - fs_) * npm, -1, np.int64), pstream])   # (row log below: index (t - fs_) x npm; -1 = unused)
+         elif npm:
+-            ld["pose"] = loaders_for(D.PoseDS(pnode, pstream[(start - fs_) * npm:(max_steps - fs_) * npm], dcfg, RANK), W_)
++            ld["pose"] = loaders_for(D.PoseDS(pnode, pstream[(start - fs_) * npm:(max_steps - fs_) * npm], pcfg, RANK), W_)
+         if nsm:
+             sr_ = sstream[(start - fs_) * nsm:(max_steps - fs_) * nsm]
+             ld["speech"] = loaders_for(D.SpeechDS(CFG["speech_root"], sr_, dcfg, RANK) if hplan is None else
+@@ -1373,7 +1417,7 @@
+                 print(f"[811 rows] rank {RANK} step {t_ + 1}: pose {pstream[(t_ - fs_) * npm:(t_ - fs_ + 1) * npm].tolist()} speech "
+                       f"{sstream[(t_ - fs_) * nsm:(t_ - fs_ + 1) * nsm].tolist()} text {text_src(t_)}", flush=True)
+     elif npm:
+-        ld["pose"] = loaders_for(D.PoseDS(pnode, pplan["rows"][start * npm:max_steps * npm], dcfg, RANK), W_)
++        ld["pose"] = loaders_for(D.PoseDS(pnode, pplan["rows"][start * npm:max_steps * npm], pcfg, RANK), W_)
+     if nsm and not S811:
+         ld["speech"] = loaders_for(D.SpeechDS(CFG["speech_root"], splan["rows"][start * nsm:max_steps * nsm], dcfg, RANK) if hplan is None else
+                                    D.MixedSpeechDS(CFG["speech_root"], hplan, splan["rows"][start * nsm:max_steps * nsm], dcfg, RANK), W_)
+@@ -1419,7 +1463,7 @@
+         log(f"[data] chat packs per rank {len(mine):,}; chat micros this run (rank 0) {kc['chat'] * ntm:,}; max over ranks re-read in a 2nd pass: {int(nwrap)}")
+         if cp_:
+             ld["chat"] = loaders_for(CH.ChatDS(cp_, dcfg), W_)
+-    ev = {"pose": [D.PoseDS(pnode, pplan["eval_rows"], dcfg, RANK)[i] for i in range(len(pplan["eval_rows"]))],
++    ev = {"pose": [D.PoseDS(pnode, pplan["eval_rows"], pcfg, RANK)[i] for i in range(len(pplan["eval_rows"]))],
+           "speech": [D.SpeechDS(CFG["speech_root"], splan["eval_rows"], dcfg, RANK)[i] for i in range(len(splan["eval_rows"]))],
+           "gemma": [D.TextDS(CFG["text_root"], "eval", list(range(RANK * E_, (RANK + 1) * E_)), dcfg)[i] for i in range(E_)],
+           "chat": [CH.ChatDS([cev[(RANK * E_ + i) % len(cev)] for i in range(E_)], dcfg)[i] for i in range(E_)]}
+@@ -1467,6 +1511,8 @@
+         pdc_ = {"new_word": dcfg["new_word"], "pose_delay": dcfg["pose_delay"], "light_seed": dcfg["light_seed"]}
+         cdp = CDP.build(rows_, pdc_, RANK, CFG["codep_frames"], CFG["codep_seed"] + RANK, CFG["codep_light_frac"], CFG["codep_light_frac"])
+         cdp["micros"] = [codep_micro(cdp, v, dcfg) for v in CDP.VARIANTS]
++        if G0:                                                     # G0COND: the subset clips' frame-0 features per variant (codep_g0)
++            codep_g0(cdp, rows_)
+         nc_ = allsum([float(cdp["info"]["K"]), float(cdp["info"]["N"])], dev)
+         log(f"[codep] codependence subset: {int(nc_[0])} held-out pose clips (this rank's {len(rows_)} pose eval rows), {int(nc_[1]):,} positions per variant "
+             f"over all ranks ({cdp['info']['N']} on rank 0), variants {CDP.VARIANTS}, one forward each; seed {CFG['codep_seed']}+rank, light frac "
+@@ -1782,7 +1828,8 @@
+             T_LAST["export"] = time.time()
+             SF.export_weights(model, done, CFG["export_root"], CFG["run_base"], CFG["export_min_free_gb"], CFG["export_parts"], RANK, log,
+                               **({"side": {"step": done, "decp_bb": 1, "decp_bb_alpha": 0.0 if BB_OFF else decp_bb_alpha(done),
+-                                           **({"decp_bb_off": 1} if BB_OFF else {})}} if CFG["decp_bb"] else {}))
++                                           **({"decp_bb_off": 1} if BB_OFF else {}), **({"g0cond": 1} if G0 else {})}} if CFG["decp_bb"] else
++                                 ({"side": {"step": done, "g0cond": 1}} if G0 else {})))
+         if (c_save or c_stop) and not saved_ok:
+             log(f"!!! [control] {'STOP_AFTER_SAVE' if c_stop else 'SAVE_NOW'} at step {done}: the save was SKIPPED (no /scratch space): NOT stopping; "
+                 f"control file kept (free space, it retries at the next step boundary)")
+@@ -1799,7 +1846,7 @@
+             save(model, opt, sched, dos, max_steps, path, hosts)
+         d0 = digest(model, [opt, dos["dec_s"].opt, dos["dec_p"].opt])
+         m2, _ = M.build(c32, c4, c06, dev, log, partial=partial, proj_r=CFG["proj_r"], tower_vocab=CFG["tower_vocab"], init=False, dec_ac=CFG["dec_ac"], dec_mode=CFG["dec_mode"],
+-                          pose_head=bool(CFG["pose_head"]), **({"decp_bb": True} if CFG["decp_bb"] else {}))
++                          pose_head=bool(CFG["pose_head"]), **({"decp_bb": True} if CFG["decp_bb"] else {}), **({"g0cond": True} if G0 else {}))
+         if PH_OFF:
+             m2.pose_head_on = False
+         if BB_OFF:

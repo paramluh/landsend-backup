@@ -1,0 +1,16 @@
+[Unit]
+Description=pose-playground-tunnel on landsend-12
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/home/param/websites/pose-playground
+ExecStart=/usr/bin/python3 /home/param/websites/pose-playground/ops/serve_tunnel.py --port 9205 --url-file /home/param/websites/pose-playground/URL.txt
+Restart=always
+RestartSec=5
+StandardOutput=append:/home/param/runs/pose-runs/pose-sites-20261030/pose-playground-tunnel.log
+StandardError=append:/home/param/runs/pose-runs/pose-sites-20261030/pose-playground-tunnel.log
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,64 @@
+root_dir = '/mnt/paramfs/vansh/aloe-conversational/conv-4.3k-5mins-muon-neutrino-256x480-v1'
+clipnames_root = '/mnt/paramfs/vansh/aloe-conversational/csvs'
+train_csv = 'aloe-h4'
+eval_csvs.seen = 'aloe-h4-eval-seen'
+eval_csvs.unseen = 'aloe-h4-eval-unseen'
+
+eval_every_n_steps = 1000
+num_dataloader_workers = 8
+eval_num_dataloader_workers = 4
+save_every_n_steps = 6292
+save_optimizer_every_n_steps = 6292
+output_dir = '/home/vansh/vansh-video-models/pose-checkpoints/universal-low-resolution/aloe-h4'
+resume_from = '/home/vansh/vansh-video-models/pose-checkpoints/universal-low-resolution/aloe-h4/run_2/step4627'
+
+num_history = 4
+num_present = 5
+history_dropout = [0.0, 0.0, 0.0, 0.0]
+
+epochs = 2
+micro_batch_size_per_gpu = 4
+eval_micro_batch_size_per_gpu = 5
+gradient_accumulation_steps = 15
+gradient_clipping = 1.0
+warmup_steps = 2000
+lr = 5e-5
+min_lr = 1e-5
+ema_decay = 0.9995
+
+activation_checkpointing = true
+activation_checkpoint_skip = 30
+compile_blocks = true
+
+[model]
+type = 'universal_wide'
+arch = 'wan_5b_wide'
+checkpoint_path = '/home/vansh/vansh-video-models/pose-checkpoints/universal-low-resolution/h6-squeaky/run_3/step44675/model_ema.safetensors'
+dtype = 'bfloat16'
+transformer_dtype = 'bfloat16'
+debug_shapes = true
+
+[model.audio]
+model_name = 'kyutai/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+initialization = 'zero'
+audio_dropout = 0.15
+
+[wandb]
+project = 'universal-wide-model'
+run_name = 'aloe-h4-p5'
+id = '0hbtzog4'
+
+[optimizer]
+type = 'stableadamw'
+betas = [0.9, 0.99]
+weight_decay = 1e-6
+eps = 1e-8

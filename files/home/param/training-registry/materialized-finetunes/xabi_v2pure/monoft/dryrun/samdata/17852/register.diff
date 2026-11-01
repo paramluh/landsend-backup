@@ -1,0 +1,39 @@
+--- a/build_samdata_ft.py
++++ b/build_samdata_ft.py
+@@ -88,6 +88,8 @@
+            Run("p17352", 17352, f"{H}/ppm/aloe-v2pure-17352", "ppm-aloe-v2pure-17352-j", r"^aloev2p17352$"),
+-           Run("p17641", 17641, f"{H}/ppm/aloe-v2pure-17641", "ppm-aloe-v2pure-17641-j", r"^aloev2p17641$")]
++           Run("p17641", 17641, f"{H}/ppm/aloe-v2pure-17641", "ppm-aloe-v2pure-17641-j", r"^aloev2p17641$"),
++           # 10-23 scaling point 7: init = PPM 8,1,1 delivery-3 append run (job 27653) step 17852; = aloe-v2pure-17641 verbatim except the init
++           Run("p17852", 17852, f"{H}/ppm/aloe-v2pure-main-17852", "ppm-aloe-v2pure-main-17852-j", r"^aloev2pm17852$")]
+ REF_INIT = 11488   # the 23051 reference's init PPM step (scaling point)
+-SC_ORDER = ("p7932", "ref", "p13533", "ft", "p17352", "p17641")   # scaling points, by init step
+-EXACT_PRE = {"p17352", "p17641"}   # 10-22: x must be the pretraining eval at exactly the init step
++SC_ORDER = ("p7932", "ref", "p13533", "ft", "p17352", "p17641", "p17852")   # scaling points, by init step
++EXACT_PRE = {"p17352", "p17641", "p17852"}   # 10-22: x must be the pretraining eval at exactly the init step
+ 
+@@ -277,3 +279,3 @@
+     return ([("ft", paths.get("ft"), "ppm"), ("p13533", paths.get("p13533"), "ppm"), ("ref", REF, "ppm"), ("p7932", paths.get("p7932"), "ppm"),
+-             ("p17352", paths.get("p17352"), "ppm"), ("p17641", paths.get("p17641"), "ppm")]
++             ("p17352", paths.get("p17352"), "ppm"), ("p17641", paths.get("p17641"), "ppm"), ("p17852", paths.get("p17852"), "ppm")]
+             + [(k, f"{d}/logs/metrics.jsonl", "sam") for k, d in SAM_RUNS])
+--- a/samdata_ft.tpl.html
++++ b/samdata_ft.tpl.html
+@@ -19,2 +19,3 @@
+ :root[data-theme=dark]{--c13:#5fd3c7;--c79:#f06595;--c17:#ffd43b;--c18:#d9a066;--bg:#0f1115;--card:#171a21;--fg:#e6e8ec;--muted:#9aa1ad;--line:#2a2f3a;--one:#6aa8ff;--pose:#5fd3c7;--sam:#e6e8ec;--s3:#a3aab6;--dm:#ff922b;--he:#e599f7;--evb:#b197fc;--ilp:#8ce99a;--nxt:#faa2c1;--btn:#232834;--on:#6aa8ff;--onfg:#0f1115}
++:root{--cm:#5c940d}@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--cm:#a9e34b}}:root[data-theme=dark]{--cm:#a9e34b}   /* p17852 (aloe-v2pure-main-17852) */
+ *{box-sizing:border-box}
+@@ -100,3 +101,4 @@
+   ['p17352',N17,'--c17',()=>(S().fts||{}).p17352||null,'ppm-aloe-v2pure-17352',17352],['p17641',N18,'--c18',()=>(S().fts||{}).p17641||null,'ppm-aloe-v2pure-17641',17641]];
+-const PORD=['p17641','p17352','ft','p13533','ref','p7932'];   /* PPM curve order on every chart: init step high -> low (ref = 23051, init 11,488) */
++const NM='PPM 32B from step 17,852 (8,1,1 + delivery 3)';PPMS.push(['p17852',NM,'--cm',()=>(S().fts||{})['p17852']||null,'ppm-aloe-v2pure-main-17852',17852]);
++const PORD=['p17852','p17641','p17352','ft','p13533','ref','p7932'];   /* PPM curve order on every chart: init step high -> low (ref = 23051, init 11,488) */
+ /* ★ = the live run: the PPM FT runs training / starting; else the queued ones; else the newest launched (largest job id) */
+@@ -128,2 +130,3 @@
+ const RUNC={ft:()=>[FTN,'--one',ftX],p13533:()=>[N13,'--c13',ftX],ref:()=>[REFN,'--dm',refX],p7932:()=>[N79,'--c79',ftX],p17352:()=>[N17,'--c17',ftX],p17641:()=>[N18,'--c18',ftX]};for(const [id,nm,col] of SAMS)RUNC[id]=()=>[nm,col,samX];
++RUNC['p17852']=()=>[NM,'--cm',ftX];
+ const LRDASH=[[],[6,3],[2,3],[8,3,2,3]];
+@@ -288,2 +291,3 @@
+ const SCR={ft:[FTN,'--one'],p13533:[N13,'--c13'],ref:[REFN,'--dm'],p7932:[N79,'--c79'],p17352:[N17,'--c17'],p17641:[N18,'--c18']};
++SCR['p17852']=[NM,'--cm'];
+ const SCK={pcb0:'pose cb0 CE',plight:'pose light CE'};

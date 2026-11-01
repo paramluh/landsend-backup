@@ -1,0 +1,19 @@
+[Unit]
+Description=CPU decode of real pose OPD rollout samples
+After=pose-opd-credit-collector.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/home/param/pose-worktrees/pose-opd-credit
+Environment=CUDA_VISIBLE_DEVICES=
+Environment=OMP_NUM_THREADS=2
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/home/param/pose-repo/.venv/bin/python -m finetune.pose_opd_credit.samples_decode --raw-root /home/param/outputs/pose-opd-credit-live/raw-rollouts --output-dir /home/param/outputs/pose-opd-credit-live/samples --threads 2 --watch --poll-seconds 10
+Restart=always
+RestartSec=10
+Nice=10
+NoNewPrivileges=true
+
+[Install]
+WantedBy=default.target

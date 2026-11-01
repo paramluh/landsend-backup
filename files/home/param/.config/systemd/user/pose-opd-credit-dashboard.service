@@ -1,0 +1,15 @@
+[Unit]
+Description=Pose OPD credit dashboard preview on landsend-0
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/home/param/websites/pose-opd-credit-dashboard
+ExecStart=/usr/bin/python3 /home/param/websites/pose-opd-credit-dashboard/pose-preview/serve_preview.py
+Restart=always
+RestartSec=5
+Nice=10
+
+[Install]
+WantedBy=default.target

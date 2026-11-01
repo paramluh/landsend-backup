@@ -1,0 +1,13 @@
+[Unit]
+Description=Cloudflare tunnel for pose monoplex dcp-227
+After=network-online.target pose-mono-dcp227-web.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/param/.local/bin/cloudflared tunnel --no-autoupdate --url http://127.0.0.1:9205
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

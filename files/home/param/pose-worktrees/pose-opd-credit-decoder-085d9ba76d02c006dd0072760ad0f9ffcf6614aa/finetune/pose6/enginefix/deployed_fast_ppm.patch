@@ -1,0 +1,58 @@
+--- /data/home/amartyavarma/ppm/aloe-pose-monoplex-infer/ppm/fast_ppm.py	2026-10-26 13:11:54.922132241 +0000
++++ /data/home/amartyavarma/ppm/pose6/enginefix/deployed/fast_ppm.py	2026-10-27 20:05:17.730420881 +0000
+@@ -106,7 +106,7 @@
+         bb = "decp_bb.weight" in keys
+         return dict(kind="local", path=path, step=int(meta["step"]), meta=meta, pose=any(k.startswith("tower_p.") for k in keys),
+                     vad=any(k.startswith("vadapter.") for k in keys), decp_bb=bb,
+-                    decp_bb_alpha=IP.decp_bb_alpha_of(c, meta["step"]) if bb else None, **dims)
++                    decp_bb_alpha=_link_alpha(path, c, IP.decp_bb_alpha_of(c, meta["step"])) if bb else None, **dims)
+     assert os.path.isfile(f"{path}/.metadata") and os.path.isfile(f"{path}/COMPLETE"), ("not a COMPLETE PPM DCP export", path)
+     import torch.distributed.checkpoint as dcp
+     md = dcp.FileSystemReader(path).read_metadata().state_dict_metadata
+@@ -125,7 +125,37 @@
+     return dict(kind="dcp", path=path, step=step, shapes=shp, side=side, layers=nlay("layers."), tower_layers=nlay("tower_s.layers."),
+                 dec_layers=nlay("dec_s.model.layers."), proj_r=shp["head.proj.G"][0], tower_vocab=shp["tower_s.text_emb.weight"][0],
+                 pose=any(k.startswith("tower_p.") for k in shp), vad=any(k.startswith("vadapter.") for k in shp), decp_bb=bb,
+-                decp_bb_alpha=float(side.get("decp_bb_alpha", 1.0)) if bb else None)
++                decp_bb_alpha=_link_alpha(path, side, float(side.get("decp_bb_alpha", 1.0))) if bb else None)
++
++
++def _link_alpha(path, rec, alpha):
++    """ENGINEFIX (pose6, 10-27): LINK OFF (8,1,1 trainer PPM_DECP_BB_OFF=1, live in 31101; recorded as 'decp_bb_off': 1 in a DCP export's
++    train_cfg.json and in the training cfg a local copy's meta.json carries): the trainer never computes the link (pose decoder called with
++    zb=None), so the link scale is 0 whatever decp_bb_alpha the record holds. Records without the key (every checkpoint deployed on 10-27):
++    the alpha exactly as before."""
++    if any(isinstance(r, dict) and int(r.get("decp_bb_off", 0)) for r in (rec, rec.get("cfg"))):   # the record or its nested training cfg
++        if alpha != 0.0:
++            log(f"[ckpt] {path}: D33 link OFF (decp_bb_off 1) -> link alpha 0 (the record's decp_bb_alpha {alpha} is the unused knob)")
++        return 0.0
++    return alpha
++
++
++POSE6_KEYS = ('inp.g0.weight', 'tower_p.s_emb.weight')   # ENGINEFIX (pose6, 10-27): checkpoint tensors this engine cannot serve
++
++
++def _refuse_pose6_keys(ci):
++    """ENGINEFIX (pose6, 10-27): a checkpoint carrying inp.g0.weight or tower_p.s_emb.weight (8,1,1 run 31101's exports, pose6 FTs) needs ppm/pose6/infer/ppm/fast_ppm.py;
++    this engine would build the model without them and load the rest (DCP: 'not used'; local shards: skipped), silently dropping the mods.
++    Fail loud instead. Every checkpoint deployed on 10-27 carries none of them (pose6/enginefix/README.md)."""
++    if ci["kind"] == "dcp":
++        keys = set(ci["shapes"])
++    else:
++        keys = set(torch.load(f"{ci['path']}/rep.pt", map_location="cpu", weights_only=True, mmap=True).keys())
++        keys |= set(torch.load(f"{ci['path']}/rank0.pt", map_location="cpu", weights_only=True, mmap=True).keys())
++    found = sorted(k for k in POSE6_KEYS if k in keys)
++    if found:
++        raise RuntimeError(f"{ci['path']} carries {found} (pose6 mods: G0COND inp.g0 / s2p tower_p.s_emb): this engine would silently drop "
++                           f"them. Serve it with the pose6 engine ppm/pose6/infer/ppm/fast_ppm.py.")
+ 
+ 
+ def s_from_metrics(step, path=RUN_METRICS):
+@@ -146,6 +176,7 @@
+     """-> (model, ldev, cfgs, info). Pose parts / D33 link / vadapter exactly as the checkpoint has them. Layer split: weights 1 per GPU and
+     last_w for the last GPU (default 0.75 with pose: the first GPU also holds the pose branch; 0.45 without = the live engine's split)."""
+     ci = ckpt_info(ck)
++    _refuse_pose6_keys(ci)                                                          # ENGINEFIX (pose6): never drop the mods silently
+     c32, c4, c06 = M.cfg32(ci["layers"]), M.cfg4b(ci["tower_layers"]), M.cfg06(ci["dec_layers"])
+     pose, vad, bb = ci["pose"], ci["vad"], ci["decp_bb"]
+     torch.set_default_dtype(BF)

@@ -1,0 +1,83 @@
+root_dir = '/home/vansh/aloe-cache'
+clipnames_root = '/home/vansh/vansh-video-models/csvs'
+hf_bucket = 'InternalCan/aloe-conversationa-data'
+hf_prefix = 'conv-4.3k-5mins-muon-neutrino-256x480-v1'
+hf_cache_dir = '/home/vansh/aloe-cache'
+hf_pool_chunks = 2048
+hf_pool_start = 512
+hf_pool_ramp = 16
+hf_fetch_procs = 64
+train_csv = '/home/vansh/vansh-video-models/csvs/aloe-h4-limited-no-blackbands.csv'
+eval_csvs.seen = 'aloe-h4-limited-eval-seen'
+eval_csvs.unseen = 'aloe-h4-limited-eval-unseen'
+
+eval_every_n_steps = 500
+num_dataloader_workers = 8
+eval_num_dataloader_workers = 4
+save_every_n_steps = 2291
+save_optimizer_every_n_steps = 6873
+output_dir = '/home/vansh/vansh-video-models/pose-checkpoints/universal-low-resolution/aloe-h4-complete-corruption'
+
+num_history = 4
+num_present = 5
+history_dropout = [0.1, 0.1, 0.0, 0.0]
+
+epochs = 3
+micro_batch_size_per_gpu = 3
+eval_micro_batch_size_per_gpu = 5
+gradient_accumulation_steps = 9
+gradient_clipping = 1.0
+warmup_steps = 1000
+lr = 5e-5
+min_lr = 8e-6
+ema_decay = 0.999
+
+activation_checkpointing = true
+activation_checkpoint_skip = 30
+compile_blocks = true
+
+[history_corruption]
+color_p = 0.467
+person_color = [0.018, 0.2]
+background_color = [0.059, 1.2]
+mosaic_p = 0.233
+mosaic = [0.35, 1.8]
+mosaic_dc = 0.8
+mosaic_coverage = [0.7, 1.0]
+directions = [0.4, 0.4, 0.2]
+mask_tau = 0.8
+mask_tau_pose = 0.3
+slots = [0.4, 0.3, 0.3]
+per_slot_mask = true
+
+[model]
+type = 'universal_wide'
+arch = 'wan_5b_wide'
+checkpoint_path = '/home/vansh/vansh-video-models/pose-checkpoints/universal-low-resolution/h6-squeaky/run_3/step44675/model_ema.safetensors'
+dtype = 'bfloat16'
+transformer_dtype = 'bfloat16'
+debug_shapes = true
+
+[model.audio]
+model_name = 'kyutai/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+initialization = 'zero'
+audio_dropout = 0.15
+
+[wandb]
+project = 'universal-wide-model'
+run_name = 'aloe-h4-complete-corruption'
+
+[optimizer]
+type = 'stableadamw'
+betas = [0.9, 0.99]
+weight_decay = 1e-6
+eps = 1e-8

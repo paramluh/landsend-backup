@@ -1,0 +1,9 @@
+# Agent-friendly defaults for quick encode/decode usage.
+# Prefer this config when you want the current recommended 32-codebook tokenizer.
+
+tokenizer_repo: InternalCan/base-causal-2x-wide-32cb-qd0.5-lr1e-4-lossshift1-root-frame-0-cb_size_2048
+local_checkpoint: /mnt/som-fs/james-checkpoints/pose-tokenizer-james/32cb_size_2048/base-causal-2x-wide-32cb-qd0.5-lr1e-4-lossshift1-root-frame-0-cb_size_2048/step_200000
+
+expect:
+  n_codebooks: 32
+  codebook_size: 2048

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pose OPD credit training curves and observed run activity.">
+  <meta name="pose-version" content="__VERSION__">
+  <title>Pose OPD credit · Run monitor</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <script id="pose-data" type="application/json">__DATA__</script>
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">P</span><div><p class="eyebrow">Training monitor</p><h1>Pose <span>OPD credit</span></h1></div></div>
+      <div class="header-actions"><span class="connection" id="connection" role="status">Reading snapshot</span><button id="refresh" class="button" type="button">Refresh</button><button id="theme" class="button theme-button" type="button" aria-label="Switch to light theme">Light</button></div>
+    </header>
+
+    <section class="run-header" aria-label="Run identity">
+      <div class="run-identity"><span id="status" class="status">Waiting for run</span><h2 id="run-name">Upcoming run</h2></div>
+      <p id="run-note" class="muted">The monitor is ready for the first recorded update.</p>
+    </section>
+
+    <section class="stats" aria-label="Run summary">
+      <div class="stat"><span class="stat-label">Completed updates</span><div class="stat-value" id="stat-updates">—</div><span class="stat-note" id="stat-total">Plan not available</span></div>
+      <div class="stat"><span class="stat-label">Update duration</span><div class="stat-value" id="stat-speed">—</div><span class="stat-note">Recent update median</span></div>
+      <div class="stat"><span class="stat-label">Last update</span><div class="stat-value smaller" id="stat-time">—</div><span class="stat-note" id="stat-age">No completed update recorded</span></div>
+      <div class="stat"><span class="stat-label">Last checkpoint</span><div class="stat-value smaller" id="stat-save">—</div><span class="stat-note" id="stat-save-note">No checkpoint recorded</span></div>
+    </section>
+
+    <section class="activity" aria-label="Observed activity">
+      <div><span class="section-label">Latest observed activity · rank 0</span><div id="phase" class="phase-value">Waiting for telemetry</div><p class="muted" id="phase-detail">Activity appears when the trainer writes its event log.</p></div>
+      <div id="rollout" class="rollout" hidden></div>
+      <div class="activity-time" id="activity-time"></div>
+    </section>
+
+    <div id="warnings" class="warnings" hidden></div>
+    <div id="poll-error" class="poll-error" role="status" hidden></div>
+
+    <nav class="tabs" aria-label="Dashboard sections">
+      <button type="button" data-tab="overview" aria-pressed="true">Overview</button>
+      <button type="button" data-tab="codebooks" aria-pressed="false">Codebooks</button>
+      <button type="button" data-tab="performance" aria-pressed="false">Performance <span class="tab-note">rank 0</span></button>
+      <button type="button" data-tab="events" aria-pressed="false">Events</button>
+    </nav>
+
+    <div class="toolbar" id="chart-controls">
+      <label class="search-label"><span class="sr-only">Search metrics</span><input id="search" type="search" placeholder="Find a metric…" autocomplete="off"></label>
+      <label>Smooth <select id="smooth"><option value="1">Off</option><option value="5">5 updates</option><option value="10">10 updates</option><option value="25">25 updates</option></select></label>
+      <div class="range-control"><span>Updates</span><label><span class="sr-only">First update</span><input id="range-from" type="number" min="0" step="1" placeholder="First"></label><span class="muted">–</span><label><span class="sr-only">Last update</span><input id="range-to" type="number" min="0" step="1" placeholder="Latest"></label><button id="reset-range" type="button" class="text-button">Full history</button></div>
+      <span id="chart-count" class="muted"></span>
+    </div>
+    <div id="codebook-controls" class="codebook-controls" hidden><span class="muted">Modality</span><button type="button" data-modality="pose" aria-pressed="true">Pose</button><button type="button" data-modality="audio" aria-pressed="false">Audio</button><span class="muted">One curve per codebook</span></div>
+    <p id="section-note" class="section-note"></p>
+    <main id="content" aria-label="Training charts"></main>
+    <footer><span>Pose OPD credit</span><span id="footer-detail">Curves refresh every 60 seconds · times shown in Pacific Time</span></footer>
+  </div>
+  <div id="tooltip" class="tooltip" role="status" hidden></div>
+  <noscript><p class="noscript">Enable JavaScript to view the training curves and live updates.</p></noscript>
+</body>
+</html>

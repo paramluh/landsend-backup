@@ -1,0 +1,20 @@
+[Unit]
+Description=Cached pose coordinates for video overlays
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/param/websites/pose-renderer
+Environment=CUDA_VISIBLE_DEVICES=
+Environment=OMP_NUM_THREADS=2
+Environment=MKL_NUM_THREADS=2
+Environment=HF_HUB_OFFLINE=1
+Environment=POSE_TOKENIZER_DIR=/home/param/models/pose-tokenizer-32cb-200k-noshift
+ExecStart=/home/param/pose-repo/.venv/bin/python -u /home/param/websites/pose-renderer/pose_overlay.py --watch --site /home/param/websites/pose-playground
+Restart=on-failure
+RestartSec=5
+StandardOutput=append:/home/param/runs/pose-runs/pose-sites-20261030/render/pose-overlay.log
+StandardError=append:/home/param/runs/pose-runs/pose-sites-20261030/render/pose-overlay.log
+
+[Install]
+WantedBy=default.target

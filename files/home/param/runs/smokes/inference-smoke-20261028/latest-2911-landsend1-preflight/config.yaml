@@ -1,0 +1,42 @@
+sample_dir: /home/param/pose-runs/inference-smoke-20261028/latest-2911-landsend1-preflight/inputs
+output_dir: /home/param/pose-runs/inference-smoke-20261028/latest-2911-landsend1-preflight/generation
+pose_file: pose_latents_electron_v3.safetensors
+mimi_file: mimi_local.safetensors
+type: universal_wide_bimodal
+seed: 2026
+batch_size: 1
+max_latent_frames: 28
+minimum_latent_frames: 28
+fps: 25
+compile: true
+cuda_graph: true
+wavefront: true
+renoising: false
+runtime_audio_guidance_scale: 1.0
+vae_path: /home/param/models/wan22-vae/Wan2.2_VAE.pth
+refs:
+  bank: /home/param/pose-runs/inference-smoke-20261028/appearance-10_27286bdd/bank
+  actor_id: 27286bdd-0fe3-4a03-b828-272bb796c2f1
+  clip_key: recordings/1288bbe7bfcfec805dc6a4a0253ba4fa23b275e3/speaker_1/chunks/000000
+stabilising:
+  checkpoint_path: /home/param/models/full-gt-nine-ref-endpoint-unguided-20261020/step-002911/student.safetensors
+  num_history: 3
+  num_present: 4
+  history_t: 0.2
+  substeps: 2
+resolving:
+  checkpoint_path: /home/param/models/full-gt-nine-ref-endpoint-unguided-20261020/step-002911/student.safetensors
+  num_history: 2
+  num_present: 1
+  t_start: 0.2
+  num_steps: 1
+audio:
+  model_name: /home/param/models/mimi
+  in_dim: 512
+  num_codebooks: 16
+  num_layers: 4
+  cross_attention_codes: 4
+  drop: 2
+  injection_offset: 4
+  injection_interval: 3
+  max_blocks: 8

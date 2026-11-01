@@ -1,0 +1,127 @@
+# Causal pretrain: 2x temporal downsampling, 16 codebooks (size 2048), wide
+# channels, confidence baked into tokens, fixed frame-0 root, minimal-latency
+# causal padding (no loss shift). Train with train_confidence.py (input_features=165).
+# Identical to base_causal_pretrain_32cb.yaml except n_codebooks: 16.
+#   2x / 16cb: 25 / 2 = 12.5 token steps/s, 12.5 * 16 = 200 cb-symbols/s.
+
+# Data — multi-dataset ready. `datasets` pools one or more sources (each with its
+# own root/manifest/dims/source_fps) via ConcatDataset; add more entries to train
+# on multiple data_dirs. It OVERRIDES any top-level data_dir/manifest/dims_csv.
+# val_count / num_files are split evenly across datasets.
+datasets:
+  - data_dir: /mnt/somfs/pose_cond/pose_cond_npy/
+    manifest: /mnt/somfs/pose_cond/pose_cond_npy_manifest.txt
+    dims_csv: /mnt/somfs/pose_cond/dims_upperbody_ideal_fresh.csv
+    source_fps: 30
+  # - data_dir: /mnt/somfs/other_dataset/poses_npy/
+  #   manifest: /mnt/somfs/other_dataset/manifest.txt
+  #   dims_csv: /mnt/somfs/other_dataset/dims.csv
+  #   source_fps: 25          # per-dataset; omit to use the global source_fps below
+test_manifest: ""
+test_dir: "test_set"
+n_test_clips: 0
+test_max_seconds: 10.0
+num_files: 0
+val_count: 2000
+norm_stats: ""
+
+# Data framing.
+source_fps: 30
+target_fps: 25
+segment_frames: 128
+max_frames: 0
+random_crop_frames: false
+random_segment_offset: true
+inference_chunk_stride: 0
+# Fixed frame-0 mid-shoulder root: root joints (nose + shoulders) carry body
+# translation/drift instead of being per-frame translation-invariant.
+first_frame_root: true
+
+# Model architecture.
+num_keypoints: 55
+keypoint_dim: 2
+input_features: 165   # (x,y,confidence) per joint = 55*3; confidence baked into tokens (train_confidence.py)
+first_channel_size: 1024
+num_blocks: 2
+downsampling_rates: [1, 2]
+kernel_size: [3, 3]
+num_residual_blocks: 1
+residual_units_per_block: 1
+d_model: 4096
+num_groups: false
+use_noise_blocks: false
+encoder_dilation: "none"
+norm: "LN"
+conv_weight_norm: true
+causal: true
+
+# Quantizer.
+n_codebooks: 16
+codebook_size: 2048
+codebook_dim: 16
+vq_strides: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+apply_rotation_trick: false
+enable_quantization: true
+quantizer_dropout: 0.5
+normalize_codes: true
+# Dead-code revival (EnCodec/lucidrains) to prevent codebook collapse.
+dead_code_threshold: 2.0
+dead_code_ema_decay: 0.99
+
+# Scratch-training optimizer + schedule.
+epochs: 9999
+max_steps: 200000
+batch_size: 128
+gradient_accumulation_steps: 1   # effective batch = 128 * 2 * num_gpus
+lr: 1.0e-4
+lr_schedule: cosine
+lr_min: 1.0e-5
+warmup_steps: 1000
+weight_decay: 0.01
+
+# Loss weights.
+reconstruction_weight: 1.0
+velocity_weight: 2.0
+confidence_loss_weight: 0.25
+confidence_loss_type: "smooth_l1"
+causal_loss_shift: 0  # minimal-latency causal padding -(s-1); no loss shift needed
+commitment_weight: 0.06
+codebook_weight: 0.24
+hand_loss_weight: 1.0
+relative_l1_weight: 0.0
+confidence_weight_mode: "soft"
+confidence_mask_threshold: 0.3
+
+# Denoising input corruption: simulate RTMW-style low-confidence noisy
+# detections by lowering input confidence and mildly jittering xy on clean
+# high-confidence targets.
+pose_corruption_prob: 0.3
+pose_corruption_modes: ["temporal_joint_flicker", "part_flicker"]
+pose_corruption_min_conf: 0.7
+pose_corruption_span_min: 1
+pose_corruption_span_max: 4
+pose_corruption_joints_min: 2
+pose_corruption_joints_max: 6
+pose_corruption_conf_min: 0.05
+pose_corruption_conf_max: 0.35
+pose_corruption_xy_noise_std: 0.015
+pose_corruption_xy_outlier_prob: 0.0
+pose_corruption_xy_outlier_std: 0.0
+
+# Runtime.
+num_workers: 10
+log_interval: 10
+
+# Eval / checkpointing.
+val_batch_size: 32
+val_confidence_threshold: 0.5
+validation_interval: 1000
+save_interval: 5000
+save_optimizer_state: true
+render_interval: 0
+test_frame_idx: 0
+output_dir: /mnt/somfs/james-checkpoints/pose-tokenizer
+
+# Wandb.
+wandb_project: pose-tokenizer
+wandb_run_name: base-causal-pretrain-16cb

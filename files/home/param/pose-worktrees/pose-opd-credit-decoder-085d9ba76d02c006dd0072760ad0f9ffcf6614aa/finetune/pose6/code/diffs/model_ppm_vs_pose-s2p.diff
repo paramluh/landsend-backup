@@ -1,0 +1,152 @@
+--- /data/home/amartyavarma/ppm/pose-s2p/code/model_ppm.py	2026-10-27 12:18:25.743999222 +0000
++++ /data/home/amartyavarma/ppm/pose6/code/model_ppm.py	2026-10-27 19:25:34.837155585 +0000
+@@ -45,7 +45,19 @@
+           nanosteps only): the compiled core runs _dec_trunk (= the HF Qwen3Model forward, op for op) with the fused T = 32 attention kernel
+           vendor/dec_attn32 instead of SDPA's masked memory-efficient kernel; dynamic frame dimension. Eval keeps the eager HF path.
+ INIT      backbone tensors <- Qwen3-32B safetensors (row slices per FSDP shard, bf16 -> fp32 exact); every random tensor seeded per NAME and
+-          global row chunk (heads_s2q.init_rows_: world-size invariant)."""
++          global row chunk (heads_s2q.init_rows_: world-size invariant).
++POSE6     (10-27, ppm/pose6 workstream B1: the monoplex Aloe FT with BOTH 8,1,1 mods of job 31101, = pose5/code-811-s2p's model semantics):
++  POSE-S2P  (pose-s2p, unchanged here) tower_p.s_emb; pose6 change (decision D4 = the base run's audit S7): s_emb is in its OWN main-AdamW
++            group 's2p' (was: tower_p), JOIN = tower_p's LR / clip value / schedule (trainer), own clip norm.
++  G0COND    (port of pose5/code-811-s2p, same maths; trainer PPM_G0COND=1; default OFF = no module, no state-dict key, the graph above exactly):
++            PPM(.., g0cond=True) adds inp.g0 = Linear(G0_DIM = 8 -> 5120, NO bias) (inp FSDP unit; OWN main-AdamW group 'g0cond', JOIN =
++            audio's LR / clip value / schedule). Pose micros carry g0pos [K] (each item's SLOT position = its own P - 1, the system block's last
++            position = the codes-free '\\n' of '<|im_end|> \\n' just before conversation frame 0; data_aloe_pose G0COND doc) and g0f [K, 8]
++            (data_ppm.g0_feat, fp32; cast to the table's bf16 like every trunk input); the TRUNK input at g0pos[k] += g0(g0f[k]) (Inp.forward).
++            Speech / text rows: never.
++  LINK OFF  (port of pose5/code-811-s2p's PPM_DECP_BB_OFF = job 31101's setting; trainer QQA_DECP_BB_OFF=1): model.decp_bb_on = False ->
++            the D33 link is never computed (no zb_p; the pose decoder runs with zb=None = the pre-D33 graph); decp_bb stays in the module
++            (loaded from the base, frozen). Default True = the graph above exactly."""
+ import json
+ import os
+ import sys
+@@ -107,6 +119,9 @@
+         return H2.code_feedback(depth if self.mode == "full" else depth[..., :1], self.weight)
+ 
+ 
++G0_DIM = 8                                    # G0COND features per clip (data_ppm.g0_feat)
++
++
+ # ------------------------------------------------------------------------------------------------ configs
+ def _sdpa(c, layers=None):
+     c._attn_implementation = "sdpa"           # construction only: every PPM attention runs the explicit FA3 varlen path below
+@@ -216,7 +231,7 @@
+         self.aud = nn.ModuleList([CodeTable(H) for _ in range(2)])
+         self.pose = CodeTable(H)
+ 
+-    def forward(self, ids, depth=None, present=None, pdepth=None):
++    def forward(self, ids, depth=None, present=None, pdepth=None, g0=None):
+         out = None
+         for c in range(2):
+             x = self.emb[c](ids[c])
+@@ -227,6 +242,9 @@
+             out = x if out is None else out + x
+         if pdepth is not None:
+             out = out + self.pose(pdepth).to(out.dtype)
++        if g0 is not None:                                         # G0COND (flag off: no self.g0, g0 never passed): each clip's SLOT position
++            gpos, gf = g0                                          #   += g0(f), f cast to the table's (bf16) dtype; other positions untouched
++            out = out.index_add(0, gpos, self.g0(gf.to(self.g0.weight.dtype)).to(out.dtype))
+         return out
+ 
+ 
+@@ -457,9 +475,12 @@
+ 
+ 
+ class PPM(nn.Module):
+-    def __init__(self, c32, c4, c06, proj_r=2048, tower_vocab=TOWER_VOCAB, pose_head=False, decp_bb=False, s2p=None):
++    def __init__(self, c32, c4, c06, proj_r=2048, tower_vocab=TOWER_VOCAB, pose_head=False, decp_bb=False, s2p=None, g0cond=False):
+         super().__init__()
+         self.inp = Inp(c32.vocab_size, c32.hidden_size)
++        self.g0cond = bool(g0cond)
++        if self.g0cond:                                            # G0COND (flag off: no such module, no key; inp FSDP unit, group 'g0cond')
++            self.inp.g0 = nn.Linear(G0_DIM, c32.hidden_size, bias=False)
+         self.layers = nn.ModuleList([Block(c32, i) for i in range(c32.num_hidden_layers)])
+         self.head = Head(c32, proj_r)
+         self.tower_s = Tower(c4, c32.hidden_size, tower_vocab)
+@@ -474,8 +495,9 @@
+         if decp_bb:                                                # D33 (flag off: no such module, no key, no optimizer group)
+             self.decp_bb = nn.Linear(c32.hidden_size, c06.hidden_size, bias=True)
+             self.decp_bb_alpha = 1.0                               # the link's scale (the trainer sets it every step: PPM_DECP_BB_ALPHA / fade)
++            self.decp_bb_on = True                                 # pose6 LINK OFF (QQA_DECP_BB_OFF=1, = 811's PPM_DECP_BB_OFF): False = never computed
+         self.s2p = s2p_mode(s2p)
+-        if self.s2p:                                               # pose-s2p (flag off: no such module, no key; tower_p group, zero init)
++        if self.s2p:                                               # pose-s2p (flag off: no such module, no key; tower_p FSDP unit, group 's2p')
+             self.tower_p.s_emb = S2PEmb(c4.hidden_size, self.s2p)
+ 
+     def forward(self, b, rot, rot_t, want_logits=False, info=None):
+@@ -484,8 +506,13 @@
+         kind = b["kind"]
+         # 10-12 dependence probes (train_ppm codependence / xdep evals): optional TRUNK-input overrides ids_t / depth_t / present_t / pdepth_t;
+         # the towers, decoders and every label keep the micro's own ids[1] / depth / pdepth / cb0 / pcb0. Absent keys = unchanged behaviour.
++        g0 = None
++        if self.g0cond and kind == "pose":                         # G0COND: every pose micro carries its clips' frame-0 features (asserted)
++            assert "g0pos" in b and "g0f" in b, "G0COND on: a pose micro without g0pos / g0f (built without the pose datasets' g0cond cfg)"
++            g0 = (b["g0pos"], b["g0f"])
+         e = self.inp(b["ids_t"] if "ids_t" in b else b["ids"], b["depth_t"] if "depth_t" in b else b.get("depth"),
+-                     b["present_t"] if "present_t" in b else b.get("present"), b["pdepth_t"] if "pdepth_t" in b else b.get("pdepth"))[None]
++                     b["present_t"] if "present_t" in b else b.get("present"), b["pdepth_t"] if "pdepth_t" in b else b.get("pdepth"),
++                     **({"g0": g0} if g0 is not None else {}))[None]
+         ctx = Ctx(b["segs"], e.device)
+         pe = rot(e, b["pid"])
+         h = e
+@@ -508,15 +535,19 @@
+             if hasattr(self, "pose_head") and self.pose_head_on:   # D32: same (hn[T - 1], pcb0[T]) pairs and weights as the pose tower (D36: off = skipped)
+                 l1, s1, n1, k1 = pose_head_ce(self.pose_head, posehead_in(hn, self.pose_head_bbgrad), ctx, b["pcb0"], b["pcb0_w"])
+                 out.update(phead=l1, phead_sum=s1, phead_n=n1, phead_hit=k1)
+-            if hasattr(self, "decp_bb"):                           # D33: zb[T] = alpha * decp_bb(hn[T - 1]) (segment starts 0) -> pose decoder
++            if hasattr(self, "decp_bb") and self.decp_bb_on:       # D33: zb[T] = alpha * decp_bb(hn[T - 1]) (segment starts 0) -> pose decoder
+                 out["zb_p"] = shift1(self.decp_bb(hn), ctx, 0.0) * float(self.decp_bb_alpha)
+         return out
+ 
+ 
+ # ------------------------------------------------------------------------------------------------ groups
+-GROUPS = ("trunk", "spec", "proj", "audio", "tower_s", "tower_p", "pose_head", "decp_bb")   # main AdamW (pose_head only with D32 on, decp_bb
+-                                                                                  # only with D33 on: empty groups are skipped); dec_s / dec_p
+-                                                                                  # have their own nanostep AdamWs
++GROUPS = ("trunk", "spec", "proj", "audio", "tower_s", "tower_p", "pose_head", "decp_bb", "g0cond", "s2p")   # main AdamW (pose_head only with
++                                                                                  # D32 on, decp_bb only with D33 on, g0cond only with G0COND
++                                                                                  # on, s2p only with POSE-S2P on: empty groups are skipped);
++                                                                                  # dec_s / dec_p have their own nanostep AdamWs
++JOIN = {"g0cond": "audio", "s2p": "tower_p"}      # pose6 (= pose5 / job 31101, audit S7: OWN groups): each new group copies the LR, clip value
++                                                  # and schedule of the group it would otherwise have joined (inp.g0 -> audio = inp.pose's
++                                                  # group, tower_p.s_emb -> tower_p); its own grad clip (same convention / value) decouples it
+ 
+ 
+ def group_of(name):
+@@ -527,6 +558,10 @@
+         return "spec"
+     if n.startswith("head.proj."):
+         return "proj"
++    if n == "inp.g0.weight":                                       # G0COND: own group (JOIN: audio's LR / clip / schedule)
++        return "g0cond"
++    if n == "tower_p.s_emb.weight":                                # POSE-S2P: own group (JOIN: tower_p's LR / clip / schedule; pose6 D4)
++        return "s2p"
+     if n.startswith("inp.aud.") or n.startswith("inp.pose."):
+         return "audio"
+     if n.startswith("pose_head."):
+@@ -585,6 +620,8 @@
+         return "normal", 1.0 / shape[1] ** 0.5
+     if n == "tower_p.s_emb.weight":                          # pose-s2p: zero init (step 0 = today's model exactly)
+         return "zeros", 0.0
++    if n == "inp.g0.weight":                                 # G0COND: zero init (step 0 = today's model exactly; the FT loads it from the base)
++        return "zeros", 0.0
+     for t in ("tower_s.", "tower_p."):
+         if n.startswith(t):
+             k = n[len(t):]
+@@ -705,13 +742,13 @@
+ 
+ # ------------------------------------------------------------------------------------------------ build (FSDP2)
+ def build(c32, c4, c06, dev, log=print, partial=False, proj_r=2048, tower_vocab=TOWER_VOCAB, init=True, dec_ac=False, dec_mode="replicate",
+-          pose_head=False, decp_bb=False, s2p=None):
++          pose_head=False, decp_bb=False, s2p=None, g0cond=False):
+     from torch.distributed.fsdp import MixedPrecisionPolicy, fully_shard
+     from torch.distributed.algorithms._checkpoint.checkpoint_wrapper import CheckpointImpl, checkpoint_wrapper
+     mp = MixedPrecisionPolicy(param_dtype=torch.bfloat16, reduce_dtype=torch.float32)
+     mpn = MixedPrecisionPolicy(param_dtype=torch.bfloat16, reduce_dtype=torch.float32, cast_forward_inputs=False)
+     with torch.device("meta"):
+-        model = PPM(c32, c4, c06, proj_r, tower_vocab, pose_head=pose_head, decp_bb=decp_bb, s2p=s2p)
++        model = PPM(c32, c4, c06, proj_r, tower_vocab, pose_head=pose_head, decp_bb=decp_bb, s2p=s2p, **({"g0cond": True} if g0cond else {}))
+     assert dec_mode in ("replicate", "fsdp"), dec_mode
+     rep = dec_mode == "replicate"                                  # T14: decoders REPLICATED per GPU (default): no FSDP, one grad all-reduce per update
+     for dec in (model.dec_s, model.dec_p) if (dec_ac and not rep) else ():   # decoder activation checkpointing off by default (chunks are small)

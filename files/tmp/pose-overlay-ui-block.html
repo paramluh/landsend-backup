@@ -1,0 +1,86 @@
+<!-- BEGIN posev -->
+<style>
+.pose-overlay-parent{position:relative}
+.pose-overlay-canvas{position:absolute;pointer-events:none;z-index:2;border-radius:inherit}
+.posebtn[aria-pressed="true"]{border-color:var(--acc,#3b6cf6);color:var(--acc,#3b6cf6);background:var(--acct)}
+.pose-overlay-fullscreen{position:relative;background:#000;display:flex;align-items:center;justify-content:center}
+.pose-overlay-fullscreen video{max-height:100vh!important;max-width:100vw!important;object-fit:contain!important}
+</style>
+<script>
+// The skeleton is drawn over the original video using its own media clock and the renderer's normalized coordinates.
+(function(){
+  let ON=false; try{ ON=localStorage.getItem(WSK('gw-pose'))==='1'; }catch(e){}
+  const cache=new Map(), states=new Set(), byVideo=new WeakMap();
+  const save=()=>{ try{ localStorage.setItem(WSK('gw-pose'),ON?'1':'0'); }catch(e){} };
+  function enabled(value){ ON=!!value; save(); for(const s of states){ if(ON) load(s); draw(s); buttons(s); } }
+  function buttons(s){ for(const b of s.buttons){ if(!b.isConnected){ s.buttons.delete(b); continue; }
+    const playable=!!s.video.getAttribute('src'); b.hidden=false; b.disabled=!playable; b.setAttribute('aria-pressed',ON?'true':'false');
+    const state=cache.get(s.rid), label=!ON?'Pose overlay':state?.data?'Pose overlay: on':state?.error?'Pose unavailable':'Pose loading…';
+    if(b.textContent!==label) b.textContent=label;
+    b.title=!playable?'The overlay becomes available when this video is ready':state?.error?state.error:state?.message||'Superimpose the generated pose on the video';
+  } }
+  async function load(s){ if(!ON||!s.rid||!s.video.getAttribute('src')) return; let state=cache.get(s.rid);
+    if(state?.data||state?.pending||state?.next>Date.now()) return;
+    state=state||{}; state.pending=true; state.error=null; cache.set(s.rid,state); buttons(s);
+    try{ const response=await fetch('api/run/'+encodeURIComponent(s.rid)+'/pose',{cache:'no-store'}); const data=await response.json();
+      if(response.status===202){ state.message=data.message||'Preparing pose overlay'; state.next=Date.now()+1000*Math.max(1,Number(response.headers.get('Retry-After'))||2); }
+      else if(!response.ok) throw new Error(data.error||data.message||'Pose data is unavailable for this video');
+      else { if(!Array.isArray(data.frames)||!data.frames.length||!(data.fps>0)) throw new Error('Pose data is not ready'); state.data=data; state.message='Generated pose superimposed on the video'; }
+    }catch(e){ state.error=e.message||String(e); state.next=Date.now()+5000; }
+    finally{ state.pending=false; for(const item of states) if(item.rid===s.rid){ draw(item); buttons(item); } }
+  }
+  function color(c,threshold){ const low=threshold.low??.2, high=threshold.high??.6, t=Math.max(0,Math.min(1,(c-low)/(high-low))); return 'rgb('+Math.round(255*Math.min(1,2*(1-t)))+','+Math.round(255*Math.min(1,2*t))+',70)'; }
+  function draw(s,mediaTime){ const v=s.video, canvas=s.canvas;
+    const visible=ON&&v.isConnected&&!!v.getAttribute('src')&&!!v.getClientRects().length&&!(v.closest('#bmodal')?.hidden);
+    canvas.hidden=!visible; if(!visible) return;
+    const vr=v.getBoundingClientRect(), pr=canvas.parentNode.getBoundingClientRect(), dpr=Math.min(2,window.devicePixelRatio||1);
+    if(!vr.width||!vr.height) return;
+    Object.assign(canvas.style,{left:(vr.left-pr.left+canvas.parentNode.scrollLeft)+'px',top:(vr.top-pr.top+canvas.parentNode.scrollTop)+'px',width:vr.width+'px',height:vr.height+'px'});
+    const cw=Math.round(vr.width*dpr),ch=Math.round(vr.height*dpr); if(canvas.width!==cw||canvas.height!==ch){ canvas.width=cw; canvas.height=ch; }
+    const ctx=canvas.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0); ctx.clearRect(0,0,vr.width,vr.height);
+    const data=cache.get(s.rid)?.data; if(!data||!v.videoWidth||!v.videoHeight) return;
+    const scale=(getComputedStyle(v).objectFit==='cover'?Math.max:Math.min)(vr.width/v.videoWidth,vr.height/v.videoHeight);
+    const width=v.videoWidth*scale,height=v.videoHeight*scale,ox=(vr.width-width)/2,oy=(vr.height-height)/2;
+    const time=Number.isFinite(mediaTime)?mediaTime:v.currentTime, frame=Math.max(0,Math.min(data.frames.length-1,Math.floor((time-(data.start_time||0))*data.fps)));
+    const points=data.frames[frame], threshold=data.confidence||{}, min=threshold.min??.05, low=threshold.low??.2;
+    const alpha=c=>Math.max(0,Math.min(1,(c-min)/Math.max(.001,low-min)));
+    const valid=p=>p&&p.length>=3&&p.every(Number.isFinite)&&p[2]>min;
+    const point=p=>[ox+p[0]*width,oy+p[1]*height];
+    const edges=Array.isArray(data.edges)?data.edges:Object.values(data.edges||{}).flat();
+    ctx.save(); ctx.beginPath(); ctx.rect(Math.max(0,ox),Math.max(0,oy),Math.min(vr.width,width),Math.min(vr.height,height)); ctx.clip(); ctx.lineCap='round'; ctx.lineJoin='round';
+    const line=Math.max(1.5,width/160);
+    for(const [a,b] of edges){ const pa=points[a],pb=points[b]; if(!valid(pa)||!valid(pb)) continue; const c=Math.min(pa[2],pb[2]),[ax,ay]=point(pa),[bx,by]=point(pb);
+      ctx.globalAlpha=.85*alpha(c); ctx.beginPath(); ctx.moveTo(ax,ay); ctx.lineTo(bx,by); ctx.strokeStyle='rgba(0,0,0,.65)'; ctx.lineWidth=line+1.5; ctx.stroke(); ctx.strokeStyle=color(c,threshold); ctx.lineWidth=line; ctx.stroke(); }
+    for(const p of points){ if(!valid(p)) continue; const [x,y]=point(p); ctx.globalAlpha=.9*alpha(p[2]); ctx.beginPath(); ctx.arc(x,y,Math.max(1.4,width/145),0,Math.PI*2); ctx.fillStyle=color(p[2],threshold); ctx.fill(); }
+    ctx.restore(); canvas.dataset.frame=String(frame); canvas.dataset.rid=s.rid; canvas.dataset.ready='true';
+  }
+  function schedule(s){ const v=s.video; if(!ON||v.paused||!v.isConnected||s.scheduled) return;
+    s.scheduled=true;
+    if(v.requestVideoFrameCallback) s.callback=v.requestVideoFrameCallback((_,meta)=>{ s.scheduled=false; draw(s,meta.mediaTime); schedule(s); });
+    else s.callback=requestAnimationFrame(()=>{ s.scheduled=false; draw(s); schedule(s); });
+  }
+  function attach(video,rid,button){ if(!video||!rid) return; let s=byVideo.get(video);
+    if(!s){ const canvas=document.createElement('canvas'); canvas.className='pose-overlay-canvas'; canvas.hidden=true; canvas.setAttribute('aria-hidden','true');
+      s={video,canvas,rid,buttons:new Set(),scheduled:false}; byVideo.set(video,s); states.add(s);
+      const redraw=()=>{ draw(s); schedule(s); };
+      for(const event of ['loadedmetadata','loadeddata','seeked','seeking','timeupdate','pause','play','ratechange','resize','emptied']) video.addEventListener(event,redraw);
+      s.observer=new ResizeObserver(redraw); s.observer.observe(video);
+    }
+    s.rid=rid;
+    if(s.canvas.parentNode!==video.parentNode){ video.parentNode.classList.add('pose-overlay-parent'); video.parentNode.appendChild(s.canvas); }
+    if(button){ s.buttons.add(button); button.onclick=()=>enabled(!ON); }
+    buttons(s); if(ON) load(s); draw(s); schedule(s); return s;
+  }
+  window.PoseOverlay={attach,setEnabled:enabled,isEnabled:()=>ON,draw:video=>{const s=byVideo.get(video);if(s)draw(s);}};
+  window.poseOpen=rid=>{ enabled(true); window.batchPlayerOpen?.(rid); };
+  function scan(){
+    for(const s of states){ if(!s.video.isConnected){ s.observer.disconnect(); s.canvas.remove(); states.delete(s); continue; } buttons(s); if(ON) load(s); }
+    const rid=typeof SEL!=='undefined'?SEL:null, video=document.querySelector('#dav .frame video[controls]'), act=document.getElementById('dact');
+    if(rid&&video&&act){ let b=document.getElementById('posebtn'); if(!b){ b=document.createElement('button'); b.type='button'; b.className='sm posebtn'; b.id='posebtn'; act.prepend(b); } attach(video,rid,b); }
+    for(const e of document.querySelectorAll('.hrow')){ const x=e._x; if(!x||x.n!==1||!x.first) continue; const ha=e.querySelector('.hact'); if(!ha||ha.querySelector('.hpose-b')) continue;
+      const b=document.createElement('button'); b.type='button'; b.className='sm hpose-b'; b.textContent='Pose overlay'; b.title='Open the video with its generated pose superimposed'; b.onclick=event=>{event.stopPropagation();window.poseOpen(x.first);}; ha.appendChild(b); }
+  }
+  setInterval(scan,400); window.addEventListener('resize',()=>{for(const s of states)draw(s);}); scan();
+})();
+</script>
+<!-- END posev -->

@@ -1,0 +1,10 @@
+# H5 codebooks (10-23 ~03:55 UTC): VERDICT - light-codebook sampling is NOT the cause of head/gaze drift
+1. Code: pose cb0 = 4B pose tower (pose_topk); cb1..31 = 0.6B depth decoder (pose_light_topk), plain RVQ 32x2048 coarse->fine, no inter-codebook delay (whole pose stream at CD=2). CFG = per-codebook logit mix lu + w(lc - lu), uncond = Mimi -> silence; d1 (w=1) == no CFG + light k30.
+2. Head detail lives in the COARSE LIGHT codebooks cb1-3: random codes in cb1 move head 0.090 ear-dist (yaw 0.069), cb2 0.074, cb3 0.047 vs cb0 0.042 (cb0 = hands/body: hands 0.36 sw); cb>=16 < 0.01 each.
+3. Generated codes are LESS varied than GT, not noisier: change rate cb1..31 GT 0.977 vs fs 0.926 / d1 0.913 / d3 0.946; cb0 0.54 vs 0.28-0.40; cb0 entropy 7.3 vs 5.3-6.2 bits; KL(gen||GT) excess sits on cb0-3 (1.2-2.3 bits vs split-half floor 0.6-1.0).
+4. Decoded head (2-12 s, matched): HF jitter gen fs 0.0044 / d1 0.0042 / d3 0.0070 vs GT 0.0080 ear-dist; slow yaw drift (0.5 s low-pass std) 0.028 / 0.033 / 0.040 vs GT 0.047; yaw offset vs prefill at window end 0.051 / 0.052 / 0.085 vs GT 0.054.
+5. Light top-k 50 vs 30 (fs vs d1): no difference. CFG raises yaw offset (d2 0.080, d3 0.085; d3 12-20 s: 0.096) and late HF jitter (d3 0.0105 vs GT 0.0074): the only H5-type effect, and CFG is off by default.
+6. Slow drift dominates HF jitter ~6x (yaw LF 0.028-0.047 vs HF 0.004-0.008) in GT and gen alike; no token fix (trunc 24/16/8/4, GT-mode, hold2, mode3) moves yaw LF by > 10%; latent / keypoint smoothing halves HF jitter for GT and gen equally; hold/mode filters ADD jitter.
+7. Late gen (12-20 s) is even more frozen (fs yaw LF 0.014, head HF 0.0034, cb0 change rate 0.24): if anything, generated heads are too still, not too jittery.
+8. Next: look outside the pose tokens (video path / conditioning differences, H6), or test whether a too-static head lets the video model wander gaze.
+Files: results.json, EARLY.txt, cb_head_sensitivity.png, cb_change_rate.png, cb_fix_comparison.png; code run_h5.py, cb_lib.py, extra_abs.py.

@@ -1,0 +1,87 @@
+# Full-unfreeze pose-v3 adaptation of the Mimi-local teacher on Richmond 7-16.
+# step850 retains the step10606 EMA backbone and adds the trained Mimi audio modules;
+# that audio-only finetune did not maintain a second EMA checkpoint.
+root_dir = '/home/param/datasets/aloe-studio-10shards'
+clipnames_root = '/home/param/vansh-video-models/csvs'
+train_csv = '/home/param/datasets/aloe-studio-10shards/shard.csv'
+node_sharded = true
+pose_latents = 'pose_latents_electron_v3.safetensors'
+mimi_codes = 'mimi_local.safetensors'
+# Evaluation clips are not replicated on every node; evaluate saved checkpoints separately.
+eval_csvs = {}
+
+eval_every_n_steps = 200
+eval_step_zero = false
+num_dataloader_workers = 8
+eval_num_dataloader_workers = 4
+save_every_n_steps = 50
+save_optimizer_every_n_steps = 200
+output_dir = '/mnt/paramfs/param/outputs/teacher-pose-v3-ft-20261015'
+
+bad_audio = 1
+
+# This is a per-node window cap with node_sharded=true: 8 GPUs * 5 * 4 * 200.
+# It gives exactly 200 steps/epoch, including the cosine scheduler's decay horizon.
+epochs = 1
+windows_per_epoch = 32000
+max_steps = 200
+micro_batch_size_per_gpu = 5
+eval_micro_batch_size_per_gpu = 2
+gradient_accumulation_steps = 4
+gradient_clipping = 1.0
+warmup_steps = 25
+lr = 1e-5
+min_lr = 2e-6
+# No trainable filter: all diffusion and audio-conditioning parameters are trainable.
+# No ema_decay: update and save only raw weights, starting from the EMA-derived teacher.
+
+activation_checkpointing = true
+activation_checkpoint_skip = 30
+flex_attention = true
+compile_blocks = true
+
+[stabilising]
+num_history = 3
+num_present = 4
+history_dropout = [0.1, 0.1, 0.0]
+history_t = 0.2
+history_raise_p = 0.25
+history_t_max = 0.4
+
+[resolving]
+num_history = 2
+num_present = 1
+present_t_bands = [0.2, 0.4]
+present_t_weights = [1.0, 2.0]
+
+[model]
+type = 'universal_wide_bimodal'
+arch = 'wan_5b_wide'
+checkpoint_path = '/home/param/richmond-assets/teacher-step850/model.safetensors'
+dtype = 'bfloat16'
+transformer_dtype = 'bfloat16'
+debug_shapes = true
+
+[model.audio]
+model_name = '/home/param/richmond-assets/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+initialization = 'zero'
+audio_dropout = 0.0
+
+[wandb]
+project = 'param-distillation'
+run_name = 'aloe-bimodal-studio-pose-v3-ft-200'
+
+[optimizer]
+type = 'stableadamw'
+betas = [0.9, 0.99]
+weight_decay = 1e-3
+eps = 1e-8

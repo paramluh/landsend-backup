@@ -1,0 +1,17 @@
+[Unit]
+Description=Pose monoplex checkpoint 227 web
+After=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+WorkingDirectory=/home/param/pose-mono-dcp227/site
+ExecStart=/bin/bash /home/param/pose-mono-dcp227/ops/start_web.sh
+Restart=on-failure
+RestartSec=15
+TimeoutStopSec=30
+StandardOutput=append:/home/param/pose-mono-dcp227/runtime/web.log
+StandardError=append:/home/param/pose-mono-dcp227/runtime/web.log
+
+[Install]
+WantedBy=default.target

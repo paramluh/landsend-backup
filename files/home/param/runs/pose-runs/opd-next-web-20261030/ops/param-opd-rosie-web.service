@@ -1,0 +1,18 @@
+[Unit]
+Description=OPD Rosie duplex website and Cloudflare tunnel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=param
+Group=param
+WorkingDirectory=/home/param/pose-runs/opd-next-web-20261030
+ExecStart=/home/param/pose-repo/.venv/bin/python -u /home/param/pose-runs/opd-next-web-20261030/ops/web_supervise.py
+Restart=on-failure
+RestartSec=10
+KillMode=control-group
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

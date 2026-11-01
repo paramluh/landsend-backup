@@ -1,0 +1,151 @@
+0a1,2
+> # POSE6 BRANCH (ppm/pose6/infer, 10-27): copy of ppm/pose-s2p/infer/ppm/fast_ppm.py + G0COND (frame-0 conditioning: the checkpoint's
+> # inp.g0 / PPM_G0COND; module doc "G0COND"). Flag off (no inp.g0) = the pose-s2p code path line for line. NOT deployed.
+57a60,69
+> G0COND    (pose6 branch, off unless the model has inp.g0: PPM_G0COND=1, or a checkpoint trained with it = the 8,1,1 run 31101's exports /
+>           a G0COND monoplex FT) = the trainer's model_ppm Inp.forward G0COND term: inp.g0 = Linear(8 -> H, no bias); the TRUNK input at the
+>           conversation's SLOT position += g0(f), f = data_ppm.g0_feat's 8 frame-0 features [r_y, r_x, log w, -r_y/w, (1-r_y)/w, -r_x/w,
+>           (1-r_x)/w, log(H/W)] cast to the weight's dtype (bf16), the add = index_add in the input's dtype (the trainer's op order).
+>           SLOT = P - 1 = the system block's last position ('\\n' of the footer <|im_end|> \\n on channel B, no codes, no pose; asserted), inside
+>           the prefill (pose6 decision D1 / D2: the position just before conversation frame 0 = the 8,1,1 rows' [SLOT 1 | clip | GAP 4] SLOT,
+>           i.e. the position before the clip's first frame). Per instance: start() needs inst['g0f'] (np.float32 [8]; pose6/infer/g0src.py)
+>           on a G0COND engine (missing = ValueError) and refuses one on an engine without it. EVERY row of the instance gets the SAME f at its
+>           SLOT: the cond row and the pose-CFG uncond row (no audio-CFG rows exist here); the trainer has no construct that drops or zeroes f
+>           with the audio (pose6/infer/README.md). The per-frame step graphs are unchanged (the SLOT is always a prefill position).
+101a114,115
+> G0_KEY, G0_DIM = "inp.g0.weight", 8                  # G0COND (module doc): = the trainer's model_ppm inp.g0 (Linear G0_DIM -> H, no bias)
+> SP_NL, SP_IM_END = 198, 151645                       # sysprompt.NL / IM_END: the system block's footer <|im_end|> \n (SLOT = P - 1 = '\n')
+152a167,168
+>         g0 = G0_KEY in keys                                                            # G0COND checkpoint (module doc)
+>         _side_check(path, c, s2, g0)
+155c171
+<                     decp_bb_alpha=IP.decp_bb_alpha_of(c, meta["step"]) if bb else None, **dims)
+---
+>                     decp_bb_alpha=_link_alpha(path, c, IP.decp_bb_alpha_of(c, meta["step"])) if bb else None, g0cond=g0, **dims)
+169c185
+<     if bb and "decp_bb_alpha" not in side:
+---
+>     if bb and "decp_bb_alpha" not in side and not int(side.get("decp_bb_off", 0)):
+170a187,191
+>     s2 = None if S2P_KEY not in shp else ("full" if shp[S2P_KEY][0] == DEPTH * CBS else "cb0")
+>     g0 = G0_KEY in shp                                                                 # G0COND checkpoint (module doc)
+>     if g0:
+>         assert shp[G0_KEY] == (shp["inp.emb.0.weight"][1], G0_DIM), ("inp.g0.weight shape", shp[G0_KEY])
+>     _side_check(path, side, s2, g0)
+174,175c195,216
+<                 decp_bb_alpha=float(side.get("decp_bb_alpha", 1.0)) if bb else None,
+<                 s2p=(None if S2P_KEY not in shp else ("full" if shp[S2P_KEY][0] == DEPTH * CBS else "cb0")))
+---
+>                 decp_bb_alpha=_link_alpha(path, side, float(side.get("decp_bb_alpha", 1.0))) if bb else None, s2p=s2, g0cond=g0)
+> 
+> 
+> def _link_alpha(path, rec, alpha):
+>     """pose6: LINK OFF (8,1,1 trainer PPM_DECP_BB_OFF=1, live in 31101; recorded as 'decp_bb_off': 1 in the DCP export's train_cfg.json and in
+>     the training cfg a local copy's meta.json / an FT export's train_cfg.json 'cfg' carries): the trainer never computes the link (pose decoder called with zb=None), so the engine's
+>     link scale is 0 whatever decp_bb_alpha the record holds (a local copy's cfg keeps the knob's value, e.g. 1.0). Records without the key:
+>     the alpha as before (unchanged path)."""
+>     if any(isinstance(r, dict) and int(r.get("decp_bb_off", 0)) for r in (rec, rec.get("cfg"))):   # the record or its nested training cfg
+>         if alpha != 0.0:
+>             log(f"[ckpt] {path}: D33 link OFF (decp_bb_off 1) -> link alpha 0 (the record's decp_bb_alpha {alpha} is the unused knob)")
+>         return 0.0
+>     return alpha
+> 
+> 
+> def _side_check(path, side, s2, g0):
+>     """pose6: the checkpoint's recorded flags (DCP export train_cfg.json / local copy meta cfg: 's2p', 'g0cond', present only when the run had
+>     them on) must agree with its tensors (s_emb rows, inp.g0); a disagreement is a broken export -> fail loud."""
+>     if "s2p" in side:
+>         assert s2p_mode(side["s2p"]) == s2, ("checkpoint records s2p but its tensors disagree", path, side["s2p"], s2)
+>     if "g0cond" in side:
+>         assert bool(int(side["g0cond"])) == g0, ("checkpoint records g0cond but its tensors disagree", path, side["g0cond"], g0)
+210a252,262
+>     g0 = bool(ci.get("g0cond"))                                                       # G0COND: the checkpoint's inp.g0, else PPM_G0COND (zero)
+>     g0e = os.environ.get("PPM_G0COND")
+>     assert g0e in (None, "0", "1"), ("PPM_G0COND must be 0 | 1", g0e)
+>     if g0:
+>         assert g0e in (None, "1"), ("PPM_G0COND=0 disagrees with the checkpoint's inp.g0 (removing it is not supported)", ci["path"])
+>     else:
+>         g0 = g0e == "1"
+>     if g0:
+>         assert pose, "G0COND needs a pose checkpoint"
+>         with torch.device("meta"):
+>             m.inp.g0 = torch.nn.Linear(G0_DIM, c32.hidden_size, bias=False)            # = the trainer's PPM(g0cond=True): inp.g0, no bias
+242a295
+>             "g0cond": g0, "g0cond_zero_init": g0 and not ci.get("g0cond"),
+259a313,315
+>     if s2 or g0:
+>         log(f"[build] pose6 mods: s2p {s2}{' (ZERO init: not in the checkpoint)' if info['s2p_zero_init'] else ''}; G0COND {g0}"
+>             f"{' (ZERO init: not in the checkpoint)' if info['g0cond_zero_init'] else ''}" + (" -> every instance needs g0f" if g0 else ""))
+355a412,414
+>     if G0_KEY in params and not ci.get("g0cond"):                                      # G0COND (PPM_G0COND=1) on a checkpoint without it: ZERO
+>         params.pop(G0_KEY).zero_()
+>         log(f"[load] G0COND: {G0_KEY} not in the checkpoint -> zero (= the trainer's init: today's model exactly; PPM_G0COND=1, tests only)")
+744,745c803,805
+<                  enc=None, silence=None, s2p=None):
+<         """s2p (pose-s2p): None = follow the model (on iff m.tower_p.s_emb exists), False = off, or an S2PEmb module to use (tests)."""
+---
+>                  enc=None, silence=None, s2p=None, g0=None):
+>         """s2p (pose-s2p): None = follow the model (on iff m.tower_p.s_emb exists), False = off, or an S2PEmb module to use (tests).
+>         g0 (pose6 G0COND): None = follow the model (on iff m.inp.g0 exists), False = off, or a Linear(G0_DIM -> H) module to use (tests)."""
+897c957,963
+<         self.cs_side = torch.cuda.Stream(dl)                                                   # dl -> pose GPU copies (never blocks dl)
+---
+>         # G0COND (module doc): the SLOT term's module (flag off: None, nothing else exists)
+>         g0m = getattr(m.inp, "g0", None) if g0 is None else (None if g0 is False else g0)
+>         assert g0m is None or self.pose, "G0COND needs the pose branch"
+>         assert g0m is None or (tuple(g0m.weight.shape) == (H, G0_DIM) and g0m.bias is None and g0m.weight.device == d0), "inp.g0 module"
+>         self.g0 = g0m
+>         self.g0_rows = []                                                                      # (row, SLOT, f) applied at the last start()
+>         self.cs_side = torch.cuda.Stream(dl)                                                  # dl -> pose GPU copies (never blocks dl)
+1293,1294c1359,1361
+<     def _prefill_row(self, r, ids, depth, present, pdepth, tower_s):
+<         """eager teacher-forced positions [0, n) of row r (the trainer's fused layers, FA3 varlen) -> hn [n, H] (head GPU)."""
+---
+>     def _prefill_row(self, r, ids, depth, present, pdepth, tower_s, g0=None):
+>         """eager teacher-forced positions [0, n) of row r (the trainer's fused layers, FA3 varlen) -> hn [n, H] (head GPU).
+>         g0 (G0COND): (SLOT position, f np.float32 [G0_DIM]) -> trunk input at SLOT += inp.g0(f) (= the trainer's Inp.forward index_add)."""
+1298c1365,1371
+<         e = self.m.inp(t(ids, d0), t(depth, d0), t(present, d0), t(pdepth, d0) if self.pose else None)[None]
+---
+>         if g0 is None:
+>             e = self.m.inp(t(ids, d0), t(depth, d0), t(present, d0), t(pdepth, d0) if self.pose else None)[None]
+>         else:                                                                              # G0COND: the trainer's op order (model_ppm Inp.forward)
+>             e = self.m.inp(t(ids, d0), t(depth, d0), t(present, d0), t(pdepth, d0) if self.pose else None)
+>             gpos, gf = torch.tensor([int(g0[0])], dtype=torch.long, device=d0), t(np.asarray(g0[1], np.float32)[None], d0)
+>             e = e.index_add(0, gpos, self.g0(gf.to(self.g0.weight.dtype)).to(e.dtype))[None]
+>             self.g0_rows.append((int(r), int(g0[0]), np.asarray(g0[1], np.float32).copy()))
+1319a1393,1414
+>     def _g0_inst(self, it, P, ids, depth, present, pdepth):
+>         """G0COND (module doc): instance -> (SLOT, f) for its rows, or None on an engine without G0COND. Fail loud: a G0COND engine needs
+>         inst['g0f'] (finite, shape [G0_DIM]; cast to float32 = data_ppm.g0_feat's storage dtype); an engine without it refuses one (never
+>         dropped silently). SLOT = P - 1 must be the system block's codes-free footer '\\n' on channel B (= the trainer's sysprompt.build_prefix
+>         last position: no codes, no pose, channel A absent)."""
+>         f = it.get("g0f")
+>         if self.g0 is None:
+>             if f is not None:
+>                 raise ValueError("instance carries g0f but this engine has no G0COND (model without inp.g0): refusing to ignore it")
+>             return None
+>         if f is None:
+>             raise ValueError("G0COND model: every instance needs g0f (np.float32 [8] frame-0 features; pose6/infer/g0src.py)")
+>         f = np.asarray(f)
+>         if f.shape != (G0_DIM,) or not np.issubdtype(f.dtype, np.floating) or not np.isfinite(f).all():
+>             raise ValueError(f"g0f must be a finite float vector of shape ({G0_DIM},), got {f.dtype} {f.shape}")
+>         assert int(P) >= 5, ("system block shorter than the empty block (5)", P)
+>         s = int(P) - 1
+>         ok = (int(ids[1, s]) == SP_NL and int(ids[1, s - 1]) == SP_IM_END and float(present[1, s]) == 1.0 and float(present[0, s]) == 0.0
+>               and bool((np.asarray(depth)[:, s] < 0).all()) and bool((np.asarray(pdepth)[s] < 0).all()))
+>         assert ok, ("G0COND SLOT = P - 1 must be the system block's codes-free footer '\\n' on channel B", P, int(ids[1, s]))
+>         return s, f.astype(np.float32)
+> 
+1326a1422,1424
+>         g0s = [self._g0_inst(it, int(it["P"]), np.asarray(it["ids"]), np.asarray(it["depth"]), np.asarray(it["present"]),
+>                              np.asarray(it["pdepth"]) if self.pose else None) for it in insts]      # G0COND: (SLOT, f) per instance | None
+>         self.g0_rows = []
+1374c1472
+<             hn = self._prefill_row(r, ids[:, :Np], depth[:, :Np], present[:, :Np], None if pdepth is None else pdepth[:Np], True)
+---
+>             hn = self._prefill_row(r, ids[:, :Np], depth[:, :Np], present[:, :Np], None if pdepth is None else pdepth[:Np], True, g0=g0s[r])
+1386c1484
+<                                        np.asarray(it["pdepth"])[:Np], False)
+---
+>                                        np.asarray(it["pdepth"])[:Np], False, g0=g0s[r])         # G0COND: the cond row's SLOT + f

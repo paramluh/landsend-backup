@@ -1,0 +1,1905 @@
+diff --git a/finetune/transcript_pose/data_transcript_pose.py b/finetune/transcript_pose/data_transcript_pose.py
+index 622c95c..7c4fc39 100644
+--- a/finetune/transcript_pose/data_transcript_pose.py
++++ b/finetune/transcript_pose/data_transcript_pose.py
+@@ -301,7 +301,7 @@ class CompactXabi:
+             if start != 0 or end != c.n:
+                 raise ValueError("The no-text ablation keeps complete original clips")
+             return remove_text(m)
+-        if mode == "original" and start == 0 and end == c.n:
++        if mode in ("original", "xabi-cb1") and start == 0 and end == c.n:
+             return m
+         if mode == "compact-transcript":
+             return transform_micro(m, start, end, prefix_ids=self.compact_tokens(index, start, end))
+@@ -463,8 +463,8 @@ def _eval_groups(data, units, budget, mode):
+ 
+ def make_plan(data, world, steps=200, ga=2, budget=7500, mode="transcript", oversize_policy="split", *, seed=PLAN_SEED,
+               compact_length_cache=None, micro_batch_rows=1):
+-    if mode == "no-text":
+-        return make_no_text_plan(data, world, steps=steps, seed=seed, micro_batch_rows=micro_batch_rows, ga=ga)
++    if mode in ("no-text", "xabi-cb1"):
++        return make_no_text_plan(data, world, steps=steps, seed=seed, micro_batch_rows=micro_batch_rows, ga=ga, mode=mode)
+     if mode == "original":
+         return make_original_plan(data, world, steps=steps, seed=seed)
+     if mode not in ("transcript", "compact-transcript") or min(world, steps, ga, budget) <= 0:
+@@ -615,7 +615,7 @@ def make_original_plan(data, world, *, steps=None, seed=PLAN_SEED):
+     return plan
+ 
+ 
+-def make_no_text_plan(data, world, *, steps=200, seed=PLAN_SEED, micro_batch_rows=2, ga=1):
++def make_no_text_plan(data, world, *, steps=200, seed=PLAN_SEED, micro_batch_rows=2, ga=1, mode="no-text"):
+     """Redistribute the original 64 logical rows without resampling any clips.
+ 
+     A logical row holds <=7500 media frames and <=9502 total positions including
+@@ -624,7 +624,8 @@ def make_no_text_plan(data, world, *, steps=200, seed=PLAN_SEED, micro_batch_row
+     """
+     world, micro_batch_rows, ga = map(int, (world, micro_batch_rows, ga))
+     if min(world, micro_batch_rows, ga) < 1 or world * micro_batch_rows * ga != 64:
+-        raise ValueError("no-text requires world * micro_batch_rows * gradient_accumulation == 64")
++        raise ValueError("Original-row batching requires world * micro_batch_rows * gradient_accumulation == 64")
++    assert mode in ("no-text", "xabi-cb1")
+     plan = make_original_plan(data, world, steps=steps, seed=seed)
+     micros = []
+     for step in range(plan["steps"]):
+@@ -638,10 +639,12 @@ def make_no_text_plan(data, world, *, steps=200, seed=PLAN_SEED, micro_batch_row
+         actual = sorted(u for rounds in per for group in rounds for u in group)
+         assert actual == expected
+         micros.append(per)
+-    plan.update(mode="no-text", ga=ga, micro_batch_rows=micro_batch_rows, global_batch_rows=64,
++    plan.update(mode=mode, ga=ga, micro_batch_rows=micro_batch_rows, global_batch_rows=64,
+                 logical_row_media_budget=7500, logical_row_token_budget=9502,
+                 budget=9502 * micro_batch_rows, step_micros=micros, R=[ga] * plan["steps"],
+                 text_policy="all generation PAD; lexical and timing tokens removed from conditioning; structural delimiters retained")
++    if mode == "xabi-cb1":
++        plan["text_policy"] = "original Xabi framewise text and supervision; no transcript prefix"
+     plan["coverage"] = dict(logical_rows=plan["n_rows"], global_rows_per_step=64,
+                             presented_media_frames=sum(plan["media_frames_per_step"]),
+                             unique_media_frames=sum(plan["media_frames_per_step"]), epochs_started=1,
+@@ -654,23 +657,30 @@ def make_no_text_plan(data, world, *, steps=200, seed=PLAN_SEED, micro_batch_row
+ def plan_digest(plan):
+     payload = [plan["mode"], plan["world"], plan["budget"], plan["source_plan_sha256"], plan.get("data_cfg"),
+                plan["units"], plan["step_micros"], plan["eval_units"], plan["eval_micros"]]
+-    if plan["mode"] == "no-text":
++    if plan["mode"] in ("no-text", "xabi-cb1"):
+         payload.extend([plan["micro_batch_rows"], plan["ga"], plan["global_batch_rows"], plan.get("benchmark_stress", False)])
++    if "stress_steps" in plan:
++        payload.append(plan["stress_steps"])
+     return hashlib.sha256(json.dumps(payload, separators=(",", ":")).encode()).hexdigest()
+ 
+ 
+ def stress_no_text_plan(plan):
+-    """Benchmark only: full 7500-frame source rows, padded to token memory cap."""
+-    assert plan["mode"] == "no-text"
++    """Benchmark maximum rows; cb1 alternates real batches to expose fragmentation."""
++    assert plan["mode"] in ("no-text", "xabi-cb1")
+     rows = [r for r in plan["rows"] if sum(plan["n_frames"][u] for u in r) == 7500]
+     if not rows:
+         raise ValueError("No complete 7500-media-frame source row for stress benchmark")
+     row = max(rows, key=lambda r: sum(plan["tok_ub"][u] for u in r))
+     group = row * plan["micro_batch_rows"]
+-    plan["step_micros"] = [[[list(group) for _ in range(plan["ga"])] for _ in range(plan["world"])] for _ in range(plan["steps"])]
++    stress_steps = list(range(3, plan["steps"], 2)) if plan["mode"] == "xabi-cb1" else list(range(plan["steps"]))
++    for step in stress_steps:
++        plan["step_micros"][step] = [[list(group) for _ in range(plan["ga"])] for _ in range(plan["world"])]
++        plan["media_frames_per_step"][step] = 64 * 7500
++    if plan["mode"] == "xabi-cb1":
++        # Reproduce the first three real batches, then vary allocation sizes.
++        plan["stress_steps"] = stress_steps
+     plan["benchmark_stress"] = True
+     plan["stress_source_row"] = row
+-    plan["media_frames_per_step"] = [64 * 7500] * plan["steps"]
+     plan["coverage"] = dict(benchmark_only=True, padded_tokens_per_micro=plan["budget"],
+                             media_frames_per_rank=7500 * plan["micro_batch_rows"] * plan["ga"],
+                             repeated_source_row=row)
+@@ -718,7 +728,7 @@ class StepDataset:
+             us = group or [0]
+             ms = [self.data.micro(self.plan["units"][u], self.rank, self.plan["mode"]) for u in us]
+             b = pack_micro(ms, self.plan["budget"], dummy=not group)
+-            if self.plan.get("benchmark_stress"):
++            if self.plan.get("benchmark_stress") and ("stress_steps" not in self.plan or step in self.plan["stress_steps"]):
+                 b = pad_packed_micro(b, self.plan["budget"])
+             b["step"] = step
+             if step == self.singles_at and round_ == 0:
+diff --git a/finetune/transcript_pose/environment/activate.sh b/finetune/transcript_pose/environment/activate.sh
+index 4a15a2f..2776a54 100644
+--- a/finetune/transcript_pose/environment/activate.sh
++++ b/finetune/transcript_pose/environment/activate.sh
+@@ -5,5 +5,19 @@ POSE_REPO_ROOT=$(cd -- "$POSE_ENV_DIR/../../.." && pwd)
+ source "$POSE_REPO_ROOT/.venv/bin/activate"
+ export PPM_FA3_ROOT=${PPM_FA3_ROOT:-$POSE_REPO_ROOT/.cache/kernels/vllm-flash-attn3}
+ export TRITON_CACHE_DIR=${TRITON_CACHE_DIR:-$POSE_REPO_ROOT/.cache/triton}
++# Keep existing serialized graph/kernel paths valid while storing their files
++# outside /tmp. Sourced once by each node's supervisor before torchrun.
++POSE_INDUCTOR_CACHE="$POSE_REPO_ROOT/.cache/torchinductor"
++POSE_INDUCTOR_LEGACY="/tmp/torchinductor_$(id -un)"
++if [[ -d "$POSE_INDUCTOR_LEGACY" && ! -L "$POSE_INDUCTOR_LEGACY" && ! -e "$POSE_INDUCTOR_CACHE" ]]; then
++    mv -- "$POSE_INDUCTOR_LEGACY" "$POSE_INDUCTOR_CACHE"
++fi
++mkdir -p "$POSE_INDUCTOR_CACHE"
++if [[ ! -e "$POSE_INDUCTOR_LEGACY" && ! -L "$POSE_INDUCTOR_LEGACY" ]]; then
++    ln -s -- "$POSE_INDUCTOR_CACHE" "$POSE_INDUCTOR_LEGACY"
++fi
++export TORCHINDUCTOR_CACHE_DIR=${TORCHINDUCTOR_CACHE_DIR:-$POSE_INDUCTOR_LEGACY}
++export TORCHINDUCTOR_FX_GRAPH_CACHE=1
++export TORCHINDUCTOR_AUTOGRAD_CACHE=1
+ export CPATH="$POSE_REPO_ROOT/.venv/include/python3.12:$POSE_REPO_ROOT/.venv/include${CPATH:+:$CPATH}"
+ export PYTHONUNBUFFERED=1
+diff --git a/finetune/transcript_pose/launch_cluster.sh b/finetune/transcript_pose/launch_cluster.sh
+index 5330b48..7cf6d3b 100755
+--- a/finetune/transcript_pose/launch_cluster.sh
++++ b/finetune/transcript_pose/launch_cluster.sh
+@@ -38,6 +38,8 @@ if [[ ${1:-} == --_supervise ]]; then
+     trap terminate TERM INT
+     record_pid "$$" "$job_dir/supervisor.json"
+     source "$SCRIPT_DIR/environment/activate.sh"
++    # Match production's allocator policy for variable-length MB2 batches.
++    export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+     export NCCL_SOCKET_IFNAME='=ibs14' NCCL_SOCKET_FAMILY=AF_INET6
+     export GLOO_SOCKET_IFNAME=ibs14 NCCL_IB_DISABLE=0 NCCL_NET=IB
+     export TORCH_NCCL_ASYNC_ERROR_HANDLING=1
+diff --git a/finetune/transcript_pose/train.py b/finetune/transcript_pose/train.py
+index c8c0156..cc1688a 100644
+--- a/finetune/transcript_pose/train.py
++++ b/finetune/transcript_pose/train.py
+@@ -25,18 +25,20 @@ def arguments():
+     p = argparse.ArgumentParser(__doc__)
+     p.add_argument("--run-dir", type=Path, required=True)
+     p.add_argument("--mode", choices=("train", "benchmark-old", "benchmark-new"), default="train")
+-    p.add_argument("--recipe", choices=("aligned-media", "compact-all", "no-text"), default="aligned-media")
++    p.add_argument("--recipe", choices=("aligned-media", "compact-all", "no-text", "xabi-cb1", "pose-cb01"), default="aligned-media")
+     p.add_argument("--micro-batch-rows", type=int, default=None,
+-                   help="no-text: original logical rows per GPU forward (default2)")
++                   help="no-text / xabi-cb1: original logical rows per GPU forward (default2)")
+     p.add_argument("--gradient-accumulation", type=int, default=None,
+-                   help="no-text: forwards per optimizer step (default1; MB1/GA2 fallback)")
++                   help="no-text / xabi-cb1: forwards per optimizer step (default1)")
+     p.add_argument("--cache", type=Path, default=Path("/home/param/datasets/xabi-v2pure-cache"))
+     p.add_argument("--base", type=Path, default=Path("/home/param/models/ppm-811-17850-base-bf16"))
+     p.add_argument("--resume", choices=("auto", "never"), default="auto")
++    p.add_argument("--no-eval", action="store_true", help="Skip all evaluations, including initial and final")
++    p.add_argument("--final-checkpoint-only", action="store_true", help="Save full state and weights only at the final training step")
+     p.add_argument("--benchmark-warmup", type=int, default=1)
+     p.add_argument("--benchmark-steps", type=int, default=2)
+     p.add_argument("--benchmark-stress", action="store_true",
+-                   help="no-text benchmark only: full7500-media-frame rows and worst-case token padding")
++                   help="Original-row benchmark: full7500-frame rows and maximum token padding; cb1 also varies shapes")
+     p.add_argument("--wandb-project", default="param-pose-llm")
+     return p.parse_args()
+ 
+@@ -51,6 +53,8 @@ def configure(args):
+         os.environ[key] = value
+     root = args.run_dir.resolve()
+     compact = getattr(args, "recipe", "aligned-media") == "compact-all"
++    pose_only = getattr(args, "recipe", "aligned-media") == "pose-cb01"
++    cb1 = getattr(args, "recipe", "aligned-media") in ("xabi-cb1", "pose-cb01")
+     if getattr(args, "recipe", "aligned-media") != "aligned-media" and args.mode == "benchmark-old":
+         raise ValueError("benchmark-old only supports the original aligned-media configuration")
+     overrides = {
+@@ -60,15 +64,24 @@ def configure(args):
+         "ALOE_LOCAL_EXPORT_ROOT": str(root / "exports"), "ALOE_SAVE_ROOT": str(root / "saves"),
+         "ALOE_STORE_DIR": str(args.cache / "provenance/original/ppm/aloe-v2pure-ft/stores"),
+         "ALOE_RESUME": args.resume, "ALOE_FINAL_SAVE": "1",
+-        "QQA_LW_WORD": "10" if args.mode == "benchmark-old" else "1" if compact else "0",
++        "QQA_LW_WORD": "1" if pose_only else "10" if args.mode == "benchmark-old" or cb1 else "1" if compact else "0",
++        "QQA_POSE_CB1": "1" if cb1 else "0",
++        "QQA_POSE_LIGHT": "0" if pose_only else "1",
++        "QQA_AUDIO_TRAINING": "0" if pose_only else "1",
++        "QQA_LW_SPEECH": "0" if pose_only else "1",
++        "QQA_LR_TOWER_P1": "3e-4" if pose_only else os.environ["QQA_LR_TOWER_P"],
+         # Equivalent packed data math is checked in the adapter tests. Avoid the
+         # legacy gate's many full-size model forwards before a quick benchmark.
+         "QQA_LOSSCHECK": "0",
+     }
+-    if compact:
++    if compact or pose_only:
+         # Category CE + conditional lexical CE = ordinary vocabulary CE when
+         # both coefficients are one; remove Xabi's extra lexical-token boost.
+         overrides["QQA_W_TEXT_CE"] = "1"
++    if getattr(args, "no_eval", False):
++        overrides["QQA_EVAL_EVERY"] = "0"
++    if getattr(args, "final_checkpoint_only", False):
++        overrides["QQA_EXPORT_STEPS"] = ""
+     os.environ.update(overrides)
+     os.environ.pop("QQA_REF_CFG", None)
+     for path in (BASE / "code/lib", BASE / "code"):
+@@ -80,16 +93,37 @@ def media_metrics(T, values, prefix="train", codebooks=True, text_loss=False):
+     d = T.summarize(values, "media")
+     audio = d["media_speech/cb0_ce"] + d["media_speech/light_ce"]
+     pose = d["media_speech/pose_cb0_ce"] + d["media_speech/pose_light_ce"]
+-    out = {f"{prefix}/audio_loss": audio, f"{prefix}/pose_loss": pose,
+-           f"{prefix}/loss": audio + pose}
++    if T.CFG.get("pose_cb1"):
++        pose += d["media_speech/pose_cb1_ce"]
++    audio_training = T.CFG.get("audio_training", True)
++    pose_light = T.CFG.get("pose_light", True)
++    out = {f"{prefix}/pose_loss": pose, f"{prefix}/loss": pose}
++    if audio_training:
++        out[f"{prefix}/audio_loss"] = audio
++        out[f"{prefix}/loss"] += audio
+     if text_loss:
+         out[f"{prefix}/text_loss"] = d["media_speech/text_ce"]
+-        out[f"{prefix}/loss"] += out[f"{prefix}/text_loss"]
++        # Original Xabi boosts conditional lexical CE by 5, then the whole
++        # text stream by 10. Report the actual weighted objective explicitly.
++        weighted = T.CFG["lw_word"] * (d["media_speech/text_ce"] +
++                    (T.CFG["w_text"] - 1) * d["media_speech/word_ce_norm"] *
++                    d["media_speech/n_word"] / max(sum(values[j] for j in (2, 5, 7, 9)), 1.0))
++        out[f"{prefix}/weighted_text_loss"] = weighted
++        out[f"{prefix}/loss"] += weighted
++    if T.CFG.get("pose_cb1"):
++        out[f"{prefix}/pose_cb0_loss"] = d["media_speech/pose_cb0_ce"]
++        out[f"{prefix}/pose_cb1_loss"] = d["media_speech/pose_cb1_ce"]
++        if pose_light:
++            out[f"{prefix}/pose_light_loss"] = d["media_speech/pose_light_ce"]
+     if codebooks:
+-        out["audio_codebooks/00"] = d["media_speech/cb0_ce"]
+         out["pose_codebooks/00"] = d["media_speech/pose_cb0_ce"]
+-        for cb in range(1, 32):
+-            out[f"audio_codebooks/{cb:02d}"] = d[f"media_speech/light_ce_cb{cb}"]
++        if audio_training:
++            out["audio_codebooks/00"] = d["media_speech/cb0_ce"]
++            for cb in T.CB_S:
++                out[f"audio_codebooks/{cb:02d}"] = d[f"media_speech/light_ce_cb{cb}"]
++        if T.CFG.get("pose_cb1"):
++            out["pose_codebooks/01"] = d["media_speech/pose_cb1_ce"]
++        for cb in T.CB_P:
+             out[f"pose_codebooks/{cb:02d}"] = d[f"media_speech/pose_light_ce_cb{cb}"]
+     return out
+ 
+@@ -109,13 +143,20 @@ def main():
+     bench = args.mode != "train"
+     compact = args.recipe == "compact-all"
+     no_text = args.recipe == "no-text"
+-    if args.benchmark_stress and (not bench or not no_text):
+-        raise ValueError("--benchmark-stress requires a no-text benchmark")
+-    data_mode = "no-text" if no_text else "original" if args.mode == "benchmark-old" else "compact-transcript" if compact else "transcript"
+-    ga = args.gradient_accumulation if args.gradient_accumulation is not None else (1 if compact or no_text else 2)
+-    mbs = args.micro_batch_rows if args.micro_batch_rows is not None else (2 if no_text else 1)
+-    if not no_text and (args.micro_batch_rows is not None or args.gradient_accumulation is not None):
+-        raise ValueError("Explicit batch/accumulation options are currently only supported for no-text")
++    pose_only = args.recipe == "pose-cb01"
++    cb1 = args.recipe in ("xabi-cb1", "pose-cb01")
++    original_rows = no_text or cb1
++    if cb1:
++        T.CB_P = tuple(range(2, 32))
++    if pose_only:
++        T.CB_S = T.CB_P = ()
++    if args.benchmark_stress and (not bench or not original_rows):
++        raise ValueError("--benchmark-stress requires a no-text or xabi-cb1 benchmark")
++    data_mode = "xabi-cb1" if cb1 else "no-text" if no_text else "original" if args.mode == "benchmark-old" else "compact-transcript" if compact else "transcript"
++    ga = args.gradient_accumulation if args.gradient_accumulation is not None else (1 if compact or original_rows else 2)
++    mbs = args.micro_batch_rows if args.micro_batch_rows is not None else (2 if original_rows else 1)
++    if not original_rows and (args.micro_batch_rows is not None or args.gradient_accumulation is not None):
++        raise ValueError("Explicit batch/accumulation options require no-text or xabi-cb1")
+     limit = args.benchmark_warmup + args.benchmark_steps if bench else C["steps"]
+     assert 0 < limit <= C["steps"] and args.benchmark_warmup >= 0 and args.benchmark_steps > 0
+     dev = torch.device("cuda", T.LOCAL)
+@@ -123,9 +164,9 @@ def main():
+     torch.set_num_threads(1)
+     torch.manual_seed(C["dec_seed"])
+     dist.init_process_group("nccl", device_id=dev, timeout=datetime.timedelta(minutes=45))
+-    expected_world = 32 if no_text else 56
++    expected_world = 32 if original_rows else 56
+     assert T.WORLD == expected_world and T.LW == 8, ("Unexpected distributed layout", T.WORLD, T.LW, expected_world)
+-    if no_text:
++    if original_rows:
+         assert mbs * ga * T.WORLD == 64 and mbs in (1, 2) and ga in (1, 2)
+     root.mkdir(parents=True, exist_ok=True)
+     (root / "control").mkdir(exist_ok=True)
+@@ -151,7 +192,7 @@ def main():
+     assert plan["world"] == T.WORLD and plan["steps"] == C["steps"]
+     assert plan["mode"] == data_mode
+     assert bool(plan.get("benchmark_stress")) == args.benchmark_stress
+-    if no_text:
++    if original_rows:
+         assert plan["ga"] == ga and plan["micro_batch_rows"] == mbs and plan["global_batch_rows"] == 64
+     elif data_mode != "original":
+         assert plan["ga"] == ga and plan["budget"] == 7500
+@@ -160,26 +201,43 @@ def main():
+     assert len(set(digests)) == 1, "Plan differs between nodes"
+     if compact:
+         C["export_steps"] = []  # This short second run saves automatically only at the end.
+-    C.update(task="no-text-audio-pose" if no_text else "compact-transcript-text-audio-pose" if compact else "aligned-transcript-audio-pose",
++    C.update(task="pose-cb01-text-only-objective" if pose_only else "xabi-second-pose-tower-cb1" if cb1 else "no-text-audio-pose" if no_text else "compact-transcript-text-audio-pose" if compact else "aligned-transcript-audio-pose",
+              recipe=args.recipe, sequence_budget=plan["budget"], gradient_accumulation=plan["ga"],
+              source_cache=str(args.cache), plan_digest=plan["digest"], mode=args.mode,
+              checkpoint_steps=C["export_steps"] + [C["steps"]], retain_full_checkpoints=2,
+-             checkpoint_policy="final-only" if compact else "xabi")
++             checkpoint_policy="final-only" if compact or args.final_checkpoint_only else "xabi",
++             evaluation_enabled=not args.no_eval,
++             cuda_allocator=os.environ.get("PYTORCH_CUDA_ALLOC_CONF"),
++             compiler_cache=os.environ.get("TORCHINDUCTOR_CACHE_DIR"),
++             triton_cache=os.environ.get("TRITON_CACHE_DIR"))
+     if no_text:
+         C.update(micro_batch_rows=mbs, global_batch_rows=64, logical_row_media_budget=7500,
+                  text_policy=plan["text_policy"], output_text_policy="constant PAD", text_loss_enabled=False)
++    if cb1:
++        C.update(micro_batch_rows=mbs, global_batch_rows=64, logical_row_media_budget=7500,
++                 text_policy=plan["text_policy"], text_loss_enabled=True,
++                 pose_loss_definition="cb0 CE + cb1 CE + mean CE(cb2..31)",
++                 pose_cb1_init="tower_p shared weights copied; current cb0 embedding and upstream hidden projection freshly initialized",
++                 pose_light_conditioning="cb1 tower hidden + original backbone link; cb0/cb1 prefill",
++                 initialization_checkpoint_step=17850)
++    if pose_only:
++        C.update(pose_loss_definition="cb0 CE + cb1 CE", loss_definition="text CE + pose cb0 CE + pose cb1 CE",
++                 pose_light_conditioning=None, audio_conditioning="all original audio codes retained in backbone inputs",
++                 active_decoders=[], main_forward_passes_per_micro=1, cb1_peak_lr=C["lr"]["tower_p1"])
+     if T.RANK == 0:
+         (root / "config.json").write_text(json.dumps(C, indent=2, default=str))
+         T.log(f"[plan] {plan['digest']} mode={plan['mode']} coverage={plan.get('coverage')} rounds={sorted(set(plan['R']))}")
+     c32, c4, c06 = M.cfg32(64), M.cfg4b(36), M.cfg06(28)
+     model, _ = M.build(c32, c4, c06, dev, T.log, partial=False, proj_r=2048,
+                        tower_vocab=M.TOWER_VOCAB, init=False, dec_ac=False,
+-                       dec_mode="replicate", pose_head=False, decp_bb=True)
++                       dec_mode="replicate", pose_head=False, decp_bb=not pose_only, pose_cb1=cb1,
++                       pose_light=not pose_only, audio_training=not pose_only)
+     model.head.media_only = C["lw_word"] == 0
+-    model.decp_bb_alpha = C["decp_bb_alpha"]
++    if hasattr(model, "decp_bb"):
++        model.decp_bb_alpha = C["decp_bb_alpha"]
+     opt, sched, by, frozen, decn = T.make_opt(model)
+-    dos = {"dec_s": T.DecOpt(model.dec_s, C["dec_lr"], C["dec_clip"]),
+-           "dec_p": T.DecOpt(model.dec_p, C["dec_p_lr"], C["dec_p_clip"])}
++    dos = {} if pose_only else {"dec_s": T.DecOpt(model.dec_s, C["dec_lr"], C["dec_clip"]),
++                               "dec_p": T.DecOpt(model.dec_p, C["dec_p_lr"], C["dec_p_clip"])}
+     start = T.find_resume() if args.resume == "auto" else None
+     if start is not None:
+         T.load_full(model, opt, sched, dos, start, plan["digest"], dev)
+@@ -187,10 +245,14 @@ def main():
+         start = 0
+         meta, gb = T.load_init(model, C["init"], dev)
+         assert int(meta["step"]) == 17850
++        if cb1:
++            from cb1_init import initialize_cb1
++            initialize_cb1(model)
++            T.log("[init] cb1 shared tower weights copied from cb0; new conditioning weights freshly initialized")
+         T.log(f"[init] pretrain step17850; source world={meta['world']}; {gb:.1f} GB loaded across ranks")
+     if C["dec_fast"]:
+-        for dec in (model.dec_s, model.dec_p):
+-            M.compile_decoder(dec, C["dec_compile_mode"], whole=True, dynamic=C["dec_dyn"])
++        for name in dos:
++            M.compile_decoder(getattr(model, name), C["dec_compile_mode"], whole=True, dynamic=C["dec_dyn"])
+     rot = M.Rot(c32, dev)
+     wb = None
+     if not bench and T.RANK == 0:
+@@ -230,7 +292,10 @@ def main():
+                 batch = T.prep(micro, dev, max(oc[0], 1), max(oc[1], 1), max(oc[3], 1))
+                 v, _, _ = T.run_micro(model, batch, rot, dos, grad=False)
+                 acc = v if acc is None else [a + b for a, b in zip(acc, v)]
+-        result = media_metrics(T, T.allsum(acc, dev), prefix="eval", codebooks=False, text_loss=compact)
++        result = media_metrics(T, T.allsum(acc, dev), prefix="eval", codebooks=cb1, text_loss=compact or cb1)
++        if cb1:
++            # Evaluation codebook series must not overwrite training series.
++            result = {("eval/" + k if k.startswith(("audio_codebooks/", "pose_codebooks/")) else k): v for k, v in result.items()}
+         emit(result, step)
+         T.log(f"[eval] step={step} {result}")
+         model.train()
+@@ -242,11 +307,11 @@ def main():
+     loader = iter(DataLoader(StepDataset(data, plan, T.RANK, start=start), batch_size=None, shuffle=False,
+                              num_workers=C["dl_workers"], prefetch_factor=2, persistent_workers=True,
+                              worker_init_fn=worker_init, collate_fn=lambda x: x))
+-    if not bench and start == 0:
++    if not bench and C["evaluation_enabled"] and start == 0:
+         evaluate(0)
+     model.train()
+     gc.collect()
+-    times, peaks = [], []
++    times, peaks, reserved_peaks, allocator_retries, allocator_ooms = [], [], [], [], []
+     stop_done = None
+     for step in range(start, limit):
+         torch.cuda.synchronize()
+@@ -259,7 +324,8 @@ def main():
+         total = T.allsum([float(x) for x in own[:5]], dev)
+         batches = [T.prep(b, dev, max(total[0] / T.WORLD, 1), total[1] / T.WORLD, total[3] / T.WORLD) for b in micros]
+         values, _, extra = T.train_step_multi(model, batches, rot, dos)
+-        assert abs(extra["dec_s_N"] - total[2]) < .5 and abs(extra["dec_p_N"] - total[4]) < .5
++        if not pose_only:
++            assert abs(extra["dec_s_N"] - total[2]) < .5 and abs(extra["dec_p_N"] - total[4]) < .5
+         norms = {}
+         for group in opt.param_groups:
+             norm = torch.nn.utils.clip_grad_norm_(group["params"], C["clip"][group["name"]])
+@@ -269,10 +335,14 @@ def main():
+         sched.step()
+         opt.zero_grad(set_to_none=True)
+         torch.cuda.synchronize()
+-        timing = torch.tensor([time.perf_counter() - began, torch.cuda.max_memory_allocated() / 2**30], device=dev)
++        memory = torch.cuda.memory_stats()
++        timing = torch.tensor([time.perf_counter() - began, torch.cuda.max_memory_allocated() / 2**30,
++                               torch.cuda.max_memory_reserved() / 2**30, memory.get("num_alloc_retries", 0),
++                               memory.get("num_ooms", 0)], device=dev)
+         dist.all_reduce(timing, op=dist.ReduceOp.MAX)
+         times.append(float(timing[0])); peaks.append(float(timing[1]))
+-        metrics = media_metrics(T, T.allsum(values, dev), text_loss=compact)
++        reserved_peaks.append(float(timing[2])); allocator_retries.append(int(timing[3])); allocator_ooms.append(int(timing[4]))
++        metrics = media_metrics(T, T.allsum(values, dev), text_loss=compact or cb1)
+         metrics.update({f"train/lr_{k}": v for k, v in lr.items()})
+         metrics.update({f"grad_norm/{k}": v for k, v in norms.items()})
+         for name, do in dos.items():
+@@ -280,25 +350,38 @@ def main():
+             metrics[f"grad_norm/{name}"] = max(do.grad_norms)
+         done = step + 1
+         emit(metrics, done)
+-        T.log(f"step {done}/200: {times[-1]:.2f}s, peak={peaks[-1]:.1f}GiB audio={metrics['train/audio_loss']:.4f} pose={metrics['train/pose_loss']:.4f}"
+-              + (f" text={metrics['train/text_loss']:.4f}" if compact else ""))
++        if T.RANK == 0:
++            runtime = dict(step=done, step_seconds=times[-1], peak_allocated_gib=peaks[-1],
++                           peak_reserved_gib=reserved_peaks[-1], allocator_retries=allocator_retries[-1],
++                           allocator_ooms=allocator_ooms[-1],
++                           updated_utc=datetime.datetime.now(datetime.timezone.utc).isoformat())
++            tmp_runtime = root / "runtime.json.tmp"
++            tmp_runtime.write_text(json.dumps(runtime) + "\n")
++            tmp_runtime.replace(root / "runtime.json")
++        T.log(f"step {done}/200: {times[-1]:.2f}s, peak={peaks[-1]:.1f}GiB pose={metrics['train/pose_loss']:.4f}"
++              + (f" audio={metrics['train/audio_loss']:.4f}" if not pose_only else "")
++              + (f" text={metrics['train/text_loss']:.4f}" if compact or cb1 else "")
++              + (f" pcb0={metrics['train/pose_cb0_loss']:.4f} pcb1={metrics['train/pose_cb1_loss']:.4f}" if cb1 else ""))
+         del batches, micros
+         gc.collect(1)
+         stop = torch.tensor([int(T.STOP["flag"] or (root / "control/STOP_AFTER_SAVE").exists())], device=dev)
+         dist.all_reduce(stop, op=dist.ReduceOp.MAX)
+         requested_stop = bool(int(stop))
+         if not bench:
+-            if done in C["checkpoint_steps"] or requested_stop:
++            if done in C["checkpoint_steps"] or (requested_stop and not args.final_checkpoint_only):
+                 T.save_full(model, opt, sched, dos, done, "stop" if requested_stop else "scheduled", plan["digest"])
+                 T.export_local(model, done, str(root / f"exports/export-{done}"))
+                 if T.LOCAL == 0:
+                     (root / "LATEST").write_text(f"saves/step-{done:05d}\n")
+             if requested_stop:
+                 if T.RANK == 0:
+-                    (root / "control/STOPPED").write_text(f"{done}\n")
++                    saved = done in C["checkpoint_steps"] or not args.final_checkpoint_only
++                    marker = "STOPPED" if saved else "STOPPED_WITHOUT_SAVE"
++                    (root / "control" / marker).write_text(f"{done}\n")
++                    T.log(f"[stop] step={done} checkpoint_saved={saved}")
+                 stop_done = done
+                 break
+-            if done % C["eval_every"] == 0 or done in C["checkpoint_steps"]:
++            if C["evaluation_enabled"] and (done % C["eval_every"] == 0 or done in C["checkpoint_steps"]):
+                 evaluate(done)
+     if bench and T.RANK == 0:
+         measured = times[args.benchmark_warmup:]
+@@ -307,7 +390,11 @@ def main():
+                       measured_step_seconds=measured, mean_step_seconds=float(np.mean(measured)),
+                       estimated_200_steps_seconds=200 * float(np.mean(measured)),
+                       excludes="startup, compilation, evaluation and checkpoint I/O", peak_gib=max(peaks),
+-                      all_step_seconds=times, plan_digest=plan["digest"])
++                      all_step_seconds=times, plan_digest=plan["digest"], peak_reserved_gib=max(reserved_peaks),
++                      allocator_retries=max(allocator_retries), allocator_ooms=max(allocator_ooms),
++                      cuda_allocator=C["cuda_allocator"], compiler_cache=C["compiler_cache"],
++                      completed_updates=len(times), max_shape_steps=[s + 1 for s in plan.get("stress_steps", []) if s < limit],
++                      per_step_peak_gib=peaks, per_step_reserved_gib=reserved_peaks)
+         report.update(benchmark_stress=args.benchmark_stress, micro_batch_rows=mbs, gradient_accumulation=ga,
+                       tokens_per_micro=plan["budget"], media_frames_per_step=plan["media_frames_per_step"][:limit])
+         (root / "benchmark.json").write_text(json.dumps(report, indent=2))
+diff --git a/finetune/xabi-main-17850/code/model_ppm.py b/finetune/xabi-main-17850/code/model_ppm.py
+index 32cf6bc..5be14c1 100644
+--- a/finetune/xabi-main-17850/code/model_ppm.py
++++ b/finetune/xabi-main-17850/code/model_ppm.py
+@@ -260,7 +260,7 @@ class Tower(nn.Module):
+         self.norm = Q3.Qwen3RMSNorm(Hv, eps=cfg.rms_norm_eps)
+         self.cb0_head = nn.Linear(Hv, CBS, bias=False)
+ 
+-    def forward(self, ids, depth, hn, pid, ctx, rot, lab, wpos, info=None):
++    def forward(self, ids, depth, hn, pid, ctx, rot, lab, wpos, info=None, upstream=None):
+         """ids [M] lane, depth [M, 32] codes of frame T - 3 at T, hn [M, Ht] backbone final-normed states at the same positions, lab [M]
+         cb0 labels (-100 none), wpos [M] fp32 -> (hv [M, Hv] final-normed, sum wpos CE, CE sum (detached), n labels, top-1 hits)."""
+         prof = TPROF["on"] and torch.is_grad_enabled()
+@@ -272,7 +272,15 @@ class Tower(nn.Module):
+         if info is not None:
+             info.update(tower_rms_text=float(e.float().pow(2).mean().sqrt()), tower_rms_codes=float(ce_.float().pow(2).mean().sqrt()),
+                         tower_rms_cond=float(cnd.float().pow(2).mean().sqrt()), backbone_rms_hn=float(hn.float().pow(2).mean().sqrt()))
+-        e = (e + ce_.to(e.dtype) + cnd.to(e.dtype))[None]
++        e = e + ce_.to(e.dtype) + cnd.to(e.dtype)
++        if upstream is not None:
++            # The second pose tower knows the CURRENT cb0 and first tower hidden;
++            # the shared code/backbone terms above still use the PREVIOUS frame.
++            current = depth[:, 0]
++            c0 = self.current_cb0_emb(current.clamp_min(0))
++            c0 = c0 * (current >= 0)[:, None].to(c0.dtype)
++            e = e + c0.to(e.dtype) + self.upstream_proj(upstream).to(e.dtype)
++        e = e[None]
+         if prof:
+             rec = {"name": getattr(self, "_pname", "tower")}
+             e.register_hook(lambda g, rec=rec: rec.__setitem__("b1", _ev()))        # tower backward finished (grad of its input)
+@@ -292,14 +300,30 @@ class Tower(nn.Module):
+         return hv, (ce * wpos).sum(), ce.detach().sum(), m.sum(), hit
+ 
+ 
++class PoseCB1Tower(Tower):
++    """Sequential pose tower, cloned from cb0 with fresh extra conditioning."""
++
++    def __init__(self, cfg, Ht, vocab):
++        super().__init__(cfg, Ht, vocab)
++        self.current_cb0_emb = nn.Embedding(CBS, cfg.hidden_size)
++        self.upstream_proj = nn.Linear(cfg.hidden_size, cfg.hidden_size, bias=True)
++
++
+ DEC_FAST = {"active": False, "head": None}      # T14: compiled decoder code runs only while active (training nanosteps)
+ 
+ 
+-def _dec_head_ce(hl, w, labels, wf):
+-    """31 x 2048-way heads + CE + weighted sum (one graph): hl [n, 32, Hl], w [31 x 2048, Hl], labels [n, 31], wf [n] -> (loss, CE [n, 31])."""
+-    lo = torch.einsum("ndh,dvh->ndv", hl[:, 1:], w.view(DEPTH - 1, CBS, -1)).float()
+-    ce = F.cross_entropy(lo.reshape(-1, CBS), labels.reshape(-1), reduction="none").view(labels.shape)
+-    return (ce * wf[:, None]).sum(), ce.detach()
++def _dec_head_ce(hl, w, labels, wf, first_codebook=1):
++    """Score cb[first_codebook:32]; stats retain 31 slots, with skipped CBs zero.
++
++    Keeping all 32 input slots lets cb0 AND cb1 prefill the pose light decoder
++    without changing RoPE positions or the inherited residual weights.
++    """
++    lo = torch.einsum("ndh,dvh->ndv", hl[:, first_codebook:],
++                      w.view(DEPTH - 1, CBS, -1)[first_codebook - 1:]).float()
++    targets = labels[:, first_codebook - 1:]
++    ce = F.cross_entropy(lo.reshape(-1, CBS), targets.reshape(-1), reduction="none").view(targets.shape)
++    loss = (ce * wf[:, None]).sum()
++    return loss, F.pad(ce.detach(), (first_codebook - 1, 0)) if first_codebook > 1 else ce.detach()
+ 
+ 
+ DEC_ATTN = os.environ.get("PPM_DEC_ATTN", "attn32")   # speed knob (same maths): attn32 = _dec_trunk + fused T=32 kernel | hf = HF Qwen3Model forward
+@@ -338,7 +362,7 @@ def _dec_core(dec, hs, codes, wf, zb=None):
+     x = torch.cat([p0, c0[:, None], rest.to(c0.dtype)], dim=1)
+     labels = codes[:, 1:] - torch.arange(1, DEPTH, device=codes.device) * CBS
+     hl = _dec_trunk(dec.model, x) if DEC_ATTN == "attn32" else dec.model(inputs_embeds=x, use_cache=False).last_hidden_state
+-    return _dec_head_ce(hl, dec.heads.weight, labels, wf)
++    return _dec_head_ce(hl, dec.heads.weight, labels, wf, dec.first_codebook)
+ 
+ 
+ def compile_decoder(dec, mode="default", whole=True, dynamic=False):
+@@ -361,6 +385,12 @@ def compile_decoder(dec, mode="default", whole=True, dynamic=False):
+ 
+ 
+ class Decoder(H2.LightTower):
++    def __init__(self, Hv, cfg, first_codebook=1):
++        super().__init__(Hv, cfg)
++        assert first_codebook in (1, 2)
++        self.first_codebook = first_codebook
++        self.n_codebooks = DEPTH - first_codebook
++
+     def inputs(self, hv, depth, flat, zb=None, tower=True):
+         """= LightTower.inputs; zb [T, Hl] (D33): slot 0 of frame flat[i] = proj(hv[flat[i]]) + zb[flat[i]] (as _dec_core). tower=False
+         (D33 eval probe 'backbone-only'): the tower term proj(hv) (incl. its bias) is dropped, slot 0 = zb[flat[i]] alone."""
+@@ -395,10 +425,10 @@ class Decoder(H2.LightTower):
+                 x, labels = self.inputs(hv, depth, flat) if zb is None else self.inputs(hv, depth, flat, zb, tower)
+                 hl = self.model(inputs_embeds=x, use_cache=False).last_hidden_state
+                 f = DEC_FAST["head"] if (DEC_FAST["active"] and DEC_FAST["head"] is not None) else _dec_head_ce
+-                loss, ce = f(hl, self.heads.weight, labels, wf)
++                loss, ce = f(hl, self.heads.weight, labels, wf, self.first_codebook)
+         if n_valid is not None:
+             ce = ce[:n_valid]
+-        return loss, ce.sum(), ce.numel(), ce.sum(0)
++        return loss, ce.sum(), ce.shape[0] * self.n_codebooks, ce.sum(0)
+ 
+ 
+ def pose_head_ce(head, hn, ctx, lab, wpos):
+@@ -425,16 +455,25 @@ def posehead_in(hn, s):
+ 
+ 
+ class PPM(nn.Module):
+-    def __init__(self, c32, c4, c06, proj_r=2048, tower_vocab=TOWER_VOCAB, pose_head=False, decp_bb=False):
++    def __init__(self, c32, c4, c06, proj_r=2048, tower_vocab=TOWER_VOCAB, pose_head=False, decp_bb=False, pose_cb1=False, pose_light=True,
++                 audio_training=True):
+         super().__init__()
++        assert pose_light or not decp_bb, "decp_bb requires the pose light decoder"
+         self.inp = Inp(c32.vocab_size, c32.hidden_size)
+         self.layers = nn.ModuleList([Block(c32, i) for i in range(c32.num_hidden_layers)])
+         self.head = Head(c32, proj_r)
+-        self.tower_s = Tower(c4, c32.hidden_size, tower_vocab)
++        if audio_training:
++            self.tower_s = Tower(c4, c32.hidden_size, tower_vocab)
++            self.tower_s._pname = "tower_s"
+         self.tower_p = Tower(c4, c32.hidden_size, tower_vocab)
+-        self.tower_s._pname, self.tower_p._pname = "tower_s", "tower_p"
+-        self.dec_s = Decoder(c4.hidden_size, c06)
+-        self.dec_p = Decoder(c4.hidden_size, c06)
++        self.tower_p._pname = "tower_p"
++        if audio_training:
++            self.dec_s = Decoder(c4.hidden_size, c06)
++        if pose_light:
++            self.dec_p = Decoder(c4.hidden_size, c06, first_codebook=2 if pose_cb1 else 1)
++        if pose_cb1:
++            self.tower_p1 = PoseCB1Tower(c4, c32.hidden_size, tower_vocab)
++            self.tower_p1._pname = "tower_p1"
+         if pose_head:                                              # D32 (flag off: no such module, no key, no optimizer group)
+             self.pose_head = nn.Linear(c32.hidden_size, CBS, bias=True)
+             self.pose_head_bbgrad = None                           # D35: the head's backbone-gradient scale (None = off; trainer sets it)
+@@ -463,12 +502,17 @@ class PPM(nn.Module):
+             return out
+         lt, st, hn = self.head(h[0], b["sel"], b["y"], b["wt"], b.get("wn"))
+         out.update(text=lt, text_stats=st)
+-        if kind in ("speech", "pose"):
++        if kind in ("speech", "pose") and hasattr(self, "tower_s"):
+             hv, l0, s0, n0, k0 = self.tower_s(b["ids"][1], b["depth"][1], hn, b["pid"], ctx, rot_t, b["cb0"], b["cb0_w"], info)
+             out.update(hv_s=hv, cb0=l0, cb0_sum=s0, cb0_n=n0, cb0_hit=k0)
+         if kind == "pose":
+             hv, l0, s0, n0, k0 = self.tower_p(b["ids"][1], b["pdepth"], hn, b["pid"], ctx, rot_t, b["pcb0"], b["pcb0_w"])
+             out.update(hv_p=hv, pcb0=l0, pcb0_sum=s0, pcb0_n=n0, pcb0_hit=k0)
++            if hasattr(self, "tower_p1"):
++                labels = torch.where(b["pdepth"][:, 1] >= 0, b["pdepth"][:, 1] - CBS, -100)
++                hv1, l1, s1, n1, k1 = self.tower_p1(
++                    b["ids"][1], b["pdepth"], hn, b["pid"], ctx, rot_t, labels, b["pcb0_w"], upstream=hv)
++                out.update(hv_p0=hv, hv_p=hv1, pcb1=l1, pcb1_sum=s1, pcb1_n=n1, pcb1_hit=k1)
+             if hasattr(self, "pose_head") and self.pose_head_on:   # D32: same (hn[T - 1], pcb0[T]) pairs and weights as the pose tower (D36: off = skipped)
+                 l1, s1, n1, k1 = pose_head_ce(self.pose_head, posehead_in(hn, self.pose_head_bbgrad), ctx, b["pcb0"], b["pcb0_w"])
+                 out.update(phead=l1, phead_sum=s1, phead_n=n1, phead_hit=k1)
+@@ -478,7 +522,7 @@ class PPM(nn.Module):
+ 
+ 
+ # ------------------------------------------------------------------------------------------------ groups
+-GROUPS = ("trunk", "spec", "proj", "audio", "tower_s", "tower_p", "pose_head", "decp_bb")   # main AdamW (pose_head only with D32 on, decp_bb
++GROUPS = ("trunk", "spec", "proj", "audio", "tower_s", "tower_p", "tower_p1", "pose_head", "decp_bb")   # main AdamW (pose_head only with D32 on, decp_bb
+                                                                                   # only with D33 on: empty groups are skipped); dec_s / dec_p
+                                                                                   # have their own nanostep AdamWs
+ 
+@@ -497,7 +541,7 @@ def group_of(name):
+         return "pose_head"
+     if n.startswith("decp_bb."):
+         return "decp_bb"
+-    for g in ("tower_s", "tower_p", "dec_s", "dec_p"):
++    for g in ("tower_s", "tower_p", "tower_p1", "dec_s", "dec_p"):
+         if n.startswith(g + "."):
+             return g
+     raise KeyError(n)
+@@ -667,16 +711,19 @@ def init_weights(model, c32, c4, c06, dev, log=print, partial=False):
+ 
+ # ------------------------------------------------------------------------------------------------ build (FSDP2)
+ def build(c32, c4, c06, dev, log=print, partial=False, proj_r=2048, tower_vocab=TOWER_VOCAB, init=True, dec_ac=False, dec_mode="replicate",
+-          pose_head=False, decp_bb=False):
++          pose_head=False, decp_bb=False, pose_cb1=False, pose_light=True, audio_training=True):
+     from torch.distributed.fsdp import MixedPrecisionPolicy, fully_shard
+     from torch.distributed.algorithms._checkpoint.checkpoint_wrapper import CheckpointImpl, checkpoint_wrapper
+     mp = MixedPrecisionPolicy(param_dtype=torch.bfloat16, reduce_dtype=torch.float32)
+     mpn = MixedPrecisionPolicy(param_dtype=torch.bfloat16, reduce_dtype=torch.float32, cast_forward_inputs=False)
++    assert not (pose_cb1 and init), "cb1 experiment requires checkpoint loading then initialize_cb1(model)"
+     with torch.device("meta"):
+-        model = PPM(c32, c4, c06, proj_r, tower_vocab, pose_head=pose_head, decp_bb=decp_bb)
++        model = PPM(c32, c4, c06, proj_r, tower_vocab, pose_head=pose_head, decp_bb=decp_bb, pose_cb1=pose_cb1,
++                    pose_light=pose_light, audio_training=audio_training)
++    decoders = ((model.dec_s,) if audio_training else ()) + ((model.dec_p,) if pose_light else ())
+     assert dec_mode in ("replicate", "fsdp"), dec_mode
+     rep = dec_mode == "replicate"                                  # T14: decoders REPLICATED per GPU (default): no FSDP, one grad all-reduce per update
+-    for dec in (model.dec_s, model.dec_p) if (dec_ac and not rep) else ():   # decoder activation checkpointing off by default (chunks are small)
++    for dec in decoders if (dec_ac and not rep) else ():             # decoder activation checkpointing off by default (chunks are small)
+         lay = dec.model.layers
+         for i in range(len(lay)):
+             lay[i] = checkpoint_wrapper(lay[i], checkpoint_impl=CheckpointImpl.NO_REENTRANT, preserve_rng_state=False)
+@@ -684,7 +731,8 @@ def build(c32, c4, c06, dev, log=print, partial=False, proj_r=2048, tower_vocab=
+     for L in model.layers:
+         fully_shard(L, mp_policy=mp, reshard_after_forward=True)
+     fully_shard(model.head, mp_policy=mpn, reshard_after_forward=True)
+-    for tw in (model.tower_s, model.tower_p):
++    towers = ((model.tower_s,) if audio_training else ()) + (model.tower_p,) + ((model.tower_p1,) if pose_cb1 else ())
++    for tw in towers:
+         for L in tw.layers:
+             fully_shard(L, mp_policy=mp, reshard_after_forward=True)
+         fully_shard(tw, mp_policy=mpn, reshard_after_forward=True)
+@@ -692,24 +740,27 @@ def build(c32, c4, c06, dev, log=print, partial=False, proj_r=2048, tower_vocab=
+         fully_shard(model.pose_head, mp_policy=mpn, reshard_after_forward=True)
+     if decp_bb:                                                    # D33: its own FSDP unit (backbone side; gradient via the main backward)
+         fully_shard(model.decp_bb, mp_policy=mpn, reshard_after_forward=True)
+-    for dec in (model.dec_s, model.dec_p) if not rep else ():
++    for dec in decoders if not rep else ():
+         for L in dec.model.layers:
+             fully_shard(L, mp_policy=mp, reshard_after_forward=True)
+         fully_shard(dec, mp_policy=mpn, reshard_after_forward=True)
+-    ign = {p for d in (model.dec_s, model.dec_p) for p in d.parameters()} if rep else None
++    ign = {p for d in decoders for p in d.parameters()} if rep and decoders else None
+     fully_shard(model, mp_policy=mpn, reshard_after_forward=True, ignored_params=ign)
+     model.to_empty(device=dev)
+-    for dec in (model.dec_s, model.dec_p):
++    for dec in decoders:
+         dec.model.rotary_emb = type(dec.model.rotary_emb)(config=c06, device=dev)
+     for n_, p in model.named_parameters():
+         assert p.dtype == torch.float32, ("fp32 masters", n_, p.dtype)
+     info = init_weights(model, c32, c4, c06, dev, log, partial) if init else {}
+     cnt = lambda m: sum(p.numel() for p in m.parameters())  # noqa: E731
+-    pc = {"inp": cnt(model.inp), "backbone_layers": cnt(model.layers), "head": cnt(model.head), "tower_s": cnt(model.tower_s),
+-          "tower_p": cnt(model.tower_p), "dec_s": cnt(model.dec_s), "dec_p": cnt(model.dec_p), **({"pose_head": cnt(model.pose_head)} if pose_head else {}),
++    pc = {"inp": cnt(model.inp), "backbone_layers": cnt(model.layers), "head": cnt(model.head),
++          **({"tower_s": cnt(model.tower_s), "dec_s": cnt(model.dec_s)} if audio_training else {}),
++          "tower_p": cnt(model.tower_p), **({"dec_p": cnt(model.dec_p)} if pose_light else {}),
++          **({"pose_head": cnt(model.pose_head)} if pose_head else {}),
+           **({"decp_bb": cnt(model.decp_bb)} if decp_bb else {}),
++          **({"tower_p1": cnt(model.tower_p1)} if pose_cb1 else {}),
+           "total": cnt(model)}
+     info["param_counts"] = pc
+     log("[build] PPM params " + ", ".join(f"{k} {v / 1e9:.3f}B" for k, v in pc.items()) +
+-        f" | backbone {c32.num_hidden_layers} layers, towers {c4.num_hidden_layers}, decoders {c06.num_hidden_layers}; tower vocab {tower_vocab}")
++        f" | backbone {c32.num_hidden_layers} layers, {len(towers)} towers x {c4.num_hidden_layers}, {len(decoders)} decoders x {c06.num_hidden_layers}; tower vocab {tower_vocab}")
+     return model, info
+diff --git a/finetune/xabi-main-17850/code/train_aloe_pose.py b/finetune/xabi-main-17850/code/train_aloe_pose.py
+index c3e6150..892950a 100644
+--- a/finetune/xabi-main-17850/code/train_aloe_pose.py
++++ b/finetune/xabi-main-17850/code/train_aloe_pose.py
+@@ -122,6 +122,9 @@ CFG = {
+     "dl_workers": int(E("QQA_DL_WORKERS", "3")), "data": A.aloe_cfg(), "cd": D.CD,
+     "local_export_root": E("ALOE_LOCAL_EXPORT_ROOT"), "stores": A.STORES,
+     "pose_b": E("QQA_POSE_B", "1") == "1",                        # aloe-nopose-ft: 0 = the no-pose ablation (module doc)
++    "pose_cb1": E("QQA_POSE_CB1", "0") == "1",                    # optional second temporal pose tower; launched by transcript_pose/train.py
++    "pose_light": E("QQA_POSE_LIGHT", "1") == "1",                # false omits pose cb2+ decoder and its backbone link entirely
++    "audio_training": E("QQA_AUDIO_TRAINING", "1") == "1",        # false keeps audio conditioning but omits audio output tower/decoder
+     # aloe-uncond-ft (module doc); defaults = 22091
+     "a_empty": E("QQA_A_EMPTY", "0") == "1", "lw_word": float(E("QQA_LW_WORD", "1")), "lw_speech": float(E("QQA_LW_SPEECH", "1")),
+     "lw_pose": float(E("QQA_LW_POSE", "1")), "pose_head_build": E("QQA_POSE_HEAD_BUILD", "1") == "1",
+@@ -130,6 +133,10 @@ CFG = {
+     "save_root": E("ALOE_SAVE_ROOT"), "save_every_min": float(E("ALOE_SAVE_EVERY_MIN", "60")), "final_save": int(E("ALOE_FINAL_SAVE", "1")), "resume": E("ALOE_RESUME", "auto"),
+ }
+ POSE = CFG["pose_b"]
++assert not CFG["pose_cb1"] or POSE, "cb1 tower requires the pose path"
++if CFG["pose_cb1"]:
++    CFG["lr"]["tower_p1"] = float(E("QQA_LR_TOWER_P1", str(CFG["lr"]["tower_p"])))
++    CFG["clip"]["tower_p1"] = CFG["clip"]["tower_p"]
+ assert POSE == A.POSE_B, "trainer and data must agree on QQA_POSE_B"
+ assert CFG["a_empty"] == A.A_EMPTY, "trainer and data must agree on QQA_A_EMPTY"
+ assert CFG["pose_head_build"] or POSE, "pose-head build flag only for the pose path"
+@@ -142,6 +149,8 @@ CFG["dec_sched"] = {"warmup": CFG["warmup"] * CFG["dec_k"], "horizon": CFG["step
+                     "wsd_decay_start": CFG["warmup"] * CFG["dec_k"], "wsd_decay_end": CFG["steps"] * CFG["dec_k"], "wsd_floor": 0.0, "wsd_shape": "linear"}
+ if POSE:
+     TRAIN_GROUPS = ("trunk", "spec", "proj", "audio", "tower_s", "tower_p", "decp_bb")
++    if CFG["pose_cb1"]:
++        TRAIN_GROUPS += ("tower_p1",)
+     FROZEN_PREFIX = ("pose_head.",)                               # PPM main D36: the D32 pose head is off (frozen, unused); aloe-uncond: not built
+ else:                                                             # no-pose ablation = 21980 (train_aloe.py): pose parts frozen, never run
+     TRAIN_GROUPS = ("trunk", "spec", "proj", "audio", "tower_s")
+@@ -242,8 +251,13 @@ def summarize(v, pre):
+     o = 5 + len(CB_S)                                             # pose (PPM summarize's pose keys): cb0 sum / n / hits, light sum / n, cb 1/8/16/31
+     out[f"{k}/pose_cb0_ce"] = x[o] / max(x[o + 1], 1.0); out[f"{k}/pose_cb0_top1"] = x[o + 2] / max(x[o + 1], 1.0)
+     out[f"{k}/pose_light_ce"] = x[o + 3] / max(x[o + 4], 1.0)
++    pose_depth = 30 if CFG["pose_cb1"] else 31
+     for j, c in enumerate(CB_P):
+-        out[f"{k}/pose_light_ce_cb{c}"] = x[o + 5 + j] / max(x[o + 4] / 31.0, 1.0)
++        out[f"{k}/pose_light_ce_cb{c}"] = x[o + 5 + j] / max(x[o + 4] / pose_depth, 1.0)
++    if CFG["pose_cb1"]:
++        q = o + 5 + len(CB_P)
++        out[f"{k}/pose_cb1_ce"] = x[q] / max(x[q + 1], 1.0)
++        out[f"{k}/pose_cb1_top1"] = x[q + 2] / max(x[q + 1], 1.0)
+     return out
+ 
+ 
+@@ -288,7 +302,7 @@ def _mb_plan(m):
+ 
+ 
+ def nanosteps_tw(dec, do, hv, depth, light, dummy=False, zb=None):
+-    """train_ppm.nanosteps (replicated, one decoder) with tokens_step weights: chunk j's frames weigh 1 / (31 x M_j / WORLD) (M_j = chunk-j
++    """train_ppm.nanosteps (replicated, one decoder) with tokens_step weights: chunk j's frames weigh 1 / (n_codebooks x M_j / WORLD) (M_j = chunk-j
+     frames summed over ranks) -> after the all-reduce mean the update's gradient = the mean CE over ALL ranks' chunk-j frames; the input
+     gradient accumulates chunk gradients x M_j / N (N = all ranks' light frames) = d(token mean x WORLD / ...)/d hv, i.e. the tower /
+     backbone receive the token-weighted decoder loss. zb (pose decoder, D33 link input): detached + accumulated exactly as hv (train_ppm
+@@ -314,7 +328,7 @@ def nanosteps_tw(dec, do, hv, depth, light, dummy=False, zb=None):
+         if zd is not None:
+             zd.grad = None
+         do.flat.zero_()
+-        den = 31.0 * Mj[j] / WORLD
++        den = float(getattr(dec, "n_codebooks", 31)) * Mj[j] / WORLD
+         for a0, sz in _mb_plan(m):
+             mv = max(0, min(sz, m - a0))
+             fl = light.index_select(0, idx[a0:a0 + mv]) if mv else light[:1]
+@@ -365,15 +379,17 @@ def run_micro(model, b, rot, dos, grad, info=None):
+     if not POSE:
+         assert "hv_p" not in out and "zb_p" not in out, "no-pose ablation: the pose path must not run"
+     lw_w, lw_s, lw_p = CFG["lw_word"], CFG["lw_speech"], CFG["lw_pose"]     # aloe-uncond: per-stream multipliers (1 / 1 / 1 = 22091)
+-    loss = lw_w * out["text"] + lw_s * CFG["w_cb0"] * out["cb0"] + (lw_p * CFG["w_pcb0"] * out["pcb0"] if POSE else 0.0)
++    loss = lw_w * out["text"] + (lw_s * CFG["w_cb0"] * out["cb0"] if CFG["audio_training"] else 0.0) + (lw_p * CFG["w_pcb0"] * out["pcb0"] if POSE else 0.0)
++    if CFG["pose_cb1"]:
++        loss = loss + lw_p * CFG["w_pcb0"] * out["pcb1"]
+     v = text_vec(b, out["text_stats"])
+     extra = {}
+     dummy = b.get("dummy", False)
+-    pairs = [("dec_s", model.dec_s, out["hv_s"], b["depth"][1], b["light"], lw_s * CFG["w_cb"], None)]
+-    if POSE:
++    pairs = [("dec_s", model.dec_s, out["hv_s"], b["depth"][1], b["light"], lw_s * CFG["w_cb"], None)] if CFG["audio_training"] else []
++    if POSE and CFG["pose_light"]:
+         pairs.append(("dec_p", model.dec_p, out["hv_p"], b["pdepth"], b["plight"], lw_p * CFG["w_pcb"], out.get("zb_p")))
+-        assert pairs[1][6] is not None, "D33 decp_bb link expected (PPM main: on)"
+-    dvals = []
++        assert pairs[-1][6] is not None, "D33 decp_bb link expected (PPM main: on)"
++    dvals = [] if CFG["audio_training"] else [(0.0, 0.0, torch.zeros(31, device=loss.device))]
+     roots, grads = [loss], [None]
+     for name, dec, hv, depth, light, wcb, zb in pairs:
+         if grad:
+@@ -390,13 +406,17 @@ def run_micro(model, b, rot, dos, grad, info=None):
+                 wz = torch.zeros(fl.numel(), device=light.device)
+                 _, s_, num_, cb_ = dec(hv, depth, fl, wz) if zb is None else dec(hv, depth, fl, wz, zb=zb)
+             dvals.append((float(s_), float(num_), cb_.float()))
+-    v += [out["cb0_sum"], out["cb0_n"], out["cb0_hit"], dvals[0][0], dvals[0][1]]
++    if POSE and not CFG["pose_light"]:
++        dvals.append((0.0, 0.0, torch.zeros(31, device=loss.device)))
++    v += ([out["cb0_sum"], out["cb0_n"], out["cb0_hit"]] if CFG["audio_training"] else [0.0, 0.0, 0.0]) + [dvals[0][0], dvals[0][1]]
+     v += [dvals[0][2][c - 1] for c in CB_S]
+     if POSE:
+         v += [out["pcb0_sum"], out["pcb0_n"], out["pcb0_hit"], dvals[1][0], dvals[1][1]]
+         v += [dvals[1][2][c - 1] for c in CB_P]
++    if CFG["pose_cb1"]:
++        v += [out["pcb1_sum"], out["pcb1_n"], out["pcb1_hit"]]
+     # aloe-uncond: per-stream optimised losses WITHOUT the stream multipliers (tokens_step: sum over ranks / WORLD = the step's token mean)
+-    v += [out["text"].detach(), out["cb0"].detach(), (out["pcb0"].detach() if POSE else 0.0)]
++    v += [out["text"].detach(), out["cb0"].detach() if CFG["audio_training"] else 0.0, (out["pcb0"].detach() if POSE else 0.0)]
+     if grad:
+         torch.autograd.backward(roots, grads)
+     dvc = loss.device
+@@ -461,7 +481,10 @@ def load_init(model, path, dev):
+     meta = json.load(open(f"{path}/meta.json"))
+     assert meta["format"] == "ppm-local-bf16-shards-v1" and os.path.isfile(f"{path}/COMPLETE"), path
+     W0 = int(meta["world"])
+-    params = {n.replace("_checkpoint_wrapped_module.", ""): p for n, p in model.named_parameters()}
++    # The cb1 tower is derived from the just-loaded cb0 tower
++    # by cb1_init.initialize_cb1 after this base-only load. It has no source keys.
++    params = {n.replace("_checkpoint_wrapped_module.", ""): p for n, p in model.named_parameters()
++              if not (CFG["pose_cb1"] and n.startswith("tower_p1."))}
+     # global row offsets of every tensor in each source rank file (FSDP2 = torch.chunk along dim 0)
+     srcs = {}
+ 
+@@ -494,11 +517,16 @@ def load_init(model, path, dev):
+     assert not miss, ("init: parameters not in the checkpoint", miss[:6])
+     ck = set(rep) | set(src(0))                                   # aloe-uncond: checkpoint tensors the model does not have (not loaded)
+     unl = sorted(ck - set(params))
++    # A reduced experiment may intentionally omit entire output modules. Only
++    # permit source extras for modules physically absent from this model; a
++    # missing tensor inside any retained module remains an initialization error.
++    omitted = tuple(f"{name}." for name in ("dec_p", "dec_s", "tower_s", "decp_bb") if not hasattr(model, name))
++    unexpected = [n for n in unl if not n.startswith(omitted)]
+     if not CFG["pose_head_build"]:
+-        # 10-20 (aloe-v2pure-16610): PPM exports after the pose head's removal carry no pose_head keys at all, so the unloaded set is empty
+-        assert unl in (["pose_head.bias", "pose_head.weight"], []), ("unloaded checkpoint keys must be exactly the pose head's (or none)", unl[:8])
++        # Older exports can carry the unused auxiliary pose head; newer ones do not.
++        assert unexpected in (["pose_head.bias", "pose_head.weight"], []), ("unexpected unloaded checkpoint keys", unexpected[:8])
+     else:
+-        assert not unl, ("checkpoint keys not loaded", unl[:8])
++        assert not unexpected, ("checkpoint keys not loaded", unexpected[:8])
+     meta["unloaded_keys"] = unl
+     srcs.clear()
+     nonfin = torch.tensor([float(sum(int(not torch.isfinite(M._loc(p)).all()) for p in params.values()))], device=dev)
+@@ -545,7 +573,9 @@ def export_weights(model, step, path, min_free_gb):
+     dcp.save({k: v.to(torch.bfloat16) for k, v in msd.items()}, checkpoint_id=path)
+     dist.barrier()
+     if RANK == 0:
+-        json.dump({"step": int(step), "decp_bb": 1, "decp_bb_alpha": 1.0, "run": CFG["run_tag"], "init": CFG["init"], "cfg": CFG},
++        json.dump({"step": int(step), "decp_bb": int(hasattr(model, "decp_bb")),
++                   "decp_bb_alpha": getattr(model, "decp_bb_alpha", 1.0) if hasattr(model, "decp_bb") else 0.0,
++                   "run": CFG["run_tag"], "init": CFG["init"], "cfg": CFG},
+                   open(f"{path}/train_cfg.json", "w"), indent=1, default=str)
+         open(f"{path}/COMPLETE", "w").write(str(step))
+     dist.barrier()
+@@ -605,7 +635,7 @@ def nanosteps_multi(dec, do, mics):
+     lrs = []
+     for j in range(K):
+         do.flat.zero_()
+-        den = 31.0 * Mj[j] / WORLD
++        den = float(getattr(dec, "n_codebooks", 31)) * Mj[j] / WORLD
+         for r, (hv, depth, light, zb, dm) in enumerate(mics):
+             hd, zd, m = hds[r], zds[r], sizes[r][j]
+             idx = perms[r][j::K] if m else perms[r][:0]
+@@ -645,21 +675,121 @@ def nanosteps_multi(dec, do, mics):
+     return accs, st, lrs, (Mj, N), acczs
+ 
+ 
++def train_step_no_decoders(model, bts, rot, dos):
++    """One main forward/backward per micro for text and the two pose towers.
++
++    Audio codes remain backbone inputs. The audio output tower, both depth
++    decoders, and the pose decoder's backbone link do not exist in this model.
++    """
++    assert POSE and CFG["pose_cb1"] and not CFG["pose_light"] and not CFG["audio_training"]
++    assert not dos and all(not hasattr(model, name) for name in ("dec_s", "dec_p", "tower_s", "decp_bb"))
++    tv = [0.0] * len(TK)
++    p0, p1, sl = ([0.0, 0.0, 0.0] for _ in range(3))
++    loss_sum = 0.0
++    for b in bts:
++        out = model(b, rot, rot)
++        assert "phead" not in out and "zb_p" not in out and "cb0" not in out
++        loss = CFG["lw_word"] * out["text"] + CFG["lw_pose"] * CFG["w_pcb0"] * (out["pcb0"] + out["pcb1"])
++        if b.get("dummy", False):
++            assert float(loss) == 0.0, ("dummy micro with a non-zero loss", float(loss))
++        else:
++            tv = [a + float(z) for a, z in zip(tv, text_vec(b, out["text_stats"]))]
++            for target, key in ((p0, "pcb0"), (p1, "pcb1")):
++                for j, suffix in enumerate(("sum", "n", "hit")):
++                    target[j] += float(out[f"{key}_{suffix}"])
++            sl[0] += float(out["text"])
++            sl[2] += float(out["pcb0"])
++            loss_sum += float(loss)
++        loss.backward()
++        del out, loss
++    # Keep the established statistics layout; absent objectives have zero counts.
++    v = tv + [0.0] * (5 + len(CB_S)) + p0 + [0.0] * (2 + len(CB_P)) + p1 + sl
++    return v, loss_sum, {}
++
++
++def train_step_pose_towers(model, bts, rot, dos):
++    """Pose cb0/cb1 + text, with the unchanged audio tower and audio nanosteps.
++
++    Only audio states need a detached pass and decoder-input gradients. Pose
++    towers receive their CE gradients in the second main forward; no pose light
++    module, optimizer, backbone link, or residual-codebook loss is present.
++    """
++    assert POSE and not CFG["pose_light"]
++    assert not hasattr(model, "dec_p") and not hasattr(model, "decp_bb")
++    assert set(dos) == {"dec_s"}
++    lw_w, lw_s, lw_p = CFG["lw_word"], CFG["lw_speech"], CFG["lw_pose"]
++
++    def main_loss(out):
++        loss = lw_w * out["text"] + lw_s * CFG["w_cb0"] * out["cb0"] + lw_p * CFG["w_pcb0"] * out["pcb0"]
++        if CFG["pose_cb1"]:
++            loss = loss + lw_p * CFG["w_pcb0"] * out["pcb1"]
++        return loss
++
++    keep, reference = [], []
++    with torch.no_grad():
++        for b in bts:
++            out = model(b, rot, rot)
++            assert "phead" not in out and "zb_p" not in out
++            keep.append(out["hv_s"].detach())
++            reference.append(float(main_loss(out)))
++            del out
++    with DecFast():
++        up_s, st_s, lrs_s, (Mjs, Ns), _ = nanosteps_multi(
++            model.dec_s, dos["dec_s"],
++            [(h, b["depth"][1], b["light"], None, b.get("dummy", False)) for h, b in zip(keep, bts)])
++
++    tv = [0.0] * len(TK)
++    c0, p0, p1, sl = ([0.0, 0.0, 0.0] for _ in range(4))
++    loss_sum, dl, dh = 0.0, 0.0, 0.0
++    for r, b in enumerate(bts):
++        out = model(b, rot, rot)
++        loss = main_loss(out)
++        dl = max(dl, abs(float(loss) - reference[r]) / max(abs(reference[r]), 1e-12))
++        dh = max(dh, float((out["hv_s"].detach().float() - keep[r].float()).abs().max()))
++        keep[r] = None
++        if b.get("dummy", False):
++            assert float(loss) == 0.0, ("dummy micro with a non-zero loss", float(loss))
++        else:
++            tv = [a + float(z) for a, z in zip(tv, text_vec(b, out["text_stats"]))]
++            for target, key in ((c0, "cb0"), (p0, "pcb0")) + (((p1, "pcb1"),) if CFG["pose_cb1"] else ()):
++                for j, suffix in enumerate(("sum", "n", "hit")):
++                    target[j] += float(out[f"{key}_{suffix}"])
++            sl = [sl[0] + float(out["text"]), sl[1] + float(out["cb0"]), sl[2] + float(out["pcb0"])]
++            loss_sum += float(loss)
++        torch.autograd.backward([loss, out["hv_s"]],
++                                [None, (up_s[r] * lw_s * CFG["w_cb"]).to(out["hv_s"].dtype)])
++        del out, loss
++    v = tv + c0 + [float(st_s["sum"]), float(st_s["n"])] + [float(st_s["cb"][c - 1]) for c in CB_S]
++    v += p0 + [0.0, 0.0] + [0.0] * len(CB_P)
++    if CFG["pose_cb1"]:
++        v += p1
++    v += sl
++    return v, loss_sum, {"dec_s_lrs": lrs_s, "dec_s_M": Mjs, "dec_s_N": Ns,
++                         "passab_loss_rel": dl, "passab_hv_abs": dh}
++
++
+ def train_step_multi(model, bts, rot, dos):
+     """ONE optimizer step over this rank's R micros (rounds) = run_micro(grad=True) over the union: PASS A forwards every micro without a graph
+     (hv_s / hv_p / zb_p kept), the decoders take their K joint nanostep updates over all rounds (nanosteps_multi), PASS B re-forwards each
+     micro WITH a graph and backpropagates loss + (hv, zb) . (decoder input gradients) (= run_micro's single backward per micro); FSDP sums
+     the rounds' gradients. Same weights in both passes (no optimizer step between them). -> (stats vector = run_micro's layout, loss, extra)."""
++    if not CFG["audio_training"] and not CFG["pose_light"]:
++        return train_step_no_decoders(model, bts, rot, dos)
++    if not CFG["pose_light"]:
++        return train_step_pose_towers(model, bts, rot, dos)
+     assert POSE, "aloe-v2pure: pose path only"
+     lw_w, lw_s, lw_p = CFG["lw_word"], CFG["lw_speech"], CFG["lw_pose"]
+     keep, tv, c0, p0, sl, loss_sum, la = [], None, [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], [0.0, 0.0, 0.0], 0.0, []
++    p1 = [0.0, 0.0, 0.0]
+     with torch.no_grad():
+         for b in bts:
+             out = model(b, rot, rot)
+             assert "phead" not in out and out.get("zb_p") is not None, "D32 off, D33 link on (PPM main)"
+             loss = lw_w * out["text"] + lw_s * CFG["w_cb0"] * out["cb0"] + lw_p * CFG["w_pcb0"] * out["pcb0"]
++            if CFG["pose_cb1"]:
++                loss = loss + lw_p * CFG["w_pcb0"] * out["pcb1"]
+             keep.append((out["hv_s"].detach(), out["hv_p"].detach(), out["zb_p"].detach()))
+-            la.append(float(out["cb0"]) + float(out["pcb0"]))
++            la.append(float(out["cb0"]) + float(out["pcb0"]) + (float(out["pcb1"]) if CFG["pose_cb1"] else 0.0))
+             del out, loss
+     with DecFast():
+         up_s, st_s, lrs_s, (Mjs, Ns), _ = nanosteps_multi(model.dec_s, dos["dec_s"],
+@@ -671,7 +801,9 @@ def train_step_multi(model, bts, rot, dos):
+     for r, b in enumerate(bts):
+         out = model(b, rot, rot)
+         loss = lw_w * out["text"] + lw_s * CFG["w_cb0"] * out["cb0"] + lw_p * CFG["w_pcb0"] * out["pcb0"]
+-        lb = float(out["cb0"]) + float(out["pcb0"])
++        if CFG["pose_cb1"]:
++            loss = loss + lw_p * CFG["w_pcb0"] * out["pcb1"]
++        lb = float(out["cb0"]) + float(out["pcb0"]) + (float(out["pcb1"]) if CFG["pose_cb1"] else 0.0)
+         dl = max(dl, abs(lb - la[r]) / max(abs(la[r]), 1e-12))                         # pass A vs pass B towers' cb0 CE: same forward
+         dh = max(dh, max(float((out[k_].detach().float() - keep[r][i_].float()).abs().max()) for i_, k_ in enumerate(("hv_s", "hv_p", "zb_p"))))
+         keep[r] = None
+@@ -682,6 +814,8 @@ def train_step_multi(model, bts, rot, dos):
+             tv = v_ if tv is None else [x + y for x, y in zip(tv, v_)]
+             c0 = [c0[0] + float(out["cb0_sum"]), c0[1] + float(out["cb0_n"]), c0[2] + float(out["cb0_hit"])]
+             p0 = [p0[0] + float(out["pcb0_sum"]), p0[1] + float(out["pcb0_n"]), p0[2] + float(out["pcb0_hit"])]
++            if CFG["pose_cb1"]:
++                p1 = [p1[0] + float(out["pcb1_sum"]), p1[1] + float(out["pcb1_n"]), p1[2] + float(out["pcb1_hit"])]
+             sl = [sl[0] + float(out["text"]), sl[1] + float(out["cb0"]), sl[2] + float(out["pcb0"])]
+             loss_sum += float(loss)
+         roots = [loss, out["hv_s"], out["hv_p"], out["zb_p"]]
+@@ -691,6 +825,8 @@ def train_step_multi(model, bts, rot, dos):
+     tv = tv if tv is not None else [0.0] * len(TK)
+     v = tv + c0 + [float(st_s["sum"]), float(st_s["n"])] + [float(st_s["cb"][c - 1]) for c in CB_S]
+     v += p0 + [float(st_p["sum"]), float(st_p["n"])] + [float(st_p["cb"][c - 1]) for c in CB_P]
++    if CFG["pose_cb1"]:
++        v += p1
+     v += sl
+     extra = {"dec_s_lrs": lrs_s, "dec_s_M": Mjs, "dec_s_N": Ns, "dec_p_lrs": lrs_p, "dec_p_M": Mjp, "dec_p_N": Np, "passab_loss_rel": dl, "passab_hv_abs": dh}
+     return v, loss_sum, extra
+diff --git a/infer/duplex_distill_demo/ops/web.py b/infer/duplex_distill_demo/ops/web.py
+index ea9a810..2a42736 100644
+--- a/infer/duplex_distill_demo/ops/web.py
++++ b/infer/duplex_distill_demo/ops/web.py
+@@ -21,6 +21,7 @@ def main():
+     parser.add_argument("command", choices=("start", "run", "status", "stop"))
+     parser.add_argument("--run-dir", default=DEFAULT_RUN)
+     parser.add_argument("--port", type=int, default=8890)
++    parser.add_argument("--video-url", default="http://127.0.0.1:8892")
+     args = parser.parse_args()
+     run = Path(args.run_dir)
+     run.mkdir(parents=True, exist_ok=True)
+@@ -44,7 +45,8 @@ def main():
+             return
+         with (run / "frontend-supervisor.log").open("ab", buffering=0) as log:
+             child = subprocess.Popen([sys.executable, str(Path(__file__).resolve()), "run",
+-                                      "--run-dir", str(run), "--port", str(args.port)],
++                                      "--run-dir", str(run), "--port", str(args.port),
++                                      "--video-url", args.video_url],
+                                      stdin=subprocess.DEVNULL, stdout=log, stderr=subprocess.STDOUT,
+                                      start_new_session=True)
+         time.sleep(0.3)
+@@ -58,14 +60,15 @@ def main():
+     for sig in (signal.SIGTERM, signal.SIGINT):
+         signal.signal(sig, lambda _sig, _frame: stop.set())
+     state = {"started_utc": utc(), "supervisor": process_identity(os.getpid()),
+-             "child": None, "attempt": 0, "port": args.port, "host": "127.0.0.1"}
++             "child": None, "attempt": 0, "port": args.port, "host": "127.0.0.1",
++             "video_url": args.video_url}
+     (run / "frontend-supervisor.pid").write_text(f"{os.getpid()}\n")
+     token = run / "backend.token"
+     assert token.is_file()
+     repo = Path(__file__).resolve().parents[3]
+     command = [str(repo / ".venv/bin/python"), "-u",
+                str(repo / "infer/duplex_distill_demo/app.py"), "--port", str(args.port),
+-               "--token-file", str(token)]
++               "--token-file", str(token), "--video-url", args.video_url]
+ 
+     def update(phase, **values):
+         state.update(values, phase=phase, updated_utc=utc())
+diff --git a/infer/engine/ppm/fast_ppm.py b/infer/engine/ppm/fast_ppm.py
+index 9620e21..2f3205c 100644
+--- a/infer/engine/ppm/fast_ppm.py
++++ b/infer/engine/ppm/fast_ppm.py
+@@ -48,6 +48,7 @@ TEXT FORCING (10-18, default off = byte-identical output): per instance row, B's
+           Opt-in per_instance_rng gives each clip separate audio/pose/text generators; [1,vocab] draws are invariant to batch size and row order.
+ SAMPLING  live device tensors (one capture serves every setting). Standing rules: temperature 1 everywhere, audio top-k 30 (cb0 + light),
+           pose top-k 30 (cb0 + light), no repetition penalty, no min-p, CFG off, bf16 only (all new knobs default off)."""
++import hashlib
+ import json
+ import math
+ import os
+@@ -593,6 +594,16 @@ def validate(d):
+     return out, bad
+ 
+ 
++def validate_silence_codes(sil, minimum_frames):
++    """Validate LOCAL Mimi ids encoded from silence, before applying CB offsets."""
++    sil = np.asarray(sil)
++    if (sil.ndim != 2 or sil.shape[0] != DEPTH or sil.shape[1] < int(minimum_frames)
++            or not np.issubdtype(sil.dtype, np.integer)
++            or sil.min() < 0 or sil.max() >= CBS):
++        raise ValueError(f"Silence must contain local integer Mimi codes [32, L], L >= {minimum_frames}, values 0..{CBS - 1}; got {sil.shape}/{sil.dtype}")
++    return np.ascontiguousarray(sil, dtype=np.int64)
++
++
+ def silence_depth(depth, sil):
+     """= infer_pose_2side.silence_depth: every Mimi code of both channels -> the Mimi codes of digital silence, frame by frame (index restarts
+     at each contiguous run of coded positions). depth [2, n, 32] global, sil [32, L] local."""
+@@ -811,7 +822,7 @@ class FastPPM:
+         self.sil = None
+         if self.cfg_rows:
+             self.sil = silence if silence is not None else IP.Mimi(dl).encode(np.zeros((p_max + self.n_fr) * 1920, np.float32))[:, :p_max + self.n_fr]
+-            assert self.sil.shape[0] == DEPTH and self.sil.min() >= 0, self.sil.shape
++            self.sil = validate_silence_codes(self.sil, p_max + self.n_fr)
+             self.sil_t.copy_(torch.as_tensor(self.sil[:, :self.n_fr].T + OFF))
+         self.xo = [torch.zeros(1, R, H, dtype=BF, device=d) for d, _ in self.segs]
+         self.xi = [None] + [torch.zeros(1, R, H, dtype=BF, device=d) for d, _ in self.segs[1:]]
+@@ -1241,6 +1252,9 @@ class FastPPM:
+         a_src = []
+         Ps = []
+         self.prefill_hn = []
++        self.prefill_silenced_frames = []
++        self.forced_audio_frames = [0] * self.NI
++        self.forced_pose_frames = [0] * self.NI
+         if self.pose:
+             self.pdepB.fill_(-1)
+             self.pseen.zero_()
+@@ -1291,6 +1305,7 @@ class FastPPM:
+                     q = np.flatnonzero(depth[c, P:, 0] >= 0)
+                     assert not len(q) or (q[0] == CD and (np.diff(q) == 1).all()), ("conversation codes not one run from P + CD", r, c)
+                 du = silence_depth(depth, self.sil)
++                self.prefill_silenced_frames.append([int(np.count_nonzero(depth[c, :, 0] >= 0)) for c in range(2)])
+                 hn = self._prefill_row(self.NI + r, np.asarray(it["ids"])[:, :Np], du, np.asarray(it["present"])[:, :Np],
+                                        np.asarray(it["pdepth"])[:Np], False)
+                 self.hn_prev[self.NI + r].copy_(hn[-1])
+@@ -1338,11 +1353,16 @@ class FastPPM:
+     def step(self, f, graphs=True, force=None, cold_pad=True):
+         """conversation frame f (positions T_r = P_r + f). Async (no host sync). Frame 0 (generation right after the system prompt): B's lane
+         is forced to PAD (cold_pad; = the live engines' rule). force: dict with 'lane' [NI] (-1 keeps that row's sampled token) and/or 'codes' [NI, 32] global and/or
+-        'pose' [NI, 32] global: teacher-forces B at T."""
++        'pose' [NI, 32] global: teacher-forces B at T. Forced media advances its
++        temporal tower but skips its sampler/depth decoder entirely. This allows
++        delayed GT media to finish prefilling while the text lane starts sampling."""
+         self.set_f(f)
+         d0, dl, dp = self.d0, self.dl, self.dp
+         use = graphs and bool(self.graphs)
+         full = f >= CD
++        force_pose = force is not None and force.get("pose") is not None
++        force_audio = force is not None and force.get("codes") is not None
++        sample_pose, sample_audio = full and not force_pose, full and not force_audio
+         TI = None
+         if self.front:
+             with torch.cuda.device(d0):
+@@ -1382,22 +1402,27 @@ class FastPPM:
+             with torch.cuda.device(dp):
+                 cfgdec = self.cfg_rows and bool(self.params.get("pose_cfg_on")) and bool(self.params.get("pose_cfg_light"))
+                 if use:
+-                    self.graphs[("pose_full_cfg" if cfgdec else "pose_full") if full else "pose"].replay()
++                    self.graphs[("pose_full_cfg" if cfgdec else "pose_full") if sample_pose else "pose"].replay()
+                 else:
+-                    self._pose(full, cfgdec)
+-                if force is not None and force.get("pose") is not None:
++                    self._pose(sample_pose, cfgdec)
++                if force_pose:
+                     pf = torch.as_tensor(np.asarray(force["pose"], np.int64), device=dp)
+                     self.pdepB[self.arI[dp], self.Tv[dp][:self.NI]] = pf
+                     self.pkp[dp].copy_(pf)
++                    if full:
++                        self.pseen.scatter_(2, (pf - self.offp)[:, :, None], True)
++                        self.forced_pose_frames = [n + 1 for n in self.forced_pose_frames]
+         with torch.cuda.device(dl):
+             if use:
+-                self.graphs["speech_full" if full else "speech"].replay()
++                self.graphs["speech_full" if sample_audio else "speech"].replay()
+             else:
+-                self._speech(full)
+-            if force is not None and force.get("codes") is not None:
++                self._speech(sample_audio)
++            if force_audio:
+                 cf = torch.as_tensor(np.asarray(force["codes"], np.int64), device=dl)
+                 self.depB[self.arI[dl], self.Tv[dl][:self.NI]] = cf
+                 self.pk[dl][:, 1:].copy_(cf)
++                if full:
++                    self.forced_audio_frames = [n + 1 for n in self.forced_audio_frames]
+         for si, (d, _) in enumerate(self.segs):
+             with torch.cuda.device(d):
+                 if si == 0:
+@@ -1443,3 +1468,43 @@ class FastPPM:
+         if self.pose:
+             out["pdep"] = self.pdepB[r, :n_end].cpu().numpy().copy()
+         return out
++
++    def guidance_audit(self, r=0):
++        """Serializable CFG execution receipt, read after a session/readback.
++
++        Counts come from the live buffers; the row checks ensure the backbone,
++        pose tower and residual decoder actually have distinct CFG cache rows.
++        """
++        if not 0 <= r < self.NI:
++            raise ValueError(f"Invalid instance row: {r}")
++        enabled = bool(self.params.get("pose_cfg_on", 0))
++        if enabled and not self.cfg_rows:
++            raise RuntimeError("Pose guidance requested without a silence cache row")
++        report = dict(enabled=enabled, conditional_row=int(r), silence_row=None,
++                      guided_frames=0, codebooks=[])
++        if not self.cfg_rows:
++            return report
++        ru = self.NI + r
++        for caches in (self.bbK, self.bbV, self.tpK, self.tpV, self.dec_pu.K, self.dec_pu.V):
++            for cache in caches:
++                if cache.shape[0] != self.R or cache[r].data_ptr() == cache[ru].data_ptr():
++                    raise RuntimeError("CFG requires independent full backbone, pose tower and light KV rows")
++        w = float(self.params["pose_cfg_s"])
++        codebooks = ([0] if self.params["pose_cfg_cb0"] else []) + (list(range(1, DEPTH)) if self.params["pose_cfg_light"] else [])
++        report.update(silence_row=int(ru), conditional_weight=w, silence_weight=1.0 - w,
++                      codebooks=codebooks if enabled else [],
++                      guided_frames=int(self.pcfg_guided[r].item()),
++                      backbone_cache_rows=int(self.R), pose_tower_cache_rows=int(self.R),
++                      pose_light_cache_rows=int(self.dec_pu.S), independent_cache_rows=True,
++                      prefix_audio_frames_replaced_by_channel=self.prefill_silenced_frames[r],
++                      forced_audio_frames_replaced_by_channel=[0, self.forced_audio_frames[r]],
++                      total_supplied_audio_frames_replaced_by_channel=[self.prefill_silenced_frames[r][0],
++                          self.prefill_silenced_frames[r][1] + self.forced_audio_frames[r]],
++                      forced_pose_frames=self.forced_pose_frames[r],
++                      silence_codes_shape=list(self.sil.shape),
++                      silence_codes_sha256=hashlib.sha256(self.sil.tobytes()).hexdigest(),
++                      silence_scope="all present Mimi codes in both channels, including voice prompt and media prefill",
++                      shared_conditions="text tokens, previous pose frames, and current sampled pose-codebook prefix",
++                      d33_uses_separate_backbone_hidden=bool(self.bblink),
++                      speaking_only=bool(self.params["pose_cfg_speaking_only"]))
++        return report
+diff --git a/infer/transcript_pose/README.md b/infer/transcript_pose/README.md
+index 72ed86f..60f09ea 100644
+--- a/infer/transcript_pose/README.md
++++ b/infer/transcript_pose/README.md
+@@ -2,7 +2,8 @@
+ 
+ Both fine-tunes use the existing BF16 PPM engine with the production Xabi voice
+ prefix, two-frame media delay, speech/pose towers, depth decoders, and D33 link.
+-The default is **zero ground-truth audio/pose prefill**. Two GPUs with enough
++The default is **two seconds of source audio, pose, and text prefill** (25 frames
++at 12.5 Hz). Two GPUs with enough
+ free memory for the 44B model are required; the tested cluster uses H100 80 GB.
+ 
+ | Recipe | Prefix after the voice/system block | Generation |
+@@ -34,11 +35,13 @@ export MIMI_DIR=/path/to/local/mimi
+ # Fixed timed transcript, copied upfront and then supplied framewise.
+ python infer/transcript_pose/infer.py \
+   --recipe aligned-media --words /path/to/words.json --seconds 8 \
++  --prefill-frames 0 \
+   --voice-clip /path/to/same-speaker.wav --devs 0,1 --out /path/to/aligned-output
+ 
+ # Ordinary full transcript upfront; timing/text lane generated by the model.
+ python infer/transcript_pose/infer.py \
+   --recipe compact-all --transcript 'Here is the complete transcript to perform.' \
++  --prefill-frames 0 \
+   --seconds 8 --voice-clip /path/to/same-speaker.wav \
+   --devs 0,1 --out /path/to/compact-output
+ ```
+@@ -50,6 +53,11 @@ Override with `--ckpt` when moving to another machine. An export must contain
+ export directory alone is incomplete. `--tokenizer` defaults to the complete
+ tokenizer assets in the downloaded step-17850 base package.
+ 
++The custom-text examples above explicitly opt out of media prefill because they
++do not supply source audio/pose. Prepared/cache clips use the two-second default.
++New website submissions also persist `prefill_frames=25`; archived requests that
++omitted this field retain their original zero-prefill behavior.
++
+ Use `--no-voice-clip` for the empty system block. A supplied voice reference is
+ encoded with Mimi, must be at least 38 frames (about 3 s), and is cropped to 125
+ frames (10 s). This is a same-speaker voice reference, not initial output media.
+@@ -85,9 +93,10 @@ python infer/transcript_pose/infer.py \
+ Cache indices use `CompactXabi.clips`, not the ordinal within the eval split.
+ With no custom text or clip index, the first held-out clip is selected. The
+ cache path defaults to `/home/param/datasets/xabi-v2pure-cache`. Cached inputs
+-reconstruct exactly the training voice draw and reference; the generation
+-audio/pose arrays are then cleared. Only `--prefill-frames N` explicitly supplies
+-ground-truth initial media and its corresponding timed words. `--start-frame`
++reconstruct exactly the training voice draw and reference. The first 25 audio,
++pose, and text frames are retained by default; later ground-truth media and
++native-mode framewise text are cleared. `--prefill-frames N` changes that prefix
++length, including explicit `0` to disable it. `--start-frame`
+ selects a crop while retaining the original frame-zero pose geometry.
+ 
+ `--prepare-only` writes `inputs.npz` and `input.json` without loading PPM. Those
+@@ -285,6 +294,60 @@ final result of all sixteen pipelines.
+ 
+ ## Website requests
+ 
++### Two-second prefill and boundary marker
++
++The latest 24-video set is in `audio-guided-prefill2s-comparison-20261028`, served
++at `/guided-prefill-comparison`. It repeats the same eight examples, checkpoints,
++seeds, native text policies, top-k/temperature settings, and full-model audio
++guidance from the earlier set, with exactly 25 source audio/pose/text frames.
++Every final video still lasts 60 seconds, including its two-second prefix.
++
++Text begins sampling at frame 25 for compact and original Xabi. Because media
++has a two-frame delay, the final two known audio/pose frames are supplied while
++those next text frames are sampled. Their temporal caches advance without media
++sampling. Thus no extra post-boundary source words are exposed, and the remaining
++727 media frames are generated with pose guidance. Saved input/output prefixes
++are compared directly against the source cache.
++
++After generation and rendering, final original/pose/overlay videos receive a
++two-frame white flash at 2.00 seconds and a quiet 100-ms, 880-Hz beep. All three
++views share the same marked soundtrack. `unmarked/` preserves clean videos;
++`prefill-marker.json` records hashes and boundary validation. The marker never
++changes model audio/codes, pose latents, or diffusion inputs. New request videos
++use the same presentation step. RGB rendering retains its existing clean sink
++and visual reference conditioning; the two-second prefill supplies the PPM's
++audio, pose, and text inputs.
++
++### Audio-guided native comparison
++
++The separate `audio-guided-native-comparison-20261028` run uses the same eight
++60-second examples with each checkpoint's native text format: aligned-media
++receives the full aligned prefix and forced framewise words; compact-all
++receives the ordinary full transcript and samples words; original Xabi receives
++the voice/system prefix and samples words without a transcript. All temperatures
++are 1. Audio top-k is 30 for every codebook; pose top-k is 30 for cb0 and 50 for
++cb1–31. Text top-k remains 0 (unfiltered).
++
++`--pose-audio-guidance 3` applies `audio + 3 * (audio - silence)` to every pose
++codebook's logits before top-k filtering. This corresponds to the engine's
++`pose_cfg_s=4` convention. The second branch has independent backbone, pose-tower,
++and pose-decoder caches, including its own backbone-to-decoder hidden projection.
++Every audio code, including the voice prefix and generated history, is replaced
++with codes produced by the pinned Mimi codec from digital silence. Both branches
++receive identical text, pose history, and sampled pose prefixes within each frame.
++Audio and text are sampled from the ordinary conditional branch.
++
++Both `infer.py` and `infer_batch.py` accept these settings:
++
++```bash
++--audio-topk 30 --pose-topk 30 --pose-light-topk 50 --pose-audio-guidance 3
++```
++
++Each output saves the silence codes, their hash, the exact sampling settings,
++and a guidance audit covering independent caches and the number of guided frames.
++The website's separate `/guided-comparison` page shows the three models alongside
++their supplied conditioning and generated text; existing comparisons are retained.
++
+ The request studio uses `request_schema.py` and `request_worker.py`. Requests
+ select one of the eight prepared clips and one checkpoint, with independent
+ audio/pose temperatures and top-k values, a generation seed, a video seed, and
+diff --git a/infer/transcript_pose/comparison_video.py b/infer/transcript_pose/comparison_video.py
+index c0102d0..1a9886f 100644
+--- a/infer/transcript_pose/comparison_video.py
++++ b/infer/transcript_pose/comparison_video.py
+@@ -66,7 +66,17 @@ def pose_views(directory):
+     from pose_views import build_pose_views
+ 
+     directory = Path(directory)
++    metadata = read(directory / 'ppm/meta.json') if (directory / 'ppm/meta.json').is_file() else {}
++    prefill = int(metadata.get('prefill_frames', 0))
++    # Recover an interrupted marker pass from its immutable clean backups
++    # before asking the pose-view validator to inspect presentation outputs.
++    if prefill and (directory / 'unmarked/pose-views.json').is_file():
++        from prefill_marker import apply_prefill_marker
++        apply_prefill_marker(directory, boundary_seconds=prefill / 12.5)
+     build_pose_views(directory / 'video.mp4', directory / 'pose', out=directory)
++    if prefill:
++        from prefill_marker import apply_prefill_marker
++        apply_prefill_marker(directory, boundary_seconds=prefill / 12.5)
+     return ['--pose-video', directory / 'pose.mp4', '--pose-overlay-video', directory / 'overlay.mp4']
+ 
+ 
+diff --git a/infer/transcript_pose/infer.py b/infer/transcript_pose/infer.py
+index 929745c..53f5bc4 100644
+--- a/infer/transcript_pose/infer.py
++++ b/infer/transcript_pose/infer.py
+@@ -38,7 +38,8 @@ def arguments(argv=None):
+     voice = p.add_mutually_exclusive_group()
+     voice.add_argument("--voice-clip", type=Path, help="Same-speaker 3–10 s WAV or local Mimi-code .npy/.npz/.safetensors")
+     voice.add_argument("--no-voice-clip", action="store_true", help="Use the trained empty system block")
+-    p.add_argument("--prefill-frames", type=int, default=0, help="Explicitly supply this many cache ground-truth media frames; default 0")
++    p.add_argument("--prefill-frames", type=int, default=25,
++                   help="Source audio/pose/text prefix in 12.5 Hz frames; default 25 (2 seconds), explicit 0 disables")
+     p.add_argument("--force-text", action="store_true", help="Also supply the framewise lane to compact-all; its ordinary transcript prefix is unchanged")
+     p.add_argument("--text-mode", choices=("forced", "native"), help="Explicit framewise text policy; defaults to compact native and other recipes forced")
+     p.add_argument("--prepare-only", action="store_true", help="Write/validate exact inputs without loading the PPM model")
+@@ -51,6 +52,9 @@ def arguments(argv=None):
+     p.add_argument("--text-topk", type=int, default=0)
+     p.add_argument("--audio-topk", type=int, default=0)
+     p.add_argument("--pose-topk", type=int, default=0)
++    p.add_argument("--pose-light-topk", type=int, help="Pose cb1–31 top-k; defaults to --pose-topk")
++    p.add_argument("--pose-audio-guidance", type=float, default=0.0,
++                   help="All-pose logits = audio + strength * (audio - silence); independent full silence pass (0 disables)")
+     p.add_argument("--min-p", type=float, default=0.0)
+     p.add_argument("--no-graphs", action="store_true", help="Eager decode for debugging")
+     p.add_argument("--no-audio-decode", action="store_true", help="Write Mimi codes without loading the Mimi decoder")
+@@ -60,6 +64,8 @@ def arguments(argv=None):
+     p.add_argument("--skeleton-video", action="store_true", help="Render a 25 fps skeleton preview with the generated audio")
+     p.add_argument("--video-sample", action="store_true", help="Build the diffusion sample directory; requires --package; implies --pose-latents")
+     a = p.parse_args(argv)
++    if not np.isfinite(a.pose_audio_guidance) or not 0 <= a.pose_audio_guidance <= 5:
++        p.error("--pose-audio-guidance must be finite and between 0 and 5")
+     if a.ckpt is None:
+         a.ckpt = Path("/home/param/models/transcript-pose") / a.recipe / "export-200"
+     if a.video_sample:
+@@ -83,14 +89,73 @@ def engine_modules(tokenizer_path):
+ 
+ def sampling(a):
+     tt, at, pt = (a.temp if v is None else v for v in (a.text_temp, a.audio_temp, a.pose_temp))
++    strength = getattr(a, "pose_audio_guidance", 0.0)
++    light_topk = getattr(a, "pose_light_topk", None)
+     return dict(text_temp=tt, text_topk=a.text_topk, text_topp=1.0, min_p=a.min_p, min_p_rel=0,
+                 freq_pen=0.0, text_rep=1.0, allow_eob=0, free_text=0, word_greedy=0,
+                 cb0_temp=at, cb0_topk=a.audio_topk, light_temp=at, light_topk=a.audio_topk,
+                 audio_rep_pen=1.0, pose_temp=pt, pose_topk=a.pose_topk,
+-                pose_light_temp=pt, pose_light_topk=a.pose_topk, pose_cfg_on=0,
++                pose_light_temp=pt, pose_light_topk=a.pose_topk if light_topk is None else light_topk,
++                pose_cfg_on=int(strength > 0), pose_cfg_s=1.0 + strength,
++                pose_cfg_cb0=1, pose_cfg_light=1, pose_cfg_speaking_only=0,
+                 pose_rep_cb0=1.0, pose_rep_light=1.0, pose_rep_win=0, adaptive_rep_on=0)
+ 
+ 
++def guidance_silence(a, IP, devs, p_max, n_max):
++    """Encode actual zero-waveform audio before allocating the large PPM model."""
++    if not a.pose_audio_guidance:
++        return None
++    import torch
++    frames = int(p_max) + int(n_max) + 8  # FastPPM's required p_max + n_fr.
++    mimi = IP.Mimi(devs[-1])
++    silence = mimi.encode(np.zeros(frames * 1920, dtype=np.float32))[:, :frames]
++    del mimi
++    gc.collect()
++    with torch.cuda.device(devs[-1]):
++        torch.cuda.empty_cache()
++    if silence.shape != (DEPTH, frames) or silence.min() < 0 or silence.max() >= CBS:
++        raise RuntimeError("Mimi did not encode the full digital-silence conditioning sequence")
++    return np.ascontiguousarray(silence, dtype=np.int64)
++
++
++def guidance_metadata(a, IP, silence, engine, row=0):
++    if silence is None:
++        return {"enabled": False}
++    np.save(a.out / "guidance_silence_mimi.npy", silence)
++    audit = engine.guidance_audit(row)
++    return dict(enabled=True, strength=a.pose_audio_guidance, engine_scale=1.0 + a.pose_audio_guidance,
++                formula="audio + strength * (audio - silence)", scope="all pose codebooks",
++                silence_source="Mimi encoding of digital silence", silence_sample_rate=24000,
++                silence_codec=f"{IP.MIMI_REPO}@{IP.MIMI_REV}", silence_frames=silence.shape[1],
++                silence_codes_sha256=hashlib.sha256(silence.tobytes()).hexdigest(),
++                full_model_silence_pass=True, shared_text_and_pose=True, audit=audit)
++
++
++def continuation_force(instances, infos, f):
++    """Finish delayed known media without exposing extra native-text frames."""
++    prefills = {int(info["prefill_frames"]) for info in infos}
++    if len(prefills) != 1:
++        raise ValueError("Batch rows must have the same prefill duration")
++    npf = next(iter(prefills))
++    force = {}
++    if npf and CD <= f < npf + CD:
++        force["codes"] = np.stack([inst["depth"][1, info["P"] + f] for inst, info in zip(instances, infos)])
++        force["pose"] = np.stack([inst["pdepth"][info["P"] + f] for inst, info in zip(instances, infos)])
++    if any(f >= info["frames"] for info in infos):
++        force["lane"] = np.asarray([PAD if f >= info["frames"] else -1 for info in infos], np.int64)
++    return force or None
++
++
++def validate_prefill(result, inst, info):
++    P, npf = info["P"], info["prefill_frames"]
++    if not np.array_equal(result["lane_b"][:P + npf], inst["ids"][1, :P + npf]):
++        raise RuntimeError("Source text/prefix changed during generation")
++    span = slice(P + CD, P + CD + npf)
++    if (not np.array_equal(result["dep_b"][span], inst["depth"][1, span])
++            or not np.array_equal(result["pdep"][span], inst["pdepth"][span])):
++        raise RuntimeError("Source audio/pose prefill changed during generation")
++
++
+ def read_frame0(a):
+     path = a.frame0 or (a.package / "llm_inputs.safetensors" if a.package else None)
+     if path is None:
+@@ -163,23 +228,26 @@ def main():
+     devs = [torch.device(f"cuda:{int(x)}") for x in a.devs.split(",")]
+     torch.cuda.set_device(devs[-1])
+     with torch.inference_mode():
++        silence = guidance_silence(a, IP, devs, P, n)
+         m, ldev, cfgs, ck = FP.build_model(str(a.ckpt), devs)
+         if not ck["pose"] or not ck["decp_bb"] or ck["decp_bb_alpha"] != 1.0:
+             raise ValueError(f"Expected the Xabi pose architecture with D33 alpha=1: {ck}")
+         # Prefix length is not capped at the old demo's 2048; aligned text can
+         # occupy nearly half of the full 7500-position training context.
+-        eng = FP.FastPPM(m, ldev, cfgs, devs, n_inst=1, cfg_rows=False,
+-                         max_s=n / FPS, p_max=P, mimi_stream=False,
++        eng = FP.FastPPM(m, ldev, cfgs, devs, n_inst=1, cfg_rows=silence is not None,
++                         max_s=n / FPS, p_max=P, mimi_stream=False, silence=silence,
+                          per_instance_rng=True, forced_text_only=info["force_text"])
+         if not a.no_graphs:
+             eng.capture(f=CD, P=P)
+         t0 = time.time()
+         eng.start([inst], a.seed, params, f0=f0)
++        if any(eng.params[k] != v for k, v in params.items()):
++            raise RuntimeError("Effective inference parameters differ from the requested settings")
+         t1 = time.time()
+         for f in range(f0, n + CD):
+             # Training ends with CD PAD text slots while the last media frames
+             # are flushed. The compact lane is otherwise sampled independently.
+-            force = {"lane": np.array([PAD], np.int64)} if f >= n else None
++            force = continuation_force([inst], [info], f)
+             eng.step(f, graphs=not a.no_graphs, cold_pad=not info["force_text"], force=force)
+         result = eng.readback(0, P + n + CD)
+         gen_s = time.time() - t1
+@@ -193,8 +261,7 @@ def main():
+             raise RuntimeError("Monoplex inference unexpectedly wrote channel A")
+         if info["force_text"] and not np.array_equal(result["lane_b"], inst["ids"][1]):
+             raise RuntimeError("Framewise text differs from the supplied aligned lane")
+-        if not np.array_equal(result["lane_b"][:P + f0], inst["ids"][1, :P + f0]):
+-            raise RuntimeError("Conditioning/prefill changed during generation")
++        validate_prefill(result, inst, info)
+         words = IP.lane_words(result["lane_b"][:P + n], P, P, P + f0)
+         np.savez_compressed(a.out / "tokens.npz", audio_codes=audio.astype(np.int16), pose_codes=pose.astype(np.int16),
+                             lane=lane, prefill_frames=np.int64(a.prefill_frames))
+@@ -204,6 +271,7 @@ def main():
+             text=" ".join(w["text"] for w in words), supplied_transcript=info["supplied_transcript"],
+             source_transcript=info["source_transcript"]), indent=2) + "\n")
+         meta = dict(**info, checkpoint=ck, sampling=eng.params, seed=a.seed,
++                    audio_guidance=guidance_metadata(a, IP, silence, eng),
+                     generated_lane_sha256=hashlib.sha256(np.ascontiguousarray(lane, dtype=np.int64).tobytes()).hexdigest(),
+                     rng_policy="per-instance per-modality generators; row-wise [1,vocab] multinomial",
+                     prefill_seconds=t1 - t0, generation_seconds=gen_s,
+diff --git a/infer/transcript_pose/infer_batch.py b/infer/transcript_pose/infer_batch.py
+index 996b856..4c213d0 100644
+--- a/infer/transcript_pose/infer_batch.py
++++ b/infer/transcript_pose/infer_batch.py
+@@ -18,7 +18,7 @@ import time
+ 
+ import numpy as np
+ 
+-from infer import arguments, engine_modules, sampling
++from infer import arguments, continuation_force, engine_modules, guidance_metadata, guidance_silence, sampling, validate_prefill
+ from inputs import CD, CBS, DEPTH, FPS, OFF, PAD, ROOT, codes_file, make_inputs
+ 
+ 
+@@ -31,16 +31,18 @@ def prepare(a):
+         argv = ["--recipe", a.recipe, "--text-mode", a.text_mode, "--clip-index", str(job["clip_index"]),
+                 "--start-frame", str(job.get("start_frame", 0)), "--frames", str(job["frames"]),
+                 "--seed", str(job["seed"]), "--out", str(job["out"]),
+-                "--voice-clip", str(job["voice_clip"]), "--devs", a.devs]
++                "--voice-clip", str(job["voice_clip"]), "--devs", a.devs,
++                "--prefill-frames", str(a.prefill_frames)]
+         for key in ("ckpt", "cache", "tokenizer"):
+             if getattr(a, key) is not None:
+                 argv += ["--" + key, str(getattr(a, key))]
+-        for key in ("text_temp", "text_topk", "audio_temp", "pose_temp", "audio_topk", "pose_topk"):
+-            argv += ["--" + key.replace("_", "-"), str(getattr(a, key))]
++        for key in ("text_temp", "text_topk", "audio_temp", "pose_temp", "audio_topk", "pose_topk", "pose_light_topk", "pose_audio_guidance"):
++            if getattr(a, key) is not None:
++                argv += ["--" + key.replace("_", "-"), str(getattr(a, key))]
+         args = arguments(argv)
+         voice = codes_file(args.voice_clip)
+         inst, info, tok, voice = make_inputs(args, voice)
+-        assert info["f0"] == 0 and info["voice_clip_frames"] > 0
++        assert info["f0"] == a.prefill_frames and info["voice_clip_frames"] > 0
+         info["voice_codes_sha256"] = hashlib.sha256(np.ascontiguousarray(voice, dtype=np.int64).tobytes()).hexdigest()
+         info["framewise_lane_sha256"] = (hashlib.sha256(np.ascontiguousarray(inst["text_force"][info["P"]:], dtype=np.int64).tobytes()).hexdigest()
+                                          if info["force_text"] else None)
+@@ -63,6 +65,7 @@ def main():
+     p.add_argument("--cache", type=Path)
+     p.add_argument("--tokenizer", type=Path)
+     p.add_argument("--devs", default="0,1")
++    p.add_argument("--prefill-frames", type=int, default=25, help="Source audio/pose/text prefix; default 25 frames (2 seconds)")
+     p.add_argument("--text-mode", choices=("forced", "native"), default="forced", help="Native samples text for compact-all and xabi-original; aligned-media requires forced")
+     p.add_argument("--text-temp", type=float, default=1.0)
+     p.add_argument("--text-topk", type=int, default=0, help="Text top-k; 0 disables filtering (maximum 256)")
+@@ -70,6 +73,9 @@ def main():
+     p.add_argument("--pose-temp", type=float, default=1.0, help="Shared CB0/residual pose temperature")
+     p.add_argument("--audio-topk", type=int, default=0, help="Shared CB0/residual audio top-k; 0 disables filtering")
+     p.add_argument("--pose-topk", type=int, default=0, help="Shared CB0/residual pose top-k; 0 disables filtering")
++    p.add_argument("--pose-light-topk", type=int, help="Override pose cb1–31 top-k")
++    p.add_argument("--pose-audio-guidance", type=float, default=0.0,
++                   help="All-pose logits = audio + strength * (audio - silence)")
+     p.add_argument("--prepare-only", action="store_true")
+     p.add_argument("--no-graphs", action="store_true")
+     p.add_argument("--no-audio-decode", action="store_true")
+@@ -104,26 +110,28 @@ def main():
+     devs = [torch.device(f"cuda:{int(x)}") for x in a.devs.split(",")]
+     torch.cuda.set_device(devs[-1])
+     n_max = max(x[2]["frames"] for x in rows)
+-    n_min = min(x[2]["frames"] for x in rows)
+     p_max = max(x[2]["P"] for x in rows)
++    f0 = rows[0][2]["f0"]
++    assert all(x[2]["f0"] == f0 for x in rows), "Batch prefill lengths differ"
+     with torch.inference_mode():
++        silence = guidance_silence(args0, IP, devs, p_max, n_max)
+         m, ldev, cfgs, ck = FP.build_model(str(args0.ckpt), devs)
+         if not ck["pose"] or not ck["decp_bb"] or ck["decp_bb_alpha"] != 1.0:
+             raise ValueError(f"Expected the Xabi pose architecture with D33 alpha=1: {ck}")
+-        eng = FP.FastPPM(m, ldev, cfgs, devs, n_inst=len(rows), cfg_rows=False,
+-                         max_s=n_max / FPS, p_max=p_max, mimi_stream=False,
++        eng = FP.FastPPM(m, ldev, cfgs, devs, n_inst=len(rows), cfg_rows=silence is not None,
++                         max_s=n_max / FPS, p_max=p_max, mimi_stream=False, silence=silence,
+                          per_instance_rng=True, forced_text_only=rows[0][2]["force_text"])
+         if not a.no_graphs:
+             eng.capture(f=CD, P=p_max)
+         t0 = time.time()
+-        eng.start([x[1] for x in rows], [x[0].seed for x in rows], params, f0=0)
++        eng.start([x[1] for x in rows], [x[0].seed for x in rows], params, f0=f0)
++        if any(eng.params[k] != v for k, v in params.items()):
++            raise RuntimeError("Effective inference parameters differ from the requested settings")
+         t1 = time.time()
+-        for f in range(n_max + CD):
++        for f in range(f0, n_max + CD):
+             # Match the single-clip native path: final CD slots are PAD while
+             # flushing media. -1 preserves sampling for longer teammates.
+-            force = None
+-            if a.text_mode == "native" and f >= n_min:
+-                force = {"lane": np.asarray([PAD if f >= x[2]["frames"] else -1 for x in rows], np.int64)}
++            force = continuation_force([x[1] for x in rows], [x[2] for x in rows], f)
+             eng.step(f, graphs=not a.no_graphs, cold_pad=not rows[0][2]["force_text"], force=force)
+         for d in devs:
+             torch.cuda.synchronize(d)
+@@ -140,28 +148,28 @@ def main():
+                     raise RuntimeError("Generation did not produce all requested media frames")
+             if info["force_text"] and not np.array_equal(result["lane_b"], inst["ids"][1]):
+                 raise RuntimeError("Framewise text differs from the supplied lane")
+-            if not info["force_text"] and lane[0] != PAD:
++            if not info["force_text"] and not info["prefill_frames"] and lane[0] != PAD:
+                 raise RuntimeError("Native text must retain the initial PAD bootstrap")
+-            if not np.array_equal(result["lane_b"][:P], inst["ids"][1, :P]):
+-                raise RuntimeError("Conditioning changed during generation")
++            validate_prefill(result, inst, info)
+             if not np.all(result["lane_b"][P + n:P + n + CD] == PAD):
+                 raise RuntimeError("Final delayed text slots must be PAD")
+             if not np.all(result["lane_a"] == PAD) or not np.all(result["dep_a"] == -1):
+                 raise RuntimeError("Monoplex inference unexpectedly wrote channel A")
+-            words = IP.lane_words(result["lane_b"][:P + n], P, P, P)
++            words = IP.lane_words(result["lane_b"][:P + n], P, P, P + info["prefill_frames"])
+             np.savez_compressed(args.out / "tokens.npz", audio_codes=audio.astype(np.int16),
+-                                pose_codes=pose.astype(np.int16), lane=lane, prefill_frames=np.int64(0))
++                                pose_codes=pose.astype(np.int16), lane=lane, prefill_frames=np.int64(info["prefill_frames"]))
+             save_file({"codes": np.ascontiguousarray(audio.astype(np.int16))}, str(args.out / "mimi.safetensors"))
+             save_file({"codes": np.ascontiguousarray(pose.astype(np.int64))}, str(args.out / "pose_tokens.safetensors"))
+             (args.out / "words.json").write_text(json.dumps(dict(words=words, lane=lane.tolist(),
+                 text=" ".join(w["text"] for w in words), supplied_transcript=info["supplied_transcript"],
+                 source_transcript=info["source_transcript"]), indent=2) + "\n")
+             meta = dict(**info, checkpoint=ck, sampling=eng.params, seed=args.seed,
++                        audio_guidance=guidance_metadata(args, IP, silence, eng, r),
+                         generated_lane_sha256=hashlib.sha256(np.ascontiguousarray(lane, dtype=np.int64).tobytes()).hexdigest(),
+                         batch_size=len(rows), batch_row=r, batch_clip_indices=[x[2]["clip_index"] for x in rows],
+                         rng_policy="per-instance per-modality generators; row-wise [1,vocab] multinomial; " + ("no text sampling" if info["force_text"] else "native text sampling"),
+                         prefill_seconds=t1 - t0, generation_seconds=gen_s,
+-                        ms_per_step=1000 * gen_s / (n_max + CD),
++                        ms_per_step=1000 * gen_s / (n_max + CD - f0),
+                         ground_truth_generation_media=False, fixed_duration=True,
+                         peak_gib={str(d): torch.cuda.max_memory_allocated(d) / 2**30 for d in devs})
+             outputs.append((args, audio, voice, meta))
+diff --git a/infer/transcript_pose/inputs.py b/infer/transcript_pose/inputs.py
+index 0612322..27280ce 100644
+--- a/infer/transcript_pose/inputs.py
++++ b/infer/transcript_pose/inputs.py
+@@ -2,6 +2,7 @@
+ from __future__ import annotations
+ 
+ import json
++import hashlib
+ import math
+ import os
+ from pathlib import Path
+@@ -203,9 +204,10 @@ def make_inputs(args, voice=None):
+         raise ValueError(f"Input needs {total} positions; training limit is 7500. Split the transcript/window.")
+     inst = {k: micro[k].copy() for k in ("ids", "depth", "present", "pdepth", "pid")}
+     inst.update(P=P, a_mode="empty")
+-    # f counts the delayed training lane. A prefill of zero means genuinely no
+-    # ground-truth audio/pose or framewise words in native text mode.
+-    f0 = npf + CD if npf else 0
++    # Text is not delayed. Stop the eager prefill at exactly npf text frames;
++    # the final CD known audio/pose frames are supplied during stepping while
++    # native text is already sampled. This avoids leaking post-boundary words.
++    f0 = npf
+     inst["depth"][1, P + CD + npf:] = -1
+     inst["pdepth"][P + CD + npf:] = -1
+     if not forced_text:
+@@ -214,9 +216,20 @@ def make_inputs(args, voice=None):
+         inst["text_force"] = inst["ids"][1].copy()
+     assert np.all(inst["depth"][1, P + CD + npf:] == -1)
+     assert np.all(inst["pdepth"][P + CD + npf:] == -1)
++    prefill = {"audio_codes": (inst["depth"][1, P + CD:P + CD + npf] - OFF).T,
++               "pose_codes": (inst["pdepth"][P + CD:P + CD + npf] - OFF).T,
++               "text_lane": inst["ids"][1, P:P + npf]}
++    if npf and any(np.any((prefill[k] < 0) | (prefill[k] >= CBS)) for k in ("audio_codes", "pose_codes")):
++        raise ValueError("The source clip does not contain valid audio and pose for the entire requested prefill")
++    prefill_hashes = ({k: hashlib.sha256(np.ascontiguousarray(v, dtype=np.int64).tobytes()).hexdigest()
++                      for k, v in prefill.items()} if npf else None)
+     info.update(recipe=args.recipe, frames=frames, seconds=frames / FPS, P=P,
+                 conditioning_P=int(micro["conditioning_P"]), transcript_span=micro["transcript_span"],
+                 prefill_frames=npf, f0=f0, code_delay=CD, total_positions=total,
++                prefill_duration_seconds=npf / FPS, ground_truth_prefill_media=bool(npf),
++                prefill_modalities=["audio", "pose", "text"] if npf else [],
++                prefill_policy="exact synchronized audio/pose/text prefix" if npf else "none",
++                prefill_sha256=prefill_hashes,
+                 voice_clip_frames=0 if voice is None else int(voice.shape[1]),
+                 force_text=forced_text, text_mode=text_mode,
+                 source_transcript=info["transcript"],
+diff --git a/infer/transcript_pose/request_schema.py b/infer/transcript_pose/request_schema.py
+index 59cd7e9..d144279 100644
+--- a/infer/transcript_pose/request_schema.py
++++ b/infer/transcript_pose/request_schema.py
+@@ -15,11 +15,11 @@ CLIP_IDS = tuple(f"clip-{i:02d}" for i in range(1, 9))
+ MAX_SEED = 2**31 - 1
+ FIELDS = frozenset(("recipe", "clip_id", "duration_seconds", "seed", "video_seed",
+                     "audio_temp", "pose_temp", "audio_topk", "pose_topk",
+-                    "text_mode", "text_temp", "text_topk"))
++                    "text_mode", "text_temp", "text_topk", "prefill_frames"))
+ 
+ 
+-def normalize_request(payload: dict) -> dict:
+-    """Validate a request; legacy requests default to forced framewise text."""
++def normalize_request(payload: dict, *, new_submission: bool = False) -> dict:
++    """Persist new prefill defaults explicitly; legacy saved requests retain zero."""
+     if not isinstance(payload, dict):
+         raise ValueError("Request must be a JSON object")
+     if payload.keys() - FIELDS:
+@@ -38,6 +38,7 @@ def normalize_request(payload: dict) -> dict:
+         "seed": (20261028 + CLIP_IDS.index(result["clip_id"]), 0, MAX_SEED),
+         "video_seed": (2026, 0, MAX_SEED),
+         "audio_topk": (0, 0, 2048), "pose_topk": (0, 0, 2048), "text_topk": (0, 0, 256),
++        "prefill_frames": (25 if new_submission else 0, 0, 25),
+     }
+     for name, (default, low, high) in integers.items():
+         value = payload.get(name, default)
+@@ -69,11 +70,13 @@ def request_options() -> dict:
+         "pose_topk": {"min": 0, "max": 2048, "default": 0},
+         "text_topk": {"min": 0, "max": 256, "default": 0},
+         "voice_reference_seconds": 8,
++        "prefill_frames": {"min": 0, "max": 25, "default": 25},
++        "prefill_seconds": 2,
+         "topk_zero_means": "Unfiltered", "temperature_zero_means": "Greedy",
+     }
+ 
+ 
+-def load_request(text: str) -> dict:
++def load_request(text: str, *, new_submission: bool = False) -> dict:
+     """Reject duplicate keys and non-standard JSON numbers before validation."""
+     def pairs(items):
+         result = {}
+@@ -86,7 +89,8 @@ def load_request(text: str) -> dict:
+     def invalid_number(value):
+         raise ValueError(f"Invalid JSON number: {value}")
+ 
+-    return normalize_request(json.loads(text, object_pairs_hook=pairs, parse_constant=invalid_number))
++    return normalize_request(json.loads(text, object_pairs_hook=pairs, parse_constant=invalid_number),
++                             new_submission=new_submission)
+ 
+ 
+ def media_frames(duration_seconds: int) -> int:
+diff --git a/infer/transcript_pose/request_worker.py b/infer/transcript_pose/request_worker.py
+index 488fbdc..3fc52a1 100644
+--- a/infer/transcript_pose/request_worker.py
++++ b/infer/transcript_pose/request_worker.py
+@@ -20,6 +20,7 @@ from pathlib import Path
+ import signal
+ import socket
+ import subprocess
++import threading
+ import time
+ import traceback
+ import uuid
+@@ -36,6 +37,7 @@ PPM_PY = REPO / '.venv/bin/python'
+ VIDEO_PY = Path('/home/param/vansh-video-models/.venv/bin/python')
+ GPU_LOCKS = Path('/home/param/.cache/heldout-comparison-gpu-locks')
+ GPUS = (6, 7)
++_PREFILL_LOCK = threading.RLock()
+ 
+ 
+ def stamp():
+@@ -281,7 +283,7 @@ def generation_command(job, req, clip):
+     command = [PPM_PY, '-u', REPO / 'infer/transcript_pose/infer_batch.py',
+                '--batch-json', job / 'batch.json', '--recipe', req['recipe'], '--devs', '0,1',
+                '--ckpt', MODELS / 'transcript-pose' / req['recipe'] / 'export-200',
+-               '--text-mode', req['text_mode']]
++               '--text-mode', req['text_mode'], '--prefill-frames', str(req.get('prefill_frames', 0))]
+     for key in ('audio_temp', 'pose_temp', 'audio_topk', 'pose_topk', 'text_temp', 'text_topk'):
+         command += ['--' + key.replace('_', '-'), str(req[key])]
+     return command
+@@ -294,11 +296,58 @@ def text_tokenizer():
+                                          local_files_only=True)
+ 
+ 
++@lru_cache(maxsize=1)
++def prefill_source_data():
++    from inputs import training_data
++    return training_data().CompactXabi('/home/param/datasets/xabi-v2pure-cache', tokenizer=text_tokenizer())
++
++
++def source_prefill(clip, count):
++    """Read local codec IDs directly from the source cache, independent of delay packing."""
++    import numpy as np
++
++    if not count:
++        return {}
++    with _PREFILL_LOCK:
++        data = prefill_source_data()
++        source = data.clips[clip['clip_index']]
++        require(source.cache_key == clip['cache_key'] and source.cache_index == clip['cache_index'],
++                'Prefill source recording changed')
++        _, offsets, audio, pose = data._shard(source.shard)
++        start = int(offsets[source.cache_index]) + clip['start_frame']
++        end = start + count
++        require(end <= int(offsets[source.cache_index + 1]), 'Prefill exceeds source recording')
++        arrays = dict(audio_codes=np.asarray(audio[start:end].T, dtype=np.int64).copy(),
++                      pose_codes=np.asarray(pose[start:end].T, dtype=np.int64).copy(),
++                      text_lane=np.asarray(np.load(clip['lane'], allow_pickle=False)[:count], dtype=np.int64))
++    require(arrays['audio_codes'].shape == arrays['pose_codes'].shape == (32, count), 'Prefill code shape mismatch')
++    require(all(np.all((a >= 0) & (a < 2048)) for k, a in arrays.items() if k != 'text_lane'),
++            'Prefill contains invalid source codec IDs')
++    return arrays
++
++
++def array_hashes(arrays):
++    import numpy as np
++    return {k: hashlib.sha256(np.ascontiguousarray(v, dtype=np.int64).tobytes()).hexdigest()
++            for k, v in arrays.items()}
++
++
+ def validate_inputs(ppm, req, clip, meta):
+     """Verify the actual saved tensors, including absence of timed-text leakage."""
+     import numpy as np
+ 
+     n, forced = media_frames(req['duration_seconds']), req['text_mode'] == 'forced'
++    count = req.get('prefill_frames', 0)
++    source = source_prefill(clip, count)
++    hashes = array_hashes(source)
++    require(meta['prefill_frames'] == count and meta['f0'] == count, 'Prefill generation boundary mismatch')
++    if count:
++        require(meta.get('ground_truth_prefill_media') is True
++                and meta.get('prefill_modalities') == ['audio', 'pose', 'text']
++                and meta.get('prefill_duration_seconds') == count / 12.5
++                and meta.get('prefill_policy') == 'exact synchronized audio/pose/text prefix'
++                and meta.get('prefill_sha256') == hashes,
++                'Ground-truth prefill provenance differs from the original source cache')
+     lane = np.load(clip['lane'], allow_pickle=False)[:n]
+     words = read(Path(clip['words']))
+     source_text = ' '.join(w['text'] for w in words if
+@@ -328,20 +377,32 @@ def validate_inputs(ppm, req, clip, meta):
+             else:
+                 expected = text_tokenizer().encode(source_text, add_special_tokens=False, split_special_tokens=True)
+                 require(np.array_equal(prefix[1:-1], expected), 'Upfront ordinary transcript changed')
+-        require(np.all(inputs['depth'][:, P:] == -1) and np.all(inputs['pdepth'] == -1),
+-                'Ground-truth generation media or prefix pose was supplied')
++        require(np.all(inputs['depth'][0, P:] == -1)
++                and np.all(inputs['depth'][1, P:P+2] == -1)
++                and np.all(inputs['depth'][1, P+2+count:] == -1)
++                and np.all(inputs['pdepth'][:P+2] == -1)
++                and np.all(inputs['pdepth'][P+2+count:] == -1),
++                'Ground-truth media was supplied outside the explicit prefill')
++        if count:
++            offsets = np.arange(32, dtype=np.int64) * 2048
++            require(np.array_equal((inputs['depth'][1, P+2:P+2+count] - offsets).T, source['audio_codes'])
++                    and np.array_equal((inputs['pdepth'][P+2:P+2+count] - offsets).T, source['pose_codes'])
++                    and np.array_equal(inputs['ids'][1, P:P+count], source['text_lane']),
++                    'Packed prefill audio, pose or text differs from the original source')
+         if forced:
+             require('text_force' in inputs and np.array_equal(inputs['text_force'][P:P+n], lane)
+                     and np.all(inputs['text_force'][P+n:] == 151670), 'Forced text or delay tails differ')
+             require(np.array_equal(inputs['ids'][1], inputs['text_force']), 'Backbone text differs from forced lane')
+             lane_hash = hashlib.sha256(np.ascontiguousarray(inputs['text_force'][P:], dtype=np.int64).tobytes()).hexdigest()
+         else:
+-            require('text_force' not in inputs and np.all(inputs['ids'][1, P:] == 151670),
+-                    'Native generation received ground-truth framewise text')
++            require('text_force' not in inputs and np.all(inputs['ids'][1, P+count:] == 151670),
++                    'Native generation received ground-truth framewise text after prefill')
+             lane_hash = None
+         require(meta['framewise_lane_sha256'] == lane_hash, 'Supplied framewise text checksum mismatch')
+     return dict(framewise_lane_sha256=lane_hash, conditioning_prefix_sha256=prefix_hashes,
+-                source_transcript=source_text, supplied_transcript=supplied)
++                source_transcript=source_text, supplied_transcript=supplied,
++                prefill_frames=count, prefill_duration_seconds=count / 12.5,
++                prefill_sha256=hashes, ground_truth_prefill_media=bool(count))
+ 
+ 
+ def validate_ppm(job, req, clip):
+@@ -353,7 +414,7 @@ def validate_ppm(job, req, clip):
+     meta = read(ppm / 'meta.json')
+     forced = req['text_mode'] == 'forced'
+     expected = dict(recipe=req['recipe'], clip_index=clip['clip_index'], frames=n, seed=req['seed'],
+-                    batch_size=1, force_text=forced, prefill_frames=0,
++                    batch_size=1, force_text=forced, prefill_frames=req.get('prefill_frames', 0),
+                     ground_truth_generation_media=False, voice_clip_frames=100)
+     require(all(meta.get(k) == v for k, v in expected.items()), 'PPM identity or conditioning mismatch')
+     require(meta.get('text_mode', 'forced') == req['text_mode'], 'Text mode metadata mismatch')
+@@ -376,8 +437,12 @@ def validate_ppm(job, req, clip):
+                 'Invalid output text lane')
+         if forced:
+             require(np.array_equal(generated, lane), 'Generated text differs from forced original framewise lane')
+-        else:
++        elif not req.get('prefill_frames', 0):
+             require(generated[0] == 151670, 'Native generation must retain the initial PAD bootstrap')
++        source = source_prefill(clip, req.get('prefill_frames', 0))
++        for key, codes in source.items():
++            actual = generated[:len(codes)] if key == 'text_lane' else data[key][:, :codes.shape[1]]
++            require(np.array_equal(actual, codes), f'Output {key} changed the ground-truth prefill')
+         generated_hash = hashlib.sha256(np.ascontiguousarray(generated, dtype=np.int64).tobytes()).hexdigest()
+         if not forced or 'generated_lane_sha256' in meta:
+             require(meta.get('generated_lane_sha256') == generated_hash, 'Generated text checksum mismatch')
+@@ -477,6 +542,10 @@ def run_job(job, req, clip, assets, *, node='landsend-1', gpus=GPUS, source_root
+     execute([VIDEO_PY, '-u', REPO / 'infer/transcript_pose/pose_views.py', '--video', final,
+              '--pose-dir', job / 'ppm', '--out', job, '--frame0', assets['frame0_pose']],
+             job / 'pose-views.log', env=dict(os.environ, CUDA_VISIBLE_DEVICES='', OMP_NUM_THREADS='2'))
++    marker = None
++    if req.get('prefill_frames', 0):
++        from prefill_marker import apply_prefill_marker
++        marker = apply_prefill_marker(job, boundary_seconds=req['prefill_frames'] / 12.5, threads=2)
+     from pose_views import validate_pose_views
+     pose_receipt = validate_pose_views(job, video=final)
+     reference = read(source_root / req['clip_id'] / 'reference-selection.json')
+@@ -486,6 +555,10 @@ def run_job(job, req, clip, assets, *, node='landsend-1', gpus=GPUS, source_root
+     metadata = dict(request=req, frames=frames, duration_seconds=seconds, media_frames=n,
+                     text_mode=req['text_mode'], force_text=req['text_mode'] == 'forced',
+                     ground_truth_generation_media=False, batch_size=1,
++                    ground_truth_prefill_media=bool(req.get('prefill_frames', 0)),
++                    prefill_frames=req.get('prefill_frames', 0),
++                    prefill_duration_seconds=req.get('prefill_frames', 0) / 12.5,
++                    prefill_marker=marker,
+                     clip_index=clip['clip_index'], recording_id=clip['recording_id'], source_start_seconds=clip['source_start_seconds'],
+                     voice_reference_seconds=8, voice_reference_nonoverlapping_generation=True,
+                     ppm=ppm_validation, pose=read(job / 'ppm/render.json'),

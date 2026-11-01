@@ -1,0 +1,72 @@
+# dataloading
+root_dir = '/mnt/somfs/pretrain-ds'
+clipnames_root = '/mnt/somfs/pretrain-ds/csvs'
+eval_clipnames_root = '/mnt/somfs/pretrain-ds/csvs'
+pose = 'v2'
+
+buckets.hands = ['squeaky-clean-orig']
+buckets.hands_good_framing = ['squeaky-clean-orig']
+buckets.perfect_framing = ['squeaky-clean-orig']
+buckets.face = ['squeaky-clean-orig']
+
+# eval (eval set was not in the clean-audit; use the original manifest)
+eval_buckets.perfect_framing = ['clean-orig-eval']
+eval_every_n_steps = 2000
+num_dataloader_workers = 8
+eval_num_dataloader_workers = 4
+save_every_n_steps = 5000
+save_optimizer_every_n_steps = 5000
+output_dir = '/home/vansh/vansh-wan-models/pose-checkpoints/universal-wide-low-resolution/h6-squeaky'
+
+# video continuation
+num_history = 6
+num_present = 5
+history_dropout = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+# hyperparameters
+epochs = 1
+micro_batch_size_per_gpu = 3 
+eval_micro_batch_size_per_gpu = 2
+gradient_accumulation_steps = 5
+gradient_clipping = 1.0
+warmup_steps = 4000
+lr = 5e-5
+min_lr = 1e-5
+ema_decay = 0.9999
+
+# execution
+activation_checkpointing = true
+activation_checkpoint_skip = 30
+compile_blocks = true
+
+[model]
+type = 'universal_wide'
+arch = 'wan_5b_wide'
+checkpoint_path = '/mnt/somfs/hands/pose-checkpoints/wan22-wide-production-model/stage-3/step150000/model_ema.safetensors'
+dtype = 'bfloat16'
+transformer_dtype = 'bfloat16'
+debug_shapes = true
+
+[model.audio]
+model_name = 'kyutai/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+initialization = 'zero'
+audio_dropout = 0.15
+
+[wandb]
+project = 'universal-wide-model'
+run_name = 'universal-h6-p5-squeaky'
+
+[optimizer]
+type = 'stableadamw'
+betas = [0.9, 0.99]
+weight_decay = 1e-6
+eps = 1e-8

@@ -1,0 +1,71 @@
+[project]
+name = "pose-tokenizer"
+version = "0.1.0"
+description = "Pose tokenizer for WAN pose conditioning"
+readme = "README.md"
+requires-python = ">=3.10"
+# Inference/tokenization core only. This is what `pose_tokenizer` needs to load a
+# checkpoint and encode poses (the Stage-3 / multimodal-worker path). Kept
+# deliberately small and unpinned-at-the-top so it can co-install alongside
+# consumers like `qwen-asr[vllm]` (numba -> numpy<2.3) without conflict.
+# opencv/matplotlib are here because `pose_tokenizer.data.__init__` eagerly imports
+# the rendering + visualization submodules.
+dependencies = [
+    "huggingface-hub>=0.25.0",
+    "torch>=2.7.1",
+    "numpy",
+    "einops>=0.8.0",
+    "pyyaml>=6.0",
+    "tqdm>=4.66.0",
+    "opencv-python-headless>=4.9",
+    "matplotlib>=3.8",
+]
+
+[project.optional-dependencies]
+# Everything needed to train / evaluate / export checkpoints. Not required for
+# inference. These carry the heavy, tightly-pinned CUDA + data-stack deps that
+# would otherwise make the package uninstallable next to the pipeline env.
+train = [
+    "accelerate>=1.0.0",
+    "wandb>=0.17.0",
+    "ipykernel>=7.2.0",
+    "psycopg2-binary>=2.9.12",
+    "google-cloud-storage>=3.10.1",
+    "pyjwt>=2.12.1",
+    "cryptography>=48.0.0",
+    "pyarrow>=24.0.0",
+    "pandas>=3.0.3",
+    "datasets>=4.8.5",
+    "onnxruntime-gpu>=1.23.0",
+    "nvidia-cublas-cu12>=12.9.2.10",
+    "nvidia-cudnn-cu12>=9.22.0.52",
+    "nvidia-cuda-runtime-cu12>=12.9.79",
+    "nvidia-cufft-cu12>=11.4.1.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["pose_tokenizer"]
+
+[dependency-groups]
+dev = [
+    "google-api-python-client>=2.196.0",
+    "google-auth>=2.52.0",
+    "google-auth-httplib2>=0.4.0",
+    "onnxruntime-gpu>=1.26.0",
+    "opencv-python-headless>=4.13.0.92",
+    "rtmlib>=0.0.15",
+]
+
+[[tool.uv.dependency-metadata]]
+name = "rtmlib"
+version = "0.0.15"
+requires-dist = [
+    "numpy",
+    "opencv-contrib-python",
+    "opencv-python",
+    "tqdm",
+]

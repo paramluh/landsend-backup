@@ -1,0 +1,51 @@
+csv: /mnt/paramfs/param/outputs/renoise-ablation-20261015/configs/clips.csv
+root_dir: /mnt/paramfs/vansh/aloe-conversational/conv-4.3k-5mins-muon-neutrino-256x480-v1
+pose_file: pose_latents_electron_v2.safetensors
+mimi_file: mimi_local.safetensors
+rows:
+- 0
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+- 7
+- 8
+- 9
+- 10
+- 11
+- 12
+- 13
+- 14
+- 15
+output_dir: /mnt/paramfs/param/outputs/renoise-ablation-20261015/direct
+type: universal_wide_bimodal
+seed: 2026
+batch_size: 1
+max_latent_frames: null
+compile: true
+cuda_graph: true
+wavefront: true
+stabilising:
+  checkpoint_path: /mnt/paramfs/param/outputs/mimi-local-ft/aloe-bimodal-studio-mimi-local-audio-1k/run_1/step850/model.safetensors
+  num_history: 3
+  num_present: 4
+  history_t: 0.2
+  substeps: 10
+resolving:
+  checkpoint_path: /mnt/paramfs/param/outputs/mimi-local-ft/aloe-bimodal-studio-mimi-local-audio-1k/run_1/step850/model.safetensors
+  num_history: 2
+  num_present: 1
+  t_start: 0.2
+  num_steps: 10
+audio:
+  model_name: kyutai/mimi
+  in_dim: 512
+  num_codebooks: 16
+  num_layers: 4
+  cross_attention_codes: 4
+  drop: 2
+  injection_offset: 4
+  injection_interval: 3
+  max_blocks: 8

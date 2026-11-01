@@ -1,0 +1,16 @@
+[Unit]
+Description=Pose monoplex browser pose overlay cache
+After=network.target
+[Service]
+Type=simple
+WorkingDirectory=/home/param/pose-mono-dcp227/renderer
+Environment=CUDA_VISIBLE_DEVICES=
+Environment=HF_HUB_OFFLINE=1
+Environment=OMP_NUM_THREADS=2
+ExecStart=/home/param/pose-mono-dcp227/renderer/.venv/bin/python -u /home/param/pose-mono-dcp227/renderer/pose_overlay.py --watch --site /home/param/pose-mono-dcp227/site --people /home/param/pose-mono-dcp227/prompts --tokenizer /home/param/pose-mono-dcp227/models/pose-tokenizer-32cb-200k-noshift
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/home/param/pose-mono-dcp227/runtime/overlay.log
+StandardError=append:/home/param/pose-mono-dcp227/runtime/overlay.log
+[Install]
+WantedBy=default.target

@@ -1,0 +1,22 @@
+# gesturemetric (2) FULL GPU judge (tag full, judge/feat_full) — STATUS
+- 10-27 00:33 UTC [job 30799]: started on slinky-10 GPUs 0,1: counting data
+  - data train: 1000 convs x 2 sides = 2000 tracks, 12332696 tokens = 274.1 side-h
+  - data eval: 60 convs x 2 sides = 120 tracks, 734064 tokens = 16.3 side-h
+- 10-27 00:33 UTC [job 30799]: prep (2 shards, one per GPU; eval then train) -> judge/feat_full
+- 10-27 00:35 UTC [agent]: prep on GPUs 0-1 at ~5 tracks/s (198/2000 train after 40 s); GPU features == CPU-mini features up to fp16/bf16 rounding (conf masks 100 %, pose xy <= 2e-3, Mimi equal, word-vec cos 0.9999). ETA: prep done ~00:42, eval gates by ~01:50 UTC at the latest (60-min training cap; earlier on early stop), generated scores by ~02:00 UTC.
+- 10-27 00:38 UTC [job 30799]: prep done: 2000 train + 120 eval tracks in judge/feat_full
+- 10-27 00:38 UTC [job 30799]: training judge (tag full: d256 L4 ff1024, batch 64x16, eval every 500 steps, patience 6, cap 60 min) on GPU 0
+  - eval gates (top-1@16 p2s, chance 6.25): full 52.85, words-only 49.24, audio-only 46.16, shuffled 6.61, pose +2 s 9.61, tight 50.6 (params 7.073M, 2000 train sides, best of 34 evals, 1840 s) -> eval2_full.json, ckpt_full.pt
+- 10-27 01:09 UTC [job 30799]: scoring generated runs (score2 full) on GPU 0
+  - REAL (20 s protocol): top-1@16 50.55 (words 47.64, audio 44.79), shuffled 6.5
+  - ALL hidden: acc 26.89 (n 4611), shuffled 6.89, words 24.83, audio 25.16, meaning_norm 0.466
+  - ALL user-made: acc 43.64 (n 5978), shuffled 6.95, words 42.52, audio 42.46, meaning_norm 0.844
+- 10-27 01:10 UTC [job 30799]: DONE: ckpt_full.pt, eval2_full.json, score2_full.json
+- 10-27 01:14 UTC [hands job 30824]: training HANDS judge (tag hands, --pose-keep 5-10,13,14, reusing judge/feat_full: 2000 train + 120 eval tracks; d256 L4 ff1024, batch 64x16, eval every 500 steps, patience 6, cap 60 min) on slinky-10 GPU 0
+- 10-27 01:19 UTC [ablate_full.py, CPU]: eval-only ablations top-1@16 p2s: E full 52.85 (ref 52.85), words-only 49.24, A words timing-permuted 16.45 (seeds [16.71, 16.44, 16.19]), B words bag-of-words 18.25, C no-head 10.58, D head-only 39.43 -> ablate_full.json
+  - HANDS eval gates (top-1@16 p2s, chance 6.25; pose_keep [5, 6, 7, 8, 9, 10, 13, 14]): full 27.02, words-only 29.6, audio-only 22.71, shuffled 7.21, pose +2 s 8.95, tight 25.47 (params 7.073M, 2000 train sides, best of 32 evals, 1921 s) -> eval2_hands.json, ckpt_hands.pt
+- 10-27 01:47 UTC [hands job 30824]: scoring generated runs (score2 hands, pose_keep from ckpt) on GPU 0
+  - HANDS REAL (20 s protocol, pose_keep [5, 6, 7, 8, 9, 10, 13, 14]): top-1@16 26.28 (words 28.28, audio 22.71), shuffled 6.68
+  - HANDS ALL hidden: acc 15.2 (n 4611), shuffled 6.67, words 15.96, audio 14.55, meaning_norm 0.447
+  - HANDS ALL user-made: acc 22.78 (n 5978), shuffled 6.85, words 25.48, audio 21.78, meaning_norm 0.825
+- 10-27 01:48 UTC [hands job 30824]: DONE: ckpt_hands.pt, eval2_hands.json, score2_hands.json

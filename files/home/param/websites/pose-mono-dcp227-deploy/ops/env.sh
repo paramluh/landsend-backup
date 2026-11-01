@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+export CANOPY_ROOT=/home/param/pose-mono-dcp227
+export GENWEB=/home/param/pose-mono-dcp227/site
+export GENWEB_ROOT="$GENWEB"
+export GENWEB_RUNTIME=systemd
+export GENWEB_MONO_ENGINE=/home/param/pose-mono-dcp227/engine
+export GENWEB_LIVE=/home/param/pose-mono-dcp227/live_support
+export GENWEB_PEOPLE=/home/param/pose-mono-dcp227/prompts
+export GENWEB_ACTORS=/home/param/pose-mono-dcp227/prompts
+export GENWEB_PYTHON=/home/param/pose-mono-dcp227/.venv/bin/python
+export GENWEB_CK=/home/param/pose-mono-dcp227/models/dcp-227
+export GENWEB_WEIGHTS=base
+export GENWEB_RENDERERS=param
+export GENWEB_BATCH_STREAM=0
+export GENWEB_FFMPEG=/usr/bin/ffmpeg
+export MIMI_DIR=/home/param/pose-mono-dcp227/models/mimi
+export FA3_DIR=/home/param/pose-mono-dcp227/kernels/fa3
+export PPM_FA3_ROOT="$FA3_DIR"
+export POSE_TOKENIZER_CODE=/home/param/pose-mono-dcp227/engine/posetok
+export POSE_TOKENIZER_DIR=/home/param/pose-mono-dcp227/models/pose-tokenizer-32cb-200k-noshift
+export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TOKENIZERS_PARALLELISM=false PYTHONUNBUFFERED=1
+export OMP_NUM_THREADS=8
+export TRITON_CACHE_DIR=/home/param/pose-mono-dcp227/runtime/triton
+export PATH=/home/param/pose-mono-dcp227/.venv/bin:/usr/local/cuda/bin:$PATH

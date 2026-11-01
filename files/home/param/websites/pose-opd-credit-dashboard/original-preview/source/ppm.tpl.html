@@ -1,0 +1,1102 @@
+<title>PPM live curves</title>
+<!-- klweb-theme (10-26, user via main: "make the live curves template have a dark mode"): shared dark / light switch for every live-curve page. Dark by default;
+     the header button flips it and the choice is kept per browser (localStorage klweb_theme, one key for every page on the tunnel), so it survives the
+     auto-refresh reloads. Sets <html data-theme> before the page draws (the templates' :root[data-theme=dark] colour tokens), then reloads on a flip so
+     every chart rebuilds with that theme's axis / grid / legend / line colours. The button goes into [data-thm-host], else .hdr / header, else top right. -->
+<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('klweb_theme')}catch(e){}d.dataset.theme=t==='light'?'light':'dark';
+document.addEventListener('DOMContentLoaded',function(){if(document.getElementById('thm'))return;var b=document.createElement('button'),k=d.dataset.theme==='dark';
+b.id='thm';b.type='button';b.textContent=k?'☀ Light':'☾ Dark';b.title=k?'Switch to light mode (remembered in this browser)':'Switch to dark mode (remembered in this browser)';b.setAttribute('aria-label',b.title);
+b.onclick=function(){try{localStorage.setItem('klweb_theme',k?'light':'dark')}catch(e){}location.reload()};
+var h=document.querySelector('[data-thm-host]')||document.querySelector('.hdr')||document.querySelector('header');if(h)h.appendChild(b);else{b.style.cssText='position:fixed;top:8px;right:12px;z-index:60';document.body.appendChild(b)}})})();</script>
+<style>:root[data-theme=dark]{color-scheme:dark}:root[data-theme=light]{color-scheme:light}
+#thm{font:inherit;font-size:12px;line-height:1.3;border:1px solid var(--line,#8888);border-radius:6px;background:var(--btn,var(--card,transparent));color:var(--fg,inherit);padding:3px 9px;cursor:pointer;white-space:nowrap}
+#thm:hover{border-color:var(--muted,#888)}</style>
+<!-- /klweb-theme -->
+<!-- PPM live page template (10-12). build_stage3.py with S3_PAGE=ppm and s3branches_ppm.json "page_tpl": "ppm.tpl.html" fills the data placeholder (D = {s3: ppm_doc.py
+     output incl. ptabs (pose_tabs.py: ★ PPM, pose-x constants; POSE tab = ★ PPM vs SAM 8B only) and refs (stage-3 duplex run), dmour / dmtxd (Demeter on the stage-3 rows / packs),
+     hestia (Demeter's own logged eval), samref (SAM 8B W&B snapshot)}) and polls s3live_ppm.json every 60 s; reloads when ver_s3_ppm.txt changes.
+     Layout: one header line, three tabs (POSE | SPEECH | TEXT), one x-mode toggle per tab, charts with a "⋯" control drawer. Channel B everywhere.
+     10-17: + the interleaved re-run (D.s3.branches run 'ppm-ilp' = ppm_doc.py on interleave-ppm/logs/ppm-ilp-*.log) as '★ Interleaved' on SPEECH / TEXT; ★ = the live run,
+     PPM main (paused at 12,829) is 'PPM main (summed)' everywhere; its forecasts stay (labelled 'PPM main forecast').
+     10-17 later: + the next-arch 14B run (branch 'ppm-next', next-arch/logs/ppm-next-*.log) = '★ Next-arch 14B' (live); the interleaved run (job 22813, stopped, logs/aborted) = 'Interleaved 32B (stopped)'.
+     Default (10-17 simple): only '★ Next-arch 14B' and 'PPM main (summed)' training curves shown; everything else hidden (legend click toggles, saved per browser under ppm4_vis).
+     10-21: PPM main's micro schedule may change between chain legs (8,1,1 = 8 pose, 1 speech, 1 text micros per step after PPM's 1,2,1): ppm_doc.py ppm.segs makes the
+     main run's x piecewise in steps (SEG / spRows / poseX / x2s), branches keep PPM's first-schedule rate (brX), and ppm.marks draw a dashed line + label at each
+     change on every chart (EVPLUG). No segs / marks in the data = exactly the old behaviour.
+     10-21 later (user): 8,1,1 is OFF this page (ppm_doc.py keeps 8,1,1 legs out of the PPM chain) and has its own page stage3_ppm811.html = this template with
+     PAGE='ppm811' (P8; s3branches_ppm811.json "replace"): ★ = the 8,1,1 legs (labels shown as '★ 8,1,1'), the PPM main chain as the dimmed 'ref · PPM main'
+     branch (its own steps / rows), the switch mark from ppm.marks, its own CRITICAL tab (CRIT8), x in steps, x range from shortly before the switch,
+     view state under 'ppm811:' localStorage keys.
+     10-21 PAGE='ppm14b' (P14; s3branches_ppm14b.json "replace"): ★ = the ppm14b run (PPM architecture on a Qwen3-14B backbone, summed input, speech + text, no pose;
+     main doc = ppm_doc.py on ppm/ppm14b via "main_env"), shown as '★ ppm14b'; the INTL 14B run (branch 'ppm-next', stopped at 6,242) = 'ref · INTL 14B' on every chart (SL);
+     its own CRITICAL tab (CRIT14: eval normalised word CE per eval set, cb0 / light / PAD evals, train curve, ★ − ref difference and rate (SG14), B-depends-on-A);
+     x = steps | speech rows | epochs (both runs 256 speech rows / step, the same data plan); no POSE / CHECKPOINTS / BACKUPS tabs, no GenghisBench, no INTL forecast
+     from the difference (fitAdd), no PPM-main probe points; Demeter / stage-3 refs off ("refs": false); red decision banner = klweb/decision_ppm14b.txt (empty = none);
+     view state under 'ppm14b:' localStorage keys.
+     10-21 later (user) P14: + PPM 32B = the PPM main chain (s3branches_ppm14b.json branch run 'ppm-v1', ppm_doc.py PPM_SCHED=ppm: jobs 18873 … 26325, 1,2,1
+     schedule, ends at its 8,1,1 switch, step 16,861; the 8,1,1 legs never enter it) as a second reference in its own colour (--p32), label 'PPM 32B' (P32 / DP32):
+     eval series on every CRITICAL eval chart (crit14), train + eval on SPEECH / TEXT and in B-depends-on-A (RUNS), not in step time; no dotted trends (its data
+     stops at the switch); a dashed marker at the switch (EVS); header part + a "what matches" note under the tab bar (p32note). x = its own steps / steps × 256
+     speech rows (brX): same speech rows per step and the same per-step speech row order as ppm14b / INTL. Other pages: unchanged (P32() is null off P14).
+     10-23 (user) every page: per-chart drawer "x log" next to "y log" (OPT xlog, saved like y log): logarithmic x in every x mode; axis from the smallest positive x shown.
+     10-23 (user) PAGE='aloe32' (PA; s3branches_aloe32.json "replace", aloe_doc.py): the Aloe FT page in this style (★ live Aloe FT + every reference FT as a
+     branch; charts made from the metrics the runs log; CRITICAL / EVALS / TRAIN / LR tabs; header countdowns; decision banner); see the PA block.
+     10-23 (user: "next to sam sep can you put voxtral and the base checkpoint") PA only: reference 26232 first after the ★ (config order; its LR groups on the
+     LR chart via branch "pass" lr) + config "base_line" = a flat dashed "base 16861 (step 0)" line on every eval chart (chA), kept inside the y range (fitRange).
+     10-24 (main) PA only: PPMVOX checkpoint evals on the Aloe eval as points (config "ckpt_points" -> s3 ckpt_pts): own first CRITICAL chart (ckA).
+     10-24 (PPMVOX lead) PAGE='ppm' only (PV): the PPMVOX run (branch 'ppmvox-v1', from PPM's step 16,861) = ★ while live, on every chart via RUNS + LR + header
+     + CRITICAL podcast / text evals + its own PPMVOX tab; see the PV block. Before its first metrics the PPM page is exactly as before.
+     10-23 (user) every page: header toggle "Extrapolate contemporary" (off by default = the page as before; ppm6_xc / ppm6_xcs / ppm6_xct per browser): each curve's
+     dotted-trend rule (trendOf) refitted on its points at steps ≤ s only (s = the ★ live run's latest step, or set in the header), dashed from there; points
+     after s = a dimmed copy of the curve (_xcd); a line at s; a readout per chart (XC, xcBuild, xcAdd, xcCap, XCPLUG). trendPL results cached (TPLM). -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.1/chartjs-plugin-zoom.min.js"></script>
+<style>
+:root{--bg:#f5f6f8;--card:#fff;--fg:#1d2330;--muted:#6b7280;--line:#e4e7ec;--one:#1f6fd1;--pose:#0f9488;--sam:#1d2330;--s3:#7a8291;--dm:#d9480f;--he:#ae3ec9;--fce:#e67700;--evb:#7048e8;--ilp:#2f9e44;--nxt:#c2255c;--p32:#2f9e44;--ref:#a3a9b4;--dec:#c2255c;--mot:#e8590c;--mvx:#6741d9;--vox:#771c80;--vox1:#771c8070;--voxp:#0c8599;--btn:#eef1f5;--on:#1f6fd1;--onfg:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1115;--card:#171a21;--fg:#e6e8ec;--muted:#9aa1ad;--line:#2a2f3a;--one:#6aa8ff;--pose:#5fd3c7;--sam:#e6e8ec;--s3:#a3aab6;--dm:#ff922b;--he:#e599f7;--evb:#b197fc;--ilp:#8ce99a;--nxt:#faa2c1;--p32:#51cf66;--ref:#5f6673;--dec:#faa2c1;--mot:#ffa94d;--mvx:#9775fa;--vox:#e944b9;--vox1:#e944b970;--voxp:#3bc9db;--btn:#232834;--on:#6aa8ff;--onfg:#0f1115}}
+:root[data-theme=dark]{--bg:#0f1115;--card:#171a21;--fg:#e6e8ec;--muted:#9aa1ad;--line:#2a2f3a;--one:#6aa8ff;--pose:#5fd3c7;--sam:#e6e8ec;--s3:#a3aab6;--dm:#ff922b;--he:#e599f7;--evb:#b197fc;--ilp:#8ce99a;--nxt:#faa2c1;--p32:#51cf66;--ref:#5f6673;--dec:#faa2c1;--mot:#ffa94d;--mvx:#9775fa;--vox:#e944b9;--vox1:#e944b970;--voxp:#3bc9db;--btn:#232834;--on:#6aa8ff;--onfg:#0f1115}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1440px;margin:0 auto;padding:10px 16px 40px}
+.hdr{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:center;padding:4px 0 10px;font-variant-numeric:tabular-nums}
+.hdr .nm{font-weight:700}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2e9e5b;margin-right:6px;vertical-align:1px}
+.dot.off{background:#c0392b}
+.bar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:0 0 12px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:var(--btn);color:var(--fg);padding:6px 14px;font:inherit;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed=true]{background:var(--on);color:var(--onfg)}
+.tabs button{font-weight:650;letter-spacing:.04em;padding:7px 18px}
+.grid[hidden]{display:none!important}
+.hpt{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}.hpt th{text-align:left;font-size:12px;letter-spacing:.04em;color:var(--muted);padding:14px 8px 4px;border-bottom:1px solid var(--line)}.hpt td{padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:top}.hpt td.v{font-weight:600;white-space:nowrap}.hpt .k{color:var(--muted);font-size:11px;margin-left:6px;font-family:ui-monospace,monospace}.hpt .chg{color:var(--dm);font-size:11px;margin-left:8px;font-weight:400}.hpsrc{color:var(--muted);font-size:12px;margin:0 0 4px}
+.hubw{overflow-x:auto}.hubt td{white-space:nowrap}.hubt td.pa{white-space:normal;overflow-wrap:anywhere;font-family:ui-monospace,monospace;font-size:12px}.hubt td.nt{white-space:normal;color:var(--muted);font-size:12px}.hubt td.r{text-align:right}
+.hst{font-weight:600}.hst.done{color:var(--pose)}.hst.uploading{color:var(--one)}.hst.queued,.hst.skipped{color:var(--muted)}.hst.failed{color:var(--dm)}.hst.hf,.hst.gcs{display:inline-block;border:1px solid var(--line);border-radius:5px;padding:0 6px;font-size:11px}.hst.gcs{color:var(--one)}.pin{display:inline-block;border:1px solid var(--line);border-radius:5px;padding:0 5px;margin-left:6px;font-size:11px;color:var(--muted)}
+@media (max-width:640px){.hpt td.v{white-space:normal;overflow-wrap:anywhere}.hpt .chg,.hpt .k{display:block;margin-left:0}.hpt td{padding:5px 4px}}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(600px,100%),1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px 6px;min-width:0}
+.card.sm{grid-column:1/-1}
+.ct{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ct h3{margin:0;font-size:14px;font-weight:600}
+.fcap{margin:4px 2px 2px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;line-height:1.35}
+.ct .avgx{display:inline-flex;gap:4px;align-items:center;margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+.ct .avgx input{width:52px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;padding:2px 5px;font:inherit}
+.more{border:1px solid transparent;background:none;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;padding:0 8px;border-radius:6px}
+.card.open .more{border-color:var(--line)}
+.ctl{display:none;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0 2px;font-size:12px}
+.card.open .ctl{display:flex}
+.ctl button{border:1px solid var(--line);background:var(--btn);color:var(--fg);border-radius:6px;padding:3px 8px;font:inherit;cursor:pointer}
+.ctl button[aria-pressed=true]{background:var(--on);color:var(--onfg)}
+.ctl input{width:64px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;padding:3px 5px;font:inherit}
+.cv{position:relative;height:320px}
+.card.sm .cv{height:170px}
+@media (max-width:640px){.cv{height:260px}.tabs button{padding:7px 12px}.seg button{padding:6px 10px}}
+.err{background:#c0392b;color:#fff;padding:8px 12px;border-radius:8px;margin:8px 0;font-weight:600}
+.xcap{overflow-x:auto}.xct{border-collapse:collapse;font-size:11.5px;font-variant-numeric:tabular-nums;margin:2px 0}.xct th{font-weight:600;color:var(--muted);text-align:right;padding:1px 0 1px 14px;white-space:nowrap}.xct td{text-align:right;padding:1px 0 1px 14px;color:var(--fg);white-space:nowrap}.xct th:first-child,.xct td:first-child{text-align:left;padding-left:0}.xsw{display:inline-block;width:16px;border-top:2px dashed;vertical-align:middle;margin-right:6px}.xk{color:var(--muted)}
+.xcb{border:1px solid var(--line);background:var(--btn);color:var(--fg);border-radius:6px;padding:2px 8px;font:inherit;cursor:pointer}
+</style>
+<div class="wrap">
+<div class="hdr"><span id="hdr" style="display:contents"></span><label style="display:inline-flex;gap:6px;align-items:center;color:var(--muted)">smooth <select id="smw" style="font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);padding:3px 4px"><option value="1">1</option><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="200">200</option></select> steps</label><label style="display:inline-flex;gap:6px;align-items:center;color:var(--muted)">x-axis to step <input id="xmaxs" type="number" min="1" step="1" inputmode="numeric" placeholder="auto" title="x range end step" style="width:84px;font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);padding:3px 5px"></label><span class="seg"><button id="xct" aria-pressed="false" title="extrapolate from step s">Extrapolate contemporary</button></span><label id="xcw" style="display:none;gap:6px;align-items:center;color:var(--muted)">s = step <input id="xcs" type="number" min="1" step="1" inputmode="numeric" placeholder="★" title="fit on steps ≤ s" style="width:84px;font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);padding:3px 5px"><input id="xcr" type="range" min="1" step="1" aria-label="s, step" style="width:140px"><button id="xcz" class="xcb" title="s = ★ latest step">★ latest</button></label><label id="xctw" style="display:none;gap:6px;align-items:center;color:var(--muted)">compare at step <input id="xctg" type="number" min="1" step="1" inputmode="numeric" placeholder="auto" title="readout step" style="width:84px;font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);padding:3px 5px"></label></div>
+<div class="bar"><span class="seg tabs" id="tabs"></span><span class="seg" id="xm"></span><label id="rqw" style="display:inline-flex;gap:6px;align-items:center;color:var(--muted)">search runs <input id="rq" type="search" placeholder="name or job id" autocomplete="off" spellcheck="false" aria-label="search runs" title="filter the runs on every chart" style="width:200px;max-width:60vw;font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);padding:3px 6px"></label><span id="rqn" style="color:var(--muted);font-size:12px"></span></div>
+<div id="panes"></div>
+</div>
+<script>
+const D=__DATA__;
+const PAGE='ppm',P8=PAGE==='ppm811',P14=PAGE==='ppm14b',PA=PAGE==='aloe32',PV=PAGE==='ppm',LSP=P8?'ppm811:':P14?'ppm14b:':PA?'aloe32:':'';   /* 10-21: page mode (s3branches_ppm811.json "replace" -> 'ppm811' = the 8,1,1 page; its view state under its own keys) */
+try{if(window.ChartZoom)Chart.register(window.ChartZoom)}catch(e){}
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const S=()=>D.s3||{},PP=()=>S().ppm||{},PT=()=>S().ptabs||{runs:[]};
+const LS={get(k,d){try{const v=localStorage.getItem(LSP+k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(LSP+k,JSON.stringify(v))}catch(e){}}};
+let TAB=LS.get('ppm5_tab','critical');const XM=Object.assign(P8?{pose:'st',speech:'st',text:'st',critical:'st'}:{pose:'ep',speech:'st',text:'st'},LS.get('ppm2_xm',{}));const VIS=LS.get('ppm4_vis',{}),OPT=LS.get('ppm2_opt',{});
+const C=(cols,k)=>(cols||[]).indexOf(k);
+let XMAX=(v=>v>0?v:null)(+LS.get('ppm3_xmax',0));   /* 10-17: header 'x-axis to step' box: every chart's x range ends at this step (wins over Fit to ★ / forecast extent; y still fits the visible data in range) */
+let SM=+LS.get('ppm2_sm',10)||10;   /* header smoothing: trailing N-step mean of the training curves (evals unsmoothed; forecasts always fit 10-step means) */
+const roll=(p,w)=>{const o=[];o._raw=p;let t=0,a=0;const bs=p.every(z=>z.s!=null);   /* 10-17: trailing mean over w optimiser STEPS (s-w, s]; w 1 = raw */
+  for(let q=0;q<p.length;q++){t+=p[q].y;if(bs)while(p[q].s-p[a].s>=w){t-=p[a].y;a++}else if(q-a>=w){t-=p[a].y;a++}o.push({x:p[q].x,y:t/(q-a+1),s:p[q].s})}return o};
+const AVG=(v=>v&&typeof v==='object'?v:{})(LS.get('ppm5_avg',{}));   /* 10-17: per-chart 'avg X steps' (title row box): overrides the header smooth for that chart's training series; empty = header smooth */
+const ser=(rows,cols,k,xf)=>{const i=C(cols,k),o=i<0?[]:(rows||[]).filter(r=>r[i]!=null&&isFinite(r[i])).map(r=>({x:xf(r),y:r[i],s:r[0]}));o._xf=xf;return o};   /* 10-21: _xf = the x function (trendOf) */
+const f=v=>(+v).toLocaleString('en-US');
+/* serT: ser + per-point hover details t (ex = [[name, col]]: that row's other probe values) */
+const serT=(rows,cols,k,xf,ex)=>{const o=serT0(rows,cols,k,xf,ex);o._xf=xf;return o};
+const serT0=(rows,cols,k,xf,ex)=>{const i=C(cols,k),js=(ex||[]).map(([n,c])=>[n,C(cols,c)]).filter(([,j])=>j>=0);return i<0?[]:(rows||[]).filter(r=>r[i]!=null&&isFinite(r[i])).map(r=>({x:xf(r),y:r[i],s:r[0],t:js.filter(([,j])=>r[j]!=null).map(([n,j])=>`${n} ${n.startsWith('Δ')&&r[j]>=0?'+':''}${(+r[j]).toPrecision(3)}`).join(' · ')}))};
+/* ---- x per tab: POSE = each run's own pose epoch / clip-hours / steps; SPEECH + TEXT = each run's own (speech) epoch / steps ---- */
+const xm=()=>XM[TAB]||'st';
+const SAM=D.samref&&D.samref.cb_eval?D.samref:null,SPL=(SAM&&SAM.planned)||69397,SAM_EPOCH_H=341000;   /* 10-20 audit: 357,737 h × 0.956 (SAM's packer drops a clip at every row close, ≥ 4.4% of positions) × 0.998 (rows that never ran): an estimate, shown as ≈ */
+const SAM_SP_NOTE='SAM is text-upfront TTS: sees the whole transcript before audio; PPM sees time-aligned words 2 frames ahead, so speech curves are not like-for-like';   /* 10-20 audit: on SAM 8B's speech series (POSE tab speech-on-pose-rows charts), in its detail and hover */
+/* 10-21 (8,1,1): ppm.segs (ppm_doc.py; only when PPM main's GA changed between legs) = [{s, sp, po, sp0, po0}]: from step s on, sp speech / po pose rows per step,
+   sp0 / po0 = rows at step s. The main run's x (epochs, clip-hours) is then piecewise in steps: the PPM legs keep their x, the new legs continue from them */
+const SEG=()=>{const g=PP().segs;return g&&g.length>1?g:null};
+const segAt=(G,s)=>{let g=G[0];for(const q of G)if(s>=q.s)g=q;return g};
+const poseX=run=>{const x=(run&&run.x)||{},rps=x.pose_rows_per_step||128,er=x.pose_epoch_rows||2206848,ch=x.clip_h_per_row||0.1616,G=run&&run.id==='main'?SEG():null;
+  if(G){const xf=r=>{const s=r[0],m=xm();if(m==='st')return s;const g=segAt(G,s),R=g.po0+(s-g.s)*g.po;return m==='ep'?R/er:R*ch};xf._main=1;return xf}
+  return r=>{const s=r[0],m=xm();return m==='ep'?s*rps/er:m==='h'?s*rps*ch:s}};
+const samX=r=>{const m=xm();return m==='ep'?r[0]/SPL:m==='h'?r[0]*SAM_EPOCH_H/SPL:r[0]};
+const spRows=s=>{const G=SEG();if(!G)return s*(PP().speech_rows_per_step||256);const g=segAt(G,s);return g.sp0+(s-g.s)*g.sp};
+const ppmX=r=>xm()==='ep'?spRows(r[0])/(PP().speech_epoch_rows||3549696):xm()==='rows'?spRows(r[0]):r[0];ppmX._main=1;   /* 10-21 P14: x mode 'rows' = speech rows seen */
+const brX=r=>xm()==='ep'?r[0]*(SEG()?SEG()[0].sp:(PP().speech_rows_per_step||256))/(PP().speech_epoch_rows||3549696):xm()==='rows'?r[0]*(SEG()?SEG()[0].sp:(PP().speech_rows_per_step||256)):r[0];   /* 10-21: the branch runs (14B, interleaved) keep PPM's first-schedule rate */
+const refX=R=>r=>xm()==='ep'?(r[1]||0)/(R.epoch_rows||5183000):r[0];
+const dmX=r=>xm()==='ep'?r[1]:r[0];
+const unitPerStep=()=>{const m=xm();if(m==='st')return 1;if(m==='rows')return PP().speech_rows_per_step||256;if(TAB==='pose'){const x=(mainP()||{}).x||{};return m==='h'?(x.pose_rows_per_step||128)*(x.clip_h_per_row||0.1616):(x.pose_rows_per_step||128)/(x.pose_epoch_rows||2206848)}return (PP().speech_rows_per_step||256)/(PP().speech_epoch_rows||3549696)};
+/* ---- series ---- */
+const L=(label,data,color,o={})=>({label,data,borderColor:color,backgroundColor:color,borderWidth:(o.w||2)>=2?1.5:1.2,borderDash:o.dash||[],pointRadius:0,pointHoverRadius:3,pointHitRadius:6,   /* thin lines only, no point markers; hit radius keeps hover */
+  tension:0,parsing:false,spanGaps:true,_ev:!!o.ev,_pin:!!o.pin,_defon:!!o.on,_det:o.det||''});
+const mainP=()=>(PT().runs||[]).find(r=>r.id==='main'),poseRef=()=>(PT().runs||[]).find(r=>r.id!=='main');
+const jobs=r=>{const a=(r&&r.jobs)||[];return a.length>3?`${a[0]} → … → ${a[a.length-1]} (${a.length} jobs)`:a.join(' → ')};
+const DPPM=()=>`PPM ${S().run||'ppm-v1'} · jobs ${(S().jobs||[]).join(' → ')}`;
+/* 10-17: the interleaved re-run (s3branches_ppm.json branch 'ppm-ilp'; ppm_doc.py on interleave-ppm/logs/ppm-ilp-*.log, resumes stitched by step) = ★, the live run */
+const ILP=()=>(S().branches||[]).find(b=>b.run==='ppm-ilp');
+const NXT=()=>(S().branches||[]).find(b=>b.run==='ppm-next');   /* 10-17: next-architecture 14B run = ★ (live); the interleaved 32B run (job 22813) is stopped */
+const DNXT=()=>{const b=NXT()||{};return `Next-arch 14B ${b.run||'ppm-next'} · jobs ${jobs(b)} · Qwen3-14B backbone (40 layers), interleaved input; no pose`};
+/* 10-21 P8: the PPM main chain (s3branches_ppm811.json branch run 'ppm-v1', ppm_doc.py PPM_SCHED=ppm) = the dimmed reference on the 8,1,1 page */
+const REF=()=>P8?(S().branches||[]).find(b=>b.run==='ppm-v1'):null;
+const DREF=()=>{const b=REF()||{};return `PPM main ${b.run||'ppm-v1'} · jobs ${jobs(b)} · schedule 1,2,1 to step ${b.step!=null?f(b.step):'–'} (the 8,1,1 switch)`};
+/* 10-23 P8 (user): the LR-decay branch (s3branches_ppm811.json branch run 'ppmdecay' = code-811-decay resumed from the 8,1,1 run's dcp-17850, every LR × a linear
+   multiplier 1 → 0 at step 18,022; ppm_doc.py on ppm/logs/ppmdecay-<job>.log) = its own series (--dec) next to ★ 8,1,1 wherever the 8,1,1 page draws the reference
+   (CRITICAL evals / pose train / step time, SPEECH / TEXT via RUNS, B depends on A) + the LR-multiplier charts (decLrCh); x = the 8,1,1 run's own x (ppmX: same
+   schedule, continues its steps); ★ moves to it while it is the live run (STAR 'dec'). Its label must start 'LR decay' (REV8 / STRE). Not on the POSE tab (pose_tabs.py). */
+const DEC=()=>P8?(S().branches||[]).find(b=>b.run==='ppmdecay'):null;
+const DECL=()=>(DEC()||{}).label||'LR decay → 0';
+const DDEC=()=>{const b=DEC()||{},e=b.max_steps_set||b.max_steps,s0=b.from_step!=null?f(b.from_step):'–';return `${DECL()} · ${b.run||'ppmdecay'} · jobs ${jobs(b)} · resumed from the 8,1,1 run's dcp-${s0}; every LR × a linear multiplier, 1 at step ${s0} → 0 at step ${e?f(e):'–'}`};
+/* 10-21 P14 (user): PPM 32B = the PPM main chain (s3branches_ppm14b.json branch run 'ppm-v1', PPM_SCHED=ppm: ends at the 8,1,1 switch) = the second reference
+   on the ppm14b page; null on every other page */
+const P32=()=>P14?(S().branches||[]).find(b=>b.run==='ppm-v1'):null;
+const DP32=()=>{const b=P32()||{};return `PPM 32B ${b.run||'ppm-v1'} · jobs ${jobs(b)} · Qwen3-32B backbone (64 layers), summed input, + 1 pose micro per step; drawn to step ${b.step!=null?f(b.step):'–'} (its switch to 8,1,1; later steps not shown)`};
+/* 10-23 P14: MoT 14B = the Mixture-of-Transformers INTL 14B (s3branches_ppm14b.json branch run 'ppm-mot'; ppm_doc.py on ppm/mot/logs/ppm-mot-<job>.log,
+   metrics ppm/mot/runs/ppm-mot-j<job>/metrics.jsonl) = its own series (--mot) via RUNS + CRITICAL evals + header; ★ moves to it while it is the live run
+   (STAR 'mot'); labels start 'MoT 14B' (STRE). Same data plan per step as INTL / ppm14b (x = brX). null on every other page */
+const MOT=()=>P14?(S().branches||[]).find(b=>b.run==='ppm-mot'):null;
+const DMOT=()=>{const b=MOT()||{};return `MoT 14B ${b.run||'ppm-mot'} · jobs ${jobs(b)} · the INTL 14B with three Qwen3-14B experts (user text / assistant text / assistant speech slots), one shared causal attention; same data, losses, LRs as INTL`};
+/* 10-28 P14 (motvox): MoT 14B + audio in = MoT 14B continued from its dcp-14839 with audio-in podcast rows (s3branches_ppm14b.json branch run 'ppm-motvox',
+   EXACT run match, never 'ppm-mot'; ppm_doc.py with PPM_MOTVOX=1 on ppm/motvox/logs/motvox-train-<job>.log, metrics ppm/motvox/runs/ppm-motvox-j<job>/metrics.jsonl)
+   = its own series (--mvx) via RUNS (CRITICAL / SPEECH / TEXT train + evals, step time, B depends on A, Plot difference) + its audio-in eval and listening
+   charts (ppm_doc.py vp_* columns = the trainer's eval_vpod*) + header part (step, s/step, ETA, last step / next checkpoint / next eval / next export) + a
+   dashed switch marker at its first step (MVSW); ★ moves to it while it is the live run (STAR 'mvx'); its labels start 'MoT 14B + audio in' (MVRE; MoT's
+   own label regexes exclude it). Short branch on a long page: while it exists and no other run is live, every chart showing it opens on steps
+   [its first step − 450, just past its latest step] with y fitted there (mvWin / MWIN0 / MWEND; header "Full history" = the page's own ranges).
+   x = MoT's steps (brX; speech rows / epochs at MoT's 256 rows per step). Its train charts first on CRITICAL. null off P14 and before its first log line */
+const MVX=()=>P14?(S().branches||[]).find(b=>b.run==='ppm-motvox')||null:null,MVRE=/^MoT 14B \+ audio in/,MVSIG=!!MVX();
+const DMVX=()=>{const b=MVX()||{};return `MoT 14B + audio in ${b.run||'ppm-motvox'} · jobs ${jobs(b)} · MoT 14B continued from its dcp-${b.from_step!=null?b.from_step:14839}: podcast rows audio-in (the user's audio → Voxtral → adapter into the user slot, no user text), text duplex as MoT, MoT's schedule`};
+let MVFULL=!!LS.get('ppm7_mvfull',false);
+const MWIN0=()=>{const b=MVX();return Math.max(0,(b&&b.from_step!=null?b.from_step:14839)-450)};
+const MWEND=()=>{const b=MVX()||{},s=Math.max(b.step||0,b.from_step||0);return s+Math.max(50,Math.round(0.08*(s-MWIN0())))};
+const mvWin=c=>{const b=MVX(),st=b?STAR():'';return !!b&&(st==='mvx'||st==='main')&&c.data.datasets.some(d=>MVRE.test(d.label)&&!d._tr&&!d._fc&&!d._fit&&d.data.length)};
+/* 10-24 PV (PPMVOX lead, for the user: "add the PPM-Voxtral run (PPMVOX) to the PPM live page as a new ★ branch off PPM's step 16861; make it the live
+   run, starred in every chart"): s3branches_ppm.json branch run 'ppmvox-v1' = aloe_doc.py on ppm/runs/ppmvox-v1-j<job>/metrics.jsonl (every raw key + PPM's
+   column names via ALOE_ALIAS = klweb/ppmvox_alias.json: speech = vpod (A = Voxtral latents; adapter-only steps vpod_ad), own-holdout eval = eval_vpod, every
+   other key PPM's own: speech_s3 / gemma_s3 / gemma / pose / xdep) = its own series (--vox) on PPM's step axis (ppmX: its global step continues from 16,861)
+   via RUNS (CRITICAL / SPEECH / TEXT / step time / B depends on A) + its LR groups + header + CRITICAL podcast / text eval charts (VCRIT) + its own PPMVOX tab
+   (vTab: every eval / train stream it logs, per metric); ★ moves to it while it is the live run (STAR 'vox'; its labels start 'PPMVOX', on by default). Not on
+   the POSE tab (pose_tabs.py data). null off the PPM page and before its first metrics (the page is then exactly as before); a new key set reloads (VSIG) */
+const VK=r=>parseInt(r.slice(8))+(/[a-z]$/.test(r)?(r.charCodeAt(r.length-1)-96)/100:0),VXS=()=>PV?(S().branches||[]).filter(b=>/^ppmvox-v\d+[a-z]?$/.test(b.run)).sort((x,y)=>VK(x.run)-VK(y.run)):[],VHAS=b=>!!((b.train||[]).length||(b.pts||[]).length);
+const VOX=()=>{const A=VXS(),H=A.filter(VHAS);return H[H.length-1]||A[A.length-1]||null};   /* 10-24: the ★ PPMVOX = the newest ppmvox-vN branch with metrics (v1 until the rerun, ppmvox-v3, logs) */
+const VSEG=b=>((b&&b.segments)||[]).filter(x=>b.step!=null&&b.step>x.from_step);   /* 10-24: a branch's continuation segments (config "segments": [{from_step, label, short}]; v3x = v3 + 500 steps), shown once the run is past their start */
+const VPAR=()=>{const v=VOX();if(!v||v.from_step==null)return null;return VXS().filter(VHAS).filter(x=>x!==v&&x.from_step!=null&&x.from_step<v.from_step&&(x.step||0)>=v.from_step).pop()||null};   /* 10-25: the ★'s parent run (v5 for v5b: the ★ branches off its pause) = a solid reference, on by default */
+const VOX1=()=>{const p=VPAR();if(p)return p;const v=VOX(),H=VXS().filter(VHAS).filter(x=>x!==v);return v&&H.length?H[H.length-1]:null};   /* 10-25: the faded reference = the newest OTHER ppmvox-vN branch with metrics (v3 once v5 is the ★) */
+const VL1=()=>{const b=VOX1();return (b?b.run.replace(/^ppmvox-/,''):'v1')+(b&&b===VPAR()?` (to ${f(b.step)})`:' (stopped)')+' · PPMVOX'},VC1=()=>VPAR()?'--voxp':'--vox1',VON=()=>VPAR()?1:0;
+const VLAB=()=>{const b=VOX();return 'PPMVOX'+(b&&b.tag?' '+b.tag:'')};   /* 10-25: the ★ PPMVOX's series labels carry its tag (v5b · Voxtral unfrozen) */;   /* 10-24: v1 = the faded reference once a rerun is the ★ */
+const DVOX1=()=>{const b=VOX1()||{};return `PPMVOX ${b.run||''} · jobs ${jobs(b)} · stopped at step ${b.step!=null?f(b.step):'–'} · a stopped reference on its own lineage and steps${b.desc?' · '+b.desc:''}`};
+const DVOX=()=>{const b=VOX()||{};if(b.desc)return `PPMVOX ${b.run} · jobs ${jobs(b)} · ${b.desc}`;return `PPMVOX ${b.run||'ppmvox-v1'} · jobs ${jobs(b)} · pure PPM 32B continued from dcp-16861: vox steps 1–50 train the Voxtral adapter only (podcast rows), then the full model on pose, vpod, vpod, text`};
+const RUNS=()=>(P8?[[REF(),'ref · PPM main','--ref',DREF()],[DEC(),DECL(),'--dec',DDEC(),ppmX]]:P14?[[NXT(),'★ Next-arch 14B','--nxt',DNXT()],[MOT(),'MoT 14B','--mot',DMOT()],[MVX(),'MoT 14B + audio in','--mvx',DMVX()],[P32(),'PPM 32B','--p32',DP32()]]:[[VOX(),VLAB(),'--vox',DVOX(),ppmX],[VOX1(),VL1(),VC1(),DVOX1(),ppmX],[NXT(),'★ Next-arch 14B','--nxt',DNXT()],[ILP(),'Interleaved 32B (stopped)','--ilp',DILP()]]).filter(r=>r[0]);
+/* 10-19: ★ = the LIVE run, decided on every refresh: PPM main (the ppm-v1 chain = the newest ppm-v1 job, so a relaunch keeps it) unless it is not live and a
+   branch is (live = not done and a step logged within the last hour). Series labels stay as they were (legend state / defaults key on them); the ★ is
+   applied for display only (SL: legend, fit captions), "Fit to ★" fits the ★ run's own data (isStar), the header lists the ★ run first. */
+const LIVE=x=>!!(x&&!x.done&&x.t_last&&Date.now()/1000-x.t_last<3600);
+const STAR=()=>P14?(LIVE(MVX())?'mvx':LIVE(MOT())?'mot':LIVE(NXT())?'nxt':'main'):LIVE(S())?'main':PV&&LIVE(VOX())?'vox':P8&&LIVE(DEC())?'dec':LIVE(NXT())?'nxt':LIVE(ILP())?'ilp':'main';
+const SL=t=>{if(PA)return String(t).replace(/★ ?/g,'').replace(/^PPM main \(summed\)/,'★ '+ALAB());if(P14){const s14=STAR(),n14=s14==='nxt',o14=s14!=='main';return String(t).replace(/★ ?/g,'').replace(/^14B − PPM/,n14?'ppm14b − ★ INTL 14B':o14?'ppm14b − INTL 14B':'★ ppm14b − INTL 14B').replace(/PPM main \(summed\)/g,o14?'ppm14b':'★ ppm14b').replace(/PPM main/g,o14?'ppm14b':'★ ppm14b').replace(/Next-arch 14B/g,n14?'★ INTL 14B':'ref · INTL 14B').replace(/^MoT 14B(?! \+ audio in)/,s14==='mot'?'★ MoT 14B':'MoT 14B').replace(MVRE,s14==='mvx'?'★ MoT 14B + audio in':'MoT 14B + audio in')}   /* 10-23 MoT: ★ on 'MoT 14B' while ppm-mot is the live run (o14: ppm14b loses the ★ to either branch) */   /* 10-23: ★ follows the LIVE run: the INTL 14B (ppm-next) while it trains, else ppm14b */   /* 10-21 P14: main = ppm14b, branch ppm-next = the INTL 14B reference (difference series: ★ − ref, SG14) */
+  if(P8){const m8=STAR()==='dec'?'8,1,1':'★ 8,1,1';return String(t).replace(/★ ?/g,'').replace(/PPM main \(summed\)/g,m8).replace(/^PPM main forecast/,m8+' forecast').replace(/^fit · PPM main/,'fit · '+m8).replace(/^LR decay/,STAR()==='dec'?'★ LR decay':'LR decay')}   /* P8: the main chain is the 8,1,1 run; 10-23: ★ on the LR-decay branch instead while it is the live run */
+  const st=STAR();t=String(t).replace(/★ ?/g,'');
+  return st==='main'?t.replace(/PPM main/g,'★ PPM main').replace(/14B − PPM/g,'14B − ★ PPM'):st==='vox'?t.replace(/^PPMVOX/,'★ PPMVOX'):st==='nxt'?t.replace(/Next-arch 14B/g,'★ Next-arch 14B').replace(/^14B − PPM/,'★ 14B − PPM'):t.replace(/Interleaved 32B/g,'★ Interleaved 32B')};
+const STRE={main:/^PPM main/,vox:/^PPMVOX/,dec:/^LR decay/,mot:/^MoT 14B(?! \+ audio in)/,mvx:MVRE,nxt:/^★ (Next-arch 14B|14B − PPM)/,ilp:/^Interleaved 32B/};
+const isStar=d=>!d._fc&&!d._fit&&!d._tr&&STRE[STAR()].test(d.label);   /* the ★ run's own series (not its forecast / fit extrapolations) */
+const DILP=()=>{const b=ILP()||{};return `Interleaved 32B ${b.run||'ppm-ilp'} · job ${jobs(b)} STOPPED at step ${b.step!=null?f(b.step):'–'} · PPM's schedule, data and step-0 init; backbone input interleaved per frame (user text → assistant text → assistant speech) instead of summed; no pose`};
+function ilpCh(o,col,s3col,ev,s3ev,s3lab,pin){for(const [b,n,c,d,X=brX] of RUNS()){   /* 10-23: X = the run's x function (RUNS 5th element; default brX) */
+  o.push(L(n,roll(ser(b.train,b.train_cols,col,X),SM),css(c),{w:2.4,det:d}),L(n+' eval',ser(b.pts,b.cols,col,X),css(c),{ev:1,dash:[6,4],det:d+' · eval: '+(b===VOX()||b===VOX1()?'its own held-out podcast rows (eval_vpod: both directions pooled)':ev)}));
+  if(s3col)o.push(L(n+' eval'+s3lab,ser(b.pts,b.cols,s3col,X),css(c),{ev:1,pin,dash:[2,2],w:2,det:d+' · '+s3ev}))}}
+const PVK={pose_nword:'word_ce_norm',pose_cb0:'pose_cb0_ce',pose_cb1:'pose_light_ce_cb1',pose_cb8:'pose_light_ce_cb8',pose_cb16:'pose_light_ce_cb16',pose_cb31:'pose_light_ce_cb31',
+  pose_light:'pose_light_ce',sp_cb0:'cb0_ce',sp_light:'light_ce'};   /* 10-24 PV: pose_tabs.py column -> the PPM trainer's train_pose/* / eval_pose/* metric (pose_tabs.py PPM_T / XT) */
+function poseCh(col,samT,samE,pg){const o=[],m=mainP(),tc=PT().tcols,ec=PT().ecols;   /* POSE tab: ★ PPM vs SAM 8B only (pg = SAM's page-level means: pose_light / audio_light) */
+  if(m){const d=`PPM ${m.run} · jobs ${jobs(m)} · eval: its own pose holdout`;o.push(L('PPM main (summed)',roll(ser(m.train,tc,col,poseX(m)),SM),css('--one'),{w:2.4,det:d}),L('PPM main (summed) eval',ser(m.eval,ec,col,poseX(m)),css('--one'),{ev:1,dash:[6,4],det:d}))}
+  {const b=VOX(),k=PVK[col];if(b&&k){const d=DVOX()+' · pose rows: PPM\'s pose stream continued from step 16,861 (cycle pose, vpod, vpod, text from vox step 51); x = PPM\'s pose rows',X=poseX(m);   /* 10-24 PV: PPMVOX's own pose keys (raw train_pose/* / eval_pose/*), empty until its pose micros start */
+    o.push(L(VLAB(),roll(ser(b.train,b.train_cols,'train_pose/'+k,X),SM),css('--vox'),{w:2.4,det:d}),L(VLAB()+' eval',ser(b.pts,b.cols,'eval_pose/'+k,X),css('--vox'),{ev:1,dash:[6,4],det:d+' · eval: its pose holdout'}))}}
+  {const b=VOX1(),k=PVK[col];if(b&&k){const d=DVOX1()+' · pose rows',X=poseX(m);   /* 10-24: v1, faded */
+    o.push(L(VL1(),roll(ser(b.train,b.train_cols,'train_pose/'+k,X),SM),css('--vox1'),{w:1.4,det:d}),L(VL1()+' eval',ser(b.pts,b.cols,'eval_pose/'+k,X),css('--vox1'),{ev:1,dash:[6,4],det:d+' · eval: its pose holdout'}))}}
+  if(P8){const r=poseRef();if(r){const d=`ref · PPM main ${r.run} · jobs ${jobs(r)} · eval: its own pose holdout (D33 link on)`;   /* P8: PPM main's own pose steps / rows */
+    o.push(L('ref · PPM main',roll(ser(r.train,tc,col,poseX(r)),SM),css('--ref'),{w:1.6,det:d}),L('ref · PPM main eval',ser(r.eval,ec,col,poseX(r)),css('--ref'),{ev:1,dash:[6,4],det:d}))}
+    }   /* 10-21 (user): no link-on probe series on any chart */
+  if(SAM){const sp=/^audio_/.test(samT||samE||''),d='SAM 8B speech+pose · W&B stage2-pose-fast snapshot'+(sp?' · '+SAM_SP_NOTE:''),nt=sp?{_note:SAM_SP_NOTE}:{};   /* 10-20: speech series carry the like-for-like note */
+    if(samT)o.push(Object.assign(L('SAM 8B',ser(pg?SAM.train:SAM.cb_train,pg?SAM.train_cols:SAM.cb_train_cols,samT,samX),css('--sam'),{dash:[2,3],det:d+' · 50-step mean'}),nt));
+    if(samE)o.push(Object.assign(L('SAM 8B eval',ser(pg?SAM.eval:SAM.cb_eval,pg?SAM.eval_cols:SAM.cb_eval_cols,samE,samX),css('--sam'),{ev:1,pin:!samT,dash:[2,3],w:1.6,det:d+' · its own eval rows'}),nt))}
+  return o}
+/* D32 (10-12): the auxiliary direct backbone pose cb0 head vs the 4B pose tower (same positions and targets), with SAM 8B's pose cb0 */
+function headCh(){const o=[],m=mainP(),tc=PT().tcols,ec=PT().ecols;
+  if(m){const d=`PPM ${m.run} · jobs ${jobs(m)}`,dh=d+' · D32 head: Linear 5120→2048 on the backbone state at T−1, zero-init at its first step, auxiliary (inference uses the tower)';
+    o.push(L('PPM main (summed) tower',roll(ser(m.train,tc,'pose_cb0',poseX(m)),SM),css('--one'),{w:2.4,det:d+' · 4B pose tower cb0 CE'}),L('PPM main (summed) head',roll(ser(m.train,tc,'pose_head_cb0',poseX(m)),SM),css('--pose'),{w:2.4,det:dh}),
+           L('PPM main (summed) tower eval',ser(m.eval,ec,'pose_cb0',poseX(m)),css('--one'),{ev:1,dash:[6,4],det:d+' · eval: its own pose holdout'}),L('PPM main (summed) head eval',ser(m.eval,ec,'pose_head_cb0',poseX(m)),css('--pose'),{ev:1,dash:[6,4],det:dh+' · eval: its own pose holdout'}))}
+  if(SAM){const d='SAM 8B speech+pose · W&B stage2-pose-fast snapshot';o.push(L('SAM 8B',ser(SAM.cb_train,SAM.cb_train_cols,'pose_cb0',samX),css('--sam'),{dash:[2,3],det:d+' · 50-step mean'}),
+    L('SAM 8B eval',ser(SAM.cb_eval,SAM.cb_eval_cols,'pose_cb0',samX),css('--sam'),{ev:1,dash:[2,3],w:1.6,det:d+' · its own eval rows'}))}
+  if(P8){const r=poseRef();if(r)o.push(L('ref · PPM main tower eval',ser(r.eval,ec,'pose_cb0',poseX(r)),css('--ref'),{ev:1,dash:[6,4],det:'ref · PPM main · eval: its own pose holdout'}))}   /* 10-21 P8 reference */
+  return o}
+/* D33 (10-12, temporary): the 0.6B pose decoder's two input paths, eval only, same held-out pose rows and frames (2 rows/rank, <= 2048 decoder
+   frames each): both (normal) | tower-only (backbone link term zeroed) | backbone-only (tower term proj(hv_p) zeroed: slot 0 = the link alone).
+   Lines = cb1-31 mean CE; hover = cb1 / cb8 / cb16 / cb31 */
+function decpCh(){const o=[],m=mainP(),ec=PT().ecols;if(!m)return o;
+  const d=`PPM ${m.run} · jobs ${jobs(m)} · eval: its own pose holdout · D33 pose decoder slot 0 = proj(hv_p[T]) + α·W·hn[T−1]`,cbs=p=>[1,8,16,31].map(c=>[`cb${c}`,p+c]);
+  o.push(L('both',serT(m.eval,ec,'pose_light',poseX(m),cbs('pose_cb')),css('--one'),{ev:1,pin:1,w:2.4,det:d+' · both paths (normal)'}),
+         L('tower-only',serT(m.eval,ec,'decp_tow_light',poseX(m),cbs('decp_tow_cb')),css('--pose'),{ev:1,pin:1,w:2,dash:[6,4],det:d+' · backbone link term zeroed'}),
+         L('backbone-only',serT(m.eval,ec,'decp_bbo_light',poseX(m),cbs('decp_bbo_cb')),css('--dm'),{ev:1,pin:1,w:2,dash:[2,3],det:d+' · tower term zeroed (slot 0 = the link alone)'}));
+  return o}
+const s3ref=()=>(S().refs||[]).find(r=>r.id==='s3duplex');
+const HR=()=>{const H=D.hestia||{runs:[]};return H.runs.find(r=>r.visible)||H.runs[0]};
+function speechCh(col,s3col,refcol,dm){const o=[],s=S(),d=DPPM();
+  o.push(L('PPM main (summed)',roll(ser(s.train,s.train_cols,col,ppmX),SM),css('--one'),{w:2.4,det:d}),L('PPM main (summed) eval',ser(s.pts,s.cols,col,ppmX),css('--one'),{ev:1,dash:[6,4],det:d+' · eval: its own speech holdout (salt ppm-v1)'}));
+  if(s3col)o.push(L('PPM main (summed) eval · 103 rows',ser(s.pts,s.cols,s3col,ppmX),css('--one'),{ev:1,pin:!!dm,dash:[2,2],w:2,det:d+' · eval on the 103 stage-3 eval rows Demeter was scored on'}));
+  ilpCh(o,col,s3col,'its own speech holdout (salt ppm-v1)','eval on the 103 stage-3 eval rows Demeter was scored on',' · 103 rows',!!dm);
+  const R=s3ref();if(R&&refcol){const dd=`${R.run} · jobs ${jobs(R)} · eval: stage-3 eval rows (salt s3eval-v1)`;o.push(L('stage 3',roll(ser(R.train,R.train_cols,refcol,refX(R)),SM),css('--s3'),{det:dd}),L('stage 3 eval',ser(R.pts,R.cols,refcol,refX(R)),css('--s3'),{ev:1,dash:[6,4],det:dd}))}
+  const dc=typeof dm==='string'?dm:'B_nword';   /* Demeter column on the same rows (B_nword / B_pad / B_nw) */
+  if(dm){const M=D.dmour;if(M&&M.pts)o.push(L('Demeter · 103 rows',ser(M.pts,M.cols,dc,dmX),css('--dm'),{ev:1,pin:1,dash:[10,4],w:2,det:'Demeter (Hestia) checkpoints re-scored on the same 103 stage-3 eval rows, lane B'+(dc==='B_pad'?' (Demeter also scores the 3 tail PADs)':'')}));
+    const H=HR();if(H)o.push(L('Demeter logged',ser(H.eval,(D.hestia||{}).eval_cols,dc,dmX),css('--he'),{ev:1,dash:[14,5],w:1.4,det:'Demeter (Hestia) own logged eval, its own 80 rows, lane B'}))}
+  return o}
+function textCh(col,s3col,dm){const o=[],s=S(),d=DPPM();
+  o.push(L('PPM main (summed)',roll(ser(s.train,s.train_cols,col,ppmX),SM),css('--one'),{w:2.4,det:d}),L('PPM main (summed) eval',ser(s.pts,s.cols,col,ppmX),css('--one'),{ev:1,dash:[6,4],det:d+' · eval: its own holdout'}));
+  if(s3col)o.push(L('PPM main (summed) eval · packs 0..151',ser(s.pts,s.cols,s3col,ppmX),css('--one'),{ev:1,pin:1,dash:[2,2],w:2,det:d+' · eval on the stage-3 Gemma text-duplex packs 0..151, lane B'}));
+  ilpCh(o,col,s3col,'its own holdout','eval on the stage-3 Gemma text-duplex packs 0..151, lane B',' · packs 0..151',true);
+  if(dm){const T=D.dmtxd;if(T&&T.pts)o.push(L('Demeter · packs 0..151',ser(T.pts,T.cols,'B',dmX),css('--dm'),{ev:1,pin:1,dash:[10,4],w:2,det:'Demeter (Hestia) checkpoints on the same stage-3 text-duplex packs 0..151, lane B'}));
+    const H=HR();if(H)o.push(L('Demeter logged',ser(H.eval,(D.hestia||{}).eval_cols,'td_B_nword',dmX),css('--he'),{ev:1,dash:[14,5],w:1.4,det:'Demeter (Hestia) own logged text-duplex eval, its own 80 rows, lane B'}))}
+  return o}
+/* 10-17 CRITICAL tab: eval-only word CE norm per eval set; PPM main + ★ Next-arch 14B on by default (o.on), the stopped interleaved run off */
+function evalCh(col,lab,det){const o=[],s=S(),d=DPPM();o.push(L('PPM main (summed) eval'+lab,ser(s.pts,s.cols,col,ppmX),css('--one'),{ev:1,on:1,w:2,det:d+' · '+det}));
+  for(const [b,n,c,dd,X=brX] of RUNS())o.push(L(n+' eval'+lab,ser(b.pts,b.cols,col,X),css(c),{ev:1,on:b===NXT()||b===MOT()||b===VOX()||(!!VPAR()&&b===VOX1()),w:2,det:dd+' · '+det}));return o}
+/* 10-17 CRITICAL rate chart: rate of descent of speech word CE norm in nats per 100 steps (positive = improving). Train: −least-squares slope over a centred
+   RW-step window of the per-step values (by step, so PPM's thinned rows are fine), only where the window is fully covered (the curve ends RW/2 before the
+   last step). Eval: −Δ between consecutive own-holdout evals / Δsteps at the midpoint, centred 3-point mean. Window: the chart's ⋯ drawer (saved per browser). */
+let RW=200;if(AVG.c_rate==null){const r=+LS.get('ppm5_rw',0);if(r>=20&&r!==200)AVG.c_rate=r}   /* 10-17: RW = the c_rate avg box (min 20, empty = 200) */
+function lsRate(P){const o=[],h=RW/2;if(P.length<5)return o;const s0=P[0].s,s1=P[P.length-1].s;let a=0,b=0,n=0,sx=0,sy=0,sxx=0,sxy=0;
+  for(const p of P){const c=p.s;if(c-h<s0||c+h>s1)continue;
+    while(b<P.length&&P[b].s<=c+h){const q=P[b];sx+=q.s;sy+=q.y;sxx+=q.s*q.s;sxy+=q.s*q.y;n++;b++}
+    while(a<b&&P[a].s<c-h){const q=P[a];sx-=q.s;sy-=q.y;sxx-=q.s*q.s;sxy-=q.s*q.y;n--;a++}
+    const den=n*sxx-sx*sx;if(n>=5&&den>0)o.push({x:p.x,y:-100*(n*sxy-sx*sy)/den,s:c})}
+  return o}
+function evRate(P,xf=ppmX){const d=[];for(let i=1;i<P.length;i++){const ds=P[i].s-P[i-1].s;if(ds>0)d.push({s:(P[i].s+P[i-1].s)/2,y:-100*(P[i].y-P[i-1].y)/ds})}
+  return d.map((p,i)=>{const w=d.slice(Math.max(0,i-1),i+2);return {x:xf([p.s]),y:w.reduce((t_,q)=>t_+q.y,0)/w.length,s:Math.round(p.s)}})}
+/* 10-17 (user): the rate chart plots the DIFFERENCE ★ Next-arch 14B rate − PPM main rate (positive = the 14B descends faster), steps >= RMIN only, x axis from RMIN,
+   zero reference line. Train: each run's centred RW-step slope (lsRate), PPM's interpolated linearly to the 14B's steps; eval: evRate of each, PPM's interpolated to the 14B's eval-rate steps */
+const RMIN=300,SG14=P14?-1:1;   /* 10-21 P14: the difference / rate-difference charts plot ★ ppm14b − ref INTL 14B (branch − main, sign flipped) */
+const interp=(P,s)=>{let lo=0,hi=P.length-1;if(hi<0||s<P[0].s||s>P[hi].s)return null;while(hi-lo>1){const m=(lo+hi)>>1;if(P[m].s<=s)lo=m;else hi=m}
+  const a=P[lo],b=P[hi];return b.s===a.s?a.y:a.y+(b.y-a.y)*(s-a.s)/(b.s-a.s)};
+function rateCh(){RW=AVG.c_rate>0?Math.max(20,AVG.c_rate):200;const o=[],s=S(),n=NXT();if(!n)return o;
+  const diff=(A,B)=>A.filter(p=>p.s>=RMIN).map(p=>{const v=interp(B,p.s);return v==null?null:{x:p.x,y:SG14*(p.y-v),s:p.s}}).filter(Boolean);
+  const tr=diff(lsRate(ser(n.train,n.train_cols,'sp_nword',brX)),lsRate(ser(s.train,s.train_cols,'sp_nword',ppmX)));
+  const ev=diff(evRate(ser(n.pts,n.cols,'sp_nword',brX),brX),evRate(ser(s.pts,s.cols,'sp_nword',ppmX)));
+  const d=`★ Next-arch 14B rate − PPM main (summed) rate, −nats per 100 steps (positive = the 14B descends faster)`;
+  o.push(L('★ 14B − PPM',tr,css('--nxt'),{w:2.4,on:1,det:d+` · train: centred ${RW}-step least-squares slopes, PPM interpolated to the 14B's steps`}),
+         L('★ 14B − PPM eval',ev,css('--nxt'),{ev:1,on:1,w:2,dash:[6,4],det:d+' · eval: consecutive own-holdout evals (centred 3-point mean), PPM interpolated to the 14B eval steps'}));
+  const xe=Math.max(RMIN+1,...tr.map(p=>p.s),...ev.map(p=>p.s));
+  o.push(Object.assign(L('zero',[{x:brX([RMIN]),y:0,s:RMIN},{x:brX([xe]),y:0,s:xe}],css('--muted'),{on:1,w:1,dash:[2,3]}),{pointHitRadius:0}));
+  return o}
+/* 10-17 CRITICAL gap chart: speech − chat word CE norm (B) = how far speech lags text. Train: both series smoothed as everywhere (roll, header 'smooth' N points),
+   then subtracted at the steps where chat was logged (speech is logged every step, so the same row has both); eval: own-holdout speech − own-holdout chat, same eval rows */
+function gapCh(){const o=[],s=S(),n=NXT();const R=[[s.train,s.train_cols,s.pts,s.cols,'PPM main (summed)','--one',DPPM(),ppmX]];if(n)R.unshift([n.train,n.train_cols,n.pts,n.cols,'★ Next-arch 14B','--nxt',DNXT(),brX]);
+  for(const [tr,tc,ev,ec,nm,c,d,xf] of R){const sp=new Map(roll(ser(tr,tc,'sp_nword',xf),SM).map(p=>[p.s,p.y])),chs=roll(ser(tr,tc,'ch_nword',xf),SM);
+    const tg=chs.filter(p=>sp.has(p.s)).map(p=>({x:p.x,y:sp.get(p.s)-p.y,s:p.s}));
+    const i=C(ec,'sp_nword'),j=C(ec,'ch_nword'),eg=i<0||j<0?[]:(ev||[]).filter(r=>r[i]!=null&&r[j]!=null&&isFinite(r[i])&&isFinite(r[j])).map(r=>({x:xf(r),y:r[i]-r[j],s:r[0]}));tg._xf=eg._xf=xf;
+    o.push(L(nm,tg,css(c),{w:2.4,on:1,det:d+' · speech − chat, both smoothed over the header window first'}),L(nm+' eval',eg,css(c),{ev:1,on:1,w:2,dash:[6,4],det:d+' · eval: own-holdout speech − own-holdout chat, same eval step'}))}
+  return o}
+/* 10-17 CRITICAL: speech word CE norm difference ★ Next-arch 14B − PPM main (negative = the 14B is better), steps >= CDMIN only (x axis from CDMIN; the step-0
+   layout effect dominates before). Train: 14B per-step value − PPM interpolated to that step (PPM rows are every 3rd step), then a trailing mean over the
+   chart's avg box (default 50 steps); eval: own holdout and 103-row speech evals, 14B − PPM interpolated to the 14B eval steps; zero reference line */
+const CDMIN=150;
+function ceDiffCh(){const o=[],s=S(),n=NXT();if(!n)return o;const w=AVG.c_cediff>0?AVG.c_cediff:50;
+  const dif=(A,B)=>A.map(p=>{const v=interp(B,p.s);return v==null?null:{x:p.x,y:SG14*(p.y-v),s:p.s}}).filter(Boolean);
+  const tr=roll(dif(ser(n.train,n.train_cols,'sp_nword',brX),ser(s.train,s.train_cols,'sp_nword',ppmX)),w).filter(p=>p.s>=CDMIN);
+  const ev=c=>dif(ser(n.pts,n.cols,c,brX),ser(s.pts,s.cols,c,ppmX)).filter(p=>p.s>=CDMIN);
+  const d='★ Next-arch 14B − PPM main (summed), speech word CE norm (negative = the 14B is better)';
+  o.push(L('★ 14B − PPM',tr,css('--nxt'),{w:2.4,on:1,det:d+` · train: per-step difference (PPM interpolated to the 14B's steps), ${w}-step trailing mean`}),
+         L('★ 14B − PPM eval',ev('sp_nword'),css('--nxt'),{ev:1,on:1,w:2,dash:[6,4],det:d+' · eval: own speech holdout, PPM interpolated to the 14B eval steps'}),
+         L('★ 14B − PPM eval · 103 rows',ev('s3b_nword'),css('--nxt'),{ev:1,on:1,w:2,dash:[2,2],det:d+' · eval: the 103 stage-3 eval rows, lane B, PPM interpolated to the 14B eval steps'}));
+  const xe=Math.max(CDMIN+1,...o.flatMap(x=>x.data.map(p=>p.s)));
+  o.push(Object.assign(L('zero',[{x:brX([CDMIN]),y:0,s:CDMIN},{x:brX([xe]),y:0,s:xe}],css('--muted'),{on:1,w:1,dash:[2,3]}),{pointHitRadius:0}));
+  return o}
+/* GenghisBench (10-12): games won / 20 per checkpoint (ppm_doc.py gb(); v5 oracle, T 0.7); 60-game sets scaled to /20; references = flat dashed lines; hover = median questions to win */
+function gbCh(){const G=S().gbp;if(!G)return [];const o=[],mx=Math.max(1,...[...G.g20,...G.g60].map(r=>r[0]),S().step||0),gx=s=>ppmX([s]);
+  const pt=(r,sc)=>({x:gx(r[0]),y:r[1]*sc,s:r[0],t:`${r[1]}/${r[2]} won · median ${r[3]!=null?r[3]:'–'} questions to win`});
+  const P=(lab,d,col,o_)=>Object.assign(L(lab,Object.assign(d,{_xf:ppmX}),col,o_),{pointRadius:2.5,pointHoverRadius:4,_gb:1});
+  o.push(P('PPM main (summed) · 20 games',G.g20.map(r=>pt(r,1)),css('--one'),{pin:1,ev:P8?1:0,det:'seeds 100-119, v5 oracle, T 0.7, chat render as in training'}));
+  if(G.g60.length)o.push(P('PPM main (summed) · 60 games (scaled /20)',G.g60.map(r=>pt(r,20/60)),css('--one'),{pin:1,ev:P8?1:0,dash:[6,4],det:'seeds 200-259, wins × 20/60'}));
+  const GR=P8&&S().gbp_ref;if(GR){const Q=(lab,d,o_)=>Object.assign(L(lab,d,css('--ref'),o_),{pointRadius:2,pointHoverRadius:4,_gb:1});   /* 10-21 P8: PPM main's sets (ppm_doc.py gbp_ref) */
+    o.push(Q('ref · PPM main · 20 games',GR.g20.map(r=>pt(r,1)),{pin:1,ev:1,det:'PPM main checkpoints, seeds 100-119'}));if(GR.g60.length)o.push(Q('ref · PPM main · 60 games (scaled /20)',GR.g60.map(r=>pt(r,20/60)),{pin:1,ev:1,dash:[6,4],det:'PPM main checkpoints, seeds 200-259, wins × 20/60'}))}
+  const RC=['--dm','--he','--s3'];G.refs.forEach(([n,v,d],i)=>o.push(Object.assign(L(n,[{x:0,y:v},{x:gx(mx)*1.08,y:v}],css(RC[i%3]),{pin:1,dash:[4,4],w:1.2,det:d}),{_gb:1,pointHitRadius:0})));
+  return o}
+/* dependence probes (10-12). POSE: train_ppm codependence/* = the pose run's own probe (same keys); SPEECH: train_ppm xdep (B given A) vs Demeter / stage 3 (same rows, s3probe definitions) */
+const CDK='cd_pose_to_speech/d_word_ce_norm_pose_zero',CDP='cd_speech_to_pose/d_pose_cb0_ce_speech_sil';
+const CDHS=[['Δ word, pose shuffled','cd_pose_to_speech/d_word_ce_norm_pose_shuf'],['Δ cb0 zero','cd_pose_to_speech/d_cb0_ce_pose_zero'],['Δ cb0 shuf','cd_pose_to_speech/d_cb0_ce_pose_shuf'],['Δ light zero','cd_pose_to_speech/d_light_ce_pose_zero'],['timing r real','cd_timing/r_pnw_real_motion_real_input'],['r pose shuf','cd_timing/r_pnw_real_motion_pose_shuf_input']];
+const CDHP=[['Δ cb0, speech shuffled','cd_speech_to_pose/d_pose_cb0_ce_speech_shuf'],['Δ light sil','cd_speech_to_pose/d_pose_light_ce_speech_sil'],['Δ light shuf','cd_speech_to_pose/d_pose_light_ce_speech_shuf']];
+function codepCh(){const o=[],ec=PT().ecols;
+  for(const [run,nm,col,w] of [[mainP(),'PPM main (summed)',css('--one'),2.4]].concat(P8?[[poseRef(),'ref · PPM main',css('--ref'),1.6]]:[])){if(!run)continue;const d=`${run.run} · jobs ${jobs(run)} · eval-time probe on held-out pose clips (~1k positions/rank)`;
+    o.push(L(`${nm} · speech←pose`,serT(run.eval,ec,CDK,poseX(run),CDHS),col,{ev:1,pin:1,w,det:d+' · Δ speech word CE norm when the pose input is zeroed'}),
+           L(`${nm} · pose←speech`,serT(run.eval,ec,CDP,poseX(run),CDHP),col,{ev:1,pin:1,w,dash:[6,4],det:d+' · Δ pose cb0 CE when the speech input is silenced'}))}
+  return o}
+function codep4Ch(){const o=[],ec=PT().ecols,run=mainP();if(!run)return o;const X=poseX(run),d=`${run.run} · eval-time probe on held-out pose clips · Δ = ablated − intact`,c=css('--one'),cp=css('--pose');   /* 10-20 CRITICAL: the 4 text↔pose deltas, each its own line (speech_* ablates Mimi + word lane together) */
+  o.push(L('words ← pose · pose shuffled',serT(run.eval,ec,'cd_pose_to_speech/d_word_ce_norm_pose_shuf',X),c,{ev:1,pin:1,on:1,w:2.4,det:d+' · Δ speech word CE norm, pose from another clip'}),
+         L('words ← pose · pose zeroed',serT(run.eval,ec,CDK,X),c,{ev:1,pin:1,on:1,w:2.4,dash:[6,4],det:d+' · Δ speech word CE norm, pose input zeroed'}),
+         L('pose ← speech+words · shuffled',serT(run.eval,ec,'cd_speech_to_pose/d_pose_cb0_ce_speech_shuf',X,[['Δ light','cd_speech_to_pose/d_pose_light_ce_speech_shuf']]),cp,{ev:1,pin:1,on:1,w:2.4,det:d+' · Δ pose cb0 CE, audio + words from another clip'}),
+         L('pose ← speech+words · silenced',serT(run.eval,ec,CDP,X,[['Δ light','cd_speech_to_pose/d_pose_light_ce_speech_sil']]),cp,{ev:1,pin:1,on:1,w:2.4,dash:[6,4],det:d+' · Δ pose cb0 CE, words PAD + no audio'}));
+  if(P8){const r=poseRef();if(r){const R=poseX(r),c8=css('--ref'),dr='ref · PPM main';   /* 10-21 P8 reference */
+    o.push(L(dr+' · words ← pose · pose shuffled',serT(r.eval,ec,'cd_pose_to_speech/d_word_ce_norm_pose_shuf',R),c8,{ev:1,w:1.6,det:dr}),L(dr+' · words ← pose · pose zeroed',serT(r.eval,ec,CDK,R),c8,{ev:1,w:1.6,dash:[6,4],det:dr}),
+           L(dr+' · pose ← speech+words · shuffled',serT(r.eval,ec,'cd_speech_to_pose/d_pose_cb0_ce_speech_shuf',R),c8,{ev:1,w:1.6,det:dr}),L(dr+' · pose ← speech+words · silenced',serT(r.eval,ec,CDP,R),c8,{ev:1,w:1.6,dash:[6,4],det:dr}))}}
+  return o}
+function xdepCh(){const o=[],s=S(),d=DPPM()+' · 32 stage-3 eval rows × lanes A, B (both speakers on B) · Δ B word CE norm, A ablated − intact';
+  o.push(L('PPM main (summed) · A absent',serT(s.pts,s.cols,'xd_w_abs',ppmX,[['Δ cb0','xd_c_abs'],['intact','xd_real']]),css('--one'),{ev:1,pin:1,on:1,w:2.4,det:d+' · absent: channel A removed from the input'}),
+         L('PPM main (summed) · A silent',serT(s.pts,s.cols,'xd_w_sil',ppmX,[['Δ cb0','xd_c_sil'],['intact','xd_real']]),css('--one'),{ev:1,pin:1,on:1,w:2.4,dash:[6,4],det:d+' · silent: A text PAD + codec silence codes'}));
+  for(const [b,n,c,d0,X=brX] of RUNS()){const di=d0+' · same 32 rows and probe · Δ B word CE norm, A ablated − intact',p3=!!b&&b===P32();   /* 10-21 P14: PPM 32B = PPM's summed-layout probe (= ppm14b's), on by default */
+    o.push(L(n+' · A absent',serT(b.pts,b.cols,'xd_w_abs',X,[['Δ cb0','xd_c_abs'],['intact','xd_real']]),css(c),{ev:1,pin:1,on:b===NXT()||b===MOT()||b===MVX()||b===VOX()||(!!VPAR()&&b===VOX1())||p3,w:2.4,det:di+(p3?' · absent: channel A removed from the input':' · absent: A\'s user-text slot zeroed')}),
+           L(n+' · A silent',serT(b.pts,b.cols,'xd_w_sil',X,[['Δ cb0','xd_c_sil'],['intact','xd_real']]),css(c),{ev:1,pin:1,on:b===NXT()||b===MOT()||b===MVX()||b===VOX()||(!!VPAR()&&b===VOX1())||p3,w:2.4,dash:[6,4],det:di+(p3?' · silent: A text PAD + codec silence codes':' · silent: A\'s lane PAD')}))}
+  {const X=S().xprobe;if(X&&X.runs)for(const [id,n,c,ps] of [['next14b','★ Next-arch 14B','--nxt','circle'],['ppm_main','PPM main (summed)','--one','rectRot']].filter(x=>!P14||x[0]!=='ppm_main')){const P=X.runs[id]||[];if(!P.length)continue;   /* 10-17: offline probe (ppm_doc.py xprobe()), points ± 1 s.e. (EBPLUG) */
+    o.push(Object.assign(L(`probe: ${n} · swap`,P.map(r=>({x:(id==='ppm_main'?ppmX:brX)(r),y:r[1],s:r[0],e:r[2],t:r[2]!=null?`± ${(+r[2]).toPrecision(2)} (1 s.e.)`:''})),css(c),{ev:1,on:1,det:'offline probe (next-arch/probe_xdep): Δ word CE when the partner\'s text is replaced by another conversation\'s (swap), split all; bars = ±1 s.e.'}),{showLine:false,pointRadius:3.5,pointHoverRadius:5,pointStyle:ps,_eb:1}))}}
+  const M=D.dmxdepB;if(M&&M.pts){const dd='Demeter (Hestia) checkpoints · same 32 rows and probe · channel B, both swaps';
+    o.push(L('Demeter · A absent',serT(M.pts,M.cols,'gap_absent_B',dmX,[['intact','real_B']]),css('--dm'),{ev:1,pin:1,w:1.8,dash:[10,4],det:dd}),
+           L('Demeter · A silent',serT(M.pts,M.cols,'gap_silent_B',dmX,[['intact','real_B']]),css('--dm'),{ev:1,pin:1,w:1.8,dash:[3,3],det:dd}))}
+  const R=s3ref(),X=S().s3xdep;if(R&&X&&X.pts&&X.pts.length){const dd=`${X.run} · s3probe on its exports · same 32 rows and probe · channel B`;
+    o.push(L('stage 3 · A absent',serT(X.pts,X.cols,'w_abs',refX(R),[['Δ cb0','c_abs'],['intact','real']]),css('--s3'),{ev:1,pin:1,w:1.8,dash:[10,4],det:dd}),
+           L('stage 3 · A silent',serT(X.pts,X.cols,'w_sil',refX(R),[['Δ cb0','c_sil'],['intact','real']]),css('--s3'),{ev:1,pin:1,w:1.8,dash:[3,3],det:dd}))}
+  return o}
+function timeCh(){const s=S(),raw=k=>ser(s.train,s.train_cols,k,ppmX);const t=raw('step_s'),v=t.map(p=>p.y).sort((a,b)=>a-b),md=v[v.length>>1]||0,ok=p=>!md||p.y<5*md;
+  const o=[['step_s','PPM main (summed) s/step',css('--one'),2],['micro_pose','PPM main (summed) · pose',css('--pose'),1.3],['micro_speech','PPM main (summed) · speech',css('--dm'),1.3],['micro_text','PPM main (summed) · text',css('--he'),1.3]].filter(x=>!P14||x[0]!=='micro_pose').map(([k,n,c,w])=>L(n,Object.assign(raw(k).filter(ok),{_xf:ppmX}),c,{w,det:'seconds; eval steps dropped'}));
+  for(const [b,n,c,d,X=brX] of RUNS().filter(r=>r[0]!==P32())){const r=ser(b.train,b.train_cols,'step_s',X),w=r.map(p=>p.y).sort((a,c2)=>a-c2),m2=w[w.length>>1]||0;o.push(L(n+' s/step',r.filter(p=>!m2||p.y<5*m2),css(c),{w:2,det:'seconds; eval steps dropped · '+d}))}
+  return o}
+/* ---- LR tab (10-12): the logged per-group learning rates (ppm_doc.py lrs(): train/lr_<group>, train/dec_<s|p>_lr), one line per group, log y ---- */
+const LRC=['#1f6fd1','#e8590c','#2f9e44','#ae3ec9','#0c8599','#f08c00','#c2255c','#5c940d','#7048e8','#868e96','#d6336c','#1098ad'];
+const LRN={trunk:'trunk',spec:'spec',proj:'proj',audio:'audio',tower_s:'tower_s',tower_p:'tower_p',pose_head:'pose_head (D32)',decp_bb:'decp_bb (D33)',dec_s:'dec_s',dec_p:'dec_p'};
+function lrCh(){const Lr=S().lr||{cols:[],rows:[]},cs=(Lr.cols||[]).slice(1),ord=Object.keys(LRN);cs.sort((a,b)=>(ord.indexOf(a)+99*(ord.indexOf(a)<0))-(ord.indexOf(b)+99*(ord.indexOf(b)<0)));
+  const o=cs.map((c,i)=>Object.assign(L(LRN[c]||c,ser(Lr.rows,Lr.cols,c,r=>r[0]).filter(p=>p.y>0),LRC[i%LRC.length],{w:1.3}),{_lr:true}));
+  if(PA||PV)for(const b of PA?S().branches||[]:[VOX()].filter(Boolean))if(b.lr&&b.lr.rows){const bc=(b.lr.cols||[]).slice(1),tag=String(b.label||b.run).split(' · ')[0];   /* 10-23 PA (user: 26232 next to ★ samsep on every chart): a reference FT whose config "pass" has "lr" adds its LR groups, '<job> · <group>', dashed in its colour */
+    bc.sort((a,b_)=>(ord.indexOf(a)+99*(ord.indexOf(a)<0))-(ord.indexOf(b_)+99*(ord.indexOf(b_)<0)));for(const c of bc)o.push(Object.assign(L(tag+' · '+(LRN[c]||c),ser(b.lr.rows,b.lr.cols,c,r=>r[0]).filter(p=>p.y>0),ACOL(b),{w:1.3,dash:[6,3]}),{_lr:true}))}
+  return o}
+/* ---- 10-21 P8 CRITICAL (8,1,1 page): the switch's effect, evals: pose light (8,1,1 trains / evals the pose decoder with the D33 link OFF; probe = the frozen
+   link re-added) and pose cb0; forgetting: speech word CE norm / cb0 / light (own holdout + the 103 stage-3 rows), Gemma / chat / Gemma stage-3 packs word
+   CE norm; step time with the 8,1,1 micro split. ★ 8,1,1 (points: few evals) vs the dimmed PPM main reference ---- */
+const SW8=()=>{const M=(PP().marks||[]).filter(m=>m.kind!=='data');return M.length?M[0].step:null};      /* the switch step (ppm_doc.py: first GA change in the 8,1,1 chain) */
+const X8MIN=()=>{const w=SW8();return w==null?0:Math.max(0,w-Math.max(300,(END()-w)/2))};      /* Fit to ★ x range starts this many steps before the switch */
+function crit8(cols){const o=[],s=S(),R=REF(),d=DPPM(),dr=DREF(),B=DEC(),db=DDEC();
+  for(const [c,lab,dash] of cols){o.push(Object.assign(L('PPM main (summed) eval'+lab,ser(s.pts,s.cols,c,ppmX),css('--one'),{ev:1,on:1,w:2.4,dash:dash||[],det:d}),{pointRadius:2,pointHoverRadius:4}));
+    if(R)o.push(L('ref · PPM main eval'+lab,ser(R.pts,R.cols,c,brX),css('--ref'),{ev:1,on:1,w:1.6,dash:dash||[],det:dr}));
+    if(B){o.push(Object.assign(L(DECL()+' eval'+lab,ser(B.pts,B.cols,c,ppmX),css('--dec'),{ev:1,on:1,w:2.4,dash:dash||[],det:db}),{pointRadius:2,pointHoverRadius:4}));   /* 10-23: the LR-decay branch (its own evals from its start eval at 17,850) */
+      if(/^pose_/.test(c))o.push(Object.assign(L(DECL()+' train'+lab,roll(ser(B.train,B.train_cols,c,ppmX),SM),css('--dec'),{on:1,w:1.4,dash:dash||[],det:db+' · train: fresh pose rows, each seen once (trailing mean over the smooth / avg steps)'}),{_keep8:true}))}
+    if(/^pose_/.test(c)){const sw=SW8();o.push(Object.assign(L('PPM main (summed) train'+lab,roll(ser(s.train,s.train_cols,c,ppmX).filter(p=>sw==null||p.s>sw),SM),css('--pose'),{on:1,w:1.4,dash:dash||[],det:d+' · train: fresh pose rows, each seen once (trailing mean over the smooth / avg steps)'}),{_keep8:true}))}}   /* 10-22 (user): + training pose */
+  return o}
+function time8Ch(){const s=S(),raw=k=>ser(s.train,s.train_cols,k,ppmX);const t=raw('step_s'),v=t.map(p=>p.y).sort((a,b)=>a-b),md=v[v.length>>1]||0,ok=p=>!md||p.y<5*md;
+  const o=[['step_s','PPM main (summed) s/step','--one',2.4],['micro_pose','PPM main (summed) · pose, 8 micros','--pose',2],['micro_pose_full','PPM main (summed) · pose micro, backbone trained','--pose',1.2,[6,4]],
+    ['micro_pose_frozen','PPM main (summed) · pose micro, backbone frozen (each)','--pose',1.2,[2,2]],['micro_speech','PPM main (summed) · speech','--dm',2],['micro_text','PPM main (summed) · text','--he',2],['opt_s','PPM main (summed) · optimizer','--muted',1.2]]
+    .map(([k,n,c,w,dash])=>L(n,Object.assign(raw(k).filter(ok),{_xf:ppmX}),css(c),{w,on:1,dash:dash||[],det:'seconds; eval steps dropped'}));
+  const R=REF();if(R){const r=ser(R.train,R.train_cols,'step_s',brX),w=r.map(p=>p.y).sort((a,b)=>a-b),m2=w[w.length>>1]||0;o.push(L('ref · PPM main s/step',r.filter(p=>!m2||p.y<5*m2),css('--ref'),{w:1.6,on:1,det:'seconds; eval steps dropped · '+DREF()}))}
+  const B=DEC();if(B){const r=ser(B.train,B.train_cols,'step_s',ppmX),w=r.map(p=>p.y).sort((a,b)=>a-b),m2=w[w.length>>1]||0;o.push(L(DECL()+' s/step',r.filter(p=>!m2||p.y<5*m2),css('--dec'),{w:2,on:1,det:'seconds; eval steps dropped · '+DDEC()}))}   /* 10-23 */
+  return o}
+/* 10-23 (user) P8: LR multiplier, linear y. The LR-decay branch = its logged train/lr_mult (the multiplier the step used: 1 at 17,851 → 1/172 at 18,022; hover = its
+   logged next-step trunk / pose-decoder LRs); ★ 8,1,1 = its logged trunk LR ÷ its trunk LR at the branch point (constant LR = 1), from the 8,1,1 switch on. A note
+   under the chart (n8_) says when the branch has not logged a step yet. Both on CRITICAL (c8_dec_lr) and the LR tab (lr_decay). Fit to ★ on these two charts =
+   the decay window: from as many steps before the branch point as the decay lasts, to its end (+5 %) (fitRange; the x box / drawer still win). */
+const DECK=new Set(['c8_dec_lr','lr_decay']);
+function decLrCh(){const o=[],B=DEC(),M=S().lr||{},mc=M.cols||[],ti=C(mc,'trunk'),sw=SW8(),e2=v=>(+v).toExponential(2);
+  const mr=ti<0?[]:(M.rows||[]).filter(r=>r[ti]!=null&&isFinite(r[ti])&&(sw==null||r[0]>=sw)),s0=B&&B.from_step!=null?B.from_step:null;
+  const ref=(()=>{let v=null;for(const r of mr)if(s0==null||r[0]<=s0)v=r[ti];return v})();
+  if(mr.length&&ref>0){const P=mr.map(r=>({x:ppmX(r),y:r[ti]/ref,s:r[0],t:`trunk LR ${e2(r[ti])}`}));P._xf=ppmX;
+    o.push(L('PPM main (summed) · LR multiplier',P,css('--one'),{on:1,w:2.4,det:DPPM()+` · logged trunk LR ÷ ${e2(ref)} (its value${s0!=null?' at step '+f(s0):''}); constant LR = 1`}))}
+  if(B&&B.lr){const bc=B.lr.cols||[],mi=C(bc,'mult'),bi=C(bc,'trunk'),pi=C(bc,'dec_p');
+    if(mi>=0){const P=(B.lr.rows||[]).filter(r=>r[mi]!=null&&isFinite(r[mi])).map(r=>({x:ppmX(r),y:r[mi],s:r[0],t:[bi>=0&&r[bi]!=null?'next-step trunk LR '+e2(r[bi]):'',pi>=0&&r[pi]!=null?'pose decoder LR '+e2(r[pi]):''].filter(Boolean).join(' · ')}));P._xf=ppmX;
+      o.push(Object.assign(L(DECL()+' · LR multiplier',P,css('--dec'),{on:1,w:2.4,det:DDEC()+' · logged train/lr_mult (the multiplier each step used)'}),P.length<60?{pointRadius:2,pointHoverRadius:4}:{}))}}
+  return o}
+const decNote=()=>{const B=DEC();if(!B||!(B.train||[]).length)return 'LR-decay branch (run ppmdecay): awaiting its first step; its LR multiplier appears here once it logs.';
+  const L_=B.lr&&B.lr.rows&&B.lr.rows.length?B.lr.rows[B.lr.rows.length-1]:null,mi=B.lr?C(B.lr.cols,'mult'):-1,e=B.max_steps_set||B.max_steps;
+  return `LR-decay branch ${B.run} · jobs ${jobs(B)} · step ${B.step!=null?f(B.step):'–'} of ${e?f(e):'–'}${L_&&mi>=0&&L_[mi]!=null?' · multiplier '+(+L_[mi]).toFixed(4):''}${B.done?' · done':B.stopped!=null?' · stopped':''}`};
+const CRIT8=[['c8_plight','Pose light CE (B) · eval',()=>crit8([['pose_light','']])],
+  ['c8_pcb0','Pose cb0 CE (B) · eval',()=>crit8([['pose_cb0','']])],
+  ['c8_snw','Speech word CE norm (B) · eval (dotted = 103 stage-3 rows)',()=>crit8([['sp_nword',''],['s3b_nword',' · 103 rows',[2,2]]])],
+  ['c8_scb0','Speech cb0 CE (B) · eval (dotted = 103 stage-3 rows)',()=>crit8([['sp_cb0',''],['s3b_cb0',' · 103 rows',[2,2]]])],
+  ['c8_slight','Speech light CE (B) · eval (dotted = 103 stage-3 rows)',()=>crit8([['sp_light',''],['s3b_light',' · 103 rows',[2,2]]])],
+  ['c8_gm','Gemma word CE norm (B) · eval (dotted = stage-3 packs 0..151)',()=>crit8([['gm_nword',''],['g3b_nword',' · packs 0..151',[2,2]]])],
+  ['c8_ch','Chat word CE norm (B) · eval',()=>crit8([['ch_nword','']])],
+  ['c8_time','Step time (s)',time8Ch],
+  ['c8_lr','Learning rate per group (log)',lrCh],   /* 10-22 (user): LR curves on the CRITICAL tab */
+  ['c8_dec_lr','LR multiplier (linear) · LR-decay branch → 0 vs the 8,1,1 run (constant LR)',decLrCh]];   /* 10-23 (user) */
+const DROP8=new Set(['p_hcb0','p_decp','t_gb']);   /* 10-21 P8 (user): blank on the 8,1,1 page (no 8,1,1 points from the switch on; see ppm811 notes) */
+/* ---- 10-21 P14 CRITICAL (ppm14b page): ★ ppm14b vs the INTL 14B reference at matched steps / speech rows (same data plan per step): the evals per eval set
+   (normalised word CE = the headline), speech cb0 / light / PAD evals, the speech training curve, the ★ − ref difference and rate charts, B depends on A.
+   Eval lines on by default (o.on); ★ drawn with points while it has few evals ---- */
+function crit14(cols){const o=[],s=S(),b=NXT(),d=DPPM(),dn=DNXT(),p=P32(),dp=DP32(),mo=MOT(),dmo=mo?DMOT():'',mv=MVX(),dmv=mv?DMVX():'';
+  for(const [c,lab,dash] of cols){o.push(Object.assign(L('PPM main (summed) eval'+lab,ser(s.pts,s.cols,c,ppmX),css('--one'),{ev:1,on:1,w:2.4,dash:dash||[],det:d}),(s.pts||[]).length<60?{pointRadius:2,pointHoverRadius:4}:{}));
+    if(b)o.push(L('★ Next-arch 14B eval'+lab,ser(b.pts,b.cols,c,brX),css('--nxt'),{ev:1,on:1,w:1.8,dash:dash||[],det:dn}));
+    if(mo)o.push(Object.assign(L('MoT 14B eval'+lab,ser(mo.pts,mo.cols,c,brX),css('--mot'),{ev:1,on:1,w:1.8,dash:dash||[],det:dmo}),(mo.pts||[]).length<60?{pointRadius:2,pointHoverRadius:4}:{}));   /* 10-23: MoT evals, points while few */
+    if(mv){o.push(Object.assign(L('MoT 14B + audio in eval'+lab,ser(mv.pts,mv.cols,c,brX),css('--mvx'),{ev:1,on:1,w:2.4,dash:dash||[],det:dmv}),(mv.pts||[]).length<60?{pointRadius:2,pointHoverRadius:4}:{}));if(!(dash||[]).length)mvBase(o,mv,c,lab)}   /* 10-28: the audio-in run's evals (points while few) + its start eval as a flat dashed reference (solid series only) */
+    if(p)o.push(L('PPM 32B eval'+lab,ser(p.pts,p.cols,c,brX),css('--p32'),{ev:1,on:1,w:1.8,dash:dash||[],det:dp}))}   /* 10-21 (user): PPM 32B evals, same eval sets, x = its steps (same speech rows / step) */
+  return o}
+/* 10-28 P14 motvox: its eval at its first step (= MoT dcp-14839 + adapter, before any audio-in step) = a flat dashed reference in the muted colour
+   (as PPMVOX's: no fit / trend / hover, kept in the y range: _base); label 'MoT dcp-<N> start' (never matches MVRE / MoT's regexes) */
+function mvBase(o,b,c,lab){const p0=b.from_step!=null?ser(b.pts,b.cols,c,brX).find(p=>p.s===b.from_step):null;if(!p0)return;let xe=brX([XE||END()]);for(const d of o)for(const p of d.data)if(isFinite(p.x)&&p.x>xe)xe=p.x;
+  o.push(Object.assign(L(`MoT dcp-${b.from_step} start (step ${f(b.from_step)})${lab}`,[{x:p0.x,y:p0.y,s:b.from_step},{x:xe,y:p0.y}],css('--muted'),{on:1,w:2,dash:[10,5],det:`the audio-in run's eval at its first step ${f(b.from_step)} = MoT dcp-${b.from_step} before any audio-in step`}),{pointHitRadius:0,_base:1}))}
+/* 10-28 P14 motvox: its audio-in podcast eval (ppm_doc.py vp_* = eval_vpod*: held-out vpod rows, the user side = Voxtral → adapter only, no user text):
+   native loudness (solid) + the fixed-loudness passes (dashed), normalised word CE of B; MoT 14B's own-holdout speech eval (user TEXT in; MoT has no
+   audio-in eval) = the context before the switch; its start eval = the dashed reference */
+function mvEvCh(){const o=[],b=MVX(),mo=MOT();if(!b)return o;const d=DMVX()+' · eval: its held-out audio-in podcast rows (eval_vpod)';
+  if(mo)o.push(Object.assign(L('MoT 14B eval · own speech holdout (text in)',ser(mo.pts,mo.cols,'sp_nword',brX),css('--mot'),{ev:1,on:1,w:1.8,det:DMOT()+' · its own speech holdout with the user TEXT as input (MoT has no audio-in eval): context before the switch'}),(mo.pts||[]).length<60?{pointRadius:2,pointHoverRadius:4}:{}));
+  for(const [c,nm,dash,dd] of [['vp_nword','',[],'native loudness'],['vpl40_nword',' · −40 LUFS',[6,3],'user audio moved to −40 LUFS'],['vpl25_nword',' · −25 LUFS',[2,2],'user audio moved to −25 LUFS'],['vpl15_nword',' · −15 LUFS',[10,4],'user audio moved to −15 LUFS']]){
+    const P=ser(b.pts.filter(r=>r[0]>+b.from_step),b.cols,c,brX);if(P.length)o.push(Object.assign(L('MoT 14B + audio in eval · audio-in'+nm,P,css('--mvx'),{ev:1,on:1,w:dash.length?1.6:2.4,dash,det:d+' · '+dd}),P.length<60?{pointRadius:2,pointHoverRadius:4}:{}))}
+  /* 10-27 21:50 user ("i cant see this on the curve"): the step-14,839 point (untrained adapter, 5.87) squashed the axis, so it is left out; the same run's text-in eval (own speech holdout, user TEXT in) is the dotted reference */
+  {const T=ser(b.pts.filter(r=>r[0]>+b.from_step),b.cols,'sp_nword',brX);if(T.length)o.push(Object.assign(L('MoT 14B + audio in eval · text in',T,css('--mvx'),{ev:1,on:1,w:1.6,dash:[1,3],det:DMVX()+' · its own speech holdout with the user TEXT as input (the reference audio-in is compared to)'}),T.length<60?{pointRadius:2,pointHoverRadius:4}:{}))}
+  return o}
+/* 10-28 P14 motvox: listening = the same held-out audio-in rows scored with the user audio silent (zero waveform) / absent (no adapter input), Δ normalised
+   word CE of B vs native (eval_vpod_listen; bigger = listens more), + a zero line */
+function mvLsCh(){const o=[],b=MVX();if(!b)return o;const d=DMVX()+' · listening: its held-out audio-in rows with the user audio silent (zero waveform) / absent (no adapter input); Δ normalised word CE of B vs native (bigger = listens more)';
+  for(const [c,nm,dash] of [['vpx_sil','silent − native',[]],['vpx_abs','absent − native',[6,3]]]){const P=ser(b.pts.filter(r=>r[0]>+b.from_step),b.cols,c,brX);   /* 10-27 21:53: the untrained step-14,839 point squashed the axis; left out */
+   if(P.length)o.push(Object.assign(L('MoT 14B + audio in listening · '+nm,P,css('--mvx'),{ev:1,on:1,w:2.4,dash,det:d}),P.length<60?{pointRadius:2.5,pointHoverRadius:5}:{}))}
+  if(o.length){let x1=brX([XE||END()]);for(const x of o)for(const p of x.data)if(isFinite(p.x)&&p.x>x1)x1=p.x;o.push(Object.assign(L('no listening (Δ = 0)',[{x:brX([MWIN0()]),y:0},{x:x1,y:0}],css('--muted'),{on:1,w:1,dash:[2,3]}),{pointHitRadius:0,_base:1}))}
+  return o}
+/* 10-23 (user): TRAIN curves on the 14B CRITICAL tab, next to each eval chart: the ★ main run + every RUNS() run (INTL 14B, MoT 14B, PPM 32B), the page's trailing SM-step mean, x = steps (ppmX / the run's brX), = the SPEECH / TEXT tabs' training series (no eval series here) */
+function tr14(col){const o=[],s=S(),d=DPPM();o.push(L('PPM main (summed)',roll(ser(s.train,s.train_cols,col,ppmX),SM),css('--one'),{w:2.4,det:d}));
+  for(const [b,n,c,dd,X=brX] of RUNS())o.push(L(n,roll(ser(b.train,b.train_cols,col,X),SM),css(c),{w:2.4,det:dd}));return o}
+/* 10-25 P14 (user): "Plot difference" — see patch note above (c14_diff) */
+const DMET=PV?[['eval_vpod/word_ce_norm:e','PPMVOX podcast-Voxtral eval · normalised word CE (pooled)'],['train_vpod/word_ce_norm:t','PPMVOX podcast train · normalised word CE (vpod)'],
+  ['sp_nword:t','Speech word CE norm (B) · train (PPMVOX: podcast vpod / vpod_ad)'],['eval_text/word_ce_norm:e','PPMVOX text eval · normalised word CE'],['gm_nword:t','Gemma word CE norm (B) · train'],
+  ['s3b_nword:e','Speech word CE norm (B) · legacy speech_s3 eval, 103 rows'],['eval_vpod/light_ce:e','PPMVOX podcast eval · speech light CE'],['eval_vpod/cb0_ce:e','PPMVOX podcast eval · speech cb0 CE']]:[['sp_nword:t','Speech word CE norm (B) · train'],['sp_nword:e','Speech word CE norm (B) · eval, own holdout'],['s3b_nword:e','Speech word CE norm (B) · eval, 103 stage-3 rows'],
+  ['g3_nword:e','Gemma text-duplex word CE norm · eval, packs 0..151'],['gm_nword:t','Gemma word CE norm (B) · train'],['gm_nword:e','Gemma word CE norm (B) · eval, own holdout'],
+  ['ch_nword:t','Chat word CE norm (B) · train'],['ch_nword:e','Chat word CE norm (B) · eval'],['sp_cb0:t','Speech cb0 CE (B) · train'],['sp_cb0:e','Speech cb0 CE (B) · eval'],
+  ['sp_light:t','Speech light CE (B) · train'],['sp_light:e','Speech light CE (B) · eval'],['sp_pad:t','PAD CE (B) · train'],['sp_pad:e','PAD CE (B) · eval'],['sp_nw:t','NEW_WORD CE (B) · train']];
+const DRUNS=()=>(PV?[['vox',(VOX()||{}).run||'PPMVOX',VOX(),ppmX],...VXS().filter(VHAS).filter(x=>x!==VOX()).reverse().map(x=>['vx:'+x.run,x.run.replace(/^ppmvox-/,'')+(x===VPAR()?' (parent, to '+f(x.step)+')':' (stopped)'),x,ppmX]),['main','PPM main',S(),ppmX],['nxt','Next-arch 14B',NXT(),brX]].filter(r=>r[2]):null)||[['main','ppm14b',S(),ppmX],['mvx','MoT 14B + audio in',MVX(),brX],['mot','MoT 14B',MOT(),brX],['nxt','INTL 14B',NXT(),brX],['p32','PPM 32B',P32(),brX]].filter(r=>r[2]);
+let DSEL=LS.get('ppm7_diff',{})||{};
+function dSel(){const R=DRUNS(),ids=R.map(r=>r[0]),st=PV?'vox':STAR(),a=ids.includes(DSEL.a)?DSEL.a:ids.includes(st)?st:ids[0],b=ids.includes(DSEL.b)&&DSEL.b!==a?DSEL.b:PV&&ids.includes('main')&&a!=='main'?'main':P14&&a==='mvx'&&ids.includes('p32')?'p32':ids[(ids.indexOf(a)+1)%ids.length],m=DMET.some(x=>x[0]===DSEL.m)?DSEL.m:DMET[0][0];return {a,b,m}}
+function diffUI(){const R=DRUNS(),s=dSel(),op=(v,l,on)=>`<option value="${v}"${on?' selected':''}>${String(l).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c])}</option>`,sty='font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);padding:1px 4px';
+  return `<div class="dsel" style="display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:12px;color:var(--muted);margin:2px 0 6px">A <select id="dfa" style="${sty}">${R.map(r=>op(r[0],r[1],r[0]===s.a)).join('')}</select> − B <select id="dfb" style="${sty}">${R.map(r=>op(r[0],r[1],r[0]===s.b)).join('')}</select> metric <select id="dfm" style="${sty}">${DMET.map(([v,l])=>op(v,l,v===s.m)).join('')}</select></div>`}
+function diffCh(){const o=[],R=DRUNS(),s=dSel(),A=R.find(r=>r[0]===s.a),B=R.find(r=>r[0]===s.b),[col,kd]=s.m.split(':'),ev=kd==='e',cap=document.getElementById('cap_c14_diff');if(cap)cap.textContent='';
+  if(!A||!B||A===B)return o;const g=v=>(+v).toFixed(4),Sr=r=>(ev?ser(r[2].pts,r[2].cols,col,r[3]):roll(ser(r[2].train,r[2].train_cols,col,r[3]),SM)).filter(p=>p.s!=null&&isFinite(p.y)),PA_=Sr(A),PB=Sr(B);
+  const D=[];const vs=r=>PV&&/^ppmvox-v\d+[a-z]?$/.test((r[2]||{}).run||'')?(r[2].from_step||0):null,sA=vs(A),sB=vs(B),al=sA!=null&&sB!=null&&sA!==sB,PB2=al?PB.map(p=>Object.assign({},p,{s:p.s-sB+sA})):PB;   /* 10-25 PV: two PPMVOX runs on different lineages = aligned by vox step (B shifted onto A's steps) */
+  for(const p of PA_){const v=interp(PB2,p.s);if(v==null)continue;D.push({x:p.x,y:p.y-v,s:p.s,t:`A ${A[1]} ${g(p.y)} · B ${B[1]} ${g(v)} · A − B ${g(p.y-v)}`})}   /* B at A's steps, inside B's own step range only */
+  if(!D.length){if(cap)cap.textContent=`no common steps: ${A[1]} ${PA_.length?f(PA_[0].s)+'–'+f(PA_[PA_.length-1].s):'–'}, ${B[1]} ${PB.length?f(PB[0].s)+'–'+f(PB[PB.length-1].s):'–'}${PV&&VOX1()?` · pick B = ${VL1().replace(/ · PPMVOX$/,'')} to compare two PPMVOX runs by vox step`:''}`;return o}
+  D._xf=A[3];const lab=`Δ = ${A[1]} − ${B[1]} · ${(DMET.find(x=>x[0]===s.m)||[,''])[1]}`,N=AVG.c14_diff>0?AVG.c14_diff:200,last=D[D.length-1].s,W=D.filter(p=>p.s>last-N),mean=W.reduce((a,p)=>a+p.y,0)/W.length;
+  o.push(Object.assign(L(lab,D,css('--fg'),{ev:ev?1:0,on:1,w:2,det:`A − B, B linearly interpolated at A's steps within B's step range (no extrapolation)${ev?' · eval points':' · train, both smoothed over the header / avg window first'}`}),ev||D.length<60?{pointRadius:2.5,pointHoverRadius:5}:{}));
+  o.push(Object.assign(L('zero',[{x:D[0].x,y:0,s:D[0].s},{x:D[D.length-1].x,y:0,s:last}],css('--muted'),{on:1,w:1,dash:[2,3]}),{pointHitRadius:0,_src:lab}));   /* _src: no dotted trend on the difference (addTrends) */
+  if(cap)cap.textContent=`${A[1]} − ${B[1]}: mean over the last ${f(N)} steps (${f(W[0].s)}–${f(last)}, ${W.length} ${ev?'evals':'steps'}) = ${(mean>=0?'+':'')+g(mean)}${mean<0?' (A lower)':mean>0?' (A higher)':''}; common steps ${f(D[0].s)}–${f(last)}${al?` · aligned by vox step (B's steps shifted by ${f(sA-sB)})`:''}`;
+  return o}
+const CRIT14=[['c14_diff','Plot difference · run A − run B (aligned by step; B interpolated at A\'s steps, never extrapolated)',diffCh],['c14_snw','Speech word CE norm (B) · eval, own holdout',()=>crit14([['sp_nword','']])],
+  ['c_snw','Speech word CE norm (B) · train',()=>speechCh('sp_nword','s3b_nword','B_nword',true)],
+  ['c14_s3','Speech word CE norm · eval, 103 stage-3 rows (solid = lane B, dotted = lane A)',()=>crit14([['s3b_nword',' · 103 rows B'],['s3a_nword',' · 103 rows A',[2,2]]])],
+  ['c14_g3','Gemma text-duplex word CE norm · eval, stage-3 packs 0..151 (solid = pooled, dashed = lane B, dotted = lane A)',()=>crit14([['g3_nword',' · packs 0..151'],['g3b_nword',' · packs B',[6,4]],['g3a_nword',' · packs A',[2,2]]])],
+  ['c14_ch','Chat word CE norm (B) · eval',()=>crit14([['ch_nword','']])],
+  ['c14_ch_t','Chat word CE norm (B) · train',()=>tr14('ch_nword')],
+  ['c14_gm','Gemma word CE norm (B) · eval, own holdout',()=>crit14([['gm_nword','']])],
+  ['c14_gm_t','Gemma word CE norm (B) · train',()=>tr14('gm_nword')],
+  ['c14_cb0','Speech cb0 CE (B) · eval (dotted = 103 stage-3 rows)',()=>crit14([['sp_cb0',''],['s3b_cb0',' · 103 rows',[2,2]]])],
+  ['c14_cb0_t','Speech cb0 CE (B) · train',()=>tr14('sp_cb0')],
+  ['c14_light','Speech light CE (B) · eval (dotted = 103 stage-3 rows)',()=>crit14([['sp_light',''],['s3b_light',' · 103 rows',[2,2]]])],
+  ['c14_light_t','Speech light CE (B) · train',()=>tr14('sp_light')],
+  ['c14_pad','PAD CE (B) · eval (dotted = 103 stage-3 rows)',()=>crit14([['sp_pad',''],['s3b_pad',' · 103 rows',[2,2]]])],
+  ['c14_pad_t','PAD CE (B) · train',()=>tr14('sp_pad')],
+  ['c14_nw_t','NEW_WORD CE (B) · train',()=>tr14('sp_nw')],
+  ['c_cediff','Speech word CE norm difference · ppm14b − INTL 14B (negative = ppm14b better)',ceDiffCh],
+  ['c_rate','Rate of descent difference · ppm14b − INTL 14B (speech word CE norm, nats/100 steps; positive = ppm14b descends faster)',rateCh],
+  ['c_xdep','B depends on A (in-run Δ, swap probe)',xdepCh]];
+if(P14&&MVX()){for(const id of ['c14_ch_t','c14_gm_t','c_snw']){const i=CRIT14.findIndex(x=>x[0]===id);if(i>=0)CRIT14.unshift(CRIT14.splice(i,1)[0])}   /* 10-28 P14 motvox (rules: the live run's TRAIN normalised word CE on top; a short ★ branch's train charts first) */
+  CRIT14.splice(3,0,['c14_mvx_ev','MoT 14B + audio in · audio-in podcast eval · normalised word CE (B): user side = Voxtral → adapter, no user text (dashed = fixed-loudness passes, dotted = same run with user text in; start point 5.87 off-scale)',mvEvCh],
+    ['c14_mvx_ls','MoT 14B + audio in · listening: Δ normalised word CE (B) when the user audio is silent / absent (bigger = listens more)',mvLsCh])}
+const DROP14T=new Set(['ckpt','pose','hub']),DROP14=new Set(['t_gb']);   /* 10-21 P14: no pose data, PPM-only checkpoint / backup tables, no ppm14b GenghisBench */
+/* 10-24 PV: PPMVOX's headline evals (normalised word CE is the headline): CRITICAL podcast (pooled / user on A / assistant on A) + text; PPMVOX tab = per metric
+   podcast eval / text eval / podcast + pose train / text train charts, raw keys; x from its first step (fitRange), x = PPM's step axis, every series on */
+const VST=[['eval_vpod','eval · podcast, pooled',[]],['eval_vpod_userA','eval · podcast, user on A',[6,3]],['eval_vpod_asstA','eval · podcast, assistant on A',[2,2]],['eval_text','eval · text',[10,4]]],
+  VTR=[['train_vpod','podcast (vpod)',[]],['train_vpod_ad','podcast, adapter only (vpod_ad)',[6,3]],['train_gemma','text (Gemma)',[10,4]],['train_pose','pose rows',[2,2]]];
+let VFULL=!!LS.get('ppm7_vfull',false);const VWIN0=()=>{const b=VOX();return b&&b.from_step!=null?Math.max(0,b.from_step-461):16400};   /* 10-25: 461 steps before the ★ PPMVOX's first step (16,400 for the 16,861 lineage) */   /* 10-24 PV: header "Full history" off = the PPMVOX window [16,400, its last step] */
+function vCh(m,ev,sts){const o=[],b=VOX();if(!b)return o;const s=S(),pod=(sts||(ev?VST:VTR)).some(([st])=>/vpod/.test(st));
+  if(m==='word_ce_norm'&&pod){if(ev){o.push(Object.assign(L('PPM main (summed) · '+LEG3,ser(s.pts,s.cols,'s3b_nword',ppmX),css('--one'),{ev:1,on:1,w:2,det:DPPM()+' · eval on the 103 stage-3 eval rows (speech_s3, lane B), to its last step 16,861'}),{pointRadius:2,pointHoverRadius:4}),
+      Object.assign(L(VLAB()+' · '+LEG3,ser(b.pts,b.cols,'s3b_nword',ppmX),css('--vox'),{ev:1,on:1,w:2,dash:[2,2],det:DVOX()+' · the same 103 stage-3 eval rows (speech_s3, lane B; A = Mimi + text, as PPM)'}),{pointRadius:2,pointHoverRadius:4}))}
+    else o.push(L('PPM main (summed)',roll(ser(s.train,s.train_cols,'sp_nword',ppmX),SM),css('--one'),{on:1,w:2.4,det:DPPM()+' · train speech word CE norm (podcast rows, A = Mimi + text), to its last step 16,861'}))}   /* 10-24 (user): "add normalised word from before the switch so I can compare" */
+  for(const [st,nm,dash] of sts||(ev?VST:VTR)){const k=st+'/'+m,P=ev?ser(b.pts,b.cols,k,ppmX):roll(ser(b.train,b.train_cols,k,ppmX),SM);
+  if(P.length)o.push(Object.assign(L(VLAB()+' '+nm,P,css('--vox'),{ev:ev?1:0,on:1,w:dash.length?1.8:2.4,dash,det:DVOX()+' · '+k}),ev&&P.length<60?{pointRadius:2,pointHoverRadius:4}:{}))}
+  {const b1=VOX1();if(b1)for(const [st,nm,dash] of sts||(ev?VST:VTR)){const k=st+'/'+m,P=ev?ser(b1.pts,b1.cols,k,ppmX):roll(ser(b1.train,b1.train_cols,k,ppmX),SM);   /* 10-24: v1, faded */
+    if(P.length)o.push(L(VL1()+' '+nm,P,css(VC1()),{ev:ev?1:0,on:VON(),w:1.4,dash,det:DVOX1()+' · '+k}))}}
+  if(ev){const [st]=(sts||VST)[0],p0=ser(b.pts,b.cols,st+'/'+m,ppmX).find(p=>p.s===b.from_step);   /* PPM dcp-16861 = PPMVOX's eval at its first step: a flat dashed reference (as the aloe32 base line: no fit, kept in the y range) */
+    if(p0){let xe=ppmX([XE||b.max_steps||END()]);for(const d of o)for(const p of d.data)if(isFinite(p.x)&&p.x>xe)xe=p.x;o.push(Object.assign(L(`${b.base_label||'PPM dcp-'+f(b.from_step)} (step ${f(b.from_step)}) · ${(sts||VST)[0][1].replace(/^eval · /,'')}`,[{x:p0.x,y:p0.y,s:b.from_step},{x:xe,y:p0.y}],css('--muted'),{on:1,w:2,dash:[10,5],det:'the first PPMVOX eval = the PPM checkpoint it starts from, before any PPMVOX step'}),{pointHitRadius:0,_base:1}))}}
+  return o}
+let VFIT0=(v=>v>0?v:16927)(Math.round(+LS.get('ppm7_vfit',0)));   /* 10-24 PV: the PPMVOX fit's first step (header box) */
+const vFit0=()=>{const b=VOX(),s0=b&&b.from_step||0;return VFIT0>=s0?VFIT0:s0+66};   /* 10-25: a fit start before the ★'s first step (16,927 set for v3) = the same vox step (66) on the ★'s lineage */
+const VFK=/^(c_vpod|c_vtr|c_vtext|c_vttx|v_[etxg]_word_ce_norm|c_snw|s_nw|t_gm|c_esnw)$/;   /* the normalised word CE charts */
+function vFitAdd(k,ds){if(!PV||!VFK.test(k))return;const B=VOX();if(!B)return;const E=B.max_steps||17361,sE=Math.max(E,XE||0),g=v=>(+v).toFixed(4);
+  for(const d of ds.slice()){if(!/^PPMVOX/.test(d.label)||d._fc||d._fit||d._tr||d._base||d.hidden||d.showLine===false||/legacy|pose|listening|adapter only/.test(d.label)||!d.data||d.data.length<2)continue;
+    const ev=!!d._ev,P0=(d.data._raw&&!ev?roll(d.data._raw,10):d.data).filter(p=>p.s!=null&&p.s>=vFit0()&&isFinite(p.y)&&isFinite(p.x)),need=ev?4:20;
+    if(P0.length<need){d._det=(d._det||'')+` · fit from step ${f(vFit0())}: pending (${P0.length} of ${need} ${ev?'eval points':'steps'})`;continue}
+    let P=P0;if(P.length>400){const st=P.length/400;P=Array.from({length:400},(_,i)=>P0[Math.floor(i*st)]).concat([P0[P0.length-1]])}
+    const F=trendPL(P);if(!F||!isFinite(F.a)||!isFinite(F.b))continue;
+    const xf=d.data._xf||(d.data._raw&&d.data._raw._xf)||ppmX,yv=s=>F.a+F.b*Math.pow(s+F.s0,-F.c),s1=P0[0].s,yE=yv(E),o=[];
+    for(let i=0;i<=80;i++){const s=s1+(sE-s1)*i/80;o.push({x:xf([s]),y:yv(s),s:Math.round(s)})}
+    ds.push(Object.assign(L(`${d.label} · fit from step ${f(vFit0())} → ${g(yE)} at ${f(E)}`,o,d.borderColor,{dash:[8,4],w:2,on:1,det:`L = a + b·(step + s0)^−c by least squares on its ${P0.length} ${ev?'eval points':'10-step means'} at steps ${f(s1)}–${f(P0[P0.length-1].s)} only (from step ${f(vFit0())}: the header box); a ${g(F.a)}, b ${g(F.b)}, c ${(+F.c).toFixed(3)}, s0 ${F.s0} · at step ${f(E)}: ${g(yE)}`}),
+      {_fit:1,_vfit:1,_src:d.label,_end:E,_yend:yE,pointHitRadius:4}))}}
+const VCRIT=()=>VOX()?[['c_vtr','PPMVOX TRAIN normalised word CE (B) · podcast micros (adapter-only warm-up vpod_ad shaded, then vpod) + pose-row micros',()=>vCh('word_ce_norm',0,[VTR[0],VTR[1],VTR[3]])],
+  ['c_vttx','PPMVOX TRAIN normalised word CE · text micros (Gemma)',()=>vCh('word_ce_norm',0,[VTR[2]])],
+  ['c_vpod','PPMVOX speech eval (primary) · podcast-Voxtral word CE norm (B): user side = Voxtral latents only, no user text · pooled / user on A / assistant on A',()=>vCh('word_ce_norm',1,VST.slice(0,3))],
+  ['c_vtext','PPMVOX text word CE norm · eval: the fresh-text store eval packs',()=>vCh('word_ce_norm',1,VST.slice(3))],
+  ['c14_diff','Plot difference · run A − run B (aligned by step; two PPMVOX runs by vox step; B interpolated, never extrapolated)',diffCh]]:[];   /* 10-25 (user: "where is train norm ce"): the TRAIN normalised word CE charts first (podcast + pose micros, text micros), then the evals, then Plot difference */
+const LEG3='legacy PPM speech eval (user text + Mimi input; regression check only)';   /* 10-24 (main): speech_s3 relabelled while PPMVOX exists, so nobody reads it as the Voxtral task */
+function vListen(){const o=[],b=VOX(),X=b&&b.xdep_vpod;if(!X&&!(VOX1()||{}).xdep_vpod)return o;const R=(X||{}).rows||[],cs=(X||{}).cols||[],m='word_ce_norm',ci=c=>C(cs,`xdep_vpod/${c}/${m}`),ii=ci('intact');
+  const d0=DVOX()+' · listening probe (xdep_vpod): the same held-out podcast rows scored with the user\'s Voxtral audio intact / silent / absent; normalised word CE of B',P=(i,j)=>R.filter(r=>r[i]!=null&&(j==null||r[j]!=null)).map(r=>({x:ppmX(r),y:j==null?r[i]:r[i]-r[j],s:r[0]}));
+  for(const [c,nm,dash] of [['a_silent','A silent − intact',[]],['a_absent','A absent − intact',[6,3]]]){const i=ci(c);if(i>=0&&ii>=0){const p=P(i,ii);if(p.length)o.push(Object.assign(L(`${VLAB()} listening · ${nm}`,p,css('--vox'),{ev:1,on:1,w:2.4,dash,det:d0+' · Δ = '+nm+' (bigger = listens more)'}),{pointRadius:3,pointHoverRadius:5}))}}
+  for(const [c,nm,dash] of [['intact','intact',[]],['a_silent','A silent',[2,2]],['a_absent','A absent',[6,3]]]){const i=ci(c);if(i>=0){const p=P(i);if(p.length)o.push(Object.assign(L(`${VLAB()} listening raw · ${nm}`,p,css('--muted'),{ev:1,w:1.6,dash,det:d0+' · raw: '+nm}),{pointRadius:2,pointHoverRadius:4}))}}
+  {const b1=VOX1(),X1=b1&&b1.xdep_vpod;if(X1){const R1=X1.rows||[],c1=X1.cols||[],j=c=>C(c1,`xdep_vpod/${c}/${m}`),i0=j('intact');   /* 10-24: v1, faded */
+    for(const [c,nm,dash] of [['a_silent','A silent − intact',[]],['a_absent','A absent − intact',[6,3]]]){const i=j(c);if(i>=0&&i0>=0){const p=R1.filter(r=>r[i]!=null&&r[i0]!=null).map(r=>({x:ppmX(r),y:r[i]-r[i0],s:r[0]}));
+      if(p.length)o.push(Object.assign(L(`${VL1()} listening · ${nm}`,p,css(VC1()),{ev:1,on:VON(),w:1.4,dash,det:DVOX1()+' · listening probe, Δ = '+nm}),{pointRadius:2,pointHoverRadius:4}))}}}}
+  if(o.length){let x0=Infinity,x1=-Infinity;for(const d of o)for(const p of d.data){x0=Math.min(x0,p.x);x1=Math.max(x1,p.x)}o.push(Object.assign(L('no listening (Δ = 0)',[{x:Math.min(x0,ppmX([VWIN0()])),y:0},{x:Math.max(x1,ppmX([b.max_steps||x1])),y:0}],css('--muted'),{on:1,w:1,dash:[2,3]}),{pointHitRadius:0,_base:1}))}
+  return o}   /* 10-24 PV (PPMVOX lead): "a listening chart ... bigger gap = the model listens to the user's Voxtral audio. Step 16861 = PPM baseline point" */
+function vTab(){const b=VOX();if(!b)return [];const mo=m=>{const i=AMET.indexOf(m);return String(i<0?99:i).padStart(3,'0')+'|'+m},o=[],
+    ms=(cs,sts)=>[...new Set((cs||[]).filter(c=>sts.some(([s])=>c.startsWith(s+'/'))).map(c=>c.slice(c.indexOf('/')+1)))].sort((a,c)=>mo(a)<mo(c)?-1:1),id=m=>m.replace(/[^A-Za-z0-9]/g,'_');
+  for(const G of [[['e',b.cols,1,VST.slice(0,3),'eval: podcast-Voxtral, primary (pooled / user on A / assistant on A)'],['t',b.train_cols,0,[VTR[0],VTR[1],VTR[3]],'train: podcast (adapter-only warm-up vpod_ad, then vpod), pose rows']],
+      [['x',b.cols,1,VST.slice(3),'eval: text (the fresh-text store eval packs)'],['g',b.train_cols,0,[VTR[2]],'train: text (Gemma)']]])   /* podcast and text apart (different scales); per metric eval then train */
+    for(const m of [...new Set(G.flatMap(([,cs,,sts])=>ms(cs,sts)))].sort((a,c)=>mo(a)<mo(c)?-1:1))for(const [p,cs,ev,sts,t] of G)if(ms(cs,sts).includes(m))o.push([`v_${p}_${id(m)}`,`${ANM[m]||m} · PPMVOX ${t}`,()=>vCh(m,ev,sts)]);
+  o.unshift(['v_e_xdep','PPMVOX listening · Δ normalised word CE (B) when the user\'s Voxtral audio is removed: A silent − intact, A absent − intact (bigger = listens); raw curves in the legend',vListen]);   /* 10-24 PV: first; empty until xdep_vpod.jsonl lands */
+  return o}
+const TABS0=[['critical','CRITICAL',P8?CRIT8:P14?CRIT14:[...VCRIT(),      /* 10-17: first tab, opens by default; same chart functions as the tabs below (own chart ids, own legend state) */
+   ['c_xdep','B depends on A (in-run Δ, swap probe)',xdepCh],
+   ['c_snw','Speech word CE norm (B) · train',()=>speechCh('sp_nword','s3b_nword','B_nword',true)],
+   ['c_cediff','Speech word CE norm difference · 14B − PPM (negative = 14B better)',ceDiffCh],
+   ['c_rate','Rate of descent difference · 14B − PPM (speech word CE norm, nats/100 steps)',rateCh],
+   ['c_gap','Speech − Chat word CE norm (B)',gapCh],
+   ['c_esnw','Speech word CE norm (B) · eval, own holdout',()=>evalCh('sp_nword','','eval: its own speech holdout (salt ppm-v1)')],
+   ['c_es3','Speech word CE norm (B) · eval, 103 stage-3 rows',()=>evalCh('s3b_nword',' · 103 rows','eval on the 103 stage-3 eval rows Demeter was scored on, lane B')]]],
+  ['ckpt','CHECKPOINTS',[]],      /* 10-17: second tab, ckptRender() from ckpt_inventory.json */
+  ['pose','POSE',[
+   ['p_nw','Pose-row word CE norm (B)',()=>poseCh('pose_nword')],
+   ['p_cb0','Pose cb0 (B)',()=>poseCh('pose_cb0','pose_cb0','pose_cb0')],
+   ['p_hcb0','Pose cb0: head vs tower (B)',headCh],
+   ['p_light','Pose light (B)',()=>poseCh('pose_light','pose_light','pose_light',1)],
+   ['p_decp','Pose light: both vs tower-only vs backbone-only (B)',decpCh],
+   ['p_cb1','Pose cb1 (B)',()=>poseCh('pose_cb1','pose_light_cb1','pose_light_cb1')],
+   ['p_cb8','Pose cb8 (B)',()=>poseCh('pose_cb8',null,'pose_light_cb8')],
+   ['p_cb16','Pose cb16 (B)',()=>poseCh('pose_cb16',null,'pose_light_cb16')],
+   ['p_cb31','Pose cb31 (B)',()=>poseCh('pose_cb31','pose_light_cb31','pose_light_cb31')],
+   ['p_scb0','Speech cb0 on pose rows (B)',()=>poseCh('sp_cb0','audio_cb0','audio_cb0')],
+   ['p_slight','Speech light on pose rows (B)',()=>poseCh('sp_light','audio_light','audio_light',1)],
+   ['p_codep','speech↔pose dependence (B)',codepCh],
+   ['p_codep4','Text ↔ pose dependence (Δ loss when the other is hidden)',codep4Ch]]],
+  ['speech','SPEECH',[
+   ['s_nw','Speech word CE norm (B)',()=>speechCh('sp_nword','s3b_nword','B_nword',true)],
+   ['s_pad','PAD CE (B)',()=>speechCh('sp_pad','s3b_pad','B_pad','B_pad')],
+   ['s_nwd','NEW_WORD CE (B)',()=>speechCh('sp_nw','s3b_nw','B_nw','B_nw')],
+   ['s_cb0','Speech cb0 (B)',()=>speechCh('sp_cb0','s3b_cb0','B_cb0')],
+   ['s_light','Speech light (B)',()=>speechCh('sp_light','s3b_light','B_light')],
+   ['s_xdep','B depends on A',xdepCh],
+   ['s_cb8','Speech cb8 (B)',()=>speechCh('sp_light_cb8')],
+   ['s_cb16','Speech cb16 (B)',()=>speechCh('sp_light_cb16')],
+   ['s_cb31','Speech cb31 (B)',()=>speechCh('sp_light_cb31')],
+   ['s_time','Step time (s)',timeCh,1]]],
+  ['text','TEXT',[
+   ['t_gm','Gemma word CE norm (B)',()=>textCh('gm_nword','g3b_nword',true)],
+   ['t_ch','Chat word CE norm (B)',()=>textCh('ch_nword')],
+   ['t_gb','GenghisBench (games won / 20)',gbCh]]],
+  ['lr','LR',[['lr_all','Learning rate per group (log)',lrCh]].concat(P8?[['lr_decay','LR multiplier (linear) · LR-decay branch → 0 vs the 8,1,1 run (constant LR)',decLrCh]]:[])],   /* 10-23 P8: + the LR-decay branch */
+  ['hp','HYPERPARAMETERS',[]],
+  ['hub','BACKUPS',[]]];
+/* ---- 10-23 PA (user: "redo this page [the Aloe FT compare page] in our standard live page style with all the bells and whistles"; S3_PAGE=aloe32,
+   s3branches_aloe32.json, aloe_doc.py on every run's metrics.jsonl): ★ = the live Aloe FT (the main doc; legend name = its config "short"), every reference
+   FT a branch in its own colour (config color / color_dark; dashed = text (words) on A, solid = Voxtral latents on A). Columns = the trainers' own keys
+   (train_<stream>/<metric>, eval_<stream>/<metric>, train/loss, train/step_time). Charts come from the keys the runs log: CRITICAL = per metric the
+   eval_speech eval chart next to the train_speech train chart, normalised word CE first, then normalised word CE on every other eval / train stream; EVALS =
+   every other eval stream x metric; TRAIN = the other train keys; LR = the ★ run's LR groups. A key set that changes on a poll reloads the page. x = steps /
+   rows / epochs of each run's own data (aloe_doc.py rows_per_step, epoch_rows). Every series on by default (legend click hides). Header: the ★ run's step,
+   s/step, ETA, next eval / export step countdowns (aloe_doc.py next_eval_step / next_export_step). Red decision banner = klweb/decision_aloe32.txt ---- */
+const DARK=()=>{const t=document.documentElement.dataset.theme;return t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches)};
+const ALAB=()=>S().short||S().label||'live Aloe FT';
+const ACOL=b=>(DARK()?b.color_dark:b.color)||b.color||'#868e96';
+const aXf=b=>r=>{const m=xm(),rps=b.rows_per_step||64;return m==='ep'?r[0]*rps/(b.epoch_rows||16134):m==='rows'?r[0]*rps:r[0]};
+function chA(key,ev){const o=[],s=S(),d0=`${s.label||ALAB()} · ${s.run||''}${(s.jobs||[]).length?' · jobs '+jobs(s):''}`;
+  const one=(b,name,col,X,w,dash,det)=>{const P=ev?ser(b.pts,b.cols,key,X):roll(ser(b.train,b.train_cols,key,X),SM);if(P.length)o.push(Object.assign(L(name,P,col,{ev:ev?1:0,on:1,w,dash,det}),ev&&P.length<60?{pointRadius:2,pointHoverRadius:4}:{}))};
+  one(s,'PPM main (summed)',css('--fg'),ppmX,2.6,[],d0);   /* the ★ run: internal label 'PPM main (summed)' (★ / Fit to ★ / SL), shown as '★ <short>' */
+  let bi=o.length;(s.branches||[]).forEach((b,i)=>{one(b,b.label||b.run,ACOL(b),aXf(b),1.6,b.dash||[],`${b.label||b.run} · ${b.note||b.run} · jobs ${jobs(b)}`);if(!i)bi=o.length});
+  /* 10-23 (user: "next to sam sep can you put voxtral and the base checkpoint"): config "base_line" (build_stage3.py -> s3 base_line {label, det, vals: eval key
+     -> value}) = the ★ FT's base checkpoint at step 0: on each eval chart with a value, a flat dashed line in the muted colour from x 0 to the chart's right
+     edge (XE, as the trend lines), in the legend right after the first reference FT (26232). pointHitRadius 0 = a flat reference line: no trend / forecast /
+     contemporary fit, no hover (as the zero / GenghisBench reference lines); x 0 sits on the left edge on x log */
+  const bl=ev?s.base_line:null,bv=bl&&bl.vals?bl.vals[key]:null;
+  if(bv!=null&&isFinite(bv)){let xe=ppmX([XE||END()]);for(const d of o)for(const p of d.data)if(isFinite(p.x)&&p.x>xe)xe=p.x;
+    o.splice(bi,0,Object.assign(L(bl.label||'base (step 0)',[{x:0,y:bv,s:0},{x:xe,y:bv}],css('--muted'),{on:1,w:2,dash:[10,5],det:bl.det||''}),{pointHitRadius:0,_base:1}))}
+  return o}
+/* 10-24 PA (main: "add PPMVOX checkpoint evals as POINTS on the Aloe page"): s3 ckpt_pts = each PPMVOX export (w-N) evaluated on this page's Aloe eval
+   rows with no Aloe FT (aloe-ft-32-samsep/evalvox; step-0 eval of its eval-only run). Its own CRITICAL chart (first): normalised word CE only (pooled /
+   assistant on B / user on B, one marker shape each) against x = PPMVOX vox step (= PPM step − from_step), with the ★ FT's step-0 eval (its base) and its
+   last eval (final when done) as flat dashed references (no fit, kept in the y range). x title fixed (XT); points have no trends (showLine false) */
+const XT={a_vck:'PPMVOX vox step (= PPM step − 16,861) · each point = that PPMVOX checkpoint on this page\'s Aloe eval, no Aloe FT'};
+function ckA(){const o=[],s=S(),K=s.ckpt_pts;if(!K)return o;const d0=`PPMVOX checkpoints on the Aloe eval · ${K.note||K.label||''}`,col=DARK()?'#b197fc':'#471bc3';let xe=500;
+  const RU=[...new Set(K.runs||[])],cur=RU.includes('ppmvox-v2')?'ppmvox-v2':RU[RU.length-1];   /* 10-24: one series per PPMVOX run (v2 = the rerun: full colour; v1 = faded once v2 has points) */
+  for(const ru of RU.length?RU:[null])for(const [st,nm,ps] of [['eval_speech','pooled','rectRot'],['eval_asstB_speech','assistant on B','triangle'],['eval_userB_speech','user on B','rect']]){const i=C(K.cols,st+'/word_ce_norm');if(i<0)continue;
+    const P=(K.pts||[]).map((r,j)=>r[i]==null||(ru!=null&&(K.runs||[])[j]!==ru)?null:{x:r[0],y:r[i],s:r[0],t:`${ru||''} ${(K.tags||[])[j]||''} = PPM step ${f(r[1])} · vox step ${f(r[0])}`}).filter(Boolean);for(const p of P)xe=Math.max(xe,p.x);
+    const fd=ru!=null&&ru!==cur,cc=fd?col+'70':col,tag=ru?' '+ru.replace(/^ppmvox-/,''):'';
+    if(P.length)o.push(Object.assign(L(`PPMVOX${tag} ckpt · ${nm}${fd?' (stopped run)':''}`,P,cc,{ev:1,on:1,w:2,det:d0+' · '+(ru||'')+' · '+st+'/word_ce_norm'}),{showLine:false,pointRadius:(st==='eval_speech'?6:4.5)-(fd?1:0),pointHoverRadius:8,pointStyle:ps}))}
+  (K.controls||[]).forEach((c,j)=>{if(c.word_ce_norm!=null&&isFinite(c.word_ce_norm))o.push(Object.assign(L(`control ${c.control.replace(/^16861-w/,'16861 + ASR w-')} (${(+c.word_ce_norm).toFixed(4)})`,[{x:0,y:+c.word_ce_norm},{x:xe,y:+c.word_ce_norm}],css('--muted'),{on:1,w:1,dash:[[2,2],[6,2,2,2],[1,3]][j%3],det:'control: the PPM 16861 base with this ASR adapter on the same Aloe eval, no Aloe FT'+(c.note?' · '+c.note:'')}),{pointHitRadius:0,_base:1}))});   /* 10-24: evalvox/CONTROLS.jsonl */
+  const i=C(s.cols,'eval_speech/word_ce_norm'),P0=(s.pts||[]).find(r=>r[0]===0),PL=(s.pts||[]).slice(-1)[0],bl=(s.base_line||{}).label||'base (★ step 0)';
+  if(i>=0&&P0&&P0[i]!=null)o.push(Object.assign(L(`${bl} · ★ ${ALAB()} step 0`,[{x:0,y:P0[i]},{x:xe,y:P0[i]}],css('--muted'),{on:1,w:2,dash:[10,5],det:'the ★ FT\'s step-0 eval (its base checkpoint, untrained on Aloe), eval_speech'}),{pointHitRadius:0,_base:1}));
+  if(i>=0&&PL&&PL[0]>0&&PL[i]!=null)o.push(Object.assign(L(`${ALAB()} FT ${s.done?'final':'latest'} (FT step ${f(PL[0])})`,[{x:0,y:PL[i]},{x:xe,y:PL[i]}],css('--fg'),{on:1,w:2,dash:[4,4],det:'the ★ FT\'s '+(s.done?'final':'latest')+' eval, eval_speech'}),{pointHitRadius:0,_base:1}));
+  return o}
+const AMET=['word_ce_norm','pad_ce','nw_ce','word_ce','word_top1','text_ce','cb0_ce','cb0_top1','light_ce','light_ce_cb8','light_ce_cb16','light_ce_cb31','eob_ce','n_word'];
+const ANM={word_ce_norm:'Normalised word CE',pad_ce:'PAD CE',nw_ce:'NEW_WORD CE',word_ce:'Word CE',word_top1:'Word top-1',text_ce:'Text CE',cb0_ce:'Speech cb0 CE',cb0_top1:'Speech cb0 top-1',light_ce:'Speech light CE',
+  light_ce_cb8:'Speech cb8 CE',light_ce_cb16:'Speech cb16 CE',light_ce_cb31:'Speech cb31 CE',eob_ce:'EOB CE',n_word:'Words scored',loss:'Loss (total)',loss_aloe:'Loss · Aloe term',loss_zoom:'Loss · zoom term',step_time:'Step time (s)'};
+function aKeys(){const s=S(),E=new Set(),T=new Set();for(const b of [s].concat(s.branches||[])){for(const c of (b.cols||[]).slice(2))E.add(c);for(const c of (b.train_cols||[]).slice(2))T.add(c)}return [E,T]}
+const ASIGF=()=>JSON.stringify(aKeys().map(x=>[...x].sort()));
+function aTabs(){const [E,T]=aKeys(),sp=k=>{const i=k.indexOf('/');return [k.slice(0,i),k.slice(i+1)]},mo=m=>{const i=AMET.indexOf(m);return String(i<0?99:i).padStart(3,'0')+'|'+m},
+    so=st=>({eval_speech:0,train_speech:0,eval_asstB_speech:1,eval_userB_speech:2,eval_zoom:4,train_zoom:4})[st]??3,id=k=>'a_'+k.replace(/[^A-Za-z0-9]/g,'_'),
+    nm=k=>{const [st,m]=sp(k);return st==='train'?`${ANM[m]||m} · train`:`${ANM[m]||m} · ${st.startsWith('eval')?'eval':'train'}, ${st}`},
+    C=[],EV=[],TR=[],used=new Set(),add=(A,k,ev,sm)=>{used.add(k);A.push([id(k),nm(k),()=>chA(k,ev)].concat(sm?[1]:[]))},bySt=(a,b)=>so(sp(a)[0])-so(sp(b)[0])||(a<b?-1:a>b?1:0);
+  const mets=[...new Set([...E,...T].filter(k=>/^(eval_|train_)/.test(k)).map(k=>sp(k)[1]))].sort((a,b)=>mo(a)<mo(b)?-1:1);
+  for(const m of mets){if(E.has('eval_speech/'+m))add(C,'eval_speech/'+m,1);if(T.has('train_speech/'+m))add(C,'train_speech/'+m,0);
+    if(m==='word_ce_norm'){for(const k of [...E].filter(k=>sp(k)[1]===m&&!used.has(k)).sort(bySt))add(C,k,1);for(const k of [...T].filter(k=>sp(k)[1]===m&&!used.has(k)).sort(bySt))add(C,k,0)}}
+  for(const m of mets)for(const k of [...E].filter(k=>sp(k)[1]===m&&!used.has(k)).sort(bySt))add(EV,k,1);
+  for(const k of [...T].filter(k=>!used.has(k)).sort((a,b)=>mo(sp(a)[1])<mo(sp(b)[1])?-1:1))add(TR,k,0,k==='train/step_time');
+  if(PA&&S().ckpt_pts)C.unshift(['a_vck','PPMVOX checkpoints on the Aloe eval (no Aloe FT) · normalised word CE vs PPMVOX vox step',ckA]);   /* 10-24 PA */
+  if(PA&&(Array.isArray(S().lead)||E.has('eval_spk_speech/light_ce'))){const SP=Array.isArray(S().lead)?S().lead:[['eval_spk_speech/light_ce',1,'SPEAKER · held-out calls of this speaker · speech light CE (acoustic quality)'],['eval_spk_speech/cb0_ce',1,'SPEAKER · held-out calls of this speaker · speech cb0 CE'],
+      ['train_speech/light_ce',0,'SPEAKER · train · speech light CE'],['train_speech/cb0_ce',0,'SPEAKER · train · speech cb0 CE'],['eval_speech/word_ce_norm',1,'SPEAKER · standard eval · normalised word CE']];   /* 10-25 (user via main: "the ROSIE curves live NOW"): the single-speaker voice FTs' block, first */
+    for(let j=SP.length-1;j>=0;j--){const [k,ev,t]=SP[j];if(!(ev?E:T).has(k))continue;for(const A of [C,EV,TR]){const i=A.findIndex(x=>x[0]===id(k));if(i>=0)A.splice(i,1)}used.add(k);C.unshift([id(k),t,()=>chA(k,ev)])}}
+  return [['critical','CRITICAL',C],['evals','EVALS',EV],['train','TRAIN',TR],['lr','LR',[['lr_all','Learning rate per group (log) · ★ run'+(s=>s.length?' + '+s.join(', ')+' (dashed)':'')((S().branches||[]).filter(b=>b.lr&&b.lr.rows).map(b=>String(b.label||b.run).split(' · ')[0])),lrCh]]]]}
+const TABSA=PA?aTabs():null,ASIG=PA?ASIGF():'';
+const VSIGF=()=>{const b=VOX();return b?JSON.stringify([(b.cols||[]).slice().sort(),(b.train_cols||[]).slice().sort()]):''},VSIG=VSIGF();   /* 10-24 PV */
+let AFULL=!!LS.get('ppm7_afull',false);   /* 10-25 PA: header "Full history" (off = the config xwin) */
+function hdrA(){const s=S(),now=Date.now()/1000,lv=LIVE(s),E=s.max_steps,m=s.mean50_s,run=s.step!=null&&!s.done,left=run&&E&&m?Math.max(0,(E-s.step)*m-(now-(s.t_last||now))):null,sep='<span style="color:var(--muted)">·</span>';
+  const cd=(st,lab)=>{if(st==null||!run||!m)return '';const mn=Math.max(0,((st-s.step)*m-(now-(s.t_last||now)))/60);
+    return `<span title="${lab==='eval'?'eval every '+f(s.eval_every||25)+' steps':'export steps '+esc((s.export_steps||[]).join(', '))}; time from the 50-step mean step time">next ${lab} at step ${f(st)} (${mn<0.5?'due now':'in '+Math.round(mn)+' min'})</span>`};
+  return `<span><span class="dot${lv?'':' off'}"></span><span class="nm">★ ${esc(ALAB())}</span> ${esc(s.run||'')}${(s.jobs||[]).length?' · jobs '+esc(jobs(s)):''}</span>`+
+    (s.started?`<span>step ${s.step!=null?f(s.step):'–'} / ${E?f(E):'–'}</span><span>${m||'–'} s/step (50-step mean)</span><span>ETA ${left!=null?dt(now+left)+' ('+Math.round(left/60)+' min)':s.done?'done':'–'}</span>`+liveBits(s)+(s.state&&s.state!=='RUNNING'?`<span>${esc(s.state)}</span>`:'')
+      :`<span>${(s.jobs||[]).length?'job '+esc(s.jobs[s.jobs.length-1])+(s.state?' '+esc(s.state):'')+' · no metrics yet':'not launched yet: its slot is ready'}</span>`)+
+    (s.branches||[]).filter(LIVE).map(b=>{const lf=b.max_steps&&b.mean50_s&&b.step!=null?Math.max(0,(b.max_steps-b.step)*b.mean50_s-(now-(b.t_last||now))):null;   /* 10-24 (user rule): every LIVE reference FT gets its own header part + countdowns */
+      return sep+`<span><span class="dot"></span><span class="nm" style="color:${ACOL(b)}">${esc(b.label||b.run)}</span></span><span>step ${f(b.step)} / ${b.max_steps?f(b.max_steps):'–'}</span><span>${b.mean50_s||'–'} s/step</span><span>ETA ${lf!=null?dt(now+lf)+' ('+Math.round(lf/60)+' min)':'–'}</span>`+liveBits(b)}).join('')+
+    sep+`<span style="color:var(--muted)">${(s.branches||[]).length} reference FTs (in each legend)</span>`+(Array.isArray(s.xwin)?`<span class="seg"><button id="afull" aria-pressed="${AFULL}" title="off: every chart spans steps ${f(s.xwin[0])}–${f(s.xwin[1])} (the short speaker FTs); on: each chart's own range">Full history</button></span>`:'')}
+if(VOX()){const e=TABS0[0][2].find(x=>x[0]==='c_es3');if(e)e[1]='Speech word CE norm (B) · '+LEG3+' · 103 stage-3 rows'}   /* 10-24 (main) */
+if(VOX())TABS0.splice(1,0,['vox','PPMVOX',vTab()]);   /* 10-24 PV: the PPMVOX tab, second (after CRITICAL); here, after AMET / ANM */
+const TABS=PA?TABSA:P8?TABS0.map(([t,n,cs])=>[t,n,cs.filter(c=>!DROP8.has(c[0]))]):P14?TABS0.filter(([t])=>!DROP14T.has(t)).map(([t,n,cs])=>[t,n,cs.filter(c=>!DROP14.has(c[0]))]):TABS0;
+const SPEC={};for(const [t,,cs] of TABS)for(const c of cs)SPEC[c[0]]={tab:t,title:c[1],fn:c[2],sm:!!c[3]};
+/* ---- hover: every visible series' value at the hovered x (nearest point per series within 30 px), sorted by value ---- */
+Chart.Interaction.modes.ppmx=function(chart,e){const x=e.x,items=[];chart.data.datasets.forEach((d,di)=>{if(!chart.isDatasetVisible(di))return;const m=chart.getDatasetMeta(di);let b=-1,bd=1e9;
+  (m.data||[]).forEach((el,i)=>{if(!el||el.skip||!isFinite(el.x))return;const dx=Math.abs(el.x-x);if(dx<bd){bd=dx;b=i}});if(b>=0&&bd<=30)items.push({element:m.data[b],datasetIndex:di,index:b})});return items};
+const O=k=>OPT[k]||(OPT[k]={fit:true,slope:false,log:k==='lr_all'||k==='c8_lr',ymin:null,ymax:null,xmin:null,xmax:null});   /* 10-22: + per-chart x range in steps (drawer) */
+const vkey=(k,l)=>k+'|'+l;
+const DEFON=new Set(['★ Next-arch 14B','PPM main (summed)'].concat(P8?['ref · PPM main']:[]).concat(P14?['PPM 32B','MoT 14B','MoT 14B + audio in']:[]).concat(PV?[VLAB()].concat(VPAR()?[VL1()]:[]):[]));   /* 10-25: the stopped reference (VL1) is OFF at load (user: remove the stopped runs); its legend entry / Plot difference keep it */   /* 10-21 P14: + PPM 32B's training curve, as the INTL reference's */   /* 10-17 simple page: by default ONLY the two runs' training curves are on; every other series (evals, forecasts, refs, pose, GB, LR) stays in the legend, off */
+/* ---- 10-28 (user): run search + legend newest first. The search box in the tab bar (sessionStorage, per page path: the 60 s auto-reloads keep it) filters
+   every chart: a series whose text (its legend name + its run's name and job ids) misses any typed word (case-insensitive; all words must match) is hidden
+   and left out of the legend (QHID, checked in isHid; saved legend state untouched; empty box = as before). Each legend lists the run series newest first
+   (QSORT): run = the ★ / a branch (PA) or the ★ + RUNS() (other pages) whose name starts the series label (longest match); recency = its latest metric
+   time (t_last), then its newest job id; series of one run keep their order; series of no run (reference / base / control lines, LR groups) follow, in
+   their own order. Legend order only: datasets (draw order, indices) unchanged ---- */
+const QSK='ppm9_q:'+location.pathname,QSS={get(){try{return sessionStorage.getItem(QSK)||''}catch(e){return ''}},set(v){try{sessionStorage.setItem(QSK,v)}catch(e){}}};
+let RQ='',RQT=[];const rqSet=v=>{RQ=String(v||'');RQT=RQ.toLowerCase().split(/\s+/).filter(Boolean)};rqSet(QSS.get());
+const QSTR=t=>String(t==null?'':t).replace(/★ ?/g,'').trim();
+const QRUNS=()=>{const s=S(),o=[[s,PA?'PPM main (summed)':'PPM main']];if(PA)for(const b of s.branches||[])o.push([b,b.label||b.run]);else for(const r of RUNS())o.push([r[0],r[1]]);return o.filter(x=>x[0]&&x[1]).map(([b,n])=>[b,QSTR(n),n])};
+const RUNOF=d=>{const l=QSTR(d&&d.label);let best=null,bl=0;for(const [b,n] of QRUNS())if(n.length>bl&&l.startsWith(n)){best=b;bl=n.length}return best};
+const QHAS=h=>{h=h.toLowerCase();return RQT.every(w=>h.includes(w))};
+const QBH=b=>[b.run,(b.jobs||[]).join(' ')].filter(Boolean).join(' ');
+const QHID=d=>{if(!RQT.length||!d||d.label==null)return false;const b=RUNOF(d);return !QHAS(SL(d.label)+' '+(b?QBH(b):''))};
+const RREC=b=>{const t=+b.t_last,j=Math.max(0,...(b.jobs||[]).map(x=>parseInt(x,10)).filter(x=>isFinite(x)));return [isFinite(t)&&t>0?t:null,j]};
+function QSORT(c,ls){const ds=c.data.datasets,a=ls.map((l,i)=>{const b=RUNOF(ds[l.datasetIndex]);return {l,i,r:b?RREC(b):null}});
+  a.sort((x,y)=>!x.r||!y.r?(!x.r&&!y.r?x.i-y.i:x.r?-1:1):x.r[0]!=null&&y.r[0]!=null&&x.r[0]!==y.r[0]?y.r[0]-x.r[0]:(x.r[0]!=null)!==(y.r[0]!=null)?(x.r[0]!=null?-1:1):(y.r[1]-x.r[1])||(x.i-y.i));
+  return a.map(x=>x.l)}
+function rqCount(){const n=document.getElementById('rqn');if(!n)return;if(!RQT.length){n.textContent='';return}const R=QRUNS();n.textContent=`${R.filter(([b,,n0])=>QHAS(SL(n0)+' '+QBH(b))).length} of ${R.length} runs`}
+const isHid=(k,d)=>{if(d._tr)return !!d.hidden;if(QHID(d))return true;const v=VIS[vkey(k,d.label)];return v===undefined?!(/^lr_all$|^c8_lr$/.test(k)||(P8&&EV8[k]?(d._ev&&REV8.test(d.label))||d._defon:(DEFON.has(d.label)||d._defon))):!v};   /* _defon (o.on): a chart's own default-on series (10-17: B depends on A) */
+if(P8&&!LS.get('ppm8_evfirst',0)){for(const key of Object.keys(VIS))delete VIS[key];LS.set('ppm4_vis',VIS);LS.set('ppm8_evfirst',1)}   /* 10-21 P8: once, so the eval-first defaults show */
+if(!LS.get('ppm4_xdep_reset',0)){for(const key of Object.keys(VIS))if(key.startsWith('s_xdep|'))delete VIS[key];LS.set('ppm4_vis',VIS);LS.set('ppm4_xdep_reset',1)}   /* 10-17: once, so the new B-depends-on-A defaults show */
+function slope(k,d,x){const P=(d.data||[]).filter(p=>isFinite(p.x)&&isFinite(p.y));if(P.length<3)return '';const Q=P.map(p=>[Math.abs(p.x-x),p]).sort((a,b)=>a[0]-b[0]).slice(0,7).map(a=>a[1]);
+  const n=Q.length,mx=Q.reduce((a,p)=>a+p.x,0)/n,my=Q.reduce((a,p)=>a+p.y,0)/n,sxx=Q.reduce((a,p)=>a+(p.x-mx)**2,0);if(!(sxx>0))return '';const b=Q.reduce((a,p)=>a+(p.x-mx)*(p.y-my),0)/sxx;
+  const per=b*100*(SEG()?(()=>{const s=x2s(k,x);return evX(k,s+1)-evX(k,s)})():unitPerStep());return ` · slope ${per>0?'+':''}${per.toPrecision(3)}/100 ★ steps`}
+const ch={};
+const starMax=c=>{let m=0;for(const d of c.data.datasets)if(isStar(d))for(const p of d.data)if(isFinite(p.x))m=Math.max(m,p.x);
+  if(!m)for(const d of c.data.datasets)if(d.label.startsWith('PPM main')&&!d._tr)for(const p of d.data)if(isFinite(p.x))m=Math.max(m,p.x);   /* 10-17: no ★ (interleaved) data on this chart -> fit to PPM main, as before */
+  return m};
+function fitRange(k){const c=ch[k];if(!c)return;const o=O(k),sx=c.options.scales.x,sy=c.options.scales.y;sy.type=o.log?'logarithmic':'linear';sx.type=o.xlog?'logarithmic':'linear';   /* 10-23 (user): + x log (drawer) */
+  let xm_=starMax(c);for(const d of c.data.datasets)if(d._pin&&!isStar(d)&&!isHid(k,d)&&d.data.length)xm_=Math.max(xm_,d.data[0].x);   /* the same-rows pair: reach the reference's first point */
+  let xf_=0;for(const d of c.data.datasets)if(((FCON&&d._fc)||d._fit||d._tr)&&!isHid(k,d))for(const p of d.data)xf_=Math.max(xf_,p.x);   /* forecast on / fit lines shown: show out to their end = the user-set max steps (10-19: + the CRITICAL fit lines) */
+  sx.min=k==='c_rate'?ppmX([RMIN]):k==='c_cediff'?ppmX([CDMIN]):P8&&o.fit&&SW8()!=null?evX(k,X8MIN()):0;const VB=PV?VOX():null,VO=!!VB&&/^(c_v|v_[extg]_)/.test(k),VW=!!VB&&!VFULL&&(VO||STAR()==='vox'&&c.data.datasets.some(d=>/^PPMVOX/.test(d.label)&&d.data.length)),VX=VB?(t=>t==='pose'?poseX(mainP()):t==='lr'?(r=>r[0]):ppmX)(SPEC[k].tab):null;if(VW)sx.min=VX([VWIN0()]);const AW=PA&&!AFULL&&Array.isArray(S().xwin)&&!/^lr_/.test(k)&&k!=='a_vck';if(AW)sx.min=ppmX([S().xwin[0]]);   /* 10-25 PA: the default window spans the short speaker runs (Full history = off) */   /* 10-24 PV: the PPMVOX window (VWIN0 = 16,400) */sx.max=o.fit&&xm_>0?Math.max(xm_*1.08,xf_):undefined;if(AW)sx.max=ppmX([S().xwin[1]]);if((VW||VO)&&VB.max_steps)sx.max=VX([VB.max_steps]);   /* 10-24 PV: ... to its last step (17,361) */const MW=P14&&!MVFULL&&mvWin(c);if(MW){sx.min=evX(k,MWIN0());sx.max=evX(k,MWEND())}   /* 10-28 P14 motvox window (Full history off) */if(o.fit&&DECK.has(k)){const B=DEC(),E=B&&(B.max_steps_set||B.max_steps),s0=B&&B.from_step;if(s0!=null&&E>s0){sx.min=evX(k,2*s0-E);sx.max=evX(k,E+Math.ceil(0.05*(E-s0)))}}if(XMAX)sx.max=evX(k,XMAX);if(o.xmin!=null)sx.min=evX(k,o.xmin);if(o.xmax!=null)sx.max=evX(k,o.xmax);if((P8||VOX()||MW)&&sx.max!=null&&sx.min>=sx.max)sx.min=0;if(o.xlog&&!(sx.min>0)){let m=Infinity;for(const d of c.data.datasets)if(!isHid(k,d))for(const p of d.data)if(p.x>0&&p.x<m)m=p.x;sx.min=isFinite(m)?m:undefined}   /* x log: the axis starts at the smallest positive x shown (step-0 points sit on the left edge) */const DX0=k==='c14_diff'&&!o.xlog&&o.xmin==null?(()=>{const d=c.data.datasets[0];if(!d||!d.data.length)return null;const a=d.data[0].x,b=d.data[d.data.length-1].x;return a+0.05*(b-a)})():null;   /* 10-25 Plot difference: y fits steps past the first 5 % (the step-1 transient) */
+  const x0=DX0!=null?DX0:o.xlog?(sx.min>0?sx.min:-Infinity):o.xmin!=null?sx.min:VW||AW||MW?sx.min:o.fit?(P8&&sx.min>0?sx.min:0.1*Math.min(xm_,sx.max==null?Infinity:sx.max)):-Infinity,x1=sx.max==null?Infinity:sx.max;
+  let lo=Infinity,hi=-Infinity;const scan=a=>{for(const d of c.data.datasets){if(isHid(k,d)||d._base||(VW||AW||MW)&&(d._tr||d._fc||d._fit))continue;for(const p of d.data)if(p.x>=a&&p.x<=x1&&isFinite(p.y)){const e=isFinite(p.e)?p.e:0;lo=Math.min(lo,p.y-e);hi=Math.max(hi,p.y+e)}}};
+  scan(x0);if(!isFinite(lo))scan(-Infinity);
+  if(isFinite(lo))for(const d of c.data.datasets)if(d._base&&!isHid(k,d)&&d.data.length&&isFinite(d.data[0].y)){lo=Math.min(lo,d.data[0].y);hi=Math.max(hi,d.data[0].y)}   /* 10-23 PA: a shown flat base line (chA) is always inside the y range (its two points sit outside a fitted x range) */
+  if(isFinite(lo)){if(o.log){if(lo<=0)lo=hi/1e3;sy.min=lo/1.15;sy.max=hi*1.15}else{const pad=(hi-lo)*0.08||Math.abs(hi)*0.05||1;sy.min=SPEC[k].sm?0:lo-pad;sy.max=hi+pad}}else{delete sy.min;delete sy.max}
+  if(k==='t_gb'){sy.min=0;sy.max=20}   /* GenghisBench: fixed 0..20 */
+  if(DECK.has(k)&&!o.log){sy.min=0;sy.max=1.2}   /* 10-23: LR-multiplier charts: fixed 0..1.2 (drawer y min / max still win) */
+  if(o.ymin!=null)sy.min=o.ymin;if(o.ymax!=null)sy.max=o.ymax}
+const xTitle=()=>{const m=xm();return m==='st'?'optimiser steps (each run\'s own)':m==='rows'?PA?`rows seen (${f(PP().speech_rows_per_step||64)} per step; each run's own)`:`speech rows seen (${f(PP().speech_rows_per_step||256)} per step, the same data plan for ${P32()?'all three runs':'both runs'}${MVX()?'; MoT 14B + audio in: its own audio-in rows at that rate':''})`:m==='h'?'clip-hours seen':(TAB==='pose'?'epochs of each run\'s own pose data':'epochs of each run\'s own data')};
+/* ---- run-event markers (10-12): thin dotted vertical line + tiny label at each "[resume] D<n> ... ADDED at step N" event (ppm_doc.py events(), e.g. D32 pose head
+   at 1083), x mapped to the chart's mode for ★ PPM; drawn by a plugin (not a dataset: never in the legend or the axis fit); hovering within 5 px shows one line ---- */
+const evX=(k,st)=>SPEC[k].tab==='pose'?poseX(mainP())([st]):ppmX([st]);
+const x2s=(k,x)=>{const G=SEG(),u=evX(k,1)||1;if(!G||xm()==='st')return x/u;let g=G[0];for(const q of G)if(evX(k,q.s)<=x)g=q;const x0=evX(k,g.s),d=evX(k,g.s+1)-x0;return d>0?g.s+(x-x0)/d:g.s};   /* 10-21: x -> ★ PPM steps (inverse of evX; x/u while x is linear) */
+const evShort=w=>w.replace(/^(.*?)\s*\(.*$/,'$1');
+/* per-event label / hover text / colour (unknown tags: the log's own words, grey) */
+const EVL={P5:{lab:'new changes',hov:'P5 · 17850',col:'--fg'},D32:{lab:'pose head',hov:'pose head added',col:'--muted'},D33:{lab:'0.6B → backbone',hov:'0.6B decoder linked to backbone',col:'--evb'}};
+/* 10-21: schedule changes (ppm_doc.py ppm.marks: a chain leg whose GA differs from the previous leg's, e.g. 8,1,1 from step 16762) ride this plugin too:
+   dashed line in the text colour, bold label on a second row (left of the line when it would run off the plot), hover = the mark's detail */
+const EVS=()=>(S().events||[]).concat((PP().marks||[]).filter(m=>!m.hide).map((m,i)=>({tag:'GA',step:m.step,what:m.label,mk:m,row:i}))).concat(P32SW()).concat(MVSW());
+/* 10-21 P14: PPM 32B's 8,1,1 switch (its series end there) = one dashed marker in its colour (P32SW; nothing off P14) */
+const P32SW=()=>{const b=P32();if(!b||b.step==null)return [];return [{tag:'P32',step:b.step,what:'PPM 32B 8,1,1 switch',row:(PP().marks||[]).length,
+  mk:{kind:'p32',name:'PPM 32B 8,1,1',col:'--p32',detail:`PPM 32B switched to the 8,1,1 schedule after step ${f(b.step)} (8 pose, 1 speech, 1 text micros per step);\nits curves stop here: the 8,1,1 steps are not comparable and not shown`}}]};
+/* 10-28 P14: MoT 14B + audio in's start (its from_step = MoT's dcp-14839) = one dashed marker in its colour (MVSW; nothing off P14 / before it exists) */
+const MVSW=()=>{const b=MVX();if(!b||b.from_step==null)return [];return [{tag:'MVX',step:b.from_step,what:'MoT 14B + audio in',row:(PP().marks||[]).length+P32SW().length,
+  mk:{kind:'mvx',name:'MoT 14B + audio in',col:'--mvx',detail:`MoT 14B + audio in · ${f(b.from_step)}`}}]};   /* 10-27 USER RULE: hover = one short line */
+const evL=e=>e.mk?{lab:e.mk.kind==='data'?e.mk.label:`${e.mk.name} from step ${f(e.step)}`,hov:e.mk.detail||e.mk.label,col:e.mk.col||(e.mk.kind==='data'?'--dm':'--fg')}:EVL[e.tag]||{lab:evShort(e.what),hov:e.what+' added',col:'--muted'};
+const EVPLUG={id:'ppmev',
+  beforeDatasetsDraw(c){const k=c.canvas.id;if(!SPEC[k]||XT[k])return;const B=EVS().filter(e=>e.mk&&e.mk.band);if(!B.length)return;const a=c.chartArea,x=c.scales.x,g=c.ctx;g.save();   /* 10-21: a data-plan mark's all-rank band, shaded under the curves */
+    for(const e of B){const x0=Math.max(a.left,x.getPixelForValue(evX(k,e.mk.band[0]))),x1=Math.min(a.right,Math.max(x.getPixelForValue(evX(k,e.mk.band[1])),x0+2));if(!(x1>x0))continue;g.globalAlpha=0.16;g.fillStyle=css(evL(e).col);g.fillRect(x0,a.top,x1-x0,a.bottom-a.top)}g.restore()},
+  afterDatasetsDraw(c){const k=c.canvas.id,E=EVS();if(!E.length||!SPEC[k])return;const a=c.chartArea,x=c.scales.x,g=c.ctx;g.save();
+    for(const e of E){const px=x.getPixelForValue(evX(k,e.step));if(!(px>=a.left&&px<=a.right))continue;const ec=css(evL(e).col);g.strokeStyle=ec;g.lineWidth=1;g.setLineDash(e.mk?[6,4]:[2,3]);
+      g.beginPath();g.moveTo(px,a.top);g.lineTo(px,a.bottom);g.stroke();g.setLineDash([]);g.fillStyle=ec;g.font=e.mk?'600 10px system-ui,sans-serif':'10px system-ui,sans-serif';g.textAlign='left';
+      if(e.mk){const lb=evL(e).lab,rt=px+3+g.measureText(lb).width>a.right;g.textAlign=rt?'right':'left';g.fillText(lb,rt?px-3:px+3,a.top+22+12*(e.row||0))}else g.fillText(evL(e).lab,px+3,a.top+10)}
+    if(c.$evh){const T=String(c.$evh.t).split('\n'),n=T.length;g.font='12px system-ui,sans-serif';g.textAlign='left';const w=Math.max(...T.map(t=>g.measureText(t).width))+12,bx=Math.max(a.left,Math.min(c.$evh.x+8,a.right-w)),by=a.top+16;
+      g.fillStyle='rgba(0,0,0,0.8)';g.fillRect(bx,by,w,n>1?6+16*n:20);g.fillStyle='#fff';T.forEach((t,i)=>g.fillText(t,bx+6,by+14+16*i))}g.restore()},
+  afterEvent(c,args){const k=c.canvas.id,E=EVS(),ev=args.event;if(!SPEC[k]||!E.length)return;let hit=null;
+    if(ev.type!=='mouseout')for(const e of E){const px=c.scales.x.getPixelForValue(evX(k,e.step));if(Math.abs(ev.x-px)<=5&&ev.y>=c.chartArea.top&&ev.y<=c.chartArea.bottom){hit={x:px,t:`${e.mk?e.mk.name||e.mk.label||e.what:e.tag} · ${f(e.step)}`};break}   /* 10-27 USER RULE: one short line */}
+    const was=!!c.$evh;c.$evh=hit;if(hit){c.tooltip.setActiveElements([],{x:0,y:0});args.changed=true}else if(was)args.changed=true}};
+/* ---- 10-19 (user): extrapolations run at least to the USER-SET max steps (ppm_doc.py max_steps_set = PPM_MAX_STEPS in the run's env file, re-read every build),
+   not the trainer's max_steps (clamped to the end of the data); 10-20 (user): and on out to the right edge of whatever x range the chart shows (XE, set by upd);
+   a dotted vertical line at each full data epoch (ppm_doc.py epoch_steps = where the speech data plan ends; every k × epoch_steps inside the visible range) on every chart, labelled "1 epoch" / "2 epochs", x mapped like the event markers; a plugin, not a dataset (never in
+   the legend or the axis fit); hovering within 5 px names the step ---- */
+const END=()=>{const s=S();return s.max_steps_set||s.max_steps||17366};
+let XE=null;   /* 10-20: the extrapolation end (steps) of the chart being rendered = its visible right edge, at least max steps (upd) */
+const EPB=(k,c)=>{const e=S().epoch_steps,u=evX(k,1),o=[];if(P8&&(PP().marks||[]).some(m=>m.kind==='data'))return o;if(!(e>0)||!(u>0)||!c.scales.x)return o;const m=x2s(k,c.scales.x.max),EB=SEG()&&PP().epoch_bounds;if(EB)return EB.filter(b=>b<=m).slice(0,500);for(let i=1;i*e<=m&&i<=500;i++)o.push(i*e);return o};   /* every epoch boundary inside the visible x range */
+const EPPLUG={id:'ppmep',
+  afterDatasetsDraw(c){const k=c.canvas.id;if(!SPEC[k]||XT[k])return;const B=EPB(k,c);if(!B.length)return;const a=c.chartArea,x=c.scales.x,g=c.ctx,col=css('--fg');g.save();
+    B.forEach((st,i)=>{const px=x.getPixelForValue(evX(k,st));if(!(px>=a.left&&px<=a.right))return;g.strokeStyle=col;g.globalAlpha=0.7;g.lineWidth=1.4;g.setLineDash([1.5,3]);
+      g.beginPath();g.moveTo(px,a.top);g.lineTo(px,a.bottom);g.stroke();g.setLineDash([]);g.globalAlpha=1;g.fillStyle=col;g.font='600 10px system-ui,sans-serif';g.textAlign='right';g.fillText(i?(i+1)+' epochs':'1 epoch',px-3,a.top+10)});
+    if(c.$eph){const t=c.$eph.t;g.font='12px system-ui,sans-serif';g.textAlign='left';const w=g.measureText(t).width+12,bx=Math.max(a.left,Math.min(c.$eph.x-w-8,a.right-w)),by=a.top+16;
+      g.fillStyle='rgba(0,0,0,0.8)';g.fillRect(bx,by,w,20);g.fillStyle='#fff';g.fillText(t,bx+6,by+14)}g.restore()},
+  afterEvent(c,args){const k=c.canvas.id,ev=args.event;if(!SPEC[k])return;const B=EPB(k,c);if(!B.length)return;let hit=null;
+    if(ev.type!=='mouseout')B.forEach((st,i)=>{const px=c.scales.x.getPixelForValue(evX(k,st));if(!hit&&Math.abs(ev.x-px)<=5&&ev.y>=c.chartArea.top&&ev.y<=c.chartArea.bottom)hit={x:px,t:`${i?(i+1)+' epochs':'1 epoch'} · ${f(Math.round(st))}`}});
+    const was=!!c.$eph;c.$eph=hit;if(hit){c.tooltip.setActiveElements([],{x:0,y:0});args.changed=true}else if(was)args.changed=true}};
+/* 10-17: error bars (±e) for datasets flagged _eb (the offline xdep probe points) */
+const EBPLUG={id:'ppmeb',afterDatasetsDraw(c){const g=c.ctx,y=c.scales.y,a=c.chartArea;c.data.datasets.forEach((d,i)=>{if(!d._eb||!c.isDatasetVisible(i))return;const m=c.getDatasetMeta(i);g.save();g.strokeStyle=d.borderColor;g.lineWidth=1.2;
+  d.data.forEach((p,j)=>{const el=m.data[j];if(!el||p.e==null||!isFinite(p.e)||el.x<a.left||el.x>a.right)return;const y0=y.getPixelForValue(p.y-p.e),y1=y.getPixelForValue(p.y+p.e);g.beginPath();g.moveTo(el.x,y0);g.lineTo(el.x,y1);g.moveTo(el.x-3,y0);g.lineTo(el.x+3,y0);g.moveTo(el.x-3,y1);g.lineTo(el.x+3,y1);g.stroke()});g.restore()})}};
+/* 10-27 USER RULE ("your tool tip is long and annoying never do this again for any run"): every chart hover = ONE short line run · step · value, no title row,
+   descriptions, notes or per-point extras. run = the curve's legend name (SL) without ★ / (…) asides (Plot difference: just Δ = A − B); step = the point's own step (s), else x in steps;
+   value as before (GenghisBench n/20, LR 1e-5 form; the opt-in "Slope on hover" appends its slope) */
+const TIPN=d=>{let n=String(SL(d.label)).replace(/★ ?/g,'');for(let i=0;i<3;i++)n=n.replace(/ ?\([^()]*\)/g,'');if(/^Δ = /.test(n))n=n.split(' · ')[0];return n.replace(/\s+/g,' ').trim()};
+const TIPS=(k,t)=>{const s=t.raw&&t.raw.s!=null?+t.raw.s:x2s(k,t.parsed.x);return isFinite(s)?f(Math.round(s)):'–'};
+const TIPV=(k,t)=>{const d=t.dataset,y=+t.parsed.y;return d._gb?`${y.toFixed(Number.isInteger(y)?0:1)}/20`:d._lr?y.toExponential(2):y.toPrecision(4)+(O(k).slope&&!(d._fit||d._fc||d._tr)?slope(k,d,t.parsed.x):'')};
+function mkChart(k){const sp=SPEC[k],cv=document.getElementById(k);if(!cv||ch[k])return;
+  const c=new Chart(cv,{type:'line',plugins:[EVPLUG,EBPLUG,EPPLUG,XCPLUG,VXPLUG],data:{datasets:[]},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false,axis:'xy'},
+    scales:{x:{type:'linear',min:0,title:{display:true,text:''},grid:{color:css('--line')},ticks:{color:css('--muted'),maxTicksLimit:8}},y:{grid:{color:css('--line')},ticks:{color:css('--muted')}}},
+    plugins:{legend:{position:'bottom',labels:{boxWidth:16,boxHeight:2,color:css('--fg'),font:{size:11},generateLabels:c2=>QSORT(c2,Chart.defaults.plugins.legend.labels.generateLabels(c2).filter(l=>{const d=c2.data.datasets[l.datasetIndex]||{};return !d._tr&&!QHID(d)}).map(l=>(l.text=SL(l.text),l)))}   /* 10-28: search filter + newest run first (QSORT) */,   /* 10-19: ★ on the live run's entries (SL) */onClick:(e,it,lg)=>{const d=lg.chart.data.datasets[it.datasetIndex];VIS[vkey(k,d.label)]=isHid(k,d);LS.set('ppm4_vis',VIS);d.hidden=isHid(k,d);upd(k)}},
+      tooltip:{mode:'nearest',intersect:false,axis:'xy',filter:(it,i)=>i===0,displayColors:true,boxWidth:10,boxHeight:10,boxPadding:4,   /* hover = only the curve under the cursor */callbacks:{title:()=>'',label:t=>`${TIPN(t.dataset)} · ${TIPS(k,t)} · ${TIPV(k,t)}`}},   /* 10-27 USER RULE: one short line run · step · value */
+      zoom:{zoom:{drag:{enabled:true,threshold:10,backgroundColor:'rgba(31,111,209,0.12)',borderColor:'rgba(31,111,209,0.6)',borderWidth:1},mode:'xy',onZoomComplete:()=>{c.$z=true;upd(k)}}}}}});
+  cv.ondblclick=()=>{try{c.resetZoom('none')}catch(e){}c.$z=false;upd(k)};
+  ch[k]=c;upd(k)}
+/* ---- forecast (10-12): saturating power law L(s) = a + b·(s + s0)^(−c) fitted by least squares on each ★ PPM training curve (10-step mean; c, s0 on a grid,
+   a, b closed form), window = steps ≥ 400 for decoder metrics (cb / light: dec_k 4→8 and light coverage 0.1→1.0 at step 399), ≥ 100 otherwise; drawn dotted from
+   the last step to the run end (max_steps); refit on every refresh; header "Forecast" toggle (all tabs, saved per browser) ---- */
+let FCON=LS.get('ppm2_fc',true);const FCW=2500;   /* 10-14: fit window = the last 2500 steps (earlier recipe phases — D31–D35 — distorted a whole-run fit) */
+const FCK=/^(p_(nw|cb\d+|light|scb0|slight)|s_(nw|pad|nwd|cb0|light|cb\d+)|t_(gm|ch))$/;
+function fitPL(P){const n=P.length;let best=null;const s0s=[0,25,100,300,1000,3000,10000];
+  for(const s0 of s0s)for(let ci=1;ci<=80;ci++){const c=ci*0.025;let sx=0,sy=0,sxx=0,sxy=0;for(const p of P){const x=Math.pow(p.s+s0,-c);sx+=x;sy+=p.y;sxx+=x*x;sxy+=x*p.y}
+    const den=n*sxx-sx*sx;if(!(Math.abs(den)>1e-18))continue;const b=(n*sxy-sx*sy)/den,a=(sy-b*sx)/n;if(a<0||b<0)continue;   /* CE floor a ≥ 0 (an unconstrained fit can extrapolate below zero) */let e=0;for(const p of P){const r=a+b*Math.pow(p.s+s0,-c)-p.y;e+=r*r}
+    if(!best||e<best.e)best={a,b,c,s0,e}}
+  return best}
+function forecast(k,d,ev,lab){const end=XE||END();if(!end||!d||!d.data.length)return null;const lo0=/cb|light/.test(k)?400:100,mn=ev?8:30;const P0=(ev||!d.data._raw?d.data:roll(d.data._raw,10)).filter(p=>p.s!=null&&isFinite(p.y));const lsx=P0.length?P0[P0.length-1].s:0,lo=Math.max(lo0,lsx-FCW);const P=P0.filter(p=>p.s>=lo);
+  if(P.length<mn){d._det=(d._det?d._det+' · ':'')+`forecast: fit pending (${P.length} of ${mn} points at steps ≥ ${lo})`;return null}
+  if(!SPANOK(P,end)){d._det=(d._det?d._det+' · ':'')+'forecast: pending (fit window too short for the extrapolation)';return null}
+  const last=P[P.length-1],kx=last.s?last.x/last.s:1,tl=P.slice(-Math.max(5,Math.floor(P.length/5)));let F=fitPL(P);
+  if(!F){const lv=tl.reduce((t,p)=>t+p.y,0)/tl.length;F={a:lv,b:0,c:1,s0:0,flat:1}}else{F.a+=tl.reduce((t,p)=>t+p.y-(F.a+F.b*Math.pow(p.s+F.s0,-F.c)),0)/tl.length}   /* anchor: shift a so the curve meets the recent level (mean residual of the last 20% of the window) — no jump at the join; no decreasing fit (flat/rising) -> hold the recent level */
+  const o=[];for(let i=0;i<=80;i++){const st=last.s+(end-last.s)*i/80;o.push({x:SEG()?evX(k,st):st*kx,y:F.a+F.b*Math.pow(st+F.s0,-F.c),s:Math.round(st)})}
+  const yEnd=o[o.length-1].y,col=lab&&d.label!=='PPM main (summed) eval'?d.borderColor:css(ev?'--fce':'--one');const g=v=>(+v).toPrecision(4);
+  return Object.assign(L(lab||(ev?'PPM main forecast (eval)':'PPM main forecast (train)'),o,ev?col:(col.length===7?col+'99':col),{dash:[2,4],w:1.8,det:(F.flat?`no decreasing power law fits steps ${lo}–${last.s}: holding the recent level`:`fit L = a + b·(s+s0)^−c on the last ${FCW} steps (${lo}–${last.s}, ${P.length} pts${ev?'':', 10-step mean'}), b ≥ 0, anchored to the recent level: a ${g(F.a)}, b ${g(F.b)}, c ${g(F.c)}, s0 ${F.s0}`)+` · predicted at step ${f(end)}: ${g(yEnd)}`}),{_fc:true,_end:end,_yend:yEnd,_src:d.label})}
+/* 10-17 (user, method 2) CRITICAL speech charts: dotted 14B forecast = PPM(s) + D̂(s). D(s) = 14B − PPM speech word CE norm at matched steps (train: per-step,
+   PPM interpolated, trailing mean as on the difference chart, avg box of c_cediff, default 50; eval: the 14B eval steps, PPM interpolated), steps FLO..s_now;
+   fitted as a + b·ln s, or a + b·s^−c when that has < 0.8× the squared error; anchored so D̂(s_now) = the observed D at s_now (train: last smoothed value; eval: mean
+   of the last 3). PPM(s) = PPM main's actual curve as drawn (eval: centred 3-point mean) up to its last step (12,829), then its own power law (fitPL on steps
+   FLO..end, anchored as forecast() does) shifted to join continuously; that extrapolation is drawn dotted in the PPM colour. Refit on every upd. */
+const FLO=300,FITK={c_snw:['PPM main (summed)','★ Next-arch 14B',0],c_esnw:['PPM main (summed) eval','★ Next-arch 14B eval',1],c_es3:['PPM main (summed) eval · 103 rows','★ Next-arch 14B eval · 103 rows',1]};
+function fitWin(P,lo,hi,ev){const Q=P.filter(p=>p.s>=lo&&p.s<=hi);if(Q.length<(ev?6:30))return null;let F=fitPL(Q);const tl=Q.slice(-Math.max(5,Math.floor(Q.length/5)));
+  if(!F)F={a:tl.reduce((t_,p)=>t_+p.y,0)/tl.length,b:0,c:1,s0:0,flat:1};else F.a+=tl.reduce((t_,p)=>t_+p.y-(F.a+F.b*Math.pow(p.s+F.s0,-F.c)),0)/tl.length;
+  return {F,lo:Q[0].s,hi:Q[Q.length-1].s,n:Q.length}}
+function fitD(Q){const n=Q.length;if(n<4)return null;
+  const lsq=xs=>{let sx=0,sy=0,sxx=0,sxy=0;for(let i=0;i<n;i++){const x=xs[i],y=Q[i].y;sx+=x;sy+=y;sxx+=x*x;sxy+=x*y}const den=n*sxx-sx*sx;if(!(Math.abs(den)>1e-18))return null;
+    const b=(n*sxy-sx*sy)/den,a=(sy-b*sx)/n;let e=0;for(let i=0;i<n;i++){const r=a+b*xs[i]-Q[i].y;e+=r*r}return {a,b,e}};
+  const lg=lsq(Q.map(p=>Math.log(p.s)));if(!lg)return null;let pw=null;
+  for(let ci=1;ci<=60;ci++){const c=ci*0.05,r=lsq(Q.map(p=>Math.pow(p.s,-c)));if(r&&(!pw||r.e<pw.e))pw=Object.assign(r,{c})}
+  return pw&&pw.e<0.8*lg.e?{form:`a + b·s^−${pw.c.toFixed(2)}`,f:s=>pw.a+pw.b*Math.pow(s,-pw.c)}:{form:'a + b·ln s',f:s=>lg.a+lg.b*Math.log(s)}}
+function fitAdd(k,ds){const sp=FITK[k];if(!sp||P14)return;const cap=document.getElementById('cap_'+k),[pl,nl,ev]=sp,end=XE||END(),ec=END(),g=v=>(+v).toFixed(3),fin=p=>p.s!=null&&isFinite(p.y);
+  const P=ds.find(d=>d.label===pl),N=ds.find(d=>d.label===nl);if(cap)cap.textContent='';if(!P||!N)return;
+  const pc=(ev?P.data.map((p,i,a)=>{const w=a.slice(Math.max(0,i-1),i+2);return {x:p.x,s:p.s,y:w.reduce((t_,q)=>t_+q.y,0)/w.length}}):P.data).filter(fin);if(pc.length<2)return;
+  const sP=pc[pc.length-1].s,pw=fitWin((ev?P.data:roll(P.data._raw||P.data,10)).filter(fin),FLO,Infinity,ev);
+  const pfit=pw?s=>pw.F.a+pw.F.b*Math.pow(s+pw.F.s0,-pw.F.c):null,pj=pfit?pc[pc.length-1].y-pfit(sP):0,ppm=s=>s<=sP?interp(pc,s):pfit?pfit(s)+pj:null;
+  if(pfit){const px=[];for(let i=0;i<=60;i++){const s=sP*Math.pow(end/sP,i/60);px.push({x:ppmX([s]),y:pfit(s)+pj,s:Math.round(s)})}
+    ds.push(Object.assign(L('fit · PPM main',px,P.borderColor,{dash:[2,4],w:1.8,on:1}),{_fit:1,_end:end,_yend:pfit(end)+pj,pointHitRadius:4,_src:P.label}))}
+  const nr=(ev?N.data:(N.data._raw||N.data)).filter(fin),pr=(ev?P.data:(P.data._raw||P.data)).filter(fin);
+  let Dp=nr.map(p=>{const v=interp(pr,p.s);return v==null?null:{x:p.x,y:p.y-v,s:p.s}}).filter(Boolean);if(!ev)Dp=roll(Dp,AVG.c_cediff>0?AVG.c_cediff:50);Dp=Dp.filter(p=>p.s>=FLO);
+  const fd=fitD(Dp),yP=pfit?ppm(ec):null,pcap=pw?`PPM main ${yP!=null?g(yP):'–'} (actual to step ${f(sP)}, then its power law on steps ${f(pw.lo)}–${f(pw.hi)})`:'PPM main –';
+  if(!fd){if(cap)cap.textContent=SL(`14B forecast pending: ${Dp.length} difference points at steps ≥ ${FLO} · predicted at ${f(ec)}: `+pcap);return}
+  const sN=Dp[Dp.length-1].s,dObs=ev?Dp.slice(-3).reduce((t_,p)=>t_+p.y,0)/Math.min(3,Dp.length):Dp[Dp.length-1].y,dsh=dObs-fd.f(sN),Dh=s=>fd.f(s)+dsh;
+  const gr=[sN,...pc.filter(p=>p.s>sN).map(p=>p.s)],g0=Math.max(sN,sP);for(let i=1;i<=60;i++)gr.push(g0*Math.pow(end/g0,i/60));
+  const fc=gr.map(s=>{const v=ppm(s);return v==null?null:{x:brX([s]),y:v+Dh(s),s:Math.round(s)}}).filter(Boolean),y14=yP!=null?yP+Dh(ec):null;
+  ds.push(Object.assign(L('fit · ★ Next-arch 14B',fc,N.borderColor,{dash:[2,4],w:1.8,on:1}),{_fit:1,_end:end,_yend:y14,pointHitRadius:4,_src:N.label}));
+  if(cap)cap.textContent=SL(`D = 14B − PPM fitted as ${fd.form} on steps ${f(Dp[0].s)}–${f(sN)}, anchored at step ${f(sN)} (D ${g(dObs)}) · D̂(${f(ec)}) ${g(Dh(ec))} · predicted at ${f(ec)}: ★ Next-arch 14B ${y14!=null?g(y14):'–'} · `+pcap)}
+/* 10-20 (user): "extend all runs with dotted lines": every curve of every run on every chart (training, eval, references; not scatter probe points,
+   flat reference / zero lines) gets a dotted trend in its own colour, on whenever its curve is on (hidden with it via the legend; no legend entry of its own;
+   the header Forecast toggle switches all of them). Trend = a + b·(s+s0)^−c by least squares on the curve's own steps (training: 10-step means; window =
+   the last 2,500 steps or the last half of its steps; b either sign, so rising curves extend too; unfittable -> the recent level), anchored to the recent
+   level, drawn from its last point to the chart's right edge (XE, like the forecasts). A curve whose own forecast / fit line is shown gets no second line. */
+const TRW=2500;
+const SPANOK=(P,end)=>!P8||P.length<2||(P[P.length-1].s-P[0].s)>=Math.max(200,0.25*(end-P[P.length-1].s));   /* 10-21 P8 only (see patch note) */
+/* 10-23: trendPL results cached by an exact key (every point's step and value; the fit reads nothing else), returned as copies (trendOf shifts a): redraws
+   (x mode, tab, toggles, legend, the 60 s poll) refit only curves whose points changed. Same numbers as before */
+const TPLM=new Map();
+function trendPL(P){const key=P.map(p=>p.s+':'+p.y).join(','),h=TPLM.get(key);if(h!==undefined)return h&&Object.assign({},h);
+  const b=trendPL0(P);if(TPLM.size>1500)TPLM.clear();TPLM.set(key,b&&Object.assign({},b));return b}
+function trendPL0(P){const n=P.length;let best=null;
+  for(const s0 of [0,25,100,300,1000,3000,10000])for(let ci=1;ci<=80;ci++){const c=ci*0.025;let sx=0,sy=0,sxx=0,sxy=0;for(const p of P){const x=Math.pow(p.s+s0,-c);sx+=x;sy+=p.y;sxx+=x*x;sxy+=x*p.y}
+    const den=n*sxx-sx*sx;if(!(Math.abs(den)>1e-18))continue;const b=(n*sxy-sx*sy)/den,a=(sy-b*sx)/n;let e=0;for(const p of P){const r=a+b*Math.pow(p.s+s0,-c)-p.y;e+=r*r}
+    if(isFinite(e)&&(!best||e<best.e))best={a,b,c,s0,e}}
+  return best}
+function trendOf(d,ex,sx){const P0=(d.data._raw&&!d._ev?roll(d.data._raw,10):d.data).filter(p=>p.s!=null&&isFinite(p.s)&&isFinite(p.x)&&isFinite(p.y)),mn=d._ev||d._gb||!d.data._raw?5:20;
+  if(P0.length<mn)return null;const last=P0[P0.length-1];if(!(last.s>0&&last.x>0))return null;const mf=SEG()&&sx!=null?(d.data._xf||(d.data._raw&&d.data._raw._xf)):null,mx=mf&&mf._main?mf:null,kx=last.x/last.s,sE=mx?sx:ex/kx;if(!(sE>last.s*1.0005))return null;
+  let lo=Math.max(last.s/2,last.s-TRW);if(P0.filter(p=>p.s>=lo).length<mn)lo=last.s/2;let P=P0.filter(p=>p.s>=lo);if(P.length<mn)P=P0.slice(-mn);if(!SPANOK(P,sE))return null;
+  if(P.length>400){const st=P.length/400;P=Array.from({length:400},(_,i)=>P[Math.floor(i*st)]).concat([last])}
+  const tl=P.slice(-Math.max(5,Math.floor(P.length/5))),lv=tl.reduce((a_,p)=>a_+p.y,0)/tl.length;let F=trendPL(P);
+  if(!F||!isFinite(F.a)||!isFinite(F.b))F={a:lv,b:0,c:1,s0:0};else F.a+=tl.reduce((a_,p)=>a_+p.y-(F.a+F.b*Math.pow(p.s+F.s0,-F.c)),0)/tl.length;
+  const o=[];for(let i=0;i<=60;i++){const s=last.s+(sE-last.s)*i/60;o.push({x:mx?mx([s]):s*kx,y:F.a+F.b*Math.pow(s+F.s0,-F.c),s:Math.round(s)})}
+  return Object.assign(L(d.label+' · trend',o,d.borderColor,{dash:[2,4],w:1.8}),{_tr:1,_of:d.label,hidden:false,pointHitRadius:4,_F:F,_s1:last.s})}   /* 10-23: _F / _s1 = the fit and its first step (Extrapolate contemporary readout) */
+function addTrends(k,ds){if(!FCON||(P8&&(k==='c8_time'||k==='s_time')))return;const sx=XE||END(),ex=SEG()?evX(k,sx):sx*(evX(k,1)||1);
+  for(const d of ds.slice()){if(d._fc||d._fit||d._tr||d.hidden||d.showLine===false||d.pointHitRadius===0||!d.data||d.data.length<2)continue;
+    if(P14&&String(d.label).startsWith('PPM 32B'))continue;   /* 10-21 P14: no trend past PPM 32B's 8,1,1 switch (its data stops there) */
+    if(ds.some(x=>x._src===d.label&&!x.hidden))continue;
+    try{const T=trendOf(d,ex,sx);if(T)ds.push(T)}catch(e){console.error(k,d.label,e)}}}
+/* ---- 10-23 (user) "Extrapolate contemporary": header toggle, off by default, saved per browser. Every curve is cut at step s (default: the ★ live run's latest
+   step, moving as it trains; header box / slider / "★ latest" set it) and the dotted-trend rule above (trendOf: a + b·(s+s0)^−c by least squares, training =
+   10-step means, window = the last 2,500 steps or the last half, b either sign, anchored to the recent level) is refitted on its points at steps ≤ s only, drawn
+   dashed in the curve's colour from its last point ≤ s to the chart's right edge. "Only ≤ s" is enforced on the data: the chart is rebuilt from every run's rows
+   truncated at s (xcCut: train / pts / eval / lr rows of the main run, branches, refs, pose runs, probes, GenghisBench sets), so derived series (differences,
+   rates, centred windows) see nothing after s either; any point still past s is then dropped (xcTrim: the references read outside D.s3). The curve's own points
+   after s stay, dimmed; a vertical line marks s; a readout under each chart gives each shown curve's extrapolated value at the compare step (default: the latest
+   step any shown curve reached; its actual value there when it has one) and at max steps. While on, the page's other forecast / fit / trend lines (fitted on
+   every point) are not drawn. Off = the page exactly as before ---- */
+let XC=!!LS.get('ppm6_xc',false),XCS=(v=>v>0?v:null)(+LS.get('ppm6_xcs',0)),XCT=(v=>v>0?v:null)(+LS.get('ppm6_xct',0));
+const starRun=()=>({main:S(),mot:MOT(),mvx:MVX(),nxt:NXT(),dec:DEC(),ilp:ILP(),vox:VOX()})[STAR()]||S();
+const starName=()=>({main:P8?'8,1,1':P14?'ppm14b':PA?ALAB():'PPM main',mot:'MoT 14B',mvx:'MoT 14B + audio in',vox:'PPMVOX',nxt:P14?'INTL 14B':'Next-arch 14B',dec:DECL(),ilp:'Interleaved 32B'})[STAR()]||'';
+const xcS=()=>XCS||starRun().step||S().step||0;
+const xcEnd=()=>{const s=S();return (P14?((a,c)=>a&&c?Math.min(a,c):a||c)(s.max_steps,s.max_steps_set):0)||END()};   /* P14: = the header's max steps */
+const xcR=(a,s)=>a.filter(r=>!(Array.isArray(r)&&typeof r[0]==='number'&&r[0]>s));   /* rows [step, ...]: keep steps ≤ s */
+function xcRun(b,s){if(!b||typeof b!=='object')return b;const o=Object.assign({},b);for(const k in b)if(Array.isArray(b[k])&&b[k].length&&Array.isArray(b[k][0]))o[k]=xcR(b[k],s);
+  if(b.lr&&Array.isArray(b.lr.rows))o.lr=Object.assign({},b.lr,{rows:xcR(b.lr.rows,s)});return o}
+function xcCut(s3,s){const o=xcRun(s3,s),M=a=>a.map(b=>xcRun(b,s));
+  for(const g of ['branches','refs'])if(Array.isArray(s3[g]))o[g]=M(s3[g]);
+  if(s3.ptabs&&Array.isArray(s3.ptabs.runs))o.ptabs=Object.assign({},s3.ptabs,{runs:M(s3.ptabs.runs)});
+  if(s3.xprobe&&s3.xprobe.runs)o.xprobe=Object.assign({},s3.xprobe,{runs:xcRun(s3.xprobe.runs,s)});
+  for(const g of ['gbp','gbp_ref','s3xdep'])if(s3[g])o[g]=xcRun(s3[g],s);
+  return o}
+function xcTrim(d,s){const ok=p=>!(p&&p.s!=null&&p.s>s),A=d.data,q=A.every(ok)?A:Object.assign(A.filter(ok),{_xf:A._xf});
+  if(A._raw)q._raw=A._raw.every(ok)?A._raw:Object.assign(A._raw.filter(ok),{_xf:A._raw._xf});d.data=q;return d}
+function xcBuild(k){const s=xcS(),s3=D.s3,sm0=SM;let ds=[];if(AVG[k]>0)SM=AVG[k];   /* the chart's series as the page builds them, from the data at steps ≤ s */
+  try{D.s3=xcCut(s3,s);ds=SPEC[k].fn().filter(d=>d.data.length);if(P8)ds=p8ds(k,ds);ds=ds.map(d=>xcTrim(d,s)).filter(d=>d.data.length)}catch(e){console.error(k,e)}finally{D.s3=s3;SM=sm0}
+  return {s,ds}}
+const xcDim=c=>{const t=String(c).trim(),h=/^#([0-9a-f]{6})([0-9a-f]{2})?$/i.exec(t);if(h){const n=parseInt(h[1],16);return `rgba(${n>>16},${n>>8&255},${n&255},0.25)`}
+  const r=/^rgba?\(([^)]*)\)$/i.exec(t);if(r){const v=r[1].split(',').map(x=>x.trim());return `rgba(${v[0]},${v[1]},${v[2]},0.25)`}return t};
+function xcAdd(k,ds,xc){const s=xc.s,cap=document.getElementById('cap_'+k);if(cap)cap.textContent='';
+  const cut=new Map(xc.ds.map(d=>[d.label,d])),sx=XE||END(),ex=SEG()?evX(k,sx):sx*(evX(k,1)||1),skip=P8&&(k==='c8_time'||k==='s_time'),rows=[];
+  for(const d of ds.slice()){if(d._fc||d._fit||d._tr||d.pointHitRadius===0||!d.data||!d.data.length)continue;
+    const dim=xcDim(d.borderColor),aft=p=>!!p&&p.s!=null&&p.s>s;
+    const i0=d.data.findIndex(aft);if(i0>=0){const A=d.data;d._full=A;d.data=Object.assign(A.slice(0,i0),{_xf:A._xf});   /* actual points after s: their own dimmed series, hidden with the curve (10-23 fix: per-segment styling made every redraw ~10x slower) */
+      if(!d.hidden)ds.push(Object.assign({},d,{data:A.slice(Math.max(0,i0-1)),label:d.label+' · after s',borderColor:dim,backgroundColor:dim,_tr:1,_xcd:1,_pin:false,_full:null,hidden:false}))}
+    if(skip||d.hidden||d.showLine===false)continue;const dc=cut.get(d.label);let T=null;
+    if(dc&&dc.data.length>=2)try{T=trendOf(dc,ex,sx)}catch(e){console.error(k,d.label,e)}
+    if(T){T.label=d.label+' · contemporary';T.borderDash=[8,4];T.borderWidth=1.5;T._xc=s;ds.push(T)}
+    rows.push([d,T,dc?dc.data.length:0])}
+  xcCap(k,rows,s)}
+function xcCap(k,rows,s){const box=document.getElementById('xc_'+k);if(!box)return;if(!rows.length){box.hidden=true;box.innerHTML='';return}
+  const E=xcEnd(),g=v=>v==null||!isFinite(v)?'–':(+v).toPrecision(4),at=(T,st)=>T&&T._F&&st>=T._s1?T._F.a+T._F.b*Math.pow(st+T._F.s0,-T._F.c):null;
+  let Tg=XCT;if(!Tg){Tg=0;for(const [d] of rows){const A=d._full||d.data,p=A[A.length-1];if(p&&p.s>Tg)Tg=p.s}}const two=Tg>0&&Tg!==E;
+  box.innerHTML=`<table class="xct"><tr><th>fitted on steps ≤ ${f(s)}</th>${two?`<th>at step ${f(Tg)}</th><th>actual</th>`:''}<th>at step ${f(E)}</th></tr>`+rows.map(([d,T,n])=>{
+    const act=two?interp((d._full||d.data).filter(p=>p.s!=null&&isFinite(p.y)),Tg):null;
+    return `<tr><td><span class="xsw" style="border-top-color:${d.borderColor}"></span>${esc(SL(d.label))}${T?'':` <span class="xk">no extrapolation (${n} points ≤ s)</span>`}</td>${two?`<td>${g(at(T,Tg))}</td><td>${g(act)}</td>`:''}<td>${g(at(T,E))}</td></tr>`}).join('')+'</table>';
+  box.hidden=false}
+/* 10-24 PV (main: "mark the adapter-only phase (steps 1-50) visually"): a light --vox band from PPMVOX's first step to its last adapter-only step (the last
+   train row with train_vpod_ad keys) on every chart showing a PPMVOX series; labelled when wide enough */
+const VXPLUG={id:'ppmvoxwu',beforeDatasetsDraw(c){if(!PV)return;const b=VOX();if(!b||!c.data.datasets.some(d=>/^PPMVOX/.test(d.label)&&d.data.length&&!d.hidden))return;
+  {const t=SPEC[c.canvas.id]&&SPEC[c.canvas.id].tab,X=t==='pose'?poseX(mainP()):t==='lr'?(r=>r[0]):ppmX,a=c.chartArea,g=c.ctx;   /* 10-24: a segment's own shaded band (v3x: steps 17,362-17,381 = optimizer warm-up at LR 0), labelled */
+    for(const x of VSEG(b))if(x.band){const p0=c.scales.x.getPixelForValue(X([x.band[0]])),p1=c.scales.x.getPixelForValue(X([x.band[1]])),l=Math.max(a.left,Math.min(p0,p1)),r=Math.min(a.right,Math.max(p0,p1));if(!(r>l))continue;
+      g.save();g.fillStyle=css('--muted');g.globalAlpha=0.16;g.fillRect(l,a.top,r-l,a.bottom-a.top);g.globalAlpha=0.9;g.fillStyle=css('--fg');g.font='600 10px system-ui,sans-serif';const lb=x.band_label||'';
+      const rt=l+3+g.measureText(lb).width>a.right;g.textAlign=rt?'right':'left';if(lb)g.fillText(lb,rt?r-3:l+3,a.top+34);g.restore()}}
+  const i=C(b.train_cols,'train_vpod_ad/word_ce_norm');if(i<0)return;let e=null;for(const r of b.train||[])if(r[i]!=null&&(e==null||r[0]>e))e=r[0];if(e==null)return;
+  const k=c.canvas.id,t=SPEC[k]&&SPEC[k].tab,X=t==='pose'?poseX(mainP()):t==='lr'?(r=>r[0]):ppmX,a=c.chartArea,s0=b.from_step||0,p0=c.scales.x.getPixelForValue(X([s0])),p1=c.scales.x.getPixelForValue(X([e]));
+  const l=Math.max(a.left,Math.min(p0,p1)),r=Math.min(a.right,Math.max(p0,p1));if(!(r>l))return;const g=c.ctx,lb=`adapter only (vox 1–${f(e-s0)})`;g.save();g.fillStyle=css('--vox');g.globalAlpha=0.1;g.fillRect(l,a.top,r-l,a.bottom-a.top);
+  g.globalAlpha=0.85;g.font='600 10px system-ui,sans-serif';g.textAlign='left';if(r-l>g.measureText(lb).width+6)g.fillText(lb,l+3,a.top+24);g.restore()},
+  afterDatasetsDraw(c){if(!PV)return;const b=VOX();if(!b||b.from_step==null||!c.data.datasets.some(d=>/^PPMVOX/.test(d.label)&&d.data.length&&!d.hidden))return;   /* the switch: PPM dcp-16861 -> PPMVOX */
+  const t=SPEC[c.canvas.id]&&SPEC[c.canvas.id].tab,X=t==='pose'?poseX(mainP()):t==='lr'?(r=>r[0]):ppmX,a=c.chartArea,g=c.ctx;
+  for(const [s0,lb,yo] of [[b.from_step,`switch: ${b.base_label||'PPM dcp-'+f(b.from_step)} → PPMVOX`,11]].concat(VSEG(b).map(x=>[x.from_step,x.short||x.label,22]))){const px=c.scales.x.getPixelForValue(X([s0]));if(!(px>=a.left&&px<=a.right))continue;   /* 10-24: + its continuation segments (v3x) */
+    g.save();g.strokeStyle=css('--vox');g.globalAlpha=0.9;g.lineWidth=1.5;g.setLineDash([5,3]);g.beginPath();g.moveTo(px,a.top);g.lineTo(px,a.bottom);g.stroke();
+    g.setLineDash([]);g.fillStyle=css('--vox');g.font='600 10px system-ui,sans-serif';const rt=px+4+g.measureText(lb).width>a.right;g.textAlign=rt?'right':'left';g.fillText(lb,rt?px-4:px+4,a.top+yo);g.restore()}}};
+const XCPLUG={id:'ppmxc',afterDatasetsDraw(c){const k=c.canvas.id;if(!XC||!SPEC[k])return;const s=xcS(),a=c.chartArea,px=c.scales.x.getPixelForValue(evX(k,s));if(!(px>=a.left&&px<=a.right))return;   /* the vertical line at s */
+  const g=c.ctx,col=css('--fg'),lb=`s = ${f(s)}`;g.save();g.strokeStyle=col;g.globalAlpha=0.85;g.lineWidth=1.5;g.setLineDash([]);g.beginPath();g.moveTo(px,a.top);g.lineTo(px,a.bottom);g.stroke();
+  g.globalAlpha=1;g.fillStyle=col;g.font='600 10px system-ui,sans-serif';const rt=px+3+g.measureText(lb).width>a.right;g.textAlign=rt?'right':'left';g.fillText(lb,rt?px-3:px+3,a.bottom-6);g.restore()}};
+function xcUi(){const b=document.getElementById('xct');if(!b)return;b.setAttribute('aria-pressed',String(XC));const s=xcS(),E=xcEnd(),A=document.activeElement;
+  for(const id of ['xcw','xctw'])document.getElementById(id).style.display=XC?'inline-flex':'none';
+  const i=document.getElementById('xcs'),r=document.getElementById('xcr'),t=document.getElementById('xctg'),n=document.getElementById('xcnote');
+  i.placeholder='★ '+f(starRun().step||0);if(A!==i)i.value=XCS?String(XCS):'';r.max=String(Math.max(E,s));if(A!==r)r.value=String(s);if(A!==t)t.value=XCT?String(XCT):'';
+  if(n){n.style.display=XC?'':'none';n.innerHTML=XC?`<b style="color:var(--fg)">Extrapolate contemporary</b> · s = step ${f(s)} (${XCS?'set in the header':'the ★ '+esc(starName())+' run\'s latest step, moving as it trains'}) · rule = this page's dotted-trend rule: L = a + b·(step + s0)<sup>−c</sup> by least squares on each curve's own points at steps ≤ s only (training curves as 10-step means, window = its last 2,500 steps or last half, b either sign, anchored to the recent level), dashed in the curve's colour from its last point ≤ s; actual points after s dimmed; the other forecast / trend lines are off while this is on`:''}}
+/* 10-20 (user): forecast / fit lines run to the right edge of the x range the chart shows (the 'x-axis to step' box, a drag zoom, Fit to ★ or the auto range),
+   never stopping at max steps or the end of the data: build them to max(max steps, box, zoom edge), fit the axes, rebuild out to the axis edge if it lies further */
+/* 10-21 P8 (user): evals first. Each chart's ★ 8,1,1 and dimmed PPM-reference EVAL series are its default-on lines, listed first (★ evals drawn with points);
+   train series follow in the legend, off by default (train is inflated by repeated rows from pose epoch 2: caption). Each reference eval series is joined to
+   the ★ eval at the switch step (GenghisBench / probes without a switch point: not joined). 10-21 (user): no link-on probe anywhere; pose light / cb charts
+   are not joined (PPM measured them link on, 8,1,1 link off: different quantities at the switch). */
+const EV8={},REV8=/^(PPM main \(summed\)|ref · PPM main|LR decay)/,NJ8=/^(c8_plight|p_light|p_cb(1|8|16|31))$/;
+/* 10-21 (user): "since our training loss is confounded by 2 epochs only show me eval loss": on the 8,1,1 page every chart keeps ONLY its eval series
+   (time / LR charts excepted: not losses); a chart left with no eval series is hidden (updDs) */
+const NL8=k=>/_time$|^lr_|_lr$|step_s/.test(k);
+function p8ds(k,ds){if(!NL8(k)){const sw=SW8(),pt=SPEC[k].tab==='pose';for(const d of ds)if(pt&&!d._ev&&d.label==='PPM main (summed)'){d._keep8=true;d._defon=true;if(sw!=null)d.data=d.data.filter(p=>p.s==null||p.s>sw)}ds=ds.filter(d=>d._ev||d._keep8)}   /* 10-22 (user): training pose shown (fresh rows, never repeated) */ds=[...ds.filter(d=>d._ev),...ds.filter(d=>!d._ev)];EV8[k]=ds.some(d=>d._ev&&REV8.test(d.label));const sw=SW8();
+  for(const d of ds){if(!d._ev)continue;if(/^(PPM main \(summed\)|LR decay)/.test(d.label)&&d.data.length<60&&!d.pointRadius)d.pointRadius=2;
+    if(sw==null||NJ8.test(k)||!/^ref · PPM main/.test(d.label))continue;const last=d.data[d.data.length-1];if(!last||last.s>=sw)continue;const suf=d.label.slice('ref · PPM main'.length);
+    const T=[`PPM main (summed)${suf}`,suf.replace(/^ · /,'')].map(l=>ds.find(x=>x.label===l&&x.data.some(p=>p.s===sw))).find(Boolean);
+    if(T){const p=T.data.find(p=>p.s===sw);d.data=d.data.concat([{x:p.x,y:p.y,s:p.s,t:`joined at the switch: ${SL(T.label)}`}])}}
+  {const w=AVG[k]>0?AVG[k]:SM;if(w>1&&!NL8(k))for(const d of ds)if(d._ev&&d.data.length&&d.data.every(p=>p.s!=null))d.data=roll(d.data,w)}   /* 10-22 (user: "the average ain't really working"): the page shows evals only, so smooth / avg = trailing mean of the eval points over w steps */
+  const n=document.getElementById('n8_'+k);if(n)n.textContent=DECK.has(k)?decNote():!NL8(k)&&ds.some(d=>!d._ev&&REV8.test(d.label))?'Train curves (in the legend, off by default) are inflated by repeated rows from pose epoch 2.':'';
+  return ds}
+function updDs(k){const xc=XC?xcBuild(k):null;let ds=[];const sm0=SM;if(AVG[k]>0)SM=AVG[k];try{ds=SPEC[k].fn().filter(d=>d.data.length)}catch(e){console.error(k,e)}finally{SM=sm0}if(P8){ds=p8ds(k,ds);const cd=document.getElementById('cd_'+k);if(cd)cd.style.display=ds.length?'':'none'}if(xc){for(const d of ds)d.hidden=isHid(k,d);xcAdd(k,ds,xc);return ds}   /* 10-23 Extrapolate contemporary on: its lines instead of the forecasts / fits / trends */try{vFitAdd(k,ds)}catch(e){console.error(k,e)}try{fitAdd(k,ds)}catch(e){console.error(k,e)}if(FCON&&FCK.test(k)){const st=ds.find(d=>d.label==='PPM main (summed)');try{const F=forecast(k,st);if(F)ds.push(F);for(const se of ds.filter(d=>/^PPM main \(summed\) eval/.test(d.label))){const G=forecast(k,se,1,'PPM main forecast ('+se.label.replace(/^PPM main \(summed\) /,'')+')');if(G){ds.push(G);if(se.label==='PPM main (summed) eval')se._fcsrc=1}}}catch(e){console.error(e)}   /* 10-14: every ★ eval series gets its own forecast (incl. the pinned 103-row / packs evals) */}for(const d of ds)d.hidden=isHid(k,d);for(const d of ds)if(d._fcsrc&&ds.some(x=>x._fc&&x.label==='PPM main forecast (eval)'&&!x.hidden)){d.hidden=false;d.borderColor=d.backgroundColor=css('--fce');d.borderDash=[];d.borderWidth=1.2}   /* forecast on: the eval curve shows (orange) so its forecast visibly continues it */addTrends(k,ds);return ds}
+function upd(k){const c=ch[k];if(!c)return;let z=null;if(c.$z){const s=c.scales;z=[s.x.min,s.x.max,s.y.min,s.y.max]}
+  /* x range edges -> steps: x2s (x / x-units-per-step while x is linear in steps; piecewise after a schedule change, 10-21) */
+  const run=e=>{XE=e;try{c.data.datasets=updDs(k)}finally{XE=null}c.options.scales.x.title.text=(XT[k]||xTitle())+(xm()==='h'&&c.data.datasets.some(d=>String(d.label).startsWith('SAM 8B'))?' (SAM 8B: ≈ estimate)':'');fitRange(k);if(z){const o=c.options.scales;o.x.min=z[0];o.x.max=z[1];o.y.min=z[2];o.y.max=z[3]}return e};
+  let e=run(Math.max(END(),S().step||0,XMAX||0,O(k).xmax||0,z&&isFinite(z[1])?x2s(k,z[1]):0));
+  const mx=c.options.scales.x.max;if(mx!=null&&isFinite(mx)&&x2s(k,mx)>e*1.001)e=run(x2s(k,mx));   /* Fit to ★ range ends beyond the lines */
+  c.update('none');
+  if(c.options.scales.x.max==null&&c.scales.x&&isFinite(c.scales.x.max)&&x2s(k,c.scales.x.max)>e*1.001){const m=c.scales.x.max;run(x2s(k,m));c.options.scales.x.max=m;c.update('none')}}   /* auto range (Fit to ★ off): Chart.js rounds the axis out to a tick: extend to that edge and hold it */
+/* ---- DOM ---- */
+function ctlRow(k){const o=O(k);return `<button data-a="fit" aria-pressed="${o.fit}">Fit to ★</button><button data-a="zr">Reset zoom</button><button data-a="slope" aria-pressed="${o.slope}">Slope on hover</button><button data-a="log" aria-pressed="${o.log}">y log</button><button data-a="xlog" aria-pressed="${!!o.xlog}">x log</button>`+
+  `<span>y</span><input data-a="ymin" placeholder="min" inputmode="decimal" value="${o.ymin??''}"><input data-a="ymax" placeholder="max" inputmode="decimal" value="${o.ymax??''}"><button data-a="ya">Apply</button><button data-a="yz">Auto</button><span>x step</span><input data-a="xmin" placeholder="from" inputmode="numeric" value="${o.xmin??''}"><input data-a="xmax" placeholder="to" inputmode="numeric" value="${o.xmax??''}"><button data-a="xa">Apply</button><button data-a="xz">Auto</button><button data-a="vis">Reset legend</button>`}
+const panes=document.getElementById('panes');
+panes.innerHTML=TABS.map(([t,,cs])=>`<div class="grid" data-tab="${t}" hidden>`+cs.map(([k,title,,sm])=>`<div class="card${sm?' sm':''}" id="cd_${k}"><div class="ct"><h3>${title}</h3><label class="avgx" title="${k==='c_rate'?'slope window (steps)':k==='c_cediff'?'trailing mean (steps)':'rolling mean (steps)'}">avg <input data-avg="${k}" inputmode="numeric" placeholder="${k==='c_rate'?'200':k==='c_cediff'?'50':'auto'}" value="${AVG[k]??''}"> steps</label><button class="more" title="chart controls" aria-label="chart controls">⋯</button></div><div class="ctl">${ctlRow(k)}</div>${k==='c14_diff'?diffUI():''}<div class="cv"><canvas id="${k}"></canvas></div>${FITK[k]||k==='c14_diff'?`<p class="fcap" id="cap_${k}"></p>`:''}${P8?`<p class="fcap" id="n8_${k}"></p>`:''}<div class="fcap xcap" id="xc_${k}" hidden></div></div>`).join('')+'</div>').join('');
+for(const k in SPEC){const card=document.getElementById('cd_'+k);card.querySelector('.more').onclick=()=>card.classList.toggle('open');
+  card.querySelector('.ctl').onclick=e=>{const a=e.target.dataset&&e.target.dataset.a;if(!a||e.target.tagName!=='BUTTON')return;const o=O(k),c=ch[k];
+    if(a==='fit'||a==='slope'||a==='log'||a==='xlog'){o[a]=!o[a];e.target.setAttribute('aria-pressed',String(o[a]))}
+    if(a==='ya'){const g=n=>{const v=parseFloat(card.querySelector(`input[data-a=${n}]`).value);return isFinite(v)?v:null};o.ymin=g('ymin');o.ymax=g('ymax')}
+    if(a==='yz'){o.ymin=o.ymax=null;card.querySelectorAll('input[data-a=ymin],input[data-a=ymax]').forEach(i=>i.value='')}
+    if(a==='xa'){const g=n=>{const v=Math.round(+card.querySelector(`input[data-a=${n}]`).value);return card.querySelector(`input[data-a=${n}]`).value.trim()!==''&&isFinite(v)&&v>=0?v:null};o.xmin=g('xmin');o.xmax=g('xmax')}
+    if(a==='xz'){o.xmin=o.xmax=null;card.querySelectorAll('input[data-a=xmin],input[data-a=xmax]').forEach(i=>i.value='')}
+    if(a==='vis'){for(const key of Object.keys(VIS))if(key.startsWith(k+'|'))delete VIS[key];LS.set('ppm4_vis',VIS)}
+    LS.set('ppm2_opt',OPT);if(c){try{c.resetZoom('none')}catch(x){}c.$z=false;upd(k)}}}
+for(const id of ['dfa','dfb','dfm']){const e=document.getElementById(id);if(e)e.onchange=()=>{const s=dSel();s[{dfa:'a',dfb:'b',dfm:'m'}[id]]=e.value;DSEL=s;LS.set('ppm7_diff',DSEL);const s2=dSel();for(const [i2,v2] of [['dfa',s2.a],['dfb',s2.b],['dfm',s2.m]]){const x=document.getElementById(i2);if(x&&x.value!==v2)x.value=v2}if(ch.c14_diff)upd('c14_diff')}}   /* 10-25 P14 Plot difference selectors */
+for(const e of document.querySelectorAll('input[data-avg]')){const k=e.dataset.avg,ap=()=>{const v=Math.round(+e.value);if(e.value.trim()!==''&&v>=1)AVG[k]=v;else delete AVG[k];e.value=AVG[k]??'';LS.set('ppm5_avg',AVG);
+  const c=ch[k];if(c){try{c.resetZoom('none')}catch(x){}c.$z=false;upd(k)}};e.onchange=ap;e.onkeydown=ev=>{if(ev.key==='Enter')ap()}}   /* 10-17 per-chart avg X steps */
+/* ---- HYPERPARAMETERS tab: the newest chain leg's resolved trainer cfg (ppm_doc.py hp()), live; a value that differs from an earlier leg shows where it changed ---- */
+const HPROWS=[['Learning rates',[['Backbone (trunk)','lr.trunk'],['Speech head','lr.spec'],['Backbone → tower projector','lr.proj'],['Input embeddings (audio)','lr.audio'],['Speech tower (4B)','lr.tower_s'],['Pose tower (4B)','lr.tower_p'],['Pose head (D32)','lr.pose_head'],['Decoders (0.6B), peak','dec_lr'],['Decoders, floor','dec_floor'],['Decoder warmup (updates)','dec_warmup_updates']]],
+ ['Schedule',[['Warmup (steps)','warmup'],['Pose head warmup (steps, from its first step)','pose_head_warmup'],['LR schedule','sched'],['Decoder schedule','dec_sched'],['Horizon (steps)','horizon'],['Max steps','max_steps']]],
+ ['Gradient clipping',[['Backbone','clip.trunk'],['Speech head','clip.spec'],['Projector','clip.proj'],['Input embeddings','clip.audio'],['Speech tower','clip.tower_s'],['Pose tower','clip.tower_p'],['Pose head','clip.pose_head'],['Decoders','dec_clip']]],
+ ['Adam',[['β2','adam_beta2']]],
+ ['Loss weights',[['Text (all text targets)','w_text'],['Word targets','w_cat_word'],['PAD (timing)','w_tim'],['NEW_WORD','w_nw'],['End of turn (EOB)','w_eob'],['Speech cb0','w_cb0'],['Speech light codebooks','w_cb'],['Pose cb0','w_pcb0'],['Pose head cb0 (D32, auxiliary)','w_pose_head'],['Pose light codebooks','w_pcb'],['Task: pose','w_task.pose'],['Task: speech','w_task.speech'],['Task: text','w_task.text']]],
+ ['Decoder updates',[['Updates per micro','dec_k'],['Speech light frame coverage','data.light_frac'],['Pose light frame coverage','data.pose_light_frac'],['Frames per decoder micro','dec_micro_frames']]],
+ ['Data and structure',[['Micros per step','ga_seq'],['World size (GPUs)','__world'],['Codec delay (frames)','cd'],['Pose delay (frames)','data.pose_delay'],['Text cap / crop (frames)','data.txt_cap'],['Crop conversations to 7,500','data.crop_conv'],['Text mix (Gemma / chat)','text_mix'],['Chat splits','chat_split'],['Voice prompt on 1 in N rows','data.voice_mod'],['Speech row cap','data.sp_cap']]],
+ ['Eval and save',[['Eval every (min)','eval_every_min'],['Eval rows per task per rank','eval_per_task'],['Save every (min)','save_every_min'],['Export every (min)','export_every_min'],['Checkpoints kept','keep_ckpt']]]];
+const hpv=v=>v==null?'–':Array.isArray(v)?v.join(', '):typeof v==='number'?(v!==0&&Math.abs(v)<1e-3?v.toExponential().replace(/\.?0+e/,'e').replace('e-0','e-'):String(v)):typeof v==='boolean'?(v?'yes':'no'):String(v);
+const esc=x=>String(x).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c]);
+function hpRender(){const g=panes.querySelector('.grid[data-tab=hp]');if(!g)return;const H=S().hp;if(!H){g.innerHTML='<div class="card sm">no cfg found in the chain logs</div>';return}
+  const c=Object.assign({},H.cfg,{__world:S().world}),ch_=H.changes||{};
+  g.innerHTML=`<div class="card sm"><p class="hpsrc">job ${esc(H.job)} · resumed at step ${f(H.from_step||0)} · now step ${S().step!=null?f(S().step):'–'}</p><table class="hpt">`+
+    HPROWS.map(([sec,rows])=>`<tr><th colspan="2">${sec.toUpperCase()}</th></tr>`+rows.map(([n,k])=>{const cs=(ch_[k]||[]).map(x=>`changed at step ${f(x.step)} (was ${esc(hpv(x.was))})`).join('; ');
+      return `<tr><td>${n}<span class="k">${k.startsWith('__')?'':esc(k)}</span></td><td class="v">${esc(hpv(c[k]))}${cs?`<span class="chg">${cs}</span>`:''}</td></tr>`}).join('')).join('')+'</table></div>'}
+/* ---- BACKUPS tab (10-14; 10-15: rows carry dest HF | GCS - GCS fallback while the HF org is over its storage limit): setup-logs/hfb/hub_status.json via ppm_doc.py hub() = one row per checkpoint (weights export w-N / full state dcp-N),
+   newest first; written by the backup watcher hfb_watch.py, each done row checked against the HF listing (file + host counts vs the upload's verify record) ---- */
+const gbs=b=>b==null?'–':b>=1e12?(b/1e12).toFixed(2)+' TB':(b/1e9).toFixed(1)+' GB';
+function hubRender(){const g=panes.querySelector('.grid[data-tab=hub]');if(!g)return;const H=S().hub;if(!H){g.innerHTML='<div class="card sm">no backup status yet (setup-logs/hfb/hub_status.json)</div>';return}
+  const rows=H.rows||[],on=rows.filter(r=>r.status==='done'),tot=on.reduce((a,r)=>a+(r.bytes||0),0),onG=on.filter(r=>r.dest==='GCS'),totG=onG.reduce((a,r)=>a+(r.bytes||0),0);
+  const loc=r=>`<span class="hst ${r.dest==='GCS'?'gcs':'hf'}" title="${r.dest==='GCS'?'Google Cloud Storage':'Hugging Face Hub'}">${esc(r.dest||'HF')}</span>`;
+  const st=r=>{const u=r.status==='uploading'&&r.hosts_total?`uploading ${r.hosts_done||0}/${r.hosts_total} hosts`:r.status;
+    return `<span class="hst ${esc(r.status)}">${esc(u)}</span>${r.status==='done'&&r.hf_ok?` <span title="file and host counts on the ${esc(r.dest||'HF')} listing match the upload record">✓ verified on ${r.dest==='GCS'?'GCS':'Hub'}</span>`:''}${r.pinned?'<span class="pin">pinned</span>':''}`};
+  const fin=r=>r.finished_pt?esc(r.finished_pt):r.started_pt?'started '+esc(r.started_pt):'–';
+  const nt=r=>[r.status==='done'&&r.hf?`${f(r.hf.files)} files${r.hf.hosts?` · ${r.hf.hosts} hosts`:''}`:'',r.note||''].filter(Boolean).map(esc).join(' · ');
+  g.innerHTML=`<div class="card sm"><p class="hpsrc">${on.length} checkpoints backed up (${gbs(tot)}): ${on.length-onG.length} on HF ${esc(H.repo||'')}, ${onG.length} on GCS ${esc(H.gcs||'')} (${gbs(totG)})${H.hf_full?' · <b style="color:var(--dm)">HF org over its storage limit: new backups go to GCS</b>':''} · HF listing checked ${esc(H.hf_checked_pt||'–')} · GCS listing checked ${esc(H.gcs_checked_pt||'–')}${H.hf_error?' <b style="color:var(--dm)">(listing failed: '+esc(H.hf_error)+')</b>':''} · status ${esc(H.updated_pt||'')}${H.age_s>900?' <b style="color:var(--dm)">(stale: watcher not updating)</b>':''}${H.free_gb_min!=null?` · min node /scratch free ${Math.round(H.free_gb_min)} GB`:''}</p>`+
+    `<p class="hpsrc">${esc(H.policy||'')}</p><div class="hubw"><table class="hpt hubt"><tr><th>STEP</th><th>KIND</th><th>LOCATION</th><th>REPO / PATH</th><th>STATUS</th><th>SIZE</th><th>FINISHED</th><th>DETAIL</th></tr>`+
+    rows.map(r=>`<tr><td class="v">${f(r.step)}</td><td>${esc(r.kind)}</td><td>${loc(r)}</td><td class="pa">${esc(r.path||'')}</td><td>${st(r)}</td><td class="r">${gbs(r.bytes)}</td><td>${fin(r)}</td><td class="nt">${nt(r)}</td></tr>`).join('')+'</table></div></div>'}
+/* ---- CHECKPOINTS tab (10-17): klweb/ckpt_inventory.json (ckpt_inventory.py, ~15 min loop job ppm_ckptinv.sbatch): every checkpoint of PPM main (ppm-v1) and the live 14B
+   (ppm-next) anywhere: node-local saves on the 16 training hosts (hosts present / COMPLETE), Weka exports / inference shards / extracted caches, GCS, HF; one table per run, newest first ---- */
+let CKI=null;
+async function ckptRender(){const g=panes.querySelector('.grid[data-tab=ckpt]');if(!g)return;try{const r=await fetch('ckpt_inventory.json?t='+Date.now(),{cache:'no-store'});if(r.ok)CKI=await r.json()}catch(e){}
+  if(!CKI){g.innerHTML='<div class="card sm">no checkpoint inventory yet (klweb/ckpt_inventory.json)</div>';return}
+  const age=CKI.scanned_ts?Date.now()/1000-CKI.scanned_ts:0,cls={ok:'done',unverified:'queued',incomplete:'failed'};
+  const tbl=R=>`<div class="card sm"><p class="hpsrc"><b>${esc(R.label)}</b> · ${R.rows.length} copies · scanned at ${esc(CKI.scanned_pt||'–')}${age>2700?' <b style="color:var(--dm)">(stale: inventory loop not updating)</b>':''}${(CKI.errors||[]).length?' · <b style="color:var(--dm)">'+esc(CKI.errors.join('; '))+'</b>':''}</p>`+
+    `<div class="hubw"><table class="hpt hubt"><tr><th>STEP</th><th>KIND</th><th>LOCATION</th><th>PATH</th><th>SIZE</th><th>STATUS</th><th>MODIFIED</th></tr>`+
+    (R.rows.length?R.rows.map(r=>`<tr><td class="v">${f(r.step)}${r.tag?`<span class="k">${esc(r.tag)}</span>`:''}</td><td>${esc(r.kind)}</td><td><span class="hst hf">${esc(r.loc)}</span></td><td class="pa">${esc(r.path)}</td><td class="r">${gbs(r.bytes)}</td><td><span class="hst ${cls[r.state]||''}">${esc(r.status)}</span></td><td>${esc(r.mtime_pt||'–')}</td></tr>`).join(''):'<tr><td colspan="7">none found</td></tr>')+'</table></div></div>';
+  g.innerHTML=(CKI.runs||[]).map(tbl).join('')}
+function bar(){const tb=document.getElementById('tabs');tb.innerHTML=TABS.map(([t,n])=>`<button data-t="${t}" aria-pressed="${t===TAB}">${n}</button>`).join('');
+  tb.querySelectorAll('button').forEach(b=>b.onclick=()=>show(b.dataset.t));
+  const opts=TAB==='pose'?[['ep','Epochs'],['h','Clip-hours'],['st','Steps']]:TAB==='lr'?[['st','Steps']]:PA?[['st','Steps'],['rows','Rows'],['ep','Epochs']]:P14?[['st','Steps'],['rows','Speech rows'],['ep','Epochs']]:[['ep','Epochs'],['st','Steps']];if(!opts.some(o=>o[0]===XM[TAB]))XM[TAB]='st';
+  const xe=document.getElementById('xm');xe.hidden=TAB==='hp'||TAB==='hub'||TAB==='ckpt';{const w=document.getElementById('rqw');if(w)w.style.display=xe.hidden?'none':'inline-flex'}xe.style.display=TAB==='hp'||TAB==='hub'||TAB==='ckpt'?'none':'';xe.innerHTML=opts.map(([v,n])=>`<button data-x="${v}" aria-pressed="${XM[TAB]===v}">${n}</button>`).join('');
+  xe.querySelectorAll('button').forEach(b=>b.onclick=()=>{XM[TAB]=b.dataset.x;LS.set('ppm2_xm',XM);bar();for(const k in ch)if(SPEC[k].tab===TAB){try{ch[k].resetZoom('none')}catch(e){}ch[k].$z=false;upd(k)}})}
+function show(t){if(!TABS.some(x=>x[0]===t))t='critical';TAB=t;LS.set('ppm5_tab',t);bar();panes.querySelectorAll('.grid').forEach(g=>g.hidden=g.dataset.tab!==t);if(t==='hp')hpRender();if(t==='hub')hubRender();if(t==='ckpt')ckptRender();
+  for(const k in SPEC)if(SPEC[k].tab===t){if(!ch[k])mkChart(k);else{ch[k].resize();upd(k)}}}
+const dt=t=>new Date(t*1000).toLocaleString('en-US',{timeZone:'America/Los_Angeles',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false})+' PT';
+/* 10-24 (user, standing rule: "for every live run place time to next checkpoint, time to next eval"; + "the LAST step time"): every LIVE run's header part
+   (LIVE: not done, a step within the hour) shows "last step X s (step N, HH:MM:SS PT)", "next checkpoint in MM:SS (step N)", "next eval in MM:SS (step N)"
+   beside s/step and ETA; the countdowns tick every second (cdTick). Cadence = the run's own: wall clock (last_save / save_every_min, last_eval /
+   eval_every_min from its doc: due at the end of the first step past the time; no save yet = the timer from its first step) and / or steps
+   (next_eval_step / next_export_step / export_steps); a step's time = now-ish (t_last) + its remaining steps x the 50-step mean step time */
+const tPT=t=>new Date(t*1000).toLocaleTimeString('en-GB',{timeZone:'America/Los_Angeles',hour12:false})+' PT';
+const mmss=x=>{x=Math.max(0,Math.round(x));const h=Math.floor(x/3600),m=Math.floor(x%3600/60),s=x%60;return (h?h+':'+String(m).padStart(2,'0'):String(m))+':'+String(s).padStart(2,'0')};
+const cdTxt=(lab,tt,s)=>{const r=tt-Date.now()/1000;return `${lab} ${r<=0?'due now':'in '+mmss(r)}${s!=null&&isFinite(s)?' (step '+f(s)+')':''}`};
+function lastStepTime(r){const tc=r.train_cols||[],i=[tc.indexOf('step_s'),tc.indexOf('train/step_time')].find(j=>j>=0),row=(r.train||[]).slice(-1)[0];return i!=null&&row&&row[i]!=null?[+row[i],row[0]]:null}
+function nextOf(r,k){const m=r.mean50_s||r.mean_s,st=r.step;if(st==null||!m)return null;const tl=r.t_last||Date.now()/1000,at=s=>tl+(s-st)*m,c=[];
+  const L=k==='eval'?r.last_eval:(r.last_save&&r.last_save[0]?r.last_save:r.t_step1?[r.t_step1,null]:null),ev=k==='eval'?r.eval_every_min:r.save_every_min,ns=k==='eval'?r.next_eval_step:r.next_export_step;
+  if(L&&L[0]&&ev&&(ns==null||(k!=='eval'&&r.save_wall))){const tn=L[0]+ev*60,sn=Math.max(st+1,st+Math.ceil((tn-tl)/m));c.push([Math.max(tn,at(sn)),sn])}
+  if(ns!=null&&ns>=st)c.push([at(ns),ns]);   /* 10-25: an eval due at the current step = "due now" */
+  if(k!=='eval')for(const s of r.export_steps||[])if(s>st){c.push([at(s),s]);break}
+  const E=r.max_steps_set||r.max_steps;if(E)for(const x of c)if(x[1]>E){x[1]=E;x[0]=at(E)}
+  return c.length?c.sort((a,b)=>a[0]-b[0])[0]:null}
+function liveBits(r,nolast){if(!LIVE(r))return '';let o='';const ls=nolast?null:lastStepTime(r);
+  if(ls)o+=`<span title="the newest logged optimiser step">last step ${ls[0].toFixed(1)} s (step ${f(ls[1])}, ${r.t_last?tPT(r.t_last):'–'})</span>`;
+  for(const [k,lab] of [['save','next checkpoint'],['eval','next eval']]){const n=nextOf(r,k);if(!n)continue;const ev=k==='eval'?r.eval_every_min:r.save_every_min,ns=k==='eval'?r.next_eval_step:r.next_export_step;
+    o+=`<span class="cdt" data-t="${n[0]}" data-k="${lab}" data-s="${n[1]}" title="${k==='save'?'checkpoint':'eval'} ${ev?'every '+f(ev)+' min':'at step '+f(n[1])}">${cdTxt(lab,n[0],n[1])}</span>`}
+  return o}
+function cdTick(){for(const e of document.querySelectorAll('.cdt'))e.textContent=cdTxt(e.dataset.k,+e.dataset.t,+e.dataset.s)}
+setInterval(cdTick,1000);
+/* 10-28 P14 motvox header countdowns: the trainer restarts its save / eval / export wall-clock timers at each leg's loop start (t_leg0 from ppm_doc.py
+   PPM_MOTVOX), so each timer counts from the later of its last event and t_leg0; + "next export" (last_export / export_every_min, the same rule as the
+   next checkpoint; not shown past the run's last step) */
+const legT=(b,L)=>b.t_leg0&&(!L||!L[0]||L[0]<b.t_leg0)?[b.t_leg0,null]:L;
+function mvBits(b){if(!LIVE(b))return '';let o=liveBits(Object.assign({},b,{last_save:legT(b,b.last_save),last_eval:legT(b,b.last_eval)}));
+  const L=legT(b,b.last_export),ev=b.export_every_min,m=b.mean50_s||b.mean_s,st=b.step,E=((a,c)=>a&&c?Math.min(a,c):a||c)(b.max_steps,b.max_steps_set);
+  if(L&&L[0]&&ev&&m&&st!=null){const tl=b.t_last||Date.now()/1000,tn=L[0]+ev*60,sn=Math.max(st+1,st+Math.ceil((tn-tl)/m)),t=Math.max(tn,tl+(sn-st)*m);
+    if(!E||sn<=E)o+=`<span class="cdt" data-t="${t}" data-k="next export" data-s="${sn}" title="export every ${f(ev)} min">${cdTxt('next export',t,sn)}</span>`}
+  return o}
+function hdr(){const s=S(),now=Date.now()/1000,live=s.t_last&&now-s.t_last<900&&!s.done,st=STAR();
+  const MX=P8?(s.max_steps_set||s.max_steps):P14?((a,c)=>a&&c?Math.min(a,c):a||c)(s.max_steps,s.max_steps_set):s.max_steps,left=(MX&&s.mean50_s&&!s.done)?Math.max(0,(MX-s.step)*s.mean50_s-(now-(s.t_last||now))):null;   /* P8: max steps = PPM_MAX_STEPS of its env file */
+  const b=NXT(),bl=b&&b.t_last&&now-b.t_last<900&&!b.done,bleft=(b&&b.max_steps&&b.mean50_s&&!b.done&&b.step!=null)?Math.max(0,(b.max_steps-b.step)*b.mean50_s-(now-(b.t_last||now))):null;   /* Next-arch 14B header part (10-19: ★ only when it is the live run, STAR()) */
+  const ih=b&&!P14?`<span><span class="dot${bl?'':' off'}"></span><span class="nm" style="color:var(--nxt)">${st==='nxt'?'★ ':''}Next-arch 14B</span> ${b.run}</span><span>step ${b.step!=null?f(b.step):'–'} / ${b.max_steps?f(b.max_steps):'–'}</span><span>${b.mean50_s||'–'} s/step</span><span>ETA ${bleft!=null?dt(now+bleft)+' ('+(bleft/3600).toFixed(0)+' h)':'–'}</span>${liveBits(b)}`:'',sep='<span style="color:var(--muted)">·</span>';
+  const mh=`<span><span class="dot${live?'':' off'}"></span><span class="nm">${st==='main'?'★ ':''}${P8?'8,1,1':P14?'ppm14b':'PPM main (summed)'}</span> ${P14?'jobs '+jobs(s):s.run||''}</span><span>step ${s.step!=null?f(s.step):'–'} / ${MX?f(MX):'–'}</span><span>${s.mean50_s||'–'} s/step (50-step mean)</span>${LIVE(s)?'':`<span>last step ${(()=>{const i=(s.train_cols||[]).indexOf('step_s'),r=(s.train||[]).slice(-1)[0];return i>=0&&r&&r[i]!=null?(+r[i]).toFixed(1)+' s':'–'})()} at ${s.t_last?dt(s.t_last):'–'}</span>`}<span>ETA ${left!=null?dt(now+left)+' ('+(left/3600).toFixed(0)+' h)':'–'}</span>${liveBits(s)}${s.roll_ahead&&Object.keys(s.roll_ahead).length?(()=>{const e=Object.entries(s.roll_ahead).filter(([h,a])=>a!=null).sort((p,q)=>p[1]-q[1]);return e.length?`<span title="data lead: ${e.map(([h,a])=>h+' '+a).join(', ')}" style="${e[0][1]<20?'color:var(--bad,#d33);font-weight:600':''}">npl5 ahead min ${e[0][1]} (${esc(e[0][0])})</span>`:''})():''}${s.roll_disk&&Object.keys(s.roll_disk).length?`<span style="color:var(--bad,#d33);font-weight:600" title="/scratch near floor">disk low: ${Object.entries(s.roll_disk).map(([h,v])=>esc(h)+' '+v+' GB').join(', ')}</span>`:''}`,tail=`<span style="color:var(--muted)">updated ${s.updated||D.built||''}</span><span class="seg"><button id="fct" aria-pressed="${FCON}" title="forecasts to step ${f(END())}">Forecast</button></span>`;
+  const R8=REF(),rh=R8?`<span><span class="nm" style="color:var(--ref)">ref · PPM main</span> jobs ${jobs(R8)} · to step ${R8.step!=null?f(R8.step):'–'}</span><span>switch to 8,1,1 at step ${SW8()!=null?f(SW8()):'–'}</span>`:P14&&b?`<span><span class="nm" style="color:var(--nxt)">${STAR()==='nxt'?'★ ':'ref · '}INTL 14B</span> ${b.run} · jobs ${jobs(b)} · ${b.done||b.stopped!=null?'stopped at':'at'} step ${b.step!=null?f(b.step):'–'} · ${b.mean50_s||'–'} s/step</span>`:'';   /* P8 only */
+  const B8=DEC(),dlv=LIVE(B8),dE=B8&&(B8.max_steps_set||B8.max_steps),dleft=(B8&&dE&&B8.mean50_s&&!B8.done&&B8.step!=null)?Math.max(0,(dE-B8.step)*B8.mean50_s-(now-(B8.t_last||now))):null;   /* 10-23 P8: LR-decay branch header part */
+  const dh=B8?`<span><span class="dot${dlv?'':' off'}"></span><span class="nm" style="color:var(--dec)">${st==='dec'?'★ ':''}${esc(DECL())}</span> ${esc(B8.run)} · jobs ${jobs(B8)}</span><span>step ${B8.step!=null?f(B8.step):'–'} / ${dE?f(dE):'–'}</span><span>${B8.mean50_s||'–'} s/step</span><span>ETA ${dleft!=null?dt(now+dleft)+' ('+(dleft/3600).toFixed(1)+' h)':B8.done?'done':'–'}</span>${liveBits(B8)}`:'';
+  const V9=VOX(),vlv=LIVE(V9),vE=V9&&V9.max_steps,vleft=(V9&&vE&&V9.mean50_s&&!V9.done&&V9.step!=null)?Math.max(0,(vE-V9.step)*V9.mean50_s-(now-(V9.t_last||now))):null;   /* 10-24 PV: PPMVOX header part */
+  const vh=V9?`<span><span class="dot${vlv?'':' off'}"></span><span class="nm" style="color:var(--vox)">${st==='vox'?'★ ':''}PPMVOX${V9.tag?' '+esc(V9.tag):''}</span> ${esc(V9.run)} · jobs ${jobs(V9)}</span><span>step ${V9.step!=null?f(V9.step):'–'} / ${vE?f(vE):'–'}${V9.step!=null&&V9.from_step!=null?' (vox '+f(V9.step-V9.from_step)+')':''}</span>${V9.step!=null&&V9.from_step!=null&&vE?(()=>{const T=vE-V9.from_step,U=Math.max(0,Math.min(T,V9.step-V9.from_step));return `<span title="PPMVOX v3 has fresh (never-repeated) podcast data for exactly ${f(T)} vox steps (its planned run); beyond that rows would repeat or need a new download"><b>fresh data: ${f(U)} / ${f(T)} steps used (${Math.round(100*U/T)}%) · ${f(T-U)} left (${Math.round(100*(T-U)/T)}%)</b></span>`})():''}<span>${V9.mean50_s||'–'} s/step</span><span>ETA ${vleft!=null?dt(now+vleft)+' ('+(vleft/3600).toFixed(1)+' h)':V9.done?'done':'–'}</span>${liveBits(V9)}${!vlv&&V9.step!=null&&!V9.done?`<span style="color:var(--muted)">stopped at step ${f(V9.step)}${V9.state?' ('+esc(String(V9.state).toLowerCase())+')':''}</span>`:''}${VSEG(V9).map(x=>`<span style="color:var(--vox)">${esc(x.label)} (from step ${f(x.from_step)})</span>`).join('')}${VOX1()?`<span style="color:var(--muted)">${esc(VOX1().run)} ${VPAR()?'the parent, to':'stopped at'} step ${VOX1().step!=null?f(VOX1().step):'–'} (${VPAR()?'solid':'faded'} on the charts)</span>`:''}<span title="PPMVOX normalised word CE fits use only its points at steps ≥ this (dashed, to the run end; value at the end in the legend)">fit from step <input id="vfit" type="number" min="1" step="1" value="${vFit0()}" style="width:6.5em;font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);padding:1px 4px"></span><span class="seg"><button id="vfull" aria-pressed="${VFULL}" title="off: every chart showing PPMVOX spans steps ${f(VWIN0())}–${f(vE||0)} (PPM's last steps, the switch, PPMVOX); on: the page's own x ranges (full history)">Full history</button></span>`:'';
+  const p3=P32(),ph=p3?`<span><span class="nm" style="color:var(--p32)">PPM 32B</span> ${p3.run} · jobs ${jobs(p3)} · to step ${p3.step!=null?f(p3.step):'–'} (its 8,1,1 switch)</span>`:'';   /* 10-21 P14 only */
+  const mo=MOT(),mlv=LIVE(mo),mleft=(mo&&mo.max_steps&&mo.mean50_s&&!mo.done&&mo.step!=null)?Math.max(0,(mo.max_steps-mo.step)*mo.mean50_s-(now-(mo.t_last||now))):null;   /* 10-23 P14: MoT 14B header part */
+  const moh=mo?`<span><span class="dot${mlv?'':' off'}"></span><span class="nm" style="color:var(--mot)">${st==='mot'?'★ ':''}MoT 14B</span> ${esc(mo.run)} · jobs ${jobs(mo)}</span><span>step ${mo.step!=null?f(mo.step):'–'} / ${mo.max_steps?f(mo.max_steps):'–'}</span><span>${mo.mean50_s||'–'} s/step</span><span>ETA ${mleft!=null?dt(now+mleft)+' ('+(mleft/3600).toFixed(0)+' h)':mo.done?'done':'–'}</span>${liveBits(mo)}`:'';   /* 10-23: MoT next checkpoint / next eval (= the main header's spans; branch 'pass' keys) */
+  const mv=MVX(),mvlv=LIVE(mv),mvE=mv?((a,c)=>a&&c?Math.min(a,c):a||c)(mv.max_steps,mv.max_steps_set):null,mvleft=(mv&&mvE&&mv.mean50_s&&!mv.done&&mv.step!=null)?Math.max(0,(mvE-mv.step)*mv.mean50_s-(now-(mv.t_last||now))):null;   /* 10-28 P14: MoT 14B + audio in header part */
+  const mvh=mv?`<span><span class="dot${mvlv?'':' off'}"></span><span class="nm" style="color:var(--mvx)">${st==='mvx'?'★ ':''}MoT 14B + audio in</span> ${esc(mv.run)} · jobs ${jobs(mv)}</span><span>step ${mv.step!=null?f(mv.step):'–'} / ${mvE?f(mvE):'–'}${mv.step!=null&&mv.from_step!=null?' (audio in: '+f(Math.max(0,mv.step-mv.from_step))+(mvE?' of '+f(mvE-mv.from_step):'')+')':''}</span><span>${mv.mean50_s||'–'} s/step</span><span>ETA ${mvleft!=null?dt(now+mvleft)+' ('+(mvleft/3600).toFixed(1)+' h)':mv.done?'done':'–'}</span>${mvBits(mv)}${!mvlv&&!mv.done&&mv.step!=null?`<span style="color:var(--muted)">not live: last step ${f(mv.step)}${mv.t_last?' at '+dt(mv.t_last):''}</span>`:''}${mv.step==null?'<span style="color:var(--muted)">no steps logged yet</span>':''}<span class="seg"><button id="mvfull" aria-pressed="${MVFULL}" title="off: from step ${f(MWIN0())}; on: full history">Full history</button></span>`:'';
+  if(P14&&mv&&st==='mvx')document.title='14B live curves · ★ MoT 14B + audio in';   /* 10-28: while it is the live run (else the built title) */
+  document.getElementById('hdr').innerHTML=PA?hdrA()+tail:(st==='mvx'&&mvh?mvh+sep:'')+(st==='vox'&&vh?vh+sep:'')+(st==='mot'&&moh?moh+sep:'')+(st==='dec'&&dh?dh+sep:'')+(st==='main'?mh+(ih?sep+ih:''):(ih?ih+sep:'')+mh)+(dh&&st!=='dec'?sep+dh:'')+(rh?sep+rh:'')+(moh&&st!=='mot'?sep+moh:'')+(mvh&&st!=='mvx'?sep+mvh:'')+(vh&&st!=='vox'?sep+vh:'')+(ph?sep+ph:'')+tail;   /* 10-23: + MoT 14B (moh; first while it is the ★ live run) */   /* 10-23: + the LR-decay branch (dh; '' off P8 / before it exists) */   /* 10-19: the ★ (live) run first */
+  {const ab=document.getElementById('afull');if(ab)ab.onclick=()=>{AFULL=!AFULL;LS.set('ppm7_afull',AFULL);hdr();for(const k in ch){try{ch[k].resetZoom('none')}catch(e){}ch[k].$z=false;upd(k)}}}   /* 10-25 PA */
+  {const vi=document.getElementById('vfit');if(vi)vi.onchange=()=>{const v=Math.round(+vi.value);VFIT0=v>0?v:16927;LS.set('ppm7_vfit',VFIT0);for(const k in ch)upd(k)}}   /* 10-24 PV */
+  {const vb=document.getElementById('vfull');if(vb)vb.onclick=()=>{VFULL=!VFULL;LS.set('ppm7_vfull',VFULL);hdr();for(const k in ch){try{ch[k].resetZoom('none')}catch(e){}ch[k].$z=false;upd(k)}}}   /* 10-24 PV */
+  {const mb=document.getElementById('mvfull');if(mb)mb.onclick=()=>{MVFULL=!MVFULL;LS.set('ppm7_mvfull',MVFULL);hdr();for(const k in ch){try{ch[k].resetZoom('none')}catch(e){}ch[k].$z=false;upd(k)}}}   /* 10-28 P14 motvox */
+  document.getElementById('fct').onclick=()=>{FCON=!FCON;LS.set('ppm2_fc',FCON);hdr();for(const k in ch){try{ch[k].resetZoom('none')}catch(e){}ch[k].$z=false;upd(k)}};xcUi()}   /* 10-23: + the Extrapolate contemporary controls / note (s follows the ★ run) */
+{const e=document.getElementById('rq');if(e){e.value=RQ;let tm=0;const ap=()=>{clearTimeout(tm);rqSet(e.value);QSS.set(RQ);rqCount();for(const k in ch)if(SPEC[k].tab===TAB)upd(k)};   /* 10-28 run search (other tabs refresh when shown) */
+  e.oninput=()=>{clearTimeout(tm);tm=setTimeout(ap,150)};e.onkeydown=ev=>{if(ev.key==='Escape'){e.value='';ap()}else if(ev.key==='Enter')ap()};rqCount();setInterval(rqCount,60000)}}
+{const e=document.getElementById('smw');e.value=String(SM);e.onchange=()=>{SM=+e.value||10;LS.set('ppm2_sm',SM);for(const k in ch)upd(k)}}
+{const e=document.getElementById('xmaxs');if(e){e.value=XMAX?String(XMAX):'';const ap=()=>{const v=Math.round(+e.value);XMAX=e.value.trim()!==''&&v>0?v:null;e.value=XMAX?String(XMAX):'';LS.set('ppm3_xmax',XMAX);
+  for(const k in ch){try{ch[k].resetZoom('none')}catch(x){}ch[k].$z=false;upd(k)}};e.onchange=ap;e.onkeydown=ev=>{if(ev.key==='Enter')ap()}}}   /* 10-17: x-axis to step */
+{const e=document.createElement('div');e.id='xcnote';e.style.cssText='display:none;margin:-4px 0 12px;font-size:12px;line-height:1.45;color:var(--muted)';document.querySelector('.bar').after(e);   /* 10-23: Extrapolate contemporary controls (rule note under the tab bar) */
+  const re=()=>{xcUi();if(!XC)document.querySelectorAll('.xcap').forEach(x=>{x.hidden=true;x.innerHTML=''});for(const k in ch){try{ch[k].resetZoom('none')}catch(x){}ch[k].$z=false;if(SPEC[k].tab===TAB)upd(k)}};   /* other tabs refresh when shown */
+  const i=document.getElementById('xcs'),r=document.getElementById('xcr'),t=document.getElementById('xctg'),nn=v=>{const x=Math.round(+v);return String(v).trim()!==''&&x>0?x:null};
+  document.getElementById('xct').onclick=()=>{XC=!XC;LS.set('ppm6_xc',XC);re()};
+  document.getElementById('xcz').onclick=ev=>{ev.preventDefault();XCS=null;LS.set('ppm6_xcs',0);re()};
+  const aps=v=>{XCS=nn(v);LS.set('ppm6_xcs',XCS||0);re()};i.onchange=()=>aps(i.value);i.onkeydown=ev=>{if(ev.key==='Enter')aps(i.value)};r.oninput=()=>{i.value=r.value};r.onchange=()=>aps(r.value);
+  const apt=()=>{XCT=nn(t.value);LS.set('ppm6_xct',XCT||0);re()};t.onchange=apt;t.onkeydown=ev=>{if(ev.key==='Enter')apt()}}
+/* 10-21 P14: red decision banner = klweb/decision_<PAGE>.txt (plain text; empty or missing = no banner), re-read on every poll */
+async function dban(){if(!P14&&!PA)return;let t='';try{const r=await fetch('decision_'+PAGE+'.txt?t='+Date.now(),{cache:'no-store'});if(r.ok)t=(await r.text()).trim()}catch(e){}
+  let e=document.getElementById('dban');if(!e){e=document.createElement('div');e.id='dban';e.className='err';e.style.whiteSpace='pre-line';document.querySelector('.wrap').prepend(e)}e.textContent=t;e.style.display=t?'':'none'}
+/* 10-21 P14 (user): what lines up between PPM 32B and the two 14B runs (checked from the plans / resolved configs: ppm14b's [cfgdiff] vs PPM job 26271, the [plan]
+   digests, interleave-ppm's plan check of PPM's own plan code), one note under the tab bar; nothing off P14 */
+if(P14&&P32()){const e=document.createElement('div'),b=P32();e.id='p32note';e.style.cssText='margin:-4px 0 12px;font-size:12px;line-height:1.45;color:var(--muted)';
+  e.innerHTML=`<b style="color:var(--p32)">PPM 32B</b> (PPM main ppm-v1, jobs ${esc(jobs(b))}) is drawn to step ${b.step!=null?f(b.step):'–'}, where it switched to 8,1,1 (dashed marker; later steps not shown, no trend lines). `+
+    `<b style="color:var(--fg)">Same as ppm14b and INTL 14B:</b> 256 speech rows per step (128 GPUs × 2 speech micros) and the same speech rows in the same order at every step `+
+    `(ppm14b and INTL log plan digest 7964360b90a9d30c for steps 0–17,366; PPM main's own plan code matched it on all 128 ranks, and every PPM leg logs the same data line), the same text packs per step, `+
+    `the same eval sets (own speech holdout, 103 stage-3 rows, stage-3 packs 0..151, Gemma, chat, the 32 B-depends-on-A rows, probed exactly as ppm14b's), LRs and loss weights; so steps, speech rows and epochs line up. `+
+    `<b style="color:var(--fg)">Different:</b> Qwen3-32B backbone (64 layers) vs Qwen3-14B (40); PPM 32B also trains 1 pose row per GPU per step (each micro's loss ÷ 4, not ÷ 3); `+
+    `its early recipe: decoders K 4 on 10 % of frames before step 399, and the backbone stepped at LR 0 on 6 resume steps (163, 170, 335, 399, 486, 1,083); `+
+    `its 103-row and packs evals start at step 170, B-depends-on-A at 335.`;
+  document.querySelector('.bar').after(e)}
+hdr();show(TAB);dban();
+/* ---- live: s3live every 60 s; reload when the page version changes ---- */
+async function poll(){dban();try{const r=await fetch('s3live.json?t='+Date.now(),{cache:'no-store'});if(r.ok){D.s3=await r.json();if(PA&&ASIGF()!==ASIG){location.reload();return}if(PV&&VSIGF()!==VSIG){location.reload();return}if(P14&&!!MVX()!==MVSIG){location.reload();return}hdr();if(TAB==='hp')hpRender();if(TAB==='hub')hubRender();if(TAB==='ckpt')ckptRender();for(const k in ch)if(SPEC[k].tab===TAB)upd(k);else ch[k].$stale=1}}catch(e){}
+  try{const v=await fetch('ver_s3.txt?t='+Date.now(),{cache:'no-store'});if(v.ok){const t=(await v.text()).trim();if(t&&t!==D.ver)location.reload()}}catch(e){}}
+setInterval(poll,60000);setInterval(hdr,30000);
+</script>

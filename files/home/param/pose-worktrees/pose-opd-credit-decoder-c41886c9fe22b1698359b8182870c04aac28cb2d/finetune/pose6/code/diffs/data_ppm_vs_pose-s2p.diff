@@ -1,0 +1,45 @@
+--- /data/home/amartyavarma/ppm/pose-s2p/code/data_ppm.py	2026-10-27 09:06:02.593452803 +0000
++++ /data/home/amartyavarma/ppm/pose6/code/data_ppm.py	2026-10-27 19:12:59.766609270 +0000
+@@ -218,6 +218,42 @@
+     return out
+ 
+ 
++# ---- pose6 (10-27): G0COND frame-0 features, the block below copied BYTE-IDENTICALLY from pose5/code-811-s2p/data_ppm.py (lines 243-276;
++#      job 31101's code); used by data_aloe_pose's G0COND path (Aloe monoplex items). pose_micro_ppm below is unchanged (Aloe never calls it).
++G0_DIM = 8                          # G0COND (pose5 10-27, user change #2): per-clip frame-0 features (g0_feat), pose rows only
++G0_FIELDS = ("frame0_root", "frame0_width", "orig_h", "orig_w", "frame0_ok")
++G0_STATS = {"clips": 0, "invalid": 0, "missing_field": 0}            # this process's counts (pose_micro_ppm under g0cond; trainer logs them)
++
++
++def g0_problem(clip):
++    """'' if g0_feat can use the clip, else why not ('missing field <f>' / 'frame0_ok false' / 'bad value ...'); audit NIT: never silent."""
++    miss = [k for k in G0_FIELDS if k not in clip or clip[k] is None]
++    if miss:
++        return "missing field " + ",".join(miss)
++    return "" if g0_feat(clip)[1] else ("frame0_ok false" if not clip["frame0_ok"] else
++                                        f"bad value root {clip['frame0_root']} w {clip['frame0_width']} H {clip['orig_h']} W {clip['orig_w']}")
++
++
++def g0_feat(clip):
++    """G0COND: one pose clip's frame-0 conditioning features (computed in float64, stored float32) -> (f [G0_DIM], ok).
++    r = frame0_root (y, x; image-normalised: y / orig_h, x / orig_w), w = frame0_width (horizontal shoulder width, x / orig_w), H, W =
++    orig_h, orig_w (the source video's pixel size, parquet pose struct; every clip record of the fresh plans and of PPM's samdata stores):
++      f = [r_y, r_x, log w, -r_y / w, (1 - r_y) / w, -r_x / w, (1 - r_x) / w, log(H / W)]
++    (f[3:7] = the distances from the root to the top / bottom / left / right frame edges in shoulder widths = pose_s3q.global_features'
++    edge term e; f[7] = the aspect ratio, log so portrait / landscape are symmetric). Invalid frame 0 (frame0_ok false, a non-finite value,
++    w <= 0, H <= 0 or W <= 0) -> f = 0 (ok False): with g_proj bias-free the clip's SLOT input is then exactly today's."""
++    try:
++        ry, rx = (float(x) for x in clip["frame0_root"])
++        w, H, W = float(clip["frame0_width"]), float(clip["orig_h"]), float(clip["orig_w"])
++        ok = bool(clip.get("frame0_ok", True)) and all(np.isfinite([ry, rx, w, H, W])) and w > 0 and H > 0 and W > 0
++    except (KeyError, TypeError, ValueError):
++        ok = False
++    if not ok:
++        return np.zeros(G0_DIM, np.float32), False
++    f = np.array([ry, rx, np.log(w), -ry / w, (1.0 - ry) / w, -rx / w, (1.0 - rx) / w, np.log(H / W)], np.float64)
++    return f.astype(np.float32), True
++
++
+ def pose_micro_ppm(prow, cfg, rank):
+     """one pose row (channel B speaker) -> the common micro."""
+     m = PS.pose_micro([prow], {"new_word": cfg["new_word"], "pose_delay": cfg["pose_delay"], "light_seed": cfg["light_seed"]}, rank,

@@ -1,0 +1,4 @@
+#!/bin/sh
+# pdxhost 10-30: pose-duplex live backend instance P (:9126, playground Live mic) serving the RAW-codes 33111 export-211 (/data consolidated).
+# = demos_down_1029b/script-32300.sh (pin CUDA_VISIBLE_DEVICES to the job IDX, exec stage-lb/backend.sbatch) with CK set via --export.
+IDX=$(scontrol show job -d $SLURM_JOB_ID | grep -o "IDX:[0-9,-]*" | head -1 | cut -d: -f2); export CUDA_VISIBLE_DEVICES=$(python3 -c "import sys; o=[]; [o.extend(range(int(a.split(\"-\")[0]), int(a.split(\"-\")[-1])+1)) for a in sys.argv[1].split(\",\")]; print(\",\".join(map(str,o)))" "$IDX"); echo "pinned CUDA_VISIBLE_DEVICES=$CUDA_VISIBLE_DEVICES (IDX $IDX) CK=$CK $(date)"; nvidia-smi -i $CUDA_VISIBLE_DEVICES --query-gpu=index,memory.used --format=csv,noheader; exec bash /data/home/amartyavarma/ppm/aloe-posedup-live/stage-lb/backend.sbatch

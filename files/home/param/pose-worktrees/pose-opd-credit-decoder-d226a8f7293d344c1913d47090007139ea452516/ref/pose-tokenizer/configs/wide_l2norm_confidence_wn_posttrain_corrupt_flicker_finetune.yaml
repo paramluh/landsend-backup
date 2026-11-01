@@ -1,0 +1,110 @@
+# Fine-tune the confidence-aware flicker-corruption tokenizer on posttraining clips.
+#
+# Run with:
+  # CUDA_VISIBLE_DEVICES=0,1,2,3 accelerate launch --num_processes 4 --multi_gpu \
+  #     train_confidence.py \
+  #     --config configs/wide_l2norm_confidence_wn_posttrain_corrupt_flicker_finetune.yaml \
+  #     --init-from-checkpoint checkpoints/wide-l2norm-confidence-0.25-wn-pretrain-corrupt-flicker/step_140000
+
+# Data: Aloe post-training pose extraction.
+data_dir: /mnt/somfs/hands/aloe/poses/pose_files_npy
+manifest: manifests/aloe_post_training_pose_files.txt
+dims_csv: /mnt/somfs/hands/aloe/poses/dims.csv
+test_manifest: ""
+test_dir: "test_set"
+n_test_clips: 0
+test_max_seconds: 10.0
+num_files: 0
+val_count: 1000
+norm_stats: ""
+
+# Data framing.
+source_fps: 30
+target_fps: 25
+segment_frames: 80
+max_frames: 0
+random_crop_frames: false
+random_segment_offset: true
+inference_chunk_stride: 0
+
+# Model architecture: must match the source checkpoint exactly.
+num_keypoints: 55
+keypoint_dim: 2
+input_features: 165
+first_channel_size: 512
+num_blocks: 3
+downsampling_rates: [1, 2, 2]
+kernel_size: [3, 3, 3]
+num_residual_blocks: 2
+residual_units_per_block: 2
+d_model: 2048
+num_groups: false
+use_noise_blocks: false
+norm: "LN"
+conv_weight_norm: true
+
+# Quantizer: must match the source checkpoint exactly.
+n_codebooks: 8
+codebook_size: 1024
+codebook_dim: 16
+vq_strides: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+apply_rotation_trick: false
+enable_quantization: true
+quantizer_dropout: 0.0
+normalize_codes: true
+
+# Fine-tuning optimizer + schedule. This starts a fresh step count from 0.
+epochs: 9999
+max_steps: 100
+batch_size: 128
+lr: 3.0e-5
+lr_schedule: cosine
+lr_min: 3.0e-6
+warmup_steps: 0
+weight_decay: 0.01
+
+# Loss weights.
+reconstruction_weight: 1.0
+velocity_weight: 2.0
+confidence_loss_weight: 0.25
+confidence_loss_type: "smooth_l1"
+commitment_weight: 0.25
+codebook_weight: 1.0
+hand_loss_weight: 1.0
+relative_l1_weight: 0.0
+confidence_weight_mode: "soft"
+confidence_mask_threshold: 0.3
+
+# Denoising input corruption: same low-confidence xy-noise setup as the
+# selected pretraining flicker run.
+pose_corruption_prob: 0.3
+pose_corruption_modes: ["temporal_joint_flicker", "part_flicker"]
+pose_corruption_min_conf: 0.7
+pose_corruption_span_min: 1
+pose_corruption_span_max: 4
+pose_corruption_joints_min: 2
+pose_corruption_joints_max: 6
+pose_corruption_conf_min: 0.05
+pose_corruption_conf_max: 0.35
+pose_corruption_xy_noise_std: 0.015
+pose_corruption_xy_outlier_prob: 0.0
+pose_corruption_xy_outlier_std: 0.0
+
+# Runtime.
+num_workers: 10
+log_interval: 10
+
+# Eval / checkpointing.
+val_batch_size: 32
+val_confidence_threshold: 0.5
+# ~1 validation pass per epoch at the current Aloe size.
+validation_interval: 100
+save_interval: 200
+save_optimizer_state: false
+render_interval: 0
+test_frame_idx: 0
+output_dir: checkpoints
+
+# Wandb.
+wandb_project: pose-tokenizer
+wandb_run_name: wide-l2norm-confidence-0.25-wn-posttrain-corrupt-flicker-ft

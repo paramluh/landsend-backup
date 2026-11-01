@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pose prefill inspection · update 8, sample 4</title>
+<style>body{margin:32px auto;padding:0 20px;max-width:1100px;background:#10141c;color:#e9edf5;font:17px/1.55 system-ui}video,img{width:100%;background:#181d27;border-radius:10px}a{color:#8ec9ff}code{overflow-wrap:anywhere}h1{font-size:26px}h2{font-size:21px}.note{padding:16px;background:#202735;border-radius:10px}li{margin:8px 0}</style>
+<h1>Pose prefill inspection · update 8, sample 4</h1>
+<p><code>ALOE/s2handover-none/48f6d2d3-919f-4397-a898-e6f2cf162a21/seg00/c00</code><br>assistant → user · rendered speaker: SPEAKER_01</p>
+<p class="note">The first 2 seconds are unscored dataset prefill. All 800 pose codes match the original source exactly. The remaining rollout is generated.</p>
+<h2>Source video with pose overlays · 10 seconds</h2>
+<p>Retrieved from Hugging Face: the exact same speaker and source recording, cropped to 512×960. The recorded crop transform and source start at 0 seconds are verified. Left: source video. Middle: original extracted pose. Right: decoded saved rollout. Source audio plays throughout. After 2 seconds, the rollout pose is generated and is not expected to follow the recorded person.</p>
+<video controls preload="none" poster="video-overlay-frame-000.png" src="video-overlay-first-10s.mp4"></video>
+<p>These overlays use the standard production confidence colors: red at 0.2, yellow at 0.4, green at 0.6 and above; joints fade below 0.2 and disappear below 0.05.</p>
+<h2>Full source-video comparison · 120 seconds</h2>
+<p>Original extracted pose versus decoded saved rollout pose. Both panels use the same source video and source audio.</p>
+<video controls preload="none" src="video-overlay-full-120s.mp4"></video>
+<h2>Opening comparison · 10 seconds</h2>
+<p>Earlier diagnostic, before the dashboard color correction. Left: the original dashboard projection. Middle: saved rollout reconstructed into the source camera’s proportions. Right: original dataset pose tokens decoded independently. This diagnostic uses gray for confidence below 0.3; all joints remain visible, with no smoothing or pose edits. Audio is a fixed equal-gain mix of the saved incoming and outgoing tracks.</p>
+<video controls preload="none" poster="frame-zero-comparison.png" src="pose-comparison-first-10s.mp4"></video>
+<h2>Full saved rollout · 120 seconds</h2>
+<p>Left: camera frame. Right: all joints with correct proportions; the box marks the original camera frame. The label switches from prefill to generation at 2 seconds.</p>
+<video controls preload="none" src="pose-rollout-full-120s.mp4"></video>
+<h2>What the checks found</h2>
+<ul><li>Correct source speaker, pose tokens, and 2-second prefill boundary.</li><li>The source already contains unreliable hand detections: all decoded prefill hand confidences are below 0.3, and about 95% lie outside the image.</li><li>The existing dashboard renders normalized x/W and y/H at equal scale, squeezing this portrait pose vertically. It also draws every low-confidence joint and includes outliers when choosing its view bounds.</li></ul>
+<p>The matching video was recovered from HF bucket <code>InternalCan/aloe-face-clips-hires-v1</code>. Its SHA256 matches the source manifest. Original extracted poses and exact timing were recovered from <code>InternalCan/aloe-conversationa-data</code>.</p>
+<p><a href="video-overlay-first-10s.mp4">Download opening overlay</a> · <a href="video-overlay-full-120s.mp4">Download full overlay</a> · <a href="pose-rollout-full-120s.mp4">Download pose-only rollout</a></p>
+</html>

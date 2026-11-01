@@ -1,0 +1,20 @@
+[Unit]
+Description=Rosie voice reference listening gallery and Cloudflare tunnel
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=param
+Group=param
+WorkingDirectory=/home/param/websites/rosie-voice-clips
+ExecStart=/home/param/pose-repo/.venv/bin/python -u /home/param/websites/rosie-voice-clips/ops/supervise.py
+Restart=always
+RestartSec=5
+KillMode=control-group
+TimeoutStopSec=20
+Environment=PYTHONUNBUFFERED=1
+UMask=0022
+
+[Install]
+WantedBy=multi-user.target

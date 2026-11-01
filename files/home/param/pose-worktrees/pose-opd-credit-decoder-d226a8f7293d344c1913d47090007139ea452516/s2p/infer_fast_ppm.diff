@@ -1,0 +1,361 @@
+--- /data/home/amartyavarma/ppm/aloe-pose-monoplex-infer/ppm/fast_ppm.py	2026-10-26 13:11:54.922132241 +0000
++++ infer/ppm/fast_ppm.py	2026-10-27 12:39:55.466609857 +0000
+@@ -1,3 +1,5 @@
++# POSE-S2P BRANCH (ppm/pose-s2p, 10-27): copy of aloe-pose-monoplex-infer/ppm/fast_ppm.py + speech -> pose conditioning (PPM_S2P / the
++# checkpoint's tower_p.s_emb; module doc "POSE-S2P"). Flag off (no s_emb: every deployed checkpoint) = the original code path line for line.
+ # VENDORED for aloe-pose-monoplex-infer. Upstream: ppm/fastinfer/fast_ppm.py. Edits (behaviour-neutral for this model): repo-local imports (ppm_io for infer_ppm); Voxtral front + streaming Mimi decoder imports removed and asserted off; no HF_HUB_OFFLINE / VOXTRAL_DIR defaults.
+ #!/usr/bin/env python3
+ """FAST PPM ENGINE WITH POSE (CUDA graphs, bf16): the live Aloe Voxtral demo engine (ppm/aloe-m1vox-live/live_ppm.py, copied, not imported)
+@@ -44,6 +46,15 @@
+           (-1 = not forced) for positions >= P + f0; inside the text graph the drawn token q at T is replaced by tforce[T] when >= 0, BEFORE it
+           is written to lane_B / tok_now / the ring, so the speech tower, pose tower, trunk input (cond and CFG uncond rows) and every later
+           position see the forced token exactly as a sampled one (KV / state consistent). The text draw itself still runs (same RNG use).
++POSE-S2P  (branch, off unless the model has tower_p.s_emb: PPM_S2P=1|full|cb0, or a checkpoint trained with it) the pose tower input at T
++          gains s_emb(B's SPEECH codes sampled at the SAME T) (= the trainer's model_ppm.S2PEmb, zero at init). Same timing (pose frame f and
++          speech frame f still leave in the same step); inside the step the order becomes text -> speech -> pose. 'full' (32 codebooks): the
++          pose branch waits for the whole speech branch (tower + cb0 + 31-codebook decoder); 'cb0': speech is split into two graphs
++          (tower + cb0 draw | light decoder) and pose starts right after the cb0 draw, concurrently with the speech light decoder. Forced
++          speech codes (force['codes'], pose-only runs) are written BEFORE pose reads them. Uncond pose-CFG rows: s_emb reads the Mimi codes of
++          digital silence (= the trunk's uncond rule: sil_t[T - P - CD] where B has codes at T, -1 elsewhere); prefill: s_emb(depth[1]) of the
++          row's own prefix (uncond rows: silence_depth's codes; the voice clip's codes included, as in training). Positions without speech codes
++          (system block outside the clip, frames 0, 1) -> -1 -> 0. No audio-CFG rows exist in this engine.
+ SAMPLING  live device tensors (one capture serves every setting). Standing rules: temperature 1 everywhere, audio top-k 30 (cb0 + light),
+           pose top-k 30 (cb0 + light), no repetition penalty, no min-p, CFG off, bf16 only (all new knobs default off)."""
+ import json
+@@ -87,6 +98,34 @@
+     print(f"[fastppm {time.strftime('%H:%M:%S')}]", *a, flush=True)
+ 
+ 
++S2P_KEY = "tower_p.s_emb.weight"
++
++
++def s2p_mode(v):
++    """= the trainer's model_ppm.s2p_mode: None (off) | 'full' | 'cb0'."""
++    v = str(v if v is not None else "0").strip().lower()
++    if v in ("", "0", "off", "none", "false"):
++        return None
++    if v in ("1", "full", "on", "true"):
++        return "full"
++    assert v == "cb0", ("PPM_S2P must be 0 | 1 | full | cb0", v)
++    return "cb0"
++
++
++class S2PEmb(torch.nn.Module):
++    """= the trainer's model_ppm.S2PEmb (pose-s2p): sum of per-code rows of B's speech codes at T ('full': 32 x 2048 rows on global ids,
++    'cb0': 2048 rows on cb0); -1 -> 0 (H2.code_feedback)."""
++
++    def __init__(self, H, mode):
++        super().__init__()
++        assert mode in ("full", "cb0"), mode
++        self.mode = mode
++        self.weight = torch.nn.Parameter(torch.empty((DEPTH if mode == "full" else 1) * CBS, H))
++
++    def forward(self, depth):
++        return M.H2.code_feedback(depth if self.mode == "full" else depth[..., :1], self.weight)
++
++
+ # ================================================================================================ checkpoint
+ def ckpt_info(path):
+     """consolidated bf16 DCP export (every model tensor + train_cfg.json) or a ppm-local-bf16-shards-v1 copy -> dict (sizes, pose parts,
+@@ -104,7 +143,14 @@
+         keys = set(torch.load(f"{path}/rep.pt", map_location="cpu", weights_only=True, mmap=True).keys())
+         keys |= set(torch.load(f"{path}/rank0.pt", map_location="cpu", weights_only=True, mmap=True).keys())
+         bb = "decp_bb.weight" in keys
+-        return dict(kind="local", path=path, step=int(meta["step"]), meta=meta, pose=any(k.startswith("tower_p.") for k in keys),
++        s2 = None
++        if S2P_KEY in keys:                                                            # pose-s2p checkpoint: mode from the table's rows
++            r_ = 0
++            for fn in [f"rank{r}.pt" for r in range(int(meta["world"]))] + ["rep.pt"]:
++                sd_ = torch.load(f"{path}/{fn}", map_location="cpu", weights_only=True, mmap=True)
++                r_ += int(sd_[S2P_KEY].shape[0]) if S2P_KEY in sd_ else 0
++            s2 = "full" if r_ == DEPTH * CBS else "cb0"
++        return dict(kind="local", path=path, step=int(meta["step"]), meta=meta, pose=any(k.startswith("tower_p.") for k in keys), s2p=s2,
+                     vad=any(k.startswith("vadapter.") for k in keys), decp_bb=bb,
+                     decp_bb_alpha=IP.decp_bb_alpha_of(c, meta["step"]) if bb else None, **dims)
+     assert os.path.isfile(f"{path}/.metadata") and os.path.isfile(f"{path}/COMPLETE"), ("not a COMPLETE PPM DCP export", path)
+@@ -125,7 +171,8 @@
+     return dict(kind="dcp", path=path, step=step, shapes=shp, side=side, layers=nlay("layers."), tower_layers=nlay("tower_s.layers."),
+                 dec_layers=nlay("dec_s.model.layers."), proj_r=shp["head.proj.G"][0], tower_vocab=shp["tower_s.text_emb.weight"][0],
+                 pose=any(k.startswith("tower_p.") for k in shp), vad=any(k.startswith("vadapter.") for k in shp), decp_bb=bb,
+-                decp_bb_alpha=float(side.get("decp_bb_alpha", 1.0)) if bb else None)
++                decp_bb_alpha=float(side.get("decp_bb_alpha", 1.0)) if bb else None,
++                s2p=(None if S2P_KEY not in shp else ("full" if shp[S2P_KEY][0] == DEPTH * CBS else "cb0")))
+ 
+ 
+ def s_from_metrics(step, path=RUN_METRICS):
+@@ -151,6 +198,16 @@
+     torch.set_default_dtype(BF)
+     with torch.device("meta"):
+         m = M.PPM(c32, c4, c06, ci["proj_r"], ci["tower_vocab"], vadapter=VADAPT if vad else None, nopose=not pose, decp_bb=bb)
++    s2 = ci.get("s2p")                                                                 # pose-s2p: the checkpoint's term, else PPM_S2P (zero init)
++    s2e = os.environ.get("PPM_S2P")
++    if s2 is not None:
++        assert s2e is None or s2p_mode(s2e) == s2, ("PPM_S2P disagrees with the checkpoint's s_emb", s2e, s2)
++    else:
++        s2 = s2p_mode(s2e)
++    if s2:
++        assert pose, "pose-s2p needs a pose checkpoint"
++        with torch.device("meta"):
++            m.tower_p.s_emb = S2PEmb(c4.hidden_size, s2)
+     torch.set_default_dtype(torch.float32)
+     nL, nd = ci["layers"], len(devs)
+     if last_w is None:
+@@ -181,7 +238,8 @@
+     m.eval()
+     for p in m.parameters():
+         p.requires_grad_(False)
+-    info = {"ck": ci["path"], "step": ci["step"], "kind": ci["kind"], "pose": pose, "decp_bb": bb, "decp_bb_alpha": ci["decp_bb_alpha"],
++    info = {"ck": ci["path"], "step": ci["step"], "kind": ci["kind"], "pose": pose, "decp_bb": bb, "decp_bb_alpha": ci["decp_bb_alpha"], "s2p": s2,
++            "s2p_zero_init": bool(s2) and ci.get("s2p") is None,
+             "vadapter": vad, "ldev": [str(d) for d in sorted(set(ldev), key=str)],
+             "layers_per_dev": {str(d): sum(1 for x in ldev if x == d) for d in devs}}
+     if vad:
+@@ -292,6 +350,9 @@
+ def load_weights(m, ci):
+     t0 = time.time()
+     params = {n: p for n, p in m.named_parameters()}
++    if S2P_KEY in params and ci.get("s2p") is None:                                    # pose-s2p on a checkpoint without the term: ZERO (step 0)
++        params.pop(S2P_KEY).zero_()
++        log(f"[load] pose-s2p: {S2P_KEY} not in the checkpoint -> zero (= the trainer's init: today's model exactly)")
+     want = set(params)
+     if ci["kind"] == "dcp" and os.environ.get("FASTPPM_LOADER", "dcp") == "fast":          # parallel reader: same bytes, no faster (torch.load-bound)
+         have = set(ci["shapes"])
+@@ -680,7 +741,8 @@
+     session; step(f) per conversation frame (async); result(f) / read-backs after. See the module doc."""
+ 
+     def __init__(self, m, ldev, cfgs, devs, n_inst=1, cfg_rows=False, max_s=300.0, p_max=2048, mimi_stream=True, front=None, mimi=None,
+-                 enc=None, silence=None):
++                 enc=None, silence=None, s2p=None):
++        """s2p (pose-s2p): None = follow the model (on iff m.tower_p.s_emb exists), False = off, or an S2PEmb module to use (tests)."""
+         self.m, self.ldev, self.devs = m, ldev, devs
+         c32, c4, c06 = cfgs
+         self.d0, self.dl = devs[0], devs[-1]
+@@ -820,6 +882,18 @@
+                 self.mdec = MimiDecStream(mm, NI, d0)
+             self.cbB = torch.zeros(NI, DEPTH, dtype=torch.long, device=d0)
+             self.ybuf = torch.zeros(NI, SPF, device=d0)
++        # pose-s2p (module doc): the term, its mode and buffers (flag off: none of these exist)
++        se = getattr(m.tower_p, "s_emb", None) if (s2p is None and self.pose) else (None if s2p is False else s2p)
++        assert se is None or self.pose, "pose-s2p needs the pose branch"
++        self.s_emb, self.s2p = se, (se.mode if se is not None else None)
++        if self.s2p:
++            nc = DEPTH if self.s2p == "full" else 1
++            self.scB_p = torch.full((NI, nc), -1, dtype=torch.long, device=dp)          # B's speech codes at T (global ids) on the pose GPU
++            self.sc_used = torch.full((R, nc), -1, dtype=torch.long, device=dp)         # what s_emb read this frame, all R rows (tests)
++            if self.s2p == "cb0":
++                self.c0_s = torch.zeros(NI, dtype=torch.long, device=dl)               # the speech cb0 draw (head graph -> light graph)
++                self.pres_s = torch.zeros(NI, DEPTH, CBS, dtype=torch.bool, device=dl)
++                self.sc0_l = torch.full((NI, 1), -1, dtype=torch.long, device=dl)
+         self.cs_side = torch.cuda.Stream(dl)                                                   # dl -> pose GPU copies (never blocks dl)
+         self.ev_text = torch.cuda.Event()
+         self.graphs = {}
+@@ -976,6 +1050,56 @@
+         self.pk[dl][:, 0].copy_(self.tok_now)
+         self.pk[dl][:, 1:].copy_(self.depB[ar, T])
+ 
++    def _speech_head(self):
++        """pose-s2p 'cb0', full frames: the first half of _speech(True) op for op (tower step, cb0 logits, presence, cb0 draw); the draw
++        and its presence go to buffers for _speech_light; sc0_l = the cb0 global id the pose branch reads."""
++        m, dl, NI = self.m, self.dl, self.NI
++        tw = m.tower_s
++        T = self.Tv[dl][:NI]
++        ar = self.arI[dl]
++        sl = T.to(torch.int32)
++        tok = self.tok_now
++        dprev = self.depB[ar, T - 1]
++        e = tw.text_emb(tok) + tw.code_emb(dprev).to(BF) + tw.cond(self.hn_prev[:NI]).to(BF)
++        h = e[None]
++        cos, sin = self.rope_t[0].index_select(1, T), self.rope_t[1].index_select(1, T)
++        for i, L in enumerate(self.ts.L):
++            h = self._layer_step(L, h, cos, sin, self.tsK[i], self.tsV[i], sl)
++        hv = FO.rms(h[0], tw.norm.weight, float(tw.norm.variance_epsilon))
++        self.hv_s.copy_(hv)
++        z0 = (hv @ tw.cb0_head.weight.t()).float()
++        self.z0.copy_(z0)
++        pres = self._presence_live()
++        rp = self.adapt[:, 1:2]
++        c0 = t_sample(ctrl_penalty(z0, pres[:, 0], rp), self.gen_a, self.prm("cb0_temp"), self.prm("cb0_topk"))
++        self.c0_s.copy_(c0)
++        self.pres_s.copy_(pres)
++        self.sc0_l.copy_((c0 + self.off_t[0])[:, None])
++
++    def _speech_light(self):
++        """pose-s2p 'cb0', full frames: the second half of _speech(True) (fused 0.6B speech decoder cb1..31 from the head's draw)."""
++        dl, NI = self.dl, self.NI
++        T = self.Tv[dl][:NI]
++        ar = self.arI[dl]
++        codes = self.dec_s.gen(self.hv_s, self.c0_s, self.gen_a, self.prm("light_temp"), self.prm("light_topk"), pres=self.pres_s,
++                               rp=self.adapt[:, 1:2])
++        self.depB[ar, T] = codes + self.off_t
++        self.pk[dl][:, 0].copy_(self.tok_now)
++        self.pk[dl][:, 1:].copy_(self.depB[ar, T])
++
++    def _s2p_codes(self):
++        """pose-s2p: the codes s_emb reads for all R rows: instance rows = scB_p (B's speech codes at T), uncond rows = the Mimi codes of
++        digital silence where B has codes at T (= _seg's uncond rule), -1 elsewhere."""
++        dp, NI = self.dp, self.NI
++        sc = self.scB_p
++        if self.cfg_rows:
++            TI = self.Tv[dp][:NI]
++            fr = (TI - self.Pv[dp][:NI] - CD).clamp(0, self.n_fr - 1)
++            st = self.sil_t.index_select(0, fr)[:, :sc.shape[1]]
++            sc = torch.cat([sc, torch.where(sc[:, :1] >= 0, st, torch.full_like(sc, -1))], 0)
++        self.sc_used.copy_(sc)
++        return sc
++
+     def _pose(self, full, cfgdec=False):
+         """pose branch on the pose GPU for all R rows (uncond rows: own hn, the instance's lane + pose history)."""
+         m, dp, NI = self.m, self.dp, self.NI
+@@ -986,6 +1110,8 @@
+         tok = self.tokp.index_select(0, rm)
+         pprev = self.pdepB[rm, T - 1]
+         e = tw.text_emb(tok) + tw.code_emb(pprev).to(BF) + tw.cond(self.hn_p).to(BF)
++        if self.s2p:                                                                       # pose-s2p (flag off: never runs)
++            e = e + self.s_emb(self._s2p_codes()).to(BF)
+         h = e[None]
+         cos, sin = self.rope_p[0].index_select(1, T), self.rope_p[1].index_select(1, T)
+         for i, L in enumerate(self.tp.L):
+@@ -1133,6 +1259,9 @@
+         cap("text", self.dl, self._text, (self.gen_t,))
+         cap("speech", self.dl, lambda: self._speech(False))
+         cap("speech_full", self.dl, lambda: self._speech(True), (self.gen_a,))
++        if self.s2p == "cb0":                                                              # pose-s2p cb0: speech split at the cb0 draw
++            cap("speech_head_full", self.dl, self._speech_head, (self.gen_a,))
++            cap("speech_light_full", self.dl, self._speech_light, (self.gen_a,))
+         if self.pose:
+             cap("pose", self.dp, lambda: self._pose(False))
+             cap("pose_full", self.dp, lambda: self._pose(True), (self.gen_p,))
+@@ -1183,6 +1312,8 @@
+                 pprev = np.concatenate([np.full((1, DEPTH), -1, np.int64), pdepth[:-1]], 0)
+                 hp = hprev.to(dp)
+                 ep = tw.text_emb(t(ids[1], dp)) + tw.code_emb(t(pprev, dp)).to(BF) + tw.cond(hp).to(BF)
++                if self.s2p:                                                               # pose-s2p: B's speech codes at the same positions
++                    ep = ep + self.s_emb(t(depth[1], dp)).to(BF)
+                 self.tp.run(ep[None], 0)
+         return hn
+ 
+@@ -1321,34 +1452,37 @@
+                 if f == 0 and force is None:
+                     self.ring.reset()
+             self.ev_text.record(torch.cuda.current_stream(dl))
+-        if self.pose:
+-            if dp != dl:
+-                with torch.cuda.device(dl), torch.cuda.stream(self.cs_side):
+-                    self.cs_side.wait_event(self.ev_text)
+-                    self.tokp.copy_(self.tok_now)
+-                    self.hn_p.copy_(self.hn_prev)
+-                    self.adapt_p.copy_(self.adapt)
+-            else:
+-                self.tokp.copy_(self.tok_now); self.hn_p.copy_(self.hn_prev); self.adapt_p.copy_(self.adapt)
+-            with torch.cuda.device(dp):
+-                cfgdec = self.cfg_rows and bool(self.params.get("pose_cfg_on")) and bool(self.params.get("pose_cfg_light"))
++        if self.s2p:                                                                           # pose-s2p: text -> speech -> pose (module doc)
++            self._step_s2p(f, use, full, force)
++        else:                                                                                  # flag off: today's order (pose || speech)
++            if self.pose:
++                if dp != dl:
++                    with torch.cuda.device(dl), torch.cuda.stream(self.cs_side):
++                        self.cs_side.wait_event(self.ev_text)
++                        self.tokp.copy_(self.tok_now)
++                        self.hn_p.copy_(self.hn_prev)
++                        self.adapt_p.copy_(self.adapt)
++                else:
++                    self.tokp.copy_(self.tok_now); self.hn_p.copy_(self.hn_prev); self.adapt_p.copy_(self.adapt)
++                with torch.cuda.device(dp):
++                    cfgdec = self.cfg_rows and bool(self.params.get("pose_cfg_on")) and bool(self.params.get("pose_cfg_light"))
++                    if use:
++                        self.graphs[("pose_full_cfg" if cfgdec else "pose_full") if full else "pose"].replay()
++                    else:
++                        self._pose(full, cfgdec)
++                    if force is not None and force.get("pose") is not None:
++                        pf = torch.as_tensor(np.asarray(force["pose"], np.int64), device=dp)
++                        self.pdepB[self.arI[dp], self.Tv[dp][:self.NI]] = pf
++                        self.pkp[dp].copy_(pf)
++            with torch.cuda.device(dl):
+                 if use:
+-                    self.graphs[("pose_full_cfg" if cfgdec else "pose_full") if full else "pose"].replay()
++                    self.graphs["speech_full" if full else "speech"].replay()
+                 else:
+-                    self._pose(full, cfgdec)
+-                if force is not None and force.get("pose") is not None:
+-                    pf = torch.as_tensor(np.asarray(force["pose"], np.int64), device=dp)
+-                    self.pdepB[self.arI[dp], self.Tv[dp][:self.NI]] = pf
+-                    self.pkp[dp].copy_(pf)
+-        with torch.cuda.device(dl):
+-            if use:
+-                self.graphs["speech_full" if full else "speech"].replay()
+-            else:
+-                self._speech(full)
+-            if force is not None and force.get("codes") is not None:
+-                cf = torch.as_tensor(np.asarray(force["codes"], np.int64), device=dl)
+-                self.depB[self.arI[dl], self.Tv[dl][:self.NI]] = cf
+-                self.pk[dl][:, 1:].copy_(cf)
++                    self._speech(full)
++                if force is not None and force.get("codes") is not None:
++                    cf = torch.as_tensor(np.asarray(force["codes"], np.int64), device=dl)
++                    self.depB[self.arI[dl], self.Tv[dl][:self.NI]] = cf
++                    self.pk[dl][:, 1:].copy_(cf)
+         for si, (d, _) in enumerate(self.segs):
+             with torch.cuda.device(d):
+                 if si == 0:
+@@ -1374,6 +1508,60 @@
+                     self._mdec()
+         return full
+ 
++    def _step_s2p(self, f, use, full, force):
++        """pose-s2p frame body after the text draw: speech (full: whole branch; cb0: tower + cb0 draw only) -> forced speech codes -> B's
++        speech codes at T to the pose GPU -> pose (+ forced pose) -> (cb0: the speech light decoder, concurrent with pose) -> forced codes."""
++        dl, dp, NI = self.dl, self.dp, self.NI
++        if dp != dl:                                                                           # pose inputs: = today's copies
++            with torch.cuda.device(dl), torch.cuda.stream(self.cs_side):
++                self.cs_side.wait_event(self.ev_text)
++                self.tokp.copy_(self.tok_now)
++                self.hn_p.copy_(self.hn_prev)
++                self.adapt_p.copy_(self.adapt)
++        else:
++            self.tokp.copy_(self.tok_now); self.hn_p.copy_(self.hn_prev); self.adapt_p.copy_(self.adapt)
++        cf = None
++        if force is not None and force.get("codes") is not None:
++            cf = torch.as_tensor(np.asarray(force["codes"], np.int64), device=dl)
++        split = self.s2p == "cb0" and full
++        with torch.cuda.device(dl):
++            if split:
++                if use:
++                    self.graphs["speech_head_full"].replay()
++                else:
++                    self._speech_head()
++                if cf is not None:                                                             # forced cb0 BEFORE pose reads it
++                    self.sc0_l.copy_(cf[:, :1])
++                self.scB_p.copy_(self.sc0_l)
++            else:
++                if use:
++                    self.graphs["speech_full" if full else "speech"].replay()
++                else:
++                    self._speech(full)
++                if cf is not None:                                                             # forced codes BEFORE pose reads them
++                    self.depB[self.arI[dl], self.Tv[dl][:NI]] = cf
++                    self.pk[dl][:, 1:].copy_(cf)
++                self.scB_p.copy_(self.pk[dl][:, 1:1 + self.scB_p.shape[1]])                    # dl -> dp (the pose stream waits for it)
++        with torch.cuda.device(dp):
++            cfgdec = self.cfg_rows and bool(self.params.get("pose_cfg_on")) and bool(self.params.get("pose_cfg_light"))
++            if use:
++                self.graphs[("pose_full_cfg" if cfgdec else "pose_full") if full else "pose"].replay()
++            else:
++                self._pose(full, cfgdec)
++            if force is not None and force.get("pose") is not None:
++                pf = torch.as_tensor(np.asarray(force["pose"], np.int64), device=dp)
++                self.pdepB[self.arI[dp], self.Tv[dp][:NI]] = pf
++                self.pkp[dp].copy_(pf)
++        if split:
++            with torch.cuda.device(dl):
++                if use:
++                    self.graphs["speech_light_full"].replay()
++                else:
++                    self._speech_light()
++                if cf is not None:
++                    self.depB[self.arI[dl], self.Tv[dl][:NI]] = cf
++                    self.pk[dl][:, 1:].copy_(cf)
++
+     def result(self, f, dec):
+         """-> (B tokens [NI], P(PAD) [NI], P(NEW_WORD) [NI], audio [NI, 1920] or None). Syncs."""
+         torch.cuda.synchronize(self.dl)

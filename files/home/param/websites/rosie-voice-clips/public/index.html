@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#172d3b">
+  <meta name="description" content="Listen to twenty Rosie voice references and choose your favorite.">
+  <title>Rosie · Choose a voice reference</title>
+  <style>
+    :root{color-scheme:light;--ink:#172d3b;--muted:#697577;--paper:#f5f3ec;--white:#fffefa;--line:#dedfd6;--accent:#ce694e;--green:#43634f;--soft:#edf1e9}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}button,a,audio,summary{touch-action:manipulation}button{font:inherit}button:focus-visible,a:focus-visible,summary:focus-visible,audio:focus-visible{outline:3px solid var(--accent);outline-offset:4px}button{cursor:pointer}button:disabled{cursor:default}
+    .shell{max-width:1140px;margin:0 auto;padding:0 34px}.topline{display:flex;justify-content:space-between;align-items:center;padding:27px 0 23px;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:10px;font-weight:750;font-size:17px;letter-spacing:-.04em}.brand-dot{width:11px;height:11px;border-radius:50%;background:var(--accent)}.topline span:last-child{font-size:12px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    header{padding:53px 0 37px;max-width:860px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:700;color:var(--accent);margin:0 0 16px}h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(37px,5.1vw,63px);line-height:1.08;letter-spacing:-.045em;margin:0 0 19px;max-width:760px}.intro{font-size:16px;color:var(--muted);max-width:610px;margin:0}.collection-bar{display:flex;justify-content:space-between;gap:14px;padding:0 0 18px;font-size:12px;color:var(--muted);align-items:center}.collection-bar strong{font-weight:650;color:var(--ink)}.small-note{font-size:12px}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px;padding-bottom:32px}.clip{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:23px;transition:border-color .15s,box-shadow .15s}.clip.selected{border-color:var(--green);box-shadow:0 0 0 1px var(--green)}.clip-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px;gap:12px}.clip-title{display:flex;align-items:baseline;gap:10px}.number{font-family:Georgia,"Times New Roman",serif;font-size:33px;line-height:1;letter-spacing:-.04em;color:var(--accent)}h2{font-size:15px;font-weight:650;margin:0}.duration{font-size:11px;padding:4px 9px;border:1px solid var(--line);border-radius:20px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}audio{display:block;width:100%;height:42px;margin:0 0 17px;border-radius:24px}.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px}.choose{font-size:12px;font-weight:650;border:1px solid var(--line);border-radius:8px;padding:8px 13px;color:var(--ink);background:transparent;min-height:38px;white-space:nowrap}.choose:hover{background:var(--paper);border-color:#b2b9b2}.selected .choose{background:var(--green);border-color:var(--green);color:white}.clip-status{font-size:11px;color:var(--muted)}.clip.playing .clip-status{color:var(--green)}details{margin-top:16px;border-top:1px solid var(--line);padding-top:12px}summary{font-size:12px;color:var(--muted);cursor:pointer;width:max-content;max-width:100%}details p{font-size:14px;line-height:1.7;color:#4c5c62;margin:12px 0 0}.empty{grid-column:1/-1;border:1px solid var(--line);padding:30px;border-radius:16px;background:var(--white);color:var(--muted)}.empty button{margin-top:12px;display:block}.error{color:#8e4034}
+    footer{border-top:1px solid var(--line);padding:22px 0 100px;display:flex;justify-content:space-between;gap:16px;font-size:12px;color:var(--muted)}footer a{color:inherit;text-underline-offset:4px}.selection{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);width:calc(100% - 36px);max-width:710px;background:var(--ink);color:white;padding:16px 19px;border-radius:13px;box-shadow:0 8px 35px #172d3b26;display:flex;align-items:center;justify-content:space-between;gap:18px;z-index:5}.selection[hidden]{display:none}.selection-title{font-size:14px;font-weight:650;margin:0 0 2px}.selection-note{font-size:12px;color:#c8d2d5;margin:0}.copy{background:#fffefa;color:var(--ink);border:0;border-radius:8px;font-size:12px;font-weight:700;padding:10px 15px;min-height:40px;white-space:nowrap}.copy:hover{background:#e9eee7}.copy-help{font-size:12px;margin:7px 0 0;color:#e1e7e9}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:650px){.shell{padding:0 20px}.topline{padding:21px 0}.topline span:last-child{font-size:10px}header{padding:37px 0 30px}.intro{font-size:14px}.grid{grid-template-columns:1fr;gap:13px}.clip{padding:20px}.collection-bar{align-items:flex-start;font-size:11px}.small-note{font-size:11px;max-width:130px;text-align:right}.selection{padding:14px;gap:12px;bottom:12px}.selection-note{font-size:11px;max-width:220px}.copy{padding:9px 12px}footer{font-size:11px}.number{font-size:30px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.clip{transition:none}}
+  </style>
+</head>
+<body>
+  <div class="shell" id="top">
+    <nav class="topline" aria-label="Page information"><div class="brand"><span class="brand-dot" aria-hidden="true"></span>Rosie</div><span>Voice references</span></nav>
+    <header>
+      <p class="eyebrow">Listen &amp; choose</p>
+      <h1>Choose Rosie’s<br>voice reference.</h1>
+      <p class="intro">Twenty clips. Ten seconds each. Listen for the voice you like best, choose a favorite, then tell me its number in chat.</p>
+    </header>
+    <main>
+      <div class="collection-bar"><strong id="count">20 clips to explore</strong><span class="small-note">One clip plays at a time.</span></div>
+      <div class="grid" id="clips" aria-label="Rosie voice clips"><div class="empty" role="status">Loading the clips…</div></div>
+    </main>
+    <footer><span>Your choice stays in this browser until you share it.</span><a href="#top">Back to top ↑</a></footer>
+  </div>
+  <aside class="selection" id="selection" aria-label="Your selected clip" hidden>
+    <div><p class="selection-title" id="selection-title"></p><p class="selection-note">Tell me this clip number in chat.</p><p class="copy-help" id="copy-help" hidden></p></div>
+    <button class="copy" id="copy" type="button">Copy choice</button>
+  </aside>
+  <div class="sr-only" id="announcement" role="status" aria-live="polite"></div>
+  <script>
+    (() => {
+      'use strict';
+      const grid = document.getElementById('clips');
+      const selection = document.getElementById('selection');
+      const selectionTitle = document.getElementById('selection-title');
+      const copy = document.getElementById('copy');
+      const copyHelp = document.getElementById('copy-help');
+      const announcement = document.getElementById('announcement');
+      const storageKey = 'rosie-reference-choice-v1';
+      let chosen = '';
+      let cards = [];
+      let copyTimer;
+      try { chosen = localStorage.getItem(storageKey) || ''; } catch (_) {}
+      const element = (tag, className, text) => {
+        const el = document.createElement(tag);
+        if (className) el.className = className;
+        if (text !== undefined) el.textContent = text;
+        return el;
+      };
+      function choose(id, announce = true) {
+        chosen = id;
+        for (const item of cards) {
+          const active = item.id === id;
+          item.card.classList.toggle('selected', active);
+          item.button.setAttribute('aria-pressed', String(active));
+          item.button.textContent = active ? 'Selected ✓' : 'Choose clip';
+        }
+        selection.hidden = !id;
+        selectionTitle.textContent = id ? `Chosen: Clip ${id}` : '';
+        copy.textContent = 'Copy choice';
+        copyHelp.hidden = true;
+        try { if (id) localStorage.setItem(storageKey, id); else localStorage.removeItem(storageKey); } catch (_) {}
+        if (announce && id) announcement.textContent = `Clip ${id} selected. Tell me this number in chat.`;
+      }
+      copy.addEventListener('click', async () => {
+        if (!chosen) return;
+        const text = `Please use Clip ${chosen} as Rosie’s voice reference.`;
+        clearTimeout(copyTimer);
+        try {
+          await navigator.clipboard.writeText(text);
+          copy.textContent = 'Copied ✓';
+          announcement.textContent = 'Choice copied. Paste it in chat.';
+          copyTimer = setTimeout(() => { copy.textContent = 'Copy choice'; }, 2400);
+        } catch (_) {
+          copyHelp.textContent = `Copy manually: “Use Clip ${chosen}.”`;
+          copyHelp.hidden = false;
+        }
+      });
+      async function load() {
+        try {
+          const response = await fetch('clips.json', {cache: 'no-cache'});
+          if (!response.ok) throw new Error('The clip list is unavailable.');
+          const data = await response.json();
+          const entries = Array.isArray(data) ? data : data.clips;
+          if (!Array.isArray(entries) || !entries.length) throw new Error('The clips are not ready yet.');
+          grid.replaceChildren();
+          cards = [];
+          for (let index = 0; index < entries.length; index++) {
+            const entry = entries[index];
+            const id = String(entry.id ?? index + 1).padStart(2, '0');
+            if (typeof entry.src !== 'string' || !entry.src) throw new Error('An audio file is missing from the clip list.');
+            const card = element('article', 'clip');
+            const heading = element('div', 'clip-head');
+            const title = element('div', 'clip-title');
+            title.append(element('span', 'number', id));
+            const h2 = element('h2', '', `Clip ${id}`);
+            h2.id = `clip-${id}`;
+            title.append(h2);
+            card.setAttribute('aria-labelledby', h2.id);
+            const seconds = Number(entry.duration ?? 10);
+            heading.append(title, element('span', 'duration', `${Number.isFinite(seconds) ? seconds : 10} seconds`));
+            const audio = element('audio');
+            audio.controls = true;
+            audio.preload = 'none';
+            audio.src = entry.src;
+            audio.setAttribute('aria-label', `Play Rosie voice clip ${id}`);
+            const bottom = element('div', 'card-bottom');
+            const status = element('span', 'clip-status', 'Ready to listen');
+            const button = element('button', 'choose', 'Choose clip');
+            button.type = 'button';
+            button.setAttribute('aria-label', `Choose clip ${id}`);
+            button.setAttribute('aria-pressed', 'false');
+            button.addEventListener('click', () => choose(id));
+            bottom.append(status, button);
+            audio.addEventListener('play', () => {
+              for (const other of cards) if (other.audio !== audio) other.audio.pause();
+              card.classList.add('playing');
+              status.textContent = 'Playing';
+            });
+            audio.addEventListener('pause', () => {
+              card.classList.remove('playing');
+              if (!audio.error) status.textContent = audio.ended ? 'Listened' : audio.currentTime > 0 ? 'Paused' : 'Ready to listen';
+            });
+            audio.addEventListener('ended', () => {
+              card.classList.remove('playing');
+              status.textContent = 'Listened';
+            });
+            audio.addEventListener('error', () => {
+              card.classList.remove('playing');
+              status.textContent = 'Audio unavailable — please reload';
+              status.classList.add('error');
+            });
+            card.append(heading, audio, bottom);
+            if (typeof entry.transcript === 'string' && entry.transcript.trim()) {
+              const transcript = element('details');
+              transcript.append(element('summary', '', 'Read transcript'), element('p', '', entry.transcript.trim()));
+              card.append(transcript);
+            }
+            cards.push({id, card, audio, button});
+            grid.append(card);
+          }
+          document.getElementById('count').textContent = `${entries.length} clips to explore`;
+          choose(cards.some(item => item.id === chosen) ? chosen : '', false);
+        } catch (error) {
+          const box = element('div', 'empty error', 'We couldn’t load the clips. Please try again in a moment.');
+          box.setAttribute('role', 'alert');
+          const retry = element('button', 'choose', 'Try again');
+          retry.type = 'button';
+          retry.addEventListener('click', load);
+          box.append(retry);
+          grid.replaceChildren(box);
+        }
+      }
+      load();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+# Dense resolver DMD: 150 critic-only outer steps + 1850 student outer steps.
+# One row contains four resolver targets; forty ranks give global batch160.
+root_dir = '/home/param/datasets/aloe-studio-10shards'
+clipnames_root = '/home/param/datasets/aloe-studio-10shards'
+train_csv = '/home/param/datasets/aloe-studio-10shards/shard.csv'
+node_sharded = true
+pose_latents = 'pose_latents_electron_v3.safetensors'
+mimi_codes = 'mimi_local.safetensors'
+bad_audio = 1
+output_dir = '/mnt/paramfs/param/outputs/resolver-dmd-20261016/onpolicy'
+seed = 42
+resolver_method = 'onpolicy'
+dataset_history = 6
+global_batch_size = 160
+total_steps = 2000
+stabilizer_checkpoint_path = '/home/param/richmond-assets/normal-stabilizer-step1200/student.safetensors'
+
+# Per GPU: four student targets, sixteen pool targets, four critic updates
+# of four targets each. Pool generation is one batched, no-gradient pass.
+student_rows = 1
+student_micro_rows = 1
+student_kinds = ['res']
+critic_rows = 1
+critic_updates = 4
+pool_micro_batch = 4
+critic_warmup_steps = 150
+save_warmed_critic = true
+critic_warmup_only = false
+max_outer_steps = 1850
+
+band_steps = [2, 2, 2, 2]
+resolve_steps = 1
+history_t = 0.2
+t_start = 0.2
+stab_t_min = 0.22
+stab_t_max = 0.98
+res_t_min = 0.02
+res_t_max = 0.2
+fm_weight_stab = 0.0
+fm_weight_res = 1.0
+normalizer_epsilon = 1e-8
+
+gradient_clipping = 2.0
+lr_warmup_steps = 50
+critic_lr_warmup_steps = 100
+lr_decay = 'cosine'
+lr_final_ratio = 0.1
+ema_decay_steps = 0
+
+# Start with the full requested local batches and no activation checkpointing.
+compile_mode = 'block'
+compile_blocks = true
+checkpoint = 'none'
+shard_teacher = true
+shard_stabilizer = true
+num_dataloader_workers = 8
+prefetch_factor = 4
+save_every_n_steps = 200
+
+[model]
+checkpoint_path = '/home/param/richmond-assets/teacher-pose-v3-step200/model.safetensors'
+
+[model.audio]
+model_name = '/home/param/richmond-assets/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+
+[optimizer]
+lr = 2e-6
+betas = [0.9, 0.99]
+weight_decay = 1e-4
+eps = 1e-8
+
+[wandb]
+enabled = true
+project = 'param-distillation'
+run_name = 'resolver-dmd-pose-v3-onpolicy-dense-b160'

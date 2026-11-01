@@ -1,0 +1,325 @@
+--- /data/home/amartyavarma/ppm/pose-s2p/code/train_aloe_pose.py	2026-10-27 12:19:56.006152152 +0000
++++ /data/home/amartyavarma/ppm/pose6/code/train_aloe_pose.py	2026-10-27 19:26:37.250878150 +0000
+@@ -1,4 +1,26 @@
+-"""aloe-pose-mono-8020 (10-18): = job 24198's trainer (aloe-v2pure-clip80 = 23051's) run with env ALOE_DATA=aloe-mono: the v2pure machinery
++"""pose6 (10-27, workstream B1): the monoplex Aloe pose FT (= aloe-pose-mono-8020's trainer, via aloe-pose-rosie's env-gated fixes and
++pose-s2p's PPM_S2P) with BOTH mods of the 8,1,1 pose run (job 31101, pose5/code-811-s2p). Flags off = mono8020's trainer exactly (TESTS.md).
++  POSE-S2P  PPM_S2P=cb0 | full (pose-s2p): tower_p.s_emb in its OWN main-AdamW group 's2p' (decision D4 = 31101's audit S7; pose-s2p had it in
++            tower_p): LR / clip value = tower_p's (model_ppm.JOIN; cfg keys lr.s2p / clip.s2p only when on), the same schedule lambda as every
++            group (this trainer warms every group up), its own clip norm.
++  G0COND    PPM_G0COND=1 (+ ALOE_G0_SIDECAR = pose6/g0aloe/g0aloe.parquet): model_ppm inp.g0 (Linear 8 -> 5120, no bias) adds g0(f) to the
++            TRUNK input at each packed item's SLOT = its own P - 1 (data_aloe_pose G0COND doc: decision D1); own group 'g0cond' (LR / clip =
++            audio's, JOIN); cfg keys g0cond / g0_sidecar / lr.g0cond / clip.g0cond only when on. Coverage of every train + eval item asserted
++            at startup (fail loud on a missing item).
++  INIT (D5) QQA_INIT = a ppm-local-bf16-shards-v1 dir (meta.json, as mono8020's local-11488) OR a consolidated bf16 DCP export (.metadata +
++            COMPLETE: 31101's ckpt-weka/ppm-v1/w-<step>, or an FT export): EVERY model tensor loaded exactly (bf16 -> fp32 masters by copy),
++            incl. tower_p.s_emb.weight / inp.g0.weight when the flags are on (the base trained them; never re-initialised). Flags on + a key
++            missing in the base = FAIL, except under the TEST-ONLY override ALOE_TEST_NEWPARAM_RANDOM=<seed> (seeded N(0, 0.02 / sqrt 32)
++            for s_emb, N(0, 0.02) for g0, world-invariant; cfg key test_newparam_random so it can never pass a resolved-cfg diff unseen).
++            Flags off + base with those keys = FAIL (never dropped silently). Unloaded base keys: only the D32 pose head's (QQA_POSE_HEAD_BUILD=0).
++            AdamW state fresh (as mono8020). Exports record s2p / g0cond in train_cfg.json (absent when off).
++  LINK OFF  QQA_DECP_BB_OFF=1 (port of pose5/code-811-s2p's PPM_DECP_BB_OFF, the base run 31101's setting; default 0 = mono8020 exactly):
++            the D33 backbone -> pose-decoder link decp_bb stays in the module (weights loaded from the base exactly), is FROZEN (in no
++            optimizer: group decp_bb not built; frozen set + digest checked), is never computed (model.decp_bb_on False: no zb_p; the pose
++            decoder runs with zb=None = the pre-D33 graph; asserted per micro, train and eval) and never gets a gradient (asserted every step).
++            cfg key decp_bb_off (only when set). Exports record decp_bb_alpha 0 + decp_bb_off 1 (DCP train_cfg.json; node-local meta.json
++            'side') so inference matches. 811's eval probe decp_linkon_* is not ported (eval main pose light = the link-off path, as 811's).
++aloe-pose-mono-8020 (10-18): = job 24198's trainer (aloe-v2pure-clip80 = 23051's) run with env ALOE_DATA=aloe-mono: the v2pure machinery
+ over the Aloe handover pose stores of job 22091 (one monoplex item per qualifying track; data_aloe_pose module doc + its last section) with
+ the 10-18 prompt rule (voice clip p 0.8, persona text p 0.2, independent per-item draws). Trainer additions (logging / checks only): the
+ resolved-config diff is logged against BOTH references (QQA_REF_CFG = 23051, QQA_REF_CFG2 = 24198); the [prompt] line logs the realised
+@@ -146,10 +168,29 @@
+ S2P = M.s2p_mode(os.environ.get("PPM_S2P", "0"))                  # pose-s2p (10-27): speech codes at T -> pose tower at T (model_ppm.S2PEmb)
+ if S2P:                                                           # flag off: no cfg key, no module, today's trainer exactly
+     CFG["s2p"] = S2P
++assert os.environ.get("PPM_G0COND", "0") in ("0", "1"), ("PPM_G0COND must be 0 | 1", os.environ.get("PPM_G0COND"))
++G0 = os.environ.get("PPM_G0COND", "0") == "1"                    # pose6 G0COND (module doc)
++assert G0 == A.G0, "trainer and data must agree on PPM_G0COND"
++if G0:                                                            # keys only when on (off = mono8020's resolved cfg exactly)
++    CFG["g0cond"] = 1
++    CFG["g0_sidecar"] = A.G0_SIDECAR
++for g_, on_ in (("g0cond", G0), ("s2p", bool(S2P))):            # pose6 D4: OWN groups, LR / clip value = the JOIN group's (keys only when on)
++    if on_:
++        CFG["lr"][g_], CFG["clip"][g_] = CFG["lr"][M.JOIN[g_]], CFG["clip"][M.JOIN[g_]]
++assert os.environ.get("QQA_DECP_BB_OFF", "0") in ("0", "1"), ("QQA_DECP_BB_OFF must be 0 | 1", os.environ.get("QQA_DECP_BB_OFF"))
++BB_OFF = os.environ.get("QQA_DECP_BB_OFF", "0") == "1"          # pose6 LINK OFF (module doc; = 811's PPM_DECP_BB_OFF)
++if BB_OFF:                                                        # key only when set (unset = mono8020's resolved cfg exactly)
++    CFG["decp_bb_off"] = 1
++NEW_KEYS = (("inp.g0.weight",) if G0 else ()) + (("tower_p.s_emb.weight",) if S2P else ())   # loaded from the base (D5)
++TEST_FILL = os.environ.get("ALOE_TEST_NEWPARAM_RANDOM", "")      # TEST ONLY (module doc): random non-zero new params when the base lacks them
++if TEST_FILL:
++    assert NEW_KEYS, "ALOE_TEST_NEWPARAM_RANDOM without PPM_S2P / PPM_G0COND"
++    CFG["test_newparam_random"] = int(TEST_FILL)
+ POSE = CFG["pose_b"]
+ assert POSE == A.POSE_B, "trainer and data must agree on QQA_POSE_B"
+ assert CFG["a_empty"] == A.A_EMPTY, "trainer and data must agree on QQA_A_EMPTY"
+ assert CFG["pose_head_build"] or POSE, "pose-head build flag only for the pose path"
++assert POSE or not (G0 or S2P or BB_OFF), ("PPM_G0COND / PPM_S2P / QQA_DECP_BB_OFF need the pose path", G0, S2P, BB_OFF)
+ if not POSE:
+     _pk = {"w_pcb0": CFG["w_pcb0"], "w_pcb": CFG["w_pcb"], "lr_tower_p": CFG["lr"]["tower_p"], "dec_p_lr": CFG["dec_p_lr"], "lr_decp_bb": CFG["lr"]["decp_bb"]}
+     assert all(v == 0.0 for v in _pk.values()), ("QQA_POSE_B=0 needs every pose weight / LR at 0", _pk)
+@@ -158,8 +199,9 @@
+ CFG["dec_sched"] = {"warmup": CFG["warmup"] * CFG["dec_k"], "horizon": CFG["steps"] * CFG["dec_k"], "min_lr_rate": 0.0, "s3_sched": "wsd",
+                     "wsd_decay_start": CFG["warmup"] * CFG["dec_k"], "wsd_decay_end": CFG["steps"] * CFG["dec_k"], "wsd_floor": 0.0, "wsd_shape": "linear"}
+ if POSE:
+-    TRAIN_GROUPS = ("trunk", "spec", "proj", "audio", "tower_s", "tower_p", "decp_bb")
+-    FROZEN_PREFIX = ("pose_head.",)                               # PPM main D36: the D32 pose head is off (frozen, unused); aloe-uncond: not built
++    TRAIN_GROUPS = ("trunk", "spec", "proj", "audio", "tower_s", "tower_p") + (() if BB_OFF else ("decp_bb",)) + (("g0cond",) if G0 else ()) \
++        + (("s2p",) if S2P else ())
++    FROZEN_PREFIX = ("pose_head.",) + (("decp_bb.",) if BB_OFF else ())   # LINK OFF: the link frozen (in no optimizer)                               # PPM main D36: the D32 pose head is off (frozen, unused); aloe-uncond: not built
+ else:                                                             # no-pose ablation = 21980 (train_aloe.py): pose parts frozen, never run
+     TRAIN_GROUPS = ("trunk", "spec", "proj", "audio", "tower_s")
+     FROZEN_PREFIX = ("tower_p.", "dec_p.", "pose_head.", "decp_bb.", "inp.pose.")
+@@ -199,6 +241,8 @@
+ # ------------------------------------------------------------------------------------------------ micro -> device + weights
+ ARR = ("ids", "depth", "present", "pdepth", "pid", "sel", "y", "word", "pad", "eob", "nw", "cb0", "light", "pcb0", "plight") if POSE else \
+     ("ids", "depth", "present", "pid", "sel", "y", "word", "pad", "eob", "nw", "cb0", "light")
++if G0:
++    ARR = ARR + ("g0pos", "g0f")                                  # pose6 G0COND: each packed item's SLOT position + its frame-0 features
+ 
+ 
+ def prep(b, dev, S_text, S_cb0, S_pcb0=None):
+@@ -389,7 +433,7 @@
+     pairs = [("dec_s", model.dec_s, out["hv_s"], b["depth"][1], b["light"], lw_s * CFG["w_cb"], None)]
+     if POSE:
+         pairs.append(("dec_p", model.dec_p, out["hv_p"], b["pdepth"], b["plight"], lw_p * CFG["w_pcb"], out.get("zb_p")))
+-        assert pairs[1][6] is not None, "D33 decp_bb link expected (PPM main: on)"
++        assert (pairs[1][6] is None) == BB_OFF, "D33 decp_bb link: on (PPM main) unless QQA_DECP_BB_OFF=1 (then never computed)"
+     dvals = []
+     roots, grads = [loss], [None]
+     for name, dec, hv, depth, light, wcb, zb in pairs:
+@@ -434,7 +478,8 @@
+     res = []
+     decs = [(model.dec_s, out["hv_s"], b["depth"][1], b["light"], None)]
+     if POSE:
+-        decs.append((model.dec_p, out["hv_p"], b["pdepth"], b["plight"], out["zb_p"]))
++        assert ("zb_p" in out) != BB_OFF, "LINK OFF: zb_p must not exist (on: must)"
++        decs.append((model.dec_p, out["hv_p"], b["pdepth"], b["plight"], out.get("zb_p")))
+     for dec, hv, depth, light, zb in decs:
+         s_tot, n_tot = 0.0, 0
+         for a0 in range(0, light.numel(), 1024):
+@@ -471,10 +516,81 @@
+ 
+ 
+ # ------------------------------------------------------------------------------------------------ init / export
++NEW_ALL = ("inp.g0.weight", "tower_p.s_emb.weight")             # pose6: the two mods' parameters (D5)
++
++
++def _init_new_missing(params, miss, meta):
++    """pose6 D5: a new parameter (NEW_KEYS) the base lacks -> FAIL, except under the TEST-ONLY override ALOE_TEST_NEWPARAM_RANDOM=<seed>:
++    seeded N(0, std) per NAME and global row chunk (heads_s2q.init_rows_: world-size invariant; s_emb 0.02 / sqrt 32 = the code_emb rule,
++    g0 0.02), never zero. -> the remaining missing names (asserted empty by the caller)."""
++    new = [n for n in miss if n in NEW_KEYS]
++    assert not new or TEST_FILL, ("init: the base lacks the new parameters; D5: they must be loaded from the base (31101 export), never "
++                                  "re-initialised (test-only override: ALOE_TEST_NEWPARAM_RANDOM)", new, CFG["init"])
++    assert not TEST_FILL or new, ("ALOE_TEST_NEWPARAM_RANDOM set but the base HAS the new parameters: unset it", CFG["init"])
++    for n in new:
++        p = params[n]
++        a, _ = M._rows(p)
++        M.H2.init_rows_(M._loc(p).data, a, tuple(p.shape), "normal", (0.02 / 32 ** 0.5) if n == "tower_p.s_emb.weight" else 0.02, n, int(TEST_FILL))
++    if new:
++        log(f"!!! [init] TEST ONLY (ALOE_TEST_NEWPARAM_RANDOM={TEST_FILL}): {new} are NOT in {CFG['init']} -> seeded RANDOM non-zero values "
++            f"(never a real run: cfg key test_newparam_random)")
++    meta["newparam_random_fill"] = new
++    return [n for n in miss if n not in new]
++
++
++def _init_unloaded(unl, meta):
++    """checkpoint tensors this model does not build: never one of the mods' parameters (a base that trained them with the flag off here would
++    silently drop them: FAIL); otherwise only the D32 pose head's (QQA_POSE_HEAD_BUILD=0) or none."""
++    stale = [k for k in unl if k in NEW_ALL]
++    assert not stale, ("init: the base carries trained new parameters this config does not build (set PPM_S2P / PPM_G0COND as the base)", stale)
++    if not CFG["pose_head_build"]:
++        assert unl in ([], ["pose_head.bias", "pose_head.weight"]), ("unloaded checkpoint keys must be exactly the pose head's (or none: an init from a pose-FT export, which has no pose head)", unl[:8])
++    else:
++        assert not unl, ("checkpoint keys not loaded", unl[:8])
++    meta["unloaded_keys"] = unl
++
++
++@torch.no_grad()
++def load_init_dcp(model, path, dev):
++    """pose6 D5: QQA_INIT = a consolidated bf16 DCP export (safety_ppm.export_weights w-<step> of the 8,1,1 run 31101 / this trainer's
++    export_weights: .metadata + COMPLETE [+ train_cfg.json]): every model tensor loaded IN PLACE into this world's FSDP2 shards (DCP reshards;
++    bf16 -> fp32 masters by copy = exact), the replicated decoders whole on every rank. = aloe-v2vox-asr-w15973's load_init_dcp pattern."""
++    import torch.distributed.checkpoint as dcp
++    from torch.distributed.checkpoint.state_dict import get_model_state_dict
++    assert os.path.isfile(f"{path}/COMPLETE") and os.path.isfile(f"{path}/.metadata"), ("init: not a COMPLETE DCP export", path)
++    smd = dcp.FileSystemReader(path).read_metadata().state_dict_metadata
++    keys = set(smd)
++    side = json.load(open(f"{path}/train_cfg.json")) if os.path.isfile(f"{path}/train_cfg.json") else {}
++    if S2P and side.get("s2p") is not None:
++        assert side["s2p"] == S2P, ("init: the base's s2p mode differs from PPM_S2P", side["s2p"], S2P)
++    meta = {"format": "dcp", "step": side.get("step", open(f"{path}/COMPLETE").read().strip()), "run_tag": side.get("run", "?"), "world": "dcp",
++            "save_time": "?", "side": side}
++    params = {n.replace("_checkpoint_wrapped_module.", ""): p for n, p in model.named_parameters()}
++    msd = get_model_state_dict(model)
++    assert set(params) <= set(msd), ("state dict lacks parameters", sorted(set(params) - set(msd))[:6])
++    miss = _init_new_missing(params, sorted(set(msd) - keys), meta)
++    assert not miss, ("init: parameters not in the checkpoint", miss[:6])
++    want = {k: v for k, v in msd.items() if k in keys}
++    for k, v in want.items():
++        assert tuple(smd[k].size) == tuple(v.shape), ("init: shape differs from the base", k, tuple(smd[k].size), tuple(v.shape))
++    before = {k: M._loc(v).data_ptr() for k, v in want.items()}
++    dcp.load(want, checkpoint_id=path)
++    for k, v in want.items():                                      # get_model_state_dict returns the live parameters: loaded in place
++        assert M._loc(v).data_ptr() == before[k] and (k not in params or M._loc(params[k]).data_ptr() == before[k]), ("not in place", k)
++    _init_unloaded(sorted(keys - set(msd)), meta)
++    nonfin = torch.tensor([float(sum(int(not torch.isfinite(M._loc(p)).all()) for p in params.values()))], device=dev)
++    dist.all_reduce(nonfin)
++    assert float(nonfin) == 0, "non-finite init weights"
++    return meta, sum(v.numel() for v in want.values()) * 2 / 1e9
++
++
+ @torch.no_grad()
+ def load_init(model, path, dev):
+     """every parameter <- a ppm-local-bf16-shards-v1 copy (world-W0 dim-0 FSDP2 shards rank<r>.pt, concatenated in rank order = infer_ppm
+-    load_weights; rep.pt = the replicated decoders), resharded onto this world's FSDP2 shards (each rank reads only the rows it holds)."""
++    load_weights; rep.pt = the replicated decoders), resharded onto this world's FSDP2 shards (each rank reads only the rows it holds).
++    pose6: no meta.json -> a consolidated DCP export (load_init_dcp); the mods' parameters loaded like every other tensor (D5)."""
++    if not os.path.isfile(f"{path}/meta.json"):
++        return load_init_dcp(model, path, dev)
+     meta = json.load(open(f"{path}/meta.json"))
+     assert meta["format"] == "ppm-local-bf16-shards-v1" and os.path.isfile(f"{path}/COMPLETE"), path
+     W0 = int(meta["world"])
+@@ -491,7 +607,7 @@
+     for n, p in params.items():
+         if n in rep:
+             p.copy_(rep[n].to(device=dev, dtype=p.dtype)); done.add(n); continue
+-        if n == "tower_p.s_emb.weight" and n not in src(0):          # pose-s2p: not in this init (zero-filled below); every other key as before
++        if n in NEW_KEYS and n not in src(0):                         # pose6 D5: a new parameter the base lacks -> _init_new_missing (FAIL / test fill)
+             continue
+         R = p.shape[0]
+         c0 = -(-R // W0)                                          # source chunk rows (torch.chunk)
+@@ -509,20 +625,10 @@
+                     nbytes += (x1 - x0) * t[0].numel() * 2
+         assert got == r, ("rows not covered", n, got, r)
+         done.add(n)
+-    miss = sorted(set(params) - done)
+-    new = [n for n in miss if n == "tower_p.s_emb.weight"]          # pose-s2p: an init without the new term (e.g. local-11488) -> ZERO (the rule)
+-    for n in new:
+-        M._loc(params[n]).zero_()
+-    meta["s2p_zero_init"] = new
+-    miss = [n for n in miss if n not in new]
++    miss = _init_new_missing(params, sorted(set(params) - done), meta)   # pose6 D5 (pose-s2p's zero-fill of a missing s_emb removed)
+     assert not miss, ("init: parameters not in the checkpoint", miss[:6])
+     ck = set(rep) | set(src(0))                                   # aloe-uncond: checkpoint tensors the model does not have (not loaded)
+-    unl = sorted(ck - set(params))
+-    if not CFG["pose_head_build"]:
+-        assert unl in ([], ["pose_head.bias", "pose_head.weight"]), ("unloaded checkpoint keys must be exactly the pose head's (or none: an init from a pose-FT export, which has no pose head)", unl[:8])
+-    else:
+-        assert not unl, ("checkpoint keys not loaded", unl[:8])
+-    meta["unloaded_keys"] = unl
++    _init_unloaded(sorted(ck - set(params)), meta)
+     srcs.clear()
+     nonfin = torch.tensor([float(sum(int(not torch.isfinite(M._loc(p)).all()) for p in params.values()))], device=dev)
+     dist.all_reduce(nonfin)
+@@ -568,7 +674,9 @@
+     dcp.save({k: v.to(torch.bfloat16) for k, v in msd.items()}, checkpoint_id=path)
+     dist.barrier()
+     if RANK == 0:
+-        json.dump({"step": int(step), "decp_bb": 1, "decp_bb_alpha": 1.0, "run": CFG["run_tag"], "init": CFG["init"], "cfg": CFG},
++        json.dump({"step": int(step), "decp_bb": 1, "decp_bb_alpha": 0.0 if BB_OFF else 1.0, **({"decp_bb_off": 1} if BB_OFF else {}),
++                   **({"s2p": S2P} if S2P else {}), **({"g0cond": 1} if G0 else {}),
++                   "run": CFG["run_tag"], "init": CFG["init"], "cfg": CFG},
+                   open(f"{path}/train_cfg.json", "w"), indent=1, default=str)
+         open(f"{path}/COMPLETE", "w").write(str(step))
+     dist.barrier()
+@@ -595,7 +703,10 @@
+     if RANK == 0:
+         torch.save(rp, f"{path}/rep.pt")
+         json.dump({"format": "ppm-local-bf16-shards-v1", "src": "aloe-ft train_aloe export_local", "step": int(step), "world": WORLD, "hosts": hosts,
+-                   "run_tag": CFG["run_tag"], "init": CFG["init"], "cfg": CFG, "save_time": now_pt()}, open(f"{path}/meta.json", "w"), indent=1, default=str)
++                   "run_tag": CFG["run_tag"], "init": CFG["init"], "cfg": CFG, "save_time": now_pt(),
++                   **({"side": {"decp_bb": 1, "decp_bb_alpha": 0.0 if BB_OFF else 1.0, **({"decp_bb_off": 1} if BB_OFF else {}),   # pose6: inference
++                                **({"s2p": S2P} if S2P else {}), **({"g0cond": 1} if G0 else {})}} if (BB_OFF or S2P or G0) else {})},   # settings
++                  open(f"{path}/meta.json", "w"), indent=1, default=str)
+     dist.barrier()
+     if RANK == 0:
+         open(f"{path}/COMPLETE", "w").write(str(step))
+@@ -677,9 +788,9 @@
+     with torch.no_grad():
+         for b in bts:
+             out = model(b, rot, rot)
+-            assert "phead" not in out and out.get("zb_p") is not None, "D32 off, D33 link on (PPM main)"
++            assert "phead" not in out and (out.get("zb_p") is None) == BB_OFF, "D32 off; D33 link on (PPM main) unless QQA_DECP_BB_OFF=1"
+             loss = lw_w * out["text"] + lw_s * CFG["w_cb0"] * out["cb0"] + lw_p * CFG["w_pcb0"] * out["pcb0"]
+-            keep.append((out["hv_s"].detach(), out["hv_p"].detach(), out["zb_p"].detach()))
++            keep.append((out["hv_s"].detach(), out["hv_p"].detach(), None if BB_OFF else out["zb_p"].detach()))
+             la.append(float(out["cb0"]) + float(out["pcb0"]))
+             del out, loss
+     with DecFast():
+@@ -694,7 +805,8 @@
+         loss = lw_w * out["text"] + lw_s * CFG["w_cb0"] * out["cb0"] + lw_p * CFG["w_pcb0"] * out["pcb0"]
+         lb = float(out["cb0"]) + float(out["pcb0"])
+         dl = max(dl, abs(lb - la[r]) / max(abs(la[r]), 1e-12))                         # pass A vs pass B towers' cb0 CE: same forward
+-        dh = max(dh, max(float((out[k_].detach().float() - keep[r][i_].float()).abs().max()) for i_, k_ in enumerate(("hv_s", "hv_p", "zb_p"))))
++        dh = max(dh, max(float((out[k_].detach().float() - keep[r][i_].float()).abs().max()) for i_, k_ in enumerate(("hv_s", "hv_p", "zb_p"))
++                         if not (BB_OFF and k_ == "zb_p")))
+         keep[r] = None
+         if b.get("dummy", False):
+             assert float(loss) == 0.0, ("dummy micro with a non-zero loss", float(loss))
+@@ -705,8 +817,9 @@
+             p0 = [p0[0] + float(out["pcb0_sum"]), p0[1] + float(out["pcb0_n"]), p0[2] + float(out["pcb0_hit"])]
+             sl = [sl[0] + float(out["text"]), sl[1] + float(out["cb0"]), sl[2] + float(out["pcb0"])]
+             loss_sum += float(loss)
+-        roots = [loss, out["hv_s"], out["hv_p"], out["zb_p"]]
+-        grads = [None, (up_s[r] * ws).to(out["hv_s"].dtype), (up_p[r] * wp).to(out["hv_p"].dtype), (upz[r] * wp).to(out["zb_p"].dtype)]
++        roots = [loss, out["hv_s"], out["hv_p"]] + ([] if BB_OFF else [out["zb_p"]])
++        grads = [None, (up_s[r] * ws).to(out["hv_s"].dtype), (up_p[r] * wp).to(out["hv_p"].dtype)] + ([] if BB_OFF else [(upz[r] * wp).to(out["zb_p"].dtype)])
++        assert not BB_OFF or ("zb_p" not in out and upz[r] is None), "LINK OFF: the removed link was computed / fed back"
+         torch.autograd.backward(roots, grads)
+         del out, loss, roots, grads
+     tv = tv if tv is not None else [0.0] * len(TK)
+@@ -928,6 +1041,11 @@
+     log(f"[data] rows digest {rdg} (items + 64-row step groups + eval packing; 23051's = {want_rdg}); eval micro position bound "
+         f"{PL['max_eval_tok_ub']} <= {A.BUDGET}")
+     assert want_rdg and rdg == want_rdg, ("step composition differs from 23051's", rdg, want_rdg)
++    if G0:                                                        # pose6 G0COND: every train + eval item has a frame-0 record (FAIL LOUD otherwise)
++        n_tr, inv_tr = A.g0_coverage(PL["items"])
++        n_ev_, inv_ev = A.g0_coverage(PL["eval_items"])
++        log(f"[g0cond] sidecar {A.G0_SIDECAR}: coverage train {n_tr:,} / {PL['n_train_items']:,}, eval {n_ev_:,} / {PL['n_eval_items']:,} items "
++            f"(missing items fail loud); f = 0 (frame0_ok false, the base's rule) on train {inv_tr}, eval {inv_ev}")
+     t0 = time.time()
+     if A.MONO:                                                    # aloe-pose-mono-8020: realised prompt cells (data_aloe_pose.prompt_stats_mono)
+         ref_cfg0 = Q.qqa_cfg()
+@@ -962,16 +1080,23 @@
+     # ---- model
+     c32, c4, c06 = M.cfg32(64), M.cfg4b(36), M.cfg06(28)
+     model, _ = M.build(c32, c4, c06, dev, log, partial=False, proj_r=2048, tower_vocab=M.TOWER_VOCAB, init=False, dec_ac=False,
+-                       dec_mode="replicate", pose_head=CFG["pose_head_build"], decp_bb=True, s2p=S2P)
++                       dec_mode="replicate", pose_head=CFG["pose_head_build"], decp_bb=True, s2p=S2P, **({"g0cond": True} if G0 else {}))
+     assert bool(S2P) == hasattr(model.tower_p, "s_emb") and (not S2P or POSE), ("pose-s2p needs the pose path", S2P, POSE)
++    assert G0 == hasattr(model.inp, "g0") == model.g0cond and (not G0 or POSE), ("G0COND: module presence != PPM_G0COND", G0)
++    for n_ in NEW_KEYS:
++        log(f"[pose6] {n_} -> main-AdamW group '{M.group_of(n_)}' (LR {CFG['lr'][M.group_of(n_)]:g}, clip {CFG['clip'][M.group_of(n_)]:g}; JOIN "
++            f"{M.JOIN[M.group_of(n_)]}); loaded from the base (D5)" + (f"; G0COND SLOT = each item's P - 1, sidecar {A.G0_SIDECAR}" if n_ == "inp.g0.weight" else ""))
+     if CFG["pose_head_build"]:
+         model.pose_head_on = False                                # PPM main D36: the D32 pose head is off (frozen)
+     assert hasattr(model, "pose_head") == CFG["pose_head_build"], "pose head built iff QQA_POSE_HEAD_BUILD"
+     model.decp_bb_alpha = CFG["decp_bb_alpha"]                    # PPM main D33: alpha 1.0, no fade
++    if BB_OFF:                                                    # pose6 LINK OFF: never computed (train and eval), frozen
++        model.decp_bb_on = False
+     t0 = time.time()
+     meta, gb = load_init(model, CFG["init"], dev)
+     log(f"[init] {CFG['init']}: PPM step {meta['step']} (run {meta.get('run_tag')}, saved {meta.get('save_time')}), world {meta['world']} shards "
+-        f"resharded to {WORLD}; {gb:.1f} GB read; {time.time() - t0:.0f}s; checkpoint keys NOT loaded (module not built): {meta['unloaded_keys']}")
++        f"resharded to {WORLD}; {gb:.1f} GB read; {time.time() - t0:.0f}s; checkpoint keys NOT loaded (module not built): {meta['unloaded_keys']}"
++        + (f"; pose6 new params loaded from the base: {[n_ for n_ in NEW_KEYS if n_ not in meta.get('newparam_random_fill', [])]}" if NEW_KEYS else ""))
+     if CFG["dec_fast"]:
+         for dec_ in ((model.dec_s, model.dec_p) if POSE else (model.dec_s,)):
+             M.compile_decoder(dec_, CFG["dec_compile_mode"], whole=True, dynamic=CFG["dec_dyn"])
+@@ -986,7 +1111,13 @@
+     n_all = len(list(model.parameters()))
+     assert sum(len(v) for v in by.values()) + sum(len(d.ps) for d in dos.values()) + len(frozen) == n_all, "every parameter in exactly one optimizer or frozen"
+     if POSE:
+-        assert sorted({n.replace("_checkpoint_wrapped_module.", "").split(".")[0] for n in frozen}) == (["pose_head"] if CFG["pose_head_build"] else []), ("frozen set", frozen[:4])
++        assert sorted({n.replace("_checkpoint_wrapped_module.", "").split(".")[0] for n in frozen}) == \
++            sorted((["pose_head"] if CFG["pose_head_build"] else []) + (["decp_bb"] if BB_OFF else [])), ("frozen set", frozen[:4])
++        if BB_OFF:
++            assert not model.decp_bb_on and sorted(n.replace("_checkpoint_wrapped_module.", "") for n in frozen if "decp_bb" in n) == \
++                ["decp_bb.bias", "decp_bb.weight"], "LINK OFF: decp_bb frozen, in no optimizer, never computed"
++            log("[link-off] D33 decp_bb link OFF (QQA_DECP_BB_OFF=1, = the base run's PPM_DECP_BB_OFF): decp_bb.weight / .bias loaded from the "
++                "base, frozen (no optimizer), never computed (pose decoder zb=None); gradient-free asserted every step; exports record alpha 0")
+     else:
+         fpre = {p_ for p_ in FROZEN_PREFIX for n in frozen if n.replace("_checkpoint_wrapped_module.", "").startswith(p_)}
+         assert fpre == set(FROZEN_PREFIX), ("no-pose frozen set must cover every pose part", sorted(fpre))

@@ -1,0 +1,108 @@
+1c1,14
+< """aloe-ft TRAINER (10-16): PPM full fine-tune on Model 1's Aloe handover rows, BOTH sides as B (data_aloe: every train row twice per
+---
+> """aloe-v2-ft TRAINER (10-16 eve, user spec) = aloe-ft/code/train_aloe.py (job 21980) with ONLY these changes:
+>   DATA      data_aloe_v2: FIRST chunk of every call only (both speakers as B), held-out = 21980's eval rows that are first chunks; system
+>             prompt with NO text (no persona / context / memory), B's own voice clip (PPM voice_clips rule) on a seeded 30 % of (row, orientation)
+>             items, the EMPTY system block otherwise; A no clip. Realised clip fraction logged (cumulative) every step.
+>   DECODER   0.6B speech decoder: K = 1 nanostep per micro (QQA_DEC_K 1; was 8) on a seeded random ~10 % of B's coded frames per micro (data
+>             light_frac 0.1; was 1.0). Decoder LR schedule in update units = warmup x K, decay to 0 at steps x K (K = 1 -> = the main schedule).
+>             The "every selected light frame exactly once" check stays (decoder frames == the step's light frames) and is ADAPTED: the step's
+>             light frames / its B cb0 frames must lie in [0.09, 0.11] (21980: == 1).
+>   MODEL     model_ppm nopose (no inp.pose / tower_p / dec_p / pose_head / decp_bb built; 21980 had them frozen + never run: same maths);
+>             compile_decoder ON (= 21980).
+>   CONFIG    the resolved CFG is diffed against 21980's (ref_cfg_21980.json, from its log) at start; any difference outside the allowed keys
+>             (items 1-3 of the spec + run dirs) aborts.
+> Original aloe-ft doc follows.
+> aloe-ft TRAINER (10-16): PPM full fine-tune on Model 1's Aloe handover rows, BOTH sides as B (data_aloe: every train row twice per
+56c69
+< import data_aloe as A  # noqa: E402
+---
+> import data_aloe_v2 as A  # noqa: E402
+88a102,103
+>     "eval_data": A.eval_cfg(), "model_nopose": True, "first_chunks_only": True, "ref_cfg": E("ALOE_REF_CFG"),
+>     "light_ratio_lo": float(E("ALOE_LIGHT_RATIO_LO", "0.09")), "light_ratio_hi": float(E("ALOE_LIGHT_RATIO_HI", "0.11")),
+95c110
+< FROZEN_PREFIX = ("tower_p.", "dec_p.", "pose_head.", "decp_bb.", "inp.pose.")
+---
+> FROZEN_PREFIX = ()                                                # v2 NOPOSE: no pose parts built -> nothing frozen
+426c441
+<         json.dump({"step": int(step), "decp_bb": 1, "decp_bb_alpha": 1.0, "run": CFG["run_tag"], "init": CFG["init"], "cfg": CFG},
+---
+>         json.dump({"step": int(step), "decp_bb": 0, "pose": 0, "nopose_model": 1, "run": CFG["run_tag"], "init": CFG["init"], "cfg": CFG},
+460a476,509
+> # ------------------------------------------------------------------------------------------------ resolved-config diff vs 21980
+> CFG_ALLOWED = (                                                   # spec items 1-3 + run dirs (any other difference aborts)
+>     "run_tag", "log_root", "plan_dir", "control_dir", "export", "local_export_root", "export_steps",
+>     "steps", "warmup", "sched.", "dec_sched.", "dec_k", "data.persona_sides", "data.light_frac", "data.sysprompt", "data.voice_frac",
+>     "data.voice_seed", "eval_data", "model_nopose", "first_chunks_only", "ref_cfg", "light_ratio_lo", "light_ratio_hi")
+> 
+> 
+> def _flat(d, pre=""):
+>     out = {}
+>     for k, v in d.items():
+>         if isinstance(v, dict):
+>             out.update(_flat(v, f"{pre}{k}."))
+>         else:
+>             out[f"{pre}{k}"] = json.loads(json.dumps(v, default=str))
+>     return out
+> 
+> 
+> def cfg_diff():
+>     ref = _flat(json.load(open(CFG["ref_cfg"])))
+>     cur = _flat(json.loads(json.dumps(CFG, default=str)))
+>     rows, bad = [], []
+>     for k in sorted(set(ref) | set(cur)):
+>         a, b = ref.get(k, "<absent>"), cur.get(k, "<absent>")
+>         if k.startswith("eval_data.") and b == cur.get("data." + k[len("eval_data."):], "<absent>"):
+>             continue                                              # eval cfg = the v2 training data cfg except the keys shown
+>         if a != b:
+>             ok = any(k == x or (x.endswith(".") and k.startswith(x)) or k.startswith(x + ".") for x in CFG_ALLOWED)
+>             rows.append(f"  {'ok ' if ok else 'BAD'} {k}: 21980 {a} -> v2 {b}")
+>             if not ok:
+>                 bad.append(k)
+>     log("[cfg-diff] resolved config vs 21980 (" + CFG["ref_cfg"] + "):\n" + "\n".join(rows))
+>     assert not bad, ("config differs from 21980 outside the allowed keys", bad)
+> 
+> 
+494c543,544
+<     log(f"aloe-ft {CFG['run_tag']}: world {WORLD} (lw {LW}); host {HOST}; cfg {json.dumps(CFG, default=str)}")
+---
+>     log(f"aloe-v2-ft {CFG['run_tag']}: world {WORLD} (lw {LW}); host {HOST}; cfg {json.dumps(CFG, default=str)}")
+>     cfg_diff()
+507a558,559
+>     log(f"[data] v2 first chunks only: train rows {PL['n_first']['train']:,} of {PL['n_all']['train']:,}, eval rows {PL['n_first']['eval']} of "
+>         f"{PL['n_all']['eval']} (21980's held-out rows that are first chunks)")
+514,515c566,568
+<                        dec_mode="replicate", pose_head=True, decp_bb=True)
+<     model.pose_head_on = False                                    # pose parts never run (speech micros only)
+---
+>                        dec_mode="replicate", pose_head=False, decp_bb=False, nopose=True)
+>     assert not any(n.replace("_checkpoint_wrapped_module.", "").startswith(("tower_p.", "dec_p.", "pose_head.", "decp_bb.", "inp.pose."))
+>                    for n, _ in model.named_parameters()), "v2: no pose part may be built"
+542c595,597
+<     ev = A.eval_micros(ev_items, CFG["data"], RANK)
+---
+>     ev = A.eval_micros(ev_items, CFG["eval_data"], RANK)
+>     evc = allsum([float(sum(int(m["voice_clip"]) for m in ev)), float(sum(int(m["voice_drawn"]) for m in ev)), float(len(ev))], dev)
+>     log(f"[eval] v2 held-out voice clips: drawn {int(evc[1])} / {int(evc[2])}, realised {int(evc[0])} / {int(evc[2])} = {evc[0] / max(evc[2], 1):.4f}")
+580a636
+>     vc_cum = [0.0, 0.0, 0.0]                                      # v2: realised voice clips, drawn, real micros (cumulative over the run)
+605a662,665
+>         lr_ratio = tot[2] / max(tot[1], 1.0)                      # v2 (light_frac 0.1): the selected frames = ~10 % of B's coded (cb0) frames
+>         assert CFG["light_ratio_lo"] <= lr_ratio <= CFG["light_ratio_hi"], ("light frames / B coded frames outside the 10 % band", lr_ratio, tot)
+>         vc = allsum([float(b.get("voice_clip", 0)), float(b.get("voice_drawn", 0)), 0.0 if b.get("dummy", 0) else 1.0], dev)
+>         vc_cum = [x + y for x, y in zip(vc_cum, vc)]
+626c686,687
+<                   "train/light_frames": tot[2]})
+---
+>                   "train/light_frames": tot[2], "train/light_ratio": lr_ratio, "train/voice_clip_frac_cum": vc_cum[0] / max(vc_cum[2], 1.0),
+>                   "train/voice_drawn_frac_cum": vc_cum[1] / max(vc_cum[2], 1.0)})
+635c696
+<             + f" | ETA {eta / 60:.1f} min")
+---
+>             + f" | light {lr_ratio:.4f} clip {vc_cum[0] / max(vc_cum[2], 1.0):.4f} | ETA {eta / 60:.1f} min")
+650c711
+<     log(f"[frozen] pose parts bit-identical to the init on every rank: {bool(float(same))} (rank 0 {fz1[:16]})")
+---
+>     log(f"[frozen] nothing frozen (v2 nopose: no pose parts built); empty-set digest equal on every rank: {bool(float(same))}")

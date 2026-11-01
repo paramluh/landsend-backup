@@ -1,0 +1,21 @@
+model = "gpt-6-astra"
+model_reasoning_effort = "ultra"
+service_tier = "priority"
+[tui]
+screen_reader_detection_done = true
+
+[tui.model_availability_nux]
+"gpt-6.1-sol" = 1
+
+[marketplaces.openai-bundled]
+source_type = "local"
+source = "/home/param/.codex/.tmp/bundled-marketplaces/openai-bundled"
+
+[plugins."visualize@openai-bundled"]
+enabled = true
+
+[projects."/home/param/pose-repo"]
+trust_level = "trusted"
+
+[projects."/home/param/ppm-training"]
+trust_level = "trusted"

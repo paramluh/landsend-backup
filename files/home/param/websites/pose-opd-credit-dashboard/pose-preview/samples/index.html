@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pose OPD · Rollout samples</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="samples.css">
+  <script src="samples.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="brand"><h1>Rollout samples</h1><p>Pose, speech and conversation audio</p></div>
+    <div class="selectors">
+      <label>Step <select id="rollout" aria-label="Select training step"><option>Loading…</option></select></label>
+      <label>Sample <select id="sample" aria-label="Select sample"><option value="0">1 of 4</option><option value="1">2 of 4</option><option value="2">3 of 4</option><option value="3">4 of 4</option></select></label>
+    </div>
+  </header>
+  <p id="notice" class="notice" role="status">Loading sample manifest…</p>
+  <main id="samples" class="samples" aria-label="Selected rollout sample"></main>
+  <p class="footnote">Pose and both audio lanes share one timeline. Select a step and one of its four saved samples.</p>
+</body>
+</html>

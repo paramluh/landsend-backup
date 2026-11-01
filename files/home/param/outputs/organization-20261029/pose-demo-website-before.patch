@@ -1,0 +1,233 @@
+diff --git a/comparison/README.md b/comparison/README.md
+index 53c75ff..a84b85f 100644
+--- a/comparison/README.md
++++ b/comparison/README.md
+@@ -108,6 +108,43 @@ a heartbeat older than sixty seconds is marked stale. Request cards show their
+ assigned node and active GPUs, including staging and output-transfer phases.
+ This endpoint is read-only and requires the same authenticated session.
+ 
++## Audio-guided native comparison
++
++`/guided-comparison` is a separate 24-video gallery for all three checkpoints on
++the same eight 60-second clips. Its root is
++`/home/param/pose-runs/audio-guided-native-comparison-20261028/gallery`, configurable
++with `--guided-gallery-root`. Initialize it with `publish.py init --mode guided-native`.
++The protected `/guided-manifest.json` and `/guided-media/` routes use the existing
++session; the controlled and previous native comparisons keep their own files.
++
++Aligned receives the full aligned prefix and forced framewise text. Compact
++receives its full plain transcript and samples framewise text. Original Xabi
++receives only the common eight-second voice reference and samples its text.
++All temperatures are 1; text is unfiltered, audio top-k is 30 for every codebook,
++pose cb0 top-k is 30, and pose cb1–31 top-k is 50. Every pose codebook uses
++`audio + 3 * (audio - silence)` logits, with an independent full-model silence
++pass and shared text/pose history. The gallery shows these settings per video.
++
++`infer/transcript_pose/publish_guided.py` validates actual inference metadata,
++silence-code provenance, video receipts and hashes before atomically publishing
++each completed cell locally and on landsend-1. It preserves Original, Pose
++overlay, and Pose only views and records each model's supplied/generated text.
++
++The follow-up `/guided-prefill-comparison` uses the separate
++`audio-guided-prefill2s-comparison-20261028/gallery` root. The first 25 codec
++frames (2 seconds) are exact source audio, pose and framewise text. Its
++conditioning downloads include these arrays and hashes. The continuation uses
++the same native formats and guidance settings; `/guided-comparison` preserves
++all earlier results without prefill.
++
++At 2.000 seconds, all three presentation views show two white frames (80 ms)
++and share a quiet 880 Hz beep lasting 100 ms with 8 ms fades. The marker runs
++after diffusion and pose compositing. Clean views remain in `unmarked/`; raw PPM
++audio, codes and model-input latents remain untouched and their hashes are
++checked. `prefill-marker.json` records the marker and identical AAC/PCM hashes
++across the three views. New studio requests default to 25 prefill frames;
++previously stored requests without that field retain their original behavior.
++
+ ## Pose views
+ 
+ Every completed comparison and request can expose three synchronized views:
+diff --git a/comparison/index.html b/comparison/index.html
+index d38204d..5c0722e 100644
+--- a/comparison/index.html
++++ b/comparison/index.html
+@@ -3,14 +3,14 @@
+ <title>Held-out speech & pose comparison</title>
+ <style>
+ :root{color-scheme:light;--ink:#182a30;--muted:#66757a;--line:#dce4e4;--accent:#16675b}*{box-sizing:border-box}body{margin:0;background:#f4f7f6;color:var(--ink);font:15px/1.5 system-ui,sans-serif}header,main{max-width:1320px;margin:auto;padding:30px 28px}header{padding-bottom:15px}.eyebrow{text-transform:uppercase;letter-spacing:.14em;color:var(--accent);font-size:12px;font-weight:700}h1{font-size:clamp(27px,4vw,42px);letter-spacing:-.04em;margin:8px 0 12px;line-height:1.15}h2{font-size:22px;margin:0 0 6px}p{margin:8px 0}.muted{color:var(--muted)}#progress{display:flex;align-items:center;gap:12px;margin:22px 0 10px}progress{width:200px;max-width:40vw;height:7px;accent-color:var(--accent)}.legend{display:grid;grid-template-columns:repeat(var(--model-count,3),1fr);gap:20px;padding-top:22px}.legend div{border-top:2px solid var(--line);padding-top:12px}.legend b{display:block;margin-bottom:4px}.legend p{font-size:13px;color:var(--muted)}section{background:white;border:1px solid var(--line);border-radius:15px;padding:24px;margin-bottom:26px}.cliptop{display:flex;align-items:start;justify-content:space-between;gap:20px}.tools{display:flex;gap:8px;flex-wrap:wrap}button{background:white;border:1px solid #cbd9d7;border-radius:7px;padding:7px 11px;color:var(--ink);font:inherit;font-size:13px;cursor:pointer}button:hover{background:#eaf3f0}button:disabled{opacity:.4;cursor:default}.grid{display:grid;grid-template-columns:repeat(var(--model-count,3),minmax(0,1fr));gap:18px;margin-top:18px}.cell{min-width:0}.label{display:flex;justify-content:space-between;align-items:center;font-weight:650;font-size:14px;margin-bottom:8px}.pill{font-size:11px;font-weight:500;background:#e7f2ed;color:#23654b;padding:3px 7px;border-radius:20px}.pending{aspect-ratio:256/480;display:grid;place-items:center;background:linear-gradient(140deg,#f0f4f3,#e5ece9);border:1px solid var(--line);border-radius:9px;color:#758780}.player{width:100%;display:block;aspect-ratio:256/480;background:#15231f;border-radius:9px;object-fit:contain}.under{display:flex;justify-content:space-between;align-items:center;gap:6px;font-size:12px;margin-top:8px}.under a{color:var(--accent)}details{margin-top:14px;font-size:13px}summary{cursor:pointer;color:var(--accent)}.transcript{white-space:pre-wrap;line-height:1.65;max-height:230px;overflow:auto}.meta{white-space:pre-wrap;overflow:auto;font-size:11px;padding:10px;background:#f5f7f7;border-radius:6px;max-height:250px}footer{text-align:center;color:var(--muted);font-size:12px;padding:12px 0 35px}#error{color:#9e3e35}.clipid{font-family:ui-monospace,monospace;font-size:11px;color:var(--muted)}@media(max-width:700px){header,main{padding:20px 15px}.legend{gap:12px}.legend p{font-size:11px}section{padding:16px}.grid{gap:9px}.label{display:block;font-size:12px}.pill{display:inline-block;margin-top:3px}.under{flex-wrap:wrap}.cliptop{display:block}.tools{margin-top:10px}.pending{font-size:12px}.legend b{font-size:12px}}
+-.native .grid{max-width:900px;margin-left:auto;margin-right:auto}.gallery-nav{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0}.gallery-nav a{color:var(--accent)}.gallery-nav[hidden]{display:none}
++.conditioning-links{margin:12px 0;font-size:13px}.conditioning-links a{color:var(--accent)}.reference-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(80px,1fr));gap:9px;margin-top:10px}.reference-grid img{width:100%;max-height:190px;object-fit:contain;background:#e9efec;border-radius:5px}.reference-grid a{color:var(--accent);font-size:11px;text-align:center}.native .grid{max-width:900px;margin-left:auto;margin-right:auto}.gallery-nav{display:flex;gap:16px;flex-wrap:wrap;margin:12px 0}.gallery-nav a{color:var(--accent)}.gallery-nav[hidden]{display:none}
+ .sampling-panel{margin-top:12px;padding:11px 12px;background:#f3f7f5;border:1px solid var(--line);border-radius:8px;font-size:12px;line-height:1.4}.sampling-heading{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 10px;margin-bottom:7px}.sampling-heading strong{font-size:12px}.sampling-mode{color:var(--muted)}.sampling-table{width:100%;border-collapse:collapse;text-align:left;table-layout:fixed}.sampling-table th,.sampling-table td{padding:4px 4px 4px 0;vertical-align:top;overflow-wrap:anywhere}.sampling-table thead th{font-weight:500;color:var(--muted);font-size:11px;border-bottom:1px solid #dce6e1}.sampling-table tbody th{font-weight:650}.sampling-table th:first-child{width:23%}.sampling-note{margin-top:7px;font-size:11px;color:var(--muted);overflow-wrap:anywhere}.sampling-seeds{display:flex;flex-wrap:wrap;gap:3px 12px;margin-top:6px;font-size:11px;color:var(--muted);overflow-wrap:anywhere}@media(max-width:700px){.sampling-panel{padding:8px 6px;font-size:11px}.sampling-heading strong{font-size:11px}.sampling-table thead th,.sampling-note,.sampling-seeds{font-size:10px}.sampling-table th:first-child{width:25%}}
+ @media(max-width:700px){.sampling-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.sampling-table tbody tr{display:block;margin:7px 0}.sampling-table tbody th,.sampling-table tbody td{display:block;width:auto!important;padding:1px 0;overflow-wrap:normal}.sampling-table td[data-setting=temp]::before{content:'Temp: ';color:var(--muted)}.sampling-table td[data-setting=topk]::before{content:'Top-k: ';color:var(--muted)}}
+ </style><link rel="stylesheet" href="/pose-player.css?v=20261029-pose1"><script src="/pose-player.js?v=20261029-pose1"></script></head><body>
+-<header><div class="eyebrow">Model comparisons · 28 October 2026</div><h1 id="title">Held-out speech & pose comparison</h1><p id="note" class="muted">Loading comparison manifest…</p><div id="progress"><strong id="count">0 videos ready</strong><progress id="bar" max="24" value="0"></progress><span id="updated" class="muted"></span></div><p id="error"></p><nav id="gallery-nav" class="gallery-nav" hidden><a id="controlled-url">Controlled · 24 videos</a><a id="native-url">Native · 16 videos</a></nav><p id="studio-link" hidden><a id="studio-url" style="color:var(--accent);font-weight:650">Request a new video →</a></p><div id="legend" class="legend"></div></header>
++<header><div class="eyebrow">Model comparisons · 28 October 2026</div><h1 id="title">Held-out speech & pose comparison</h1><p id="note" class="muted">Loading comparison manifest…</p><div id="progress"><strong id="count">0 videos ready</strong><progress id="bar" max="24" value="0"></progress><span id="updated" class="muted"></span></div><p id="error"></p><nav id="gallery-nav" class="gallery-nav" hidden><a id="controlled-url">Controlled · 24 videos</a><a id="native-url">Native · 16 videos</a><a id="guided-url" hidden>Audio-guided · no prefill</a><a id="guided-prefill-url" hidden>Audio-guided · 2s prefill</a></nav><p id="studio-link" hidden><a id="studio-url" style="color:var(--accent);font-weight:650">Request a new video →</a></p><div id="legend" class="legend"></div></header>
+ <form id="login" style="display:none;max-width:500px;margin:20px auto;padding:20px"><label>Access token <input id="token" type="password" autocomplete="current-password" required style="width:100%;padding:10px;margin:10px 0"></label><button>Open comparison</button></form><main id="clips"></main><footer>Videos appear automatically as completed files are published. Choose Original, Pose overlay, or Pose only. Every view keeps the same generated audio and timing.</footer>
+ <script>
+-const $=id=>document.getElementById(id);let revision='',models=[],cells=new Map();const nativePage=location.pathname==='/native-comparison',manifestPath=nativePage?'/native-manifest.json':'/manifest.json';document.body.classList.toggle('native',nativePage);
++const $=id=>document.getElementById(id);let revision='',models=[],cells=new Map();const nativePage=location.pathname==='/native-comparison',prefillPage=location.pathname==='/guided-prefill-comparison',guidedPage=location.pathname==='/guided-comparison'||prefillPage,manifestPath=prefillPage?'/guided-prefill-manifest.json':guidedPage?'/guided-manifest.json':nativePage?'/native-manifest.json':'/manifest.json';document.body.classList.toggle('native',nativePage);
+ function el(tag,cls,text){const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=text;return x}
+ function details(label,text,cls){const d=el('details');d.append(el('summary','',label),el('div',cls||'transcript',text));return d}
+ function sampling(o){
+@@ -19,21 +19,25 @@ function sampling(o){
+  const heading=el('div','sampling-heading');heading.append(el('strong','','Sampling'),el('span','sampling-mode',mode==='forced'?'Text: forced':mode==='native'?'Text: native · sampled':'Text mode: not recorded'));box.append(heading);
+  const number=(value,kind)=>typeof value==='number'&&Number.isFinite(value)&&value>=0&&(kind!=='topk'||Number.isInteger(value))?(value===0?(kind==='topk'?'0 (none)':'0 (greedy)'):String(value)):'Not recorded';
+  const table=el('table','sampling-table'),head=el('thead'),labels=el('tr');for(const name of ['Stream','Temperature','Top-k']){const th=el('th','',name);th.scope='col';labels.append(th)}head.append(labels);table.append(head);const body=el('tbody');
+- for(const [stream,label] of [['audio','Audio'],['pose','Pose'],['text','Text']]){
++ const streams=settings.pose_residual_top_k!==undefined?[['audio','Audio · all CBs'],['pose','Pose · CB0'],['pose_residual','Pose · CB1–31'],['text','Text']]:[['audio','Audio'],['pose','Pose'],['text','Text']];
++ for(const [stream,label] of streams){
+   const row=el('tr');row.dataset.stream=stream;const name=el('th','',label);name.scope='row';row.append(name);
+   if(stream==='text'&&mode==='forced'){const cell=el('td','','Not sampled');cell.colSpan=2;row.append(cell)}
+   else for(const [suffix,kind] of [['temperature','temp'],['top_k','topk']]){const cell=el('td','',number(settings[stream+'_'+suffix],kind));cell.dataset.setting=kind;row.append(cell)}
+   body.append(row);
+  }
+  table.append(body);box.append(table);
+- box.append(el('div','sampling-note',settings.residual_codebooks_use_same_settings===true?'CB0 and residual codebooks use the same settings within each stream.':settings.residual_codebooks_use_same_settings===false?'Residual-codebook settings differ; see Run details.':'Residual-codebook settings: not recorded.'));
++ box.append(el('div','sampling-note',settings.residual_codebooks_use_same_settings===true?'CB0 and residual codebooks use the same settings within each stream.':settings.residual_codebooks_use_same_settings===false?'Audio uses the same settings for all codebooks; pose CB0 and CB1–31 are shown separately.':'Residual-codebook settings: not recorded.'));
+  const seeds=el('div','sampling-seeds');for(const [key,label] of [['seed','Generation seed'],['video_seed','Video seed']])if(Number.isInteger(meta[key])&&meta[key]>=0)seeds.append(el('span','',label+': '+meta[key]));if(seeds.childNodes.length)box.append(seeds);
++ if(meta.audio_guidance?.enabled){box.append(el('div','sampling-note','Pose audio guidance: strength '+meta.audio_guidance.strength+' · 4 × audio logits − 3 × silence logits, for every pose codebook.'));box.append(el('div','sampling-note','The silence branch runs the full model independently with shared text and pose history.'));}
++ if(meta.prefill_duration_seconds)box.append(el('div','sampling-note','First '+meta.prefill_duration_seconds+' seconds: source audio, pose and text. White flash + quiet beep mark the continuation; markers are added only to the final views.'));
++ if(meta.conditioning_control)box.append(el('div','sampling-note',meta.conditioning_control));
+  return box;
+ }
+ function rowVideos(row){return [...row.querySelectorAll('video')]}
+-function makeRow(c){const row=el('section');row.dataset.clip=c.id;const top=el('div','cliptop'),heading=el('div');heading.append(el('h2','',c.title||c.id),el('div','clipid',c.id));top.append(heading);const tools=el('div','tools');const play=el('button','','Play ready videos together');play.onclick=()=>{rowVideos(row).forEach((v,i)=>{v.currentTime=0;v.muted=i!==0;v.play().catch(()=>{})})};const stop=el('button','','Pause all');stop.onclick=()=>rowVideos(row).forEach(v=>v.pause());tools.append(play,stop);top.append(tools);row.append(top);if(c.transcript)row.append(details(nativePage?'Source transcript (not supplied to original Xabi)':'Transcript',c.transcript));if(c.provenance)row.append(details('Sample provenance',JSON.stringify(c.provenance,null,2),'meta'));const grid=el('div','grid');for(const m of models){const cell=el('div','cell');cell.append(el('div','label',m.label),el('div','pending','Waiting for render'));grid.append(cell);cells.set(c.id+'|'+m.id,{node:cell,hash:null,row})}row.append(grid);$('clips').append(row)}
++function makeRow(c){const row=el('section');row.dataset.clip=c.id;const top=el('div','cliptop'),heading=el('div');heading.append(el('h2','',c.title||c.id),el('div','clipid',c.id));top.append(heading);const tools=el('div','tools');const play=el('button','','Play ready videos together');play.onclick=()=>{rowVideos(row).forEach((v,i)=>{v.currentTime=0;v.muted=i!==0;v.play().catch(()=>{})})};const stop=el('button','','Pause all');stop.onclick=()=>rowVideos(row).forEach(v=>v.pause());tools.append(play,stop);top.append(tools);row.append(top);if(c.transcript)row.append(details(prefillPage?'Source transcript · Xabi receives only the first 2s as prefill':(nativePage||guidedPage)?'Source transcript (not supplied to original Xabi)':'Transcript',c.transcript));if(c.provenance)row.append(details('Sample provenance',JSON.stringify(c.provenance,null,2),'meta'));if(c.conditioning_url){const links=el('div','conditioning-links'),a=el('a','','Download conditioning: timed words, exact framewise tokens, voice codes and reference provenance (JSON)');a.href=c.conditioning_url;a.target='_blank';a.rel='noopener';links.append(a);row.append(links)}if(c.visual_references?.length){const refs=el('details');refs.append(el('summary','','Visual conditioning · '+c.visual_references.length+' reference images'));const tiles=el('div','reference-grid');for(const ref of c.visual_references){const a=el('a','',ref.slot||'Reference '+ref.property);a.href=ref.image;a.target='_blank';a.rel='noopener';const img=el('img');img.src=ref.image;img.alt=ref.slot||'Reference '+ref.property;img.loading='lazy';a.prepend(img);tiles.append(a)}refs.append(tiles);row.append(refs)}const grid=el('div','grid');for(const m of models){const cell=el('div','cell');cell.append(el('div','label',m.label),el('div','pending','Waiting for render'));grid.append(cell);cells.set(c.id+'|'+m.id,{node:cell,hash:null,row})}row.append(grid);$('clips').append(row)}
+ function voice(c){if(!c.voice_reference)return;const state=cells.get(c.id+'|'+models[0].id);if(!state||state.row.querySelector('.voice'))return;const box=el('div','voice');box.style.marginTop='14px';box.append(el('b','','Common 8-second voice reference'));const audio=el('audio');audio.controls=true;audio.preload='none';audio.src=c.voice_reference.audio;audio.style.display='block';audio.style.width='100%';audio.style.maxWidth='500px';audio.style.marginTop='6px';box.append(audio,el('div','muted',c.voice_reference.description));state.row.insertBefore(box,state.row.querySelector('.grid'))}
+-function fill(c,m,o){const state=cells.get(c.id+'|'+m.id);if(!state||!o)return;if(o.status!=='complete'){if(state.hash!==null){state.node.querySelectorAll('video').forEach(v=>v.pause());state.node.replaceChildren(el('div','label',m.label),el('div','pending'));state.hash=null}const label={pending:'Waiting for render',generating:'Generating…',failed:'Render failed'}[o.status]||'Waiting for render';const pending=state.node.querySelector('.pending');if(pending)pending.textContent=label+(o.message?' · '+o.message:'');return}if(state.hash===o.sha256){state.player?.update(o);state.node.querySelector('.sampling-panel')?.replaceWith(sampling(o));const shown=state.node.querySelector('details .meta');if(shown)shown.textContent=JSON.stringify(o.metadata,null,2);return;}state.hash=o.sha256;const node=state.node;node.replaceChildren();const label=el('div','label',m.label);label.append(el('span','pill',o.seconds.toFixed(2)+' s'));const player=PosePlayer.create(o),v=player.video;state.player=player;const under=el('div','under');under.append(el('span','muted',`${o.width} × ${o.height} · ${o.frames||'?'} frames`));const listen=el('button','','Listen to this');listen.onclick=()=>{rowVideos(state.row).forEach(x=>x.muted=x!==v);v.muted=false;v.play().catch(()=>{})};under.append(listen);node.append(label,player.root,under,sampling(o));if(o.metadata?.text_mode==='native'){if(typeof o.metadata.supplied_transcript==='string')node.append(details('Upfront transcript supplied',o.metadata.supplied_transcript));node.append(details('Generated transcript',o.metadata.generated_transcript||'No words were generated.'))}if(o.metadata&&Object.keys(o.metadata).length)node.append(details('Run details',JSON.stringify(o.metadata,null,2),'meta'))}
+-async function update(){try{const r=await fetch(manifestPath,{cache:'no-store'});if(r.status===401){$('login').style.display='block';$('note').textContent='Open the shared access link or enter its token to view this comparison.';return}if(!r.ok)throw new Error('Manifest not available yet');$('login').style.display='none';const d=await r.json();$('error').textContent='';if(d.updated_at===revision)return;revision=d.updated_at;$('title').textContent=d.title;$('note').textContent=d.note;if(d.request_studio_url){const u=new URL(d.request_studio_url,location.origin);if(u.protocol==='https:'||u.origin===location.origin){$('studio-url').href=u.href;$('studio-link').hidden=false}}models=d.models;document.documentElement.style.setProperty('--model-count',models.length);if(d.native_comparison_available&&d.request_studio_url){const base=new URL(d.request_studio_url,location.origin);for(const [id,path] of [['controlled-url','/comparison'],['native-url','/native-comparison']]){const u=new URL(path,base);if(base.origin!==location.origin)u.hash=base.hash;$(id).href=u.href} $('gallery-nav').hidden=false}if(!cells.size){$('legend').replaceChildren(...models.map(m=>{const x=el('div');x.append(el('b','',m.label),el('p','',m.description));return x}));d.clips.forEach(makeRow)}let done=0;for(const c of d.clips){voice(c);for(const m of models){const o=c.outputs[m.id];if(o&&o.status==='complete')done++;fill(c,m,o)}}const total=d.clips.length*models.length;$('count').textContent=`${done} / ${total} videos ready`;$('bar').max=total;$('bar').value=done;$('updated').textContent=done===total?'Complete':'Updating live'}catch(e){$('error').textContent=e.message+' · retrying automatically'}}
++function fill(c,m,o){const state=cells.get(c.id+'|'+m.id);if(!state||!o)return;if(o.status!=='complete'){if(state.hash!==null){state.node.querySelectorAll('video').forEach(v=>v.pause());state.node.replaceChildren(el('div','label',m.label),el('div','pending'));state.hash=null}const label={pending:'Waiting for render',generating:'Generating…',failed:'Render failed'}[o.status]||'Waiting for render';const pending=state.node.querySelector('.pending');if(pending)pending.textContent=label+(o.message?' · '+o.message:'');return}if(state.hash===o.sha256){state.player?.update(o);state.node.querySelector('.sampling-panel')?.replaceWith(sampling(o));const shown=state.node.querySelector('details .meta');if(shown)shown.textContent=JSON.stringify(o.metadata,null,2);return;}state.hash=o.sha256;const node=state.node;node.replaceChildren();const label=el('div','label',m.label);label.append(el('span','pill',o.seconds.toFixed(2)+' s'));const player=PosePlayer.create(o),v=player.video;state.player=player;const under=el('div','under');under.append(el('span','muted',`${o.width} × ${o.height} · ${o.frames||'?'} frames`));const listen=el('button','','Listen to this');listen.onclick=()=>{rowVideos(state.row).forEach(x=>x.muted=x!==v);v.muted=false;v.play().catch(()=>{})};under.append(listen);node.append(label,player.root,under,sampling(o));if(o.metadata?.conditioning_url){const a=el('a','conditioning-links','Exact model prefix and conditioning (JSON)');a.href=o.metadata.conditioning_url;a.target='_blank';a.rel='noopener';node.append(a)}if(o.metadata?.text_mode==='native'||guidedPage){if(typeof o.metadata.supplied_transcript==='string')node.append(details('Upfront transcript supplied',o.metadata.supplied_transcript));node.append(details(o.metadata.prefill_duration_seconds?'Output transcript · first 2s prefilled':o.metadata.force_text?'Forced framewise transcript':'Generated transcript',o.metadata.output_transcript||o.metadata.generated_transcript||'No words were generated.'))}if(o.metadata&&Object.keys(o.metadata).length)node.append(details('Run details',JSON.stringify(o.metadata,null,2),'meta'))}
++async function update(){try{const r=await fetch(manifestPath,{cache:'no-store'});if(r.status===401){$('login').style.display='block';$('note').textContent='Open the shared access link or enter its token to view this comparison.';return}if(!r.ok)throw new Error('Manifest not available yet');$('login').style.display='none';const d=await r.json();$('error').textContent='';if(d.updated_at===revision)return;revision=d.updated_at;$('title').textContent=d.title;$('note').textContent=d.note;if(d.request_studio_url){const u=new URL(d.request_studio_url,location.origin);if(u.protocol==='https:'||u.origin===location.origin){$('studio-url').href=u.href;$('studio-link').hidden=false}}models=d.models;document.documentElement.style.setProperty('--model-count',models.length);if((d.native_comparison_available||d.guided_comparison_available||d.guided_prefill_comparison_available)&&d.request_studio_url){const base=new URL(d.request_studio_url,location.origin);for(const [id,path] of [['controlled-url','/comparison'],['native-url','/native-comparison'],['guided-url','/guided-comparison'],['guided-prefill-url','/guided-prefill-comparison']]){const u=new URL(path,base);if(base.origin!==location.origin)u.hash=base.hash;$(id).href=u.href} $('native-url').hidden=!d.native_comparison_available;$('guided-url').hidden=!d.guided_comparison_available;$('guided-prefill-url').hidden=!d.guided_prefill_comparison_available;$('gallery-nav').hidden=false}if(!cells.size){$('legend').replaceChildren(...models.map(m=>{const x=el('div');x.append(el('b','',m.label),el('p','',m.description));return x}));d.clips.forEach(makeRow)}let done=0;for(const c of d.clips){voice(c);for(const m of models){const o=c.outputs[m.id];if(o&&o.status==='complete')done++;fill(c,m,o)}}const total=d.clips.length*models.length;$('count').textContent=`${done} / ${total} videos ready`;$('bar').max=total;$('bar').value=done;$('updated').textContent=done===total?'Complete':'Updating live'}catch(e){$('error').textContent=e.message+' · retrying automatically'}}
+ async function login(token){const r=await fetch('/auth',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({token})});if(!r.ok)throw new Error('Invalid access token');$('token').value='';await update()}$('login').onsubmit=async e=>{e.preventDefault();try{await login($('token').value)}catch(e){$('error').textContent=e.message}};const access=new URLSearchParams(location.hash.slice(1)).get('token');if(access){history.replaceState(null,'',location.pathname);login(access).catch(e=>$('error').textContent=e.message)}else update();setInterval(update,10000);
+ </script></body></html>
+diff --git a/comparison/publish.py b/comparison/publish.py
+index d221384..b15b207 100644
+--- a/comparison/publish.py
++++ b/comparison/publish.py
+@@ -87,7 +87,7 @@ def main():
+     sub = parser.add_subparsers(dest='command', required=True)
+     init = sub.add_parser('init')
+     init.add_argument('--clips', required=True, type=Path)
+-    init.add_argument('--mode', choices=['controlled', 'native'], default='controlled')
++    init.add_argument('--mode', choices=['controlled', 'native', 'guided-native'], default='controlled')
+     init.add_argument('--title', default='Held-out speech & pose comparison')
+     init.add_argument('--note', default='Eight held-out clips, three PPM checkpoints, one shared step-2911 video model. Completed videos appear as they finish.')
+     pub = sub.add_parser('publish')
+@@ -125,6 +125,12 @@ def main():
+             {'id': 'compact-all', 'label': 'Compact · native', 'description': 'Plain transcript upfront; generated framewise text, audio and pose.'},
+             {'id': 'xabi-original', 'label': 'Original Xabi · native', 'description': 'No transcript input; generated text, audio and pose with the same voice and appearance.'},
+         ]
++        if args.mode == 'guided-native':
++            models = [
++                {'id': 'aligned-media', 'label': 'Aligned transcript', 'description': 'Full aligned transcript upfront; forced framewise text. Audio and pose are generated.'},
++                {'id': 'compact-all', 'label': 'Compact transcript', 'description': 'Full plain transcript upfront; framewise text, audio and pose are generated.'},
++                {'id': 'xabi-original', 'label': 'Original Xabi', 'description': 'Voice reference only, with no transcript; text, audio and pose are generated.'},
++            ]
+         with manifest_lock(root):
+             if manifest_path.exists():
+                 previous = json.loads(manifest_path.read_text())
+diff --git a/comparison/request_server.py b/comparison/request_server.py
+index 67f5da0..039bc93 100644
+--- a/comparison/request_server.py
++++ b/comparison/request_server.py
+@@ -64,6 +64,8 @@ def main():
+     parser.add_argument('--gallery-root', required=True, type=Path)
+     parser.add_argument('--queue-root', required=True, type=Path)
+     parser.add_argument('--native-gallery-root', type=Path, default=Path('/home/param/pose-runs/native-comparison-20261028/gallery'))
++    parser.add_argument('--guided-gallery-root', type=Path, default=Path('/home/param/pose-runs/audio-guided-native-comparison-20261028/gallery'))
++    parser.add_argument('--guided-prefill-gallery-root', type=Path, default=Path('/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/gallery'))
+     parser.add_argument('--schema-dir', type=Path, default=Path('/home/param/pose-repo/infer/transcript_pose'))
+     parser.add_argument('--bind', default='127.0.0.1')
+     parser.add_argument('--port', default=7880, type=int)
+@@ -73,6 +75,8 @@ def main():
+ 
+     gallery, queue = args.gallery_root.resolve(), args.queue_root.resolve()
+     native_gallery = args.native_gallery_root.resolve()
++    guided_gallery = args.guided_gallery_root.resolve()
++    prefill_gallery = args.guided_prefill_gallery_root.resolve()
+     jobs = queue / 'jobs'
+     jobs.mkdir(parents=True, exist_ok=True)
+     token_file = gallery / '.access-token'
+@@ -222,7 +226,7 @@ def main():
+             if route != '/api/requests':
+                 return self.send_json(404, {'error': 'Not found'})
+             try:
+-                request = load_request(self.raw_body())
++                request = load_request(self.raw_body(), new_submission=True)
+             except ValueError as error:
+                 return self.send_json(400, {'error': str(error)})
+             with (queue / '.submit.lock').open('a') as lock:
+@@ -250,8 +254,8 @@ def main():
+ 
+         def serve(self, head=False):
+             route = urlsplit(self.path).path
+-            if route in ('/', '/index.html', '/comparison', '/native-comparison'):
+-                path = HERE / ('index.html' if route in ('/comparison', '/native-comparison') else 'studio.html')
++            if route in ('/', '/index.html', '/comparison', '/native-comparison', '/guided-comparison', '/guided-prefill-comparison'):
++                path = HERE / ('index.html' if route in ('/comparison', '/native-comparison', '/guided-comparison', '/guided-prefill-comparison') else 'studio.html')
+                 return self.file(path, 'text/html; charset=utf-8', 'no-cache', head)
+             if route in ('/pose-player.js', '/pose-player.css'):
+                 mime = 'text/javascript; charset=utf-8' if route.endswith('.js') else 'text/css; charset=utf-8'
+@@ -261,6 +265,8 @@ def main():
+             if route == '/manifest.json':
+                 manifest = load(gallery / 'manifest.json')
+                 manifest['native_comparison_available'] = (native_gallery / 'manifest.json').is_file()
++                manifest['guided_comparison_available'] = (guided_gallery / 'manifest.json').is_file()
++                manifest['guided_prefill_comparison_available'] = (prefill_gallery / 'manifest.json').is_file()
+                 return self.send_json(200, manifest)
+             if route == '/native-manifest.json':
+                 if not (native_gallery / 'manifest.json').is_file():
+@@ -275,7 +281,41 @@ def main():
+                                 output[key] = output[key].replace('/media/', '/native-media/', 1)
+                 manifest['request_studio_url'] = '/'
+                 manifest['native_comparison_available'] = True
++                manifest['guided_comparison_available'] = (guided_gallery / 'manifest.json').is_file()
++                manifest['guided_prefill_comparison_available'] = (prefill_gallery / 'manifest.json').is_file()
+                 return self.send_json(200, manifest)
++            if route in ('/guided-manifest.json', '/guided-prefill-manifest.json'):
++                selected_gallery = prefill_gallery if route == '/guided-prefill-manifest.json' else guided_gallery
++                namespace = 'guided-prefill' if route == '/guided-prefill-manifest.json' else 'guided'
++                if not (selected_gallery / 'manifest.json').is_file():
++                    return self.send_json(404, {'error': 'Audio-guided comparison is being prepared'})
++                manifest = load(selected_gallery / 'manifest.json')
++                for clip in manifest['clips']:
++                    if clip.get('voice_reference'):
++                        clip['voice_reference']['audio'] = clip['voice_reference']['audio'].replace('/media/', f'/{namespace}-media/', 1)
++                    for output in clip['outputs'].values():
++                        for key in ('video', 'poster', 'pose_video', 'pose_overlay_video'):
++                            if key in output:
++                                output[key] = output[key].replace('/media/', f'/{namespace}-media/', 1)
++                manifest['request_studio_url'] = '/'
++                manifest['native_comparison_available'] = (native_gallery / 'manifest.json').is_file()
++                manifest['guided_comparison_available'] = (guided_gallery / 'manifest.json').is_file()
++                manifest['guided_prefill_comparison_available'] = (prefill_gallery / 'manifest.json').is_file()
++                return self.send_json(200, manifest)
++            if re.fullmatch(r'/guided(?:-prefill)?-conditioning/[\w-]+(?:/(?:aligned-media|compact-all|xabi-original))?\.json', route):
++                selected_gallery = prefill_gallery if route.startswith('/guided-prefill-') else guided_gallery
++                prefix = '/guided-prefill-' if route.startswith('/guided-prefill-') else '/guided-'
++                path = (selected_gallery / route.removeprefix(prefix)).resolve()
++                if not path.is_relative_to(selected_gallery):
++                    return self.send_error(404)
++                return self.file(path, 'application/json; charset=utf-8', 'private, no-cache', head)
++            if re.fullmatch(r'/guided(?:-prefill)?-media/[\w-]+/[\w-]+/[a-f0-9]{20}\.(mp4|jpg|png|wav)', route):
++                selected_gallery = prefill_gallery if route.startswith('/guided-prefill-') else guided_gallery
++                prefix = '/guided-prefill-' if route.startswith('/guided-prefill-') else '/guided-'
++                path = (selected_gallery / route.removeprefix(prefix)).resolve()
++                if not path.is_relative_to(selected_gallery):
++                    return self.send_error(404)
++                return self.file(path, {'.mp4': 'video/mp4', '.jpg': 'image/jpeg', '.png': 'image/png', '.wav': 'audio/wav'}[path.suffix], 'private, max-age=3600', head)
+             if re.fullmatch(r'/native-media/[\w-]+/[\w-]+/[a-f0-9]{20}\.(mp4|jpg|wav)', route):
+                 path = (native_gallery / route.removeprefix('/native-')).resolve()
+                 if not path.is_relative_to(native_gallery):
+diff --git a/comparison/studio.html b/comparison/studio.html
+index b385dce..e7526ff 100644
+--- a/comparison/studio.html
++++ b/comparison/studio.html
+@@ -3,7 +3,7 @@
+ :root{--ink:#152c32;--muted:#64777c;--line:#d8e4e3;--green:#166b5d}*{box-sizing:border-box}body{margin:0;background:#f3f7f6;color:var(--ink);font:15px/1.5 system-ui,sans-serif}header,main{max-width:1180px;margin:auto;padding:30px 28px}header{padding-bottom:10px}.eyebrow{text-transform:uppercase;font-size:12px;letter-spacing:.14em;color:var(--green);font-weight:750}h1{font-size:40px;line-height:1.1;letter-spacing:-.04em;margin:10px 0}h2{font-size:22px;margin:0 0 15px}p{margin:8px 0}.muted{color:var(--muted)}a{color:var(--green)}.topline{display:flex;justify-content:space-between;gap:20px;align-items:center}.columns{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}.card{background:white;border:1px solid var(--line);border-radius:14px;padding:24px;margin:20px 0}.card:first-child{margin-top:0}label{display:block;font-size:13px;font-weight:650;margin-bottom:14px}input,select{display:block;width:100%;margin-top:5px;border:1px solid #bdcfcc;border-radius:7px;padding:10px 11px;background:white;color:var(--ink);font:inherit}.fields{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}button{border:1px solid #bbcec9;background:#fff;color:var(--ink);border-radius:7px;padding:9px 13px;font:inherit;font-size:13px;cursor:pointer}button.primary{background:var(--green);color:white;border:0;font-size:15px;padding:12px 20px;width:100%}button:disabled{opacity:.5;cursor:wait}.hint{font-size:12px;color:var(--muted);margin:-8px 0 15px}audio{width:100%;margin:14px 0}details{font-size:13px;margin:12px 0}summary{cursor:pointer;color:var(--green)}.transcript{white-space:pre-wrap;line-height:1.65;max-height:220px;overflow:auto}.error{color:#a83b31;white-space:pre-wrap;font-size:13px}.pill{border-radius:20px;padding:4px 9px;background:#e9f1ee;font-size:12px;font-weight:600}.pill.failed{background:#fbe9e5;color:#9e392c}.pill.running{background:#e3f0fb;color:#235c85}.jobhead{display:flex;justify-content:space-between;gap:15px;align-items:center}.jobhead h3{font-size:17px;margin:0}.jobbody{display:flex;gap:24px;margin-top:18px;align-items:start}.jobbody video{width:256px;max-width:42%;border-radius:9px;background:#172720}.jobparams{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;font-size:13px;flex:1}.jobparams span{display:block;color:var(--muted);font-size:11px}.jobfoot{display:flex;align-items:center;justify-content:space-between;margin-top:14px;font-size:12px;color:var(--muted)}#login{max-width:450px;margin:30px auto}.hidden{display:none}.live{color:var(--green);font-size:13px}.empty{padding:30px;text-align:center;border:1px dashed #c8d8d4;border-radius:12px;color:var(--muted)}@media(max-width:760px){header,main{padding:22px 16px}.columns{grid-template-columns:1fr;gap:0}.card{padding:19px}.topline{align-items:start}h1{font-size:33px}.jobbody{gap:14px}.jobparams{gap:9px 12px}.jobhead{align-items:start}}
+ .capacity{margin:0 0 24px;padding:15px 18px;background:#e8f2ef;border:1px solid #c9ded7;border-radius:10px}.capacity strong,.capacity>span{display:block}.capacity>span{font-size:12px;margin-top:3px}#capacity-nodes{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.node-status{font-size:12px;padding:4px 8px;background:#fff;border-radius:5px}
+ </style><link rel="stylesheet" href="/pose-player.css?v=20261029-pose1"><script src="/pose-player.js?v=20261029-pose1"></script></head><body>
+-<header><div class="topline"><div><div class="eyebrow">Speech & pose</div><h1>Request a video</h1></div><div><a href="/comparison">Controlled · 24 videos →</a><br><a href="/native-comparison">Native · 16 videos →</a></div></div><p class="muted">Choose a prepared clip, model, and sampling settings. Requests run in parallel across available GPU pairs.</p></header>
++<header><div class="topline"><div><div class="eyebrow">Speech & pose</div><h1>Request a video</h1></div><div><a href="/comparison">Controlled · 24 videos →</a><br><a href="/native-comparison">Native · 16 videos →</a><br><a href="/guided-comparison">Audio-guided · no prefill →</a><br><a href="/guided-prefill-comparison">Audio-guided · 2s prefill →</a></div></div><p class="muted">Choose a prepared clip, model, and sampling settings. New videos begin with 2 seconds of source audio, pose and text; a brief white flash and beep mark the continuation. Requests run in parallel across available GPU pairs.</p></header>
+ <main><form id="login" class="card hidden"><label>Access token<input id="token" type="password" autocomplete="current-password" required></label><button class="primary">Open studio</button></form><div id="autherror" class="error"></div><div id="app" class="hidden"><section class="capacity" aria-live="polite"><strong id="capacity-summary">Checking compute capacity…</strong><span id="capacity-note" class="muted"></span><div id="capacity-nodes"></div></section><div class="columns"><form id="order" class="card"><h2>Generation settings</h2><label>Clip<select id="clip_id"></select></label><label>Model<select id="recipe"></select></label><p id="modelhint" class="hint"></p><label>Text mode<select id="text_mode"><option value="forced">Controlled · words forced</option><option value="native">Native · model generates text</option></select></label><p id="modehint" class="hint"></p><div id="text-settings" class="fields hidden"><label>Text temperature<input id="text_temp" type="number" min="0" max="3" step="0.05" value="1" required disabled></label><label>Text top-k<input id="text_topk" type="number" min="0" max="256" step="1" value="0" required disabled></label></div><div class="fields"><label>Audio temperature<input id="audio_temp" type="number" min="0" max="3" step="0.05" value="1" required></label><label>Audio top-k<input id="audio_topk" type="number" min="0" max="2048" step="1" value="0" required></label><label>Pose temperature<input id="pose_temp" type="number" min="0" max="3" step="0.05" value="1" required></label><label>Pose top-k<input id="pose_topk" type="number" min="0" max="2048" step="1" value="0" required></label></div><p class="hint">Temperature 0 is greedy; top-k 0 is unfiltered. Audio and pose each use the same settings for all their codebooks.</p><div class="fields"><label>Duration (seconds)<input id="duration_seconds" type="number" min="4" max="60" step="1" value="60" required></label><label>Generation seed<input id="seed" type="number" min="0" max="2147483647" step="1" value="20261028" required></label></div><p id="durationhint" class="hint"></p><details><summary>Video settings</summary><label>Video seed<input id="video_seed" type="number" min="0" max="2147483647" step="1" value="2026" required></label><p class="hint">The shared step-2911 video model and reference images stay fixed.</p></details><button id="submit" class="primary">Generate video</button><p id="formerror" class="error"></p><p id="submitted" class="live" aria-live="polite"></p></form><aside class="card"><h2>Conditioning</h2><p>Every mode keeps this clip’s <b>same 8-second voice reference</b>, initial pose geometry, and video reference images.</p><p id="conditioning-text"></p><audio id="voice" controls preload="none"></audio><p class="hint">Original speaker, from outside the generation window.</p><details open><summary>Source transcript</summary><p id="transcript-hint" class="hint" style="margin-top:8px"></p><div id="transcript" class="transcript"></div></details><p id="timing-note" class="muted" style="font-size:13px"></p></aside></div><div class="topline"><h2 style="margin:12px 0">Requests & results</h2><span id="queuecount" class="live"></span></div><div id="jobs"></div></div></main>
+ <script>
+ const $=id=>document.getElementById(id);

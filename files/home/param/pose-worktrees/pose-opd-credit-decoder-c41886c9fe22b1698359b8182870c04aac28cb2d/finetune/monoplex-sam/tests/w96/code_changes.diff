@@ -1,0 +1,179 @@
+--- /data/home/amartyavarma/ppm/aloe-pose-mono-8020/code/data_aloe_pose.py	2026-10-19 00:19:18.390383047 +0000
++++ /data/home/amartyavarma/ppm/aloe-pose-mono-8020-sam/code/data_aloe_pose.py	2026-10-26 12:21:22.763209950 +0000
+@@ -366,6 +366,12 @@
+ MICRO_TOK = int(os.environ.get("ALOE_MICRO_TOK", "6000"))
+ EVAL_PACK = int(os.environ.get("QQA_EVAL_LIGHT_MAX", "2048"))
+ MIN_CLIP = 2                                                      # the PPM row builder's floor (data_s3q.row_arrays asserts >= 2 frames)
++# aloe-pose-mono-8020-sam (10-26, world 96 = 64 rows + 32 dummy ranks at EVERY step): env ALOE_LOSSCHECK_DUMMY=1 gives a DUMMY micro at
++# the step-0 loss check a stand-in 'singles' list (the fallback item's real micro) so a dummy rank runs the same FSDP forwards as the
++# others (train_aloe_pose.pack_loss_check; its errors are ignored). Default 0 = the original code (a dummy rank at step 0 has no 'singles':
++# KeyError; never reached at world 64, where step 0 has no dummy). Training maths unaffected either way (the loss check is model.eval only).
++LOSSCHECK_DUMMY = os.environ.get("ALOE_LOSSCHECK_DUMMY", "0") == "1"
++assert os.environ.get("ALOE_LOSSCHECK_DUMMY", "0") in ("0", "1")
+ 
+ 
+ def want_voice(row_key, cfg, side=None):
+@@ -564,7 +570,10 @@
+                 if s == self.singles_at and r == 0:
+                     b["singles"] = [as_micro(m) for m in ms]
+             else:
+-                b = pack_micro([self.st.conv(self.fb, self.cfg, self.rank)], dummy=True)
++                m_fb = self.st.conv(self.fb, self.cfg, self.rank)
++                b = pack_micro([m_fb], dummy=True)
++                if LOSSCHECK_DUMMY and s == self.singles_at and r == 0:   # w96: stand-in micro for the step-0 loss check's forwards
++                    b["singles"] = [as_micro(m_fb)]
+             b["step"] = s
+             out.append(b)
+         return out
+--- /data/home/amartyavarma/ppm/aloe-pose-mono-8020/code/train_aloe_pose.py	2026-10-19 00:19:45.934856625 +0000
++++ /data/home/amartyavarma/ppm/aloe-pose-mono-8020-sam/code/train_aloe_pose.py	2026-10-26 12:31:28.741844927 +0000
+@@ -162,6 +162,14 @@
+     FROZEN_PREFIX = ("tower_p.", "dec_p.", "pose_head.", "decp_bb.", "inp.pose.")
+ RANK, WORLD, LOCAL = int(os.environ["RANK"]), int(os.environ["WORLD_SIZE"]), int(os.environ["LOCAL_RANK"])
+ LW = int(os.environ.get("LOCAL_WORLD_SIZE", "8"))
++# aloe-pose-mono-8020-sam (10-26): env ALOE_NORM_WORLD (default unset = WORLD = the original code, every expression below unchanged). The
++# tokens_step normalisers (step totals / NORM_W), the decoder chunk weights (31 M_j / NORM_W) and the decoder all-reduce mean (/ NORM_W),
++# the FSDP2 gradient divide factor (set_norm_world: / NORM_W instead of / WORLD) and the logged train/loss + uloss (/ NORM_W) use NORM_W. The
++# factor cancels in every term (loss x NORM_W / tot, gradient sum / NORM_W), so the maths is the same for any value; NORM_W = ROWS_PER_STEP
++# (64) at world 96 makes ranks 0..63 compute the very bf16 numbers of a world-64 run (the 32 dummy ranks add exact zeros): the update then
++# differs from world 64 only in fp32 reduction order (+ FA3's own backward nondeterminism). Allowed values: WORLD or ALOE_ROWS_PER_STEP.
++NORM_W = int(os.environ.get("ALOE_NORM_WORLD") or 0) or WORLD
++assert NORM_W in (WORLD, A.ROWS_PER_STEP), ("ALOE_NORM_WORLD must be the world size or ALOE_ROWS_PER_STEP", NORM_W, WORLD, A.ROWS_PER_STEP)
+ HOST = socket.gethostname().split(".")[0]
+ PT = zoneinfo.ZoneInfo("America/Los_Angeles")
+ LOGDIR = f"{CFG['log_root']}/{CFG['run_tag']}"
+@@ -328,7 +336,7 @@
+         if zd is not None:
+             zd.grad = None
+         do.flat.zero_()
+-        den = 31.0 * Mj[j] / WORLD
++        den = 31.0 * Mj[j] / NORM_W
+         for a0, sz in _mb_plan(m):
+             mv = max(0, min(sz, m - a0))
+             fl = light.index_select(0, idx[a0:a0 + mv]) if mv else light[:1]
+@@ -346,7 +354,7 @@
+         if zd is not None and zd.grad is not None and m and not dummy:
+             acc_z += zd.grad.float() * (Mj[j] / N)
+         dist.all_reduce(do.flat)
+-        do.flat.div_(WORLD)
++        do.flat.div_(NORM_W)
+         lr = do.lr(do.micros * K + j)
+         for g in do.opt.param_groups:
+             g["lr"] = lr
+@@ -451,8 +459,11 @@
+     forwards on every rank (FSDP): ranks with fewer conversations repeat conversation 0 (ignored)."""
+     model.eval()
+     singles = b["singles"]
+-    Pv, _ = micro_losses(model, b, rot, dev)
+-    K = len(singles)
++    # aloe-pose-mono-8020-sam (ALOE_LOSSCHECK_DUMMY=1, data_aloe_pose doc): a DUMMY rank forwards its stand-in instead of the zero-count dummy
++    # micro (whose normalisers would be 0 / 0) and takes part in the Kmax loop with K = 0; its errors are reported as 0 (nothing checked)
++    dmy = bool(b.get("dummy", 0)) and A.LOSSCHECK_DUMMY
++    Pv, _ = micro_losses(model, singles[0] if dmy else b, rot, dev)
++    K = 0 if dmy else len(singles)
+     t = torch.tensor([float(K)], device=dev); dist.all_reduce(t, op=dist.ReduceOp.MAX); Kmax = int(t)
+     NT = 5 if POSE else 3
+     num, den = [0.0] * NT, [0.0] * NT
+@@ -462,6 +473,8 @@
+             for i in range(NT):
+                 num[i] += N[i] * L[i]; den[i] += N[i]
+     model.train()
++    if dmy:
++        return Pv, list(Pv), [0.0] * NT, 0
+     exp = [num[i] / den[i] for i in range(NT)]
+     err = [abs(Pv[i] - exp[i]) / max(abs(exp[i]), 1e-12) for i in range(NT)]
+     return Pv, exp, err, K
+@@ -617,7 +630,7 @@
+     lrs = []
+     for j in range(K):
+         do.flat.zero_()
+-        den = 31.0 * Mj[j] / WORLD
++        den = 31.0 * Mj[j] / NORM_W
+         for r, (hv, depth, light, zb, dm) in enumerate(mics):
+             hd, zd, m = hds[r], zds[r], sizes[r][j]
+             idx = perms[r][j::K] if m else perms[r][:0]
+@@ -641,7 +654,7 @@
+             if zd is not None and zd.grad is not None and m and not dm:
+                 acczs[r] += zd.grad.float() * (Mj[j] / N)
+         dist.all_reduce(do.flat)
+-        do.flat.div_(WORLD)
++        do.flat.div_(NORM_W)
+         lr = do.lr(do.micros * K + j)
+         for g_ in do.opt.param_groups:
+             g_["lr"] = lr
+@@ -835,12 +848,29 @@
+ 
+ # ------------------------------------------------------------------------------------------------ main
+ STOP = {"flag": False}
++# aloe-pose-mono-8020-sam (10-26): env ALOE_STOP_AT_STEP=N (default 0 = off = the original code path) ends the run right after optimizer step
++# N is logged / emitted: no eval, no save, no export, no STOPPED file (for the 1-step launch-time identity check at world 96 on the ORIGINAL
++# stores vs job 24272's step-0 evals / loss check / step-1 line; tests/w96/REPORT.md). Not in CFG (the resolved-config diff stays as 24272's).
++STOP_AT = int(os.environ.get("ALOE_STOP_AT_STEP") or 0)
+ 
+ 
+ def _usr1(signum, frame):
+     STOP["flag"] = True
+ 
+ 
++def set_norm_world(model):
++    """ALOE_NORM_WORLD (doc at NORM_W): every FSDP2 unit reduces its gradients as sum / NORM_W (PreMulSum) instead of the mean over WORLD.
++    No-op at the default (NORM_W = WORLD). -> number of FSDP units set."""
++    if NORM_W == WORLD:
++        return 0
++    from torch.distributed.fsdp import FSDPModule
++    n = 0
++    for m in model.modules():
++        if isinstance(m, FSDPModule):
++            m.set_gradient_divide_factor(float(NORM_W)); n += 1
++    return n
++
++
+ def make_opt(model):
+     by = {g: [] for g in TRAIN_GROUPS}
+     frozen, dec = [], []
+@@ -951,6 +981,10 @@
+         model.pose_head_on = False                                # PPM main D36: the D32 pose head is off (frozen)
+     assert hasattr(model, "pose_head") == CFG["pose_head_build"], "pose head built iff QQA_POSE_HEAD_BUILD"
+     model.decp_bb_alpha = CFG["decp_bb_alpha"]                    # PPM main D33: alpha 1.0, no fade
++    n_norm = set_norm_world(model)                                # aloe-pose-mono-8020-sam: ALOE_NORM_WORLD (doc at NORM_W); default: no-op
++    if NORM_W != WORLD or A.LOSSCHECK_DUMMY or STOP_AT:
++        log(f"[sam] ALOE_NORM_WORLD {NORM_W} at world {WORLD} (normalisers / decoder means / FSDP gradient divide factor / logged loss; "
++            f"{n_norm} FSDP units set); ALOE_LOSSCHECK_DUMMY {int(A.LOSSCHECK_DUMMY)}; ALOE_STOP_AT_STEP {STOP_AT}")
+     t0 = time.time()
+     meta, gb = load_init(model, CFG["init"], dev)
+     log(f"[init] {CFG['init']}: PPM step {meta['step']} (run {meta.get('run_tag')}, saved {meta.get('save_time')}), world {meta['world']} shards "
+@@ -1074,10 +1108,10 @@
+             assert max(worst) < CFG["losscheck_tol"], ("packed loss != token-weighted standalone losses", worst)
+         oc = np.sum([np.asarray(b_["own"]).sum(0) for b_ in bl], 0)
+         tot = allsum([float(x) for x in oc[:5]], dev)
+-        bts = [prep(b_, dev, tot[0] / WORLD, tot[1] / WORLD, tot[3] / WORLD) for b_ in bl]   # tokens_step normalisers (step totals, all rounds)
++        bts = [prep(b_, dev, tot[0] / NORM_W, tot[1] / NORM_W, tot[3] / NORM_W) for b_ in bl]   # tokens_step normalisers (step totals, all rounds)
+         if step == start:
+             log(f"[pack] tokens_step: step {step} totals over {WORLD} ranks x {len(bl)} rounds: text targets {int(tot[0])}, cb0 labels {int(tot[1])}, "
+-                f"light frames {int(tot[2])}, pose cb0 labels {int(tot[3])}, pose frames {int(tot[4])}; per-micro normaliser = total / {WORLD}")
++                f"light frames {int(tot[2])}, pose cb0 labels {int(tot[3])}, pose frames {int(tot[4])}; per-micro normaliser = total / {NORM_W}")
+         t_m = time.time()
+         v, loss_v, ex_ = train_step_multi(model, bts, rot, dos)
+         torch.cuda.synchronize(); t_micro = time.time() - t_m
+@@ -1096,8 +1130,8 @@
+         torch.cuda.synchronize(); dt = time.time() - ts; times.append(dt)
+         sv = allsum(list(v) + [loss_v], dev)
+         d = summarize(sv[:-1], "train")
+-        d["train/loss"] = sv[-1] / WORLD                          # the optimised (weighted) loss
+-        ul = [x / WORLD for x in sv[-1 - NSTREAM:-1]]             # aloe-uncond: per-stream losses (22091's weights) and x the stream multipliers
++        d["train/loss"] = sv[-1] / NORM_W                         # the optimised (weighted) loss
++        ul = [x / NORM_W for x in sv[-1 - NSTREAM:-1]]            # aloe-uncond: per-stream losses (22091's weights) and x the stream multipliers
+         lt_s, lt_p = d["train_speech/light_ce"], d.get("train_speech/pose_light_ce", 0.0)
+         d.update({"train/uloss_word": ul[0], "train/uloss_cb0": CFG["w_cb0"] * ul[1], "train/uloss_light": CFG["w_cb"] * lt_s,
+                   "train/wloss_word": CFG["lw_word"] * ul[0], "train/wloss_cb0": CFG["lw_speech"] * CFG["w_cb0"] * ul[1],
+@@ -1128,6 +1162,10 @@
+             + " " + " ".join(f"{k.split('/')[1]}={v:.4g}" for k, v in d.items() if "/gn_" in k or "/lr_trunk" in k or "/lr_tower_p" in k or "dec_lr_last" in k or "dec_p_lr_last" in k)
+             + " " + " ".join(f"{k.split('/')[1]}={v:.4f}" for k, v in d.items() if "/uloss_" in k or "/wloss_" in k or k in ("train/loss", "train/loss_unweighted"))
+             + f" | ETA {eta / 60:.1f} min")
++        if STOP_AT and done >= STOP_AT:                           # aloe-pose-mono-8020-sam: launch-time identity check (env doc at STOP_AT)
++            log(f"[control] ALOE_STOP_AT_STEP {STOP_AT}: stop after step {done} (no eval / save / export)")
++            stopped = done
++            break
+         gc.collect(1)
+         if (CFG["eval_every"] and done % CFG["eval_every"] == 0) or done == CFG["steps"] or done in CFG["export_steps"]:
+             evaluate(done)

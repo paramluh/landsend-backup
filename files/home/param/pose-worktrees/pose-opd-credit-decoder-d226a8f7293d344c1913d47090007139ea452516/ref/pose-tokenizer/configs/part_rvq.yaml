@@ -1,0 +1,103 @@
+# Body-part RVQ tokenizer (model_type: part_rvq).
+#
+# Splits the 55-joint pose into 13 overlapping anatomical parts (N=13, M=5), runs
+# a SHARED encoder/decoder per part, quantizes each with a SHARED 2048-code book
+# at 3 residual depths (13 x 3 = 39 code streams, layer-major coarse->fine), and
+# fuses the per-part reconstructions with a small learned CNN (uniform-mean skip).
+#
+# Run with:
+#   CUDA_VISIBLE_DEVICES=0 accelerate launch --num_processes 1 \
+#       train.py --config configs/part_rvq.yaml
+
+# Data (matches the known-good absolute paths in seanet_tf_2x_32cb_2048_200M.yaml;
+# /mnt/somfs is a symlink to the mounted /mnt/filesystem-b6).
+data_dir: /mnt/somfs/pose_cond/pose_cond_npy/
+manifest: /mnt/somfs/pose_cond/pose_cond_npy_manifest.txt
+dims_csv: /mnt/somfs/pose_cond/dims_upperbody_ideal_fresh.csv
+test_manifest: ""
+test_dir: "test_set"
+n_test_clips: 0
+test_max_seconds: 10.0
+num_files: 0
+val_count: 2000
+norm_stats: ""
+
+# Data framing.
+source_fps: 30
+target_fps: 25
+segment_frames: 80
+max_frames: 0
+random_crop_frames: false
+random_segment_offset: true
+inference_chunk_stride: 0
+
+# Model architecture (conv encoder/decoder reused per part; coords-only input).
+model_type: part_rvq
+num_keypoints: 55
+keypoint_dim: 2
+input_features: 110
+first_channel_size: 384
+num_blocks: 3
+downsampling_rates: [1, 2, 2]
+kernel_size: [3, 3, 3]
+num_residual_blocks: 2
+residual_units_per_block: 2
+d_model: 1536
+num_groups: false
+norm: "LN"
+conv_weight_norm: true
+causal: false
+
+# Body-part RVQ quantizer + aggregator.
+part_scheme: n13_m5
+part_n_layers: 3
+part_codebook_size: 2048
+codebook_dim: 8
+# Aggregation: "mean" (uniform mean, default) or "cnn" (mean + learned CNN).
+part_aggregation: mean
+part_agg_channels: 256
+part_agg_layers: 2
+part_agg_kernel: 3
+apply_rotation_trick: false
+enable_quantization: true
+normalize_codes: true
+dead_code_threshold: 2.0
+dead_code_ema_decay: 0.99
+
+# Optimizer + schedule.
+epochs: 9999
+max_steps: 200000
+batch_size: 256
+lr: 3.0e-4
+lr_schedule: cosine
+lr_min: 3.0e-5
+warmup_steps: 1000
+weight_decay: 0.01
+
+# Loss weights.
+reconstruction_weight: 1.0
+velocity_weight: 2.0
+part_loss_weight: 1.0
+commitment_weight: 0.1
+codebook_weight: 0.4
+hand_loss_weight: 1.0
+confidence_weight_mode: "soft"
+confidence_mask_threshold: 0.3
+
+# Runtime.
+num_workers: 10
+log_interval: 10
+
+# Eval / checkpointing.
+val_batch_size: 32
+val_confidence_threshold: 0.5
+validation_interval: 1000
+save_interval: 5000
+save_optimizer_state: true
+render_interval: 0
+test_frame_idx: 0
+output_dir: checkpoints
+
+# Wandb.
+wandb_project: pose-tokenizer
+wandb_run_name: part-rvq-n13m5-39cb

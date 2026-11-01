@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pose OPD · Rollout samples</title>
+  <link rel="stylesheet" href="samples.css">
+  <script src="samples.js" defer></script>
+</head>
+<body>
+  <header>
+    <div><h1>Rollout samples</h1><p>Four rows per rollout · dataset user audio alongside generated audio and pose</p></div>
+    <label>Rollout <select id="rollout" aria-label="Select rollout"><option>Loading…</option></select></label>
+  </header>
+  <p id="notice" class="notice" role="status">Loading sample manifest…</p>
+  <main id="samples" class="samples" aria-label="Four rollout samples"></main>
+  <p class="footnote">Each sample has one transport for both audio lanes and pose. Toggle either lane to listen separately. Video appears when a rendered video is attached.</p>
+</body>
+</html>

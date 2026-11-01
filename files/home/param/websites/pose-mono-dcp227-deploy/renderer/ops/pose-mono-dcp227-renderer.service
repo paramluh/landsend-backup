@@ -1,0 +1,13 @@
+[Unit]
+Description=Pose monoplex dcp227 distilled avatar renderer on GPU2
+After=network.target
+[Service]
+Type=simple
+WorkingDirectory=/home/param/pose-mono-dcp227/renderer
+ExecStart=/home/param/pose-mono-dcp227/renderer/run_renderer.sh
+Restart=on-failure
+RestartSec=10
+StandardOutput=append:/home/param/pose-mono-dcp227/runtime/renderer.log
+StandardError=append:/home/param/pose-mono-dcp227/runtime/renderer.log
+[Install]
+WantedBy=default.target

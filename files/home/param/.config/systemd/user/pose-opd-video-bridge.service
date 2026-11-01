@@ -1,0 +1,19 @@
+[Unit]
+Description=Pose OPD codes-only work-VM video delivery and publication
+After=network-online.target pose-opd-credit-collector.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/param/pose-worktrees/pose-opd-credit
+Environment=PYTHONUNBUFFERED=1
+Environment=CUDA_VISIBLE_DEVICES=
+ExecStart=/home/param/pose-repo/.venv/bin/python -m finetune.pose_opd_credit.video_bridge --raw-root /home/param/outputs/pose-opd-teacher-partner-b336-general-live-20261031/raw-rollouts --samples-dir /home/param/outputs/pose-opd-teacher-partner-b336-general-live-20261031/samples --state-dir /home/param/outputs/pose-opd-teacher-partner-b336-general-live-20261031/video-bridge --run-id pose-opd-teacher-partner-b336-general-20261031 --publish-command /usr/bin/python3 /home/param/websites/pose-opd-credit-dashboard/pose-preview/publish_videos.py --samples-dir /home/param/outputs/pose-opd-teacher-partner-b336-general-live-20261031/samples
+Restart=on-failure
+RestartSec=10
+Nice=5
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target

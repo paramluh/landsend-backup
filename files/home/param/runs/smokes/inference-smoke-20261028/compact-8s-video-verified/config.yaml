@@ -1,0 +1,36 @@
+sample_dir: /home/param/pose-runs/inference-smoke-20261028/compact-8s-video-verified/inputs
+output_dir: /home/param/pose-runs/inference-smoke-20261028/compact-8s-video-verified/generation
+pose_file: pose_latents_electron_v3.safetensors
+mimi_file: mimi_local.safetensors
+type: universal_wide_bimodal
+seed: 2026
+batch_size: 1
+max_latent_frames: 50
+minimum_latent_frames: 50
+fps: 25
+compile: true
+cuda_graph: true
+wavefront: true
+renoising: false
+stabilising:
+  checkpoint_path: /home/param/models/bimodal-stabilizer-full-gt-pose-v3-step1200/nodes/richmond-7/step-001200/student.safetensors
+  num_history: 3
+  num_present: 4
+  history_t: 0.2
+  substeps: 2
+resolving:
+  checkpoint_path: /home/param/models/bimodal-resolver-gt-pose-v3-step2000/student.safetensors
+  num_history: 2
+  num_present: 1
+  t_start: 0.2
+  num_steps: 1
+audio:
+  model_name: /home/param/models/mimi
+  in_dim: 512
+  num_codebooks: 16
+  num_layers: 4
+  cross_attention_codes: 4
+  drop: 2
+  injection_offset: 4
+  injection_interval: 3
+  max_blocks: 8

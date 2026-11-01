@@ -1,0 +1,34 @@
+csv: ../csvs/aloe-studio-seen-eval.csv
+root_dir: /home/vansh/aloe-studio/conv-4.3k-5mins-muon-neutrino-256x480-v1
+pose_file: pose_latents_electron.safetensors
+rows: [9, 75, 42, 14, 6, 1, 2, 10, 21, 40, 4, 41, 66, 28, 3, 27]
+step: 2387
+output_dir: /home/vansh/samples/studio-9-sinks-proper/step{step}/seen
+checkpoint_path: ../checkpoint/model.safetensors
+type: universal_wide
+
+num_history: 4
+num_present: 5
+substeps: 10
+num_steps: 50
+max_latent_frames: 188
+seed: 2026
+batch_size: 2
+compile: true
+cuda_graph: true
+audio_guidance_scale: 1.0
+audio_guidance_steps: 0
+
+refs:
+  bank: /home/vansh/aloe-studio/reference-bank-256x480-muon-v2/train
+
+audio:
+  model_name: kyutai/mimi
+  in_dim: 512
+  num_codebooks: 16
+  num_layers: 4
+  cross_attention_codes: 4
+  drop: 2
+  injection_offset: 4
+  injection_interval: 3
+  max_blocks: 8

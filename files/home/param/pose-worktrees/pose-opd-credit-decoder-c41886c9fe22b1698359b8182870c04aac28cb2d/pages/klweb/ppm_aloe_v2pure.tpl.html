@@ -1,0 +1,405 @@
+<title>PPM Aloe v2pure fine-tune</title>
+<!-- ppm_aloe_v2pure live page (10-17) = ppm_aloe_uncond.tpl.html (22317's page, copied verbatim 10-17 incl. the user's mods) with only:
+     run = newest ppm/aloe-v2pure-ft/runs/ppm-aloe-v2pure-ft-j<JOB> (PPM 32B, monoplex Aloe pose on the release-v2 data: channel A empty, B generates
+     speech + pose; recipe + metrics = 22317); grey reference = the finished uncond run 22317 (same recipe, Model-1 handover data, own eval set);
+     NEW: the 8B SAM pose fine-tunes (v2pure main, + v2 / posev3 / posev2 when their logs exist) as coloured reference series on the four metrics
+     that mean the same on both models (pose cb0 CE, pose light CE, audio cb0 CE, audio light CE; train + the 8B held-out eval = the same 3,482
+     items / 113 recordings as our eval), default on; every reference is placed by FRACTION OF ITS OWN EPOCH (default x axis = fraction of epoch;
+     in Step / Rows mode the references sit at the same fraction of this run's epoch) and smoothed over the same fraction of the epoch;
+     own localStorage keys (ppmv2p_*); polls ppm_aloe_v2pure_live.json / ver_ppm_aloe_v2pure.txt. build_ppm_aloe_v2pure.py fills the DATA placeholder.
+     Original header (ppm_aloe_uncond.tpl.html): ppm_aloe_uncond live page (10-16) = ppm_aloe_pose.tpl.html with: run = newest ppm/aloe-uncond-ft/runs/ppm-aloe-uncond-ft-j<JOB> (unconditional B:
+     channel A empty, B word lane x10 in the loss, speech x1, pose x1); muted overlay on EVERY chart = the finished A-conditioned POSE run 22091 (grey thin,
+     or the metric's colour at low opacity on the multi-line LR chart), same unweighted metrics; uncond note at the top of the sub line; own localStorage keys.
+     Original: ppm_aloe_pose live page (10-16, standard live-curve format = ppm_aloe.tpl.html / s4qqa.tpl.html / stage3.html: same CSS, Chart.js engine, hover,
+     legend toggles, ⋯ controls, drag-zoom). One run: the newest ppm/aloe-pose-ft/runs/ppm-aloe-pose-ft-j<JOB> (PPM fine-tune on the Aloe handover rows,
+     POSE on channel B); ★ = that run while its job is live (derived from squeue in build_ppm_aloe_pose.py). Muted grey overlay on the main chart = the finished
+     no-pose Aloe FT 21980 (reference). Eval = combined only (eval_speech/*; per-side eval_userB_ / eval_asstB_ deliberately not shown). Run parameters
+     (total steps, rows/step, eval cadence, saves) come from ppm/aloe-pose-ft/PAGE_CFG.json on every rebuild; every chart's x axis runs to the last step.
+     build_ppm_aloe_pose.py fills the DATA placeholder; the page polls ppm_aloe_pose_live.json every 60 s and reloads when ver_ppm_aloe_pose.txt (= template hash)
+     changes. marker: ppm-aloe-pose-stdformat-v1 / ppm-aloe-uncond-v1 / ppm-aloe-v2pure-v1 / ppm-aloe-v2pure-v2 (10-17 user: plain model names
+     "★ PPM 32B pose FT · Xabi’s data (current)" / "PPM 32B pose FT · handover data (old, 22317)" / "8B v2pure · Xabi’s data (ref)"; current + old +
+     8B v2pure on by default on every chart, 8B v2 / posev3 / posev2 off (in the legend); legend key reset -> ppmv2p2_vis; one header line naming the
+     two PPM models and what differs: data, eval set, steps) / ppm-aloe-v2pure-v3 (10-17 user: per-chart "avg X steps" box in each card header =
+     centred rolling mean over X of each run's OWN optimiser steps on every train series, trailing for the last ⌊X/2⌋ points, X = 1 raw, eval raw;
+     defaults = the old windows (main 25, loss / pose / audio = smooth train, step time / LR raw); per chart in localStorage ppmv2p_avg)
+     / ppm-aloe-v2pure-v4 (10-17 user: the pose cb0 chart holds EXACTLY 2 curves = ★ current 32B train + 8B v2pure train, pcb0two())
+     / ppm-aloe-v2pure-v5 (10-18: + run clip80 = aloe-v2pure-clip80 (s.c80): = 23051 with ONE change, the system-prompt rule (no persona text, voice
+     clip on a seeded 80 % of items; 23051: 1/3); shown ONLY on the normalised word CE chart (train + combined eval, orange), next to 23051; its one-off
+     step-0 identity check under 23051's prompt rule (s.c80.idchk) = one labelled diamond marker, never part of its eval curve; ★ on every clip80
+     label while its job is live (squeue + no 'ended' line in RUNNING_JOB.txt); header row 1 = clip80 (job, nodes, step, s/step, ETA; "starting"
+     until it exists), row 2 = 23051 as the finished 1/3-clip run (all its numbers kept); 23051 label = "PPM 32B pose FT · Xabi’s data · 1/3 voice
+     clip (23051, finished)"; legend visibility keys of the renamed series map to their old keys (vkey) so stored toggles survive)
+     / ppm-aloe-v2pure-v6 (10-18: + run posemono8020 = aloe-pose-mono-8020 (s.pm), "PPM · w-11488 · monoplex pose · Aloe rows · 80% clip / 20% persona":
+     the 23051 recipe (v2pure monoplex) on the Aloe handover pose rows (22091's qualifying tracks, 1 item per track), prompt voice clip p0.8 / persona
+     p0.2, independent draws; added exactly like clip80: normalised word CE chart only (train + combined eval, green = --pm), its one-off step-0
+     identity check (s.pm.idchk, init under 23051's prompt rule; reference = 22317's step-0 eval 1.9574, same Aloe eval items + monoplex format) =
+     one labelled diamond (grey = 22317's colour, green edge), never part of its eval curve; its own epoch = s.pm.max_steps (357; 23051: 200), so it
+     is placed like 22317 (serA: fraction of ITS epoch; Step / Rows mode = the same fraction of 23051's); ★ while its job is live (same rule);
+     header row 1 = posemono8020 (step N / 357, s/step, ETA), then clip80, then 23051; big card 420 -> 480 px (phones 440 -> 540) for its 4 legend rows) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-zoom/2.0.1/chartjs-plugin-zoom.min.js"></script>
+<style>
+:root{--bg:#f5f6f8;--rc1:#9c36b5;--rc2:#0c8599;--rt1:#f76707;--rt2:#2f9e44;--rt3:#e64980;--rt4:#a07c10;--ref:#8a919c;--card:#fff;--fg:#1d2330;--muted:#6b7280;--line:#e4e7ec;--one:#1f6fd1;--two:#e8590c;--evb:#7048e8;--btn:#eef1f5;--on:#1f6fd1;--onfg:#fff;--warn:#b7791f;--pm:#2b8a3e}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1115;--card:#171a21;--fg:#e6e8ec;--muted:#9aa1ad;--line:#2a2f3a;--one:#6aa8ff;--two:#ff922b;--rc1:#da77f2;--rc2:#3bc9db;--rt1:#ff922b;--rt2:#69db7c;--rt3:#f783ac;--rt4:#ffd43b;--ref:#7d8592;--evb:#b197fc;--btn:#232834;--on:#6aa8ff;--onfg:#0f1115;--warn:#f6c453;--pm:#51cf66}}
+:root[data-theme=dark]{--bg:#0f1115;--card:#171a21;--fg:#e6e8ec;--muted:#9aa1ad;--line:#2a2f3a;--one:#6aa8ff;--two:#ff922b;--rc1:#da77f2;--rc2:#3bc9db;--rt1:#ff922b;--rt2:#69db7c;--rt3:#f783ac;--rt4:#ffd43b;--ref:#7d8592;--evb:#b197fc;--btn:#232834;--on:#6aa8ff;--onfg:#0f1115;--warn:#f6c453;--pm:#51cf66}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:14px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:1440px;margin:0 auto;padding:10px 16px 40px}
+.hdr{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;padding:4px 0 6px;font-variant-numeric:tabular-nums}
+.hdr .nm{font-weight:700}
+.hdr .big{font-weight:650}
+.sub{display:flex;flex-wrap:wrap;gap:4px 16px;color:var(--muted);font-size:13px;margin:0 0 10px;font-variant-numeric:tabular-nums}
+.wait{color:var(--warn);font-weight:650}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#2e9e5b;margin-right:6px;vertical-align:1px}
+.dot.off{background:#c0392b}.dot.wt{background:#d4a017}
+.bar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:0 0 12px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:var(--btn);color:var(--fg);padding:6px 14px;font:inherit;cursor:pointer}
+.seg button+button{border-left:1px solid var(--line)}
+.seg button[aria-pressed=true]{background:var(--on);color:var(--onfg)}
+.lbl{color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(560px,100%),1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px 6px;min-width:0}
+.card.big{grid-column:1/-1}
+.ct{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ct h3{margin:0;font-size:14px;font-weight:600}
+.card.big .ct h3{font-size:16px}
+.ct .nt{color:var(--muted);font-size:12px;font-weight:400;margin-left:6px}
+.more{border:1px solid transparent;background:none;color:var(--muted);font-size:18px;line-height:1;cursor:pointer;padding:0 8px;border-radius:6px}
+.card.open .more{border-color:var(--line)}
+.ctl{display:none;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0 2px;font-size:12px}
+.card.open .ctl{display:flex}
+.ctl button{border:1px solid var(--line);background:var(--btn);color:var(--fg);border-radius:6px;padding:3px 8px;font:inherit;cursor:pointer}
+.ctl button[aria-pressed=true]{background:var(--on);color:var(--onfg)}
+.ctr{display:inline-flex;align-items:center;gap:6px;flex-shrink:0}
+.avg{display:inline-flex;align-items:center;gap:4px;color:var(--muted);font-size:12px;white-space:nowrap;cursor:help}
+.avg input{width:56px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;padding:2px 4px;font:inherit}
+.avg input:disabled{opacity:.5}
+.ctl input{width:64px;border:1px solid var(--line);background:var(--card);color:var(--fg);border-radius:6px;padding:3px 5px;font:inherit}
+.cv{position:relative;height:300px}
+.card.big .cv{height:480px}  /* 10-18: 420 -> 480 px (posemono8020's legend rows) */
+@media (max-width:640px){.cv{height:250px}.card.big .cv{height:540px}.seg button{padding:6px 10px}}  /* 10-18: big card 320 -> 440 px on phones (clip80's 4 legend rows); 440 -> 540 (posemono8020's) */
+</style>
+<div class="wrap">
+<div class="hdr" id="hdr"></div>
+<div class="sub" id="sub"></div>
+<div class="bar"><span class="lbl">x axis</span><span class="seg" id="xm"></span>
+<label class="lbl" style="display:inline-flex;gap:6px;align-items:center">smooth train <select id="smw" style="font:inherit;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg);padding:3px 4px"><option value="1">1</option><option value="5">5</option><option value="10">10</option><option value="25">25</option></select> steps</label></div>
+<div id="panes"></div>
+<p class="lbl" style="margin-top:14px" id="foot"></p>
+</div>
+<script>
+const D=__DATA__;
+try{if(window.ChartZoom)Chart.register(window.ChartZoom)}catch(e){}
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const S=()=>D.s||{};
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const VIS=LS.get('ppmv2p2_vis',{}),OPT=LS.get('ppmv2p_opt',{});let XM=LS.get('ppmv2p_xm','fr'),SM=+LS.get('ppmv2p_sm',5)||5;
+if(XM!=='st'&&XM!=='fr'&&XM!=='cv')XM='fr';
+const C=(cols,k)=>(cols||[]).indexOf(k);const f=v=>(+v).toLocaleString('en-US');
+const MS=()=>S().max_steps||440,RW=()=>S().rows||64;
+const roll=(p,w)=>{const o=[];let t=0;for(let q=0;q<p.length;q++){t+=p[q].y;if(q>=w)t-=p[q-w].y;o.push(Object.assign({},p[q],{y:t/Math.min(q+1,w)}))}return o};
+/* x: optimiser step | fraction of the epoch (step / that run's total steps) | rows seen (step × rows per step) */
+const xOf=(r,M)=>XM==='cv'?(r[1]||0):XM==='fr'?r[0]/(M||1):r[0];
+const ser=(rows,cols,k,M)=>{const i=C(cols,k);return i<0?[]:(rows||[]).filter(r=>r[i]!=null&&isFinite(r[i])).map(r=>({x:xOf(r,M),y:r[i],s:r[0],fr:r[0]/(M||1),cv:r[1]||0}))};
+/* references (22317 + the 8B runs): placed by the fraction of THEIR OWN epoch (step / their total steps); in Step / Rows mode at the same
+   fraction of this run's epoch, so curves over the same data line up in every mode. rn / rm = the reference's name / epoch steps (tooltip). */
+const xA=fr=>XM==='fr'?fr:XM==='st'?fr*MS():fr*MS()*RW();
+const serA=(rows,cols,k,M,R,rn)=>{const i=C(cols,k);return i<0?[]:(rows||[]).filter(r=>r[i]!=null&&isFinite(r[i])).map(r=>{const fr=r[0]/(M||1);return {x:xA(fr),y:r[i],s:r[0],fr,cv:r[0]*(R||0),rn,rm:M}})};
+/* 10-17 user: per-chart "avg X steps" box (stored per chart in localStorage ppmv2p_avg): rolling mean over X optimiser steps of EVERY train series
+   in the chart, each run in its OWN step units (ours / 22317 / 8B each average X of their own steps; train is logged every step, so X points = X steps);
+   x unchanged (fraction of each run's epoch). Centred window over the completed history; the last ⌊X/2⌋ points of every series use a trailing window
+   (no later steps yet). X = 1 = raw. Eval series stay raw points (evals are 25 / 100 steps apart). Default X = the window each chart used before. */
+const rollC=(p,X)=>{X=Math.max(1,Math.round(X||1));if(X<2||!p.length)return p;const n=p.length,cs=[0];for(const q of p)cs.push(cs[cs.length-1]+q.y);
+  const hl=Math.floor((X-1)/2),hr=X-1-hl,o=[];
+  for(let q=0;q<n;q++){let a,b;if(q+hr<=n-1){a=Math.max(0,q-hl);b=q+hr}else{a=Math.max(0,q-X+1);b=q}o.push(Object.assign({},p[q],{y:(cs[b+1]-cs[a])/(b-a+1)}))}
+  return o};
+const AVG=(x=>x&&typeof x==='object'?x:{})(LS.get('ppmv2p_avg',{}));
+const AV=k=>{const v=Math.round(+AVG[k]);return v>=1&&v<=1000?v:(SPEC[k].avg0||1)};
+const avgTip=k=>{const s=S(),sp=SPEC[k];if(sp.noavg)return 'Eval-only chart: eval points always stay raw (no train series to average).';
+  if(sp.two){const R=(s.sam||[]).find(r=>r.main)||{};return `avg X steps: rolling mean over X optimiser steps, applied to both train curves, each run in its OWN step units (32B current ${f(MS())} steps/epoch, 8B v2pure ${f(R.total||636)}); x stays at the fraction of each run’s epoch. Centred window over the completed history; the last ⌊X/2⌋ points use a trailing window (no later steps yet). X = 1 = raw. This chart shows train only. Remembered in this browser.`}
+  const R8=sp.r8?(s.sam||[]):[];
+  return `avg X steps: rolling mean over X optimiser steps, applied to every train series in this chart, each run in its OWN step units (${k==='nword'?`${PMRN} ${f(PMR().max_steps||357)}, clip80 ${f(C8().max_steps||MS())}, 23051 `:'current '}${f(MS())} steps/epoch, old 22317 ${f(s.ref_total||430)}`+
+    (R8.length?`, 8B ${[...new Set(R8.map(R=>f(R.total||0)))].join(' / ')}`:'')+`); x stays at the fraction of each run’s epoch. Centred window over the completed history; the last ⌊X/2⌋ points of each series use a trailing window (no later steps yet). X = 1 = raw. `+
+    `Eval series are NOT averaged: they stay raw points, because evals come only every ${s.eval_every||25} steps (22317: 25`+(R8.length?', 8B: 100':'')+`), so a step-window average would mix far-apart checkpoints.`+
+    (k==='nword'?' The faint “raw” train line stays raw.':'')+' Remembered per chart in this browser.'};
+const L=(label,data,color,o={})=>({label,data,borderColor:color,backgroundColor:color,borderWidth:o.w||1.6,borderDash:o.dash||[],pointRadius:o.pts||0,pointHoverRadius:4,pointHitRadius:6,tension:0,parsing:false,spanGaps:true,_ev:!!o.ev,_sm:!!o.sm,_pin:o.pin!==false,_det:o.det||'',yAxisID:o.ax||'y'});
+/* 10-17 user: plain model names (job id stays in the hover detail). 10-18: 23051 = the finished 1/3-voice-clip run, next to clip80 */
+const RST=r=>r.live?'live':r.phase==='done'?'finished':(r.phase==='ended'?'ended':(r.phase||'').startsWith('builder')?'error':'starting');
+const NB=()=>{const s=S();return (s.live?'★ ':'')+`PPM 32B pose FT · Xabi’s data · 1/3 voice clip (${s.jobid||'23051'}, ${RST(s)})`};
+/* clip80 (s.c80): = 23051 with ONE change, the system-prompt rule: no persona text, voice clip on a seeded 80 % of items. Normalised word CE only. */
+const C8=()=>S().c80||{};
+const C8NB=()=>{const c=C8();return (c.live?'★ ':'')+`clip80 · 80% voice clip, no persona (${c.jobid?'job '+c.jobid+', ':''}${RST(c)})`};
+const C8DET=()=>{const c=C8();return `${c.run||'aloe-v2pure-clip80'} · job ${c.jobid||'– (not launched yet)'} · ${f(c.max_steps||200)} steps × ${c.rows||64} rows · = 23051 (same recipe, data, init, eval clips) with ONE change, the system-prompt rule: no persona text, voice clip on a seeded 80 % of items (23051: 1/3)`};
+/* 10-18 posemono8020 (s.pm): the 23051 recipe (v2pure monoplex) on the Aloe handover pose rows, prompt voice clip p0.8 / persona p0.2. Normalised word CE
+   only. Own epoch = s.pm.max_steps (357; 23051: 200): placed like 22317, at the fraction of ITS OWN epoch (serA; Step / Rows mode: same fraction of 23051's). */
+const PMR=()=>S().pm||{};
+const PMN='PPM · w-11488 · monoplex pose · Aloe rows · 80% clip / 20% persona',PMRN='w-11488 monoplex 80/20';
+const PMNOTE='23051 recipe (v2pure monoplex) on Aloe handover pose rows (22091’s qualifying tracks, 1 item per track); prompt: voice clip p0.8, persona p0.2, independent draws';
+const PMNB=()=>{const c=PMR();return (c.live?'★ ':'')+`${PMN} (${c.jobid?'job '+c.jobid+', ':''}${RST(c)})`};
+const PMEV=()=>{const c=PMR();return (c.eval_items?f(c.eval_items)+' ':'')+'held-out Aloe handover items (22317’s eval items, not 23051’s)'};
+const PMDET=()=>{const c=PMR();return `${c.run||'aloe-pose-mono-8020'} · job ${c.jobid||'– (not launched yet)'} · ${f(c.max_steps||357)} steps × ${c.rows||64} rows`+(c.train_items?` (${f(c.train_items)} train items)`:'')+` · ${PMNOTE}`};
+const EVD=()=>{const s=S();return ' · eval: '+(s.eval_items?f(s.eval_items)+' held-out items, ':'held-out, ')+'combined'};
+const DLIVE=()=>{const s=S();return `${s.run||''} · job ${s.jobid||'?'} · ${f(MS())} steps × ${RW()} rows · monoplex B (A empty, word lane x10) · Xabi’s Aloe pose release v2`};
+/* one chart: for each metric [col, name, colour var]: the run's train (smoothed, solid) + eval (dashed + points, combined held-out eval only) */
+/* + the 22091 reference (muted: grey thin, or the metric's own colour at low opacity when a chart holds several metrics), same metric, same smoothing, at its own steps */
+const AL=(c,a)=>/^#[0-9a-f]{6}$/i.test(c)?c+a:c;
+const REFN='PPM 32B pose FT · handover data (old, 22317)';
+const RDET=()=>{const s=S();return `ppm-aloe-uncond-ft-j22317 · finished · ${f(s.ref_total||430)} steps × ${s.ref_rows||64} rows · same recipe (A empty, B word lane x10, speech x1, pose x1) on the Model-1 Aloe handover rows`+
+  (s.ref_train_items?` (${f(s.ref_train_items)} train items)`:'')+` · its eval = its own `+(s.ref_eval_items?f(s.ref_eval_items)+' ':'')+`held-out handover items, NOT this run’s eval set`};
+/* the 8B SAM pose FTs (s.sam, s.scols = step, cb0, light, pcb0, plight): train (smoothed over the same fraction of the epoch, solid) + held-out eval
+   (dashed + points), each at the fraction of its own epoch; v2pure (main) thicker. Only on the 4 charts whose metric means the same on both models. */
+const R8N=R=>R.label.replace(/ \(ref\)$/,'');
+const R8DET=R=>`${R8N(R)} · SAM 8B pose FT (text upfront, one speaker) · ${f(R.total||0)} steps = 1 epoch${R.rows?` × ${R.rows} rows`:''} · ${R.note}`;
+function sam8(c,hasE,X){const s=S(),out=[];if(C(s.scols,c)<0)return out;
+  for(const R of (s.sam||[])){const M8=R.total||1,c8=css(R.col||'--rt1'),bw=R.main?2:1.3;
+    const d=serA(R.train,s.scols,c,M8,R.rows,R8N(R));
+    /* default visibility (10-17 user): 8B v2pure (main) on; 8B v2 / posev3 / posev2 off (still in the legend) */
+    if(d.length)out.push(Object.assign(L(R.label+' · train',rollC(d,X),AL(c8,R.main?'e6':'b3'),{sm:X>1,w:bw,pin:!!R.main,det:R8DET(R)}),{_w:X,_r8:1,_ign:(R.warmup||0)+4+X}));
+    const e=serA(R.eval,s.scols,c,M8,R.rows,R8N(R));
+    if(hasE&&e.length)out.push(Object.assign(L(R.label+' · held-out eval',e,c8,{w:bw,dash:[6,4],pts:R.main?3:2,ev:1,pin:!!R.main,det:R8DET(R)+' · held-out eval (HO_EVAL): 3,482 items from the same 113 held-out recordings as our eval (3,481 clips)'}),{_r8:1}))}
+  return out}
+/* pose cb0 chart (10-17 user): exactly 2 curves, ★ current 32B train + 8B v2pure (main) train, both averaged over X of their own steps, x = fraction of own epoch */
+function pcb0two(X){const s=S(),out=[];
+  const d=ser(s.train,s.tcols,'pcb0',MS());out.push(Object.assign(L(NB()+' · train',rollC(d,X),css('--rc1'),{sm:X>1,w:2.4,det:DLIVE()}),{_w:X}));
+  const R=(s.sam||[]).find(r=>r.main);
+  if(R){const e=serA(R.train,s.scols,'pcb0',R.total||1,R.rows,R8N(R));out.push(Object.assign(L(R.label+' · train',rollC(e,X),AL(css(R.col||'--rt1'),'e6'),{sm:X>1,w:2,det:R8DET(R)}),{_w:X,_r8:1,_ign:(R.warmup||0)+4+X}))}
+  return out}
+function lines(ms,o={}){const s=S(),out=[],tc=s.tcols,ec=s.ecols,M=MS(),RM=s.ref_total||430,RR=s.ref_rows||64,cr=css('--ref'),multi=ms.length>1;
+  ms.forEach(([c,n,cv],i)=>{const sfx=n?' · '+n:'',col=css(cv||(i%2?'--rc2':'--rc1')),hasE=o.ev!==false&&C(ec,c)>=0,tw=hasE||o.tw?' train':'';
+    const rl=x=>[REFN,n,x].filter(Boolean).join(' · '),rc=multi?AL(col,'59'):AL(cr,'8c'),rce=multi?AL(col,'59'):AL(cr,'b3');
+    const r8=!!o.r8&&C(s.scols,c)>=0&&(s.sam||[]).length>0,X=o.X||1;   /* 10-17 user: old 22317 on by default on every chart; X = this chart's avg box */
+    if(o.tr!==false){const d=ser(s.train,tc,c,M);out.push(Object.assign(L(NB()+sfx+(tw?' ·'+tw:''),rollC(d,X),col,{sm:X>1,w:2.4,det:DLIVE()}),{_w:X}))}
+    if(hasE)out.push(L(NB()+sfx+' · eval',ser(s.eval,ec,c,M),o.ec?css(o.ec):col,{w:2.4,dash:[6,4],pts:3,ev:1,det:DLIVE()+EVD()}));
+    if(o.tr!==false){const d=serA(s.ref_train,tc,c,RM,RR,'22317');out.push(Object.assign(L(rl(tw.trim()),rollC(d,X),rc,{sm:X>1,w:1.2,det:RDET()}),{_w:X}))}
+    if(hasE)out.push(L(rl('eval'),serA(s.ref_eval,ec,c,RM,RR,'22317'),rce,{w:1.2,dash:[4,4],pts:1.5,ev:1,det:RDET()+' · eval: held-out, combined'}));
+    if(r8)out.push(...sam8(c,hasE,X))});
+  return out}
+/* main chart: live eval combined (dashed + points) + live train normalised word CE as a fixed 25-step moving average (solid) and the raw per-step line (faint)
+   + the finished uncond run 22317, muted grey thin (eval dashed, train averaged over the same fraction of the epoch), at the fraction of its own epoch.
+   No 8B series here: the 8B gets its text upfront, so its word CE is not comparable. */
+/* 10-18: + clip80 (orange, first = drawn on top): eval combined (dashed + points), train avg + raw faint, each at the fraction of ITS epoch; its one-off
+   step-0 identity check (the init under 23051's prompt rule, eval_ref23051rule) = one diamond in 23051's eval colour, never part of its eval curve */
+function c80main(X,av){const c=C8(),M8=c.max_steps||MS(),c3=css('--two'),d8=ser(c.train,c.tcols,'nword',M8),out=[];
+  out.push(L(C8NB()+' · eval (combined)',ser(c.eval,c.ecols,'nword',M8),c3,{w:2.6,dash:[6,4],pts:3.5,ev:1,det:C8DET()+EVD()}));
+  out.push(Object.assign(L(C8NB()+' · train (avg)',rollC(d8,X),c3,{sm:X>1,w:2.6,det:C8DET()+av}),{_w:X}));
+  out.push(L(C8NB()+' · train (raw)',d8,AL(c3,'55'),{w:1,det:C8DET()+' · raw per-step'}));
+  const I=c.idchk;if(I&&I.v!=null&&isFinite(I.v)){const st=I.step||0,dl=I.ref!=null?I.v-I.ref:null;
+    out.push(Object.assign(L((c.live?'★ ':'')+'clip80 · step-0 identity check (init under 23051’s prompt rule)',[{x:xOf([st,st*(c.rows||64)],M8),y:I.v,s:st,fr:st/M8,cv:st*(c.rows||64)}],css('--rc1'),
+      {w:1.5,pts:7,ev:1,det:`one-off eval of the init at step 0 on this run’s eval clips under 23051’s prompt rule (eval_ref23051rule): ${n4(I.v)}`+(I.ref!=null?` vs 23051’s own step-0 eval ${n4(I.ref)} (Δ ${sg4(dl)})`:'')+(I.pt?` · ${I.pt}`:'')+' · not part of clip80’s eval curve'}),
+      {pointStyle:'rectRot',showLine:false,pointHoverRadius:9,borderColor:c3,borderWidth:1.5}))}
+  return out}
+/* 10-18: + posemono8020 (green --pm, first = drawn on top), same series as clip80 (eval combined dashed + points, train avg + raw faint) but at the fraction of
+   ITS OWN 357-step epoch (serA, like 22317); its one-off step-0 identity check (init under 23051's prompt rule, eval_ref23051rule; reference = 22317's step-0
+   eval, same Aloe eval items + monoplex format) = one diamond in 22317's grey with a green edge, never part of its eval curve */
+function pmmain(X,av){const c=PMR(),M=c.max_steps||357,R=c.rows||64,cp=css('--pm'),d=serA(c.train,c.tcols,'nword',M,R,PMRN),out=[];
+  out.push(L(PMNB()+' · eval (combined)',serA(c.eval,c.ecols,'nword',M,R,PMRN),cp,{w:2.6,dash:[6,4],pts:3.5,ev:1,det:PMDET()+' · eval: '+PMEV()+', combined'}));
+  out.push(Object.assign(L(PMNB()+' · train (avg)',rollC(d,X),cp,{sm:X>1,w:2.6,det:PMDET()+av}),{_w:X}));
+  out.push(L(PMNB()+' · train (raw)',d,AL(cp,'55'),{w:1,det:PMDET()+' · raw per-step'}));
+  const I=c.idchk;if(I&&I.v!=null&&isFinite(I.v)){const st=I.step||0,dl=I.ref!=null?I.v-I.ref:null;
+    out.push(Object.assign(L((c.live?'★ ':'')+PMRN+' · step-0 identity check (init under 23051’s prompt rule)',[{x:xA(st/M),y:I.v,s:st,fr:st/M,cv:st*R,rn:PMRN,rm:M}],css('--ref'),
+      {w:1.5,pts:7,ev:1,det:`one-off eval of the init at step 0 on this run’s eval items under 23051’s prompt rule (eval_ref23051rule): ${n4(I.v)}`+(I.ref!=null?` vs 22317’s own step-0 eval ${n4(I.ref)} (Δ ${sg4(dl)}; same Aloe eval items, same monoplex format)`:'')+(I.pt?` · ${I.pt}`:'')+' · not part of this run’s eval curve'}),
+      {pointStyle:'rectRot',showLine:false,pointHoverRadius:9,borderColor:cp,borderWidth:1.5}))}
+  return out}
+function main(X){const s=S(),M=MS(),d=ser(s.train,s.tcols,'nword',M),c1=css('--rc1'),c2=css('--rc2'),cr=css('--ref'),RM=s.ref_total||430,RR=s.ref_rows||64;
+  const rdet=RDET(),av=X>1?` · ${X}-step centred avg (trailing at the end)`:' · raw (avg 1)';
+  return [...pmmain(X,av),...c80main(X,av),L(NB()+' · eval (combined)',ser(s.eval,s.ecols,'nword',M),c1,{w:2.4,dash:[6,4],pts:3,ev:1,det:DLIVE()+EVD()}),
+    Object.assign(L(NB()+' · train (avg)',rollC(d,X),c2,{sm:X>1,w:2.4,det:DLIVE()+av}),{_w:X}),
+    L(NB()+' · train (raw)',d,AL(c2,'55'),{w:1,det:DLIVE()+' · raw per-step'}),
+    L(REFN+' · eval',serA(s.ref_eval,s.ecols,'nword',RM,RR,'22317'),AL(cr,'b3'),{w:1.2,dash:[4,4],pts:1.5,ev:1,det:rdet+' · eval: held-out, combined'}),
+    Object.assign(L(REFN+' · train (avg)',rollC(serA(s.ref_train,s.tcols,'nword',RM,RR,'22317'),X),AL(cr,'8c'),{sm:X>1,w:1.2,det:rdet+av}),{_w:X})]}
+/* training loss: live train/loss_unweighted vs 22317 train/loss_unweighted (same definition) on the left axis; the live optimised (weighted) train/loss dashed on the right axis */
+function lossc(X){const s=S(),M=MS(),RM=s.ref_total||430,RR=s.ref_rows||64,c1=css('--rc1'),c2=css('--rc2'),cr=css('--ref');
+  return [Object.assign(L(NB()+' · train/loss_unweighted',rollC(ser(s.train,s.tcols,'loss_u',M),X),c1,{sm:X>1,w:2.4,det:DLIVE()+' · loss without the x10 word-lane multiplier'}),{_w:X}),
+    Object.assign(L(REFN+' · train/loss_unweighted',rollC(serA(s.ref_train,s.tcols,'loss_u',RM,RR,'22317'),X),AL(cr,'8c'),{sm:X>1,w:1.2,det:RDET()+' · loss without the x10 word-lane multiplier'}),{_w:X}),
+    Object.assign(L(NB()+' · train/loss · x10 word lane (optimised) · right axis',rollC(ser(s.train,s.tcols,'loss',M),X),AL(c2,'b3'),{sm:X>1,w:1.6,dash:[6,4],ax:'y2',det:DLIVE()+' · the optimised loss (B word lane x10)'}),{_w:X})]}
+const SPEC={
+  /* fn(X): X = the chart's "avg X steps" (AV(k)); avg0 = its default = the window the chart used before (25 main / the smooth-train value / raw) */
+  nword:{t:'B normalised word CE',nt:`unweighted · eval = held-out, combined, dashed with points · train = moving average over the chart’s “avg” steps (default 25), raw faint · green = ${PMN} (${PMNOTE}; own ${f(PMR().max_steps||357)}-step epoch, at the fraction of it like 22317; eval = 22317’s Aloe eval items), grey diamond with green edge = its step-0 identity check vs 22317’s step-0 eval · `+'orange = clip80 (80% voice clip, no persona; = 23051 + that one prompt-rule change; same eval clips), diamond = its step-0 identity check under 23051’s rule · purple / teal = 23051 (1/3 voice clip) · grey = old PPM (22317, handover data, other eval set) · no 8B (text upfront: word CE not comparable) · main metric',big:1,avg0:25,fn:X=>main(X)},
+  loss:{t:'Training loss',nt:'★ live train/loss_unweighted (no x10) vs grey 22317 train/loss_unweighted · dashed, right axis = live train/loss, x10 word lane (optimised)',avg0:SM,fn:X=>lossc(X)},
+  /* 10-17 user: this chart holds EXACTLY 2 curves (★ current 32B train + 8B v2pure train); no eval, no 22317, no other 8B runs (not even hidden) */
+  pcb0:{t:'Pose cb0 CE (B) · train · 32B (current) vs 8B v2pure',nt:`x = fraction of each run’s own epoch; 8B = ${f((((S().sam||[]).find(r=>r.main))||{}).total||636)} steps, 32B = ${f(MS())} steps`,two:1,avg0:SM,fn:X=>pcb0two(X)},
+  plight:{t:'B pose light CE',nt:'pose decoder, codebooks 1–31 · + 8B refs (pose light)',r8:1,avg0:SM,fn:X=>lines([['plight','']],{r8:1,X})},
+  cb0:{t:'B cb0 CE',nt:'speech tower (Mimi cb0) · + 8B refs (audio cb0)',r8:1,avg0:SM,fn:X=>lines([['cb0','']],{r8:1,X})},
+  light:{t:'B light CE',nt:'0.6B speech decoder, codebooks 1–31 · + 8B refs (audio light)',r8:1,avg0:SM,fn:X=>lines([['light','']],{r8:1,X})},
+  ptop1:{t:'B pose cb0 top-1',nt:'eval only',noavg:1,fn:()=>lines([['ptop1','']],{tr:false})},
+  st:{t:'Step time (s)',nt:'excl. evals',avg0:1,fn:X=>lines([['step_s','']],{ev:false,X}),zero:1},
+  lr:{t:'LR',allY:1,nt:'backbone · speech tower · pose tower · audio / spec · pose decoder backbone · speech decoder (last) · pose decoder (last)',avg0:1,
+    fn:X=>lines([['lr_trunk','backbone','--rc1'],['lr_tower_s','speech tower','--rc2'],['lr_tower_p','pose tower','--rt1'],['lr_audio','audio / spec','--rt2'],
+      ['lr_decp_bb','pose decoder backbone','--rt3'],['lr_dec','speech decoder (last)','--rt4'],['lr_dec_p','pose decoder (last)','--one']],{ev:false,X}),log:1}};
+const O=k=>OPT[k]||(OPT[k]={fit:false,log:!!SPEC[k].log,ymin:null,ymax:null});
+/* legend visibility key: label without ★; 10-18 the renamed 23051 labels map back to their pre-clip80 key (stored toggles survive) and clip80's
+   label (job id / live / finished inside the brackets) maps to one stable key */
+const vkey=(k,l)=>k+'|'+l.replace(/^★ /,'').replace(/^PPM 32B pose FT · Xabi’s data · 1\/3 voice clip \([^)]*\)/,'PPM 32B pose FT · Xabi’s data (current)').replace(/^clip80 · 80% voice clip, no persona \([^)]*\)/,'clip80')
+  .replace(/^PPM · w-11488 · monoplex pose · Aloe rows · 80% clip \/ 20% persona \([^)]*\)/,'posemono8020');   /* 10-18: posemono8020's label (job / state in brackets) -> one stable key */
+const isHid=(k,d)=>{const v=VIS[vkey(k,d.label)];return v===undefined?!d._pin:!v};
+const ch={};
+const xTitle=()=>XM==='cv'?'rows seen':XM==='fr'?'fraction of the epoch':'optimiser step';
+/* x axis: 0 .. the run's last step (total_steps from PAGE_CFG.json) unless "Fit x to data" is on */
+function fitRange(k){const c=ch[k];if(!c)return;const o=O(k),sx=c.options.scales.x,sy=c.options.scales.y;sy.type=o.log?'logarithmic':'linear';
+  let xm=0;for(const d of c.data.datasets)if(!isHid(k,d))for(const p of d.data)if(isFinite(p.x))xm=Math.max(xm,p.x);
+  const M_=MS(),R_=RW(),full=XM==='fr'?1:XM==='st'?M_:M_*R_,floor=0.1*full;
+  sx.min=0;sx.max=o.fit&&xm>0?Math.max(xm*1.08,floor):full;
+  const x1=sx.max==null?Infinity:sx.max;let lo=Infinity,hi=-Infinity;
+  const pts=[],p2=[];for(const d of c.data.datasets){if(isHid(k,d))continue;if(d.yAxisID==='y2'){for(const p of d.data)if(p.x<=x1&&isFinite(p.y)&&!IGN(d,p))p2.push(p.y);continue}for(const p of d.data)if(p.x<=x1&&isFinite(p.y)&&(!o.log||p.y>0))pts.push([p.y,!SPEC[k].allY&&IGN(d,p)])}
+  for(const [y,t] of pts)if(!t){lo=Math.min(lo,y);hi=Math.max(hi,y)}
+  if(isFinite(lo)){const T=o.log?[lo/Math.sqrt(hi/lo),hi*Math.sqrt(hi/lo)]:[lo-(hi-lo)/2,hi+(hi-lo)/2];let l2=lo,h2=hi;
+    for(const [y,t] of pts)if(t&&y>=T[0]&&y<=T[1]){l2=Math.min(l2,y);h2=Math.max(h2,y)}lo=l2;hi=h2}
+  else for(const [y] of pts){lo=Math.min(lo,y);hi=Math.max(hi,y)}
+  if(isFinite(lo)){if(o.log){sy.min=lo/1.3;sy.max=hi*1.3}else{const pad=(hi-lo)*0.08||Math.abs(hi)*0.05||1;sy.min=SPEC[k].zero?0:lo-pad;sy.max=hi+pad}}else{delete sy.min;delete sy.max}
+  if(o.ymin!=null)sy.min=o.ymin;if(o.ymax!=null)sy.max=o.ymax;
+  const s2=c.options.scales.y2;if(s2){if(p2.length){const l=Math.min(...p2),h=Math.max(...p2),pd=(h-l)*0.08||Math.abs(h)*0.05||1;s2.min=l-pd;s2.max=h+pd}else{delete s2.min;delete s2.max}}}
+/* start transient left out of the auto y range: first train steps (window-aware: _w = a reference's own window); 8B: step-0 held-out eval + its warm-up (_ign) */
+const IGN=(d,p)=>d._ev?(!!d._r8&&p.s===0):p.s<(d._ign!=null?d._ign:d._sm?4+(d._w||SM):5);
+/* weight-save steps (PAGE_CFG.json exports): dotted vertical tick at each save, labelled "save N" at the bottom */
+const XPX=st=>XM==='fr'?st/MS():XM==='cv'?st*RW():st;
+const MPLUG={id:'ppmapmk',afterDatasetsDraw(c){const a=c.chartArea,x=c.scales.x,g=c.ctx,k=c.canvas.id;
+  {const y=c.scales.y;g.save();for(const d of c.data.datasets){if(isHid(k,d)||d.yAxisID==='y2')continue;for(const p of d.data){if(!IGN(d,p))continue;const px=x.getPixelForValue(p.x);
+      if(!(px>=a.left&&px<=a.right))continue;const up=p.y>y.max,dn=p.y<y.min;if(!up&&!dn)continue;const ey=up?a.top+1:a.bottom-1,s=up?1:-1;
+      g.fillStyle=d.borderColor;g.beginPath();g.moveTo(px,ey);g.lineTo(px-4,ey+7*s);g.lineTo(px+4,ey+7*s);g.closePath();g.fill();break}}g.restore()}
+  {const X=S().exports||[];g.save();g.font='10px system-ui,sans-serif';
+    for(const e of X){const px=x.getPixelForValue(XPX(e));if(!(px>=a.left-0.5&&px<=a.right+0.5))continue;g.strokeStyle=css('--muted');g.globalAlpha=0.55;g.lineWidth=1;g.setLineDash([1,3]);
+      g.beginPath();g.moveTo(px,a.top);g.lineTo(px,a.bottom);g.stroke();g.setLineDash([]);g.globalAlpha=1;g.lineWidth=1.5;g.beginPath();g.moveTo(px,a.bottom-7);g.lineTo(px,a.bottom);g.stroke();
+      g.fillStyle=css('--muted');const lab='save '+e,tw=g.measureText(lab).width;g.fillText(lab,Math.min(px+3,a.right-tw-1),a.bottom-9)}g.restore()}}};
+const yfmt=(k,v)=>k==='lr'?(+v).toExponential(2):(+v).toPrecision(4);
+function mkChart(k){const cv=document.getElementById(k);if(!cv||ch[k])return;
+  const c=new Chart(cv,{type:'line',plugins:[MPLUG],data:{datasets:[]},options:{responsive:true,maintainAspectRatio:false,animation:false,interaction:{mode:'nearest',intersect:false,axis:'xy'},
+    scales:{x:{type:'linear',min:0,title:{display:true,text:'',color:css('--muted')},grid:{color:css('--line')},ticks:{color:css('--muted'),maxTicksLimit:8}},y:{grid:{color:css('--line')},ticks:{color:css('--muted'),callback:function(v){if(this.type!=='logarithmic')return this.getLabelForValue?Chart.Ticks.formatters.numeric.apply(this,arguments):v;const e=Math.log10(v);return Math.abs(e-Math.round(e))<1e-6?(+v).toExponential(0):''}}},y2:{position:'right',display:'auto',grid:{drawOnChartArea:false},ticks:{color:css('--muted')}}},
+    plugins:{legend:{position:'bottom',labels:{boxWidth:16,boxHeight:2,color:css('--fg'),font:{size:innerWidth<640?10:11}},onClick:(e,it,lg)=>{const d=lg.chart.data.datasets[it.datasetIndex];VIS[vkey(k,d.label)]=isHid(k,d);LS.set('ppmv2p2_vis',VIS);d.hidden=isHid(k,d);if(!c.$z)fitRange(k);lg.chart.update('none')}},
+      tooltip:{mode:'nearest',intersect:false,axis:'xy',callbacks:{title:it=>{if(!it.length)return '';const r=it[0].raw||{};return r.rn?`${r.rn}: step ${r.s} / ${f(r.rm)} · ${(100*r.fr).toFixed(1)} % of its epoch`:`step ${r.s} · ${(100*r.fr).toFixed(1)} % of the epoch · ${f(r.cv)} rows`},
+        label:t=>`${t.dataset.label}: ${yfmt(k,t.parsed.y)}`,afterLabel:t=>t.dataset._det?'   '+t.dataset._det:''}},
+      zoom:{zoom:{drag:{enabled:true,threshold:10,backgroundColor:'rgba(31,111,209,0.12)',borderColor:'rgba(31,111,209,0.6)',borderWidth:1},mode:'xy',onZoomComplete:()=>{c.$z=true}}}}}});
+  cv.ondblclick=()=>{try{c.resetZoom('none')}catch(e){}c.$z=false;fitRange(k);c.update('none')};ch[k]=c;upd(k)}
+function upd(k){const c=ch[k];if(!c)return;let z=null;if(c.$z){const s=c.scales;z=[s.x.min,s.x.max,s.y.min,s.y.max]}
+  let ds=[];try{ds=SPEC[k].fn(AV(k)).filter(d=>d.data.length)}catch(e){console.error(k,e)}
+  {const lb=document.querySelector('#cd_'+k+' .avg');if(lb)lb.title=avgTip(k)}
+  for(const d of ds)d.hidden=isHid(k,d);c.data.datasets=ds;c.options.scales.x.title.text=xTitle();fitRange(k);
+  if(z){const o=c.options.scales;o.x.min=z[0];o.x.max=z[1];o.y.min=z[2];o.y.max=z[3]}c.update('none')}
+function ctlRow(k){const o=O(k);return `<button data-a="fit" aria-pressed="${o.fit}">Fit x to data</button><button data-a="zr">Reset zoom</button><button data-a="log" aria-pressed="${o.log}">y log</button>`+
+  `<span>y</span><input data-a="ymin" placeholder="min" inputmode="decimal" value="${o.ymin??''}"><input data-a="ymax" placeholder="max" inputmode="decimal" value="${o.ymax??''}"><button data-a="ya">Apply</button><button data-a="yz">Auto</button><button data-a="vis">Reset legend</button>`}
+document.getElementById('panes').innerHTML='<div class="grid">'+Object.entries(SPEC).map(([k,sp])=>`<div class="card${sp.big?' big':''}" id="cd_${k}"><div class="ct"><h3>${sp.t}${sp.nt?`<span class="nt">${sp.nt}</span>`:''}</h3><span class="ctr"><label class="avg">avg <input type="number" min="1" max="1000" step="1" inputmode="numeric" value="${sp.noavg?1:AV(k)}"${sp.noavg?' disabled':''} aria-label="average over this many optimiser steps"> steps</label><button class="more" title="chart controls" aria-label="chart controls">⋯</button></span></div><div class="ctl">${ctlRow(k)}</div><div class="cv"><canvas id="${k}"></canvas></div></div>`).join('')+'</div>';
+for(const k in SPEC){const card=document.getElementById('cd_'+k);card.querySelector('.more').onclick=()=>card.classList.toggle('open');
+  {const ai=card.querySelector('.avg input'),lb=card.querySelector('.avg');lb.title=avgTip(k);   /* per-chart avg X steps: redraw this chart, remember X */
+    if(!SPEC[k].noavg)ai.oninput=()=>{const v=Math.round(+ai.value);if(!(v>=1&&v<=1000))return;AVG[k]=v;LS.set('ppmv2p_avg',AVG);upd(k)}}
+  card.querySelector('.ctl').onclick=e=>{const a=e.target.dataset&&e.target.dataset.a;if(!a||e.target.tagName!=='BUTTON')return;const o=O(k),c=ch[k];
+    if(a==='fit'||a==='log'){o[a]=!o[a];e.target.setAttribute('aria-pressed',String(o[a]))}
+    if(a==='ya'){const g=n=>{const v=parseFloat(card.querySelector(`input[data-a=${n}]`).value);return isFinite(v)?v:null};o.ymin=g('ymin');o.ymax=g('ymax')}
+    if(a==='yz'){o.ymin=o.ymax=null;card.querySelectorAll('.ctl input').forEach(i=>i.value='')}
+    if(a==='vis'){for(const key of Object.keys(VIS))if(key.startsWith(k+'|'))delete VIS[key];LS.set('ppmv2p2_vis',VIS)}
+    LS.set('ppmv2p_opt',OPT);if(c){try{c.resetZoom('none')}catch(x){}c.$z=false;upd(k)}}}
+const all=()=>{for(const k in ch){try{ch[k].resetZoom('none')}catch(e){}ch[k].$z=false;upd(k)}};
+function bar(){const xe=document.getElementById('xm');xe.innerHTML=[['st','Step'],['fr','Fraction of epoch'],['cv','Rows seen']].map(([v,n])=>`<button data-x="${v}" aria-pressed="${XM===v}">${n}</button>`).join('');
+  xe.querySelectorAll('button').forEach(b=>b.onclick=()=>{XM=b.dataset.x;LS.set('ppmv2p_xm',XM);bar();all()})}
+const dt=t=>new Date(t*1000).toLocaleString('en-US',{timeZone:'America/Los_Angeles',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false})+' PT';
+const dur=s=>s>=3600?`${Math.floor(s/3600)} h ${Math.round(s%3600/60)} min`:`${Math.round(s/60)} min`;
+const n4=v=>v!=null&&isFinite(v)?(+v).toFixed(4):'–';
+const sg4=v=>{const x=(Math.abs(v)<5e-5?0:v).toFixed(4);return (x.startsWith('-')?'':'+')+x};   /* signed Δ, no '-0.0000' */
+function hdr(){const s=S(),now=Date.now()/1000,ph=s.phase||'waiting',M=MS(),R=RW(),P=s.prep||{};
+  const PH={waiting:['wt','waiting for launch: no aloe-v2pure-ft job yet (RUNNING_JOB.txt not written)'],pending:['wt','job '+s.jobid+' pending in the queue'],starting:['wt',`job ${s.jobid} running, waiting for the first step (code gate / model load / step-0 eval)`],
+    training:['',''],done:['off','done'],ended:['off',`job ${s.jobid} ended (${s.state||'?'}) before the last step`],
+    building:['wt',`building rows: ${P.done||0}/${P.n||8} stores done${P.running?` (${P.running} building)`:''}`],built:['wt',`rows built (${P.n||8}/${P.n||8} stores), staging to nodes next`],
+    staging:['wt',`staging stores to nodes (job ${(P.stage||{}).job||'?'}${(P.stage||{}).st==='pending'?', pending':''})`],staged:['wt','stores staged to nodes, training launch next'],
+    stage_failed:['off',`staging job ${(P.stage||{}).job||'?'} ${(P.stage||{}).st||'?'}`]}[ph]||['off',ph];
+  const stale=ph==='training'&&s.t_last&&now-s.t_last>900;
+  let eta=null;if(ph==='training'&&s.mean_s!=null&&s.step!=null){const left=Math.max(0,(M-s.step)*s.mean_s+(s.evals_left||0)*(s.eval_s||16)-(now-(s.t_last||now)));eta=now+left;s._left=left}
+  /* 10-18: header row 1 = clip80 (the new run: job, nodes, step, s/step, ETA; "starting" until its job / metrics exist), row 2 = 23051 (finished, all numbers kept) */
+  const H=[];
+  /* 10-18: header row 1 = posemono8020 (the newest run, same fields as clip80's row; step N / its own 357 total), then clip80, then 23051 */
+  if(s.pm){const c=s.pm,cp=c.phase||'waiting',CM=c.max_steps||357;
+    const CPH={waiting:['wt','starting · not launched yet (no posemono8020 job in the queue, RUNNING_JOB.txt not written)'],pending:['wt',`starting · job ${c.jobid} pending in the queue`],
+      starting:['wt',`starting · job ${c.jobid} running, waiting for the first step (code gate / model load / step-0 eval)`],training:['',''],
+      done:['off',`finished${c.ended_pt?' '+c.ended_pt:''}`],ended:['off',`job ${c.jobid} ended (${c.state||'?'}${c.rc!=null?', rc '+c.rc:''}${c.ended_pt?', '+c.ended_pt:''}) before the last step`]}[cp]||['off',cp];
+    const cst=cp==='training'&&c.t_last&&now-c.t_last>900;
+    let ce=null;if(cp==='training'&&c.mean_s!=null&&c.step!=null){const left=Math.max(0,(CM-c.step)*c.mean_s+(c.evals_left||0)*(c.eval_s||16)-(now-(c.t_last||now)));ce=now+left;c._left=left}
+    H.push(`<span><span class="dot ${cst?'off':CPH[0]}"></span><span class="nm">${c.live?'★ ':''}${PMN}${c.run?' · '+c.run:''}</span>${c.jobid?' · job '+c.jobid:''}${c.resumed_from?' (resume of '+c.resumed_from+')':''}</span>`);
+    if(CPH[1])H.push(`<span class="${cp==='done'||cp==='ended'?'':'wait'}">${CPH[1]}</span>`);
+    H.push(`<span class="big">step ${c.step!=null?f(c.step):'–'} / ${f(CM)}</span>`);
+    if(c.ev_last!=null)H.push(`<span class="big">eval B norm word CE ${n4(c.ev_last)} (step ${c.ev_last_step})</span>`);
+    H.push(`<span>${c.mean_s!=null?c.mean_s+' s/step':'– s/step'}</span>`);
+    H.push(`<span>ETA ${ce?dt(ce)+' ('+dur(c._left)+')':cp==='done'?'done':'–'}</span>`);
+    if(c.nodes&&c.live)H.push(`<span>${(c.state||'').toLowerCase()} on ${c.nodes}</span>`);
+    if(cst)H.push(`<span class="wait">no new metrics for ${dur(now-c.t_last)}</span>`);
+    H.push('<span style="flex-basis:100%;height:0"></span>')}
+  if(s.c80){const c=s.c80,cp=c.phase||'waiting',CM=c.max_steps||M;
+    const CPH={waiting:['wt','starting · not launched yet (no aloeclip80 job in the queue, RUNNING_JOB.txt not written)'],pending:['wt',`starting · job ${c.jobid} pending in the queue`],
+      starting:['wt',`starting · job ${c.jobid} running, waiting for the first step (code gate / model load / step-0 eval)`],training:['',''],
+      done:['off',`finished${c.ended_pt?' '+c.ended_pt:''}`],ended:['off',`job ${c.jobid} ended (${c.state||'?'}${c.rc!=null?', rc '+c.rc:''}${c.ended_pt?', '+c.ended_pt:''}) before the last step`]}[cp]||['off',cp];
+    const cst=cp==='training'&&c.t_last&&now-c.t_last>900;
+    let ce=null;if(cp==='training'&&c.mean_s!=null&&c.step!=null){const left=Math.max(0,(CM-c.step)*c.mean_s+(c.evals_left||0)*(c.eval_s||s.eval_s||16)-(now-(c.t_last||now)));ce=now+left;c._left=left}
+    H.push(`<span><span class="dot ${cst?'off':CPH[0]}"></span><span class="nm">${c.live?'★ ':''}clip80 · 80% voice clip, no persona${c.run?' · '+c.run:''}</span>${c.jobid?' · job '+c.jobid:''}${c.resumed_from?' (resume of '+c.resumed_from+')':''}</span>`);
+    if(CPH[1])H.push(`<span class="${cp==='done'||cp==='ended'?'':'wait'}">${CPH[1]}</span>`);
+    H.push(`<span class="big">step ${c.step!=null?f(c.step):'–'} / ${f(CM)}</span>`);
+    if(c.ev_last!=null)H.push(`<span class="big">eval B norm word CE ${n4(c.ev_last)} (step ${c.ev_last_step})</span>`);
+    H.push(`<span>${c.mean_s!=null?c.mean_s+' s/step':'– s/step'}</span>`);
+    H.push(`<span>ETA ${ce?dt(ce)+' ('+dur(c._left)+')':cp==='done'?'done':'–'}</span>`);
+    if(c.nodes&&c.live)H.push(`<span>${(c.state||'').toLowerCase()} on ${c.nodes}</span>`);
+    if(cst)H.push(`<span class="wait">no new metrics for ${dur(now-c.t_last)}</span>`);
+    H.push('<span style="flex-basis:100%;height:0"></span>')}
+  H.push(`<span><span class="dot ${stale?'off':PH[0]}"></span><span class="nm">${s.live?'★ ':''}PPM Aloe v2pure fine-tune${s.run?' · '+s.run:''}</span>${s.jobid?' · job '+s.jobid:''}${s.resumed_from?' (resume of '+s.resumed_from+')':''} · 1/3 voice clip</span>`);
+  if(PH[1])H.push(`<span class="${ph==='done'||ph==='ended'?'':'wait'}">${PH[1]}</span>`);
+  H.push(`<span class="big">step ${s.step!=null?f(s.step):'–'} / ${f(M)}</span>`);
+  if(s.ev_last!=null)H.push(`<span class="big">eval B norm word CE ${n4(s.ev_last)} (step ${s.ev_last_step})</span>`);
+  if(s.ev_pcb0!=null)H.push(`<span class="big">eval pose cb0 CE ${n4(s.ev_pcb0)}</span>`);
+  H.push(`<span>${s.mean_s!=null?s.mean_s+' s/step':'– s/step'}</span>`);
+  H.push(`<span>ETA ${eta?dt(eta)+' ('+dur(s._left)+')':ph==='done'?'done':'–'}</span>`);
+  if(stale)H.push(`<span class="wait">no new metrics for ${dur(now-s.t_last)}</span>`);
+  document.getElementById('hdr').innerHTML=H.join('');
+  /* 10-17 user: one line naming the two PPM models (old vs current) and what differs */
+  const U=[`<span style="flex-basis:100%;color:var(--fg);font-weight:700">Two PPM 32B pose FTs, same recipe — OLD (grey, 22317): Aloe handover pose subset, ${s.ref_train_items?f(s.ref_train_items):'27,517'} B tracks from the 2,227 h handover set · eval ${s.ref_eval_items?f(s.ref_eval_items):'531'} handover held-out tracks · ${f(s.ref_total||430)} steps. CURRENT (${s.live?'★ ':''}purple, ${s.jobid||'23051'}, 1/3 voice clip, ${RST(s)}): Xabi’s Aloe pose release v2, ${s.train_items?f(s.train_items):'367,495'} active-speaker clips, 2,047 h · eval ${s.eval_items?f(s.eval_items):'3,481'} clips from the 8B’s 113 held-out recordings · ${f(M)} steps. ${R} rows/step each. The two PPM eval curves are NOT on the same eval set.</span>`,
+    `<span style="flex-basis:100%;color:var(--fg);font-weight:600">Recipe (both): channel A empty (no partner words / Mimi / voice / persona); B generates speech + pose; B word-lane loss (words + NEW_WORD timing + PAD) weighted x10 in the loss, speech x1, pose x1. Word CE = normalised, plotted UNWEIGHTED. Coloured = the 8B SAM pose FTs on the pose / audio CE charts (8B v2pure on; v2 / posev3 / posev2 in the legend); x = fraction of each run’s own epoch.</span>`];
+  if(s.c80){const c=s.c80,I=c.idchk,CR=c.rows||R;   /* 10-18: clip80 = 23051 + one prompt-rule change; normalised word CE only */
+    U.push(`<span style="flex-basis:100%;color:var(--fg);font-weight:600">${c.live?'★ ':''}clip80 (orange, normalised word CE chart only): = 23051 — same recipe, data, init, eval clips, ${f(c.max_steps||M)} steps × ${CR} rows — with ONE change, the system-prompt rule: no persona text, a voice clip on a seeded 80 % of items (23051: 1/3).</span>`);
+    const E=[];if(c.step!=null)E.push(`${f(c.step*CR)} rows seen`);if(c.last_pt)E.push(`last step ${c.last_pt}`);if(c.ev_last_pt)E.push(`last eval ${c.ev_last_pt}`);
+    if(c.peak_gib!=null)E.push(`peak ${c.peak_gib} GiB`);if(c.src==='log')E.push('metrics read from the trainer log (metrics.jsonl empty)');
+    if(I&&I.v!=null){const dl=I.ref!=null?I.v-I.ref:null;E.push(`step-0 identity check (init under 23051’s prompt rule) ${n4(I.v)}`+(I.ref!=null?` vs 23051 step-0 eval ${n4(I.ref)} (Δ ${sg4(dl)})`:''))}
+    if(E.length)U.push(`<span>clip80: ${E.join(' · ')}</span>`)}
+  if(s.pm){const c=s.pm,I=c.idchk,CR=c.rows||R;   /* 10-18: posemono8020 = 23051 recipe on the Aloe handover pose rows, 80% clip / 20% persona; normalised word CE only */
+    U.push(`<span style="flex-basis:100%;color:var(--fg);font-weight:600">${c.live?'★ ':''}${PMN} (green, normalised word CE chart only): ${PMNOTE} · ${f(c.max_steps||357)} steps × ${CR} rows${c.train_items?` · ${f(c.train_items)} train items`:''} · eval ${PMEV()} · placed at the fraction of its own epoch.</span>`);
+    const E=[];if(c.step!=null)E.push(`${f(c.step*CR)} rows seen`);if(c.last_pt)E.push(`last step ${c.last_pt}`);if(c.ev_last_pt)E.push(`last eval ${c.ev_last_pt}`);
+    if(c.peak_gib!=null)E.push(`peak ${c.peak_gib} GiB`);if(c.src==='log')E.push('metrics read from the trainer log (metrics.jsonl empty)');
+    if(I&&I.v!=null){const dl=I.ref!=null?I.v-I.ref:null;E.push(`step-0 identity check (init under 23051’s prompt rule) ${n4(I.v)}`+(I.ref!=null?` vs 22317 step-0 eval ${n4(I.ref)} (Δ ${sg4(dl)})`:''))}
+    if(E.length)U.push(`<span>${PMRN}: ${E.join(' · ')}</span>`)}
+  if(s.cfg_stale)U.push(`<span class="wait">PAGE_CFG.json is still 22317’s copy (not yet rewritten for this run): steps / items / saves shown are 22317’s</span>`);
+  if(P.stores&&!s.run)U.push('stores: '+P.stores.map(x=>`p${x.k} ${x.st}`).join(' · '));
+  if(s.data_note)U.push(s.data_note);
+  U.push(`${R} rows / step`);
+  if(s.step!=null)U.push(`${f(s.step*R)} rows seen`);
+  if(s.ev_last_step!=null){const E=[];if(s.ev_ptop1!=null)E.push(`pose cb0 top-1 ${n4(s.ev_ptop1)}`);if(s.ev_plight!=null)E.push(`pose light ${n4(s.ev_plight)}`);
+    if(s.ev_cb0!=null)E.push(`cb0 ${n4(s.ev_cb0)}`);if(s.ev_light!=null)E.push(`light ${n4(s.ev_light)}`);
+    if(E.length)U.push(`eval @ ${s.ev_last_step}${s.ev_last_pt?' ('+s.ev_last_pt+')':''}: ${E.join(' · ')}`)}
+  if(s.c80&&s.ev_last!=null)U.push(`23051${s.phase==='done'?' final':''} eval B norm word CE ${n4(s.ev_last)} (step ${s.ev_last_step})${s.ended_pt?' · ended '+s.ended_pt:''}`);
+  if(s.ref_ev_last!=null)U.push(`old (22317) final eval B norm word CE ${n4(s.ref_ev_last)} (step ${s.ref_ev_last_step}, its own eval set)`);
+  for(const R of (s.sam||[]))if(R.main&&(R.eval||[]).length){const e=R.eval[R.eval.length-1],sc=s.scols||[],g=k=>n4(e[sc.indexOf(k)]);
+    U.push(`${R.label} final held-out (step ${e[0]}): pose cb0 ${g('pcb0')} · pose light ${g('plight')} · audio cb0 ${g('cb0')} · audio light ${g('light')}`)}
+  if(s.last_pt)U.push(`last step ${s.last_pt}`);
+  if(s.src==='log')U.push('metrics read from the trainer log (metrics.jsonl empty)');
+  if(s.peak_gib!=null)U.push(`peak ${s.peak_gib} GiB`);
+  if(s.step!=null)U.push(`ETA = last 20 steps' s/step × steps left + ${s.evals_left!=null?s.evals_left:'remaining'} evals (excl. final save)`);
+  if(s.nodes)U.push(`${(s.state||'').toLowerCase()} on ${s.nodes}`);
+  if(s.next_job)U.push(`next job ${s.next_job} ${(s.next_state||'').toLowerCase()}`);
+  if(!s.cfg)U.push('run parameters not published yet (PAGE_CFG.json), defaults shown');
+  U.push(`updated ${s.updated||''}`);
+  document.getElementById('sub').innerHTML=U.map(x=>x.startsWith('<span')?x:`<span>${x}</span>`).join('');
+  const X=s.exports||[];
+  const R8=s.sam||[];
+  document.getElementById('foot').textContent=`★ = the fine-tune running now (no ★ once its job has ended: squeue + the 'ended' line in its RUNNING_JOB.txt). `+
+    (s.pm?`${PMN} (green, normalised word CE chart only) = aloe-pose-mono-8020: ${PMNOTE}; ${f(s.pm.max_steps||357)} steps × ${s.pm.rows||64} rows = its own epoch, so like 22317 it sits at the fraction of its own epoch (Step / Rows mode: the same fraction of 23051’s); its eval = ${PMEV()}, combined; the grey diamond with a green edge = its one-off step-0 eval of the init under 23051’s prompt rule (identity check, should reproduce 22317’s step-0 eval: same Aloe eval items, same monoplex format), not part of its eval curve; a crash-resume’s repeated steps: the last record wins. `:'')+
+    (s.c80?`clip80 (orange, normalised word CE chart only) = aloe-v2pure-clip80: the same recipe, data, init, eval clips and steps as 23051, with ONE change, the system-prompt rule (no persona text; a voice clip on a seeded 80 % of items, 23051: 1/3); its eval = the same held-out clips, combined; placed at the fraction of its own epoch; the diamond = its one-off step-0 eval of the init under 23051’s prompt rule (identity check, should reproduce 23051’s step-0 eval), not part of its eval curve; a crash-resume’s repeated steps: the last record wins. 23051 (purple / teal) = the 1/3-voice-clip run, described next. `:'')+
+    `PPM 32B fine-tune, monoplex Aloe pose on Xabi’s Aloe pose release v2 (recipe + metrics = 22317): channel A empty (no partner words / Mimi / voice / persona); B generates speech + pose; B word lane (words + NEW_WORD timing + PAD) x10 in the loss, speech x1, pose x1; every plotted CE is unweighted`+
+    (s.train_items?` (${f(s.train_items)} train clips)`:'')+`, 1 epoch = ${f(M)} steps × ${R} rows. Eval: `+(s.eval_items?`${f(s.eval_items)} held-out clips`:'held-out rows')+
+    `, every ${s.eval_every||25} steps, reported combined. Grey (low opacity on the LR chart) = the finished uncond run 22317 (same recipe on the Model-1 handover rows, ${f(s.ref_total||430)} steps × ${s.ref_rows||64} rows; its eval = its own `+(s.ref_eval_items?f(s.ref_eval_items)+' ':'')+`held-out handover items, NOT this run’s eval set; on by default on every chart). `+
+    (R8.length?`Coloured = the 8B SAM pose fine-tunes (text upfront, one speaker; ${R8.map(R=>R8N(R)+' '+f(R.total)+' steps').join(', ')}; 8B v2pure on by default, the others off — click them in the legend), on the four metrics that mean the same on both models: pose cb0 CE (same pose tokenizer, 2048-way), pose light CE (codebooks 1–31), audio cb0 CE and audio light CE (codebooks 1–31; same Mimi). 8B train = its per-step lines (solid); 8B eval = its held-out eval (HO_EVAL: 3,482 items from the same 113 held-out recordings as our eval’s 3,481 clips; dashed). The 8B word CE is not comparable (its text is given upfront) and is not shown. `+
+      `Averaging: both light CEs are the mean CE over codebooks 1–31 × frames (every frame weighs the 31 codebooks equally) — same per-codebook averaging. Differences: the 8B audio light CE uses a random 25 % of frames (train and held-out; its pose light uses all frames) and is averaged per row, then over rows / ranks; ours pools all decoder frames of the step (eval: ≤ 2,048 seeded frames per eval row). The 8B audio cb0 is 2049-way (one END target per item); ours is 2048-way. `+
+      R8.map(R=>`${R.label}: ${R.note}.`).join(' ')+' ':'')+
+    `x axis: every reference sits at the fraction of its own epoch (8B: step / its total steps; 22317: step / ${f(s.ref_total||430)}), so curves over the same data line up; in Step / Rows mode at the same fraction of this run’s epoch. Each chart’s “avg X steps” box = a rolling mean over X optimiser steps of every train series in it, each run in its own step units (current / 22317 / 8B each average X of their own steps), centred over the completed history with a trailing window for the last ⌊X/2⌋ points; X = 1 = raw; eval points always raw; remembered per chart in this browser. The “smooth train” box sets the loss / pose / audio charts at once. The 8B start transient (step-0 held-out eval, warm-up) is left out of the auto y range. `+
+    (X.length?`Dotted vertical ticks = weight saves (steps ${X.join(' / ')}). `:'')+
+    `Train curves solid (averaged per the chart’s avg box); eval curves dashed with points. Every chart’s x axis runs to the last step (⋯ → Fit x to data to zoom to the data). Auto y range ignores the start transient (first train steps); off-scale start points are clipped with an arrow at the edge. Drag to zoom, double-click to reset.`}
+/* "smooth train" (the old page-wide window, kept): sets the avg box of the charts it used to drive (loss / pose / audio) at once; each box still overrides */
+const SMK=['loss','pcb0','plight','cb0','light'];
+{const e=document.getElementById('smw');e.value=String(SM);e.title='Sets “avg X steps” of the loss, pose and audio charts at once; each chart’s own avg box overrides it.';
+  e.onchange=()=>{SM=+e.value||5;LS.set('ppmv2p_sm',SM);for(const k of SMK){AVG[k]=SM;const ai=document.querySelector('#cd_'+k+' .avg input');if(ai)ai.value=String(SM)}LS.set('ppmv2p_avg',AVG);for(const k of SMK)upd(k)}}
+hdr();bar();for(const k in SPEC)mkChart(k);
+async function poll(){try{const r=await fetch('ppm_aloe_v2pure_live.json?t='+Date.now(),{cache:'no-store'});if(r.ok){D.s=await r.json();hdr();for(const k in ch)upd(k)}}catch(e){}
+  try{const v=await fetch('ver_ppm_aloe_v2pure.txt?t='+Date.now(),{cache:'no-store'});if(v.ok){const t=(await v.text()).trim();if(t&&t!==D.ver)location.reload()}}catch(e){}}
+setInterval(poll,60000);setInterval(hdr,30000);
+</script>

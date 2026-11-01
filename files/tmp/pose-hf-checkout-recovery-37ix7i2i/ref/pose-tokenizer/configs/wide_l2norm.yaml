@@ -1,0 +1,111 @@
+# Final-run candidate A: wide model + DAC-style L2-normalised codebook + AdamW.
+#
+# Stack of the three knobs that improved every val metric without trade-offs
+# in the chain-of-experiments through May 21:
+#   - wide:    first_channel_size 384 → 512 and d_model 1536 → 2048
+#              (DAC ramp 510 → 512 → 512 → 1024 → 2048 under [1, 2, 2])
+#   - l2norm:  normalize_codes=true → cosine-similarity codebook lookup
+#              (drives val/cb_usage to ~100 % vs ~96 % for default lookup)
+#   - adamw:   default optimizer in train.py (decay/no-decay param groups
+#              with weight_decay=0.01); the chart's "baseline" still used
+#              the legacy single-group Adam, hence its consistent lag.
+#
+# Standard offset-L1 reconstruction (no chain-aware terms). Compare against
+# wide_l2norm_rel_l1.yaml — same recipe + additive relative_l1_weight=0.5 —
+# to A/B-test whether equalised per-joint gradient pressure improves
+# val/rec_hand without the velocity collapse seen in the pure replacement
+# variant.
+#
+# Run with train.py (not train_chain_loss.py).
+# 4-GPU DDP: batch_size=128 per GPU gives global batch=512 (matched to prior
+# experiments); 100k steps trades 4× effective batch for ~3× wall-clock
+# speedup vs the legacy bs=512/100k runs.
+
+# ── Data: paths ───────────────────────────────────────────────────────────
+data_dir: /mnt/somfs/pose_conditioning_uncompressed/
+manifest: manifest.txt
+dims_csv: dims.csv
+test_manifest: ""
+test_dir: test_set
+n_test_clips: 0
+test_max_seconds: 10.0
+num_files: 0
+val_count: 2000      # ~20× larger than the legacy 100 — keeps per-validation
+                     # sampling noise small enough that train-time A/B curves
+                     # are readable even before the cross-rank gather lands.
+norm_stats: ""
+
+# ── Data: framing ─────────────────────────────────────────────────────────
+source_fps: 30
+target_fps: 25
+segment_frames: 80
+max_frames: 0
+random_crop_frames: false
+random_segment_offset: true
+inference_chunk_stride: 0
+
+# ── Model: architecture (TCN encoder/decoder) ─────────────────────────────
+num_keypoints: 55
+keypoint_dim: 2
+input_features: 110
+first_channel_size: 512      # wide: 384 → 512
+num_blocks: 3
+downsampling_rates: [1, 2, 2]
+kernel_size: [3, 3, 3]
+num_residual_blocks: 2
+residual_units_per_block: 2
+d_model: 2048                # wide: 1536 → 2048 (DAC ramp 512 → 512 → 1024 → 2048)
+num_groups: false
+use_noise_blocks: false
+norm: "LN"
+
+# ── Model: quantizer (RVQ) ────────────────────────────────────────────────
+n_codebooks: 8
+codebook_size: 1024
+codebook_dim: 16
+vq_strides: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+apply_rotation_trick: false
+enable_quantization: true
+quantizer_dropout: 0.0
+normalize_codes: true        # ← DAC-style cosine similarity lookup
+
+# ── Training: optimizer + schedule ────────────────────────────────────────
+epochs: 9999
+max_steps: 200000            # Standard horizon: every run in this project
+                             # uses max_steps=200000 so step-aligned A/Bs are
+                             # also schedule-aligned (cosine progress matches
+                             # at every step pair).
+batch_size: 128              # per-device; with 4-GPU DDP global batch = 512
+                             # (matches prior-experiment global batch exactly)
+lr: 3.0e-4
+lr_schedule: cosine
+lr_min: 3.0e-5
+warmup_steps: 1000
+weight_decay: 0.01
+
+# ── Training: loss weights ────────────────────────────────────────────────
+reconstruction_weight: 1.0
+velocity_weight: 2.0
+commitment_weight: 0.25
+codebook_weight: 1.0
+hand_loss_weight: 1.0
+relative_l1_weight: 0.0      # off — this is the "no chain loss" arm
+confidence_weight_mode: "hard"
+confidence_mask_threshold: 0.3
+
+# ── Training: runtime ─────────────────────────────────────────────────────
+num_workers: 10
+log_interval: 10
+
+# ── Eval / checkpointing ──────────────────────────────────────────────────
+val_batch_size: 32
+val_confidence_threshold: 0.5
+validation_interval: 1000
+save_interval: 5000
+render_interval: 0
+test_frame_idx: 0
+output_dir: checkpoints
+
+# ── Wandb ─────────────────────────────────────────────────────────────────
+wandb_project: pose-tokenizer
+wandb_run_name: wide-l2norm

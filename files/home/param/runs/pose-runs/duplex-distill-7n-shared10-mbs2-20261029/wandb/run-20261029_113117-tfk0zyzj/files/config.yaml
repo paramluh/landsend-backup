@@ -1,0 +1,675 @@
+_wandb:
+    value:
+        cli_version: 0.31.0
+        e:
+            01a1876d-b7b5-7a81-a39a-c7a918d547c7:
+                args:
+                    - --run-dir
+                    - /home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029
+                    - --mode
+                    - train
+                    - --micro-batch-size
+                    - "2"
+                    - --text-chunk-size
+                    - "512"
+                    - --text-direct-addmm
+                    - --resume
+                    - /home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000036/resume
+                codePath: finetune/duplex_distill/train.py
+                codePathLocal: finetune/duplex_distill/train.py
+                cpu:
+                    model: Intel(R) Xeon(R) Platinum 8462Y+
+                cpu_count: 64
+                cpu_count_logical: 128
+                cudaVersion: "13.2"
+                disk:
+                    /:
+                        total: "9584622653440"
+                        used: "2832951541760"
+                email: param@canopylabs.ai
+                executable: /home/param/pose-repo/.venv/bin/python
+                git:
+                    commit: 4a56a464a44bc4c209ef244f19482737b490c0dd
+                    remote: https://huggingface.co/InternalCan/pose-repo
+                gpu: NVIDIA H100 80GB HBM3
+                gpu_count: 8
+                gpu_nvidia:
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      numaNode: 0
+                      pciBusId: "00000000:06:00.0"
+                      uuid: GPU-91c55f6b-2205-46dc-2b13-33654ea969cc
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      numaNode: 0
+                      pciBusId: "00000000:07:00.0"
+                      uuid: GPU-700c4f84-b51d-7a8d-8164-86b4295eccc0
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      numaNode: 0
+                      pciBusId: "00000000:08:00.0"
+                      uuid: GPU-e27288da-9fd8-b3b5-7dbc-1e7db2f5eae5
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      numaNode: 0
+                      pciBusId: "00000000:09:00.0"
+                      uuid: GPU-11bfdde1-fc92-8957-a7c9-c0bf9427573e
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      numaNode: 1
+                      pciBusId: "00000000:10:00.0"
+                      uuid: GPU-26247fa1-2c84-6b47-aa85-571f3b80c969
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      numaNode: 1
+                      pciBusId: "00000000:11:00.0"
+                      uuid: GPU-07b79e01-5bb8-d414-cfe2-e18715b303a6
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      numaNode: 1
+                      pciBusId: "00000000:12:00.0"
+                      uuid: GPU-ab89b782-5762-aac4-8266-4dbd4bc676bb
+                    - architecture: Hopper
+                      cudaCores: 16896
+                      memoryTotal: "85520809984"
+                      name: NVIDIA H100 80GB HBM3
+                      numaNode: 1
+                      pciBusId: "00000000:13:00.0"
+                      uuid: GPU-a9e2b248-d1a1-2238-19ca-1b6ca68a1fea
+                host: landsend-0
+                memory:
+                    total: "1014508261376"
+                os: Linux-6.8.0-142-generic-x86_64-with-glibc2.39
+                program: /home/param/pose-repo/finetune/duplex_distill/train.py
+                python: CPython 3.12.3
+                root: /home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029
+                startedAt: "2026-10-29T11:31:17.043742Z"
+                writerId: 01a1876d-b7b5-7a81-a39a-c7a918d547c7
+        m: []
+        python_version: 3.12.3
+        t:
+            "1":
+                - 1
+                - 11
+                - 49
+                - 71
+            "2":
+                - 1
+                - 11
+                - 49
+                - 71
+            "3":
+                - 2
+                - 5
+                - 13
+                - 14
+                - 16
+                - 61
+                - 62
+            "4": 3.12.3
+            "5": 0.31.0
+            "6": 5.13.0
+            "12": 0.31.0
+            "13": linux-x86_64
+accum:
+    value:
+        aloe_ranks: 56
+        logical_world: 112
+        micro_batch_size: 2
+        physical_world: 56
+        rule: aloe / zoom rank i of its group (sorted by global rank) runs logical ranks i + n_group x s, s < slots; others = dummies
+        slots: 1
+        zoom_ranks: 0
+adam_beta2:
+    value: 0.95
+audio_teacher_checkpoint:
+    value: /home/param/models/ppm-aloe-samsep-vox17127-final/export-249-dcp
+cd:
+    value: 2
+checkpoint_interval_seconds:
+    value: 7200
+checkpoint_required_attempts:
+    value: 3
+checkpoint_required_retry_delay_seconds:
+    value: 5
+checkpoint_retry_seconds:
+    value: 60
+clip:
+    value:
+        audio: 1
+        decp_bb: 1
+        proj: 1
+        spec: 1
+        tower_p: 1
+        tower_s: 1
+        trunk: 0.5
+        vadapter: 1
+        vgain: 1
+control_dir:
+    value: /data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/control
+conversation_frames:
+    value: 7500
+cotrain:
+    value:
+        aloe_logical_world: 112
+        group_mode: aloe_only
+        steps_mode: aloe
+        test_depth: ""
+        test_gradcheck: false
+        test_stores: ""
+        w_aloe: 1
+data:
+    value:
+        chat_eob: true
+        chat_side: assistant
+        clip_max: 125
+        clip_min: 38
+        crop_conv: false
+        eob_gap_s: 0
+        light_frac: 0.1
+        light_seed: 20261001
+        min_cov: 0.5
+        new_word: true
+        pack_attn: segments
+        persona_sides: none
+        pose_delay: 2
+        pose_light_frac: 0.1
+        seed: 20261011
+        sp_cap: 2000
+        stride: 4
+        sysprompt: v2_voiceB_only
+        top_frac: 0.9
+        txt_cap: 7500
+        voice_frac: 0.3
+        voice_mod: 3
+        voice_seed: 20261011
+        wpid: both
+dec_clip:
+    value: 1
+dec_compile_mode:
+    value: default
+dec_dyn:
+    value: true
+dec_even:
+    value: true
+dec_fast:
+    value: true
+dec_k:
+    value: 1
+dec_lr:
+    value: 1.5e-05
+dec_mb_max:
+    value: 470
+dec_micro_frames:
+    value: 300
+dec_p:
+    value:
+        clip: 1
+        k: 1
+        lr: 2e-05
+dec_p_sched:
+    value:
+        horizon: 284
+        min_lr_rate: 0
+        s3_sched: wsd
+        warmup: 9
+        wsd_decay_end: 284
+        wsd_decay_start: 9
+        wsd_floor: 0
+        wsd_shape: linear
+dec_sched:
+    value:
+        horizon: 284
+        min_lr_rate: 0
+        s3_sched: wsd
+        warmup: 9
+        wsd_decay_end: 284
+        wsd_decay_start: 9
+        wsd_floor: 0
+        wsd_shape: linear
+dec_seed:
+    value: 20261011
+decoder_activation_checkpointing:
+    value: per_layer
+decp_bb_alpha:
+    value: 1
+decp_bb_link:
+    value: 1
+depth_frame_sampling:
+    value:
+        application: postprocess_training_decoder_indices_only
+        evaluation: all_valid_then_cap
+        evaluation_max: 2048
+        pose: 0.1
+        pose_delay: 2
+        shared_conversation_frames: true
+        source: existing_production_speech_light
+        speech: 0.1
+        speech_delay: 2
+dl_workers:
+    value: 3
+epoch_steps:
+    value: 142
+epochs:
+    value: 2
+eval_data:
+    value:
+        chat_eob: true
+        chat_side: assistant
+        clip_max: 125
+        clip_min: 38
+        crop_conv: false
+        eob_gap_s: 0
+        light_frac: 1
+        light_seed: 20261001
+        min_cov: 0.5
+        new_word: true
+        pack_attn: segments
+        persona_sides: none
+        pose_delay: 2
+        pose_light_frac: 1
+        seed: 20261011
+        sp_cap: 2000
+        stride: 4
+        sysprompt: v2_voiceB_only
+        top_frac: 0.9
+        txt_cap: 7500
+        voice_frac: 0.3
+        voice_mod: 3
+        voice_seed: 20261011
+        wpid: both
+eval_every:
+    value: 0
+eval_light_max:
+    value: 2048
+expected_eval_micros:
+    value: 316
+expected_train_micros:
+    value: 31796
+export:
+    value: /data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/export-poseduplex-v5-498
+export_min_free_gb:
+    value: 300
+export_scratch_floor_gb:
+    value: 30
+export_steps:
+    value: []
+export_wait_min:
+    value: 0
+first_chunks_only:
+    value: true
+flac_root:
+    value: /scratch/amartyavarma/aloe-ft-samsep/flac
+global_batch_size:
+    value: 112
+gradient_accumulation:
+    value: 1
+hostmap:
+    value:
+        - landsend-0
+        - landsend-0
+        - landsend-0
+        - landsend-0
+        - landsend-0
+        - landsend-0
+        - landsend-0
+        - landsend-0
+        - landsend-1
+        - landsend-1
+        - landsend-1
+        - landsend-1
+        - landsend-1
+        - landsend-1
+        - landsend-1
+        - landsend-1
+        - landsend-2
+        - landsend-2
+        - landsend-2
+        - landsend-2
+        - landsend-2
+        - landsend-2
+        - landsend-2
+        - landsend-2
+        - landsend-3
+        - landsend-3
+        - landsend-3
+        - landsend-3
+        - landsend-3
+        - landsend-3
+        - landsend-3
+        - landsend-3
+        - landsend-4
+        - landsend-4
+        - landsend-4
+        - landsend-4
+        - landsend-4
+        - landsend-4
+        - landsend-4
+        - landsend-4
+        - landsend-5
+        - landsend-5
+        - landsend-5
+        - landsend-5
+        - landsend-5
+        - landsend-5
+        - landsend-5
+        - landsend-5
+        - landsend-12
+        - landsend-12
+        - landsend-12
+        - landsend-12
+        - landsend-12
+        - landsend-12
+        - landsend-12
+        - landsend-12
+init:
+    value: /scratch/amartyavarma/poseduplex-init/w-18100
+keep_latest_optimizer_state:
+    value: true
+kl_lexical_weight:
+    value: 1
+light_ratio_hi:
+    value: 0.11
+light_ratio_lo:
+    value: 0.09
+local_export_root:
+    value: /scratch/amartyavarma/aloe-ft-32-samsep/exports-poseduplex-v5
+log_root:
+    value: /data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/runs
+losscheck:
+    value: 1
+losscheck_tol:
+    value: 0.002
+lr:
+    value:
+        audio: 6e-05
+        decp_bb: 1e-05
+        proj: 3e-05
+        spec: 6e-05
+        tower_p: 1.5e-05
+        tower_s: 1.5e-05
+        trunk: 3e-06
+        vadapter: 0.0005
+        vgain: 0.0005
+lw_word:
+    value: 1
+m1vox_index:
+    value: /data/home/amartyavarma/ppm/aloe-ft-32-samsep/data/plan/M1VOX_INDEX_samsep.json
+metrics:
+    value:
+        audio_codebooks: teacher KL
+        data_audio_codebooks: detached dataset cross entropy
+        data_loss: detached dataset cross entropy summaries
+        data_pose_codebooks: detached dataset cross entropy
+        data_text_ce: detached dataset text cross entropy diagnostics
+        pose_codebooks: teacher KL
+        text_kl: teacher text KL diagnostics
+        train: teacher KL summaries
+micro_batch_size:
+    value: 2
+modality_weights:
+    value:
+        audio: 0.3333333333333333
+        pose: 0.3333333333333333
+        text: 0.3333333333333333
+mode:
+    value: train
+model_nopose:
+    value: false
+objective:
+    value: forward_kl_teacher_to_student_only
+plan_dir:
+    value: /data/home/amartyavarma/ppm/aloe-v2vox-raw/plan
+pose_teacher_checkpoint:
+    value: /home/param/models/transcript-pose/xabi-original/export-200
+posedup:
+    value:
+        epoch_seed: 20261011
+        items: all
+        plan_digest: 2275f1eab21f3326
+        pose: 1
+        pose_index: /data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/data/POSE_INDEX.json
+        pose_index_sha: 7114d5a04f43778b29244e2ef1867d6d960d619f1515bf3c25f4b7f155f8d8a1
+        pose_light_frac: 0.1
+        pose_seed_tag: 36947
+        pose_sha_every_read: 1
+        pose_src: aloe-handover-full/DATA/files/none/<session>/<seg>/w00.SPEAKER_0N.pose_tokens.npy (B side, in place)
+        speech_light_frac: 0.1
+        voice_rule: v2_30
+profile_steps:
+    value: 0
+profiling_batch:
+    value:
+        enabled: false
+        global_rows_per_update: 112
+        micro_batch_size: 2
+        schedule_policy: same resolved two-epoch global-batch schedule as training
+        schedule_steps: 284
+        schedule_warmup: 9
+profiling_text:
+    value:
+        chunk_size: 512
+        direct_addmm: true
+        enabled: false
+        scope: same resolved implementation as training
+provenance:
+    value:
+        checkpoint_config: /home/param/models/ppm-aloe-poseduplex-v5-final/export-498-dcp/train_cfg.json
+        checkpoint_config_sha256: a5c5fdf19e9d8c78e74771ccb9322b97b3605b2cbacc9007d34c998420841e95
+        checkpoint_override_reason: User requested no evaluations, checkpoints every two hours retaining the latest optimizer state, and a final checkpoint.
+        conditioning: One shared B voice/prompt draw; monoplex teacher A is natively empty; student and audio teacher share raw A audio.
+        loss_override_reason: User requested equal one-third text/speech/pose contributions; speech and pose each use one-quarter cb0 plus three-quarters mean cb1..31.
+        production_run: ppm-aloe-poseduplex-v5-j30074
+        production_step: 498
+        sampling_override_reason: User requested the same deterministic ten-percent conversation-frame sample for both training depth decoders. Original input sequences, cb0 coverage, and evaluation selection remain unchanged; source_loader_data/source_loader_posedup record the unchanged loader settings.
+        source_checkpoint_schedule:
+            eval_every: 25
+            export_steps:
+                - 83
+                - 165
+                - 248
+                - 333
+                - 415
+        source_loss_weights:
+            lw_word: 1
+            w_cb: 1
+            w_cb0: 1
+            w_pcb: 1
+            w_pcb0: 1
+            w_text: 5
+        source_training_sampling:
+            pose: 1
+            shared_conversation_frames: false
+            speech: 0.1
+        user_checkpoint_overrides:
+            checkpoint_interval_seconds: 7200
+            eval_every: 0
+            export_steps: []
+            keep_latest_optimizer_state: true
+            save_final: true
+        user_loss_overrides:
+            modality_weights:
+                audio: 0.3333333333333333
+                pose: 0.3333333333333333
+                text: 0.3333333333333333
+            w_cb: 0.75
+            w_cb0: 0.25
+            w_pcb: 0.75
+            w_pcb0: 0.25
+        user_sampling_override:
+            application: postprocess_training_decoder_indices_only
+            evaluation: all_valid_then_cap
+            evaluation_max: 2048
+            pose: 0.1
+            pose_delay: 2
+            shared_conversation_frames: true
+            source: existing_production_speech_light
+            speech: 0.1
+            speech_delay: 2
+purpose:
+    value: training
+rawgain_index:
+    value: /data/home/amartyavarma/ppm/aloe-ft-32-samsep/data/plan/RAWGAIN_samsep.json
+rawgain_sha:
+    value: e2e679c638ea8f3a
+ref_cfg:
+    value:
+        m1vox: /data/home/amartyavarma/ppm/aloe-v2vox-ft/plan/ref_cfg_m1vox_22335.json
+        v2: /data/home/amartyavarma/ppm/aloe-v2vox-ft/plan/ref_cfg_v2_22383.json
+        v2vox: /data/home/amartyavarma/ppm/aloe-v2vox-raw/plan/ref_cfg_v2vox_22420.json
+resume:
+    value:
+        every: 0
+        from: ""
+        root: /scratch/amartyavarma/aloe-ft-32-samsep/saves-poseduplex
+rows_per_update:
+    value: 112
+run_tag:
+    value: ppm-aloe-poseduplex-v5-j30074
+samsep:
+    value:
+        digests:
+            - 7318ffb3ea75cbcc3ff48b63b6cf8b88
+            - 31ecb2273542310096936c0baf49efa8
+            - 1759200f7818c6017dfb6a46e37fa5df
+            - 611b2e7edb1503cc600a6489e49dcf40
+        expect_eval_micros: 316
+        expect_train_micros: 31796
+        rawgain_plan_digest: d1a3e3721328da0a
+        row_map: /data/home/amartyavarma/ppm/aloe-ft-32-samsep/data/row_map.json
+        stores_src: /data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores
+save_final:
+    value: true
+sched:
+    value:
+        horizon: 284
+        min_lr_rate: 0
+        s3_sched: wsd
+        warmup: 9
+        wsd_decay_end: 284
+        wsd_decay_start: 9
+        wsd_floor: 0
+        wsd_shape: linear
+smoke_depth:
+    value: null
+source_loader_data:
+    value:
+        chat_eob: true
+        chat_side: assistant
+        clip_max: 125
+        clip_min: 38
+        crop_conv: false
+        eob_gap_s: 0
+        light_frac: 0.1
+        light_seed: 20261001
+        min_cov: 0.5
+        new_word: true
+        pack_attn: segments
+        persona_sides: none
+        pose_delay: 2
+        pose_light_frac: 1
+        seed: 20261011
+        sp_cap: 2000
+        stride: 4
+        sysprompt: v2_voiceB_only
+        top_frac: 0.9
+        txt_cap: 7500
+        voice_frac: 0.3
+        voice_mod: 3
+        voice_seed: 20261011
+        wpid: both
+source_loader_posedup:
+    value:
+        epoch_seed: 20261011
+        items: all
+        plan_digest: 2275f1eab21f3326
+        pose: 1
+        pose_index: /data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/data/POSE_INDEX.json
+        pose_index_sha: 7114d5a04f43778b29244e2ef1867d6d960d619f1515bf3c25f4b7f155f8d8a1
+        pose_light_frac: 1
+        pose_seed_tag: 36947
+        pose_sha_every_read: 1
+        pose_src: aloe-handover-full/DATA/files/none/<session>/<seg>/w00.SPEAKER_0N.pose_tokens.npy (B side, in place)
+        speech_light_frac: 0.1
+        voice_rule: v2_30
+steps:
+    value: 284
+stores:
+    value:
+        - /data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores/m1n0
+        - /data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores/m1n1
+        - /data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores/m1n2
+        - /data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores/m1n3
+student_checkpoint:
+    value: /home/param/models/ppm-aloe-poseduplex-v5-final/export-498-dcp
+teacher_conditioning:
+    value: same B prefix/voice/drop decision; native-empty A for monoplex; same raw A audio for student/audio teacher
+temperature:
+    value: 1
+test_no_main_opt:
+    value: false
+test_steps:
+    value: 0
+text_head:
+    value:
+        chunk_size: 512
+        direct_addmm: true
+        implementation: benchmark_text_head.direct_addmm
+vadapter:
+    value:
+        enc_hidden: 1280
+        hidden: 4096
+        init: /scratch/amartyavarma/poseduplex-init/w-18100
+        norm: none
+        sha_expect: ""
+        stack: 4
+vox_a_gain:
+    value: raw
+vox_a_norm:
+    value: none
+vox_a_scale_init:
+    value: 0.0030930437
+vox_a_scale_learn:
+    value: true
+vox_attn:
+    value: flex_attention
+vox_calib_rows:
+    value: 1
+vox_model:
+    value: /data/home/amartyavarma/models/voxtral-realtime
+w_cat_word:
+    value: 1
+w_cb:
+    value: 0.75
+w_cb0:
+    value: 0.25
+w_eob:
+    value: 1
+w_nw:
+    value: 1
+w_pcb:
+    value: 0.75
+w_pcb0:
+    value: 0.25
+w_text:
+    value: 5
+w_tim:
+    value: 1
+warmup:
+    value: 9
+world:
+    value: 56
