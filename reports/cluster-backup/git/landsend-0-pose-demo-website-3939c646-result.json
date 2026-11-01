@@ -1,0 +1,29 @@
+{
+  "host": "landsend-0",
+  "repo": "/home/param/websites/pose-demo-website",
+  "common": "/home/param/websites/pose-demo-website/.git",
+  "commit": "83957e446077fcdf1df914e4a262db12a3181668",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-0-pose-demo-website-3939c646.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/home/param/websites/pose-demo-website",
+      "common": "/home/param/websites/pose-demo-website/.git",
+      "branch": "main",
+      "original_head": "30ab9b7847eda1c29f4888036907c63598943782",
+      "staged_commit": null,
+      "working_commit": "05b9560f11f8600651f9e8bd63e3e5da294d28a0",
+      "tree": "089d7ca03782bdaf43d84435f8e33718cc7ea3d7",
+      "excluded": [],
+      "untracked_added": 0,
+      "status_count": 5,
+      "remotes": [
+        "origin\tgit@github.com:canopy-labs-internal/pose-demo-website.git (fetch)",
+        "origin\tgit@github.com:canopy-labs-internal/pose-demo-website.git (push)"
+      ]
+    }
+  ],
+  "local_branches": [
+    "refs/heads/main 30ab9b7847eda1c29f4888036907c63598943782"
+  ]
+}

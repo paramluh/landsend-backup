@@ -1,0 +1,9 @@
+{
+  "source": "/home/param/models/imported-weights/electron-vae/encoder-v2-pose.safetensors",
+  "repo": "InternalCan/landsend-checkpoints-backup-param",
+  "path": "hosts/landsend-0/models/imported-weights/electron-vae/encoder-v2-pose.safetensors",
+  "bytes": 399506624,
+  "revision": "b06582bef7e6d2b9d0d6c419cdc0999b1c0cc663",
+  "completed": 1793506009.1508772,
+  "reason": "Original private HF source unavailable to current account"
+}

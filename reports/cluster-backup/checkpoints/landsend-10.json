@@ -1,0 +1,4 @@
+{
+  "host": "landsend-10",
+  "error": "ssh: Could not resolve hostname landsend-10: Temporary failure in name resolution\n"
+}

@@ -1,0 +1,19 @@
+[
+  "/home/param/pose-worktrees/duplex-distill-inference",
+  "/home/param/pose-worktrees/pose-opd-credit-decoder-54a82b324ba6d2dd77ae08a8d6fb0aec2ab37a90",
+  "/home/param/pose-worktrees/duplex-distill",
+  "/home/param/pose-worktrees/pose-opd-live-demo",
+  "/home/param/pose-worktrees/pose-opd-credit",
+  "/home/param/pose-worktrees/pose-basic-opd",
+  "/home/param/vansh-video-models",
+  "/home/param/pose-repo",
+  "/home/param/pose-tokenizer",
+  "/home/param/ppm-training",
+  "/home/param/training-registry/source",
+  "/home/param/opd-posttrain-speedups",
+  "/home/param/websites/aloe-pose-duplex",
+  "/home/param/websites/aloe-pose-monoplex-infer",
+  "/home/param/websites/pose-ar-diagnostics",
+  "/home/param/websites/page-templates",
+  "/home/param/websites/pose-demo-website"
+]

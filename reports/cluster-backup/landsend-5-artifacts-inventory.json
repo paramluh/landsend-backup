@@ -1,0 +1,95 @@
+{
+  "host": "landsend-5",
+  "roots": {
+    "/home/param/outputs": {
+      "du": "17264364980\t/home/param/outputs",
+      "children": [
+        "pose-mono-dcp227-export",
+        "opd-next-sft-preparation",
+        "landsend-backup-20261031"
+      ]
+    },
+    "/home/param/runs": {
+      "du": "16480448266\t/home/param/runs",
+      "children": [
+        "pose-runs",
+        "smokes"
+      ]
+    },
+    "/home/param/datasets": {
+      "du": "332088935686\t/home/param/datasets",
+      "children": [
+        "zoom-strangers-5k",
+        "pose-demo",
+        "rosie-stamp-conversations-v1",
+        "xabi-v2pure-cache",
+        "aloe-duplex"
+      ]
+    },
+    "/home/param/websites": {
+      "du": "28654135\t/home/param/websites",
+      "children": [
+        "pose-renderer",
+        "pose-playground",
+        "rosie-voice-clips",
+        "pose-monoplex-engine",
+        "rosie-live-demo"
+      ]
+    },
+    "/home/param/.codex": {
+      "du": "445947603\t/home/param/.codex",
+      "children": [
+        "auth.json",
+        "packages",
+        "tmp"
+      ]
+    }
+  },
+  "tmp": [
+    {
+      "name": "pytorch-errorfile-jw_tbrih.pickle",
+      "bytes": 694,
+      "dir": false
+    },
+    {
+      "name": "pose-git-lfs.deb",
+      "bytes": 3908174,
+      "dir": false
+    },
+    {
+      "name": "hf-cli-install-param.sh",
+      "bytes": 18355,
+      "dir": false
+    },
+    {
+      "name": "canopy-labs",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "pose-environment-landsend-5.json",
+      "bytes": 3500,
+      "dir": false
+    },
+    {
+      "name": "pytorch-errorfile-4m243mxk.pickle",
+      "bytes": 694,
+      "dir": false
+    },
+    {
+      "name": "duplex-distill-gather-export.py",
+      "bytes": 4570,
+      "dir": false
+    },
+    {
+      "name": "pose-git-lfs-install.log",
+      "bytes": 302,
+      "dir": false
+    },
+    {
+      "name": "hf-get-pip-param.py",
+      "bytes": 2234489,
+      "dir": false
+    }
+  ]
+}

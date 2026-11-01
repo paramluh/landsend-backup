@@ -1,0 +1,34 @@
+{
+  "host": "landsend-1",
+  "repos": [
+    {
+      "path": "/home/param/vansh-video-models",
+      "common": "/home/param/vansh-video-models/.git",
+      "head": "26cedf69db7257658de7f6e53bae4972dac0f20b",
+      "branch": "param/bimodal",
+      "remotes": [
+        "origin\tgit@github.com:canopy-labs-internal/vansh-video-models.git (fetch)",
+        "origin\tgit@github.com:canopy-labs-internal/vansh-video-models.git (push)"
+      ],
+      "status": "D setup.sh",
+      "refs": [
+        "refs/heads/param/bimodal 26cedf69db7257658de7f6e53bae4972dac0f20b",
+        "refs/heads/universal-main f4cf235e0eb6395396fca64ee5f8132824bd6d21"
+      ]
+    },
+    {
+      "path": "/home/param/pose-repo",
+      "common": "/home/param/pose-repo/.git",
+      "head": "17f08f761468f901b4699c93233c27b58df46c24",
+      "branch": "main",
+      "remotes": [
+        "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+        "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+      ],
+      "status": "M finetune/xabi-main-17850/code/model_ppm.py\n M finetune/xabi-main-17850/code/train_aloe_pose.py\n M finetune/xabi-main-17850/code/vendor/pinned_fa3.py\n M infer/engine/ppm/fast_ppm.py\n?? .cache/\n?? .venv/\n?? finetune/duplex_distill/\n?? finetune/transcript_pose/\n?? infer/transcript_pose/",
+      "refs": [
+        "refs/heads/main 17f08f761468f901b4699c93233c27b58df46c24"
+      ]
+    }
+  ]
+}

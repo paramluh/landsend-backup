@@ -1,0 +1,24 @@
+{
+  "state": "running",
+  "new_checkpoint_repository": "InternalCan/landsend-checkpoints-backup-param",
+  "new_checkpoint_repository_url": "https://huggingface.co/InternalCan/landsend-checkpoints-backup-param",
+  "active_run_repository": "InternalCan/pose-basic-opd-b336-20261031",
+  "checkpoint_nodes": [
+    "landsend-0",
+    "landsend-1",
+    "landsend-2",
+    "landsend-3",
+    "landsend-4",
+    "landsend-5",
+    "landsend-12"
+  ],
+  "logical_planned_bytes": 11269317585417,
+  "logical_leaf_tasks": 225,
+  "monitor_pid": 3816226,
+  "progress_file": "/home/param/outputs/landsend-backup-20261031/checkpoints/progress.json",
+  "completion_file": "/home/param/outputs/landsend-backup-20261031/checkpoints/COMPLETE.json",
+  "external_completion_marker": "https://huggingface.co/InternalCan/landsend-checkpoints-backup-param/blob/main/COMPLETE.json",
+  "existing_source_folders_verified": 20,
+  "unavailable_source_with_successful_fallback_backup": "electron-vae",
+  "last_updated": 1793506262.7073665
+}

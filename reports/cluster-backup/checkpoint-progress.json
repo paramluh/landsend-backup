@@ -1,0 +1,68 @@
+{
+  "time": 1793506012.7613091,
+  "nodes": [
+    {
+      "host": "landsend-0",
+      "state": "uploading",
+      "tasks": 1,
+      "total": 21,
+      "completed_GiB": 82.0,
+      "current": "compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "error": null
+    },
+    {
+      "host": "landsend-1",
+      "state": "uploading",
+      "tasks": 1,
+      "total": 32,
+      "completed_GiB": 82.0,
+      "current": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "error": null
+    },
+    {
+      "host": "landsend-2",
+      "state": "uploading",
+      "tasks": 1,
+      "total": 37,
+      "completed_GiB": 82.0,
+      "current": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "error": null
+    },
+    {
+      "host": "landsend-3",
+      "state": "uploading",
+      "tasks": 1,
+      "total": 37,
+      "completed_GiB": 82.0,
+      "current": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "error": null
+    },
+    {
+      "host": "landsend-4",
+      "state": "uploading",
+      "tasks": 1,
+      "total": 39,
+      "completed_GiB": 82.0,
+      "current": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "error": null
+    },
+    {
+      "host": "landsend-5",
+      "state": "uploading",
+      "tasks": 1,
+      "total": 32,
+      "completed_GiB": 82.0,
+      "current": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "error": null
+    },
+    {
+      "host": "landsend-12",
+      "state": "uploading",
+      "tasks": 1,
+      "total": 27,
+      "completed_GiB": 79.9,
+      "current": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "error": null
+    }
+  ]
+}

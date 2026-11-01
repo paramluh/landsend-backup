@@ -1,0 +1,1737 @@
+[
+  {
+    "path": "/home/param/pose-worktrees",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.bash_history",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/vansh-video-models",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/pose-repo",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.config",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/outputs",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/pose-runs",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/runs/pose-runs"
+  },
+  {
+    "path": "/home/param/.local",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/runs",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/datasets",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/pose-tokenizer",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.cache",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/ppm-training",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.triton",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/training-registry",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.bashrc",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.ssh",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/opd-posttrain-speedups",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/websites",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.codex",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/bin",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.profile",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.lesshst",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.nv",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/models",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.hf-cli",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.gnupg",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.netrc",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/vansh-video-models-handover",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.bash_logout",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/pose-demo-website",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/websites/pose-demo-website"
+  },
+  {
+    "path": "/tmp/tmprc62vuaq",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpqhx475sw",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/stage_mono_site.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/save_main_qa.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmphgi6qenr",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_dyju2rjb",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_6wei1s02",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/save_old_qa.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_vaj4_mgc",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_dfr_crbd",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpqsxb8f75",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmplswiic2_",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_huudvrns",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpuvgr4mn1",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpof4jjtyh",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_h7_gacxt",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-opd-final-dashboard.html",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpztnym7u9",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-environment-landsend-0.json",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/outputs/tmp-artifacts/pose-environment-landsend-0.json"
+  },
+  {
+    "path": "/tmp/tmps4xzxpfs",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/hf-cli-install-param.sh",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-opd-live-ui-check",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose_native_head_check.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_tlhgwgf4",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpxf3j4zd7",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_w8o1pch9",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-hf-checkout-recovery-37ix7i2i",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/probe_jump_semantics.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pytorch-errorfile-a_t2t6hy.pickle",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-dataset-audit",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/outputs/tmp-artifacts/pose-dataset-audit"
+  },
+  {
+    "path": "/tmp/torchelastic_4xqj185k",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpqrjbjz5e",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/debug-cli.param.log",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/outputs/tmp-artifacts/debug-cli.param.log"
+  },
+  {
+    "path": "/tmp/tmpyhckm4z8",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose_opd_frame0_drop_manifest.json",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpxy1htkfi",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_xzsy_3tk",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_gmmmiy53",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/add-overlay-fullscreen.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpvtbr44a8",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_wcp571q1",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpc_0rhv0m",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpl8djnxvd",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_wtm9rkmb",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_li15t7rk",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_sfga9y8x",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmphlsedclt",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_7x7goaop",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_qypa_zvq",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/check_pose_frontend.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchinductor_param",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/pose-repo/.cache/torchinductor"
+  },
+  {
+    "path": "/tmp/audit_guided_prefill_independent.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-opd-dashboard-logging-before.json",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpvhhn9smm",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpeszxyqdp",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_xa2fa43c",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-hf-overlay-final.html",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-research-ppm-training",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-opd-live-ui-check-48f",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpl1725m7u",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpldq43hbv",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpxspxdlci",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/update-parallel-studio.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp2j8npvhp",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpbhfzbd_d",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/canopy-labs",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpz0z5sw42",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/codex-daemon-1003",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_q7m9drml",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-dashboard-logging-baseline",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_ayapjw77",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-samples-current.js",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpzlx3ahcg",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpdicz_5vq",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/audit_pose_datasets_20261029.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpf3ohsjen",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_i5409v0g",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpropnxfuj",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpx536a4gb",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/gallery-contract-8f9o7xkf",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/outputs/tmp-artifacts/gallery-contract-8f9o7xkf"
+  },
+  {
+    "path": "/tmp/torchelastic_epcae6uz",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_s0_nxycp",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-tokenizer-pinned-meta",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmphc8ds00b",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/v5_group_probe.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpfyq07lq3",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmphcsutyun",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_zjlx76md",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_qdsab3zc",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_4dh_nzz3",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpdhj_gsaj",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/update-native-studio.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpfqzydzax",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp36czwbpr",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/hf-pose-import-20261030",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_fvtkitbc",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/make_blackband_launcher.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_85l4hi21",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpl2bx38pt",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-overlay-ui-block.html",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_1_3u2vkx",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpkfbwoklq",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/codex-bwrap-synthetic-mount-targets-1003",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pytorch-errorfile-1late1gt.pickle",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-lineage-metadata",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpo7psq3dx",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/hf-install.sh",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp2si3q_k4",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/save_xabi_qa.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/training-registry-head.json",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/outputs/tmp-artifacts/training-registry-head.json"
+  },
+  {
+    "path": "/tmp/torchelastic_zw0lacli",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpr5p4yy2d",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_el60vuhz",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp4ux32r9y",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp8p3um_ss",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-research-tokenizer",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_rgom53fm",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpanmag636",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpvph758zy",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose_dashboard_baseline.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/fit_step.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpp33bcw_s",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_2tm2tm_s",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp2odg_ytt",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/mot-14b-base-download.log",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/outputs/tmp-artifacts/mot-14b-base-download.log"
+  },
+  {
+    "path": "/tmp/tmpwjgkkauk",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-opd-current-dashboard-telemetry.json",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpw3c0vv9g",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmux-1003",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpfvqq9_62",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpvyljpdbh",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_c8idpnwt",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-teacher-partner-prepare-schedule",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-uv-install.sh",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-comparison-browser",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp6zwyxmu7",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/basic_patch_runtime.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpc4hkppig",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpa11o5xe6",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/summarize_pose_datasets_20261029.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_1q1to3g0",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_ziibfmr2",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-research-dataset-meta",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/outputs/tmp-artifacts/pose-research-dataset-meta"
+  },
+  {
+    "path": "/tmp/tmpjhjxgas5",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/audit_guided_independent.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-overlay-audit-20261029",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/outputs/tmp-artifacts/pose-overlay-audit-20261029"
+  },
+  {
+    "path": "/tmp/tmpp1u65m3u",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp5oau7086",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpy4l1hkn0",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_6jo1h2ak",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_2wmnh1vi",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-opd-live-opening-check",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-hand-review-public.html",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/opd-rosie-proxy-health.json",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpxpik8i9z",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/v5_probe.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/qa_controls.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/duplex-distill-hf-git-credential.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_2ukbuwrm",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_dvr6bi4w",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_yl0mnonx",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpf_sc7cle",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-gh-install.log",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/outputs/tmp-artifacts/pose-gh-install.log"
+  },
+  {
+    "path": "/tmp/tmpdlohcvtt",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_0wi7zkgx",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/configure_mono_site.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_x9ufns5q",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose_frontend_patch.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-git-lfs-install.log",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/outputs/tmp-artifacts/pose-git-lfs-install.log"
+  },
+  {
+    "path": "/tmp/tmp3vhw4pa4",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/__pycache__",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_afhdok2n",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/hf-get-pip-param.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_8qkwwsxq",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_bsv4sm81",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_3v86wy40",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpyr5khypf",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-d7L2Za",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-4GFYjI",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-Q6E5UN",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-zKw9JN",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-xogmkq",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-W8LZKp",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-bBsWGQ",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-DuY5Zv",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-lgxhpk78",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-opbcagxx",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-v1448pl9",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-_iroiqha",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-_j_y9tb_",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-8osunxvh",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-hlwk_mv2",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-xc_x9ae7",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-i6scd0me",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-kt3eocjp",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-77lk50fj",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-pqptq0ln",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-s6spi771",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-h2wrrcym",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-20whk0ia",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-fpbo5iti",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-2l1e__pw",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-l9ynmfs6",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-46ipxptp",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-bnie2xzf",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-gp8hmwgz",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-z_bp3uoj",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-1sxggj8p",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-c02q5043",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-5dzkne0w",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-p0qtaorp",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-f_2hfbvp",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-xicn37du",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-qrrwf5v9",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-1fxr0ngi",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-qevgu6l1",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-lfsw6job",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-yxokxbzx",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-a47wzzo7",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-6_4nmccf",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-kvpuo7i1",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-ms651fb6",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-ockof19d",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-9utrjxia",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-97b1fg6h",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-Bl1RXn",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-DsIOYh",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-TZe1jj",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-SVV4c3",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-DQbCod",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-ZnRi9X",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-rVeYTu",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-QYbvMd",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-MFHNoC",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-lFIUmL",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-55WvTG",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-BtVpuv",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-NUVazm",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-HYUQxa",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-PFsroq",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-HL001i",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-V2NrOK",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-1vWCAD",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-0pH8xz",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-3y7h57",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-dRTAL4",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-KdQjpm",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-YJZFPz",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-Wd5BTY",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-GUY0r4",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-RfXDNX",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-7OrXP8",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-T9lruK",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-088PJD",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-oLlNBU",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-YCVdra",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "folder": "/home/param/models/trained-weights/bimodal-stabilizer-full-gt-pose-v3-step1200",
+  "repo": "InternalCan/bimodal-stabilizer-full-gt-pose-v3-step1200",
+  "revision": "af6806541a1fce20ec8c52cd7d6ab1a523eecb03",
+  "files": [
+    {
+      "local": "/home/param/models/trained-weights/bimodal-stabilizer-full-gt-pose-v3-step1200/nodes/richmond-7/step-001200/student.safetensors",
+      "remote": "nodes/richmond-7/step-001200/student.safetensors",
+      "bytes": 13961556688,
+      "matched": true,
+      "cached_download_sha256": "1b5a07435cdc8cb2efa4f2a8b6ca75cfaeb86ab797ed656952fbd2e57cb9fc9b",
+      "remote_sha256": "1b5a07435cdc8cb2efa4f2a8b6ca75cfaeb86ab797ed656952fbd2e57cb9fc9b",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.652501
+}

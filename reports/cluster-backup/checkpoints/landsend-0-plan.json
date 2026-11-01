@@ -1,0 +1,111 @@
+{
+  "host": "landsend-0",
+  "repo": "InternalCan/landsend-checkpoints-backup-param",
+  "tasks": [
+    {
+      "source": "/home/param/models/trained-weights/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "bytes": 88012686854,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "bytes": 87900413623,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/saves/step-00200",
+      "bytes": 86944461367,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/saves/step-00167",
+      "bytes": 86944461367,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
+      "bytes": 76217698632,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/resume",
+      "bytes": 76217698696,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/export",
+      "bytes": 14669374441,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/compact-transcript-text-audio-pose-20261028/exports/export-200",
+      "bytes": 14651565463,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-200",
+      "bytes": 14651565463,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/transcript-pose/aligned-media/export-200",
+      "bytes": 88378481623,
+      "weight_files": 57
+    },
+    {
+      "source": "/home/param/models/trained-weights/transcript-pose/compact-all/export-200",
+      "bytes": 88378481623,
+      "weight_files": 57
+    },
+    {
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-167",
+      "bytes": 14651565463,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-133",
+      "bytes": 14651565463,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/export",
+      "bytes": 12703969376,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-100",
+      "bytes": 14651565463,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-67",
+      "bytes": 14651565463,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000060/export",
+      "bytes": 12703969376,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000036/export",
+      "bytes": 14669374441,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-33",
+      "bytes": 14651565463,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/export",
+      "bytes": 12703969376,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/aloe-blackband-only-repro-20261031/exports/export-7",
+      "bytes": 88363433207,
+      "weight_files": 25
+    }
+  ]
+}

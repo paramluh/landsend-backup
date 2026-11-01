@@ -1,0 +1,19 @@
+{
+  "host": "landsend-12",
+  "repos": [
+    {
+      "path": "/home/param/pose-repo",
+      "common": "/home/param/pose-repo/.git",
+      "head": "17f08f761468f901b4699c93233c27b58df46c24",
+      "branch": "main",
+      "remotes": [
+        "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+        "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+      ],
+      "status": "M finetune/xabi-main-17850/code/model_ppm.py\n M finetune/xabi-main-17850/code/train_aloe_pose.py\n M finetune/xabi-main-17850/code/vendor/pinned_fa3.py\n?? .cache/\n?? .venv/\n?? eval/ar_diagnostics/\n?? finetune/blackband_repro/\n?? finetune/duplex_distill/\n?? finetune/pose_duplex_prefix/\n?? finetune/storage_paths.py\n?? finetune/transcript_pose/\n?? infer/transcript_pose/\n?? tools/",
+      "refs": [
+        "refs/heads/main 17f08f761468f901b4699c93233c27b58df46c24"
+      ]
+    }
+  ]
+}

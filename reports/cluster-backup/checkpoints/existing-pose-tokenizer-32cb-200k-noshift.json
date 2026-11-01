@@ -1,0 +1,18 @@
+{
+  "folder": "/home/param/models/imported-weights/pose-tokenizer-32cb-200k-noshift",
+  "repo": "InternalCan/pose-tokenizer-32cb-200k-noshift",
+  "revision": "1d6ff4f0de89408cb054da618e309d4334596252",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/pose-tokenizer-32cb-200k-noshift/model.safetensors",
+      "remote": "model.safetensors",
+      "bytes": 417533352,
+      "matched": true,
+      "cached_download_sha256": "8430bc8c5d134e88427f54269b991d067fe93edd38c55c8f94e5d9d64a7d3541",
+      "remote_sha256": "8430bc8c5d134e88427f54269b991d067fe93edd38c55c8f94e5d9d64a7d3541",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505937.9274335
+}

@@ -1,0 +1,8 @@
+{
+  "url": "git@github.com:canopy-labs-internal/pose-tokenizer.git",
+  "returncode": 0,
+  "expected": "d74dfea4cd98613f009fd380b13c5b14d6e4e163",
+  "remote": "d74dfea4cd98613f009fd380b13c5b14d6e4e163",
+  "log": "/home/param/outputs/landsend-backup-20261031/git/push-225973dcebba.log",
+  "verified": true
+}

@@ -1,0 +1,30 @@
+{
+  "host": "landsend-0",
+  "repo": "/home/param/vansh-video-models",
+  "common": "/home/param/vansh-video-models/.git",
+  "commit": "6ff90c2ed3a692ab467d9bfe0e255becb67112b9",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-0-vansh-video-models-9c18ab20.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/home/param/vansh-video-models",
+      "common": "/home/param/vansh-video-models/.git",
+      "branch": "param/bimodal",
+      "original_head": "26cedf69db7257658de7f6e53bae4972dac0f20b",
+      "staged_commit": null,
+      "working_commit": "9d503798c179df4e913ca68984a554b49410b643",
+      "tree": "9c567b6a95eb70272a8246be6a9f6b8effb87a86",
+      "excluded": [],
+      "untracked_added": 0,
+      "status_count": 0,
+      "remotes": [
+        "origin\tgit@github.com:canopy-labs-internal/vansh-video-models.git (fetch)",
+        "origin\tgit@github.com:canopy-labs-internal/vansh-video-models.git (push)"
+      ]
+    }
+  ],
+  "local_branches": [
+    "refs/heads/param/bimodal 26cedf69db7257658de7f6e53bae4972dac0f20b",
+    "refs/heads/universal-main f4cf235e0eb6395396fca64ee5f8132824bd6d21"
+  ]
+}

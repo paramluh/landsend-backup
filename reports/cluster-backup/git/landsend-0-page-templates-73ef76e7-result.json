@@ -1,0 +1,29 @@
+{
+  "host": "landsend-0",
+  "repo": "/home/param/websites/page-templates",
+  "common": "/home/param/websites/page-templates/.git",
+  "commit": "1c85f26a27a8714255ebda7aff85e295d7701ba1",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-0-page-templates-73ef76e7.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/home/param/websites/page-templates",
+      "common": "/home/param/websites/page-templates/.git",
+      "branch": "main",
+      "original_head": "d42f14847f2ada28423ac334c6799eb1ffce8a96",
+      "staged_commit": null,
+      "working_commit": "b6d78d9fd87cd1ec085ec57247d60206fb9f851d",
+      "tree": "e6f7229dbee5009da208fe58927abda40dbb1c6e",
+      "excluded": [],
+      "untracked_added": 0,
+      "status_count": 0,
+      "remotes": [
+        "origin\tgit@github.com:canopy-labs-internal/page-templates.git (fetch)",
+        "origin\tgit@github.com:canopy-labs-internal/page-templates.git (push)"
+      ]
+    }
+  ],
+  "local_branches": [
+    "refs/heads/main d42f14847f2ada28423ac334c6799eb1ffce8a96"
+  ]
+}

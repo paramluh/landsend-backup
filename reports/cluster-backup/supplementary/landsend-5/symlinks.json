@@ -1,0 +1,562 @@
+[
+  {
+    "path": "/home/param/pose-repo/infer/duplex_distill_demo/video/amu/seq/people_bank/clip-02",
+    "target": "/home/param/pose-runs/duplex-distill-demo-20261030/paired-prompts/clip-02/refs"
+  },
+  {
+    "path": "/home/param/pose-repo/infer/duplex_distill_demo/video/amu/seq/people/recordings/53862782b916570909322c061ce073edbb69394f/speaker_1/segments/000001",
+    "target": "/home/param/pose-runs/duplex-distill-demo-20261030/paired-prompts/clip-02/gt"
+  },
+  {
+    "path": "/home/param/pose-runs/xabi-baseline-bench-20261028/cluster/latest",
+    "target": "20261028T100929Z-174271"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-balanced-20261029-v2/cluster/latest",
+    "target": "20261029T095903Z-785d27bf"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-demo-20261030/paired-prompts/clip-02/refs",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/clip-02/reference-bank/69453b43-e5d4-4a3e-8ff2-4f970ae533db"
+  },
+  {
+    "path": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/cluster/latest",
+    "target": "20261028T112106Z-209586"
+  },
+  {
+    "path": "/home/param/pose-runs/transcript-audio-pose-20261028/cluster/latest",
+    "target": "20261028T101447Z-189472"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-balanced-20261029/cluster/latest",
+    "target": "20261029T095502Z-d52c8db2"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-prod-20261029/cluster/latest",
+    "target": "20261029T095252Z-097656a3"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-profile-20261029/cluster/latest",
+    "target": "20261029T101149Z-b1a3f00d"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-7n-mbs2-profile-20261029/cluster/latest",
+    "target": "20261029T110905Z-ae452a66"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-web-20261030/srv",
+    "target": "/home/param/websites/rosie-live-demo/srv"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-shared10-profile-20261029/cluster/latest",
+    "target": "20261029T104759Z-8c711afc"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-conditioned-20261030/training-failed-coverage-roundoff/wandb/latest-run",
+    "target": "run-20261030_071333-339b6ujx"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-conditioned-20261030/training-failed-coverage-roundoff/wandb/debug.log",
+    "target": "run-20261030_071333-339b6ujx/logs/debug.log"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-conditioned-20261030/training-failed-coverage-roundoff/wandb/debug-internal.log",
+    "target": "run-20261030_071333-339b6ujx/logs/debug-internal.log"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-conditioned-20261030/training-failed-coverage-roundoff/wandb/run-20261030_071333-339b6ujx/logs/debug-core.log",
+    "target": "/home/param/.cache/wandb/logs/core-debug-20261030_071332.log"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-conditioned-20261030/training/wandb/latest-run",
+    "target": "run-20261030_072113-yvmy0re6"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-conditioned-20261030/training/wandb/debug.log",
+    "target": "run-20261030_072113-yvmy0re6/logs/debug.log"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-conditioned-20261030/training/wandb/debug-internal.log",
+    "target": "run-20261030_072113-yvmy0re6/logs/debug-internal.log"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-conditioned-20261030/training/wandb/run-20261030_072113-yvmy0re6/logs/debug-core.log",
+    "target": "/home/param/.cache/wandb/logs/core-debug-20261030_072113.log"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-sft-20261030/training/wandb/latest-run",
+    "target": "run-20261030_062300-5l66lxf0"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-sft-20261030/training/wandb/debug.log",
+    "target": "run-20261030_062300-5l66lxf0/logs/debug.log"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-sft-20261030/training/wandb/debug-internal.log",
+    "target": "run-20261030_062300-5l66lxf0/logs/debug-internal.log"
+  },
+  {
+    "path": "/home/param/pose-runs/opd-next-rosie-sft-20261030/training/wandb/run-20261030_062300-5l66lxf0/logs/debug-core.log",
+    "target": "/home/param/.cache/wandb/logs/core-debug-20261030_062259.log"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-7n-mbs1-profile-20261029/cluster/latest",
+    "target": "20261029T110519Z-de8ffd5b"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-smoke-20261029-a/cluster/latest",
+    "target": "20261029T094931Z-179d2762"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-shared10-fasttext-profile-20261029/cluster/latest",
+    "target": "20261029T105136Z-9ebfb46c"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/cluster/latest",
+    "target": "20261029T113001Z-d48d7b7f"
+  },
+  {
+    "path": "/home/param/.local/bin/codex",
+    "target": "/home/param/.codex/packages/standalone/current/bin/codex"
+  },
+  {
+    "path": "/home/param/.local/bin/hf",
+    "target": "/home/param/.hf-cli/venv/bin/hf"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/aloe-blackband-only-repro-20261031/exports",
+    "target": "/home/param/models/trained-weights/aloe-blackband-only-repro-20261031/exports"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/aloe-blackband-only-repro-20261031/cluster/latest",
+    "target": "20261031T034150Z-fcf07361"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000276/event-f00140-00240/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000276/event-f00140-00240/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000145/event-f00424-00524/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000145/event-f00424-00524/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000252/event-f00127-00283/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000252/event-f00127-00283/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000050/event-f00100-00200/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000050/event-f00100-00200/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000076/event-f00366-00466/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000076/event-f00366-00466/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000261/event-f00356-00456/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000261/event-f00356-00456/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000098/event-f00637-00737/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000098/event-f00637-00737/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000329/event-f00640-00740/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000329/event-f00640-00740/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000779/event-f00663-00763/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000779/event-f00663-00763/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000043/event-f01114-01214/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000043/event-f01114-01214/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000081/event-f01350-01450/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000081/event-f01350-01450/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000313/event-f00156-00256/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000313/event-f00156-00256/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000071/event-f00340-00440/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000071/event-f00340-00440/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000538/event-f00400-00500/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000538/event-f00400-00500/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000525/event-f00550-00650/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000525/event-f00550-00650/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000907/event-f00908-01008/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000907/event-f00908-01008/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000825/event-f00319-00419/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000825/event-f00319-00419/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000812/event-f00585-00685/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000812/event-f00585-00685/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000545/event-f00256-00356/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000545/event-f00256-00356/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000300/event-f00107-00207/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000300/event-f00107-00207/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000041/event-f01302-01402/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000041/event-f01302-01402/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000268/event-f00773-00873/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000268/event-f00773-00873/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000500/event-f00430-00530/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000500/event-f00430-00530/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000917/event-f01183-01283/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000917/event-f01183-01283/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000510/event-f00372-00472/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000510/event-f00372-00472/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000518/event-f00120-00220/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000518/event-f00120-00220/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000533/event-f00148-00248/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000533/event-f00148-00248/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000340/event-f00130-00230/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000340/event-f00130-00230/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000870/event-f00867-00967/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000870/event-f00867-00967/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000912/event-f00774-00874/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000912/event-f00774-00874/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000810/event-f00511-00611/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000810/event-f00511-00611/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000049/event-f00276-00376/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000049/event-f00276-00376/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000488/event-f01030-01130/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000488/event-f01030-01130/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/checkpoints",
+    "target": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints",
+    "target": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-first-band-20261030/cluster/latest",
+    "target": "20261031T041222Z-23804ec9"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000998/event-f00144-00244/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000998/event-f00144-00244/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000600/event-f01121-01221/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000600/event-f01121-01221/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000642/event-f00234-00334/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000642/event-f00234-00334/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000968/event-f00092-00192/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000968/event-f00092-00192/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000676/event-f00152-00252/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000676/event-f00152-00252/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000992/event-f00160-00260/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000992/event-f00160-00260/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000244/event-f00186-00286/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000244/event-f00186-00286/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000989/event-f00412-00512/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000989/event-f00412-00512/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000196/event-f00430-00530/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000196/event-f00430-00530/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000946/event-f00284-00384/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000946/event-f00284-00384/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000655/event-f00210-00310/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000655/event-f00210-00310/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000270/event-f00260-00360/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000270/event-f00260-00360/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000624/event-f00834-00934/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000624/event-f00834-00934/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000178/event-f00118-00218/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000178/event-f00118-00218/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000142/event-f00412-00512/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000142/event-f00412-00512/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000155/event-f00145-00245/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000155/event-f00145-00245/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000641/event-f00109-00209/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000641/event-f00109-00209/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000686/event-f00963-01063/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000686/event-f00963-01063/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000958/event-f00674-00774/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000958/event-f00674-00774/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000179/event-f01163-01263/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000179/event-f01163-01263/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000605/event-f00151-00251/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000605/event-f00151-00251/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000316/event-f00301-00401/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000316/event-f00301-00401/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000942/event-f00711-00811/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000942/event-f00711-00811/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/cache/triton-4",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/cache/triton-6",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-6"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/cache/triton-7",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-7"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/cache/triton-5",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-5"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000998/event-f00455-00555/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000998/event-f00455-00555/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000665/event-f00088-00188/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000665/event-f00088-00188/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000516/event-f00138-00238/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000516/event-f00138-00238/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000380/event-f00152-00252/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000380/event-f00152-00252/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000167/event-f01177-01277/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000167/event-f01177-01277/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000687/event-f00289-00389/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000687/event-f00289-00389/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000397/event-f01303-01403/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000397/event-f01303-01403/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000977/event-f01244-01344/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000977/event-f01244-01344/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000426/event-f01380-01480/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000426/event-f01380-01480/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000279/event-f01306-01406/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000279/event-f01306-01406/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000637/event-f00202-00302/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000637/event-f00202-00302/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000607/event-f00208-00308/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000607/event-f00208-00308/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000634/event-f00297-00397/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000634/event-f00297-00397/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000619/event-f00504-00604/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000619/event-f00504-00604/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000973/event-f01017-01117/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000973/event-f01017-01117/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000982/event-f00174-00274/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000982/event-f00174-00274/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000355/event-f00230-00330/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000355/event-f00230-00330/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000355/event-f00850-00950/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000355/event-f00850-00950/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000161/event-f00410-00510/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000161/event-f00410-00510/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000187/event-f00318-00418/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000187/event-f00318-00418/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000624/event-f01298-01398/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000624/event-f01298-01398/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000819/event-f00119-00219/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000819/event-f00119-00219/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000363/event-f00227-00327/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000363/event-f00227-00327/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000357/event-f00896-00996/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000357/event-f00896-00996/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000353/event-f00224-00324/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000353/event-f00224-00324/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000194/event-f00200-00300/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000194/event-f00200-00300/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000166/event-f00244-00344/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000166/event-f00244-00344/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000162/event-f01141-01241/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000162/event-f01141-01241/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000174/event-f00190-00290/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000174/event-f00190-00290/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000354/event-f00299-00399/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000354/event-f00299-00399/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/cache/triton-4",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/cache/triton-6",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-6"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/cache/triton-7",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-7"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/cache/triton-5",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-5"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step60-live/web/openings",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step60-live/openings-raw"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step60-live/web/openings-raw",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step60-live/openings-raw"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step60-live/openings-raw/clip-02",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step60-live/source-openings-raw/clip-02"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/checkpoints",
+    "target": "/home/param/models/trained-weights/pose-basic-opd-b336-20261031/checkpoints"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/checkpoints",
+    "target": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints"
+  },
+  {
+    "path": "/home/param/websites/rosie-live-demo/conditioning",
+    "target": "/home/param/pose-runs/opd-next-web-20261030/conditioning"
+  },
+  {
+    "path": "/home/param/websites/rosie-live-demo/srv/conditioning.json",
+    "target": "../conditioning/conditioning.json"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0jcE7Zb/codex-linux-sandbox",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0jcE7Zb/apply_patch",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0jcE7Zb/applypatch",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  }
+]

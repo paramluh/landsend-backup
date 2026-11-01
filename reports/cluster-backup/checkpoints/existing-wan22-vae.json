@@ -1,0 +1,18 @@
+{
+  "folder": "/home/param/models/imported-weights/wan22-vae",
+  "repo": "Wan-AI/Wan2.2-TI2V-5B",
+  "revision": "921dbaf3f1674a56f47e83fb80a34bac8a8f203e",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/wan22-vae/Wan2.2_VAE.pth",
+      "remote": "Wan2.2_VAE.pth",
+      "bytes": 2818839170,
+      "matched": true,
+      "cached_download_sha256": "20eb789667fa5e60e7516bf509512f6cb61f01b0aa0695eadaea930c13892b36",
+      "remote_sha256": "20eb789667fa5e60e7516bf509512f6cb61f01b0aa0695eadaea930c13892b36",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.2639816
+}

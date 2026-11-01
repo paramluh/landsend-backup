@@ -1,0 +1,585 @@
+{
+  "folder": "/home/param/models/imported-weights/ppm-pose6-mono17850-final",
+  "repo": "InternalCan/ppm-pose6-mono17850-final",
+  "revision": "71c9b718e1d927e0b26d89a9b225459fc3270dc9",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__4_0.distcp",
+      "remote": "export-357-dcp/__4_0.distcp",
+      "bytes": 1476968560,
+      "matched": true,
+      "cached_download_sha256": "316439cf75c9810ea427948c56f5ab0ee3bb644a03d7fdb2b79f0d5ca15000a2",
+      "remote_sha256": "316439cf75c9810ea427948c56f5ab0ee3bb644a03d7fdb2b79f0d5ca15000a2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__40_0.distcp",
+      "remote": "export-357-dcp/__40_0.distcp",
+      "bytes": 1376316815,
+      "matched": true,
+      "cached_download_sha256": "8e2ef701575e5bec351485238ca9348645d0e06b56d26622ef5b18cab7a680d8",
+      "remote_sha256": "8e2ef701575e5bec351485238ca9348645d0e06b56d26622ef5b18cab7a680d8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__38_0.distcp",
+      "remote": "export-357-dcp/__38_0.distcp",
+      "bytes": 1374226913,
+      "matched": true,
+      "cached_download_sha256": "a621147ace8d70ce6c17a897426e2f5fc4b78129ba29d66c8a119ffaed27bc8b",
+      "remote_sha256": "a621147ace8d70ce6c17a897426e2f5fc4b78129ba29d66c8a119ffaed27bc8b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__49_0.distcp",
+      "remote": "export-357-dcp/__49_0.distcp",
+      "bytes": 1376318863,
+      "matched": true,
+      "cached_download_sha256": "431b1ce1862d8ac26d27c7eac8db8a7c903cfc914a92b1eb012085d464808920",
+      "remote_sha256": "431b1ce1862d8ac26d27c7eac8db8a7c903cfc914a92b1eb012085d464808920",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__24_0.distcp",
+      "remote": "export-357-dcp/__24_0.distcp",
+      "bytes": 1374223224,
+      "matched": true,
+      "cached_download_sha256": "ed4c683cd6a8a5d9b0a49ef08a0bf98a5cbd32e768f5fdbc4e6619272d5eaec9",
+      "remote_sha256": "ed4c683cd6a8a5d9b0a49ef08a0bf98a5cbd32e768f5fdbc4e6619272d5eaec9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__56_0.distcp",
+      "remote": "export-357-dcp/__56_0.distcp",
+      "bytes": 1376318607,
+      "matched": true,
+      "cached_download_sha256": "278294a7968041a21ef5e4af8f27456cf93edf7fbeeed44beaac78f361ffed6b",
+      "remote_sha256": "278294a7968041a21ef5e4af8f27456cf93edf7fbeeed44beaac78f361ffed6b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__9_0.distcp",
+      "remote": "export-357-dcp/__9_0.distcp",
+      "bytes": 1378424883,
+      "matched": true,
+      "cached_download_sha256": "81bf0df8bb5fd70f90bb0ae0d8ad2016e9371ddcff0fa089c9bc8a6c8e8ee71f",
+      "remote_sha256": "81bf0df8bb5fd70f90bb0ae0d8ad2016e9371ddcff0fa089c9bc8a6c8e8ee71f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__35_0.distcp",
+      "remote": "export-357-dcp/__35_0.distcp",
+      "bytes": 1374226657,
+      "matched": true,
+      "cached_download_sha256": "6607d6264d2d3b10799639c38bd982c883e863abd6082df8cb431a05a68b2d99",
+      "remote_sha256": "6607d6264d2d3b10799639c38bd982c883e863abd6082df8cb431a05a68b2d99",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__47_0.distcp",
+      "remote": "export-357-dcp/__47_0.distcp",
+      "bytes": 1374223503,
+      "matched": true,
+      "cached_download_sha256": "b91968b552e7497478333e9ad6e8d290ef08f2f2b4f08cfbb969ae9b809f654c",
+      "remote_sha256": "b91968b552e7497478333e9ad6e8d290ef08f2f2b4f08cfbb969ae9b809f654c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__41_0.distcp",
+      "remote": "export-357-dcp/__41_0.distcp",
+      "bytes": 1374226913,
+      "matched": true,
+      "cached_download_sha256": "64effc678eb26cd958c4f5722d1e3957f4e00c13996d695561e6816b711a0d46",
+      "remote_sha256": "64effc678eb26cd958c4f5722d1e3957f4e00c13996d695561e6816b711a0d46",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__0_0.distcp",
+      "remote": "export-357-dcp/__0_0.distcp",
+      "bytes": 1346979010,
+      "matched": true,
+      "cached_download_sha256": "ca68f7cb0448018e006a4bc4e05ee38ca2b896021dd5dc874a6a28b0eecf0b08",
+      "remote_sha256": "ca68f7cb0448018e006a4bc4e05ee38ca2b896021dd5dc874a6a28b0eecf0b08",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__33_0.distcp",
+      "remote": "export-357-dcp/__33_0.distcp",
+      "bytes": 1376314726,
+      "matched": true,
+      "cached_download_sha256": "362ff56770cceb8a9d69bc0f05fb8e4ee8e226e28dcfa70e5f910cd09154cb0d",
+      "remote_sha256": "362ff56770cceb8a9d69bc0f05fb8e4ee8e226e28dcfa70e5f910cd09154cb0d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__57_0.distcp",
+      "remote": "export-357-dcp/__57_0.distcp",
+      "bytes": 1374230538,
+      "matched": true,
+      "cached_download_sha256": "b7d05a886efd515d2f16651c408dbb156d6baec35145a2110c16d1071a050da3",
+      "remote_sha256": "b7d05a886efd515d2f16651c408dbb156d6baec35145a2110c16d1071a050da3",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__34_0.distcp",
+      "remote": "export-357-dcp/__34_0.distcp",
+      "bytes": 1376316815,
+      "matched": true,
+      "cached_download_sha256": "232ebd4e1ec5ce521a4707c8988dd64b8cf7da1f0a8f8b002df628048dc4cd59",
+      "remote_sha256": "232ebd4e1ec5ce521a4707c8988dd64b8cf7da1f0a8f8b002df628048dc4cd59",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__54_0.distcp",
+      "remote": "export-357-dcp/__54_0.distcp",
+      "bytes": 1378421258,
+      "matched": true,
+      "cached_download_sha256": "e39b5fd055a61c21cab6da2848d7d0a621f33449ca9b19f38b1a5b33f94ca9e4",
+      "remote_sha256": "e39b5fd055a61c21cab6da2848d7d0a621f33449ca9b19f38b1a5b33f94ca9e4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__46_0.distcp",
+      "remote": "export-357-dcp/__46_0.distcp",
+      "bytes": 1378410557,
+      "matched": true,
+      "cached_download_sha256": "716538c08fc5d276a9ce0ca2778cc7a9dc661f38e9c47b17281ed3cd10369d2a",
+      "remote_sha256": "716538c08fc5d276a9ce0ca2778cc7a9dc661f38e9c47b17281ed3cd10369d2a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__59_0.distcp",
+      "remote": "export-357-dcp/__59_0.distcp",
+      "bytes": 1374224824,
+      "matched": true,
+      "cached_download_sha256": "02f4aacd02ab8e18e3bd383ae4fac631fb8b323006e45981c6417ca1dc401564",
+      "remote_sha256": "02f4aacd02ab8e18e3bd383ae4fac631fb8b323006e45981c6417ca1dc401564",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__63_0.distcp",
+      "remote": "export-357-dcp/__63_0.distcp",
+      "bytes": 1377784545,
+      "matched": true,
+      "cached_download_sha256": "7d4483db2b52353610c1345daeea20bd7a453c7a823edadc4fb8bdd1fcd3b503",
+      "remote_sha256": "7d4483db2b52353610c1345daeea20bd7a453c7a823edadc4fb8bdd1fcd3b503",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__18_0.distcp",
+      "remote": "export-357-dcp/__18_0.distcp",
+      "bytes": 1376318607,
+      "matched": true,
+      "cached_download_sha256": "6abc29af1329d89abbed41f625c24709a6036a1d6f63386752f335dc8500615d",
+      "remote_sha256": "6abc29af1329d89abbed41f625c24709a6036a1d6f63386752f335dc8500615d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__58_0.distcp",
+      "remote": "export-357-dcp/__58_0.distcp",
+      "bytes": 1374232371,
+      "matched": true,
+      "cached_download_sha256": "858d09933e3d054b57c8ea0748a73d2e7ecf261455bc20f70e83ffb40a8baa71",
+      "remote_sha256": "858d09933e3d054b57c8ea0748a73d2e7ecf261455bc20f70e83ffb40a8baa71",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__11_0.distcp",
+      "remote": "export-357-dcp/__11_0.distcp",
+      "bytes": 1376317880,
+      "matched": true,
+      "cached_download_sha256": "68881b19044f364610c39b8f6275434aba18919c03bc78de53805ac993218e8e",
+      "remote_sha256": "68881b19044f364610c39b8f6275434aba18919c03bc78de53805ac993218e8e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__15_0.distcp",
+      "remote": "export-357-dcp/__15_0.distcp",
+      "bytes": 1374235699,
+      "matched": true,
+      "cached_download_sha256": "b4dd626d07004cd71156765862868aed01ab311bb314ea5184401cee39e8ee91",
+      "remote_sha256": "b4dd626d07004cd71156765862868aed01ab311bb314ea5184401cee39e8ee91",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__62_0.distcp",
+      "remote": "export-357-dcp/__62_0.distcp",
+      "bytes": 1378426204,
+      "matched": true,
+      "cached_download_sha256": "e5864a9f360208de63dd240d8ee9942aa7ddc779e42439b0fd0753438d1bc181",
+      "remote_sha256": "e5864a9f360208de63dd240d8ee9942aa7ddc779e42439b0fd0753438d1bc181",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__61_0.distcp",
+      "remote": "export-357-dcp/__61_0.distcp",
+      "bytes": 1380512696,
+      "matched": true,
+      "cached_download_sha256": "a21178d1452735a12e9b59107029c963137c363145204a7b9f86a87ec5d3c495",
+      "remote_sha256": "a21178d1452735a12e9b59107029c963137c363145204a7b9f86a87ec5d3c495",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__48_0.distcp",
+      "remote": "export-357-dcp/__48_0.distcp",
+      "bytes": 1374259282,
+      "matched": true,
+      "cached_download_sha256": "b4fa9ca5bcdcd13ca006175c7c986c3de601ddffdf8c2d9ac386e2d2a9aa20af",
+      "remote_sha256": "b4fa9ca5bcdcd13ca006175c7c986c3de601ddffdf8c2d9ac386e2d2a9aa20af",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__8_0.distcp",
+      "remote": "export-357-dcp/__8_0.distcp",
+      "bytes": 1380511119,
+      "matched": true,
+      "cached_download_sha256": "a03510178c83ebc0ff8a9a2c52ebf28befe9cee467b8b21ed84606150907800a",
+      "remote_sha256": "a03510178c83ebc0ff8a9a2c52ebf28befe9cee467b8b21ed84606150907800a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__16_0.distcp",
+      "remote": "export-357-dcp/__16_0.distcp",
+      "bytes": 1376334469,
+      "matched": true,
+      "cached_download_sha256": "9527e5172ebcdbec1ebf8d18e23d403f0793225cd9f115bdbd4776bf138db097",
+      "remote_sha256": "9527e5172ebcdbec1ebf8d18e23d403f0793225cd9f115bdbd4776bf138db097",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__17_0.distcp",
+      "remote": "export-357-dcp/__17_0.distcp",
+      "bytes": 1378426378,
+      "matched": true,
+      "cached_download_sha256": "6f929cf6b04b8b1d8d26f50e9a307aa21c9c16e3a869cfae4e4b6a8547261b9b",
+      "remote_sha256": "6f929cf6b04b8b1d8d26f50e9a307aa21c9c16e3a869cfae4e4b6a8547261b9b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__21_0.distcp",
+      "remote": "export-357-dcp/__21_0.distcp",
+      "bytes": 1374223224,
+      "matched": true,
+      "cached_download_sha256": "50c486960ce97d47c1f3cfe15f12af6d3d791ac3d143ad8819748ccadfe1a6c5",
+      "remote_sha256": "50c486960ce97d47c1f3cfe15f12af6d3d791ac3d143ad8819748ccadfe1a6c5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__6_0.distcp",
+      "remote": "export-357-dcp/__6_0.distcp",
+      "bytes": 1376336855,
+      "matched": true,
+      "cached_download_sha256": "bf652cbbfb4cc437efa961b492c438184eba84cc119218e889716ad55644000f",
+      "remote_sha256": "bf652cbbfb4cc437efa961b492c438184eba84cc119218e889716ad55644000f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__14_0.distcp",
+      "remote": "export-357-dcp/__14_0.distcp",
+      "bytes": 1378425907,
+      "matched": true,
+      "cached_download_sha256": "a775f40b191462b06317cd2a87804feaae82338ba5a3a7441bf312db44c1a713",
+      "remote_sha256": "a775f40b191462b06317cd2a87804feaae82338ba5a3a7441bf312db44c1a713",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__12_0.distcp",
+      "remote": "export-357-dcp/__12_0.distcp",
+      "bytes": 1489556459,
+      "matched": true,
+      "cached_download_sha256": "f2976f7f69453bde8ff5d34cf183e258527b593b33cbc2a1a042251c0802ee72",
+      "remote_sha256": "f2976f7f69453bde8ff5d34cf183e258527b593b33cbc2a1a042251c0802ee72",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__55_0.distcp",
+      "remote": "export-357-dcp/__55_0.distcp",
+      "bytes": 1374230538,
+      "matched": true,
+      "cached_download_sha256": "0d965143e4caecc9847218ac5921022903b9834dd1700e79b6882edb0c81c635",
+      "remote_sha256": "0d965143e4caecc9847218ac5921022903b9834dd1700e79b6882edb0c81c635",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__45_0.distcp",
+      "remote": "export-357-dcp/__45_0.distcp",
+      "bytes": 1378410557,
+      "matched": true,
+      "cached_download_sha256": "3e67b8c68c20f528813da2b375cea3c63b7ae7c2404a3df9432eea255290a6c9",
+      "remote_sha256": "3e67b8c68c20f528813da2b375cea3c63b7ae7c2404a3df9432eea255290a6c9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__10_0.distcp",
+      "remote": "export-357-dcp/__10_0.distcp",
+      "bytes": 1376336599,
+      "matched": true,
+      "cached_download_sha256": "0a4abb082f9a821f2a499dd141f90b0be13cbf2dde5e686d9f96dd060787c8db",
+      "remote_sha256": "0a4abb082f9a821f2a499dd141f90b0be13cbf2dde5e686d9f96dd060787c8db",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__36_0.distcp",
+      "remote": "export-357-dcp/__36_0.distcp",
+      "bytes": 1376325130,
+      "matched": true,
+      "cached_download_sha256": "acaecbb0a2b0860f36222d6fbb778fad61f2543eac5d4ba62fae01066bacbab4",
+      "remote_sha256": "acaecbb0a2b0860f36222d6fbb778fad61f2543eac5d4ba62fae01066bacbab4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__43_0.distcp",
+      "remote": "export-357-dcp/__43_0.distcp",
+      "bytes": 1376320440,
+      "matched": true,
+      "cached_download_sha256": "39d3801be994cf08428a4a42a2a97fee1064bdcb79285ae1add888ec316059d8",
+      "remote_sha256": "39d3801be994cf08428a4a42a2a97fee1064bdcb79285ae1add888ec316059d8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__5_0.distcp",
+      "remote": "export-357-dcp/__5_0.distcp",
+      "bytes": 1376329308,
+      "matched": true,
+      "cached_download_sha256": "4ca34af666ec16e5d674eafce55dd7f50e914d161c4c0e0be3b572f73a59eda0",
+      "remote_sha256": "4ca34af666ec16e5d674eafce55dd7f50e914d161c4c0e0be3b572f73a59eda0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__29_0.distcp",
+      "remote": "export-357-dcp/__29_0.distcp",
+      "bytes": 1376323809,
+      "matched": true,
+      "cached_download_sha256": "8159f1ce2a5fcbf9e1d593ec1d3da3f9430402ddefbdc284aac0439c131e20af",
+      "remote_sha256": "8159f1ce2a5fcbf9e1d593ec1d3da3f9430402ddefbdc284aac0439c131e20af",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__60_0.distcp",
+      "remote": "export-357-dcp/__60_0.distcp",
+      "bytes": 1376316559,
+      "matched": true,
+      "cached_download_sha256": "40673351e7c19039225117c956a33b5ca8bfd4064108c79fa544ef0caf310e4c",
+      "remote_sha256": "40673351e7c19039225117c956a33b5ca8bfd4064108c79fa544ef0caf310e4c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__22_0.distcp",
+      "remote": "export-357-dcp/__22_0.distcp",
+      "bytes": 1374234204,
+      "matched": true,
+      "cached_download_sha256": "e1d906058dcdbc0e7f2e053234a3ab84657da9b9b19f58ae0cfa72e973b74f18",
+      "remote_sha256": "e1d906058dcdbc0e7f2e053234a3ab84657da9b9b19f58ae0cfa72e973b74f18",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__7_0.distcp",
+      "remote": "export-357-dcp/__7_0.distcp",
+      "bytes": 1380511119,
+      "matched": true,
+      "cached_download_sha256": "beb7306335757682136929831e183735937a286d701aeab0b64426ba3136e1b8",
+      "remote_sha256": "beb7306335757682136929831e183735937a286d701aeab0b64426ba3136e1b8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__19_0.distcp",
+      "remote": "export-357-dcp/__19_0.distcp",
+      "bytes": 1378421002,
+      "matched": true,
+      "cached_download_sha256": "d01cb45e84dcb3adba02ad862a06ed74bd8ff8283b10f6b31272fb13e3643ef1",
+      "remote_sha256": "d01cb45e84dcb3adba02ad862a06ed74bd8ff8283b10f6b31272fb13e3643ef1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__32_0.distcp",
+      "remote": "export-357-dcp/__32_0.distcp",
+      "bytes": 1374223224,
+      "matched": true,
+      "cached_download_sha256": "9100b4cbb56da339d472f4237ab81cba5e90acc186b8064a2a33b75a01d8e0d7",
+      "remote_sha256": "9100b4cbb56da339d472f4237ab81cba5e90acc186b8064a2a33b75a01d8e0d7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__28_0.distcp",
+      "remote": "export-357-dcp/__28_0.distcp",
+      "bytes": 1378411878,
+      "matched": true,
+      "cached_download_sha256": "7e2afcd538c609283898ce1d2291b2697080cb022c5681db58dd6b5516a582db",
+      "remote_sha256": "7e2afcd538c609283898ce1d2291b2697080cb022c5681db58dd6b5516a582db",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__31_0.distcp",
+      "remote": "export-357-dcp/__31_0.distcp",
+      "bytes": 1489556459,
+      "matched": true,
+      "cached_download_sha256": "aa2aca3a42e49d8e7ea9f554229af5853b9ebdcfd3b8865a1fd050714ea0017f",
+      "remote_sha256": "aa2aca3a42e49d8e7ea9f554229af5853b9ebdcfd3b8865a1fd050714ea0017f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__50_0.distcp",
+      "remote": "export-357-dcp/__50_0.distcp",
+      "bytes": 1504248033,
+      "matched": true,
+      "cached_download_sha256": "f2055e829b95cdb17bfb3b959984c310c9165ee4399cd0aff660cd84de6ff9aa",
+      "remote_sha256": "f2055e829b95cdb17bfb3b959984c310c9165ee4399cd0aff660cd84de6ff9aa",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__30_0.distcp",
+      "remote": "export-357-dcp/__30_0.distcp",
+      "bytes": 1378413967,
+      "matched": true,
+      "cached_download_sha256": "27c072d34434f5c589a3dec4a304b6b247a71f20a138d139d75ef0d3c0ef246a",
+      "remote_sha256": "27c072d34434f5c589a3dec4a304b6b247a71f20a138d139d75ef0d3c0ef246a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__13_0.distcp",
+      "remote": "export-357-dcp/__13_0.distcp",
+      "bytes": 1375280435,
+      "matched": true,
+      "cached_download_sha256": "0c6a14617ccfee49419feb0e48504dae7b7bcca6c6357ee10bc02e14d6ce4e64",
+      "remote_sha256": "0c6a14617ccfee49419feb0e48504dae7b7bcca6c6357ee10bc02e14d6ce4e64",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__52_0.distcp",
+      "remote": "export-357-dcp/__52_0.distcp",
+      "bytes": 1374232115,
+      "matched": true,
+      "cached_download_sha256": "1988bab785b846fe4db276871f26f743ce53b6fb875bdd5ba71d9bf92fd50387",
+      "remote_sha256": "1988bab785b846fe4db276871f26f743ce53b6fb875bdd5ba71d9bf92fd50387",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__51_0.distcp",
+      "remote": "export-357-dcp/__51_0.distcp",
+      "bytes": 1374226401,
+      "matched": true,
+      "cached_download_sha256": "51d1450ce9f246d15562689e18210d3d8a60c1385ff618879eabb1c0c1c3bead",
+      "remote_sha256": "51d1450ce9f246d15562689e18210d3d8a60c1385ff618879eabb1c0c1c3bead",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__23_0.distcp",
+      "remote": "export-357-dcp/__23_0.distcp",
+      "bytes": 1378430341,
+      "matched": true,
+      "cached_download_sha256": "17b3a3db5b1b98552185e0026961a288158ed199a20de741de3a6f9eb0a1e3df",
+      "remote_sha256": "17b3a3db5b1b98552185e0026961a288158ed199a20de741de3a6f9eb0a1e3df",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__20_0.distcp",
+      "remote": "export-357-dcp/__20_0.distcp",
+      "bytes": 1376329523,
+      "matched": true,
+      "cached_download_sha256": "551387e562536d3d1937f04934b437465101e3e08da584f76502c69d32ea8da3",
+      "remote_sha256": "551387e562536d3d1937f04934b437465101e3e08da584f76502c69d32ea8da3",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__53_0.distcp",
+      "remote": "export-357-dcp/__53_0.distcp",
+      "bytes": 1376324065,
+      "matched": true,
+      "cached_download_sha256": "8a3ef32cd1ec444bef26c9ebfe8ee55c2ca4fb5dbaf5c9a4a2948bb9ef0f68fe",
+      "remote_sha256": "8a3ef32cd1ec444bef26c9ebfe8ee55c2ca4fb5dbaf5c9a4a2948bb9ef0f68fe",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__2_0.distcp",
+      "remote": "export-357-dcp/__2_0.distcp",
+      "bytes": 1374226401,
+      "matched": true,
+      "cached_download_sha256": "c41c4cb65b63bb4eef2afa4640b031c9486c8b8ec0b4955197f3262aeaf94bbe",
+      "remote_sha256": "c41c4cb65b63bb4eef2afa4640b031c9486c8b8ec0b4955197f3262aeaf94bbe",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__26_0.distcp",
+      "remote": "export-357-dcp/__26_0.distcp",
+      "bytes": 1378430044,
+      "matched": true,
+      "cached_download_sha256": "42f3e7d4b9d764595c985c6d557cdbd7efe6492b69760edfedb7c64732021b3f",
+      "remote_sha256": "42f3e7d4b9d764595c985c6d557cdbd7efe6492b69760edfedb7c64732021b3f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__42_0.distcp",
+      "remote": "export-357-dcp/__42_0.distcp",
+      "bytes": 1376327475,
+      "matched": true,
+      "cached_download_sha256": "ae760f550689a064dbfe22093ccd7f8756a609cb9d6c47d5ac6961855338bec6",
+      "remote_sha256": "ae760f550689a064dbfe22093ccd7f8756a609cb9d6c47d5ac6961855338bec6",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__1_0.distcp",
+      "remote": "export-357-dcp/__1_0.distcp",
+      "bytes": 1377374177,
+      "matched": true,
+      "cached_download_sha256": "b39f184677cfe658336b8adfd4c8b02738521d31e0f3859c3bcf90cfecdc67aa",
+      "remote_sha256": "b39f184677cfe658336b8adfd4c8b02738521d31e0f3859c3bcf90cfecdc67aa",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__44_0.distcp",
+      "remote": "export-357-dcp/__44_0.distcp",
+      "bytes": 1374225080,
+      "matched": true,
+      "cached_download_sha256": "2b90a8be524d55fa90423b0c7cc887f4653c3c7c22b2c726baddcd54b545a894",
+      "remote_sha256": "2b90a8be524d55fa90423b0c7cc887f4653c3c7c22b2c726baddcd54b545a894",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__3_0.distcp",
+      "remote": "export-357-dcp/__3_0.distcp",
+      "bytes": 1374228490,
+      "matched": true,
+      "cached_download_sha256": "0301b19d1729d62a2baf5155d7e7c3175c2831ef2bcadc38b1de6568a11a016b",
+      "remote_sha256": "0301b19d1729d62a2baf5155d7e7c3175c2831ef2bcadc38b1de6568a11a016b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__27_0.distcp",
+      "remote": "export-357-dcp/__27_0.distcp",
+      "bytes": 1376322273,
+      "matched": true,
+      "cached_download_sha256": "3bf2ae7b67cdac54265a6b89dc062443fbbe180cba6ed4398bcb54d964526028",
+      "remote_sha256": "3bf2ae7b67cdac54265a6b89dc062443fbbe180cba6ed4398bcb54d964526028",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__25_0.distcp",
+      "remote": "export-357-dcp/__25_0.distcp",
+      "bytes": 1374228705,
+      "matched": true,
+      "cached_download_sha256": "b9bc9c9477e38827ef6c58d96fd00762db0746318acb02fb74f4de0469f558ae",
+      "remote_sha256": "b9bc9c9477e38827ef6c58d96fd00762db0746318acb02fb74f4de0469f558ae",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__39_0.distcp",
+      "remote": "export-357-dcp/__39_0.distcp",
+      "bytes": 1376327690,
+      "matched": true,
+      "cached_download_sha256": "79967d4c6e2d1eca9f6e1c7760a585c7907b6e439e9b5cc5b5595844ca00dab7",
+      "remote_sha256": "79967d4c6e2d1eca9f6e1c7760a585c7907b6e439e9b5cc5b5595844ca00dab7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-pose6-mono17850-final/export-357-dcp/__37_0.distcp",
+      "remote": "export-357-dcp/__37_0.distcp",
+      "bytes": 1374224824,
+      "matched": true,
+      "cached_download_sha256": "0d93070cd8173a2f77d35ec0cfe5d43f8517f50e33b447b42c00aa03e3969f70",
+      "remote_sha256": "0d93070cd8173a2f77d35ec0cfe5d43f8517f50e33b447b42c00aa03e3969f70",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.110646
+}

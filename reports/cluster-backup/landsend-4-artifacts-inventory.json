@@ -1,0 +1,72 @@
+{
+  "host": "landsend-4",
+  "roots": {
+    "/home/param/outputs": {
+      "du": "17286783451\t/home/param/outputs",
+      "children": [
+        "pose-mono-dcp227-export",
+        "landsend-backup-20261031"
+      ]
+    },
+    "/home/param/runs": {
+      "du": "13978010718\t/home/param/runs",
+      "children": [
+        "pose-runs",
+        "smokes"
+      ]
+    },
+    "/home/param/datasets": {
+      "du": "308107466094\t/home/param/datasets",
+      "children": [
+        "zoom-strangers-5k",
+        "pose-demo",
+        "xabi-v2pure-cache",
+        "aloe-duplex"
+      ]
+    },
+    "/home/param/websites": {
+      "du": "18871081\t/home/param/websites",
+      "children": [
+        "pose-renderer",
+        "pose-playground",
+        "pose-monoplex-engine",
+        "pose-duplex-engine"
+      ]
+    },
+    "/home/param/.codex": {
+      "du": "445947603\t/home/param/.codex",
+      "children": [
+        "auth.json",
+        "packages",
+        "tmp"
+      ]
+    }
+  },
+  "tmp": [
+    {
+      "name": "pose-git-lfs.deb",
+      "bytes": 3908174,
+      "dir": false
+    },
+    {
+      "name": "hf-cli-install-param.sh",
+      "bytes": 18355,
+      "dir": false
+    },
+    {
+      "name": "pose-environment-landsend-4.json",
+      "bytes": 3500,
+      "dir": false
+    },
+    {
+      "name": "pose-git-lfs-install.log",
+      "bytes": 302,
+      "dir": false
+    },
+    {
+      "name": "hf-get-pip-param.py",
+      "bytes": 2234489,
+      "dir": false
+    }
+  ]
+}

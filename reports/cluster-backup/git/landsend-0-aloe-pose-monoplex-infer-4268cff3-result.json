@@ -1,0 +1,29 @@
+{
+  "host": "landsend-0",
+  "repo": "/home/param/websites/aloe-pose-monoplex-infer",
+  "common": "/home/param/websites/aloe-pose-monoplex-infer/.git",
+  "commit": "011cb286235ce2f1d68425e602c4b3f1025048e9",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-0-aloe-pose-monoplex-infer-4268cff3.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/home/param/websites/aloe-pose-monoplex-infer",
+      "common": "/home/param/websites/aloe-pose-monoplex-infer/.git",
+      "branch": "main",
+      "original_head": "6ca0f89f5918cb5a72c89fbf8cfccbba3c229617",
+      "staged_commit": null,
+      "working_commit": "a6b42e35bb2d8a24a8cecc05db0a8eb3327fcb49",
+      "tree": "359f297343336f5e341a019420c76b3b46d0fa97",
+      "excluded": [],
+      "untracked_added": 0,
+      "status_count": 0,
+      "remotes": [
+        "origin\tgit@github.com:canopy-labs-internal/aloe-pose-monoplex-infer.git (fetch)",
+        "origin\tgit@github.com:canopy-labs-internal/aloe-pose-monoplex-infer.git (push)"
+      ]
+    }
+  ],
+  "local_branches": [
+    "refs/heads/main 6ca0f89f5918cb5a72c89fbf8cfccbba3c229617"
+  ]
+}

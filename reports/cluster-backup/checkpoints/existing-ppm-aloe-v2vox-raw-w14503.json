@@ -1,0 +1,234 @@
+{
+  "folder": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503",
+  "repo": "InternalCan/ppm-aloe-v2vox-raw-w14503",
+  "revision": "40869a83b5052b081236e060484f08511cec9f8c",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank5.pt",
+      "remote": "export-253/rank5.pt",
+      "bytes": 3217011485,
+      "matched": true,
+      "cached_download_sha256": "7a412a1c38b25d098604e218da5b77fa8e4c9bceab8412074eba2dca41e25b6f",
+      "remote_sha256": "7a412a1c38b25d098604e218da5b77fa8e4c9bceab8412074eba2dca41e25b6f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank7.pt",
+      "remote": "export-253/rank7.pt",
+      "bytes": 3217011485,
+      "matched": true,
+      "cached_download_sha256": "c1162ed624631136752b75d4f20da40a66ec53ec128fd0cedf753e2dbcd60bb8",
+      "remote_sha256": "c1162ed624631136752b75d4f20da40a66ec53ec128fd0cedf753e2dbcd60bb8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank15.pt",
+      "remote": "export-253/rank15.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "1b61a6e94c21a840b6c2ce863f86e4a16ab5d113fd404d1eb38068e085f7dcb7",
+      "remote_sha256": "1b61a6e94c21a840b6c2ce863f86e4a16ab5d113fd404d1eb38068e085f7dcb7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank19.pt",
+      "remote": "export-253/rank19.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "898ca3e3ce2d5b6159fa0efb4b64331fd7a3a5fd6f3c319c3a6abca461c8d02c",
+      "remote_sha256": "898ca3e3ce2d5b6159fa0efb4b64331fd7a3a5fd6f3c319c3a6abca461c8d02c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank4.pt",
+      "remote": "export-253/rank4.pt",
+      "bytes": 3217011485,
+      "matched": true,
+      "cached_download_sha256": "a7d645384d986647517a376bfa4c81dfdee9756ccfb3fa5f81e899aa30873db5",
+      "remote_sha256": "a7d645384d986647517a376bfa4c81dfdee9756ccfb3fa5f81e899aa30873db5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank22.pt",
+      "remote": "export-253/rank22.pt",
+      "bytes": 3216999816,
+      "matched": true,
+      "cached_download_sha256": "2f040d3aa03b5df555434a70561478e00102872f3f6f1983f3b70c05a3f2703d",
+      "remote_sha256": "2f040d3aa03b5df555434a70561478e00102872f3f6f1983f3b70c05a3f2703d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank20.pt",
+      "remote": "export-253/rank20.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "86780981071c8cf2ee52f9c44f9e1ec205152651eaef545b16d574a76ec7477d",
+      "remote_sha256": "86780981071c8cf2ee52f9c44f9e1ec205152651eaef545b16d574a76ec7477d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank18.pt",
+      "remote": "export-253/rank18.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "447600519df3a802eadc125b0e7385a689cf1535992ad183c0767e23a0ab6a24",
+      "remote_sha256": "447600519df3a802eadc125b0e7385a689cf1535992ad183c0767e23a0ab6a24",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank11.pt",
+      "remote": "export-253/rank11.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "bed32fbb8e5aa54d61dfbda037161a25bb07ec3859a51b234ab42b5bea38d94a",
+      "remote_sha256": "bed32fbb8e5aa54d61dfbda037161a25bb07ec3859a51b234ab42b5bea38d94a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank6.pt",
+      "remote": "export-253/rank6.pt",
+      "bytes": 3217011485,
+      "matched": true,
+      "cached_download_sha256": "8822e864c72875675d6849c1b3e13addb906e68d0daa6a6f245ef936c19bb1c7",
+      "remote_sha256": "8822e864c72875675d6849c1b3e13addb906e68d0daa6a6f245ef936c19bb1c7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank0.pt",
+      "remote": "export-253/rank0.pt",
+      "bytes": 3217042461,
+      "matched": true,
+      "cached_download_sha256": "975bfdcbbb6bafd18cf02548e8a037793e2babe9a0a7d33988b1dae9167edb38",
+      "remote_sha256": "975bfdcbbb6bafd18cf02548e8a037793e2babe9a0a7d33988b1dae9167edb38",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank2.pt",
+      "remote": "export-253/rank2.pt",
+      "bytes": 3217011485,
+      "matched": true,
+      "cached_download_sha256": "851969332ce20e2f142ac654951812c134e560d8fe6427e4d924a99b7bc21884",
+      "remote_sha256": "851969332ce20e2f142ac654951812c134e560d8fe6427e4d924a99b7bc21884",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank1.pt",
+      "remote": "export-253/rank1.pt",
+      "bytes": 3217011485,
+      "matched": true,
+      "cached_download_sha256": "cc043336808104c6fe68445809797c7e327b24845c369066143f8f273a7317b9",
+      "remote_sha256": "cc043336808104c6fe68445809797c7e327b24845c369066143f8f273a7317b9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rep.pt",
+      "remote": "export-253/rep.pt",
+      "bytes": 1150501259,
+      "matched": true,
+      "cached_download_sha256": "fde40b668f890e2eb9ffa01d4a7c227ffd7b5b947aa0d244dca9c4fa7cbb0314",
+      "remote_sha256": "fde40b668f890e2eb9ffa01d4a7c227ffd7b5b947aa0d244dca9c4fa7cbb0314",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank13.pt",
+      "remote": "export-253/rank13.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "7b1569e379489b02e06c2576ec5c2b6f209addac66bc5c06dc15c6d12430921f",
+      "remote_sha256": "7b1569e379489b02e06c2576ec5c2b6f209addac66bc5c06dc15c6d12430921f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank8.pt",
+      "remote": "export-253/rank8.pt",
+      "bytes": 3217011485,
+      "matched": true,
+      "cached_download_sha256": "97be2fb155cc264bce8052f65a38a18ae1197c387554cbd9077e299880f934b1",
+      "remote_sha256": "97be2fb155cc264bce8052f65a38a18ae1197c387554cbd9077e299880f934b1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank17.pt",
+      "remote": "export-253/rank17.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "556e8fb67bf34f06c1fe801dbde181149d620c60a5f5528a9ba9cbf29d708ce1",
+      "remote_sha256": "556e8fb67bf34f06c1fe801dbde181149d620c60a5f5528a9ba9cbf29d708ce1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank12.pt",
+      "remote": "export-253/rank12.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "9ab9ed99645d572b4953fc8492ffa8d678f295a193efeb2397a98b120b7f8d08",
+      "remote_sha256": "9ab9ed99645d572b4953fc8492ffa8d678f295a193efeb2397a98b120b7f8d08",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank9.pt",
+      "remote": "export-253/rank9.pt",
+      "bytes": 3217011485,
+      "matched": true,
+      "cached_download_sha256": "d3417aa761b079a85e41c3f9e013e146116e1bfeefd22268d45258d7082b74a7",
+      "remote_sha256": "d3417aa761b079a85e41c3f9e013e146116e1bfeefd22268d45258d7082b74a7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank14.pt",
+      "remote": "export-253/rank14.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "d3c9a5648173b092a926f89ddbe954b1d4d1184a1c026211e3da4e56a5efa24f",
+      "remote_sha256": "d3c9a5648173b092a926f89ddbe954b1d4d1184a1c026211e3da4e56a5efa24f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank23.pt",
+      "remote": "export-253/rank23.pt",
+      "bytes": 3096472968,
+      "matched": true,
+      "cached_download_sha256": "b6593ebd89f1eed7f34f1fc090030afc0955893dc29aebe84e5dc404dfb937c7",
+      "remote_sha256": "b6593ebd89f1eed7f34f1fc090030afc0955893dc29aebe84e5dc404dfb937c7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank10.pt",
+      "remote": "export-253/rank10.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "42641868a8ee2fddc0a2e534b22cbc441292cc7317699c3fac98f869644d0665",
+      "remote_sha256": "42641868a8ee2fddc0a2e534b22cbc441292cc7317699c3fac98f869644d0665",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank3.pt",
+      "remote": "export-253/rank3.pt",
+      "bytes": 3217011485,
+      "matched": true,
+      "cached_download_sha256": "4f8447667fe0b61498963ddd06a95b12664ebc0d68231207044d4a50f9bc3de1",
+      "remote_sha256": "4f8447667fe0b61498963ddd06a95b12664ebc0d68231207044d4a50f9bc3de1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank21.pt",
+      "remote": "export-253/rank21.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "cce37a861ea0348dabc951294ff6030121db6407eded11fab7f78dba8cde1860",
+      "remote_sha256": "cce37a861ea0348dabc951294ff6030121db6407eded11fab7f78dba8cde1860",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-v2vox-raw-w14503/export-253/rank16.pt",
+      "remote": "export-253/rank16.pt",
+      "bytes": 3217012616,
+      "matched": true,
+      "cached_download_sha256": "9318579f1cc7ded9c102b309c976eaf9dd89d43a61ada86476abc5f5d5eeb916",
+      "remote_sha256": "9318579f1cc7ded9c102b309c976eaf9dd89d43a61ada86476abc5f5d5eeb916",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.3245025
+}

@@ -1,0 +1,502 @@
+{
+  "host": "landsend-0",
+  "roots": {
+    "/home/param/outputs": {
+      "du": "108933062631\t/home/param/outputs",
+      "children": [
+        "pose-opd-overlay-20261031",
+        "pose-prefill-investigation-48f6d2d3",
+        "pose-opd-video-worker-20261031",
+        "pose-opd-general-audio-stage",
+        "pose-opd-reverse-proxy",
+        "pose-opd-credit-launch-attempt2",
+        "organization-20261029",
+        "pose-opd-teacher-partner-faststate",
+        "pose-basic-opd-benchmark-prepare-b.log",
+        "pose-opd-live-step89-validation",
+        "pose-opd-light-split",
+        "pose-opd-student211-stage-node5",
+        "pose-basic-opd-benchmark-20261031-b",
+        "pose-opd-credit-website-handoff.json",
+        "pose-opd-faststate-check-v1",
+        "pose-opd-credit-live",
+        "pose-opd-credit-model-inspection",
+        "pose-opd-teacher-partner-bench",
+        "pose-basic-opd-b336-live-20261031",
+        "pose-opd-teacher-partner-b336-preparation",
+        "pose-basic-opd-benchmark-20261031-c",
+        "pose-mono-dcp227-export-tools",
+        "pose-opd-symmetric-production-launch-20261031",
+        "pose-opd-teacher-partner-b336-fullbench",
+        "pose-opd-inference-step89",
+        "amu-actor-import",
+        "pose-opd-symmetric-b336-website-pad0-live-20261031",
+        "pose-basic-opd-benchmark-prepare-c.log",
+        "pose-opd-teacher-partner-shortmatrix",
+        "pose-basic-opd-benchmark-prepare-d.log",
+        "pose-ar-logits-20261030",
+        "pose-opd-symmetric-pad-sweep-20261031",
+        "pose-basic-opd-cpu-tests.log",
+        "pose-basic-opd-final-targeted-tests.log",
+        "pose-opd-student211-stage-nodes",
+        "pose-opd-rollout-allocation-audit",
+        "pose-opd-teacher-partner-b336-quickbench",
+        "pose-basic-opd-dashboard-tests.log",
+        "pose-opd-alignment-analysis-20261031",
+        "pose-opd-credit-bench",
+        "pose-opd-general-parent-validation-20261031",
+        "pose-opd-conversation-trials-20261031",
+        "pose-opd-symmetric-train-smoke-20261031",
+        "pose-basic-opd-benchmark-start-d.log",
+        "pose-opd-rosie-site-audit",
+        "pose-ar-rollout-20261031",
+        "pose-ar-diagnostics-20261030",
+        "pose-opd-teacher-partner-b336-quickbench-v2",
+        "pose-opd-teacher-partner-b336-general-live-20261031",
+        "pose-opd-fanout56-validation-plan",
+        "pose-opd-actor-gather-benchmark",
+        "pose-opd-teacher-partner-launch",
+        "pose-opd-credit-live-attempt2",
+        "pose-opd-oscillation-audit-20261031",
+        "pose-opd-credit-preflight-raw",
+        "pose-opd-delivery-delay-benchmark-20261031",
+        "pose-opd-loss-gradient-cuda-check",
+        "pose-opd-video-dashboard-stage-20261031",
+        "pose-opd-inference-step60",
+        "pose-basic-opd-benchmark-20261031-d",
+        "pose-opd-credit-preflight-optional-clip",
+        "opd-next-sft-preparation",
+        "pose-opd-dashboard-comparison-stage-20261031",
+        "pose-basic-opd-benchmark-start-b.log",
+        "pose-opd-rollout-opt-full",
+        "pose-opd-teacher-partner-b448-preparation",
+        "pose-opd-rollout-opt-projections",
+        "pose-opd-credit-launch",
+        "pose-opd-dashboard-logging-check.json",
+        "pose-basic-opd-benchmark-prepare.log",
+        "pose-opd-rollout-opt-mimi",
+        "pose-ar-rollout-20261030",
+        "pose-opd-fanout-check-v1",
+        "pose-opd-layout-benchmark-20261031",
+        "pose-basic-opd-benchmark-start.log",
+        "pose-opd-teacher-partner-launch-20261031",
+        "pose-opd-teacher-partner-b336-fullbench-v2",
+        "pose-basic-opd-benchmark-20261031",
+        "tmp-artifacts",
+        "pose-basic-opd-launch-20261031",
+        "pose-opd-general-parent-trials-20261031",
+        "pose-opd-delay72-benchmark",
+        "pose-opd-symmetric-audit-20261031",
+        "black-band-annotations-20261030",
+        "repo-artifacts",
+        "pose-opd-website-pad-sweep-20261031",
+        "landsend-backup-20261031"
+      ]
+    },
+    "/home/param/runs": {
+      "du": "49974633816\t/home/param/runs",
+      "children": [
+        "failed",
+        "pose-runs",
+        "smokes"
+      ]
+    },
+    "/home/param/datasets": {
+      "du": "331098736105\t/home/param/datasets",
+      "children": [
+        "zoom-strangers-5k",
+        "pose-demo",
+        "pose-duplex",
+        "blackband-repro-20261031",
+        "xabi-v2pure-cache",
+        "aloe-duplex"
+      ]
+    },
+    "/home/param/websites": {
+      "du": "64568271251\t/home/param/websites",
+      "children": [
+        "aloe-pose-duplex",
+        "pose-mono-dcp227-deploy",
+        "pose-opd-credit-dashboard",
+        "aloe-pose-monoplex-infer",
+        "heldout-comparison",
+        "pose-ar-diagnostics",
+        "request-studio",
+        "pose-renderer",
+        "page-templates",
+        "pose-playground",
+        "rosie-voice-clips",
+        "pose-monoplex-engine",
+        "pose-duplex-engine",
+        "rosie-live-demo",
+        "pose-demo-website"
+      ]
+    },
+    "/home/param/.codex": {
+      "du": "1599562526\t/home/param/.codex",
+      "children": [
+        "memories_1.sqlite",
+        "logs_2.sqlite-wal",
+        "state_5.sqlite-shm",
+        "state_5.sqlite",
+        "session_index.jsonl",
+        "shell_snapshots",
+        ".tmp",
+        "logs_2.sqlite",
+        "visualizations",
+        "queue_1.sqlite-wal",
+        "attachments",
+        "goals_1.sqlite",
+        "state_5.sqlite-wal",
+        "sessions",
+        "history.jsonl",
+        ".sqlite-maintenance.lock",
+        "plugins",
+        ".sandbox_migration",
+        "logs_2.sqlite-shm",
+        "app-server-control",
+        "config.toml",
+        "auth.json",
+        "installation_id",
+        "packages",
+        "skills",
+        "thread-writer-locks",
+        "version.json",
+        "tui-thread-reference-capabilities",
+        "tmp",
+        "models_cache.json",
+        "thread_history_1.sqlite",
+        "goals_1.sqlite-shm",
+        "app-server-daemon",
+        "goals_1.sqlite-wal",
+        "queue_1.sqlite-shm",
+        "thread_history_1.sqlite-wal",
+        "queue_1.sqlite",
+        "cache",
+        "thread_history_1.sqlite-shm"
+      ]
+    }
+  },
+  "tmp": [
+    {
+      "name": "stage_mono_site.py",
+      "bytes": 1888,
+      "dir": false
+    },
+    {
+      "name": "save_main_qa.py",
+      "bytes": 3974,
+      "dir": false
+    },
+    {
+      "name": "save_old_qa.py",
+      "bytes": 2716,
+      "dir": false
+    },
+    {
+      "name": "pose-opd-final-dashboard.html",
+      "bytes": 257854,
+      "dir": false
+    },
+    {
+      "name": "pose-environment-landsend-0.json",
+      "bytes": 66,
+      "dir": false
+    },
+    {
+      "name": "hf-cli-install-param.sh",
+      "bytes": 18355,
+      "dir": false
+    },
+    {
+      "name": "pose-opd-live-ui-check",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "pose_native_head_check.py",
+      "bytes": 6231,
+      "dir": false
+    },
+    {
+      "name": "pose-hf-checkout-recovery-37ix7i2i",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "probe_jump_semantics.py",
+      "bytes": 1424,
+      "dir": false
+    },
+    {
+      "name": "pytorch-errorfile-a_t2t6hy.pickle",
+      "bytes": 643,
+      "dir": false
+    },
+    {
+      "name": "pose-dataset-audit",
+      "bytes": 52,
+      "dir": true
+    },
+    {
+      "name": "debug-cli.param.log",
+      "bytes": 53,
+      "dir": false
+    },
+    {
+      "name": "pose_opd_frame0_drop_manifest.json",
+      "bytes": 4168,
+      "dir": false
+    },
+    {
+      "name": "add-overlay-fullscreen.py",
+      "bytes": 4992,
+      "dir": false
+    },
+    {
+      "name": "check_pose_frontend.py",
+      "bytes": 3429,
+      "dir": false
+    },
+    {
+      "name": "audit_guided_prefill_independent.py",
+      "bytes": 12839,
+      "dir": false
+    },
+    {
+      "name": "pose-opd-dashboard-logging-before.json",
+      "bytes": 862,
+      "dir": false
+    },
+    {
+      "name": "pose-hf-overlay-final.html",
+      "bytes": 3696,
+      "dir": false
+    },
+    {
+      "name": "pose-research-ppm-training",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "pose-opd-live-ui-check-48f",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "update-parallel-studio.py",
+      "bytes": 8804,
+      "dir": false
+    },
+    {
+      "name": "canopy-labs",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "pose-dashboard-logging-baseline",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "pose-samples-current.js",
+      "bytes": 19694,
+      "dir": false
+    },
+    {
+      "name": "audit_pose_datasets_20261029.py",
+      "bytes": 4203,
+      "dir": false
+    },
+    {
+      "name": "gallery-contract-8f9o7xkf",
+      "bytes": 59,
+      "dir": true
+    },
+    {
+      "name": "pose-tokenizer-pinned-meta",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "v5_group_probe.py",
+      "bytes": 1313,
+      "dir": false
+    },
+    {
+      "name": "update-native-studio.py",
+      "bytes": 11261,
+      "dir": false
+    },
+    {
+      "name": "hf-pose-import-20261030",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "make_blackband_launcher.py",
+      "bytes": 9713,
+      "dir": false
+    },
+    {
+      "name": "pose-overlay-ui-block.html",
+      "bytes": 8284,
+      "dir": false
+    },
+    {
+      "name": "codex-bwrap-synthetic-mount-targets-1003",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "pytorch-errorfile-1late1gt.pickle",
+      "bytes": 643,
+      "dir": false
+    },
+    {
+      "name": "pose-lineage-metadata",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "hf-install.sh",
+      "bytes": 18355,
+      "dir": false
+    },
+    {
+      "name": "save_xabi_qa.py",
+      "bytes": 2353,
+      "dir": false
+    },
+    {
+      "name": "training-registry-head.json",
+      "bytes": 61,
+      "dir": false
+    },
+    {
+      "name": "pose-research-tokenizer",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "pose_dashboard_baseline.py",
+      "bytes": 11466,
+      "dir": false
+    },
+    {
+      "name": "fit_step.py",
+      "bytes": 687,
+      "dir": false
+    },
+    {
+      "name": "mot-14b-base-download.log",
+      "bytes": 59,
+      "dir": false
+    },
+    {
+      "name": "pose-opd-current-dashboard-telemetry.json",
+      "bytes": 380171,
+      "dir": false
+    },
+    {
+      "name": "tmux-1003",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "pose-teacher-partner-prepare-schedule",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "pose-uv-install.sh",
+      "bytes": 71300,
+      "dir": false
+    },
+    {
+      "name": "pose-comparison-browser",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "basic_patch_runtime.py",
+      "bytes": 841,
+      "dir": false
+    },
+    {
+      "name": "summarize_pose_datasets_20261029.py",
+      "bytes": 6982,
+      "dir": false
+    },
+    {
+      "name": "pose-research-dataset-meta",
+      "bytes": 60,
+      "dir": true
+    },
+    {
+      "name": "audit_guided_independent.py",
+      "bytes": 9799,
+      "dir": false
+    },
+    {
+      "name": "pose-overlay-audit-20261029",
+      "bytes": 61,
+      "dir": true
+    },
+    {
+      "name": "pose-opd-live-opening-check",
+      "bytes": 4096,
+      "dir": true
+    },
+    {
+      "name": "pose-hand-review-public.html",
+      "bytes": 44722,
+      "dir": false
+    },
+    {
+      "name": "opd-rosie-proxy-health.json",
+      "bytes": 160,
+      "dir": false
+    },
+    {
+      "name": "v5_probe.py",
+      "bytes": 1614,
+      "dir": false
+    },
+    {
+      "name": "qa_controls.py",
+      "bytes": 988,
+      "dir": false
+    },
+    {
+      "name": "duplex-distill-hf-git-credential.py",
+      "bytes": 403,
+      "dir": false
+    },
+    {
+      "name": "pose-gh-install.log",
+      "bytes": 53,
+      "dir": false
+    },
+    {
+      "name": "configure_mono_site.py",
+      "bytes": 3231,
+      "dir": false
+    },
+    {
+      "name": "pose_frontend_patch.py",
+      "bytes": 10296,
+      "dir": false
+    },
+    {
+      "name": "pose-git-lfs-install.log",
+      "bytes": 58,
+      "dir": false
+    },
+    {
+      "name": "hf-get-pip-param.py",
+      "bytes": 2234489,
+      "dir": false
+    }
+  ]
+}

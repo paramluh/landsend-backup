@@ -1,0 +1,36 @@
+[
+  {
+    "host": "landsend-1",
+    "path": "/home/param/vansh-video-models",
+    "common": "/home/param/vansh-video-models/.git",
+    "branch": "param/bimodal",
+    "original_head": "26cedf69db7257658de7f6e53bae4972dac0f20b",
+    "staged_commit": null,
+    "working_commit": "17d4ff19e9883d7453bd5549a54fad97d68cd839",
+    "tree": "7d5c188132b20a331c26aba0f965df3eccc3b418",
+    "excluded": [],
+    "untracked_added": 0,
+    "status_count": 1,
+    "remotes": [
+      "origin\tgit@github.com:canopy-labs-internal/vansh-video-models.git (fetch)",
+      "origin\tgit@github.com:canopy-labs-internal/vansh-video-models.git (push)"
+    ]
+  },
+  {
+    "host": "landsend-1",
+    "path": "/home/param/pose-repo",
+    "common": "/home/param/pose-repo/.git",
+    "branch": "main",
+    "original_head": "17f08f761468f901b4699c93233c27b58df46c24",
+    "staged_commit": null,
+    "working_commit": "474c99aaff8fc924822aa0cdfc1d414c38034b61",
+    "tree": "dfd613cf9676093b5c38306bff12a5dadd54bb1e",
+    "excluded": [],
+    "untracked_added": 182,
+    "status_count": 9,
+    "remotes": [
+      "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+      "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+    ]
+  }
+]

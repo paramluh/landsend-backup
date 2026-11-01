@@ -1,0 +1,1161 @@
+{
+  "folder": "/home/param/models/imported-weights/mot-14b-base",
+  "repo": "InternalCan/mot-14b-base",
+  "revision": "1239a54782a3b8303f465562d75142f2bb33c907",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__110_0.distcp",
+      "remote": "w-14810/__110_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "5c2fe91aecfe4ab133cb958633e702b43247dfcf7cfa099ee412bf6bee787084",
+      "remote_sha256": "5c2fe91aecfe4ab133cb958633e702b43247dfcf7cfa099ee412bf6bee787084",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__119_0.distcp",
+      "remote": "w-14810/__119_0.distcp",
+      "bytes": 673644326,
+      "matched": true,
+      "cached_download_sha256": "ff49670559a3a7d8c67774ee8d88ce9b73a7e800a1acc7ac489a12ec3a0b1101",
+      "remote_sha256": "ff49670559a3a7d8c67774ee8d88ce9b73a7e800a1acc7ac489a12ec3a0b1101",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__4_0.distcp",
+      "remote": "w-14810/__4_0.distcp",
+      "bytes": 799471613,
+      "matched": true,
+      "cached_download_sha256": "af4323dede46a1a59a37c80bffe1fe1bd62c705a1dc844fec60fd7f7bd924aa9",
+      "remote_sha256": "af4323dede46a1a59a37c80bffe1fe1bd62c705a1dc844fec60fd7f7bd924aa9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__93_0.distcp",
+      "remote": "w-14810/__93_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "c57aa0b1a6e8a619069994770b74d0070ac6455e5dee227ab8bd773dfd80af56",
+      "remote_sha256": "c57aa0b1a6e8a619069994770b74d0070ac6455e5dee227ab8bd773dfd80af56",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__40_0.distcp",
+      "remote": "w-14810/__40_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "41a87d3ae29a4e945b0e4d8aebf9290ee438489908d771fa709dc4197ec68f77",
+      "remote_sha256": "41a87d3ae29a4e945b0e4d8aebf9290ee438489908d771fa709dc4197ec68f77",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__38_0.distcp",
+      "remote": "w-14810/__38_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "aa18afaa421a47d51bc9bd79d4d7c1c998bdbe1df44dfb2d71597b4ec51322e7",
+      "remote_sha256": "aa18afaa421a47d51bc9bd79d4d7c1c998bdbe1df44dfb2d71597b4ec51322e7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__49_0.distcp",
+      "remote": "w-14810/__49_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "7811c1bb37f407022a38a7fff336191d8685d862703a9b04827e666c933d7b8d",
+      "remote_sha256": "7811c1bb37f407022a38a7fff336191d8685d862703a9b04827e666c933d7b8d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__70_0.distcp",
+      "remote": "w-14810/__70_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "b1e963eb81041041e1422ed5a698a40ae230ffecc21c4b624a2efce4c3ab5432",
+      "remote_sha256": "b1e963eb81041041e1422ed5a698a40ae230ffecc21c4b624a2efce4c3ab5432",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__24_0.distcp",
+      "remote": "w-14810/__24_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "0cf39f5a631de7e6d1d7d688b66897c4a617a634a602f505a4ff3c7b6b88d2f1",
+      "remote_sha256": "0cf39f5a631de7e6d1d7d688b66897c4a617a634a602f505a4ff3c7b6b88d2f1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__64_0.distcp",
+      "remote": "w-14810/__64_0.distcp",
+      "bytes": 671547174,
+      "matched": true,
+      "cached_download_sha256": "cbebdf5eae3000ffbf650b2e3d523aca7975bdd20bc969fe900591f8d9b67d33",
+      "remote_sha256": "cbebdf5eae3000ffbf650b2e3d523aca7975bdd20bc969fe900591f8d9b67d33",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__112_0.distcp",
+      "remote": "w-14810/__112_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "137f00ddb9d2f20a419333f04cc39235bb4f2258ee534c051f88988330f8bd43",
+      "remote_sha256": "137f00ddb9d2f20a419333f04cc39235bb4f2258ee534c051f88988330f8bd43",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__56_0.distcp",
+      "remote": "w-14810/__56_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "d5162e592d913d3d30e328af3437c27a2c2395940330611653bce1cce85f0b04",
+      "remote_sha256": "d5162e592d913d3d30e328af3437c27a2c2395940330611653bce1cce85f0b04",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__9_0.distcp",
+      "remote": "w-14810/__9_0.distcp",
+      "bytes": 671547174,
+      "matched": true,
+      "cached_download_sha256": "00fa183dbeb29193664501356fc68f2d439bb35c1c6d333c5b7da4b98c878c59",
+      "remote_sha256": "00fa183dbeb29193664501356fc68f2d439bb35c1c6d333c5b7da4b98c878c59",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__35_0.distcp",
+      "remote": "w-14810/__35_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "17f7f7d44de8c7e2f89e3b8f3c6bb529fa8f8506b9ed3a0ee7f4b7244dae1e63",
+      "remote_sha256": "17f7f7d44de8c7e2f89e3b8f3c6bb529fa8f8506b9ed3a0ee7f4b7244dae1e63",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__47_0.distcp",
+      "remote": "w-14810/__47_0.distcp",
+      "bytes": 669451750,
+      "matched": true,
+      "cached_download_sha256": "846f85c26b39d22d26eb6b984cce9da6ef42cfdfcde7058fc6e8222cfc758e67",
+      "remote_sha256": "846f85c26b39d22d26eb6b984cce9da6ef42cfdfcde7058fc6e8222cfc758e67",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__41_0.distcp",
+      "remote": "w-14810/__41_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "758be3153ce0ae532025e8f9acaee1074fe8dc39b8f2cfe78f10b5f3817cb514",
+      "remote_sha256": "758be3153ce0ae532025e8f9acaee1074fe8dc39b8f2cfe78f10b5f3817cb514",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__0_0.distcp",
+      "remote": "w-14810/__0_0.distcp",
+      "bytes": 669482063,
+      "matched": true,
+      "cached_download_sha256": "7b59d05e0b9a6b3da7a3e8f976ed025c50b2cde57c4c024f3ce42eeb7a9ce459",
+      "remote_sha256": "7b59d05e0b9a6b3da7a3e8f976ed025c50b2cde57c4c024f3ce42eeb7a9ce459",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__79_0.distcp",
+      "remote": "w-14810/__79_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "2d9436dde7dc5d443da16669692c036a664b0452771d1fdee1c129840cda9e27",
+      "remote_sha256": "2d9436dde7dc5d443da16669692c036a664b0452771d1fdee1c129840cda9e27",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__33_0.distcp",
+      "remote": "w-14810/__33_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "7a2f68497f6e53db6fc38c6853b177d6637644c0d300eac84c6eac3b91caf9f1",
+      "remote_sha256": "7a2f68497f6e53db6fc38c6853b177d6637644c0d300eac84c6eac3b91caf9f1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__57_0.distcp",
+      "remote": "w-14810/__57_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "6202514aebd04e75ff3fc74a83ca28a49cfa90db08d6cefec5912fac8b7149c7",
+      "remote_sha256": "6202514aebd04e75ff3fc74a83ca28a49cfa90db08d6cefec5912fac8b7149c7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__34_0.distcp",
+      "remote": "w-14810/__34_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "2e1734f31c8cae009c3fdf357102862b2282c1776ebfaae04fc4c8886bcacd6e",
+      "remote_sha256": "2e1734f31c8cae009c3fdf357102862b2282c1776ebfaae04fc4c8886bcacd6e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__54_0.distcp",
+      "remote": "w-14810/__54_0.distcp",
+      "bytes": 673644326,
+      "matched": true,
+      "cached_download_sha256": "40f9dae620d58166faff232da94de3db49a269a47ef51869460fdd1c1ad4ef18",
+      "remote_sha256": "40f9dae620d58166faff232da94de3db49a269a47ef51869460fdd1c1ad4ef18",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__46_0.distcp",
+      "remote": "w-14810/__46_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "a90b03e1abaf4aab412ebe5b239a874cf55185091ae38e8494ad32909705858f",
+      "remote_sha256": "a90b03e1abaf4aab412ebe5b239a874cf55185091ae38e8494ad32909705858f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__59_0.distcp",
+      "remote": "w-14810/__59_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "b9f5b73663da4ebc509b46b8499ff916a3a2a25889d7c6225073956327286fe0",
+      "remote_sha256": "b9f5b73663da4ebc509b46b8499ff916a3a2a25889d7c6225073956327286fe0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__63_0.distcp",
+      "remote": "w-14810/__63_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "116c1195f54b4918a10aaeb360c16e990058b51c099241b58a5e8b54448f499e",
+      "remote_sha256": "116c1195f54b4918a10aaeb360c16e990058b51c099241b58a5e8b54448f499e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__18_0.distcp",
+      "remote": "w-14810/__18_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "829e5cf2d208568c8c290a2614669919b39378f62a5c5771921737a3bc3b784d",
+      "remote_sha256": "829e5cf2d208568c8c290a2614669919b39378f62a5c5771921737a3bc3b784d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__58_0.distcp",
+      "remote": "w-14810/__58_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "578788904c6b9951494520c5e189441add24def4d488df04e950a6158e1283e5",
+      "remote_sha256": "578788904c6b9951494520c5e189441add24def4d488df04e950a6158e1283e5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__78_0.distcp",
+      "remote": "w-14810/__78_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "654b23d63e463fd2cc842437c704c258f93fc9005008c602049e24feb0de8b47",
+      "remote_sha256": "654b23d63e463fd2cc842437c704c258f93fc9005008c602049e24feb0de8b47",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__11_0.distcp",
+      "remote": "w-14810/__11_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "736c744aada8c760e0c7bb762b0436adda0ca1300fb93e4b54d36c95e4981a41",
+      "remote_sha256": "736c744aada8c760e0c7bb762b0436adda0ca1300fb93e4b54d36c95e4981a41",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__118_0.distcp",
+      "remote": "w-14810/__118_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "4f266d1420d4ecd5d219733df6607d358a1426b15b51597a0ed1a93029b866ee",
+      "remote_sha256": "4f266d1420d4ecd5d219733df6607d358a1426b15b51597a0ed1a93029b866ee",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__15_0.distcp",
+      "remote": "w-14810/__15_0.distcp",
+      "bytes": 669453862,
+      "matched": true,
+      "cached_download_sha256": "471cd9c3f8675bf014e4787becea6030e81bf88d5f566ee17b21c02159aca4e6",
+      "remote_sha256": "471cd9c3f8675bf014e4787becea6030e81bf88d5f566ee17b21c02159aca4e6",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__62_0.distcp",
+      "remote": "w-14810/__62_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "3f80c6cb6424e30de1d5d6a3527445dfba17fd1fb05bbc3f3d0595ad4ccf25b7",
+      "remote_sha256": "3f80c6cb6424e30de1d5d6a3527445dfba17fd1fb05bbc3f3d0595ad4ccf25b7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__61_0.distcp",
+      "remote": "w-14810/__61_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "07e9af62b557614e9e249488e2b18427ab283e9361e393405341eddf277a8159",
+      "remote_sha256": "07e9af62b557614e9e249488e2b18427ab283e9361e393405341eddf277a8159",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__48_0.distcp",
+      "remote": "w-14810/__48_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "72c080983fa652bbfe7e87dec0477a71d742a7c585255ec6118a5c4e5386313a",
+      "remote_sha256": "72c080983fa652bbfe7e87dec0477a71d742a7c585255ec6118a5c4e5386313a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__8_0.distcp",
+      "remote": "w-14810/__8_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "2ffd21e78c1f1af5ba5d53ad3a921f9cd0e5f7973df281f40cb55dfff7677202",
+      "remote_sha256": "2ffd21e78c1f1af5ba5d53ad3a921f9cd0e5f7973df281f40cb55dfff7677202",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__113_0.distcp",
+      "remote": "w-14810/__113_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "dc71104acaeceaf76ec5d1a278e84cc1e8eaa416f108bf65d270dc69ef6bad79",
+      "remote_sha256": "dc71104acaeceaf76ec5d1a278e84cc1e8eaa416f108bf65d270dc69ef6bad79",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__105_0.distcp",
+      "remote": "w-14810/__105_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "d3b099664a1899653fbfeab5280ecac1773ef3bfcdddcf5f7306630d9d997b1a",
+      "remote_sha256": "d3b099664a1899653fbfeab5280ecac1773ef3bfcdddcf5f7306630d9d997b1a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__108_0.distcp",
+      "remote": "w-14810/__108_0.distcp",
+      "bytes": 669452070,
+      "matched": true,
+      "cached_download_sha256": "67a838ec1e76d7f8f962cc915a23a9c268bf47fa0d2c9b44ddd25d40b3aaae3c",
+      "remote_sha256": "67a838ec1e76d7f8f962cc915a23a9c268bf47fa0d2c9b44ddd25d40b3aaae3c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__91_0.distcp",
+      "remote": "w-14810/__91_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "fee88bd1c9d826394f1e510f1522bd6d93192bc4d49dc0a5e79f535cbb33cc81",
+      "remote_sha256": "fee88bd1c9d826394f1e510f1522bd6d93192bc4d49dc0a5e79f535cbb33cc81",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__16_0.distcp",
+      "remote": "w-14810/__16_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "58a0c0f833be97a97c2d61d937b7147cc46be86825f61731e656a9c32c4160f2",
+      "remote_sha256": "58a0c0f833be97a97c2d61d937b7147cc46be86825f61731e656a9c32c4160f2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__65_0.distcp",
+      "remote": "w-14810/__65_0.distcp",
+      "bytes": 671547174,
+      "matched": true,
+      "cached_download_sha256": "b0cb0a35a2c3101557a4b78ae28c6cb7234f3bf1e0a382027e9087605a500c8a",
+      "remote_sha256": "b0cb0a35a2c3101557a4b78ae28c6cb7234f3bf1e0a382027e9087605a500c8a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__17_0.distcp",
+      "remote": "w-14810/__17_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "3e11d57084913aa5ffc89d079568a4fb7ba11b10cf0e5dccfce90114868a5787",
+      "remote_sha256": "3e11d57084913aa5ffc89d079568a4fb7ba11b10cf0e5dccfce90114868a5787",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__122_0.distcp",
+      "remote": "w-14810/__122_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "601be11431e034ba4ac9d11db7bb80a216004f0dfdc106cbe0cf142f78311e13",
+      "remote_sha256": "601be11431e034ba4ac9d11db7bb80a216004f0dfdc106cbe0cf142f78311e13",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__21_0.distcp",
+      "remote": "w-14810/__21_0.distcp",
+      "bytes": 673646159,
+      "matched": true,
+      "cached_download_sha256": "6287f1dc7b9ecfd9d76b1963de86829b24f1035f251908cb5f5e0784ba2fc500",
+      "remote_sha256": "6287f1dc7b9ecfd9d76b1963de86829b24f1035f251908cb5f5e0784ba2fc500",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__6_0.distcp",
+      "remote": "w-14810/__6_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "3ee83ef769a69a40a3acd4e2bba353762e596c2be847f8ce846b5a1e1501c24e",
+      "remote_sha256": "3ee83ef769a69a40a3acd4e2bba353762e596c2be847f8ce846b5a1e1501c24e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__100_0.distcp",
+      "remote": "w-14810/__100_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "02ff73e8439b81fc594be0e4e096d99bdc6ee336b936e0a6f30dd3b95e4df125",
+      "remote_sha256": "02ff73e8439b81fc594be0e4e096d99bdc6ee336b936e0a6f30dd3b95e4df125",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__14_0.distcp",
+      "remote": "w-14810/__14_0.distcp",
+      "bytes": 669453862,
+      "matched": true,
+      "cached_download_sha256": "02b2a71e0e5631f861cee0fa9c163c3c188a018ecae8298fdad976dfd531443c",
+      "remote_sha256": "02b2a71e0e5631f861cee0fa9c163c3c188a018ecae8298fdad976dfd531443c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__88_0.distcp",
+      "remote": "w-14810/__88_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "9c80b6e0dcd1a61e7587bac6a016b83cb717e19aae0c9479ae02b650e909d5c9",
+      "remote_sha256": "9c80b6e0dcd1a61e7587bac6a016b83cb717e19aae0c9479ae02b650e909d5c9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__106_0.distcp",
+      "remote": "w-14810/__106_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "b562499eb23eb320a9f9625c2f62574bacf92273e8af4c71b683123842b46ec8",
+      "remote_sha256": "b562499eb23eb320a9f9625c2f62574bacf92273e8af4c71b683123842b46ec8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__67_0.distcp",
+      "remote": "w-14810/__67_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "0a33a916abb6a73a17536811294d21fca37460dbf4c8ff58f6ae4409590ba5e2",
+      "remote_sha256": "0a33a916abb6a73a17536811294d21fca37460dbf4c8ff58f6ae4409590ba5e2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__98_0.distcp",
+      "remote": "w-14810/__98_0.distcp",
+      "bytes": 675741478,
+      "matched": true,
+      "cached_download_sha256": "a2829c25a03247cca828375703bfc99c54295ef3ba60f05ae03b274e676d4205",
+      "remote_sha256": "a2829c25a03247cca828375703bfc99c54295ef3ba60f05ae03b274e676d4205",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__111_0.distcp",
+      "remote": "w-14810/__111_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "21497b2681225227c7f56aa6cbb24421a4c462b0b64464a789c15393c8c5254d",
+      "remote_sha256": "21497b2681225227c7f56aa6cbb24421a4c462b0b64464a789c15393c8c5254d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__12_0.distcp",
+      "remote": "w-14810/__12_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "6ad75d66a9a9d1913a5da4d3f438784a62ee28d137394008fd42b09e6969d1db",
+      "remote_sha256": "6ad75d66a9a9d1913a5da4d3f438784a62ee28d137394008fd42b09e6969d1db",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__92_0.distcp",
+      "remote": "w-14810/__92_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "11662e7208802228c17ebf161eb62216a1807f2a0d5860e8bf8724bd5063c0e6",
+      "remote_sha256": "11662e7208802228c17ebf161eb62216a1807f2a0d5860e8bf8724bd5063c0e6",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__95_0.distcp",
+      "remote": "w-14810/__95_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "1f5c3be196ca370733362957ba29f3e16d81c896c299ed5de37180008fa24007",
+      "remote_sha256": "1f5c3be196ca370733362957ba29f3e16d81c896c299ed5de37180008fa24007",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__55_0.distcp",
+      "remote": "w-14810/__55_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "55e8cf5611ac00e89691869a8360b66e37370903955fd6732378072868ca63c5",
+      "remote_sha256": "55e8cf5611ac00e89691869a8360b66e37370903955fd6732378072868ca63c5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__45_0.distcp",
+      "remote": "w-14810/__45_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "4bc033c9c71ac02958a6143524c58c7e1ca490bfe6bf1d68247d137a0167fef5",
+      "remote_sha256": "4bc033c9c71ac02958a6143524c58c7e1ca490bfe6bf1d68247d137a0167fef5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__10_0.distcp",
+      "remote": "w-14810/__10_0.distcp",
+      "bytes": 673644326,
+      "matched": true,
+      "cached_download_sha256": "e82a8bb587cc064bbf913700014601cd74bb82d7c223b55369069dd2bf0aed38",
+      "remote_sha256": "e82a8bb587cc064bbf913700014601cd74bb82d7c223b55369069dd2bf0aed38",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__66_0.distcp",
+      "remote": "w-14810/__66_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "7d3b00e7ad7adfade7a6eac699670145db86587d51d3ce291b899067c6f999e8",
+      "remote_sha256": "7d3b00e7ad7adfade7a6eac699670145db86587d51d3ce291b899067c6f999e8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__127_0.distcp",
+      "remote": "w-14810/__127_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "8516ae9a1ab115759f5ef8fe1a0ce77a5300c5a185500786608bc77d6579741e",
+      "remote_sha256": "8516ae9a1ab115759f5ef8fe1a0ce77a5300c5a185500786608bc77d6579741e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__36_0.distcp",
+      "remote": "w-14810/__36_0.distcp",
+      "bytes": 669451750,
+      "matched": true,
+      "cached_download_sha256": "efe305ea7493d788664691c5e9ed4e77144b22a209873a71d1b510fbcc8c6395",
+      "remote_sha256": "efe305ea7493d788664691c5e9ed4e77144b22a209873a71d1b510fbcc8c6395",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__43_0.distcp",
+      "remote": "w-14810/__43_0.distcp",
+      "bytes": 669452070,
+      "matched": true,
+      "cached_download_sha256": "3c58ae185bd1ed465976e2906d36a62702cc8dc4854a6ff44326d93f7403b45a",
+      "remote_sha256": "3c58ae185bd1ed465976e2906d36a62702cc8dc4854a6ff44326d93f7403b45a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__99_0.distcp",
+      "remote": "w-14810/__99_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "f0ee808d2b3868d0d2de4083e38b92c57609d4c75a48801f1564ac8cccaecd2e",
+      "remote_sha256": "f0ee808d2b3868d0d2de4083e38b92c57609d4c75a48801f1564ac8cccaecd2e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__5_0.distcp",
+      "remote": "w-14810/__5_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "f6ad8780aa6af1607e636c6982d5908f9fa82d29ce392722ebfdabab375ed19d",
+      "remote_sha256": "f6ad8780aa6af1607e636c6982d5908f9fa82d29ce392722ebfdabab375ed19d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__97_0.distcp",
+      "remote": "w-14810/__97_0.distcp",
+      "bytes": 675741478,
+      "matched": true,
+      "cached_download_sha256": "228c6d273c8140a5adb0075e4b5d6ba17fadd8564585f692f853a9d689f83b58",
+      "remote_sha256": "228c6d273c8140a5adb0075e4b5d6ba17fadd8564585f692f853a9d689f83b58",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__29_0.distcp",
+      "remote": "w-14810/__29_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "3541ff3b09ceadcf13f4b882fdc31a3f08af4b9c4838280c274f6220e95e9509",
+      "remote_sha256": "3541ff3b09ceadcf13f4b882fdc31a3f08af4b9c4838280c274f6220e95e9509",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__109_0.distcp",
+      "remote": "w-14810/__109_0.distcp",
+      "bytes": 669452070,
+      "matched": true,
+      "cached_download_sha256": "54f11cd6d24969edc9142521c9efe41ead16c662dc7d695ec024cd5c69e24c75",
+      "remote_sha256": "54f11cd6d24969edc9142521c9efe41ead16c662dc7d695ec024cd5c69e24c75",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__125_0.distcp",
+      "remote": "w-14810/__125_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "c209702729b641bb7dfdce2ed310b00d76bff46595c70ddd5aeb4add349d32e9",
+      "remote_sha256": "c209702729b641bb7dfdce2ed310b00d76bff46595c70ddd5aeb4add349d32e9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__60_0.distcp",
+      "remote": "w-14810/__60_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "14edcd2c462a05cd104734a845aa45ceb470bba243fc9e0c958ed053e8a356ba",
+      "remote_sha256": "14edcd2c462a05cd104734a845aa45ceb470bba243fc9e0c958ed053e8a356ba",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__116_0.distcp",
+      "remote": "w-14810/__116_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "bad4b24155cd8ce3f770fa1ad55b8aa1f2f8c6509f164af51eef7c4a8fb1545d",
+      "remote_sha256": "bad4b24155cd8ce3f770fa1ad55b8aa1f2f8c6509f164af51eef7c4a8fb1545d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__22_0.distcp",
+      "remote": "w-14810/__22_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "6f0c9a78ba5154022e829d56798cc389ce32388e2a5e56518522190676932d7a",
+      "remote_sha256": "6f0c9a78ba5154022e829d56798cc389ce32388e2a5e56518522190676932d7a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__7_0.distcp",
+      "remote": "w-14810/__7_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "7b7d81b990667d3cd0a19f30329d002eb27c433df902d4503aed16c7bb39eb9a",
+      "remote_sha256": "7b7d81b990667d3cd0a19f30329d002eb27c433df902d4503aed16c7bb39eb9a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__19_0.distcp",
+      "remote": "w-14810/__19_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "7c6b880fa9ecc70587cb8b52838130bf1caec30f0a536c419c0fa47a12fca308",
+      "remote_sha256": "7c6b880fa9ecc70587cb8b52838130bf1caec30f0a536c419c0fa47a12fca308",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__107_0.distcp",
+      "remote": "w-14810/__107_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "b1adf76e0edc24d5821b05fcb70a61bdad41f2712be33a5acacdae6fb7fa73a6",
+      "remote_sha256": "b1adf76e0edc24d5821b05fcb70a61bdad41f2712be33a5acacdae6fb7fa73a6",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__32_0.distcp",
+      "remote": "w-14810/__32_0.distcp",
+      "bytes": 675741478,
+      "matched": true,
+      "cached_download_sha256": "a337d7c61267e0f6321e46644734cf726245062ae10eba48b2690b1658587afe",
+      "remote_sha256": "a337d7c61267e0f6321e46644734cf726245062ae10eba48b2690b1658587afe",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__28_0.distcp",
+      "remote": "w-14810/__28_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "752f2abb285cb6cbd83b467a8021f8d8011fe66c8e91d0091f915529c3c865e6",
+      "remote_sha256": "752f2abb285cb6cbd83b467a8021f8d8011fe66c8e91d0091f915529c3c865e6",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__126_0.distcp",
+      "remote": "w-14810/__126_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "2e228e8d30dab498c6678cf6f2eca77da7e6728bb280d8cbfae8097ee829c65c",
+      "remote_sha256": "2e228e8d30dab498c6678cf6f2eca77da7e6728bb280d8cbfae8097ee829c65c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__82_0.distcp",
+      "remote": "w-14810/__82_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "f6181e7c7921a99510bf900bb992d517a50990d0e532ba820ecfd262c8270f02",
+      "remote_sha256": "f6181e7c7921a99510bf900bb992d517a50990d0e532ba820ecfd262c8270f02",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__71_0.distcp",
+      "remote": "w-14810/__71_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "b6b302b9ffe79e6933ffd7bb4f237a3b51327c2f222763c6f7dc464978f522ec",
+      "remote_sha256": "b6b302b9ffe79e6933ffd7bb4f237a3b51327c2f222763c6f7dc464978f522ec",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__31_0.distcp",
+      "remote": "w-14810/__31_0.distcp",
+      "bytes": 675741478,
+      "matched": true,
+      "cached_download_sha256": "303f15e2879eaa78b0ac6bc9ce75cff0b529ae35dd0ef2c0a0cf77802e31e3bf",
+      "remote_sha256": "303f15e2879eaa78b0ac6bc9ce75cff0b529ae35dd0ef2c0a0cf77802e31e3bf",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__115_0.distcp",
+      "remote": "w-14810/__115_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "1d61d7e5b40ad81dbe2b676bd6cc4f047a0ae900911d302de7d40ddee7a33ccd",
+      "remote_sha256": "1d61d7e5b40ad81dbe2b676bd6cc4f047a0ae900911d302de7d40ddee7a33ccd",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__50_0.distcp",
+      "remote": "w-14810/__50_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "cbe9c015e873bba0f718e2403c3be84072bfe4484caa7146a82792bbaec9cf64",
+      "remote_sha256": "cbe9c015e873bba0f718e2403c3be84072bfe4484caa7146a82792bbaec9cf64",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__103_0.distcp",
+      "remote": "w-14810/__103_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "9c61311e89ad75afec9ce773f05b7d21224b7e95f5e5cc9f49b0d20185380591",
+      "remote_sha256": "9c61311e89ad75afec9ce773f05b7d21224b7e95f5e5cc9f49b0d20185380591",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__30_0.distcp",
+      "remote": "w-14810/__30_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "05d0bf76638adb308ecdd3ffd07777cc96e532746cf03b10c48fe50215e8c987",
+      "remote_sha256": "05d0bf76638adb308ecdd3ffd07777cc96e532746cf03b10c48fe50215e8c987",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__96_0.distcp",
+      "remote": "w-14810/__96_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "ed424ef89a17b5293d6fb21ef208b439fe348aa57d3366ed89e5c31d6168a338",
+      "remote_sha256": "ed424ef89a17b5293d6fb21ef208b439fe348aa57d3366ed89e5c31d6168a338",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__83_0.distcp",
+      "remote": "w-14810/__83_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "4dc3f7053c09818537dce6f0927e3fc9439f02340ac3c5ff4f816485ae2407d8",
+      "remote_sha256": "4dc3f7053c09818537dce6f0927e3fc9439f02340ac3c5ff4f816485ae2407d8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__69_0.distcp",
+      "remote": "w-14810/__69_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "1ddcb91540f7d5d4318a3412c74ab439d109f36011721ad1a22170f6a0575c8c",
+      "remote_sha256": "1ddcb91540f7d5d4318a3412c74ab439d109f36011721ad1a22170f6a0575c8c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__94_0.distcp",
+      "remote": "w-14810/__94_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "a4f87fdfffce4b11c5731af46b8b2cadb8f062777fd3769121c8155bb176a58e",
+      "remote_sha256": "a4f87fdfffce4b11c5731af46b8b2cadb8f062777fd3769121c8155bb176a58e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__13_0.distcp",
+      "remote": "w-14810/__13_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "fb3a08070126f87638d8d467f4d3ab862739eea955527d1eaf29e6a2ce5f20f5",
+      "remote_sha256": "fb3a08070126f87638d8d467f4d3ab862739eea955527d1eaf29e6a2ce5f20f5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__52_0.distcp",
+      "remote": "w-14810/__52_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "f91f1a34d74e79a4889ed78552907cec3643d40275343bfe4c60f641598f304e",
+      "remote_sha256": "f91f1a34d74e79a4889ed78552907cec3643d40275343bfe4c60f641598f304e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__86_0.distcp",
+      "remote": "w-14810/__86_0.distcp",
+      "bytes": 675745144,
+      "matched": true,
+      "cached_download_sha256": "f25521f6c9a3ff4dc5b04782436e0d3579f68d76e248bfdd19a96ab2eb47ad56",
+      "remote_sha256": "f25521f6c9a3ff4dc5b04782436e0d3579f68d76e248bfdd19a96ab2eb47ad56",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__89_0.distcp",
+      "remote": "w-14810/__89_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "b71759d92b40ff888efecc966d5613a78f317efa5c1d30d4cddb027ee6a01220",
+      "remote_sha256": "b71759d92b40ff888efecc966d5613a78f317efa5c1d30d4cddb027ee6a01220",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__123_0.distcp",
+      "remote": "w-14810/__123_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "4c66ca0a27a57cd6c5e2b7080c03b823770c105f0bb4c5fd0044b452b7c587a3",
+      "remote_sha256": "4c66ca0a27a57cd6c5e2b7080c03b823770c105f0bb4c5fd0044b452b7c587a3",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__68_0.distcp",
+      "remote": "w-14810/__68_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "ff45d9853b7e4662de08b2e2b2fe3ecf24e8bacff858d1efced10532147396f8",
+      "remote_sha256": "ff45d9853b7e4662de08b2e2b2fe3ecf24e8bacff858d1efced10532147396f8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__51_0.distcp",
+      "remote": "w-14810/__51_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "646431fe7ce472ef25e4c0c72db381889901ee70ff43e33ca76893dba9724584",
+      "remote_sha256": "646431fe7ce472ef25e4c0c72db381889901ee70ff43e33ca76893dba9724584",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__84_0.distcp",
+      "remote": "w-14810/__84_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "21e4879305759adb26cb3d47c267a8cadcf6ce31f7c263607602f78eddf86670",
+      "remote_sha256": "21e4879305759adb26cb3d47c267a8cadcf6ce31f7c263607602f78eddf86670",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__23_0.distcp",
+      "remote": "w-14810/__23_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "e3a9ee1d2e8accd883f3c46be33307fec5b876754ab5590a9677a687e046990a",
+      "remote_sha256": "e3a9ee1d2e8accd883f3c46be33307fec5b876754ab5590a9677a687e046990a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__20_0.distcp",
+      "remote": "w-14810/__20_0.distcp",
+      "bytes": 671549007,
+      "matched": true,
+      "cached_download_sha256": "5d799bb13db888940551e791297053b9d5c9631add84d83a8456989c29301684",
+      "remote_sha256": "5d799bb13db888940551e791297053b9d5c9631add84d83a8456989c29301684",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__72_0.distcp",
+      "remote": "w-14810/__72_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "4b80ded6ad5720942dda145982eed5feb73b324b6bc4efdf22995f001cdcf440",
+      "remote_sha256": "4b80ded6ad5720942dda145982eed5feb73b324b6bc4efdf22995f001cdcf440",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__114_0.distcp",
+      "remote": "w-14810/__114_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "b938a958f459e6fce43079ea32654a0278043c0a277ebb0478fb754574f11815",
+      "remote_sha256": "b938a958f459e6fce43079ea32654a0278043c0a277ebb0478fb754574f11815",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__75_0.distcp",
+      "remote": "w-14810/__75_0.distcp",
+      "bytes": 673644326,
+      "matched": true,
+      "cached_download_sha256": "345c2b2a688470a6b256ec77de7e241dcda78f5589165d380c21a43d6b248e92",
+      "remote_sha256": "345c2b2a688470a6b256ec77de7e241dcda78f5589165d380c21a43d6b248e92",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__53_0.distcp",
+      "remote": "w-14810/__53_0.distcp",
+      "bytes": 669452070,
+      "matched": true,
+      "cached_download_sha256": "d236df5a2cae258a98805014f9790cfda84fd5c915af1ea39b85c44b472ca8c7",
+      "remote_sha256": "d236df5a2cae258a98805014f9790cfda84fd5c915af1ea39b85c44b472ca8c7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__76_0.distcp",
+      "remote": "w-14810/__76_0.distcp",
+      "bytes": 675745144,
+      "matched": true,
+      "cached_download_sha256": "088898297a8a20ad315190bb7ad6bae531c614c7fb6c126b4c7cdf804788f9c5",
+      "remote_sha256": "088898297a8a20ad315190bb7ad6bae531c614c7fb6c126b4c7cdf804788f9c5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__101_0.distcp",
+      "remote": "w-14810/__101_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "7a9cef7a00165c3bec08f4d1af77a9ad3c0e5adb29957c31356eb4184ac2ece8",
+      "remote_sha256": "7a9cef7a00165c3bec08f4d1af77a9ad3c0e5adb29957c31356eb4184ac2ece8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__2_0.distcp",
+      "remote": "w-14810/__2_0.distcp",
+      "bytes": 675743270,
+      "matched": true,
+      "cached_download_sha256": "988d70ced5f1b93d8d5d286e26ba8e6acf897985b9eae63b212e7104c8e46ec7",
+      "remote_sha256": "988d70ced5f1b93d8d5d286e26ba8e6acf897985b9eae63b212e7104c8e46ec7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__85_0.distcp",
+      "remote": "w-14810/__85_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "4d793a280164d5b392cc4272395f92744a05abb5600d147457d42592fed9a4e8",
+      "remote_sha256": "4d793a280164d5b392cc4272395f92744a05abb5600d147457d42592fed9a4e8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__73_0.distcp",
+      "remote": "w-14810/__73_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "b29a68b4005b2d3384c168c71f81b1b1558074c216de1a408506da05392cd462",
+      "remote_sha256": "b29a68b4005b2d3384c168c71f81b1b1558074c216de1a408506da05392cd462",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__26_0.distcp",
+      "remote": "w-14810/__26_0.distcp",
+      "bytes": 799475238,
+      "matched": true,
+      "cached_download_sha256": "f01ed0aac55f557c1e218901d2679292195a3d671315401bc2708365be577e68",
+      "remote_sha256": "f01ed0aac55f557c1e218901d2679292195a3d671315401bc2708365be577e68",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__90_0.distcp",
+      "remote": "w-14810/__90_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "db9699033c30c1bb11abf02fa50f77d1f03a7b078d7d02984396cca776c5ae47",
+      "remote_sha256": "db9699033c30c1bb11abf02fa50f77d1f03a7b078d7d02984396cca776c5ae47",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__42_0.distcp",
+      "remote": "w-14810/__42_0.distcp",
+      "bytes": 675741478,
+      "matched": true,
+      "cached_download_sha256": "59761f0f66533e3e8c763686c29520994b87bc7dcbeb14e86a97f9cdc10082f4",
+      "remote_sha256": "59761f0f66533e3e8c763686c29520994b87bc7dcbeb14e86a97f9cdc10082f4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__1_0.distcp",
+      "remote": "w-14810/__1_0.distcp",
+      "bytes": 679933949,
+      "matched": true,
+      "cached_download_sha256": "317da3aac0199b28cf6cf9b7feb6992558dfa5e5c99a8be56b507da4694c1588",
+      "remote_sha256": "317da3aac0199b28cf6cf9b7feb6992558dfa5e5c99a8be56b507da4694c1588",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__104_0.distcp",
+      "remote": "w-14810/__104_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "9f7155ae2b100b5ddba0115c826f1ab6e2b25a99d2a31eadd6c894e9fd793e4d",
+      "remote_sha256": "9f7155ae2b100b5ddba0115c826f1ab6e2b25a99d2a31eadd6c894e9fd793e4d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__44_0.distcp",
+      "remote": "w-14810/__44_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "b73d16f4dc091bb969eafa2039cd3f594725f091c099652c3b8cbbf160aa6a11",
+      "remote_sha256": "b73d16f4dc091bb969eafa2039cd3f594725f091c099652c3b8cbbf160aa6a11",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__121_0.distcp",
+      "remote": "w-14810/__121_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "4f770d98c3267ae5c2828f9047b125d5bea580f5f1c402610ae651875d373fac",
+      "remote_sha256": "4f770d98c3267ae5c2828f9047b125d5bea580f5f1c402610ae651875d373fac",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__3_0.distcp",
+      "remote": "w-14810/__3_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "8e835e04e14bdbf0aa07ea70542639f0c1323410ed7c2195acffa91915312cea",
+      "remote_sha256": "8e835e04e14bdbf0aa07ea70542639f0c1323410ed7c2195acffa91915312cea",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__81_0.distcp",
+      "remote": "w-14810/__81_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "05dd6740fa0325ad49b68adede1518172c4fff1bfa16e2a2f1fc9ab53f809654",
+      "remote_sha256": "05dd6740fa0325ad49b68adede1518172c4fff1bfa16e2a2f1fc9ab53f809654",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__124_0.distcp",
+      "remote": "w-14810/__124_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "923898d97c87a69f01d29049aebf8cdbd4f0c8080fdb2065b164bcdac83c8310",
+      "remote_sha256": "923898d97c87a69f01d29049aebf8cdbd4f0c8080fdb2065b164bcdac83c8310",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__120_0.distcp",
+      "remote": "w-14810/__120_0.distcp",
+      "bytes": 671547174,
+      "matched": true,
+      "cached_download_sha256": "8a2b7308c655a93630a0d579e00d51eb6dad87c67b65607d1289494ec54d13bc",
+      "remote_sha256": "8a2b7308c655a93630a0d579e00d51eb6dad87c67b65607d1289494ec54d13bc",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__102_0.distcp",
+      "remote": "w-14810/__102_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "ef23ef86f9a7702425f6726d8656c8164d6ced2d5c5e4c2d7f96930bdcfc9ce3",
+      "remote_sha256": "ef23ef86f9a7702425f6726d8656c8164d6ced2d5c5e4c2d7f96930bdcfc9ce3",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__117_0.distcp",
+      "remote": "w-14810/__117_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "f10f8c736b068168538270bc20aed88406f7b11574ce1bfc29936c1197555ccc",
+      "remote_sha256": "f10f8c736b068168538270bc20aed88406f7b11574ce1bfc29936c1197555ccc",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__27_0.distcp",
+      "remote": "w-14810/__27_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "ec29f6636ded49ef756a0cc97880e25ab305401ab50a814a3d4d074222aa234f",
+      "remote_sha256": "ec29f6636ded49ef756a0cc97880e25ab305401ab50a814a3d4d074222aa234f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__74_0.distcp",
+      "remote": "w-14810/__74_0.distcp",
+      "bytes": 673642493,
+      "matched": true,
+      "cached_download_sha256": "2b9e4e5f86400607a8e2fb88921eab8c61878358d8e6474865afaeed54e16e56",
+      "remote_sha256": "2b9e4e5f86400607a8e2fb88921eab8c61878358d8e6474865afaeed54e16e56",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__87_0.distcp",
+      "remote": "w-14810/__87_0.distcp",
+      "bytes": 675741478,
+      "matched": true,
+      "cached_download_sha256": "a097ce8b15ac43b74e55f520e67863060c0eea6d80c03b9fe285efbb6153a2e4",
+      "remote_sha256": "a097ce8b15ac43b74e55f520e67863060c0eea6d80c03b9fe285efbb6153a2e4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__25_0.distcp",
+      "remote": "w-14810/__25_0.distcp",
+      "bytes": 669453862,
+      "matched": true,
+      "cached_download_sha256": "34c610a31baa476730f6632c8281f3eea049d88927aefb40d9a6e30cc4307dc0",
+      "remote_sha256": "34c610a31baa476730f6632c8281f3eea049d88927aefb40d9a6e30cc4307dc0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__39_0.distcp",
+      "remote": "w-14810/__39_0.distcp",
+      "bytes": 671545341,
+      "matched": true,
+      "cached_download_sha256": "e3cfb2060be5f9d15db42aa264d4026a922970e34a867495d2b26a28f716ca88",
+      "remote_sha256": "e3cfb2060be5f9d15db42aa264d4026a922970e34a867495d2b26a28f716ca88",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__37_0.distcp",
+      "remote": "w-14810/__37_0.distcp",
+      "bytes": 669451750,
+      "matched": true,
+      "cached_download_sha256": "d00e45dc69909ed03ef23653530f05822b59553c34664ec78360148226f22b50",
+      "remote_sha256": "d00e45dc69909ed03ef23653530f05822b59553c34664ec78360148226f22b50",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__77_0.distcp",
+      "remote": "w-14810/__77_0.distcp",
+      "bytes": 675739645,
+      "matched": true,
+      "cached_download_sha256": "679a914c9f812161c67cfe8f6214fa782b5ffc5a4b88e202fd2086f7c3a11fa2",
+      "remote_sha256": "679a914c9f812161c67cfe8f6214fa782b5ffc5a4b88e202fd2086f7c3a11fa2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/mot-14b-base/w-14810/__80_0.distcp",
+      "remote": "w-14810/__80_0.distcp",
+      "bytes": 669450237,
+      "matched": true,
+      "cached_download_sha256": "8362ef2e43e7c368e15555c04b7c6455063814bcd3d29ed39e02ae9c0768e7fa",
+      "remote_sha256": "8362ef2e43e7c368e15555c04b7c6455063814bcd3d29ed39e02ae9c0768e7fa",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.1758528
+}

@@ -1,0 +1,8 @@
+{
+  "pid": 3798791,
+  "rental_expires_at_utc": "2026-11-01T07:00:00+00:00",
+  "run_dir": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031",
+  "state": "armed",
+  "stop_at_utc": "2026-11-01T06:15:00+00:00",
+  "time": 1793505906.475399
+}

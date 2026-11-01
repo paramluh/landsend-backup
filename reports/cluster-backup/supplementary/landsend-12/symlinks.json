@@ -1,0 +1,1130 @@
+[
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-duplex-proxy.service",
+    "target": "/home/param/.config/systemd/user/pose-duplex-proxy.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-overlay-data.service",
+    "target": "/home/param/.config/systemd/user/pose-overlay-data.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-duplex-worker.service",
+    "target": "/home/param/.config/systemd/user/pose-duplex-worker.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-duplex-live.service",
+    "target": "/home/param/.config/systemd/user/pose-duplex-live.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-playground.service",
+    "target": "/home/param/.config/systemd/user/pose-playground.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-duplex-tunnel.service",
+    "target": "/home/param/.config/systemd/user/pose-duplex-tunnel.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-renderer.service",
+    "target": "/home/param/.config/systemd/user/pose-renderer.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-playground-front.service",
+    "target": "/home/param/.config/systemd/user/pose-playground-front.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-playground-tunnel.service",
+    "target": "/home/param/.config/systemd/user/pose-playground-tunnel.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-monoplex-worker.service",
+    "target": "/home/param/.config/systemd/user/pose-monoplex-worker.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-live-preview.service",
+    "target": "/home/param/.config/systemd/user/pose-live-preview.service"
+  },
+  {
+    "path": "/home/param/pose-runs/xabi-baseline-bench-20261028/cluster/latest",
+    "target": "20261028T100929Z-174271"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-balanced-20261029-v2/cluster/latest",
+    "target": "20261029T095903Z-785d27bf"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-demo-20261030/paired-prompts/clip-02/refs",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/clip-02/reference-bank/69453b43-e5d4-4a3e-8ff2-4f970ae533db"
+  },
+  {
+    "path": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/cluster/latest",
+    "target": "20261028T112106Z-209586"
+  },
+  {
+    "path": "/home/param/pose-runs/transcript-audio-pose-20261028/cluster/latest",
+    "target": "20261028T101447Z-189472"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-balanced-20261029/cluster/latest",
+    "target": "20261029T095502Z-d52c8db2"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-prod-20261029/cluster/latest",
+    "target": "20261029T095252Z-097656a3"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-profile-20261029/cluster/latest",
+    "target": "20261029T101149Z-b1a3f00d"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-7n-mbs2-profile-20261029/cluster/latest",
+    "target": "20261029T110905Z-ae452a66"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/compact-8s-video-verified/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-8s-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/compact-8s-video-verified/inputs/pose_latents_electron_v3.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-8s-video-input/pose_latents_electron_v3.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-verified/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-verified/inputs/pose_latents_electron_v3.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/pose_latents_electron_v3.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/compact-8s-video-input/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-custom-8s/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/compact-8s-video-input/audio.wav",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-custom-8s/audio.wav"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/compact-8s-video-input/mimi.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-custom-8s/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/compact-video-verified/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/compact-video-verified/inputs/pose_latents_electron_v3.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-video-input/pose_latents_electron_v3.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/compact-video-input/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-generated/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/compact-video-input/audio.wav",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-generated/audio.wav"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/compact-video-input/mimi.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-generated/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/aligned-video/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/aligned-video/inputs/pose_latents_electron_v3.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/pose_latents_electron_v3.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/video-prepare-contract/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/video-prepare-contract/inputs/pose_latents_electron_v3.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/pose_latents_electron_v3.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-generated/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/audio.wav",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-generated/audio.wav"
+  },
+  {
+    "path": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/mimi.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-generated/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-shared10-profile-20261029/cluster/latest",
+    "target": "20261029T104759Z-8c711afc"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-7n-mbs1-profile-20261029/cluster/latest",
+    "target": "20261029T110519Z-de8ffd5b"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-shared10-fasttext-profile-20261029/cluster/latest",
+    "target": "20261029T105136Z-9ebfb46c"
+  },
+  {
+    "path": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/cluster/latest",
+    "target": "20261029T113001Z-d48d7b7f"
+  },
+  {
+    "path": "/home/param/.local/bin/codex",
+    "target": "/home/param/.codex/packages/standalone/current/bin/codex"
+  },
+  {
+    "path": "/home/param/.local/bin/hf",
+    "target": "/home/param/.hf-cli/venv/bin/hf"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/aloe-blackband-only-repro-20261031/exports",
+    "target": "/home/param/models/trained-weights/aloe-blackband-only-repro-20261031/exports"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/aloe-blackband-only-repro-20261031/cluster/latest",
+    "target": "20261031T034150Z-fcf07361"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000145/event-f00424-00524/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000145/event-f00424-00524/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000622/event-f00552-00652/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000622/event-f00552-00652/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000978/event-f00130-00230/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000978/event-f00130-00230/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000960/event-f00164-00264/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000960/event-f00164-00264/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000383/event-f00306-00406/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000383/event-f00306-00406/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000666/event-f00248-00348/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000666/event-f00248-00348/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000392/event-f00239-00339/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000392/event-f00239-00339/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000642/event-f00127-00227/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000642/event-f00127-00227/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000413/event-f00242-00342/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000413/event-f00242-00342/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000146/event-f00561-00661/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000146/event-f00561-00661/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000677/event-f00866-00966/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000677/event-f00866-00966/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000964/event-f00331-00431/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000964/event-f00331-00431/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000111/event-f00227-00327/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000111/event-f00227-00327/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000134/event-f00457-00557/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000134/event-f00457-00557/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000922/event-f00958-01058/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000922/event-f00958-01058/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000567/event-f00208-00308/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000567/event-f00208-00308/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000375/event-f01297-01397/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000375/event-f01297-01397/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000410/event-f00177-00277/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000410/event-f00177-00277/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000343/event-f00434-00534/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000343/event-f00434-00534/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000565/event-f00715-00815/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000565/event-f00715-00815/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000956/event-f01328-01428/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000956/event-f01328-01428/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000646/event-f01262-01362/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000646/event-f01262-01362/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000203/event-f00890-00990/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000203/event-f00890-00990/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000382/event-f00984-01084/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000382/event-f00984-01084/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000999/event-f00545-00645/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000999/event-f00545-00645/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000165/event-f00890-00990/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000165/event-f00890-00990/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000132/event-f00120-00220/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000132/event-f00120-00220/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000102/event-f00540-00640/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000102/event-f00540-00640/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000103/event-f00788-00888/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000103/event-f00788-00888/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000398/event-f00141-00241/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000398/event-f00141-00241/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000575/event-f00513-00613/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000575/event-f00513-00613/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/checkpoints",
+    "target": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints",
+    "target": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/openings",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/openings-raw",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/render/out/20261031-134019-49a4.mp4",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions/20261031-134019-49a4/video.mp4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/render/out/20261031-132011-d55b.mp4",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions/20261031-132011-d55b/video.mp4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/render/out/20261031-134152-e5a9.mp4",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions/20261031-134152-e5a9/video.mp4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/render/out/20261031-135502-63a3.mp4",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions/20261031-135502-63a3/video.mp4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/render/out/20261031-132708-0735.mp4",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions/20261031-132708-0735/video.mp4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/render/out/20261031-131658-93ed.mp4",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions/20261031-131658-93ed/video.mp4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/render/out/20261031-132508-314c.mp4",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions/20261031-132508-314c/video.mp4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/render/out/20261031-132225-fc07.mp4",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions/20261031-132225-fc07/video.mp4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/render/out/20261031-132941-7be1.mp4",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions/20261031-132941-7be1/video.mp4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/web/render/out/20261031-135727-6a98.mp4",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions/20261031-135727-6a98/video.mp4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/02_7ab994e5",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/02_7ab994e5"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/13_956c09af",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/13_956c09af"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/19_47473a46",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/19_47473a46"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/07_5d500dd8",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/07_5d500dd8"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/09_d9ef3c94",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/09_d9ef3c94"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/04_96cd17dc",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/04_96cd17dc"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/14_3a16ca65",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/14_3a16ca65"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/06_74807fe0",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/06_74807fe0"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/03_b437950e",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/03_b437950e"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/11_92acbbd0",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/11_92acbbd0"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/08_539e9577",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/08_539e9577"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/10_27286bdd",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/10_27286bdd"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/16_1aaba16c",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/16_1aaba16c"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/01_ab63d745",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/01_ab63d745"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/05_e25c6859",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/05_e25c6859"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/17_5486a66c",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/17_5486a66c"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/15_d1e1322c",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/15_d1e1322c"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/18_1ffa9083",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/18_1ffa9083"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/12_72cb45d3",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/12_72cb45d3"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/clip-02",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/clip-02"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/openings-raw/00_14b594aa",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/00_14b594aa"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/02_7ab994e5",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/02_7ab994e5/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/13_956c09af",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/13_956c09af/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/19_47473a46",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/19_47473a46/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/07_5d500dd8",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/07_5d500dd8/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/09_d9ef3c94",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/09_d9ef3c94/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/04_96cd17dc",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/04_96cd17dc/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/14_3a16ca65",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/14_3a16ca65/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/06_74807fe0",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/06_74807fe0/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/03_b437950e",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/03_b437950e/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/11_92acbbd0",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/11_92acbbd0/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/08_539e9577",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/08_539e9577/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/10_27286bdd",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/10_27286bdd/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/16_1aaba16c",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/16_1aaba16c/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/01_ab63d745",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/01_ab63d745/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/05_e25c6859",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/05_e25c6859/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/17_5486a66c",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/17_5486a66c/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/15_d1e1322c",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/15_d1e1322c/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/18_1ffa9083",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/18_1ffa9083/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/12_72cb45d3",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/12_72cb45d3/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/clip-02",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/clip-02/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/00_14b594aa",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/00_14b594aa/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people_bank/opd_48f6d2d3_seg00_SPEAKER_01",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/opd_48f6d2d3_seg00_SPEAKER_01/refs"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/0c2758e3f60941872fe5e7e1b66a736fb96553fb/speaker_1/chunks/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/03_b437950e/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/9da1e3dbcb5077b5db08886f76e0749b575eeea1/speaker_1/chunks/000000",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/12_72cb45d3/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/bcc382b48150a758837e61ba5147446aaa11978d/speaker_1/chunks/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/04_96cd17dc/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/1288bbe7bfcfec805dc6a4a0253ba4fa23b275e3/speaker_1/chunks/000000",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/10_27286bdd/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/24479a0ebc0134ee11a34c6827eabec2f7517200/speaker_1/chunks/000002",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/02_7ab994e5/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/22dcdff4f94ef6a150cdd77aa004af98cad96cdc/speaker_2/chunks/000000",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/13_956c09af/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/b76bf46364fcbc4e5cd1b12c29f45d660de797c1/speaker_1/chunks/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/00_14b594aa/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/51b7da365b1724b406b5d95de3cb79c171c76883/speaker_2/chunks/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/06_74807fe0/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/74e7908c7cb6a3ae0eb8c84533a93da18c874a45/speaker_1/chunks/000000",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/14_3a16ca65/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/9febb10876abedc7a6f98c5f6537ffdd78649c59/speaker_1/chunks/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/08_539e9577/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/cf6131fb57180b6c59feb66108932934989f9586/speaker_1/chunks/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/01_ab63d745/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/8968c11e130648dcf880dbc333fa477a1e2be614/speaker_1/chunks/000002",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/11_92acbbd0/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/52fcad295a7d993f790e48ef2aacd28febae452a/speaker_1/chunks/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/07_5d500dd8/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/21bc9427cac85315b0ca84ebe91afa72c15d9734/speaker_1/chunks/000000",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/19_47473a46/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/e49604be415d046fcb1d4173f72751dbf797ed02/speaker_1/chunks/000000",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/15_d1e1322c/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/53862782b916570909322c061ce073edbb69394f/speaker_1/segments/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/clip-02/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/de4c73ce833878b6b120b5cd7f7aff11fb61b899/speaker_1/chunks/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/05_e25c6859/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/6bdc3aac7c7d2f008a70b16f8d66f31ebfa4831c/speaker_1/chunks/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/17_5486a66c/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/cbf5e9cd900017a402dcd22cf94c69af8b2dfbcb/speaker_1/chunks/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/16_1aaba16c/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/389a322459f75cbea7a6c9e65a05cdf4307df1a8/speaker_2/chunks/000000",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/09_d9ef3c94/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/recordings/e23a5d4e661a22dd5d8c35f92e730779f81bff72/speaker_1/chunks/000001",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/18_1ffa9083/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/code/infer/pose_opd_live/renderer/amu/seq/people/actor/opd_48f6d2d3_seg00_SPEAKER_01",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people/opd_48f6d2d3_seg00_SPEAKER_01/gt"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-first-band-20261030/cluster/latest",
+    "target": "20261031T041222Z-23804ec9"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000327/event-f00113-00213/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000327/event-f00113-00213/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000380/event-f00575-00675/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000380/event-f00575-00675/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000424/event-f00172-00272/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000424/event-f00172-00272/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000356/event-f00122-00222/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000356/event-f00122-00222/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000687/event-f00913-01013/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000687/event-f00913-01013/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000068/event-f00146-00246/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000068/event-f00146-00246/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000706/event-f00120-00220/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000706/event-f00120-00220/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000367/event-f00148-00248/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000367/event-f00148-00248/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000464/event-f00196-00296/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000464/event-f00196-00296/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000063/event-f00770-00870/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000063/event-f00770-00870/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000467/event-f00149-00249/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000467/event-f00149-00249/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000713/event-f00131-00231/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000713/event-f00131-00231/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000480/event-f00170-00270/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000480/event-f00170-00270/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000737/event-f00112-00212/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000737/event-f00112-00212/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000806/event-f00466-00566/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000806/event-f00466-00566/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000818/event-f00171-00271/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000818/event-f00171-00271/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000753/event-f00120-00220/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000753/event-f00120-00220/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000689/event-f00122-00222/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/rendered/rollout-000689/event-f00122-00222/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/cache/triton-10",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-10"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/cache/triton-9",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-9"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/cache/triton-8",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-8"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-xabi-nocfg/cache/triton-11",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-11"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000795/event-f00168-00268/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000795/event-f00168-00268/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000638/event-f00226-00326/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000638/event-f00226-00326/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000638/event-f01385-01485/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000638/event-f01385-01485/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000025/event-f00760-00860/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000025/event-f00760-00860/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000744/event-f00238-00338/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000744/event-f00238-00338/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000778/event-f00299-00399/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000778/event-f00299-00399/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000016/event-f00772-00872/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000016/event-f00772-00872/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000205/event-f00319-00419/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000205/event-f00319-00419/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000079/event-f00120-00220/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000079/event-f00120-00220/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000222/event-f00750-00850/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000222/event-f00750-00850/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000440/event-f01030-01130/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000440/event-f01030-01130/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000483/event-f00188-00288/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000483/event-f00188-00288/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000215/event-f00136-00236/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000215/event-f00136-00236/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000519/event-f00557-00657/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000519/event-f00557-00657/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000727/event-f00315-00415/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000727/event-f00315-00415/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000862/event-f00242-00342/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000862/event-f00242-00342/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000228/event-f00740-00840/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000228/event-f00740-00840/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000308/event-f00133-00233/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000308/event-f00133-00233/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000431/event-f00510-00610/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000431/event-f00510-00610/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000444/event-f01266-01366/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000444/event-f01266-01366/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000863/event-f00230-00387/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000863/event-f00230-00387/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000210/event-f00396-00496/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000210/event-f00396-00496/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000073/event-f00285-00385/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000073/event-f00285-00385/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000054/event-f00675-00775/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000054/event-f00675-00775/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000069/event-f00759-00859/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000069/event-f00759-00859/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000518/event-f00190-00290/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000518/event-f00190-00290/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000740/event-f00805-00905/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000740/event-f00805-00905/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000453/event-f00270-00370/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000453/event-f00270-00370/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000286/event-f01287-01387/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000286/event-f01287-01387/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000635/event-f00610-00710/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000635/event-f00610-00710/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000635/event-f00216-00316/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000635/event-f00216-00316/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000712/event-f00126-00226/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000712/event-f00126-00226/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000197/event-f01355-01455/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000197/event-f01355-01455/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000446/event-f00426-00526/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000446/event-f00426-00526/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/cache/triton-10",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-10"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/cache/triton-9",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-9"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/cache/triton-8",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-8"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/cache/triton-11",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/cache/triton-11"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-002003-1ef8/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-002003-1ef8/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-001936-5ee3/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-001936-5ee3/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000654-731c/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000654-731c/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-002003-f5a6/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-002003-f5a6/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-234858-702f/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-234858-702f/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000303-a070/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000303-a070/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000302-c96b/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000302-c96b/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000302-4d56/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000302-4d56/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-010758-93ae/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-010758-93ae/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-001936-dd7d/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-001936-dd7d/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-235733-0277/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-235733-0277/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-010435-2f05/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-010435-2f05/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000654-7387/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000654-7387/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-234630-b1ba/avatar-render/diffusion-attempt-1793404177021410452/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-234630-b1ba/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-234630-b1ba/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-234630-b1ba/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-234844-a950/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-234844-a950/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-010758-5662/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-010758-5662/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000302-20c4/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261031-000302-20c4/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-234550-dc23/avatar-render/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-234550-dc23/avatar-render/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/checkpoints",
+    "target": "/home/param/models/trained-weights/pose-basic-opd-b336-20261031/checkpoints"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/checkpoints",
+    "target": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/hand-focused-rendered/bandfix355/rollout-000392/event-f00539-00639/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/hand-focused-rendered/bandfix355/rollout-000392/event-f00539-00639/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/hand-focused-rendered/bandfix355/rollout-000077/event-f00371-00471/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/hand-focused-rendered/bandfix355/rollout-000077/event-f00371-00471/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/hand-focused-rendered/aloe_raw357-cohort2/rollout-000216/event-f00705-00805/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/hand-focused-rendered/aloe_raw357-cohort2/rollout-000216/event-f00705-00805/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/hand-focused-rendered/xabi200/rollout-000437/event-f00235-00335/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/hand-focused-rendered/xabi200/rollout-000437/event-f00235-00335/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/video-sessions",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/people",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/people"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/web/openings",
+    "target": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/web/openings-raw",
+    "target": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/web/render/out/20261031-135327-5a1b.mp4",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/video-sessions/20261031-135327-5a1b/video.mp4"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/02_7ab994e5",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/02_7ab994e5"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/13_956c09af",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/13_956c09af"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/19_47473a46",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/19_47473a46"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/07_5d500dd8",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/07_5d500dd8"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/09_d9ef3c94",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/09_d9ef3c94"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/04_96cd17dc",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/04_96cd17dc"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/14_3a16ca65",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/14_3a16ca65"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/06_74807fe0",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/06_74807fe0"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/03_b437950e",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/03_b437950e"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/11_92acbbd0",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/11_92acbbd0"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/08_539e9577",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/08_539e9577"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/10_27286bdd",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/10_27286bdd"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/16_1aaba16c",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/16_1aaba16c"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/01_ab63d745",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/01_ab63d745"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/05_e25c6859",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/05_e25c6859"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/17_5486a66c",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/17_5486a66c"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/15_d1e1322c",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/15_d1e1322c"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/18_1ffa9083",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/18_1ffa9083"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/12_72cb45d3",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/12_72cb45d3"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/clip-02",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/clip-02"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-sft-live/openings-raw/00_14b594aa",
+    "target": "/home/param/runs/pose-runs/pose-opd-credit-step89-live/source-openings-raw/00_14b594aa"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/voiceclips",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/voiceclips"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/render",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/render"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/people_extra",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/people_extra"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/weights_live",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/weights_live"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/runs",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/user_presets",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/user_presets"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/state",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/state"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/uploads",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/uploads"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/logs",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/logs"
+  },
+  {
+    "path": "/home/param/websites/pose-duplex-engine/genweb",
+    "target": "/home/param/websites/pose-playground"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0oS8vbd/codex-linux-sandbox",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0oS8vbd/apply_patch",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0oS8vbd/applypatch",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  }
+]

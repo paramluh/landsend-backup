@@ -1,0 +1,1170 @@
+{
+  "folder": "/home/param/models/imported-weights/ppm-811-17850-base-bf16",
+  "repo": "InternalCan/ppm-811-17850-base-bf16",
+  "revision": "ccfd985473d52169e59aa4210aae50ac4e11531d",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank118.pt",
+      "remote": "weights/rank118.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "e5c8e98f9bc6f6f24332c170253dee7b557c5b92111bab8e052e6f83aca319d4",
+      "remote_sha256": "e5c8e98f9bc6f6f24332c170253dee7b557c5b92111bab8e052e6f83aca319d4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank49.pt",
+      "remote": "weights/rank49.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "4df783ea3c0c7048e1ed1105d8ee6b3393aa7faf27e7fdcb061cc5ded52bcbf8",
+      "remote_sha256": "4df783ea3c0c7048e1ed1105d8ee6b3393aa7faf27e7fdcb061cc5ded52bcbf8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank5.pt",
+      "remote": "weights/rank5.pt",
+      "bytes": 672763677,
+      "matched": true,
+      "cached_download_sha256": "ed0fe2fdc0e81e70098cdcd44d51d1453e315c6f057f2762c99a4c0dd93e0d3f",
+      "remote_sha256": "ed0fe2fdc0e81e70098cdcd44d51d1453e315c6f057f2762c99a4c0dd93e0d3f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank7.pt",
+      "remote": "weights/rank7.pt",
+      "bytes": 672763677,
+      "matched": true,
+      "cached_download_sha256": "8b4e41a2ec0a29966a9fcfe0333edfb07581c880c452e945ddf6bbb275ef7817",
+      "remote_sha256": "8b4e41a2ec0a29966a9fcfe0333edfb07581c880c452e945ddf6bbb275ef7817",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank50.pt",
+      "remote": "weights/rank50.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "6682fbb506391f1ceebe48a1723312a6079beeccf64ba52a6c64b6600117e50d",
+      "remote_sha256": "6682fbb506391f1ceebe48a1723312a6079beeccf64ba52a6c64b6600117e50d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank15.pt",
+      "remote": "weights/rank15.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "4d3c3f76d4d0fdf6ec71dbef2487bcb399a4132b941afbf9034defa5a1e1a5a8",
+      "remote_sha256": "4d3c3f76d4d0fdf6ec71dbef2487bcb399a4132b941afbf9034defa5a1e1a5a8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank19.pt",
+      "remote": "weights/rank19.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "519118f6364f509edc854f0e2b79ca0a9295c21ddf41d613e9c8e2cc4ae1ed9d",
+      "remote_sha256": "519118f6364f509edc854f0e2b79ca0a9295c21ddf41d613e9c8e2cc4ae1ed9d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank77.pt",
+      "remote": "weights/rank77.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "05e7f72ad688d0b05ea558534c394383921ddbca58a2240f944ebc49a71729a6",
+      "remote_sha256": "05e7f72ad688d0b05ea558534c394383921ddbca58a2240f944ebc49a71729a6",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank93.pt",
+      "remote": "weights/rank93.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "79f04f9b63003b3d205c13187c402cbb41714db79d3d65a097c359df63c0a489",
+      "remote_sha256": "79f04f9b63003b3d205c13187c402cbb41714db79d3d65a097c359df63c0a489",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank120.pt",
+      "remote": "weights/rank120.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "219c1bfb2e5260516a108fa942fbce5969870a0bf6ffaeff2edb02a0669feec6",
+      "remote_sha256": "219c1bfb2e5260516a108fa942fbce5969870a0bf6ffaeff2edb02a0669feec6",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank84.pt",
+      "remote": "weights/rank84.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "176961afa20e6f11628d93b8f88f337bbc1dbcf13a914de2ebda1194de8054a2",
+      "remote_sha256": "176961afa20e6f11628d93b8f88f337bbc1dbcf13a914de2ebda1194de8054a2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank89.pt",
+      "remote": "weights/rank89.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "06804903a5fda2e611826fbe1ddc26a1c7ab69b59503853d51f5a18743376db7",
+      "remote_sha256": "06804903a5fda2e611826fbe1ddc26a1c7ab69b59503853d51f5a18743376db7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank51.pt",
+      "remote": "weights/rank51.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "303f69423b8acd587074005aedd043c96adff38e80afdbd7a37e7691112973ab",
+      "remote_sha256": "303f69423b8acd587074005aedd043c96adff38e80afdbd7a37e7691112973ab",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank4.pt",
+      "remote": "weights/rank4.pt",
+      "bytes": 672763677,
+      "matched": true,
+      "cached_download_sha256": "2747163187e19444d5cb9a17ebfca1e8ea31f722ca3bb4391db37837d99ab113",
+      "remote_sha256": "2747163187e19444d5cb9a17ebfca1e8ea31f722ca3bb4391db37837d99ab113",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank88.pt",
+      "remote": "weights/rank88.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "245413987f61bcf4049d79e8b8d41d0ddc1603c5ddb9aea95fcbfc9652e5b0cb",
+      "remote_sha256": "245413987f61bcf4049d79e8b8d41d0ddc1603c5ddb9aea95fcbfc9652e5b0cb",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank90.pt",
+      "remote": "weights/rank90.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "c47061f5b93b010a2edb66e3bc8a902923b6fe4647f1d2e5eb4d5f907ef0d258",
+      "remote_sha256": "c47061f5b93b010a2edb66e3bc8a902923b6fe4647f1d2e5eb4d5f907ef0d258",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank29.pt",
+      "remote": "weights/rank29.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "ade46d04c5f23d9a2f63c111b7665bac74719fcee55bdeeab964964a4c5ed3d1",
+      "remote_sha256": "ade46d04c5f23d9a2f63c111b7665bac74719fcee55bdeeab964964a4c5ed3d1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank105.pt",
+      "remote": "weights/rank105.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "6b38c9a1ff9f22e290bad2de2b0bf3089f8045da7704e442d6a693c3068f1bd8",
+      "remote_sha256": "6b38c9a1ff9f22e290bad2de2b0bf3089f8045da7704e442d6a693c3068f1bd8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank67.pt",
+      "remote": "weights/rank67.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "55f099cd17f5775642d9f8a05c238bb9391612899024bf63888b18d67798a8d0",
+      "remote_sha256": "55f099cd17f5775642d9f8a05c238bb9391612899024bf63888b18d67798a8d0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank94.pt",
+      "remote": "weights/rank94.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "913d14cd848799c63fd4d15b669c1a7d3108ec88138ec1f0d467d83ecb19ac6d",
+      "remote_sha256": "913d14cd848799c63fd4d15b669c1a7d3108ec88138ec1f0d467d83ecb19ac6d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank22.pt",
+      "remote": "weights/rank22.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "26e2c92fd7f294f5e5f16704ce6a8e9dad1db7699423c2b6e2068ed00865d5ac",
+      "remote_sha256": "26e2c92fd7f294f5e5f16704ce6a8e9dad1db7699423c2b6e2068ed00865d5ac",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank97.pt",
+      "remote": "weights/rank97.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "6646b8fd7703ba11cc9c39b5bcb5c2f647861471a96b3cb1104f6d0014969277",
+      "remote_sha256": "6646b8fd7703ba11cc9c39b5bcb5c2f647861471a96b3cb1104f6d0014969277",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank20.pt",
+      "remote": "weights/rank20.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "9fe2142aafad91f93d69996bded7a07d35a30dcafaa7704ae04963b3ecca974c",
+      "remote_sha256": "9fe2142aafad91f93d69996bded7a07d35a30dcafaa7704ae04963b3ecca974c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank47.pt",
+      "remote": "weights/rank47.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "491a77deae0e60b02927b1f597f735210b64f8f49e77c3fdc6f023fbd122baee",
+      "remote_sha256": "491a77deae0e60b02927b1f597f735210b64f8f49e77c3fdc6f023fbd122baee",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank60.pt",
+      "remote": "weights/rank60.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "af37656f6da6aba1c406195d4cde202d45bfaad96b7be7a7451c3ab8bc5abfe3",
+      "remote_sha256": "af37656f6da6aba1c406195d4cde202d45bfaad96b7be7a7451c3ab8bc5abfe3",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank43.pt",
+      "remote": "weights/rank43.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "bc3e2581382e479c230c306ac1c31ac4b6aa0ea2583b5d4fdc0f70ef9027ec5d",
+      "remote_sha256": "bc3e2581382e479c230c306ac1c31ac4b6aa0ea2583b5d4fdc0f70ef9027ec5d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank24.pt",
+      "remote": "weights/rank24.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "e86972677dfeeb74a6e9f09ab349a2d7046935bdadc82d6139d17ba6f7db27ee",
+      "remote_sha256": "e86972677dfeeb74a6e9f09ab349a2d7046935bdadc82d6139d17ba6f7db27ee",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank109.pt",
+      "remote": "weights/rank109.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "de4429f462490277cdc082a6386428d1c3c03a02c50025ed634d7aeff54f8f9c",
+      "remote_sha256": "de4429f462490277cdc082a6386428d1c3c03a02c50025ed634d7aeff54f8f9c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank125.pt",
+      "remote": "weights/rank125.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "f19a7fd974ef452338ff4107e34191144df8f400aaefa99d38e346c81843e22b",
+      "remote_sha256": "f19a7fd974ef452338ff4107e34191144df8f400aaefa99d38e346c81843e22b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank18.pt",
+      "remote": "weights/rank18.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "c81df3ea1dd36a639394d81f6b1dc3cfb057347c1e8ac23bab47d9806a1aff40",
+      "remote_sha256": "c81df3ea1dd36a639394d81f6b1dc3cfb057347c1e8ac23bab47d9806a1aff40",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank66.pt",
+      "remote": "weights/rank66.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "d92d85218ea9186a01c76d38898235b02e1654ba1bdd720fb2befdd31aa5caf9",
+      "remote_sha256": "d92d85218ea9186a01c76d38898235b02e1654ba1bdd720fb2befdd31aa5caf9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank127.pt",
+      "remote": "weights/rank127.pt",
+      "bytes": 671476493,
+      "matched": true,
+      "cached_download_sha256": "5e7b19514affbf62dc0af85e415e83733c06f28e7eca671af534ce21796067cd",
+      "remote_sha256": "5e7b19514affbf62dc0af85e415e83733c06f28e7eca671af534ce21796067cd",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank121.pt",
+      "remote": "weights/rank121.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "3ce2ade1cf67826210db63873b404a9320fb0ca1bc69a978c59d7488638227b2",
+      "remote_sha256": "3ce2ade1cf67826210db63873b404a9320fb0ca1bc69a978c59d7488638227b2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank38.pt",
+      "remote": "weights/rank38.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "be4c51cfa6281fbf29aec79a38d58c9bc91f3e7a153ba7d51c131df78419a92a",
+      "remote_sha256": "be4c51cfa6281fbf29aec79a38d58c9bc91f3e7a153ba7d51c131df78419a92a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank37.pt",
+      "remote": "weights/rank37.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "7049493e0142d8f98b6d4ba54cc7c3103288ad5fc4e05821b139fd231ffcadaa",
+      "remote_sha256": "7049493e0142d8f98b6d4ba54cc7c3103288ad5fc4e05821b139fd231ffcadaa",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank28.pt",
+      "remote": "weights/rank28.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "02291c1d07ecde031f62570da04034098787ce1e9e2e434291172ba48a7a135b",
+      "remote_sha256": "02291c1d07ecde031f62570da04034098787ce1e9e2e434291172ba48a7a135b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank11.pt",
+      "remote": "weights/rank11.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "45d0bf30049018fbea51178d6de559eb94b59643978d482e8574e83fa4dbfdc3",
+      "remote_sha256": "45d0bf30049018fbea51178d6de559eb94b59643978d482e8574e83fa4dbfdc3",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank56.pt",
+      "remote": "weights/rank56.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "7cf8afc2e8033e627d0560f534f28382238992f2b4d5027e2d63d362aca9be09",
+      "remote_sha256": "7cf8afc2e8033e627d0560f534f28382238992f2b4d5027e2d63d362aca9be09",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank30.pt",
+      "remote": "weights/rank30.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "b9d81bc4b282141659e9c5e77fc7a1a67677634d2330bf508a9a47320e41099d",
+      "remote_sha256": "b9d81bc4b282141659e9c5e77fc7a1a67677634d2330bf508a9a47320e41099d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank117.pt",
+      "remote": "weights/rank117.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "2b89b5b55137b97e2c400a676c47df2d4385d13bbadf9b5766172553443cfc1d",
+      "remote_sha256": "2b89b5b55137b97e2c400a676c47df2d4385d13bbadf9b5766172553443cfc1d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank42.pt",
+      "remote": "weights/rank42.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "8741d2a1a729b813d2a75e0d09166d31bb697d8cdc9bc341aba34b300a68b54b",
+      "remote_sha256": "8741d2a1a729b813d2a75e0d09166d31bb697d8cdc9bc341aba34b300a68b54b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank91.pt",
+      "remote": "weights/rank91.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "d1dab88ab44e5899cb409e8df800de2cfc7602a709ebccc74c66beb8cdd975b5",
+      "remote_sha256": "d1dab88ab44e5899cb409e8df800de2cfc7602a709ebccc74c66beb8cdd975b5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank110.pt",
+      "remote": "weights/rank110.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "c7492811c175a2c2b3969e1cf87016858ff97af6daab4dfc72ba11ba8fe09f98",
+      "remote_sha256": "c7492811c175a2c2b3969e1cf87016858ff97af6daab4dfc72ba11ba8fe09f98",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank123.pt",
+      "remote": "weights/rank123.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "5251e07c9bd6b2c6f26d5c32b630221feeedea374fc36d67866c76ff0d1670d4",
+      "remote_sha256": "5251e07c9bd6b2c6f26d5c32b630221feeedea374fc36d67866c76ff0d1670d4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank78.pt",
+      "remote": "weights/rank78.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "3b157657ba81dc7c7889fe953877c70dc4de8a7bb655d92e3f21304c5e84832d",
+      "remote_sha256": "3b157657ba81dc7c7889fe953877c70dc4de8a7bb655d92e3f21304c5e84832d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank85.pt",
+      "remote": "weights/rank85.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "b03c1b6f2dd22d7cc58ad8ac816d4bd8ddef996bfe8233502438b71e38d2ba60",
+      "remote_sha256": "b03c1b6f2dd22d7cc58ad8ac816d4bd8ddef996bfe8233502438b71e38d2ba60",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank112.pt",
+      "remote": "weights/rank112.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "cbefef51f4dfcbcb3b9ea56235c6cfa8aafad9f7c83f59550d4c11fb085f5b0f",
+      "remote_sha256": "cbefef51f4dfcbcb3b9ea56235c6cfa8aafad9f7c83f59550d4c11fb085f5b0f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank96.pt",
+      "remote": "weights/rank96.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "3a551bec7ff27830a5bc0839148bdd46988d3306c0aaff7701d39a98d2dad34c",
+      "remote_sha256": "3a551bec7ff27830a5bc0839148bdd46988d3306c0aaff7701d39a98d2dad34c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank87.pt",
+      "remote": "weights/rank87.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "48f9474e9e857635cda416454920f6c61e18357da279cde1c4e7c1779dd8fd59",
+      "remote_sha256": "48f9474e9e857635cda416454920f6c61e18357da279cde1c4e7c1779dd8fd59",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank102.pt",
+      "remote": "weights/rank102.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "3066cc6d1bdf7f3779028628a019639bcd1ba9d152d0ffe47ecc913d768ff26a",
+      "remote_sha256": "3066cc6d1bdf7f3779028628a019639bcd1ba9d152d0ffe47ecc913d768ff26a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank81.pt",
+      "remote": "weights/rank81.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "da81583c586383ef4ffb55bd276332e8dc7fa12c44441afa9cbab04141c60fcd",
+      "remote_sha256": "da81583c586383ef4ffb55bd276332e8dc7fa12c44441afa9cbab04141c60fcd",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank95.pt",
+      "remote": "weights/rank95.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "b80384930926f1e1b80d000cd0cf293cbead351dce5dcfd0bf499775d5a28879",
+      "remote_sha256": "b80384930926f1e1b80d000cd0cf293cbead351dce5dcfd0bf499775d5a28879",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank111.pt",
+      "remote": "weights/rank111.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "0c42c70ea485b7cb924a53dae187b57354f04c45ba1f27666030b87a354d788c",
+      "remote_sha256": "0c42c70ea485b7cb924a53dae187b57354f04c45ba1f27666030b87a354d788c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank69.pt",
+      "remote": "weights/rank69.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "7418e80ea0dec6d4a652a3655f1750b6dabdd7bd6dd9f6a7964662b9b946c083",
+      "remote_sha256": "7418e80ea0dec6d4a652a3655f1750b6dabdd7bd6dd9f6a7964662b9b946c083",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank27.pt",
+      "remote": "weights/rank27.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "e35e63514d3825edf57daebc8024e1e305ee9beab86f477688b110c319f2d756",
+      "remote_sha256": "e35e63514d3825edf57daebc8024e1e305ee9beab86f477688b110c319f2d756",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank46.pt",
+      "remote": "weights/rank46.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "b1c3c338ca59add4214cd2980b37dc9c3f4cf3f92a108438c76c007e4360428f",
+      "remote_sha256": "b1c3c338ca59add4214cd2980b37dc9c3f4cf3f92a108438c76c007e4360428f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank83.pt",
+      "remote": "weights/rank83.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "31e1376d56a0f6b59fdbc34f66e929a17548964a666859092ffa2734ff00dece",
+      "remote_sha256": "31e1376d56a0f6b59fdbc34f66e929a17548964a666859092ffa2734ff00dece",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank107.pt",
+      "remote": "weights/rank107.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "f60f0911ef8a183d3670c7f973ea6a18912d7972733e42e486f79652cc3079ea",
+      "remote_sha256": "f60f0911ef8a183d3670c7f973ea6a18912d7972733e42e486f79652cc3079ea",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank26.pt",
+      "remote": "weights/rank26.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "a5aaa75e0de49fd34cd995219c0150e9164e95a33953fe0d9dcf705e42666a20",
+      "remote_sha256": "a5aaa75e0de49fd34cd995219c0150e9164e95a33953fe0d9dcf705e42666a20",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank59.pt",
+      "remote": "weights/rank59.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "905211a0eaef49f091fdba5d9f985228c35be5db53b29b2cb82c1a0084e850c2",
+      "remote_sha256": "905211a0eaef49f091fdba5d9f985228c35be5db53b29b2cb82c1a0084e850c2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank36.pt",
+      "remote": "weights/rank36.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "f82a29c0d2d0be17d15540847c4cd3c49182a3a22be7eba58d5feadcdcaf6ced",
+      "remote_sha256": "f82a29c0d2d0be17d15540847c4cd3c49182a3a22be7eba58d5feadcdcaf6ced",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank98.pt",
+      "remote": "weights/rank98.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "49eca07994ab92601044980ea66fe9775afa0737392d0a9f888fa4f4b55bc7bc",
+      "remote_sha256": "49eca07994ab92601044980ea66fe9775afa0737392d0a9f888fa4f4b55bc7bc",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank6.pt",
+      "remote": "weights/rank6.pt",
+      "bytes": 672763677,
+      "matched": true,
+      "cached_download_sha256": "c948122201eab5b9931cd6d726eb1caa7b39bdf2fb1e9ed4e09740af57ca1c8b",
+      "remote_sha256": "c948122201eab5b9931cd6d726eb1caa7b39bdf2fb1e9ed4e09740af57ca1c8b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank64.pt",
+      "remote": "weights/rank64.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "f0954a2b48eb641b41ad439292c892b22979955e450967ef0d3d01a97c48e73a",
+      "remote_sha256": "f0954a2b48eb641b41ad439292c892b22979955e450967ef0d3d01a97c48e73a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank68.pt",
+      "remote": "weights/rank68.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "f59614f31dd86904a6d761022a5c97013cbe7972f541036ee6741398278d1949",
+      "remote_sha256": "f59614f31dd86904a6d761022a5c97013cbe7972f541036ee6741398278d1949",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank63.pt",
+      "remote": "weights/rank63.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "a205bd55bbff98c8a51e470b9d1a66bd1bead486a50213e648ae9b631be6cbdc",
+      "remote_sha256": "a205bd55bbff98c8a51e470b9d1a66bd1bead486a50213e648ae9b631be6cbdc",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank74.pt",
+      "remote": "weights/rank74.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "de992421bf32f95b1edc3137b2d1a2b51d4d48ce98497faa211ee3b5b88c9cda",
+      "remote_sha256": "de992421bf32f95b1edc3137b2d1a2b51d4d48ce98497faa211ee3b5b88c9cda",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank0.pt",
+      "remote": "weights/rank0.pt",
+      "bytes": 672794589,
+      "matched": true,
+      "cached_download_sha256": "00b66a03b5387c3a20d2119680bd8d29fcbcf0653e19d6e457e424502b74ff38",
+      "remote_sha256": "00b66a03b5387c3a20d2119680bd8d29fcbcf0653e19d6e457e424502b74ff38",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank54.pt",
+      "remote": "weights/rank54.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "e0922516faff2ba0d3c7caf6bdb013f27289922383b46fc90da50c4bf69b6d11",
+      "remote_sha256": "e0922516faff2ba0d3c7caf6bdb013f27289922383b46fc90da50c4bf69b6d11",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank53.pt",
+      "remote": "weights/rank53.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "714898013011bc51369aabcddf4e2094470ad4303bb04fdff16aff58eeb468e4",
+      "remote_sha256": "714898013011bc51369aabcddf4e2094470ad4303bb04fdff16aff58eeb468e4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank76.pt",
+      "remote": "weights/rank76.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "1c29839494707b03dfa444d392294636a5eddd78828b8cfa0ec38e325a895cf0",
+      "remote_sha256": "1c29839494707b03dfa444d392294636a5eddd78828b8cfa0ec38e325a895cf0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank80.pt",
+      "remote": "weights/rank80.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "d271bcb8d3fc2d2353e1326aeec83539c7199040971dd3d3fbee5bb46ac21e08",
+      "remote_sha256": "d271bcb8d3fc2d2353e1326aeec83539c7199040971dd3d3fbee5bb46ac21e08",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank115.pt",
+      "remote": "weights/rank115.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "f901b42269192f34d861a7387b20292950ed7dfaa92965150e22efff161f92f1",
+      "remote_sha256": "f901b42269192f34d861a7387b20292950ed7dfaa92965150e22efff161f92f1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank48.pt",
+      "remote": "weights/rank48.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "72c9f926b60261feeecf64018b0655bbf7749ad7e392143806dc42d5425bfcc6",
+      "remote_sha256": "72c9f926b60261feeecf64018b0655bbf7749ad7e392143806dc42d5425bfcc6",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank113.pt",
+      "remote": "weights/rank113.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "47522bce9a293e6fcac500de2a16f57906a47cf161f8b2876556484b5e368058",
+      "remote_sha256": "47522bce9a293e6fcac500de2a16f57906a47cf161f8b2876556484b5e368058",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank2.pt",
+      "remote": "weights/rank2.pt",
+      "bytes": 672763677,
+      "matched": true,
+      "cached_download_sha256": "9d3804365542ad6609e88c5ed229fec9b3945392c12dda4417a50349095628c7",
+      "remote_sha256": "9d3804365542ad6609e88c5ed229fec9b3945392c12dda4417a50349095628c7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank62.pt",
+      "remote": "weights/rank62.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "838af399413ed59bafc0340d9c4dfc2966987e29825a028715857aeb9dd24287",
+      "remote_sha256": "838af399413ed59bafc0340d9c4dfc2966987e29825a028715857aeb9dd24287",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank34.pt",
+      "remote": "weights/rank34.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "bb8f8ade25ec48df1f847bcc0181cc6e7355aa0bc168f829224e945661712a64",
+      "remote_sha256": "bb8f8ade25ec48df1f847bcc0181cc6e7355aa0bc168f829224e945661712a64",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank122.pt",
+      "remote": "weights/rank122.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "75b94cc56dabb9694f53f4e762ed779d3d745b46286a278697751e5fbfb9aba0",
+      "remote_sha256": "75b94cc56dabb9694f53f4e762ed779d3d745b46286a278697751e5fbfb9aba0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank33.pt",
+      "remote": "weights/rank33.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "26fcdc85ac08538dbd27b4c8df268426e5c44badd4739f4ec73116641824bde9",
+      "remote_sha256": "26fcdc85ac08538dbd27b4c8df268426e5c44badd4739f4ec73116641824bde9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank55.pt",
+      "remote": "weights/rank55.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "f955afcd8226f65245d9a9eb149a14b0cd726efdbd3506ce486c6c4897e16e98",
+      "remote_sha256": "f955afcd8226f65245d9a9eb149a14b0cd726efdbd3506ce486c6c4897e16e98",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank52.pt",
+      "remote": "weights/rank52.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "6fbe57d0db9c29a2c79b8d0f6d4907d44c851aa001dc706927f4bd1a8d36fd65",
+      "remote_sha256": "6fbe57d0db9c29a2c79b8d0f6d4907d44c851aa001dc706927f4bd1a8d36fd65",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank35.pt",
+      "remote": "weights/rank35.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "7f064d3f2329596c8474ff9c007b744dc2634a4c56af2fb739c1341b0a87e047",
+      "remote_sha256": "7f064d3f2329596c8474ff9c007b744dc2634a4c56af2fb739c1341b0a87e047",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank65.pt",
+      "remote": "weights/rank65.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "c497378fd731fe09a1375dc737c34215f1b6223c7788f46889a83eed12733de1",
+      "remote_sha256": "c497378fd731fe09a1375dc737c34215f1b6223c7788f46889a83eed12733de1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank1.pt",
+      "remote": "weights/rank1.pt",
+      "bytes": 672763677,
+      "matched": true,
+      "cached_download_sha256": "a4c01bcf3b16814c229b568feb410e0f398ce6a498a1fb013fa6223c54e3d640",
+      "remote_sha256": "a4c01bcf3b16814c229b568feb410e0f398ce6a498a1fb013fa6223c54e3d640",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank73.pt",
+      "remote": "weights/rank73.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "f96cfee80929bb622bd7535b662838cde1338cf9b69797520c71825f2777260e",
+      "remote_sha256": "f96cfee80929bb622bd7535b662838cde1338cf9b69797520c71825f2777260e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank72.pt",
+      "remote": "weights/rank72.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "eef78e73972088e2c70a562908bac8965387a265806306c7e66461a223cd4635",
+      "remote_sha256": "eef78e73972088e2c70a562908bac8965387a265806306c7e66461a223cd4635",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rep.pt",
+      "remote": "weights/rep.pt",
+      "bytes": 2301002223,
+      "matched": true,
+      "cached_download_sha256": "58ce016f3773a1a82d87899bd7eaac1b20cb7c15ab260185b611964365029796",
+      "remote_sha256": "58ce016f3773a1a82d87899bd7eaac1b20cb7c15ab260185b611964365029796",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank114.pt",
+      "remote": "weights/rank114.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "b5d0e935c741c4b7cac2ac73f3c0f0aa12d88e123847c508fa27785d819a51a5",
+      "remote_sha256": "b5d0e935c741c4b7cac2ac73f3c0f0aa12d88e123847c508fa27785d819a51a5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank126.pt",
+      "remote": "weights/rank126.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "220b85bf55cbb70e087840b98af2f7389384ee5ecbd714a601ff1e9d4e68b527",
+      "remote_sha256": "220b85bf55cbb70e087840b98af2f7389384ee5ecbd714a601ff1e9d4e68b527",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank44.pt",
+      "remote": "weights/rank44.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "929dd9fbae80d5ea7fbd806034526e3646fcd8cf09e4713cb84880f0ffafd5d8",
+      "remote_sha256": "929dd9fbae80d5ea7fbd806034526e3646fcd8cf09e4713cb84880f0ffafd5d8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank13.pt",
+      "remote": "weights/rank13.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "cbb411bdf596f41985605a631a554b246208867cc4df07d5fcd637cf6c824c92",
+      "remote_sha256": "cbb411bdf596f41985605a631a554b246208867cc4df07d5fcd637cf6c824c92",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank8.pt",
+      "remote": "weights/rank8.pt",
+      "bytes": 672763677,
+      "matched": true,
+      "cached_download_sha256": "01942bebc314fbfa3ee9a61f5b0197b328a4fe18ddb5fd678813ea44ced425ed",
+      "remote_sha256": "01942bebc314fbfa3ee9a61f5b0197b328a4fe18ddb5fd678813ea44ced425ed",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank104.pt",
+      "remote": "weights/rank104.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "178087fd5ed2e21a488d127c47b5e80083704870711a1d7b4e197ecace6f2a53",
+      "remote_sha256": "178087fd5ed2e21a488d127c47b5e80083704870711a1d7b4e197ecace6f2a53",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank17.pt",
+      "remote": "weights/rank17.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "4e0f699ea6170a5fc30031beec0551124c32155a7eb15630ceb822ea75b9bdd0",
+      "remote_sha256": "4e0f699ea6170a5fc30031beec0551124c32155a7eb15630ceb822ea75b9bdd0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank57.pt",
+      "remote": "weights/rank57.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "0783d796c37d8562d6b12c25588cf50ec0124d1088036890021999778f33c7dd",
+      "remote_sha256": "0783d796c37d8562d6b12c25588cf50ec0124d1088036890021999778f33c7dd",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank40.pt",
+      "remote": "weights/rank40.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "cf4ec074de742e9f67268726dead2694602d38d3320b2ab7d7220fb26ea08c93",
+      "remote_sha256": "cf4ec074de742e9f67268726dead2694602d38d3320b2ab7d7220fb26ea08c93",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank116.pt",
+      "remote": "weights/rank116.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "5c6a25933115f8d94393e48ee00676094369f927e8ed36561a2bcf686c4c7cc6",
+      "remote_sha256": "5c6a25933115f8d94393e48ee00676094369f927e8ed36561a2bcf686c4c7cc6",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank100.pt",
+      "remote": "weights/rank100.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "badec9b202c33f57391e4bf495cd47e975d858b2f92d4ba69813cbe0da3198f3",
+      "remote_sha256": "badec9b202c33f57391e4bf495cd47e975d858b2f92d4ba69813cbe0da3198f3",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank86.pt",
+      "remote": "weights/rank86.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "74fe7e163d39c94c098da12a4e405aff03199cce44ca55c7fdf2374dac473047",
+      "remote_sha256": "74fe7e163d39c94c098da12a4e405aff03199cce44ca55c7fdf2374dac473047",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank45.pt",
+      "remote": "weights/rank45.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "ab1636bb7b4e93192c3d860917b25de97581f8e43cf5e39281c41d57025413f2",
+      "remote_sha256": "ab1636bb7b4e93192c3d860917b25de97581f8e43cf5e39281c41d57025413f2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank71.pt",
+      "remote": "weights/rank71.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "feb4740460f696e3557ed15a70427067b2f928f17765d9b09154f8490b78353d",
+      "remote_sha256": "feb4740460f696e3557ed15a70427067b2f928f17765d9b09154f8490b78353d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank12.pt",
+      "remote": "weights/rank12.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "1f89b39e9653c70e92e8aca70730c257c081fff94ba957cb741e18765cd9bd41",
+      "remote_sha256": "1f89b39e9653c70e92e8aca70730c257c081fff94ba957cb741e18765cd9bd41",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank32.pt",
+      "remote": "weights/rank32.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "4a46643d0fe5fb56067bd05d383d06082c7420f16d37e16c0bb468885bef74db",
+      "remote_sha256": "4a46643d0fe5fb56067bd05d383d06082c7420f16d37e16c0bb468885bef74db",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank9.pt",
+      "remote": "weights/rank9.pt",
+      "bytes": 672763677,
+      "matched": true,
+      "cached_download_sha256": "b341ddeb5254cc540bfee6b35958b81022ad27cbc631aa56363a50e6e489d5b7",
+      "remote_sha256": "b341ddeb5254cc540bfee6b35958b81022ad27cbc631aa56363a50e6e489d5b7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank14.pt",
+      "remote": "weights/rank14.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "bf15b5a8663762a26f3683a576ebd5642c0cd8b869ecbf11d2c7a8414f7125d3",
+      "remote_sha256": "bf15b5a8663762a26f3683a576ebd5642c0cd8b869ecbf11d2c7a8414f7125d3",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank101.pt",
+      "remote": "weights/rank101.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "bf8a97e3e562e133a240c3e7ded24a04299f506fde2426dd3862add018d2cfcd",
+      "remote_sha256": "bf8a97e3e562e133a240c3e7ded24a04299f506fde2426dd3862add018d2cfcd",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank23.pt",
+      "remote": "weights/rank23.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "a9bdad9bbb14f6efc6a0cef1135016e3061624b564bde989912c1483bb5fe8f7",
+      "remote_sha256": "a9bdad9bbb14f6efc6a0cef1135016e3061624b564bde989912c1483bb5fe8f7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank39.pt",
+      "remote": "weights/rank39.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "6693e081a7014b501928c82675b882e64e5227823e02497b47e93dcd4d3821a2",
+      "remote_sha256": "6693e081a7014b501928c82675b882e64e5227823e02497b47e93dcd4d3821a2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank106.pt",
+      "remote": "weights/rank106.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "a87ae9295a11b7f220773d0b6492032d5cce5314af22f1ea02dc3f46087a3927",
+      "remote_sha256": "a87ae9295a11b7f220773d0b6492032d5cce5314af22f1ea02dc3f46087a3927",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank58.pt",
+      "remote": "weights/rank58.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "c0885b5baa0e9778404a4ddfe36ebd75f3f82eb3d90cd6477f8972d44915951c",
+      "remote_sha256": "c0885b5baa0e9778404a4ddfe36ebd75f3f82eb3d90cd6477f8972d44915951c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank99.pt",
+      "remote": "weights/rank99.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "a5b171e93f676aa7d41923c89d77e146b5faef374f6014506b93a81ce1cbec49",
+      "remote_sha256": "a5b171e93f676aa7d41923c89d77e146b5faef374f6014506b93a81ce1cbec49",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank10.pt",
+      "remote": "weights/rank10.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "d839191645b5ff0f01660a701b3e00ff9a93d2bfde546f4b23debec43244be59",
+      "remote_sha256": "d839191645b5ff0f01660a701b3e00ff9a93d2bfde546f4b23debec43244be59",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank82.pt",
+      "remote": "weights/rank82.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "c79561ce734e5c966e13dc54dfe819228a709ce9fcba505c0d02d7c5a79dbb1d",
+      "remote_sha256": "c79561ce734e5c966e13dc54dfe819228a709ce9fcba505c0d02d7c5a79dbb1d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank119.pt",
+      "remote": "weights/rank119.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "62d1251259c9f7b7b3535728b1ea9e1268866a5244697b1e9aef13c17daae037",
+      "remote_sha256": "62d1251259c9f7b7b3535728b1ea9e1268866a5244697b1e9aef13c17daae037",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank3.pt",
+      "remote": "weights/rank3.pt",
+      "bytes": 672763677,
+      "matched": true,
+      "cached_download_sha256": "3a4abb711e8849698d537a9de162173190860abff8f07335e396d4c550e8549d",
+      "remote_sha256": "3a4abb711e8849698d537a9de162173190860abff8f07335e396d4c550e8549d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank75.pt",
+      "remote": "weights/rank75.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "d2453d255eb4d0bd6a8c9718f8abfd77e60dfca62ea81e8edf984578d41fc985",
+      "remote_sha256": "d2453d255eb4d0bd6a8c9718f8abfd77e60dfca62ea81e8edf984578d41fc985",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank21.pt",
+      "remote": "weights/rank21.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "502f6dfdade83c7c28fadd9858a31163a969024dc6cd7215afc586da9371bc24",
+      "remote_sha256": "502f6dfdade83c7c28fadd9858a31163a969024dc6cd7215afc586da9371bc24",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank103.pt",
+      "remote": "weights/rank103.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "3c8388559e9199096c9119f2befbbd5dedfeaf9b954f93ed928bf4d5800cb17b",
+      "remote_sha256": "3c8388559e9199096c9119f2befbbd5dedfeaf9b954f93ed928bf4d5800cb17b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank61.pt",
+      "remote": "weights/rank61.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "979c27dc0a969cf4840a4409b2bb71847728809130a8f3e809217c4f9cd21b7a",
+      "remote_sha256": "979c27dc0a969cf4840a4409b2bb71847728809130a8f3e809217c4f9cd21b7a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank25.pt",
+      "remote": "weights/rank25.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "07806221b8d15f9233094ea512b98e3ff8653641dd1ada0b8b0691259231b702",
+      "remote_sha256": "07806221b8d15f9233094ea512b98e3ff8653641dd1ada0b8b0691259231b702",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank79.pt",
+      "remote": "weights/rank79.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "98f4f52d3e0c9cf323e15196ef7869d81925c4504ee6a7d7cd5b5735fb813a05",
+      "remote_sha256": "98f4f52d3e0c9cf323e15196ef7869d81925c4504ee6a7d7cd5b5735fb813a05",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank70.pt",
+      "remote": "weights/rank70.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "5402076b280459c8ea9422eef5f08842376b3539acee0eb3a0fecf76f986a8a2",
+      "remote_sha256": "5402076b280459c8ea9422eef5f08842376b3539acee0eb3a0fecf76f986a8a2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank31.pt",
+      "remote": "weights/rank31.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "6562ffe0561f1bb54bfe29309398aa803911c6f9cbf900ff0e89db20147455bb",
+      "remote_sha256": "6562ffe0561f1bb54bfe29309398aa803911c6f9cbf900ff0e89db20147455bb",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank108.pt",
+      "remote": "weights/rank108.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "6976731bed77868451f62e1ce71773e0110a618dc0a59f7d6c784c7eba0112af",
+      "remote_sha256": "6976731bed77868451f62e1ce71773e0110a618dc0a59f7d6c784c7eba0112af",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank92.pt",
+      "remote": "weights/rank92.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "921410b37cca4b3fd11e853e7dd41c04cb3877fcf18b516a5c3e44f490e8dba8",
+      "remote_sha256": "921410b37cca4b3fd11e853e7dd41c04cb3877fcf18b516a5c3e44f490e8dba8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank41.pt",
+      "remote": "weights/rank41.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "29b61016ab161b24d8652bfe39daeb9d4d8be70c72a9b3c3ef74a73a70636cba",
+      "remote_sha256": "29b61016ab161b24d8652bfe39daeb9d4d8be70c72a9b3c3ef74a73a70636cba",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank16.pt",
+      "remote": "weights/rank16.pt",
+      "bytes": 672765205,
+      "matched": true,
+      "cached_download_sha256": "f21432e27c3330aa2cda6bace7cf9235fc18546b902378ac6b52a3f7c035f923",
+      "remote_sha256": "f21432e27c3330aa2cda6bace7cf9235fc18546b902378ac6b52a3f7c035f923",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-811-17850-base-bf16/weights/rank124.pt",
+      "remote": "weights/rank124.pt",
+      "bytes": 672766733,
+      "matched": true,
+      "cached_download_sha256": "6723fd863ce10cf32d8edfa42f2283e62aa411255399d6cd1529aae14c83d0c6",
+      "remote_sha256": "6723fd863ce10cf32d8edfa42f2283e62aa411255399d6cd1529aae14c83d0c6",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.1226768
+}

@@ -1,0 +1,7 @@
+{
+  "folder": "/home/param/models/imported-weights/electron-vae",
+  "repo": "vanshjjw/electron-vae",
+  "error": "404 Client Error. (Request ID: Root=1-6ae6ba92-52ded21108ff40211a4b34de;36ca5783-2206-42bb-976a-5f6788124476)\n\nRepository Not Found for url: https://huggingface.co/api/models/vanshjjw/electron-vae/revision/9f18375922780ad10fbc209af78c467a67866e69?blobs=true.\nPlease make sure you specified the correct `repo_id` and `repo_type`.\nIf you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.\nFor more details, see https://huggingface.co/docs/huggingface_hub/authentication",
+  "matched": false,
+  "time": 1793505938.4031289
+}

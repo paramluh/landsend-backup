@@ -1,0 +1,63 @@
+{
+  "host": "landsend-3",
+  "roots": {
+    "/home/param/outputs": {
+      "du": "17286747830\t/home/param/outputs",
+      "children": [
+        "pose-opd-credit-bench",
+        "pose-mono-dcp227-export",
+        "landsend-backup-20261031"
+      ]
+    },
+    "/home/param/runs": {
+      "du": "9673380678\t/home/param/runs",
+      "children": [
+        "pose-runs",
+        "smokes"
+      ]
+    },
+    "/home/param/datasets": {
+      "du": "308104680085\t/home/param/datasets",
+      "children": [
+        "zoom-strangers-5k",
+        "xabi-v2pure-cache",
+        "aloe-duplex"
+      ]
+    },
+    "/home/param/.codex": {
+      "du": "445947603\t/home/param/.codex",
+      "children": [
+        "auth.json",
+        "packages",
+        "tmp"
+      ]
+    }
+  },
+  "tmp": [
+    {
+      "name": "pose-git-lfs.deb",
+      "bytes": 3908174,
+      "dir": false
+    },
+    {
+      "name": "hf-cli-install-param.sh",
+      "bytes": 18355,
+      "dir": false
+    },
+    {
+      "name": "pose-environment-landsend-3.json",
+      "bytes": 3500,
+      "dir": false
+    },
+    {
+      "name": "pose-git-lfs-install.log",
+      "bytes": 302,
+      "dir": false
+    },
+    {
+      "name": "hf-get-pip-param.py",
+      "bytes": 2234489,
+      "dir": false
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "source": "/etc/systemd/system/param-gpu-reservation.service",
+    "backup": "files/etc/systemd/system/param-gpu-reservation.service",
+    "mode": 420,
+    "sha256": "f4f16475f8d1f000710440ece1955ee1b8facf6528660b5a6c9af7527b3f1a2d"
+  },
+  {
+    "source": "/home/param/.bashrc",
+    "backup": "files/home/param/.bashrc",
+    "mode": 420,
+    "sha256": "4997765fd2cecb9c38d32df2db0bde240c7a984eaab2e81900d58a8bd7ce71d0"
+  },
+  {
+    "source": "/home/param/.profile",
+    "backup": "files/home/param/.profile",
+    "mode": 420,
+    "sha256": "28b4a453b68dde64f814e94bab14ee651f4f162e15dd9920490aa1d49f05d2a4"
+  },
+  {
+    "source": "/home/param/.bash_logout",
+    "backup": "files/home/param/.bash_logout",
+    "mode": 420,
+    "sha256": "26882b79471c25f945c970f8233d8ce29d54e9d5eedcd2884f88affa84a18f56"
+  }
+]

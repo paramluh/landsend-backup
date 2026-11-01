@@ -1,0 +1,152 @@
+[
+  {
+    "path": "/home/param/pose-worktrees",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.sudo_as_admin_successful",
+    "owner_uid": 1002,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.bash_history",
+    "owner_uid": 1002,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/vansh-video-models",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/pose-repo",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.config",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/outputs",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/pose-runs",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.local",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/runs",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/datasets",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.cache",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.triton",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.bashrc",
+    "owner_uid": 1002,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.ssh",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/websites",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.codex",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/bin",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.profile",
+    "owner_uid": 1002,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.nv",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/models",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.hf-cli",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.gnupg",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/vansh-video-models-handover",
+    "owner_uid": 1002,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.bash_logout",
+    "owner_uid": 1002,
+    "directory": false,
+    "symlink": false
+  }
+]

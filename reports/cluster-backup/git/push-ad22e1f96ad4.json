@@ -1,0 +1,11 @@
+{
+  "url": "https://huggingface.co/InternalCan/pose-repo",
+  "returncode": 0,
+  "expected": "84b99b91076a177b177095e0319781009690e6cb",
+  "remote": "84b99b91076a177b177095e0319781009690e6cb",
+  "verified": true,
+  "original_github_commit": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
+  "lfs_compatible_mirror": true,
+  "commit_map": "LANDSEND_HF_COMMIT_MAP.csv",
+  "log": "/home/param/outputs/landsend-backup-20261031/git/push-hf-pose-mirror.log"
+}

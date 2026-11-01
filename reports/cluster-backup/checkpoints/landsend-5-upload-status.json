@@ -1,0 +1,12 @@
+{
+  "state": "uploading",
+  "host": "landsend-5",
+  "source": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/resume",
+  "prefix": "hosts/landsend-5/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/resume",
+  "bytes": 106309607995,
+  "completed_tasks": 5,
+  "total_tasks": 32,
+  "attempt": 1,
+  "time": 1793506385.5758712,
+  "started": 1793505842.7908795
+}

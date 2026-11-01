@@ -1,0 +1,27 @@
+{
+  "folder": "/home/param/models/trained-weights/full-gt-nine-ref-endpoint-unguided-20261020",
+  "repo": "InternalCan/full-gt-nine-ref-endpoint-unguided-20261020",
+  "revision": "49de8772d2ac9a624f557fd3518de4254474c63a",
+  "files": [
+    {
+      "local": "/home/param/models/trained-weights/full-gt-nine-ref-endpoint-unguided-20261020/step-002911/model_ema.safetensors",
+      "remote": "step-002911/model_ema.safetensors",
+      "bytes": 12988285752,
+      "matched": true,
+      "cached_download_sha256": "2cbcc06de65ecb856c546f698924ac807fd94f4e48a1452ff2b28bab152e4efa",
+      "remote_sha256": "2cbcc06de65ecb856c546f698924ac807fd94f4e48a1452ff2b28bab152e4efa",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/trained-weights/full-gt-nine-ref-endpoint-unguided-20261020/step-002911/student.safetensors",
+      "remote": "step-002911/student.safetensors",
+      "bytes": 13964521376,
+      "matched": true,
+      "cached_download_sha256": "71fcbf4c467553eff0b2916e25cbd6c57031d7bd58913b87ba1e939b04963a71",
+      "remote_sha256": "71fcbf4c467553eff0b2916e25cbd6c57031d7bd58913b87ba1e939b04963a71",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.71372
+}

@@ -1,0 +1,152 @@
+{
+  "repo": "InternalCan/landsend-checkpoints-backup-param",
+  "revision": "442890060f9dbebdeaa61553c80a60d64c310af5",
+  "checked": 1793506162.0010974,
+  "uploaded_leaf_count": 14,
+  "manifest_hash_files": 63,
+  "manifest_hash_bytes": 613825183813,
+  "mismatches": [],
+  "verified": true,
+  "leaf_checks": [
+    {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "prefix": "hosts/landsend-0/models/trained-weights/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "revision": "48acf878101a19eba85046db582bf4f8554c4539",
+      "files": 11,
+      "bytes": 88012730749,
+      "completed": 1793506004.357921,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "prefix": "hosts/landsend-0/models/trained-weights/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "revision": "450ca389766a4b3bf45b381baac58612f689810e",
+      "files": 11,
+      "bytes": 87900418130,
+      "completed": 1793506117.4836342,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-1",
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "prefix": "hosts/landsend-1/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "revision": "9e6d2ebdb7d5ef84d0d2754f474ad5aef704c42c",
+      "files": 11,
+      "bytes": 88012802763,
+      "completed": 1793505995.326126,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-1",
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "prefix": "hosts/landsend-1/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "revision": "442890060f9dbebdeaa61553c80a60d64c310af5",
+      "files": 10,
+      "bytes": 87900269682,
+      "completed": 1793506117.7841668,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-2",
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "prefix": "hosts/landsend-2/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "revision": "f5da913fbf342830207789d0247ee56dd33c62f0",
+      "files": 11,
+      "bytes": 88012888677,
+      "completed": 1793505981.2214513,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-2",
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "prefix": "hosts/landsend-2/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "revision": "55536cf7cfbb479728799b26420ec170011336e0",
+      "files": 10,
+      "bytes": 87900282638,
+      "completed": 1793506091.0695424,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-3",
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "prefix": "hosts/landsend-3/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "revision": "9e0324bc91f054f10593c989ba4564136ecde543",
+      "files": 11,
+      "bytes": 88012888677,
+      "completed": 1793505983.0964746,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-3",
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "prefix": "hosts/landsend-3/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "revision": "e4601b002dbe013bcafa4e89fca25be0f196112e",
+      "files": 10,
+      "bytes": 87900282638,
+      "completed": 1793506091.982011,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-4",
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "prefix": "hosts/landsend-4/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "revision": "794a6534537b3ed6e0edd3f05ec045ff364c99f5",
+      "files": 11,
+      "bytes": 88012888677,
+      "completed": 1793505993.537603,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-4",
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "prefix": "hosts/landsend-4/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "revision": "436bfeb21ac29b94dec761d86a127da67d18582c",
+      "files": 10,
+      "bytes": 87900282638,
+      "completed": 1793506110.8438356,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "prefix": "hosts/landsend-5/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "revision": "6171e4e3ac07f0068a973a51ad7c89c72c8c0344",
+      "files": 11,
+      "bytes": 88012627428,
+      "completed": 1793505990.261008,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "prefix": "hosts/landsend-5/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "revision": "28c9238ef2f77bb01f29e2f0ca450efbf0af8d88",
+      "files": 10,
+      "bytes": 87900177678,
+      "completed": 1793506101.3549654,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "prefix": "hosts/landsend-12/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "revision": "f88056db5b55242c738fcc86dbe3990def8372ee",
+      "files": 11,
+      "bytes": 85748356842,
+      "completed": 1793505991.6551294,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "prefix": "hosts/landsend-12/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "revision": "5c9917a4e88813f0b67ba918d11a328b1a73f249",
+      "files": 10,
+      "bytes": 85643523990,
+      "completed": 1793506093.3035388,
+      "hash_files": 0
+    }
+  ]
+}

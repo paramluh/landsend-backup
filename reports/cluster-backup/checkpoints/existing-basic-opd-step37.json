@@ -1,0 +1,1053 @@
+{
+  "repo": "InternalCan/pose-basic-opd-b336-20261031",
+  "publication": {
+    "latest": {
+      "checkpoint_name": "step-000037",
+      "completed_unix": 1793503133.0221705,
+      "format": "pose-opd-hf-complete-resume-v1",
+      "hosts": [
+        "landsend-0",
+        "landsend-1",
+        "landsend-2",
+        "landsend-3",
+        "landsend-4",
+        "landsend-5",
+        "landsend-12"
+      ],
+      "rank_hosts": [
+        "landsend-0",
+        "landsend-0",
+        "landsend-0",
+        "landsend-0",
+        "landsend-0",
+        "landsend-0",
+        "landsend-0",
+        "landsend-0",
+        "landsend-1",
+        "landsend-1",
+        "landsend-1",
+        "landsend-1",
+        "landsend-1",
+        "landsend-1",
+        "landsend-1",
+        "landsend-1",
+        "landsend-2",
+        "landsend-2",
+        "landsend-2",
+        "landsend-2",
+        "landsend-2",
+        "landsend-2",
+        "landsend-2",
+        "landsend-2",
+        "landsend-3",
+        "landsend-3",
+        "landsend-3",
+        "landsend-3",
+        "landsend-3",
+        "landsend-3",
+        "landsend-3",
+        "landsend-3",
+        "landsend-4",
+        "landsend-4",
+        "landsend-4",
+        "landsend-4",
+        "landsend-4",
+        "landsend-4",
+        "landsend-4",
+        "landsend-4",
+        "landsend-5",
+        "landsend-5",
+        "landsend-5",
+        "landsend-5",
+        "landsend-5",
+        "landsend-5",
+        "landsend-5",
+        "landsend-5",
+        "landsend-12",
+        "landsend-12",
+        "landsend-12",
+        "landsend-12",
+        "landsend-12",
+        "landsend-12",
+        "landsend-12",
+        "landsend-12"
+      ],
+      "run_dir": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031",
+      "save_attempt": 0,
+      "step": 37,
+      "storage_layout": "hosts/<host>/resume (restore each node to its original local path)",
+      "verified_files": {
+        "checkpoints/step-000037/hosts/landsend-0/export/NODE_COMPLETE": {
+          "bytes": 226,
+          "file": "export/NODE_COMPLETE",
+          "sha256": "d510f7f66dfdd37a8274fcea01bb2487dfdefa6ff68a5c7168ddbbb377663c1d"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/export/meta.json": {
+          "bytes": 74105,
+          "file": "export/meta.json",
+          "sha256": "ee5ed6c48bfaa585b1fb3e8fd5c125d74a18bf4fb14fa8934c1c3b59e9f225da"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/export/rank0.pt": {
+          "bytes": 1588023108,
+          "file": "export/rank0.pt",
+          "sha256": "e4d17348443826b7e88102cfafa33fb1ab83f251a4c20c72b3881a82f065830e"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/export/rank1.pt": {
+          "bytes": 1587992324,
+          "file": "export/rank1.pt",
+          "sha256": "eb7e34f1aa99769fc5bb3cbfbc80cdf97b2875ee1fa57e717361d612115d981e"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/export/rank2.pt": {
+          "bytes": 1587992324,
+          "file": "export/rank2.pt",
+          "sha256": "cebf866cc2bb58a973da23402516b14c94af0154354037df6902471cf664edf5"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/export/rank3.pt": {
+          "bytes": 1587992324,
+          "file": "export/rank3.pt",
+          "sha256": "7ce6b99a24a191d89ed3ab85e1c9de23deb8d0f109721b93ef0c631d179e74a4"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/export/rank4.pt": {
+          "bytes": 1587992324,
+          "file": "export/rank4.pt",
+          "sha256": "b92cb85e0dc4f279f8ca9c5da743893520d4d58825ef7849ddfa5865415314bb"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/export/rank5.pt": {
+          "bytes": 1587992324,
+          "file": "export/rank5.pt",
+          "sha256": "69d9ae84c9e72f8056d6ba82bf42b8cc42c7a9d41d9e978231e20a69f2456d87"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/export/rank6.pt": {
+          "bytes": 1587992324,
+          "file": "export/rank6.pt",
+          "sha256": "64e01a662379fce89182b35fc58494310eafc5cd0ba455e13b5e744664f8f0f4"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/export/rank7.pt": {
+          "bytes": 1587992324,
+          "file": "export/rank7.pt",
+          "sha256": "5efb968a122c972c449d0330696bc20186e1c07b9eb7e65143da1665c072e690"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/export/rep.pt": {
+          "bytes": 1485,
+          "file": "export/rep.pt",
+          "sha256": "55f73169334341995df6393e19c843499640c9055a84f8a26f85251929e0f33b"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/resume/COMPLETE": {
+          "bytes": 3,
+          "file": "resume/COMPLETE",
+          "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/resume/rank0.pt": {
+          "bytes": 9527374417,
+          "file": "resume/rank0.pt",
+          "sha256": "6a5b95c024c9c45af944831fe04e06e35721e7371feac9f2b22c40fc6d4d2cf1"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/resume/rank1.pt": {
+          "bytes": 9527189585,
+          "file": "resume/rank1.pt",
+          "sha256": "93a95935295eb45adf9b83fcb3f5b667accb15c417fa770da7143368d71f7ca5"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/resume/rank2.pt": {
+          "bytes": 9527189585,
+          "file": "resume/rank2.pt",
+          "sha256": "67dc67ad2b817d8f51e5f3e564a8c1c8704ce460a4a0db5eae05f9f4058a04f9"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/resume/rank3.pt": {
+          "bytes": 9527189585,
+          "file": "resume/rank3.pt",
+          "sha256": "3bec7ab96e633dcc0d98c9389188b29fd3466f83314383ec5fc3bf7750814a0b"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/resume/rank4.pt": {
+          "bytes": 9527189585,
+          "file": "resume/rank4.pt",
+          "sha256": "25a4fbfc232ea3b787ccd5bc7f39eddb17d25493e25305565eb0febc9023ff6c"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/resume/rank5.pt": {
+          "bytes": 9527189649,
+          "file": "resume/rank5.pt",
+          "sha256": "16d8a8e32c52395a5d3b28dd84c39eb30fbd39f2acd8d76a33afcbc38ba33823"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/resume/rank6.pt": {
+          "bytes": 9527189585,
+          "file": "resume/rank6.pt",
+          "sha256": "aafe4d86885cbc90ebf59c4ca639d66b11d29fa136c7f2d0cb0f9e7732b489da"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/resume/rank7.pt": {
+          "bytes": 9527189649,
+          "file": "resume/rank7.pt",
+          "sha256": "4f4e37f447dedec67fdc865002ea87478025daecc6847a3f75f33aceb4ea7ccc"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/resume/rep.pt": {
+          "bytes": 115213,
+          "file": "resume/rep.pt",
+          "sha256": "c44ece30de30c5c1a7f11e98841c106db239c3f09e98aa29c3db41aac5849937"
+        },
+        "checkpoints/step-000037/hosts/landsend-0/resume/train_state.json": {
+          "bytes": 88083,
+          "file": "resume/train_state.json",
+          "sha256": "55381e86cdc8f4e73cce15bd0243e4212c1093b242bf63de0f7e51fe6c7fe997"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/export/NODE_COMPLETE": {
+          "bytes": 232,
+          "file": "export/NODE_COMPLETE",
+          "sha256": "21e96ba3be785e5884de0ba258feb5392b282c91943e10088935d493c5a4969e"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/export/meta.json": {
+          "bytes": 74105,
+          "file": "export/meta.json",
+          "sha256": "12a83c3b4096e3eedb676d4a812e822f4b86eab9d51babb5e087f82ab1f8c04a"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/export/rank10.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank10.pt",
+          "sha256": "86a6d62a9a1d47949c3c12dcc694df72eabb07dc7fe4de007a46116b03cfa515"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/export/rank11.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank11.pt",
+          "sha256": "40122cff1270dae74c5b16d201ab595e55f092350046da7c3a1a93f4602c7de3"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/export/rank12.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank12.pt",
+          "sha256": "d59713c85afa7bbb5f10e6608dd7639313f9b35bc6e55e73bf2ba56575b4f91b"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/export/rank13.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank13.pt",
+          "sha256": "8d3f4b4531b78c6327d82aabc0758841af297f330dc9bb1e13a38a3afbfd46cc"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/export/rank14.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank14.pt",
+          "sha256": "a850ab53a3bd367d5dbb3791270fc0837438e3c6db4db16a5fd28e23420dfc49"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/export/rank15.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank15.pt",
+          "sha256": "56bdc6c73b23345742f796caf14ac7e018ae0a77e4b2236e99b46aaaead3d98c"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/export/rank8.pt": {
+          "bytes": 1587992324,
+          "file": "export/rank8.pt",
+          "sha256": "54842b24162294455c8464f95df578cd9e1f6e5e11990c33c276827887ceb7dc"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/export/rank9.pt": {
+          "bytes": 1587992324,
+          "file": "export/rank9.pt",
+          "sha256": "7fa63151804368df7209d5d2d0254987a5ddd19e45a199e02a2ee9a0a1fbb36b"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/export/rep.pt": {
+          "bytes": 1485,
+          "file": "export/rep.pt",
+          "sha256": "55f73169334341995df6393e19c843499640c9055a84f8a26f85251929e0f33b"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/resume/COMPLETE": {
+          "bytes": 3,
+          "file": "resume/COMPLETE",
+          "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/resume/rank10.pt": {
+          "bytes": 9527235021,
+          "file": "resume/rank10.pt",
+          "sha256": "5c2455710f654288f965f7c1c411cf17accffdfce68c6fba70f5d9e33d3ab699"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/resume/rank11.pt": {
+          "bytes": 9527235021,
+          "file": "resume/rank11.pt",
+          "sha256": "3df51d5639ec875b0f4d74087cf787610120eb863428529eb933d4b567662e1f"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/resume/rank12.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank12.pt",
+          "sha256": "62f5a61879428824c71128bb2dd44e3b799148fc9e8e4f2bd2761cc97a95ca04"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/resume/rank13.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank13.pt",
+          "sha256": "4fa33333ea8b7c5afeac16e7b6ab2a7c0ce4e0f5c71ea4582f588b7de5ffc5cb"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/resume/rank14.pt": {
+          "bytes": 9527234893,
+          "file": "resume/rank14.pt",
+          "sha256": "a1cce68cac60fe4ed12c458c9dc33b61b18f9c850d0e5af1a0d337c529fb710b"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/resume/rank15.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank15.pt",
+          "sha256": "ea3e88f62d37dc5de59028bf31329562804788a21ea7697e1a9aac9cde0da20d"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/resume/rank8.pt": {
+          "bytes": 9527189585,
+          "file": "resume/rank8.pt",
+          "sha256": "42a0db8974d64e4b4c3809e7b1f5e4cc7de63184565e1bc5f257838cd8ac3d0a"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/resume/rank9.pt": {
+          "bytes": 9527189585,
+          "file": "resume/rank9.pt",
+          "sha256": "a01747a7cbd0d99c6d348ff80b4844f60aa79672f4c7269efbd6e8b8fd4e0c95"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/resume/rep.pt": {
+          "bytes": 115213,
+          "file": "resume/rep.pt",
+          "sha256": "c44ece30de30c5c1a7f11e98841c106db239c3f09e98aa29c3db41aac5849937"
+        },
+        "checkpoints/step-000037/hosts/landsend-1/resume/train_state.json": {
+          "bytes": 88089,
+          "file": "resume/train_state.json",
+          "sha256": "285228910679b6d1f20469392b82808d54b31b2925a1a16cc9ba5f0858f49e90"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/export/NODE_COMPLETE": {
+          "bytes": 235,
+          "file": "export/NODE_COMPLETE",
+          "sha256": "bd866d0f6f0a38c6de4be21788c0537ada6ddd19876c8202559585fd9da1ad90"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/export/meta.json": {
+          "bytes": 74106,
+          "file": "export/meta.json",
+          "sha256": "dc38dee6e5c0156986ce77b296d8b117105e0f9ae2f82f8b97aba6dcf569cfde"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/export/rank48.pt": {
+          "bytes": 1588006647,
+          "file": "export/rank48.pt",
+          "sha256": "29615adc616726966c66cb0d5245f0675f1b35aab5b338e20017649d4ec9e4f9"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/export/rank49.pt": {
+          "bytes": 1588006647,
+          "file": "export/rank49.pt",
+          "sha256": "4659ebe8a3cd02448de340011d6bd7ddaf97a52707786c29b2274ae4767dc28c"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/export/rank50.pt": {
+          "bytes": 1588006647,
+          "file": "export/rank50.pt",
+          "sha256": "7c2fd6114eccbf81da8764f12179ccaf6f220846b7b0c421e8f4178e06f8b1b4"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/export/rank51.pt": {
+          "bytes": 1588006647,
+          "file": "export/rank51.pt",
+          "sha256": "f55a9cd375edc83e5e3b290178274bc3f40b82d78c1c6883e0d4178d77fd5c63"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/export/rank52.pt": {
+          "bytes": 1588006647,
+          "file": "export/rank52.pt",
+          "sha256": "bc322902038dbd34e575920ae084112c7ed470397f222af0bb4b7b4b4f38994b"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/export/rank53.pt": {
+          "bytes": 1582264055,
+          "file": "export/rank53.pt",
+          "sha256": "24f37fe5f8d9a602abb1fbdd1fb7741af8a478b1fc61b8466a122f4f1300d15a"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/export/rank54.pt": {
+          "bytes": 1533412983,
+          "file": "export/rank54.pt",
+          "sha256": "e39d3d60c480dd150c5505a243d482c8c519356adeb9b754e17ffc9f87936cf6"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/export/rank55.pt": {
+          "bytes": 1233588343,
+          "file": "export/rank55.pt",
+          "sha256": "24519fdd81eada7847200da95be750b5d7c4624ce2a52fb5b7456b8c464136b2"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/export/rep.pt": {
+          "bytes": 1485,
+          "file": "export/rep.pt",
+          "sha256": "55f73169334341995df6393e19c843499640c9055a84f8a26f85251929e0f33b"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/resume/COMPLETE": {
+          "bytes": 3,
+          "file": "resume/COMPLETE",
+          "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/resume/rank48.pt": {
+          "bytes": 9527161293,
+          "file": "resume/rank48.pt",
+          "sha256": "de4ded7c429f29176fae4d36989646a6425b4cb9e2533bb887e6ee8479653224"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/resume/rank49.pt": {
+          "bytes": 9527161229,
+          "file": "resume/rank49.pt",
+          "sha256": "70a341548f5d0eb4cc43f24baf9c3f48485706dd6880cd18b4fb7ac9351134fe"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/resume/rank50.pt": {
+          "bytes": 9527161229,
+          "file": "resume/rank50.pt",
+          "sha256": "813fae4b083cd7df57d469d145aee8e97b05cd58116c753f77b90436ac2f8ad6"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/resume/rank51.pt": {
+          "bytes": 9527161293,
+          "file": "resume/rank51.pt",
+          "sha256": "a8f243cecef4a3e6a6756f9ae1eb6f3e083862ce67bee3d67538d516f8cbc1a9"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/resume/rank52.pt": {
+          "bytes": 9527161293,
+          "file": "resume/rank52.pt",
+          "sha256": "fc49710f3e88c0a6ba2bb97afeff34373def3bb4139edcf4d5b81ac2e6823871"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/resume/rank53.pt": {
+          "bytes": 9492705665,
+          "file": "resume/rank53.pt",
+          "sha256": "3b6b68cbb67ae4e0fb76d83742d822ad5a84527cc884f3463fd92a3287774dcb"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/resume/rank54.pt": {
+          "bytes": 9199690381,
+          "file": "resume/rank54.pt",
+          "sha256": "593d558b4430a5daace25114e8690feefe3bbf2858971acc0623ac1d569cb6bf"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/resume/rank55.pt": {
+          "bytes": 7400761385,
+          "file": "resume/rank55.pt",
+          "sha256": "2acfb6f9273812e64e67fd305e6085b3a5e19de60f4fbb6a34f9f2487f0ebb37"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/resume/rep.pt": {
+          "bytes": 115213,
+          "file": "resume/rep.pt",
+          "sha256": "c44ece30de30c5c1a7f11e98841c106db239c3f09e98aa29c3db41aac5849937"
+        },
+        "checkpoints/step-000037/hosts/landsend-12/resume/train_state.json": {
+          "bytes": 88092,
+          "file": "resume/train_state.json",
+          "sha256": "5c17984430dfbed4951bae1f390c3a709b850338e4a181fab729dda3c327bfc9"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/export/NODE_COMPLETE": {
+          "bytes": 234,
+          "file": "export/NODE_COMPLETE",
+          "sha256": "0fd284b2180b8c877dd58da954644320bf13252017548a9d1afa21e3ec8ade2f"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/export/meta.json": {
+          "bytes": 74105,
+          "file": "export/meta.json",
+          "sha256": "2919a8456c294baa9598a54d97962f2afbe2b84f82eea87613c84f6ef6f5d7ef"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/export/rank16.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank16.pt",
+          "sha256": "a143e1ba9e99b3317dc53027c47143438bd2dd87c2f6fa3b78824d53f7431e37"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/export/rank17.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank17.pt",
+          "sha256": "68e50807efa7fa58f0671a915a2f96c8404a2aaa653eebf72405881ea3980bb2"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/export/rank18.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank18.pt",
+          "sha256": "af37cac7b6e85181d7b8baf5bf5bb2856e672c1a08e981b5485ce2b521647739"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/export/rank19.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank19.pt",
+          "sha256": "d5f06f12fa3b65a2cbca0394ef4178fab1fa7b145357a5bf460937a8d0b80673"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/export/rank20.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank20.pt",
+          "sha256": "f399a2d269876cb14e9ca5375275528aea9bc21846a24bfaeb0dbc3209b447b9"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/export/rank21.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank21.pt",
+          "sha256": "7319f508f4ab47f4d2b33a1a43fbf58174abbbf4db36b22e5e924f7ac03d9ea5"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/export/rank22.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank22.pt",
+          "sha256": "af1aac8b3ed80d8b69dd38127ecf8e803b3ac1a8f8456f5f19b42c319e6f5e4a"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/export/rank23.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank23.pt",
+          "sha256": "ab455d99bb43b81efa80717825d80996e2601d4bfbaaf8436fc473d95fdafa72"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/export/rep.pt": {
+          "bytes": 1485,
+          "file": "export/rep.pt",
+          "sha256": "55f73169334341995df6393e19c843499640c9055a84f8a26f85251929e0f33b"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/resume/COMPLETE": {
+          "bytes": 3,
+          "file": "resume/COMPLETE",
+          "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/resume/rank16.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank16.pt",
+          "sha256": "0ffed34bb3761380607e26e218f337c8cb359f7a0e7ce76dc021216afb20d551"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/resume/rank17.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank17.pt",
+          "sha256": "a7d14419c98fe53dcb0f9bb6c6144a6554782d3dcbcfd2df46014bc729543c22"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/resume/rank18.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank18.pt",
+          "sha256": "9b1261fb3291c6935e7f5611142db9f6aeecc36bc81005d125ce4614776690dd"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/resume/rank19.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank19.pt",
+          "sha256": "2f545138111d27a180419eb83180362751f164fbf6ce6445c198c5998c5ad677"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/resume/rank20.pt": {
+          "bytes": 9527235021,
+          "file": "resume/rank20.pt",
+          "sha256": "f70f19da3b476f2abed579ec631c08858656f45ae492f255922f1016d975ea38"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/resume/rank21.pt": {
+          "bytes": 9527234893,
+          "file": "resume/rank21.pt",
+          "sha256": "62392b54245b22b3c455c5e4850a97d159dd5add8da2695d3f0d9101df74764b"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/resume/rank22.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank22.pt",
+          "sha256": "c89aa19407d3b4a800a7dc96aab16f386f8e4a628f03e83ac575962e9679546c"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/resume/rank23.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank23.pt",
+          "sha256": "01fc978b17bc26c36321fce44f08a93569d7e5158518befb5b19da47e9c1e821"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/resume/rep.pt": {
+          "bytes": 115213,
+          "file": "resume/rep.pt",
+          "sha256": "c44ece30de30c5c1a7f11e98841c106db239c3f09e98aa29c3db41aac5849937"
+        },
+        "checkpoints/step-000037/hosts/landsend-2/resume/train_state.json": {
+          "bytes": 88091,
+          "file": "resume/train_state.json",
+          "sha256": "110a73540d35e278cde7847d03319407a550b4ff45cfe395e95b6e1323b7e5be"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/export/NODE_COMPLETE": {
+          "bytes": 234,
+          "file": "export/NODE_COMPLETE",
+          "sha256": "1b9c9c069c574e6403be7149f0b2a585d19b8ab8437b0e5db751dc2bcae3f94e"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/export/meta.json": {
+          "bytes": 74105,
+          "file": "export/meta.json",
+          "sha256": "a6a5ccc6bc951f4805af49c3c33c51d10525d653ef3d8690bdf814cf6eb41e74"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/export/rank24.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank24.pt",
+          "sha256": "6a462e52a0c4c8eeaaa2df1439f4cab6454b2becafa790f429861fc26279f7fb"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/export/rank25.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank25.pt",
+          "sha256": "901457e921c07128ada2dcf5a05a656820b59216285435bcf72d49da80eb635f"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/export/rank26.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank26.pt",
+          "sha256": "3b86b8b97015637f5be0393f00fa567fe1d7ea974b0e01241acdf9657e36207b"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/export/rank27.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank27.pt",
+          "sha256": "6818fb33fc1f49f378b5d11428e7b85ad0b7acc9f0f899922d70e0007713fad7"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/export/rank28.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank28.pt",
+          "sha256": "024cb50c987df35a4579395b3ef8d976686d1005893c3b40c2d2fdf22d69b02a"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/export/rank29.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank29.pt",
+          "sha256": "7f68df9cec7ed8e9e397b299de32464ae082dd8c497bd4cbe16aa5556763a7d2"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/export/rank30.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank30.pt",
+          "sha256": "953db64e32dcfb9906cd9d1e073f8f5b6c5ca61ff3a13fabda98a6d518716e7e"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/export/rank31.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank31.pt",
+          "sha256": "cd0e611efc195c629b19c40e7fb610835f39d7ebaeeb405ef02b0d3f42a60c01"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/export/rep.pt": {
+          "bytes": 1485,
+          "file": "export/rep.pt",
+          "sha256": "55f73169334341995df6393e19c843499640c9055a84f8a26f85251929e0f33b"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/resume/COMPLETE": {
+          "bytes": 3,
+          "file": "resume/COMPLETE",
+          "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/resume/rank24.pt": {
+          "bytes": 9527234893,
+          "file": "resume/rank24.pt",
+          "sha256": "3c45be46fc50c25f6246bd6cc856fdd3597f8079d2cc93d96a02e5f6ea698151"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/resume/rank25.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank25.pt",
+          "sha256": "0e4288f18ad51098e5f35fb3cca73601212e73719185843ba6e3b92ebc89eedc"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/resume/rank26.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank26.pt",
+          "sha256": "db4285d7bab038fcc4a16b73dcd8cad92423006470ded848047a08af47b83e1a"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/resume/rank27.pt": {
+          "bytes": 9527234893,
+          "file": "resume/rank27.pt",
+          "sha256": "33df9290e748d0a2fd19f9b2f5464cee3419397417c6f5fe9053321b96eaafec"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/resume/rank28.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank28.pt",
+          "sha256": "30a6817ebc4df8e6e73361ba6c2f17dbb129d1f3408382f320aeaaf0a5bd3c51"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/resume/rank29.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank29.pt",
+          "sha256": "983421005841697e4d95dae07d4d13f9320281b2b8c9558697b8d9391aae5c4f"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/resume/rank30.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank30.pt",
+          "sha256": "e3014e97036d8cd1c8d992cd48a6d934d094a4ee6f55b8ad59977fbf86310423"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/resume/rank31.pt": {
+          "bytes": 9527235021,
+          "file": "resume/rank31.pt",
+          "sha256": "45a36a9f35ba616d5e681850572311f186e691d0d66517ee0787f633a0be7599"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/resume/rep.pt": {
+          "bytes": 115213,
+          "file": "resume/rep.pt",
+          "sha256": "c44ece30de30c5c1a7f11e98841c106db239c3f09e98aa29c3db41aac5849937"
+        },
+        "checkpoints/step-000037/hosts/landsend-3/resume/train_state.json": {
+          "bytes": 88091,
+          "file": "resume/train_state.json",
+          "sha256": "f99bc2c92944dfe291060c663927230be8448133987a7a6039d19d7916477472"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/export/NODE_COMPLETE": {
+          "bytes": 234,
+          "file": "export/NODE_COMPLETE",
+          "sha256": "cfe2886c681451bbac8ae911b9919eab56039aa814216047372b3454d6a80322"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/export/meta.json": {
+          "bytes": 74105,
+          "file": "export/meta.json",
+          "sha256": "72553a4c83c65b8fb0c6f285a359cd71307bbedc12aaa7b01514f2c9c20728ef"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/export/rank32.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank32.pt",
+          "sha256": "b19311b269b21f5a7156d563c434e9e15efc386727285ec5441a6987a3c1967b"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/export/rank33.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank33.pt",
+          "sha256": "9f548582985c6f07252c182763113bdad7d828f94dd038de5724da84eefdbaf6"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/export/rank34.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank34.pt",
+          "sha256": "90110b4b5d917ff5d5b0ed71308ba9548cb3d56da6546eafd1878c443e26709e"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/export/rank35.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank35.pt",
+          "sha256": "8072f3437753b95dfb8f41ead451b5f4184f54aea450c5cee691d7bb599f2b9a"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/export/rank36.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank36.pt",
+          "sha256": "f61f465ea1cfdb93d55cea9430dc0d0fdceb21c2c8fab561da9a566c5e975dca"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/export/rank37.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank37.pt",
+          "sha256": "4ceb9518254d2b53457eb7cb349bbaba786be13198ff7f8e51cf3259a352fa4f"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/export/rank38.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank38.pt",
+          "sha256": "df4dbf04467e6a647570e6701f1f3346820f69bcc10fde447dac20891f816f4a"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/export/rank39.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank39.pt",
+          "sha256": "bfea3b93d1eb6adcc50f1673827040cdbfc3b4eebe3d9a7e6840ff0a553326a5"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/export/rep.pt": {
+          "bytes": 1485,
+          "file": "export/rep.pt",
+          "sha256": "55f73169334341995df6393e19c843499640c9055a84f8a26f85251929e0f33b"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/resume/COMPLETE": {
+          "bytes": 3,
+          "file": "resume/COMPLETE",
+          "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/resume/rank32.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank32.pt",
+          "sha256": "5176921673559851aad29a8c6939681cd937e2faa78b7910d150a7739080114d"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/resume/rank33.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank33.pt",
+          "sha256": "9e68165ecb298ca45019b43eeec48d89ff2053c30bd69f9ad44fe3141996dac2"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/resume/rank34.pt": {
+          "bytes": 9527235021,
+          "file": "resume/rank34.pt",
+          "sha256": "3ff78740dfb9d7e40c28b1f1ff5a2d908ca68383ce0905502c798a48af5a20a6"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/resume/rank35.pt": {
+          "bytes": 9527234893,
+          "file": "resume/rank35.pt",
+          "sha256": "0b7fbfb80aa73211b39f85464ed0e1ab56a8f757e55e6fdf26ae50ae1078fc15"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/resume/rank36.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank36.pt",
+          "sha256": "e87c615bda3fe6c3a5246d5f11efaadfc13de3237be4534eb1e748d3e051c5ae"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/resume/rank37.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank37.pt",
+          "sha256": "0f8e09472e82384165fa37c4810e890e76958f15d21117b0c39aec7a42f630be"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/resume/rank38.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank38.pt",
+          "sha256": "2a018094e44f64ec7ff8554cff4ae6b864a43e479817551f4df5361b6b73c62a"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/resume/rank39.pt": {
+          "bytes": 9527235021,
+          "file": "resume/rank39.pt",
+          "sha256": "6893e72ae25dd9b72b0f512adc5f383aac3a23c981ed8e72e87945c34d72598c"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/resume/rep.pt": {
+          "bytes": 115213,
+          "file": "resume/rep.pt",
+          "sha256": "c44ece30de30c5c1a7f11e98841c106db239c3f09e98aa29c3db41aac5849937"
+        },
+        "checkpoints/step-000037/hosts/landsend-4/resume/train_state.json": {
+          "bytes": 88091,
+          "file": "resume/train_state.json",
+          "sha256": "662e0b5f07432352a56cf310364a92aa9a1eec7dbadf82151efe4df3454dd7b3"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/export/NODE_COMPLETE": {
+          "bytes": 234,
+          "file": "export/NODE_COMPLETE",
+          "sha256": "4292c80b89ae4b910191e4522669194e6e4096de6e43036f91919faecd37f75d"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/export/meta.json": {
+          "bytes": 74105,
+          "file": "export/meta.json",
+          "sha256": "11f72d6c46307e697d00113c71a0a9a6c4eac0f9513d25f432ef5747a5505f9d"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/export/rank40.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank40.pt",
+          "sha256": "51bf949a195132ae16416af4909c1125f2135932d293a1436188ca6c681575aa"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/export/rank41.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank41.pt",
+          "sha256": "5ea3b362722300287cc80fbdf7c34333b34695efec73e940c74f035637cda464"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/export/rank42.pt": {
+          "bytes": 1588031223,
+          "file": "export/rank42.pt",
+          "sha256": "bc0b257fd51e4f553277f413ad6969cc6c2f55d224c85f7462fcb51ccdd13433"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/export/rank43.pt": {
+          "bytes": 1588006647,
+          "file": "export/rank43.pt",
+          "sha256": "f492b717e7e5d03e7047c54def33b64ae2d09727c8e7156e71bb880e0dd62caf"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/export/rank44.pt": {
+          "bytes": 1588006647,
+          "file": "export/rank44.pt",
+          "sha256": "792e77f0641cdc78c01570bf791b9f04e842ea27e51744017cd7db99da3499b3"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/export/rank45.pt": {
+          "bytes": 1588006647,
+          "file": "export/rank45.pt",
+          "sha256": "192143fd41353a5dbc70a7117e60bfa3f5e253f15ffd76122a7d09a529cb83d0"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/export/rank46.pt": {
+          "bytes": 1588006647,
+          "file": "export/rank46.pt",
+          "sha256": "633547303fd639a12471de7cd246d1f78ae3838327370a41c596b774636f2f43"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/export/rank47.pt": {
+          "bytes": 1588006647,
+          "file": "export/rank47.pt",
+          "sha256": "00db1760e577e21e7bc7bb30665ab0f280a5fef80cd65e05c3d1d1e98f7ca3f6"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/export/rep.pt": {
+          "bytes": 1485,
+          "file": "export/rep.pt",
+          "sha256": "55f73169334341995df6393e19c843499640c9055a84f8a26f85251929e0f33b"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/resume/COMPLETE": {
+          "bytes": 3,
+          "file": "resume/COMPLETE",
+          "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/resume/rank40.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank40.pt",
+          "sha256": "6f852745dea07df5361214359e821913cc9a8dbbce0f5e55e45d8cfcc087045b"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/resume/rank41.pt": {
+          "bytes": 9527234957,
+          "file": "resume/rank41.pt",
+          "sha256": "7e1380a0c6b2412a2bc6ea0a9b848add577889c59ac106f117e11776deadf1dd"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/resume/rank42.pt": {
+          "bytes": 9527234893,
+          "file": "resume/rank42.pt",
+          "sha256": "3843dcdee5f4200dc977647eb76dff56f0fa234a75004b73acf604cb9cba0413"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/resume/rank43.pt": {
+          "bytes": 9527161229,
+          "file": "resume/rank43.pt",
+          "sha256": "9d73163297dbe1461eca766934db5ce6c5bc6cdcc41248363f338b4d14c6a999"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/resume/rank44.pt": {
+          "bytes": 9527161293,
+          "file": "resume/rank44.pt",
+          "sha256": "a0eafca2b4a3c18da45e7bdce77acdb510cf2972601acad22285f1720fc58b8a"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/resume/rank45.pt": {
+          "bytes": 9527161229,
+          "file": "resume/rank45.pt",
+          "sha256": "d3423a0bee5b95b38269dd07e4a44e39416a4c81ce3264677fd9e61a4feb8bd5"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/resume/rank46.pt": {
+          "bytes": 9527161165,
+          "file": "resume/rank46.pt",
+          "sha256": "0ed12eb9e8b1ab6972881f3be76244a3c9cdcc591051bf0285cc494a99b0c144"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/resume/rank47.pt": {
+          "bytes": 9527161229,
+          "file": "resume/rank47.pt",
+          "sha256": "c36b50fbcf714e584bbe40e98a267855bd59ed2b7ff22d67b424734d9f53bb65"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/resume/rep.pt": {
+          "bytes": 115213,
+          "file": "resume/rep.pt",
+          "sha256": "c44ece30de30c5c1a7f11e98841c106db239c3f09e98aa29c3db41aac5849937"
+        },
+        "checkpoints/step-000037/hosts/landsend-5/resume/train_state.json": {
+          "bytes": 88091,
+          "file": "resume/train_state.json",
+          "sha256": "ba6d486ccf0af73b2693519b203e203dd2f662775ea9f9edc2065a2035de87c3"
+        }
+      },
+      "verified_revision": "5b09e41d7b100e08d3aa7657449233b01a2fcfe7",
+      "world": 56
+    },
+    "latest_unchanged": false,
+    "revision": "bf3eb6e7ec0a57db1181abe4a65099db8719622d"
+  },
+  "uploader": {
+    "state": "complete",
+    "time": 1793503133.720618
+  },
+  "request": {
+    "checkpoint_name": "step-000037",
+    "files": [
+      {
+        "bytes": 9527374417,
+        "file": "resume/rank0.pt",
+        "sha256": "6a5b95c024c9c45af944831fe04e06e35721e7371feac9f2b22c40fc6d4d2cf1"
+      },
+      {
+        "bytes": 115213,
+        "file": "resume/rep.pt",
+        "sha256": "c44ece30de30c5c1a7f11e98841c106db239c3f09e98aa29c3db41aac5849937"
+      },
+      {
+        "bytes": 9527189585,
+        "file": "resume/rank1.pt",
+        "sha256": "93a95935295eb45adf9b83fcb3f5b667accb15c417fa770da7143368d71f7ca5"
+      },
+      {
+        "bytes": 9527189585,
+        "file": "resume/rank2.pt",
+        "sha256": "67dc67ad2b817d8f51e5f3e564a8c1c8704ce460a4a0db5eae05f9f4058a04f9"
+      },
+      {
+        "bytes": 9527189585,
+        "file": "resume/rank3.pt",
+        "sha256": "3bec7ab96e633dcc0d98c9389188b29fd3466f83314383ec5fc3bf7750814a0b"
+      },
+      {
+        "bytes": 9527189585,
+        "file": "resume/rank4.pt",
+        "sha256": "25a4fbfc232ea3b787ccd5bc7f39eddb17d25493e25305565eb0febc9023ff6c"
+      },
+      {
+        "bytes": 9527189649,
+        "file": "resume/rank5.pt",
+        "sha256": "16d8a8e32c52395a5d3b28dd84c39eb30fbd39f2acd8d76a33afcbc38ba33823"
+      },
+      {
+        "bytes": 9527189585,
+        "file": "resume/rank6.pt",
+        "sha256": "aafe4d86885cbc90ebf59c4ca639d66b11d29fa136c7f2d0cb0f9e7732b489da"
+      },
+      {
+        "bytes": 9527189649,
+        "file": "resume/rank7.pt",
+        "sha256": "4f4e37f447dedec67fdc865002ea87478025daecc6847a3f75f33aceb4ea7ccc"
+      },
+      {
+        "bytes": 3,
+        "file": "resume/COMPLETE",
+        "sha256": "b58a3da5fde2680191877ec88a1aa7d06927cc3b30cdf0d0db8c39b488891576"
+      },
+      {
+        "bytes": 88083,
+        "file": "resume/train_state.json",
+        "sha256": "55381e86cdc8f4e73cce15bd0243e4212c1093b242bf63de0f7e51fe6c7fe997"
+      },
+      {
+        "bytes": 1588023108,
+        "file": "export/rank0.pt",
+        "sha256": "e4d17348443826b7e88102cfafa33fb1ab83f251a4c20c72b3881a82f065830e"
+      },
+      {
+        "bytes": 1485,
+        "file": "export/rep.pt",
+        "sha256": "55f73169334341995df6393e19c843499640c9055a84f8a26f85251929e0f33b"
+      },
+      {
+        "bytes": 1587992324,
+        "file": "export/rank1.pt",
+        "sha256": "eb7e34f1aa99769fc5bb3cbfbc80cdf97b2875ee1fa57e717361d612115d981e"
+      },
+      {
+        "bytes": 1587992324,
+        "file": "export/rank2.pt",
+        "sha256": "cebf866cc2bb58a973da23402516b14c94af0154354037df6902471cf664edf5"
+      },
+      {
+        "bytes": 1587992324,
+        "file": "export/rank3.pt",
+        "sha256": "7ce6b99a24a191d89ed3ab85e1c9de23deb8d0f109721b93ef0c631d179e74a4"
+      },
+      {
+        "bytes": 1587992324,
+        "file": "export/rank4.pt",
+        "sha256": "b92cb85e0dc4f279f8ca9c5da743893520d4d58825ef7849ddfa5865415314bb"
+      },
+      {
+        "bytes": 1587992324,
+        "file": "export/rank5.pt",
+        "sha256": "69d9ae84c9e72f8056d6ba82bf42b8cc42c7a9d41d9e978231e20a69f2456d87"
+      },
+      {
+        "bytes": 1587992324,
+        "file": "export/rank6.pt",
+        "sha256": "64e01a662379fce89182b35fc58494310eafc5cd0ba455e13b5e744664f8f0f4"
+      },
+      {
+        "bytes": 1587992324,
+        "file": "export/rank7.pt",
+        "sha256": "5efb968a122c972c449d0330696bc20186e1c07b9eb7e65143da1665c072e690"
+      },
+      {
+        "bytes": 226,
+        "file": "export/NODE_COMPLETE",
+        "sha256": "d510f7f66dfdd37a8274fcea01bb2487dfdefa6ff68a5c7168ddbbb377663c1d"
+      },
+      {
+        "bytes": 74105,
+        "file": "export/meta.json",
+        "sha256": "ee5ed6c48bfaa585b1fb3e8fd5c125d74a18bf4fb14fa8934c1c3b59e9f225da"
+      }
+    ],
+    "format": "pose-opd-hf-node-upload-v1",
+    "host": "landsend-0",
+    "hosts": [
+      "landsend-0",
+      "landsend-1",
+      "landsend-2",
+      "landsend-3",
+      "landsend-4",
+      "landsend-5",
+      "landsend-12"
+    ],
+    "manifest_sha256": "55381e86cdc8f4e73cce15bd0243e4212c1093b242bf63de0f7e51fe6c7fe997",
+    "prefix": "checkpoints/step-000037/hosts/landsend-0",
+    "rank_hosts": [
+      "landsend-0",
+      "landsend-0",
+      "landsend-0",
+      "landsend-0",
+      "landsend-0",
+      "landsend-0",
+      "landsend-0",
+      "landsend-0",
+      "landsend-1",
+      "landsend-1",
+      "landsend-1",
+      "landsend-1",
+      "landsend-1",
+      "landsend-1",
+      "landsend-1",
+      "landsend-1",
+      "landsend-2",
+      "landsend-2",
+      "landsend-2",
+      "landsend-2",
+      "landsend-2",
+      "landsend-2",
+      "landsend-2",
+      "landsend-2",
+      "landsend-3",
+      "landsend-3",
+      "landsend-3",
+      "landsend-3",
+      "landsend-3",
+      "landsend-3",
+      "landsend-3",
+      "landsend-3",
+      "landsend-4",
+      "landsend-4",
+      "landsend-4",
+      "landsend-4",
+      "landsend-4",
+      "landsend-4",
+      "landsend-4",
+      "landsend-4",
+      "landsend-5",
+      "landsend-5",
+      "landsend-5",
+      "landsend-5",
+      "landsend-5",
+      "landsend-5",
+      "landsend-5",
+      "landsend-5",
+      "landsend-12",
+      "landsend-12",
+      "landsend-12",
+      "landsend-12",
+      "landsend-12",
+      "landsend-12",
+      "landsend-12",
+      "landsend-12"
+    ],
+    "repo_id": "InternalCan/pose-basic-opd-b336-20261031",
+    "run_dir": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031",
+    "save_attempt": 0,
+    "step": 37,
+    "world": 56
+  },
+  "verified_at": 1793506174.8429458
+}

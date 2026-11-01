@@ -1,0 +1,29 @@
+{
+  "host": "landsend-0",
+  "repo": "/home/param/websites/aloe-pose-duplex",
+  "common": "/home/param/websites/aloe-pose-duplex/.git",
+  "commit": "5bbb3ffb4635e3ba789e7d317c3525102fb8bdbf",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-0-aloe-pose-duplex-7b912967.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/home/param/websites/aloe-pose-duplex",
+      "common": "/home/param/websites/aloe-pose-duplex/.git",
+      "branch": "main",
+      "original_head": "8e51968c7a282d2b7acd28d740ce533eab84ffaf",
+      "staged_commit": null,
+      "working_commit": "82a34af5ca01ad529108a40c2ccac9a80fa391a5",
+      "tree": "0267f44d1eaee1527af0e8661d26de516c579c48",
+      "excluded": [],
+      "untracked_added": 0,
+      "status_count": 0,
+      "remotes": [
+        "origin\tgit@github.com:canopy-labs-internal/aloe-pose-duplex.git (fetch)",
+        "origin\tgit@github.com:canopy-labs-internal/aloe-pose-duplex.git (push)"
+      ]
+    }
+  ],
+  "local_branches": [
+    "refs/heads/main 8e51968c7a282d2b7acd28d740ce533eab84ffaf"
+  ]
+}

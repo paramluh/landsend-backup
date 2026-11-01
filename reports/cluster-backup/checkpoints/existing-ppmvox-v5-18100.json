@@ -1,0 +1,1305 @@
+{
+  "folder": "/home/param/models/imported-weights/ppmvox-v5-18100",
+  "repo": "InternalCan/ppmvox-v5-17850",
+  "revision": "9de2b20a48a4173a8aca15b3018566e2140ec1cf",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-11/rank77.pt",
+      "remote": "w-18100/slinky-11/rank77.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "711a4e913b474a684d5f21fed1ae2c8f231f73c353e8d3cabe840275c9acd708",
+      "remote_sha256": "711a4e913b474a684d5f21fed1ae2c8f231f73c353e8d3cabe840275c9acd708",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-11/rank78.pt",
+      "remote": "w-18100/slinky-11/rank78.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "8fd4ab29b80578b05a910f42d32a311207abaac65cd3cbd1eb9bc0a56edeffbe",
+      "remote_sha256": "8fd4ab29b80578b05a910f42d32a311207abaac65cd3cbd1eb9bc0a56edeffbe",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-11/rank74.pt",
+      "remote": "w-18100/slinky-11/rank74.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "13f84dc289ace7e9764166a8da729f71e7485232d99db986cfd65f3143f20605",
+      "remote_sha256": "13f84dc289ace7e9764166a8da729f71e7485232d99db986cfd65f3143f20605",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-11/rank76.pt",
+      "remote": "w-18100/slinky-11/rank76.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "8bcd76a3236756354049494a9b0a0b721c82062888f5f2f54a83dd1d043d94c2",
+      "remote_sha256": "8bcd76a3236756354049494a9b0a0b721c82062888f5f2f54a83dd1d043d94c2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-11/rank73.pt",
+      "remote": "w-18100/slinky-11/rank73.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "221dad5185a8c57d8b9c634f1dcd3c6f45c321b942981c432ebc27a4e76ea6f1",
+      "remote_sha256": "221dad5185a8c57d8b9c634f1dcd3c6f45c321b942981c432ebc27a4e76ea6f1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-11/rank72.pt",
+      "remote": "w-18100/slinky-11/rank72.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "c088fac72caf6db7084cdea3982ebb2915ce113294d7c07bfb8103627a487d55",
+      "remote_sha256": "c088fac72caf6db7084cdea3982ebb2915ce113294d7c07bfb8103627a487d55",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-11/rep.pt",
+      "remote": "w-18100/slinky-11/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-11/rank75.pt",
+      "remote": "w-18100/slinky-11/rank75.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "1c2bd91006ec1332ca8c8f549f8b84f6aad63d10cb77eeb5885f68531f8010e2",
+      "remote_sha256": "1c2bd91006ec1332ca8c8f549f8b84f6aad63d10cb77eeb5885f68531f8010e2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-11/rank79.pt",
+      "remote": "w-18100/slinky-11/rank79.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "d707f445d5ec7e8a2785ec5754e0cebcaa8275e230a367ab55ab9efaaa2f1cc0",
+      "remote_sha256": "d707f445d5ec7e8a2785ec5754e0cebcaa8275e230a367ab55ab9efaaa2f1cc0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-12/rank84.pt",
+      "remote": "w-18100/slinky-12/rank84.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "96e8b92a2e076be3b97e4a3fb18b5d3d1226e0fd40a142e3877150c76cb79344",
+      "remote_sha256": "96e8b92a2e076be3b97e4a3fb18b5d3d1226e0fd40a142e3877150c76cb79344",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-12/rank85.pt",
+      "remote": "w-18100/slinky-12/rank85.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "680fe74cdf2bd6f56b19c8f70393c24e0ad5297c783f5211696383a9560017ff",
+      "remote_sha256": "680fe74cdf2bd6f56b19c8f70393c24e0ad5297c783f5211696383a9560017ff",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-12/rank87.pt",
+      "remote": "w-18100/slinky-12/rank87.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "bac34811e75f4692a82eee612583040fb04aa07d9ade3a68d25ac43884197c85",
+      "remote_sha256": "bac34811e75f4692a82eee612583040fb04aa07d9ade3a68d25ac43884197c85",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-12/rank81.pt",
+      "remote": "w-18100/slinky-12/rank81.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "96aa55c76bf26ea8265f3398c6477c716f13bd1475c30bdb3c92336b7886d6ea",
+      "remote_sha256": "96aa55c76bf26ea8265f3398c6477c716f13bd1475c30bdb3c92336b7886d6ea",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-12/rank83.pt",
+      "remote": "w-18100/slinky-12/rank83.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "cfd155c867dd50cc665ed6e8fecfa6fe27f2b6f6aadcaa8ce1924ae5fec8693d",
+      "remote_sha256": "cfd155c867dd50cc665ed6e8fecfa6fe27f2b6f6aadcaa8ce1924ae5fec8693d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-12/rank80.pt",
+      "remote": "w-18100/slinky-12/rank80.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "8eedc4c7e4e57443079a45a2d28feace42452c10d93459d62e7ada4288ffc373",
+      "remote_sha256": "8eedc4c7e4e57443079a45a2d28feace42452c10d93459d62e7ada4288ffc373",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-12/rep.pt",
+      "remote": "w-18100/slinky-12/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-12/rank86.pt",
+      "remote": "w-18100/slinky-12/rank86.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "ba86e536123eb08d1f40d7937aeb26fc0300f568b710f6aee466b6c6121cc8c9",
+      "remote_sha256": "ba86e536123eb08d1f40d7937aeb26fc0300f568b710f6aee466b6c6121cc8c9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-12/rank82.pt",
+      "remote": "w-18100/slinky-12/rank82.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "68a003ab188c3b8639ea524d519fdccf547b25250dd56c0ad88db0b100645bb5",
+      "remote_sha256": "68a003ab188c3b8639ea524d519fdccf547b25250dd56c0ad88db0b100645bb5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-2/rank19.pt",
+      "remote": "w-18100/slinky-2/rank19.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "c8f0d1ef5a452e51ec6ee4edbaa532a1d91fbe149dec9cda157ea0490122f2d4",
+      "remote_sha256": "c8f0d1ef5a452e51ec6ee4edbaa532a1d91fbe149dec9cda157ea0490122f2d4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-2/rank22.pt",
+      "remote": "w-18100/slinky-2/rank22.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "40eaadd5d592ddbc7fe340860d03d30ec53d8ba90b3edb3682018d3ac222fb37",
+      "remote_sha256": "40eaadd5d592ddbc7fe340860d03d30ec53d8ba90b3edb3682018d3ac222fb37",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-2/rank20.pt",
+      "remote": "w-18100/slinky-2/rank20.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "999d7f2782dd6f7850490b55bbdea07a2a758b84145e14e2d4ebdb4304a7587b",
+      "remote_sha256": "999d7f2782dd6f7850490b55bbdea07a2a758b84145e14e2d4ebdb4304a7587b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-2/rank18.pt",
+      "remote": "w-18100/slinky-2/rank18.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "35bd02c493d1546585113e094a98ca8427f60b3fd0c7e8826887f456d996c2d0",
+      "remote_sha256": "35bd02c493d1546585113e094a98ca8427f60b3fd0c7e8826887f456d996c2d0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-2/rep.pt",
+      "remote": "w-18100/slinky-2/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-2/rank17.pt",
+      "remote": "w-18100/slinky-2/rank17.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "b2b9e094d9b79df698dd5a26f7bdceeee952b9de051a83d324b079b37361f052",
+      "remote_sha256": "b2b9e094d9b79df698dd5a26f7bdceeee952b9de051a83d324b079b37361f052",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-2/rank23.pt",
+      "remote": "w-18100/slinky-2/rank23.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "02e32c3f918e0714fe16a0a8584593f8bff36be6e751f6007f95ae8033ed599f",
+      "remote_sha256": "02e32c3f918e0714fe16a0a8584593f8bff36be6e751f6007f95ae8033ed599f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-2/rank21.pt",
+      "remote": "w-18100/slinky-2/rank21.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "af763062bf66dd759da399effd0eca36ce1c1c7a547d50541afbdb0f5451786b",
+      "remote_sha256": "af763062bf66dd759da399effd0eca36ce1c1c7a547d50541afbdb0f5451786b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-2/rank16.pt",
+      "remote": "w-18100/slinky-2/rank16.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "19c5e8a8e1c71b57eec9f6e174ba7864eec35091a311c5fb95a2987c1d925328",
+      "remote_sha256": "19c5e8a8e1c71b57eec9f6e174ba7864eec35091a311c5fb95a2987c1d925328",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-16/rank105.pt",
+      "remote": "w-18100/slinky-16/rank105.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "f3335e6f9cf8c7269e3b60bc4b0e8538bbca7610f110ca2754d437ad480b21e0",
+      "remote_sha256": "f3335e6f9cf8c7269e3b60bc4b0e8538bbca7610f110ca2754d437ad480b21e0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-16/rank109.pt",
+      "remote": "w-18100/slinky-16/rank109.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "5947817c2bdacc6fb06e8059c140e7974a0a70e22d32d1e8394c172fce2c453b",
+      "remote_sha256": "5947817c2bdacc6fb06e8059c140e7974a0a70e22d32d1e8394c172fce2c453b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-16/rank110.pt",
+      "remote": "w-18100/slinky-16/rank110.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "8ffacca0b749601602315ee72193962766fd4d9d5da071c766b9284a45f1b65c",
+      "remote_sha256": "8ffacca0b749601602315ee72193962766fd4d9d5da071c766b9284a45f1b65c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-16/rank111.pt",
+      "remote": "w-18100/slinky-16/rank111.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "80dc125918ca65ca82f5ffab70497413dba2a7a0baab3c5119bca1a63b11036c",
+      "remote_sha256": "80dc125918ca65ca82f5ffab70497413dba2a7a0baab3c5119bca1a63b11036c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-16/rank107.pt",
+      "remote": "w-18100/slinky-16/rank107.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "fdcb10ecc05dc72ca3c08e70fb7e57cf760a150dfe6d4ccdecf30b387f631cea",
+      "remote_sha256": "fdcb10ecc05dc72ca3c08e70fb7e57cf760a150dfe6d4ccdecf30b387f631cea",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-16/rep.pt",
+      "remote": "w-18100/slinky-16/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-16/rank104.pt",
+      "remote": "w-18100/slinky-16/rank104.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "7dece7efe81163d34b2f5122a3ee884b5c26a92997822841d04a1e1c2ea671b3",
+      "remote_sha256": "7dece7efe81163d34b2f5122a3ee884b5c26a92997822841d04a1e1c2ea671b3",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-16/rank106.pt",
+      "remote": "w-18100/slinky-16/rank106.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "0e831671a11482d54c119c804a784ec2611d50e9d46c39261c1ebbd4e72c2174",
+      "remote_sha256": "0e831671a11482d54c119c804a784ec2611d50e9d46c39261c1ebbd4e72c2174",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-16/rank108.pt",
+      "remote": "w-18100/slinky-16/rank108.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "0414384c38c619c0864676b0c7a3d1304b9fd0bd8aa91343267966a15861e761",
+      "remote_sha256": "0414384c38c619c0864676b0c7a3d1304b9fd0bd8aa91343267966a15861e761",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-19/rank120.pt",
+      "remote": "w-18100/slinky-19/rank120.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "d75ac8909d4c27e1ebd5de0f1b4afb1c6bb310914cf152d8a9727f23c7d4c9dc",
+      "remote_sha256": "d75ac8909d4c27e1ebd5de0f1b4afb1c6bb310914cf152d8a9727f23c7d4c9dc",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-19/rank125.pt",
+      "remote": "w-18100/slinky-19/rank125.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "6ab155ae06f24212e866cbc1df5db14519b902626030235ead3cd07c1b58da45",
+      "remote_sha256": "6ab155ae06f24212e866cbc1df5db14519b902626030235ead3cd07c1b58da45",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-19/rank127.pt",
+      "remote": "w-18100/slinky-19/rank127.pt",
+      "bytes": 672461787,
+      "matched": true,
+      "cached_download_sha256": "402d69e0e13240f6618dd71397fdf825f7197a7f59d390bf8e517ff162c1cd4c",
+      "remote_sha256": "402d69e0e13240f6618dd71397fdf825f7197a7f59d390bf8e517ff162c1cd4c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-19/rank121.pt",
+      "remote": "w-18100/slinky-19/rank121.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "1411c27fa4fea432f59aa6809e1da2ada4dd2e2da28f1440363565ca8f57ff98",
+      "remote_sha256": "1411c27fa4fea432f59aa6809e1da2ada4dd2e2da28f1440363565ca8f57ff98",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-19/rank123.pt",
+      "remote": "w-18100/slinky-19/rank123.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "693728d2820410da23a6a5609ae2b06b6cdd422d5ccad6e25c522937969a9c5f",
+      "remote_sha256": "693728d2820410da23a6a5609ae2b06b6cdd422d5ccad6e25c522937969a9c5f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-19/rank122.pt",
+      "remote": "w-18100/slinky-19/rank122.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "1529eac62188926b1e872a4e0e449fc2798e62c06a86d793b0ed9ea2fadba15f",
+      "remote_sha256": "1529eac62188926b1e872a4e0e449fc2798e62c06a86d793b0ed9ea2fadba15f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-19/rep.pt",
+      "remote": "w-18100/slinky-19/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-19/rank126.pt",
+      "remote": "w-18100/slinky-19/rank126.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "4a3ea233229c09eb1cafa54e6b75261ef60b7d89819c4888d1a591a4ce92aa32",
+      "remote_sha256": "4a3ea233229c09eb1cafa54e6b75261ef60b7d89819c4888d1a591a4ce92aa32",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-19/rank124.pt",
+      "remote": "w-18100/slinky-19/rank124.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "bd7148b99707cf14ab07a9c6afb4f5fe4754b9614dcdf38f4c4575b86e321b23",
+      "remote_sha256": "bd7148b99707cf14ab07a9c6afb4f5fe4754b9614dcdf38f4c4575b86e321b23",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-14/rank97.pt",
+      "remote": "w-18100/slinky-14/rank97.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "bd5d434f564f02a6a17020448c8fe660d135c994d3a11773a5a4c71bf77a3a03",
+      "remote_sha256": "bd5d434f564f02a6a17020448c8fe660d135c994d3a11773a5a4c71bf77a3a03",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-14/rank96.pt",
+      "remote": "w-18100/slinky-14/rank96.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "4adb134ecd4767b397118e12982df71223e2bbbcdb0970d0e70fd3ba0b0b5871",
+      "remote_sha256": "4adb134ecd4767b397118e12982df71223e2bbbcdb0970d0e70fd3ba0b0b5871",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-14/rank102.pt",
+      "remote": "w-18100/slinky-14/rank102.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "497a530b171a0c2eef37d373bf2b5a289af9d3b12afdf30f3362c230f687c8a5",
+      "remote_sha256": "497a530b171a0c2eef37d373bf2b5a289af9d3b12afdf30f3362c230f687c8a5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-14/rank98.pt",
+      "remote": "w-18100/slinky-14/rank98.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "a4040c161f7dcedd0849ec5f63eee07b6616ff3fdda321370d4067a90dad8a21",
+      "remote_sha256": "a4040c161f7dcedd0849ec5f63eee07b6616ff3fdda321370d4067a90dad8a21",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-14/rep.pt",
+      "remote": "w-18100/slinky-14/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-14/rank100.pt",
+      "remote": "w-18100/slinky-14/rank100.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "204b1192d416449d0c29db063879e58aab2a079891dcc5df87c2331ad69dd56d",
+      "remote_sha256": "204b1192d416449d0c29db063879e58aab2a079891dcc5df87c2331ad69dd56d",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-14/rank101.pt",
+      "remote": "w-18100/slinky-14/rank101.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "0d1062131c563894d6b2c4cfe07a1ea799b23a444b7b52435dd5cfa05ea63f47",
+      "remote_sha256": "0d1062131c563894d6b2c4cfe07a1ea799b23a444b7b52435dd5cfa05ea63f47",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-14/rank99.pt",
+      "remote": "w-18100/slinky-14/rank99.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "4fb7aa8b768982339ee1565491f930f4192ff93c15f4d0ae6a2680415cc7500c",
+      "remote_sha256": "4fb7aa8b768982339ee1565491f930f4192ff93c15f4d0ae6a2680415cc7500c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-14/rank103.pt",
+      "remote": "w-18100/slinky-14/rank103.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "e0ef6a4c9e802503387d155a044b4e0b0ef745a327aa4ce1d45c6c19c13eef43",
+      "remote_sha256": "e0ef6a4c9e802503387d155a044b4e0b0ef745a327aa4ce1d45c6c19c13eef43",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-6/rank47.pt",
+      "remote": "w-18100/slinky-6/rank47.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "724d618af6c8e0a943f64ba767153318f2b26514f176c7cd60863b105ad491a2",
+      "remote_sha256": "724d618af6c8e0a943f64ba767153318f2b26514f176c7cd60863b105ad491a2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-6/rank43.pt",
+      "remote": "w-18100/slinky-6/rank43.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "0cb520292e8c693687b055b9f39b492ae64c7ccef1aaf0912299cb63ed465373",
+      "remote_sha256": "0cb520292e8c693687b055b9f39b492ae64c7ccef1aaf0912299cb63ed465373",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-6/rank42.pt",
+      "remote": "w-18100/slinky-6/rank42.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "001d04c9d58d1c722981ba8bd22ae777cd3ebbda4aaf65aeb36f66a7620236b9",
+      "remote_sha256": "001d04c9d58d1c722981ba8bd22ae777cd3ebbda4aaf65aeb36f66a7620236b9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-6/rank46.pt",
+      "remote": "w-18100/slinky-6/rank46.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "28e31da4b3933e47d001b42296e37700c336d8834ece0294930acb2191b88da9",
+      "remote_sha256": "28e31da4b3933e47d001b42296e37700c336d8834ece0294930acb2191b88da9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-6/rep.pt",
+      "remote": "w-18100/slinky-6/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-6/rank44.pt",
+      "remote": "w-18100/slinky-6/rank44.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "4e0bd75d832d88a8c35506e95d773e46323021c4b21ba562c028ded0b59409d8",
+      "remote_sha256": "4e0bd75d832d88a8c35506e95d773e46323021c4b21ba562c028ded0b59409d8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-6/rank40.pt",
+      "remote": "w-18100/slinky-6/rank40.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "c00854fe7c69816e5ca94cc4a9b08f5c89377cb3785f5b7d693600705470b998",
+      "remote_sha256": "c00854fe7c69816e5ca94cc4a9b08f5c89377cb3785f5b7d693600705470b998",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-6/rank45.pt",
+      "remote": "w-18100/slinky-6/rank45.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "e840a596c41d7f33ee14944a9989a3a4dcacb731e515478b611be1be17ee90f5",
+      "remote_sha256": "e840a596c41d7f33ee14944a9989a3a4dcacb731e515478b611be1be17ee90f5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-6/rank41.pt",
+      "remote": "w-18100/slinky-6/rank41.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "c0db444f057f546d7ce6e79978aacf60b346adcc4e024e711c432661d2e3f7c0",
+      "remote_sha256": "c0db444f057f546d7ce6e79978aacf60b346adcc4e024e711c432661d2e3f7c0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-8/rank49.pt",
+      "remote": "w-18100/slinky-8/rank49.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "0fbddeb2293a037579685827af7ff7797482ee9db8820d2ed6e6ca3c9458c587",
+      "remote_sha256": "0fbddeb2293a037579685827af7ff7797482ee9db8820d2ed6e6ca3c9458c587",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-8/rank50.pt",
+      "remote": "w-18100/slinky-8/rank50.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "b79330c98558486f7fb2b820d3741507b38ba98f063359251865fd0a30dec41e",
+      "remote_sha256": "b79330c98558486f7fb2b820d3741507b38ba98f063359251865fd0a30dec41e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-8/rank51.pt",
+      "remote": "w-18100/slinky-8/rank51.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "37a2be05d111ba08767000ed6ee8153568fe261bcdec59cd4f23eb634b0ffe04",
+      "remote_sha256": "37a2be05d111ba08767000ed6ee8153568fe261bcdec59cd4f23eb634b0ffe04",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-8/rank54.pt",
+      "remote": "w-18100/slinky-8/rank54.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "3387055e72e38a1c7cb521a69f620f82f064d44523a51c24c5d5af38c7178cfd",
+      "remote_sha256": "3387055e72e38a1c7cb521a69f620f82f064d44523a51c24c5d5af38c7178cfd",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-8/rank53.pt",
+      "remote": "w-18100/slinky-8/rank53.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "938fa21891758a02f65e86485b75874441357046d14c93a351878a92fa1c6af1",
+      "remote_sha256": "938fa21891758a02f65e86485b75874441357046d14c93a351878a92fa1c6af1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-8/rank48.pt",
+      "remote": "w-18100/slinky-8/rank48.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "3ffc5b31e9636b134602654079f130ce876538578240578e792243235dadb38e",
+      "remote_sha256": "3ffc5b31e9636b134602654079f130ce876538578240578e792243235dadb38e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-8/rank55.pt",
+      "remote": "w-18100/slinky-8/rank55.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "b9e96f838ab3c949b7bccbccaeea2faec374cdbd794145b024dc949b9f20680b",
+      "remote_sha256": "b9e96f838ab3c949b7bccbccaeea2faec374cdbd794145b024dc949b9f20680b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-8/rank52.pt",
+      "remote": "w-18100/slinky-8/rank52.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "088492f27ef10333231917413bdfd85019ea2ccfb7e20b27d46e5fa5a951a7bb",
+      "remote_sha256": "088492f27ef10333231917413bdfd85019ea2ccfb7e20b27d46e5fa5a951a7bb",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-8/rep.pt",
+      "remote": "w-18100/slinky-8/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-17/rank118.pt",
+      "remote": "w-18100/slinky-17/rank118.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "553f14c9d8de7be72f69026d123f13c1c5139f404267847ebd0f2c06df8ebc04",
+      "remote_sha256": "553f14c9d8de7be72f69026d123f13c1c5139f404267847ebd0f2c06df8ebc04",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-17/rank117.pt",
+      "remote": "w-18100/slinky-17/rank117.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "4eece69eecc0edfabdc238b97a47985dda569fac7f0d0f2250745c6119050867",
+      "remote_sha256": "4eece69eecc0edfabdc238b97a47985dda569fac7f0d0f2250745c6119050867",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-17/rank112.pt",
+      "remote": "w-18100/slinky-17/rank112.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "d4d78879dcbe5e79fa50e58a959b86c25cef99487fdd3127d95c13acc01f97c0",
+      "remote_sha256": "d4d78879dcbe5e79fa50e58a959b86c25cef99487fdd3127d95c13acc01f97c0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-17/rank115.pt",
+      "remote": "w-18100/slinky-17/rank115.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "561bac1d3500350f34b03ea5ea82929f8a7027c2c6e0170f824918b3b0228338",
+      "remote_sha256": "561bac1d3500350f34b03ea5ea82929f8a7027c2c6e0170f824918b3b0228338",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-17/rank113.pt",
+      "remote": "w-18100/slinky-17/rank113.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "c41492aee3df52f46be6fb094286984ce445425c242d4e7db4639e825428fe44",
+      "remote_sha256": "c41492aee3df52f46be6fb094286984ce445425c242d4e7db4639e825428fe44",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-17/rep.pt",
+      "remote": "w-18100/slinky-17/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-17/rank114.pt",
+      "remote": "w-18100/slinky-17/rank114.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "e61507fe90f3346b616dbf7f10835592ca9ce37f61b270932198c4d7f7693180",
+      "remote_sha256": "e61507fe90f3346b616dbf7f10835592ca9ce37f61b270932198c4d7f7693180",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-17/rank116.pt",
+      "remote": "w-18100/slinky-17/rank116.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "3f8e141716353298d78db5ff63269779f79e60c7fa359ee1d04ab282d5ca9a7b",
+      "remote_sha256": "3f8e141716353298d78db5ff63269779f79e60c7fa359ee1d04ab282d5ca9a7b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-17/rank119.pt",
+      "remote": "w-18100/slinky-17/rank119.pt",
+      "bytes": 673752027,
+      "matched": true,
+      "cached_download_sha256": "34ed5277a63c1088e16d60b13c506e6ed54c5ace2640f64f893cffae06d5ddf9",
+      "remote_sha256": "34ed5277a63c1088e16d60b13c506e6ed54c5ace2640f64f893cffae06d5ddf9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-1/rank15.pt",
+      "remote": "w-18100/slinky-1/rank15.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "ca321113b42d955566c8d90d96f17eeab9d3aecd7340ae295daa87ca8eae8ca7",
+      "remote_sha256": "ca321113b42d955566c8d90d96f17eeab9d3aecd7340ae295daa87ca8eae8ca7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-1/rank11.pt",
+      "remote": "w-18100/slinky-1/rank11.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "1a7d122ae16fd882a5fd41b3f5b45c6d8d0c4638b39be891270410d1cadebe69",
+      "remote_sha256": "1a7d122ae16fd882a5fd41b3f5b45c6d8d0c4638b39be891270410d1cadebe69",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-1/rep.pt",
+      "remote": "w-18100/slinky-1/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-1/rank13.pt",
+      "remote": "w-18100/slinky-1/rank13.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "5962241cf51417bb0e8eece3d186a4145e5be213a52e01cdc5a77a062fb00df4",
+      "remote_sha256": "5962241cf51417bb0e8eece3d186a4145e5be213a52e01cdc5a77a062fb00df4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-1/rank8.pt",
+      "remote": "w-18100/slinky-1/rank8.pt",
+      "bytes": 673748957,
+      "matched": true,
+      "cached_download_sha256": "8d94b2e032ebc42ec1e6bb87ec891fc72ecb0474f9018018f41564baee39b5ce",
+      "remote_sha256": "8d94b2e032ebc42ec1e6bb87ec891fc72ecb0474f9018018f41564baee39b5ce",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-1/rank12.pt",
+      "remote": "w-18100/slinky-1/rank12.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "544466d44f256d7b931fa0662dd2293c4e62f2270d1a00fd36effe3306c39c38",
+      "remote_sha256": "544466d44f256d7b931fa0662dd2293c4e62f2270d1a00fd36effe3306c39c38",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-1/rank9.pt",
+      "remote": "w-18100/slinky-1/rank9.pt",
+      "bytes": 673748957,
+      "matched": true,
+      "cached_download_sha256": "418785bec94ac4bea3010245f0e5642c842ff8e26d92c242deb326770fb17c01",
+      "remote_sha256": "418785bec94ac4bea3010245f0e5642c842ff8e26d92c242deb326770fb17c01",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-1/rank14.pt",
+      "remote": "w-18100/slinky-1/rank14.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "3eac8a729bc72df87fa047c39c180c7a8f201fe3e446e702cb7d47c41153cd76",
+      "remote_sha256": "3eac8a729bc72df87fa047c39c180c7a8f201fe3e446e702cb7d47c41153cd76",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-1/rank10.pt",
+      "remote": "w-18100/slinky-1/rank10.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "552f129bd420f82a4590af260995881fbff67259bdb9aaefa3fbf559cce68dea",
+      "remote_sha256": "552f129bd420f82a4590af260995881fbff67259bdb9aaefa3fbf559cce68dea",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-13/rank93.pt",
+      "remote": "w-18100/slinky-13/rank93.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "a3e051364f411614667abb477408129b010447c104bd6e65747475f4d51d8a32",
+      "remote_sha256": "a3e051364f411614667abb477408129b010447c104bd6e65747475f4d51d8a32",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-13/rank89.pt",
+      "remote": "w-18100/slinky-13/rank89.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "074a884a6dbc27b4d26c1606bf0c9f5811fdcd78f22d67f5206d84b4d1978a53",
+      "remote_sha256": "074a884a6dbc27b4d26c1606bf0c9f5811fdcd78f22d67f5206d84b4d1978a53",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-13/rank88.pt",
+      "remote": "w-18100/slinky-13/rank88.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "f3be696bc7e1cfc8a7894000258b0941958c59d6a3064b6c05c0d17c4b25b760",
+      "remote_sha256": "f3be696bc7e1cfc8a7894000258b0941958c59d6a3064b6c05c0d17c4b25b760",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-13/rank90.pt",
+      "remote": "w-18100/slinky-13/rank90.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "1eceb5b6a7cd073715d2b21e55906cc9d921d3004294b1f50e535428228ba437",
+      "remote_sha256": "1eceb5b6a7cd073715d2b21e55906cc9d921d3004294b1f50e535428228ba437",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-13/rank94.pt",
+      "remote": "w-18100/slinky-13/rank94.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "8ab7d6f4ebc1ef934ceb98824d8eac0aa423c3bc42e94db57af26b069516accf",
+      "remote_sha256": "8ab7d6f4ebc1ef934ceb98824d8eac0aa423c3bc42e94db57af26b069516accf",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-13/rank91.pt",
+      "remote": "w-18100/slinky-13/rank91.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "f87b7464b0260aa843e22ab6e2815b9a68f9b5b469ca1a9d1cdcb250670edb1e",
+      "remote_sha256": "f87b7464b0260aa843e22ab6e2815b9a68f9b5b469ca1a9d1cdcb250670edb1e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-13/rank95.pt",
+      "remote": "w-18100/slinky-13/rank95.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "aabf6b8c4b9b0e40f411b1a7ee9cf7f038d761ce12608095e2394b569b32d46f",
+      "remote_sha256": "aabf6b8c4b9b0e40f411b1a7ee9cf7f038d761ce12608095e2394b569b32d46f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-13/rep.pt",
+      "remote": "w-18100/slinky-13/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-13/rank92.pt",
+      "remote": "w-18100/slinky-13/rank92.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "233a5f549d0146ba052fded4236b7873b42be5f92c093aaaec5a45afe3253fbc",
+      "remote_sha256": "233a5f549d0146ba052fded4236b7873b42be5f92c093aaaec5a45afe3253fbc",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-15/rank60.pt",
+      "remote": "w-18100/slinky-15/rank60.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "063193516690845b32f871719c32653cfb73ed98d133ffd286d0eb5a5ec096d7",
+      "remote_sha256": "063193516690845b32f871719c32653cfb73ed98d133ffd286d0eb5a5ec096d7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-15/rank56.pt",
+      "remote": "w-18100/slinky-15/rank56.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "b11236c921bf1e3a28a8abe9be46d206ad07d7bff427600f17eaf7dee89c5a72",
+      "remote_sha256": "b11236c921bf1e3a28a8abe9be46d206ad07d7bff427600f17eaf7dee89c5a72",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-15/rank59.pt",
+      "remote": "w-18100/slinky-15/rank59.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "b405b6bb3c0f1b07fa2025b0f07db8375f7c6c60ebaa897904ac6c329a3e4b3a",
+      "remote_sha256": "b405b6bb3c0f1b07fa2025b0f07db8375f7c6c60ebaa897904ac6c329a3e4b3a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-15/rank63.pt",
+      "remote": "w-18100/slinky-15/rank63.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "f9c58552f80e78d1123884d2b923b5d639e6562bba4dc8265503c824b5e4a2ce",
+      "remote_sha256": "f9c58552f80e78d1123884d2b923b5d639e6562bba4dc8265503c824b5e4a2ce",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-15/rank62.pt",
+      "remote": "w-18100/slinky-15/rank62.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "80fd1bc3c791614b6ff457296b21a5e27bec6fe16b50ff76c1256f67b3d491d1",
+      "remote_sha256": "80fd1bc3c791614b6ff457296b21a5e27bec6fe16b50ff76c1256f67b3d491d1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-15/rep.pt",
+      "remote": "w-18100/slinky-15/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-15/rank57.pt",
+      "remote": "w-18100/slinky-15/rank57.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "52d82f755357d30a143c8871affd263ab3336777900a7637f32fedd1a64ccb4e",
+      "remote_sha256": "52d82f755357d30a143c8871affd263ab3336777900a7637f32fedd1a64ccb4e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-15/rank58.pt",
+      "remote": "w-18100/slinky-15/rank58.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "29dac28e6529ba5c097690614b662f1930c274f006472e465eb86bde144eccf1",
+      "remote_sha256": "29dac28e6529ba5c097690614b662f1930c274f006472e465eb86bde144eccf1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-15/rank61.pt",
+      "remote": "w-18100/slinky-15/rank61.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "9eac322a5814a22ee3a3155aa544c8379eb5faa711ded0bad63af74e33fa6df2",
+      "remote_sha256": "9eac322a5814a22ee3a3155aa544c8379eb5faa711ded0bad63af74e33fa6df2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-7/rank67.pt",
+      "remote": "w-18100/slinky-7/rank67.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "0793ef8e64f32f84c07e5ac52e5143d8b3961d5c6a1ce4617fbea6f1607f95e4",
+      "remote_sha256": "0793ef8e64f32f84c07e5ac52e5143d8b3961d5c6a1ce4617fbea6f1607f95e4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-7/rank66.pt",
+      "remote": "w-18100/slinky-7/rank66.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "ac5790d7a0137b42d937bcc4d90efd55a67c517e56dcc41b884d2e0dad5f4ecc",
+      "remote_sha256": "ac5790d7a0137b42d937bcc4d90efd55a67c517e56dcc41b884d2e0dad5f4ecc",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-7/rank69.pt",
+      "remote": "w-18100/slinky-7/rank69.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "7f8ff56d4ee3ac5126a43bf05a11c720160ff1de6e950c004571615dba40184b",
+      "remote_sha256": "7f8ff56d4ee3ac5126a43bf05a11c720160ff1de6e950c004571615dba40184b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-7/rank64.pt",
+      "remote": "w-18100/slinky-7/rank64.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "65c9ce0a021a3a67c1f7abc03422564a98acf9763cd720aa107d9f9bdcc7f76c",
+      "remote_sha256": "65c9ce0a021a3a67c1f7abc03422564a98acf9763cd720aa107d9f9bdcc7f76c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-7/rank68.pt",
+      "remote": "w-18100/slinky-7/rank68.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "0f46d1690cc043ebc78aa5a2e0b946ce4e4ec1910494bcc6518924f5b28c0e12",
+      "remote_sha256": "0f46d1690cc043ebc78aa5a2e0b946ce4e4ec1910494bcc6518924f5b28c0e12",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-7/rank65.pt",
+      "remote": "w-18100/slinky-7/rank65.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "bec5a65d8b23eeec51da28d68eba22adbd60e5ce4e8ac3c29c22d363cf4db5ae",
+      "remote_sha256": "bec5a65d8b23eeec51da28d68eba22adbd60e5ce4e8ac3c29c22d363cf4db5ae",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-7/rep.pt",
+      "remote": "w-18100/slinky-7/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-7/rank71.pt",
+      "remote": "w-18100/slinky-7/rank71.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "3d53cc85f05352a76090a1443a76aeec40ca12ed37e5fe0b72b4d5d4b526d191",
+      "remote_sha256": "3d53cc85f05352a76090a1443a76aeec40ca12ed37e5fe0b72b4d5d4b526d191",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-7/rank70.pt",
+      "remote": "w-18100/slinky-7/rank70.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "5d55a8684598feabc0dd46729d8a33b2565685fd85c66c7e935ca4746f3c5ced",
+      "remote_sha256": "5d55a8684598feabc0dd46729d8a33b2565685fd85c66c7e935ca4746f3c5ced",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-5/rank38.pt",
+      "remote": "w-18100/slinky-5/rank38.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "0f1bddfc9e5286cec3a3e1c822cb176504908e7a19dbde77cf86aad06aa18598",
+      "remote_sha256": "0f1bddfc9e5286cec3a3e1c822cb176504908e7a19dbde77cf86aad06aa18598",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-5/rank37.pt",
+      "remote": "w-18100/slinky-5/rank37.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "2fcbb2ba49e654de627d620daf2dfb1246a48cc90b0f46d5e579c29dd8d9c6b2",
+      "remote_sha256": "2fcbb2ba49e654de627d620daf2dfb1246a48cc90b0f46d5e579c29dd8d9c6b2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-5/rank36.pt",
+      "remote": "w-18100/slinky-5/rank36.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "242df847bc0eb10646015b92c4b4e0683a0268526eaf6695c292fb2be79a697e",
+      "remote_sha256": "242df847bc0eb10646015b92c4b4e0683a0268526eaf6695c292fb2be79a697e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-5/rank34.pt",
+      "remote": "w-18100/slinky-5/rank34.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "5171c1592b04675870f20c0678860a1efc79f1d3701c26c930a5a31c284381c9",
+      "remote_sha256": "5171c1592b04675870f20c0678860a1efc79f1d3701c26c930a5a31c284381c9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-5/rank33.pt",
+      "remote": "w-18100/slinky-5/rank33.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "53c4b8f622ffd0d0cb1c40cacecb522a690e93667a7915eb52069a6a5215c483",
+      "remote_sha256": "53c4b8f622ffd0d0cb1c40cacecb522a690e93667a7915eb52069a6a5215c483",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-5/rank35.pt",
+      "remote": "w-18100/slinky-5/rank35.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "fd88b2dd0e0df67bcd4d62a03c896456ed94bae294733b87c592a981304c3ce0",
+      "remote_sha256": "fd88b2dd0e0df67bcd4d62a03c896456ed94bae294733b87c592a981304c3ce0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-5/rep.pt",
+      "remote": "w-18100/slinky-5/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-5/rank32.pt",
+      "remote": "w-18100/slinky-5/rank32.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "69739e9de58c2bb73b84843e495c75127499bee83b538fc505aa84bd09f1d123",
+      "remote_sha256": "69739e9de58c2bb73b84843e495c75127499bee83b538fc505aa84bd09f1d123",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-5/rank39.pt",
+      "remote": "w-18100/slinky-5/rank39.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "7193865eb6e269e776f179ba9975868d8a170665947593252e396edf6f06bdb9",
+      "remote_sha256": "7193865eb6e269e776f179ba9975868d8a170665947593252e396edf6f06bdb9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-0/rank5.pt",
+      "remote": "w-18100/slinky-0/rank5.pt",
+      "bytes": 673748957,
+      "matched": true,
+      "cached_download_sha256": "0478129b8cade0f6d4139ecff0e610ee2794a5234c09dc82a1e76a7efe7ffe84",
+      "remote_sha256": "0478129b8cade0f6d4139ecff0e610ee2794a5234c09dc82a1e76a7efe7ffe84",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-0/rank7.pt",
+      "remote": "w-18100/slinky-0/rank7.pt",
+      "bytes": 673748957,
+      "matched": true,
+      "cached_download_sha256": "ac1d82547750c00627df8cc4da67b1beae7b18ae1aadd15f84280e4692f4daaa",
+      "remote_sha256": "ac1d82547750c00627df8cc4da67b1beae7b18ae1aadd15f84280e4692f4daaa",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-0/rank4.pt",
+      "remote": "w-18100/slinky-0/rank4.pt",
+      "bytes": 673748957,
+      "matched": true,
+      "cached_download_sha256": "33cf0fd503c995563f802c64bf0261c11159c37832dc9e07e453a776ad8889fd",
+      "remote_sha256": "33cf0fd503c995563f802c64bf0261c11159c37832dc9e07e453a776ad8889fd",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-0/rank6.pt",
+      "remote": "w-18100/slinky-0/rank6.pt",
+      "bytes": 673748957,
+      "matched": true,
+      "cached_download_sha256": "ee60cb7e25b45ef442fe22d6465fabaa0bccb626a7ab87e3dfade0bf12479c56",
+      "remote_sha256": "ee60cb7e25b45ef442fe22d6465fabaa0bccb626a7ab87e3dfade0bf12479c56",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-0/rank0.pt",
+      "remote": "w-18100/slinky-0/rank0.pt",
+      "bytes": 673779933,
+      "matched": true,
+      "cached_download_sha256": "d13f8ade87d03590c82a21bcc3a7c0c1db15ee510961a736935c904a8b3550d5",
+      "remote_sha256": "d13f8ade87d03590c82a21bcc3a7c0c1db15ee510961a736935c904a8b3550d5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-0/rank2.pt",
+      "remote": "w-18100/slinky-0/rank2.pt",
+      "bytes": 673748957,
+      "matched": true,
+      "cached_download_sha256": "84e476f73027fa0a3f70ae0cd5db8628c5edc29e86449e6397fd716565ed288e",
+      "remote_sha256": "84e476f73027fa0a3f70ae0cd5db8628c5edc29e86449e6397fd716565ed288e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-0/rank1.pt",
+      "remote": "w-18100/slinky-0/rank1.pt",
+      "bytes": 673748957,
+      "matched": true,
+      "cached_download_sha256": "7b01c93cc9bcd43767c094ec84e64965f4e4a49b5ce77d5e546d1c4c2de0fcfe",
+      "remote_sha256": "7b01c93cc9bcd43767c094ec84e64965f4e4a49b5ce77d5e546d1c4c2de0fcfe",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-0/rep.pt",
+      "remote": "w-18100/slinky-0/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-0/rank3.pt",
+      "remote": "w-18100/slinky-0/rank3.pt",
+      "bytes": 673748957,
+      "matched": true,
+      "cached_download_sha256": "4c69ae7343c5d665e30c0bc7b99b096cd63082e93ad98687817c260596d99d16",
+      "remote_sha256": "4c69ae7343c5d665e30c0bc7b99b096cd63082e93ad98687817c260596d99d16",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-3/rank29.pt",
+      "remote": "w-18100/slinky-3/rank29.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "2559d288a0b1114b525b22120a66e1bae02471fe6aa0bd90de816c4d6c7398f4",
+      "remote_sha256": "2559d288a0b1114b525b22120a66e1bae02471fe6aa0bd90de816c4d6c7398f4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-3/rank24.pt",
+      "remote": "w-18100/slinky-3/rank24.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "af36db498b6c003e1c06efa56747d35873d9d3a4fce8f9175151b339bb4b9d4b",
+      "remote_sha256": "af36db498b6c003e1c06efa56747d35873d9d3a4fce8f9175151b339bb4b9d4b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-3/rank28.pt",
+      "remote": "w-18100/slinky-3/rank28.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "30bb59036fd3fbaf2515645dc8072ade3e2f5a866705cf2a9fd9d8a089631c06",
+      "remote_sha256": "30bb59036fd3fbaf2515645dc8072ade3e2f5a866705cf2a9fd9d8a089631c06",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-3/rank30.pt",
+      "remote": "w-18100/slinky-3/rank30.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "e8586b9e1d10b6c1da049187e9af96c51888aa686057d9527a56b16aa96dc584",
+      "remote_sha256": "e8586b9e1d10b6c1da049187e9af96c51888aa686057d9527a56b16aa96dc584",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-3/rank27.pt",
+      "remote": "w-18100/slinky-3/rank27.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "e8a84c498f858a6182697f4b9bd26aa4e7df0a1c7e102b42666db7d9768fb101",
+      "remote_sha256": "e8a84c498f858a6182697f4b9bd26aa4e7df0a1c7e102b42666db7d9768fb101",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-3/rank26.pt",
+      "remote": "w-18100/slinky-3/rank26.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "00c9f3c1ebddc05ef339d027479b4b260757f6d5d34047beaafce580dadfdb89",
+      "remote_sha256": "00c9f3c1ebddc05ef339d027479b4b260757f6d5d34047beaafce580dadfdb89",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-3/rep.pt",
+      "remote": "w-18100/slinky-3/rep.pt",
+      "bytes": 2301037917,
+      "matched": true,
+      "cached_download_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "remote_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-3/rank25.pt",
+      "remote": "w-18100/slinky-3/rank25.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "aa9d087f9ac0f3b9bc2b27dc046502f64653bd5dbda3e310b26ea45b8e6aae9e",
+      "remote_sha256": "aa9d087f9ac0f3b9bc2b27dc046502f64653bd5dbda3e310b26ea45b8e6aae9e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-3/rank31.pt",
+      "remote": "w-18100/slinky-3/rank31.pt",
+      "bytes": 673750492,
+      "matched": true,
+      "cached_download_sha256": "a9b4014fee03fd04c0de37a97357acc5b3279cb1cccddc92073e98b4382ad973",
+      "remote_sha256": "a9b4014fee03fd04c0de37a97357acc5b3279cb1cccddc92073e98b4382ad973",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505937.9814851
+}

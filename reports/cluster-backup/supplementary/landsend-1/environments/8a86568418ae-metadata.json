@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/tmp/pose-comparison-browser/bin/python",
+    "-c",
+    "import importlib.metadata as m,json,sys,platform; print(json.dumps({\"python\":sys.version,\"executable\":sys.executable,\"platform\":platform.platform(),\"packages\":sorted([{\"name\":d.metadata.get(\"Name\", \"\"),\"version\":d.version,\"direct_url\":d.read_text(\"direct_url.json\")} for d in m.distributions()],key=lambda x:x[\"name\"].lower())}))"
+  ],
+  "returncode": 0,
+  "stdout": "{\"python\": \"3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]\", \"executable\": \"/tmp/pose-comparison-browser/bin/python\", \"platform\": \"Linux-6.8.0-142-generic-x86_64-with-glibc2.39\", \"packages\": [{\"name\": \"greenlet\", \"version\": \"3.5.6\", \"direct_url\": null}, {\"name\": \"pip\", \"version\": \"24.0\", \"direct_url\": null}, {\"name\": \"playwright\", \"version\": \"1.64.1\", \"direct_url\": null}, {\"name\": \"pyee\", \"version\": \"14.0.0\", \"direct_url\": null}, {\"name\": \"typing_extensions\", \"version\": \"4.16.0\", \"direct_url\": null}]}\n",
+  "stderr": ""
+}

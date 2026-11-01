@@ -1,0 +1,44 @@
+[
+  {
+    "host": "landsend-0",
+    "pid": 3790452,
+    "started": 1793505841.495614,
+    "log": "/home/param/outputs/landsend-backup-20261031/checkpoints/landsend-0-upload.log"
+  },
+  {
+    "host": "landsend-1",
+    "pid": 577871,
+    "started": 1793505842.4173386,
+    "log": "/home/param/outputs/landsend-backup-20261031/checkpoints/landsend-1-upload.log"
+  },
+  {
+    "host": "landsend-2",
+    "pid": 410311,
+    "started": 1793505842.4400473,
+    "log": "/home/param/outputs/landsend-backup-20261031/checkpoints/landsend-2-upload.log"
+  },
+  {
+    "host": "landsend-3",
+    "pid": 4006174,
+    "started": 1793505842.3992007,
+    "log": "/home/param/outputs/landsend-backup-20261031/checkpoints/landsend-3-upload.log"
+  },
+  {
+    "host": "landsend-4",
+    "pid": 3742318,
+    "started": 1793505842.4430103,
+    "log": "/home/param/outputs/landsend-backup-20261031/checkpoints/landsend-4-upload.log"
+  },
+  {
+    "host": "landsend-5",
+    "pid": 3492698,
+    "started": 1793505842.4027784,
+    "log": "/home/param/outputs/landsend-backup-20261031/checkpoints/landsend-5-upload.log"
+  },
+  {
+    "host": "landsend-12",
+    "pid": 3388987,
+    "started": 1793505842.4101996,
+    "log": "/home/param/outputs/landsend-backup-20261031/checkpoints/landsend-12-upload.log"
+  }
+]

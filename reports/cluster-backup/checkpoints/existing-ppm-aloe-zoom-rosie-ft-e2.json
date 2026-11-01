@@ -1,0 +1,72 @@
+{
+  "folder": "/home/param/models/imported-weights/ppm-aloe-zoom-rosie-ft-e2",
+  "repo": "InternalCan/ppm-aloe-zoom-rosie-ft-e2",
+  "revision": "22b0184ed4b382dbfedfa7a0b7a6f0ed19fb24ae",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-zoom-rosie-ft-e2/export-108/rank5.pt",
+      "remote": "export-108/rank5.pt",
+      "bytes": 12821806985,
+      "matched": true,
+      "cached_download_sha256": "63e10b72e895c4bf95efe737d15f4506d499e3b25be3a6f39531a857aa2b4213",
+      "remote_sha256": "63e10b72e895c4bf95efe737d15f4506d499e3b25be3a6f39531a857aa2b4213",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-zoom-rosie-ft-e2/export-108/rank4.pt",
+      "remote": "export-108/rank4.pt",
+      "bytes": 12851946633,
+      "matched": true,
+      "cached_download_sha256": "efc473d258618ba69fe448188bd577ed8bb743e75e00dcb19d023a5160b51689",
+      "remote_sha256": "efc473d258618ba69fe448188bd577ed8bb743e75e00dcb19d023a5160b51689",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-zoom-rosie-ft-e2/export-108/rank0.pt",
+      "remote": "export-108/rank0.pt",
+      "bytes": 12851977609,
+      "matched": true,
+      "cached_download_sha256": "aeb71bad9a0fb75bf530b9cb6ae19d6596cdd4695320ce368c70f6f0f358ff89",
+      "remote_sha256": "aeb71bad9a0fb75bf530b9cb6ae19d6596cdd4695320ce368c70f6f0f358ff89",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-zoom-rosie-ft-e2/export-108/rank2.pt",
+      "remote": "export-108/rank2.pt",
+      "bytes": 12851946633,
+      "matched": true,
+      "cached_download_sha256": "f6d9b59b84bb994977bb815ec415948986f96e9480d28f44459c7bd1e2d0bbba",
+      "remote_sha256": "f6d9b59b84bb994977bb815ec415948986f96e9480d28f44459c7bd1e2d0bbba",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-zoom-rosie-ft-e2/export-108/rank1.pt",
+      "remote": "export-108/rank1.pt",
+      "bytes": 12851946633,
+      "matched": true,
+      "cached_download_sha256": "9cf7c3d14eb53b1421ec6074d02fe281fc0b9524d5154f3367a21f1825ce37ae",
+      "remote_sha256": "9cf7c3d14eb53b1421ec6074d02fe281fc0b9524d5154f3367a21f1825ce37ae",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-zoom-rosie-ft-e2/export-108/rep.pt",
+      "remote": "export-108/rep.pt",
+      "bytes": 1150501259,
+      "matched": true,
+      "cached_download_sha256": "11588a7e87eb918f8619dbdda4a2151afde44e22647e95a84bfefa9496a9c585",
+      "remote_sha256": "11588a7e87eb918f8619dbdda4a2151afde44e22647e95a84bfefa9496a9c585",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-zoom-rosie-ft-e2/export-108/rank3.pt",
+      "remote": "export-108/rank3.pt",
+      "bytes": 12851946633,
+      "matched": true,
+      "cached_download_sha256": "8869d6e4bf00e045e9e89b6fa95e904b2f0b982a8f6d16176e12f6f22dd59a5a",
+      "remote_sha256": "8869d6e4bf00e045e9e89b6fa95e904b2f0b982a8f6d16176e12f6f22dd59a5a",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.4648135
+}

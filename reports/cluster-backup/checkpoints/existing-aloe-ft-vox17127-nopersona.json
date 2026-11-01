@@ -1,0 +1,18 @@
+{
+  "folder": "/home/param/models/imported-weights/aloe-ft-vox17127-nopersona",
+  "repo": "InternalCan/aloe-ft-vox17127-nopersona",
+  "revision": "6cfa40e19a235b04b2695a8ad2985ae07e78668e",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/aloe-ft-vox17127-nopersona/assets/voxtral-realtime/audio_tower.safetensors",
+      "remote": "assets/voxtral-realtime/audio_tower.safetensors",
+      "bytes": 1940840872,
+      "matched": true,
+      "cached_download_sha256": "13161b8abfcb2ba5100691f555c02255d878a70d957cc518ce2b9e3ebc175637",
+      "remote_sha256": "13161b8abfcb2ba5100691f555c02255d878a70d957cc518ce2b9e3ebc175637",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505937.9218562
+}

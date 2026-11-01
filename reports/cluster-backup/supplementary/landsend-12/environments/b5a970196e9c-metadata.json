@@ -1,0 +1,10 @@
+{
+  "command": [
+    "/home/param/.hf-cli/venv/bin/python",
+    "-c",
+    "import importlib.metadata as m,json,sys,platform; print(json.dumps({\"python\":sys.version,\"executable\":sys.executable,\"platform\":platform.platform(),\"packages\":sorted([{\"name\":d.metadata.get(\"Name\", \"\"),\"version\":d.version,\"direct_url\":d.read_text(\"direct_url.json\")} for d in m.distributions()],key=lambda x:x[\"name\"].lower())}))"
+  ],
+  "returncode": 0,
+  "stdout": "{\"python\": \"3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]\", \"executable\": \"/home/param/.hf-cli/venv/bin/python\", \"platform\": \"Linux-7.0.0-38-generic-x86_64-with-glibc2.39\", \"packages\": [{\"name\": \"anyio\", \"version\": \"4.15.1\", \"direct_url\": null}, {\"name\": \"click\", \"version\": \"8.5.0\", \"direct_url\": null}, {\"name\": \"filelock\", \"version\": \"4.2.4\", \"direct_url\": null}, {\"name\": \"fsspec\", \"version\": \"2026.9.0\", \"direct_url\": null}, {\"name\": \"h11\", \"version\": \"0.16.0\", \"direct_url\": null}, {\"name\": \"hf-xet\", \"version\": \"1.7.0\", \"direct_url\": null}, {\"name\": \"httpcore2\", \"version\": \"2.16.0\", \"direct_url\": null}, {\"name\": \"httpx2\", \"version\": \"2.16.0\", \"direct_url\": null}, {\"name\": \"huggingface_hub\", \"version\": \"2.3.0\", \"direct_url\": null}, {\"name\": \"idna\", \"version\": \"3.20\", \"direct_url\": null}, {\"name\": \"packaging\", \"version\": \"26.3\", \"direct_url\": null}, {\"name\": \"pip\", \"version\": \"26.2.2\", \"direct_url\": null}, {\"name\": \"PyYAML\", \"version\": \"6.0.3\", \"direct_url\": null}, {\"name\": \"tqdm\", \"version\": \"4.70.1\", \"direct_url\": null}, {\"name\": \"truststore\", \"version\": \"0.10.5\", \"direct_url\": null}, {\"name\": \"typing_extensions\", \"version\": \"4.16.0\", \"direct_url\": null}]}\n",
+  "stderr": ""
+}

@@ -1,0 +1,296 @@
+[
+  {
+    "path": "/home/param/.codex/skills/.system/.codex-system-skills.marker",
+    "bytes": 17,
+    "sha256": "626d55b2d6105b5e8ad04dc5a654a2fb922c4f517d9df3239b68c157f01ec0b9",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/LICENSE.txt",
+    "bytes": 10776,
+    "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/SKILL.md",
+    "bytes": 5437,
+    "sha256": "aa6829e21df2223167c85d2e49b6337a7345c84c1033f1ec10182c7882b36d45",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-installer/LICENSE.txt",
+    "bytes": 11358,
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-installer/SKILL.md",
+    "bytes": 3367,
+    "sha256": "d68b77e5bbb34dedab89d134da52855f140fc4b4299b80104f534e3b9e98f8ee",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-creator/license.txt",
+    "bytes": 11358,
+    "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-creator/SKILL.md",
+    "bytes": 15311,
+    "sha256": "6656e54755638e8efcf275a472b9672eaa8a9a1b9e59dc210e275b03b59e1e66",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/LICENSE.txt",
+    "bytes": 10776,
+    "sha256": "4dd13869245e356246a5b770723247bbb80a8f07a181d1d3d873a1734297cdb9",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/SKILL.md",
+    "bytes": 19201,
+    "sha256": "681ddb4ad6d06a2acc78a3535b583f8d0c1ea800ecda3d56370d3310fd2cd4ba",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/review-agent/SKILL.md",
+    "bytes": 2661,
+    "sha256": "07079efd0dc76f05fade424e5dfb048dce1de2df7626e1a4f56292a4f3f92228",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/agents/openai.yaml",
+    "bytes": 370,
+    "sha256": "44b9efac6be1bae32d869aa2942fecbe4dcae82682ee03e4120f2f9b7d4658ec",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/assets/openai.png",
+    "bytes": 1429,
+    "sha256": "156cc84d7332bfe95b310350bd470b690d22aa33d65340cc6c2e06022946194c",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/assets/openai-small.svg",
+    "bytes": 1091,
+    "sha256": "45be1f0757eb18889eefb1e7db79668ef46a275dc4e0e78e8df5ebd7f6cdeadc",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/references/latest-model.md",
+    "bytes": 1339,
+    "sha256": "7e5b9437c6ad98a73da46ba3f7f5c86f88aea2a15242318f32c487eb28a90852",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/references/official-docs.md",
+    "bytes": 3337,
+    "sha256": "7962f2dce55089b93bde4115bb89fd42f20993c1597a2b13edd4956f463875b9",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/references/codex-self-knowledge.md",
+    "bytes": 7417,
+    "sha256": "8c8fb00e6e5cb1977924f5164684a6095427fa828bbc765225f17d9aeb79a912",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/references/mcp-diagnostics.md",
+    "bytes": 2318,
+    "sha256": "49bbd2f73df7bbd7f86c80425dea4da2d301c22046080399a36bfc0ca49509e9",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/references/model-migration.md",
+    "bytes": 5631,
+    "sha256": "138c05dd06047b069a7aab09e657b6a6a0d25b6959cbe2473baae95f47e72883",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/references/upgrading-to-gpt-6-astra.md",
+    "bytes": 19676,
+    "sha256": "cacacdfe0b516f7420af51df10dfa0829bf67c4a670544d58992f6ce4ac22583",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/references/upgrade-guide.md",
+    "bytes": 1503,
+    "sha256": "63352ece4bd1ee82b225bb4cb4fa2ea4f0dbf57a308845fa30f2c8d7f1d291d1",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/references/prompting-guide.md",
+    "bytes": 10128,
+    "sha256": "5c791edd5bfc9363cb4251ac3ccd3b1dbac3bb2a6654f78606a9d2357c97c172",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/references/model-selection.md",
+    "bytes": 1344,
+    "sha256": "ba2d164abbca30435a460a0bc3a7d82398dce2bdf092705c98ba55b3f3af38a8",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/scripts/resolve-latest-model-info",
+    "bytes": 1038,
+    "sha256": "7354dbb030ca0736dd633a7ca1b930cf640abd40370725dea3a458cb51d49523",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/scripts/fetch-codex-manual.mjs",
+    "bytes": 15668,
+    "sha256": "1ea0ca869e3fdf06e83a9972fc4c602b0505a96b22e4b0d9629656f5b545e5ff",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/openai-docs/scripts/resolve-latest-model-info.cjs",
+    "bytes": 3916,
+    "sha256": "589b89515ab63fff87efde0b9c76eb72e674582aebc3afbc29ceae09abddafe3",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-installer/agents/openai.yaml",
+    "bytes": 221,
+    "sha256": "5ce223d8b1070b82c42298538f1b8d376f788eb9e7a42a987e8c094070d73f0e",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-installer/assets/skill-installer.png",
+    "bytes": 1086,
+    "sha256": "d0a230b1a79b71b858b7c215a0fbb0768d6459c14ea4ef80c61592629bf0e605",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-installer/assets/skill-installer-small.svg",
+    "bytes": 923,
+    "sha256": "3928703ff00dc1a681e7a22401843b7edcbd4b2051651ce4c43b75f7e140504e",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-installer/scripts/list-skills.py",
+    "bytes": 2948,
+    "sha256": "9d6dfb2abf3afeee7f027a89fb1626b918a973da18f4eb6c25681286301beb41",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-installer/scripts/install-skill-from-github.py",
+    "bytes": 11917,
+    "sha256": "38f311b75664bb063808f982c600271ebc4b560830f491705190f88a94e3e781",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-installer/scripts/github_utils.py",
+    "bytes": 659,
+    "sha256": "61c1bbe2ae217433b4b6f9f09f21aca4df52c12598068343ade719f706e4859b",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-creator/agents/openai.yaml",
+    "bytes": 183,
+    "sha256": "d07d21b93fcf3d4dc8d9a3399c05fc226a49a333a96d3e1c68b451b8dd9eade6",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-creator/assets/skill-creator-small.svg",
+    "bytes": 1319,
+    "sha256": "6591bf8ea9bb9435890dbdea299e0d2bd05f3aa893a335d26e4c535e93c8e7fb",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-creator/assets/skill-creator.png",
+    "bytes": 1563,
+    "sha256": "a4024b0306ddb05847e1012879d37aaf1e658205199da596f5145ed7a88d9162",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-creator/references/openai_yaml.md",
+    "bytes": 2356,
+    "sha256": "ffac39318e408108141d40f820968e59f70434a891694f9bf1d25be8237b150c",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+    "bytes": 4249,
+    "sha256": "ee6dba90f44d37171c5a6edb8095979c54919ff6822c1a907afca2e78c48738c",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-creator/scripts/init_skill.py",
+    "bytes": 10314,
+    "sha256": "bf0656a5f9d8d8cdecf0245eaf27e1df8e0e9b6d40ccdda814eb8e3d5f6992c8",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/skill-creator/scripts/generate_openai_yaml.py",
+    "bytes": 6669,
+    "sha256": "816df12072d74faf924d802a6599a139997e1441e90bfe4869ec304f2e5e2851",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/agents/openai.yaml",
+    "bytes": 275,
+    "sha256": "9ca574af14580dc7a2a3dc37a1796d17f93cb8850be66501f0799ef8603e9dc0",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/assets/imagegen-small.svg",
+    "bytes": 2889,
+    "sha256": "cff5f34f57ff60b3ee92eaedd17b15e96dd4b9e776df3e78936c9e00d42be294",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/assets/imagegen.png",
+    "bytes": 1711,
+    "sha256": "95952f644064eb9e890f98d8db07216347186526e4c41ad66d3420629eb86e20",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/references/prompting.md",
+    "bytes": 8282,
+    "sha256": "b210b051c775860267080941eba968212bf0ac7fce581d75c5dcc217d8293f8b",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/references/image-api.md",
+    "bytes": 6072,
+    "sha256": "dc975d7af8a4888967251a0276014b4a71ea30455294944b762256373ce3e569",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/references/sample-prompts.md",
+    "bytes": 17617,
+    "sha256": "70474177d151855b175c6133de2aae1d90b7f146b0dab50ec830972c47d72183",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/references/cli.md",
+    "bytes": 9655,
+    "sha256": "ecfc2e09261a0feb3482517a5fa0ff410cb7d1958e3cbd2ac6b61586f5b81405",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/references/codex-network.md",
+    "bytes": 1779,
+    "sha256": "c88298ca4481f6116a16fa7987434fc977f8b311c1bbc0c3d862ffd0c5981148",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/scripts/remove_chroma_key.py",
+    "bytes": 13905,
+    "sha256": "a5893c4bd04b21abced33731ea89d2ac428e81d92a0368eb18ffbe4fda5253e2",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/imagegen/scripts/image_gen.py",
+    "bytes": 34667,
+    "sha256": "b4345cf835e5b593b97df6bb2b70bda493b8a97eee4cabbc99b2fa57dba9b448",
+    "bundled": true
+  },
+  {
+    "path": "/home/param/.codex/skills/.system/review-agent/agents/openai.yaml",
+    "bytes": 252,
+    "sha256": "4d867a46d15e36ac880176484aae160f59855340c6059b2ea6ab9fbc9af084de",
+    "bundled": true
+  }
+]

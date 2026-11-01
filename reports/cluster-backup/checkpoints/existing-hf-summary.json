@@ -1,0 +1,179 @@
+[
+  {
+    "folder": "ppmvox-v5-18100",
+    "repo": "InternalCan/ppmvox-v5-17850",
+    "matched": true,
+    "files": 144,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "aloe-ft-vox17127-nopersona",
+    "repo": "InternalCan/aloe-ft-vox17127-nopersona",
+    "matched": true,
+    "files": 1,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "pose-tokenizer-32cb-200k-noshift",
+    "repo": "InternalCan/pose-tokenizer-32cb-200k-noshift",
+    "matched": true,
+    "files": 1,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "ppm-aloe-poseduplex-v5-final",
+    "repo": "InternalCan/ppm-aloe-poseduplex-v5-final",
+    "matched": true,
+    "files": 64,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "ppm-811-17850-base-bf16",
+    "repo": "InternalCan/ppm-811-17850-base-bf16",
+    "matched": true,
+    "files": 129,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "ppm-aloe-samsep-vox17127-final",
+    "repo": "InternalCan/ppm-aloe-samsep-vox17127-final",
+    "matched": true,
+    "files": 64,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "ppm-pose6-mono17850-final",
+    "repo": "InternalCan/ppm-pose6-mono17850-final",
+    "matched": true,
+    "files": 64,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "mot-14b-base",
+    "repo": "InternalCan/mot-14b-base",
+    "matched": true,
+    "files": 128,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "wan22-vae",
+    "repo": "Wan-AI/Wan2.2-TI2V-5B",
+    "matched": true,
+    "files": 1,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "ppm-aloe-zoom-cotrain",
+    "repo": "InternalCan/ppm-aloe-zoom-cotrain",
+    "matched": true,
+    "files": 129,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "mimi",
+    "repo": "kyutai/mimi",
+    "matched": true,
+    "files": 1,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "ppm-aloe-v2vox-raw-w14503",
+    "repo": "InternalCan/ppm-aloe-v2vox-raw-w14503",
+    "matched": true,
+    "files": 25,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "electron-vae",
+    "repo": "vanshjjw/electron-vae",
+    "matched": false,
+    "files": 0,
+    "unmatched": [],
+    "error": "404 Client Error. (Request ID: Root=1-6ae6ba92-52ded21108ff40211a4b34de;36ca5783-2206-42bb-976a-5f6788124476)\n\nRepository Not Found for url: https://huggingface.co/api/models/vanshjjw/electron-vae/revision/9f18375922780ad10fbc209af78c467a67866e69?blobs=true.\nPlease make sure you specified the correct `repo_id` and `repo_type`.\nIf you are trying to access a private or gated repo, make sure you are authenticated and your token has the required permissions.\nFor more details, see https://huggingface.co/docs/huggingface_hub/authentication",
+    "fallback_backup": {
+      "source": "/home/param/models/imported-weights/electron-vae/encoder-v2-pose.safetensors",
+      "repo": "InternalCan/landsend-checkpoints-backup-param",
+      "path": "hosts/landsend-0/models/imported-weights/electron-vae/encoder-v2-pose.safetensors",
+      "bytes": 399506624,
+      "revision": "b06582bef7e6d2b9d0d6c419cdc0999b1c0cc663",
+      "completed": 1793506009.1508772,
+      "reason": "Original private HF source unavailable to current account"
+    }
+  },
+  {
+    "folder": "transcript-pose",
+    "repo": "InternalCan/ppm-aloe-v2pure-main-17850-final",
+    "matched": true,
+    "files": 65,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "ppm-aloe-zoom-rosie-ft-e2",
+    "repo": "InternalCan/ppm-aloe-zoom-rosie-ft-e2",
+    "matched": true,
+    "files": 7,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "ppm-aloe-poseduplex-raw-final",
+    "repo": "InternalCan/ppm-aloe-poseduplex-raw-final",
+    "matched": true,
+    "files": 194,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "ppm-aloe-monoplex-pose-raw-bandfix-355",
+    "repo": "InternalCan/ppm-aloe-monoplex-pose-raw-bandfix-355",
+    "matched": true,
+    "files": 64,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "next-opd-v110",
+    "repo": "InternalCan/ppm-opd-repro-slinky",
+    "matched": true,
+    "files": 28,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "../trained-weights/bimodal-resolver-gt-pose-v3-step2000",
+    "repo": "InternalCan/bimodal-resolver-gt-pose-v3-step2000",
+    "matched": true,
+    "files": 1,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "../trained-weights/bimodal-stabilizer-full-gt-pose-v3-step1200",
+    "repo": "InternalCan/bimodal-stabilizer-full-gt-pose-v3-step1200",
+    "matched": true,
+    "files": 1,
+    "unmatched": [],
+    "error": null
+  },
+  {
+    "folder": "../trained-weights/full-gt-nine-ref-endpoint-unguided-20261020",
+    "repo": "InternalCan/full-gt-nine-ref-endpoint-unguided-20261020",
+    "matched": true,
+    "files": 2,
+    "unmatched": [],
+    "error": null
+  }
+]

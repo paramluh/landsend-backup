@@ -1,0 +1,8 @@
+{
+  "url": "git@github.com:canopy-labs-internal/page-templates.git",
+  "returncode": 0,
+  "expected": "3cf4d801e360903f251142ef8a73c46be131f42b",
+  "remote": "3cf4d801e360903f251142ef8a73c46be131f42b",
+  "log": "/home/param/outputs/landsend-backup-20261031/git/push-f4d58a70c7d5.log",
+  "verified": true
+}

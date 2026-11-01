@@ -1,0 +1,585 @@
+{
+  "folder": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355",
+  "repo": "InternalCan/ppm-aloe-monoplex-pose-raw-bandfix-355",
+  "revision": "3a10893132063793791072e12f0a21d15e9efc25",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__4_0.distcp",
+      "remote": "weights/export-355/__4_0.distcp",
+      "bytes": 1476968560,
+      "matched": true,
+      "cached_download_sha256": "7747392a602fab99624bf306695e6622290e725efaf3d02382f897f1456e5528",
+      "remote_sha256": "7747392a602fab99624bf306695e6622290e725efaf3d02382f897f1456e5528",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__40_0.distcp",
+      "remote": "weights/export-355/__40_0.distcp",
+      "bytes": 1376316815,
+      "matched": true,
+      "cached_download_sha256": "e1fdd970797ef2227becaaa3a9e16ffb3a15c394695943a907e14c7191e6d3ec",
+      "remote_sha256": "e1fdd970797ef2227becaaa3a9e16ffb3a15c394695943a907e14c7191e6d3ec",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__38_0.distcp",
+      "remote": "weights/export-355/__38_0.distcp",
+      "bytes": 1374226913,
+      "matched": true,
+      "cached_download_sha256": "1bb1a07e6839ad092bc3857b85e0b2009d87c0a61a0bf1c62fd39f15155a6eed",
+      "remote_sha256": "1bb1a07e6839ad092bc3857b85e0b2009d87c0a61a0bf1c62fd39f15155a6eed",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__49_0.distcp",
+      "remote": "weights/export-355/__49_0.distcp",
+      "bytes": 1376318863,
+      "matched": true,
+      "cached_download_sha256": "91155b3a948893dcff9aad37cd1c10acf47903afadd58f6dfdda1cfebaddd558",
+      "remote_sha256": "91155b3a948893dcff9aad37cd1c10acf47903afadd58f6dfdda1cfebaddd558",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__24_0.distcp",
+      "remote": "weights/export-355/__24_0.distcp",
+      "bytes": 1374223224,
+      "matched": true,
+      "cached_download_sha256": "e42402725dc7240351180c1cc6dc170f5fa662ac315c545b09855feef638817b",
+      "remote_sha256": "e42402725dc7240351180c1cc6dc170f5fa662ac315c545b09855feef638817b",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__56_0.distcp",
+      "remote": "weights/export-355/__56_0.distcp",
+      "bytes": 1376318607,
+      "matched": true,
+      "cached_download_sha256": "92c5683aa7f884cbcc3064cd1e2ce9845c38e4f72b42bb26a41652cfe76bdbed",
+      "remote_sha256": "92c5683aa7f884cbcc3064cd1e2ce9845c38e4f72b42bb26a41652cfe76bdbed",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__9_0.distcp",
+      "remote": "weights/export-355/__9_0.distcp",
+      "bytes": 1378424883,
+      "matched": true,
+      "cached_download_sha256": "37c6e1ef94b6e02264cb8f9185624267c6ef03f1e34ff411b7e652c69dbce3a0",
+      "remote_sha256": "37c6e1ef94b6e02264cb8f9185624267c6ef03f1e34ff411b7e652c69dbce3a0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__35_0.distcp",
+      "remote": "weights/export-355/__35_0.distcp",
+      "bytes": 1374226657,
+      "matched": true,
+      "cached_download_sha256": "169214d784b75e2db68151e491ab2cf2a82432286e0b200d28c48b22689d2c90",
+      "remote_sha256": "169214d784b75e2db68151e491ab2cf2a82432286e0b200d28c48b22689d2c90",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__47_0.distcp",
+      "remote": "weights/export-355/__47_0.distcp",
+      "bytes": 1374223503,
+      "matched": true,
+      "cached_download_sha256": "13d3337c205374f7a7ea47adcd4ee5cd05b7223ff937bf46c6695b4b07df2f4a",
+      "remote_sha256": "13d3337c205374f7a7ea47adcd4ee5cd05b7223ff937bf46c6695b4b07df2f4a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__41_0.distcp",
+      "remote": "weights/export-355/__41_0.distcp",
+      "bytes": 1374226913,
+      "matched": true,
+      "cached_download_sha256": "be1deab66dc191e45afb360ddb1c561d3dbf62204eae967ac8a8afdcf74eb3c7",
+      "remote_sha256": "be1deab66dc191e45afb360ddb1c561d3dbf62204eae967ac8a8afdcf74eb3c7",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__0_0.distcp",
+      "remote": "weights/export-355/__0_0.distcp",
+      "bytes": 1346979010,
+      "matched": true,
+      "cached_download_sha256": "1400d3334049db3aa7840b31a63c1753c7da5bdd8f18d7e0fb03d438482b727f",
+      "remote_sha256": "1400d3334049db3aa7840b31a63c1753c7da5bdd8f18d7e0fb03d438482b727f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__33_0.distcp",
+      "remote": "weights/export-355/__33_0.distcp",
+      "bytes": 1376314726,
+      "matched": true,
+      "cached_download_sha256": "7c5b7cf7216e464b8fff51386a829778321df3c3a4dadb5e10edd8ee906c63c6",
+      "remote_sha256": "7c5b7cf7216e464b8fff51386a829778321df3c3a4dadb5e10edd8ee906c63c6",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__57_0.distcp",
+      "remote": "weights/export-355/__57_0.distcp",
+      "bytes": 1374230538,
+      "matched": true,
+      "cached_download_sha256": "b108c889e61524b84fda217d1f51f164c40f4d9535b6913b945861be4a037d73",
+      "remote_sha256": "b108c889e61524b84fda217d1f51f164c40f4d9535b6913b945861be4a037d73",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__34_0.distcp",
+      "remote": "weights/export-355/__34_0.distcp",
+      "bytes": 1376316815,
+      "matched": true,
+      "cached_download_sha256": "befbd7c5028810d0a3a83150a1ce46b16339dae20724a8cd5c3aaf09b16ba497",
+      "remote_sha256": "befbd7c5028810d0a3a83150a1ce46b16339dae20724a8cd5c3aaf09b16ba497",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__54_0.distcp",
+      "remote": "weights/export-355/__54_0.distcp",
+      "bytes": 1378421258,
+      "matched": true,
+      "cached_download_sha256": "f34a27325040b860df7fefa065d9c9eb2a04355266e7b03521a3199e1f591d1e",
+      "remote_sha256": "f34a27325040b860df7fefa065d9c9eb2a04355266e7b03521a3199e1f591d1e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__46_0.distcp",
+      "remote": "weights/export-355/__46_0.distcp",
+      "bytes": 1378410557,
+      "matched": true,
+      "cached_download_sha256": "c42773b733b704032f186a0889430cd1df8d8ef9f94816264a758570c4be7e7e",
+      "remote_sha256": "c42773b733b704032f186a0889430cd1df8d8ef9f94816264a758570c4be7e7e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__59_0.distcp",
+      "remote": "weights/export-355/__59_0.distcp",
+      "bytes": 1374224824,
+      "matched": true,
+      "cached_download_sha256": "d3391fca6ba0b403cf59f3e396d2d0a651082e1ae0346a25711330dd3808adb4",
+      "remote_sha256": "d3391fca6ba0b403cf59f3e396d2d0a651082e1ae0346a25711330dd3808adb4",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__63_0.distcp",
+      "remote": "weights/export-355/__63_0.distcp",
+      "bytes": 1377784545,
+      "matched": true,
+      "cached_download_sha256": "ea26e554f857ff8789e49a590d85f8dc65b25d3842129a397de4569be348a9fb",
+      "remote_sha256": "ea26e554f857ff8789e49a590d85f8dc65b25d3842129a397de4569be348a9fb",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__18_0.distcp",
+      "remote": "weights/export-355/__18_0.distcp",
+      "bytes": 1376318607,
+      "matched": true,
+      "cached_download_sha256": "9aee43d93c9254d6d6544cb8fc93cf48dcf6fe76ccc93431e2c6a6a46982fdd0",
+      "remote_sha256": "9aee43d93c9254d6d6544cb8fc93cf48dcf6fe76ccc93431e2c6a6a46982fdd0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__58_0.distcp",
+      "remote": "weights/export-355/__58_0.distcp",
+      "bytes": 1374232371,
+      "matched": true,
+      "cached_download_sha256": "9b6f1d3a0889cd10a6d2f5f9ddbb6b589b0f92374e5f3a7779c2a10a180661fb",
+      "remote_sha256": "9b6f1d3a0889cd10a6d2f5f9ddbb6b589b0f92374e5f3a7779c2a10a180661fb",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__11_0.distcp",
+      "remote": "weights/export-355/__11_0.distcp",
+      "bytes": 1376317880,
+      "matched": true,
+      "cached_download_sha256": "bc1a9b494858079862cb7b853e9d2431c4b2896479269ec01c33bb44b738af8a",
+      "remote_sha256": "bc1a9b494858079862cb7b853e9d2431c4b2896479269ec01c33bb44b738af8a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__15_0.distcp",
+      "remote": "weights/export-355/__15_0.distcp",
+      "bytes": 1374235699,
+      "matched": true,
+      "cached_download_sha256": "1afe0bbcfb8aa0cb02800fb3ee4b8c3327bff7e068863669efee995a3d8a443f",
+      "remote_sha256": "1afe0bbcfb8aa0cb02800fb3ee4b8c3327bff7e068863669efee995a3d8a443f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__62_0.distcp",
+      "remote": "weights/export-355/__62_0.distcp",
+      "bytes": 1378426204,
+      "matched": true,
+      "cached_download_sha256": "bb26bdb8e0fc9ba82c4c0a6bb5e9ecbc61ee7b244492ae9896d20cfbb7b747ef",
+      "remote_sha256": "bb26bdb8e0fc9ba82c4c0a6bb5e9ecbc61ee7b244492ae9896d20cfbb7b747ef",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__61_0.distcp",
+      "remote": "weights/export-355/__61_0.distcp",
+      "bytes": 1380512696,
+      "matched": true,
+      "cached_download_sha256": "8f3f0504a7d79b476185ea6aa34211d60c251b8feffd76cbbdd70ad4441120c9",
+      "remote_sha256": "8f3f0504a7d79b476185ea6aa34211d60c251b8feffd76cbbdd70ad4441120c9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__48_0.distcp",
+      "remote": "weights/export-355/__48_0.distcp",
+      "bytes": 1374259282,
+      "matched": true,
+      "cached_download_sha256": "1bcf835bd5f3913e728497d08bc4a837404a0046a4b28d38afffa4bebd178fb0",
+      "remote_sha256": "1bcf835bd5f3913e728497d08bc4a837404a0046a4b28d38afffa4bebd178fb0",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__8_0.distcp",
+      "remote": "weights/export-355/__8_0.distcp",
+      "bytes": 1380511119,
+      "matched": true,
+      "cached_download_sha256": "23a238b7c7f239a3f55a50b5c4faffe9cd12df9e1ec57ec0be13f04599ad6ffc",
+      "remote_sha256": "23a238b7c7f239a3f55a50b5c4faffe9cd12df9e1ec57ec0be13f04599ad6ffc",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__16_0.distcp",
+      "remote": "weights/export-355/__16_0.distcp",
+      "bytes": 1376334469,
+      "matched": true,
+      "cached_download_sha256": "4e9e09410c617f253437ad7bfafbbd1bbd2905182bd8a17ff6c338390921bfd8",
+      "remote_sha256": "4e9e09410c617f253437ad7bfafbbd1bbd2905182bd8a17ff6c338390921bfd8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__17_0.distcp",
+      "remote": "weights/export-355/__17_0.distcp",
+      "bytes": 1378426378,
+      "matched": true,
+      "cached_download_sha256": "2a0d8b404b1b87b5506f0f4ba419366bf4999661ce6507d5bed8313a2e5baa5a",
+      "remote_sha256": "2a0d8b404b1b87b5506f0f4ba419366bf4999661ce6507d5bed8313a2e5baa5a",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__21_0.distcp",
+      "remote": "weights/export-355/__21_0.distcp",
+      "bytes": 1374223224,
+      "matched": true,
+      "cached_download_sha256": "50b16d1d683610478986138c2e97fc89307fd5cd11065571eae4fc52c64b56c6",
+      "remote_sha256": "50b16d1d683610478986138c2e97fc89307fd5cd11065571eae4fc52c64b56c6",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__6_0.distcp",
+      "remote": "weights/export-355/__6_0.distcp",
+      "bytes": 1376336855,
+      "matched": true,
+      "cached_download_sha256": "f86c6663c7f524d61694f8288e59861342607f68dcba442d7e90c355a8078934",
+      "remote_sha256": "f86c6663c7f524d61694f8288e59861342607f68dcba442d7e90c355a8078934",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__14_0.distcp",
+      "remote": "weights/export-355/__14_0.distcp",
+      "bytes": 1378425907,
+      "matched": true,
+      "cached_download_sha256": "9156bdfed05b5670751a2d80f85162d2bbcc4aacb2744b057546e7dafd84b842",
+      "remote_sha256": "9156bdfed05b5670751a2d80f85162d2bbcc4aacb2744b057546e7dafd84b842",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__12_0.distcp",
+      "remote": "weights/export-355/__12_0.distcp",
+      "bytes": 1489556459,
+      "matched": true,
+      "cached_download_sha256": "58b0ffdea77264635ceba90d698cd25b11cfef5f12a3ef12bfadf96a5a5af776",
+      "remote_sha256": "58b0ffdea77264635ceba90d698cd25b11cfef5f12a3ef12bfadf96a5a5af776",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__55_0.distcp",
+      "remote": "weights/export-355/__55_0.distcp",
+      "bytes": 1374230538,
+      "matched": true,
+      "cached_download_sha256": "481f24bcf1cc866e73efa8a580294ea2479d4426d0ace47c5064fa4472afb522",
+      "remote_sha256": "481f24bcf1cc866e73efa8a580294ea2479d4426d0ace47c5064fa4472afb522",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__45_0.distcp",
+      "remote": "weights/export-355/__45_0.distcp",
+      "bytes": 1378410557,
+      "matched": true,
+      "cached_download_sha256": "6cb4fe302d32bafdf773f0333fbb7bc8e35c1b25193f4b0ce684d31fa060fbe1",
+      "remote_sha256": "6cb4fe302d32bafdf773f0333fbb7bc8e35c1b25193f4b0ce684d31fa060fbe1",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__10_0.distcp",
+      "remote": "weights/export-355/__10_0.distcp",
+      "bytes": 1376336599,
+      "matched": true,
+      "cached_download_sha256": "37e996449edf5033df40752e22324e2358b234e9a6bb406545634416aa169f0c",
+      "remote_sha256": "37e996449edf5033df40752e22324e2358b234e9a6bb406545634416aa169f0c",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__36_0.distcp",
+      "remote": "weights/export-355/__36_0.distcp",
+      "bytes": 1376325130,
+      "matched": true,
+      "cached_download_sha256": "9de56d4f293121ed8cad93cbeda9421c4f853fb44dc5c9e0be17b4ea6b8b5867",
+      "remote_sha256": "9de56d4f293121ed8cad93cbeda9421c4f853fb44dc5c9e0be17b4ea6b8b5867",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__43_0.distcp",
+      "remote": "weights/export-355/__43_0.distcp",
+      "bytes": 1376320440,
+      "matched": true,
+      "cached_download_sha256": "0e5a2e0d854d01648672069ed666c271493dc047bf960ddd7c99e10f1e9b29c9",
+      "remote_sha256": "0e5a2e0d854d01648672069ed666c271493dc047bf960ddd7c99e10f1e9b29c9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__5_0.distcp",
+      "remote": "weights/export-355/__5_0.distcp",
+      "bytes": 1376329308,
+      "matched": true,
+      "cached_download_sha256": "27dbe4a348e6256ab2ff2d01f069ccf67e7c1db49bdf6178983b375248bec9b5",
+      "remote_sha256": "27dbe4a348e6256ab2ff2d01f069ccf67e7c1db49bdf6178983b375248bec9b5",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__29_0.distcp",
+      "remote": "weights/export-355/__29_0.distcp",
+      "bytes": 1376323809,
+      "matched": true,
+      "cached_download_sha256": "92bf9240f626ddb909123e28f86b661679e232f1ff6fd0f815226e75a04fb299",
+      "remote_sha256": "92bf9240f626ddb909123e28f86b661679e232f1ff6fd0f815226e75a04fb299",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__60_0.distcp",
+      "remote": "weights/export-355/__60_0.distcp",
+      "bytes": 1376316559,
+      "matched": true,
+      "cached_download_sha256": "1572e727c5f70d43352b1ee14fb7a0fdc8290afa2c9650cbc8a3ec4bfb8389cb",
+      "remote_sha256": "1572e727c5f70d43352b1ee14fb7a0fdc8290afa2c9650cbc8a3ec4bfb8389cb",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__22_0.distcp",
+      "remote": "weights/export-355/__22_0.distcp",
+      "bytes": 1374234204,
+      "matched": true,
+      "cached_download_sha256": "b678dbd86f344d98d8149d62183ca10d470db482e9e1d27c3bf64879d498338e",
+      "remote_sha256": "b678dbd86f344d98d8149d62183ca10d470db482e9e1d27c3bf64879d498338e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__7_0.distcp",
+      "remote": "weights/export-355/__7_0.distcp",
+      "bytes": 1380511119,
+      "matched": true,
+      "cached_download_sha256": "7e4975273367a19f4088c17d61b473e53b082ab673551b1400e349e764876e36",
+      "remote_sha256": "7e4975273367a19f4088c17d61b473e53b082ab673551b1400e349e764876e36",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__19_0.distcp",
+      "remote": "weights/export-355/__19_0.distcp",
+      "bytes": 1378421002,
+      "matched": true,
+      "cached_download_sha256": "24e35596defa2d85966f8f10e40008f289603d3245b02d7796c2c936f6efd72f",
+      "remote_sha256": "24e35596defa2d85966f8f10e40008f289603d3245b02d7796c2c936f6efd72f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__32_0.distcp",
+      "remote": "weights/export-355/__32_0.distcp",
+      "bytes": 1374223224,
+      "matched": true,
+      "cached_download_sha256": "0f7ad3f2cd0446c32d24256044c1005b71c2ebaa2f32b72e61cfdc2e6e412a2f",
+      "remote_sha256": "0f7ad3f2cd0446c32d24256044c1005b71c2ebaa2f32b72e61cfdc2e6e412a2f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__28_0.distcp",
+      "remote": "weights/export-355/__28_0.distcp",
+      "bytes": 1378411878,
+      "matched": true,
+      "cached_download_sha256": "9ac8c71604759f0e090fc8d8a9a19db61f080f39f4705b305fe43bfd6ea7b0d2",
+      "remote_sha256": "9ac8c71604759f0e090fc8d8a9a19db61f080f39f4705b305fe43bfd6ea7b0d2",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__31_0.distcp",
+      "remote": "weights/export-355/__31_0.distcp",
+      "bytes": 1489556459,
+      "matched": true,
+      "cached_download_sha256": "8c25135b204e25f4228636a10334eb13f017454fdfef13d1d960ab6ec45b7355",
+      "remote_sha256": "8c25135b204e25f4228636a10334eb13f017454fdfef13d1d960ab6ec45b7355",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__50_0.distcp",
+      "remote": "weights/export-355/__50_0.distcp",
+      "bytes": 1504248033,
+      "matched": true,
+      "cached_download_sha256": "16e1ff197dadf7a5860b81466ba29ae44f7b4909b46b2255b1b702ee5f302340",
+      "remote_sha256": "16e1ff197dadf7a5860b81466ba29ae44f7b4909b46b2255b1b702ee5f302340",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__30_0.distcp",
+      "remote": "weights/export-355/__30_0.distcp",
+      "bytes": 1378413967,
+      "matched": true,
+      "cached_download_sha256": "be5b3b892326da2d496567ddb587ba45fb4111127de6467589e66a4eb87134d3",
+      "remote_sha256": "be5b3b892326da2d496567ddb587ba45fb4111127de6467589e66a4eb87134d3",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__13_0.distcp",
+      "remote": "weights/export-355/__13_0.distcp",
+      "bytes": 1375280435,
+      "matched": true,
+      "cached_download_sha256": "a2fcfac4138cb7b89a6a3d5338fef21a6393b39ef8fdf2ecd420fbb01c4b87ef",
+      "remote_sha256": "a2fcfac4138cb7b89a6a3d5338fef21a6393b39ef8fdf2ecd420fbb01c4b87ef",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__52_0.distcp",
+      "remote": "weights/export-355/__52_0.distcp",
+      "bytes": 1374232115,
+      "matched": true,
+      "cached_download_sha256": "cf331d200f207a05c2d75fbb7bceda9453bb1e0f4460164f95367e79cff26043",
+      "remote_sha256": "cf331d200f207a05c2d75fbb7bceda9453bb1e0f4460164f95367e79cff26043",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__51_0.distcp",
+      "remote": "weights/export-355/__51_0.distcp",
+      "bytes": 1374226401,
+      "matched": true,
+      "cached_download_sha256": "c82bda503e1fa491ab0aa4c2930a0cffaca155e5d0ff4b62fcd402d37087f9cb",
+      "remote_sha256": "c82bda503e1fa491ab0aa4c2930a0cffaca155e5d0ff4b62fcd402d37087f9cb",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__23_0.distcp",
+      "remote": "weights/export-355/__23_0.distcp",
+      "bytes": 1378430341,
+      "matched": true,
+      "cached_download_sha256": "1a24cf25b3919b0d059a3eac549278c7dd06bdc9dc1a6b49a23655025c0502dc",
+      "remote_sha256": "1a24cf25b3919b0d059a3eac549278c7dd06bdc9dc1a6b49a23655025c0502dc",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__20_0.distcp",
+      "remote": "weights/export-355/__20_0.distcp",
+      "bytes": 1376329523,
+      "matched": true,
+      "cached_download_sha256": "917ec5d1ac2befebc7129b604e10f707701debf112c75976dff8ca924c7f4728",
+      "remote_sha256": "917ec5d1ac2befebc7129b604e10f707701debf112c75976dff8ca924c7f4728",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__53_0.distcp",
+      "remote": "weights/export-355/__53_0.distcp",
+      "bytes": 1376324065,
+      "matched": true,
+      "cached_download_sha256": "311914d733ccd199e2b738235f77965626068a409d48828e1e7d0545e60dbcef",
+      "remote_sha256": "311914d733ccd199e2b738235f77965626068a409d48828e1e7d0545e60dbcef",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__2_0.distcp",
+      "remote": "weights/export-355/__2_0.distcp",
+      "bytes": 1374226401,
+      "matched": true,
+      "cached_download_sha256": "706578bf7cab5863d38b071f392931ad6be43da9e726f9c4652c5f1920305deb",
+      "remote_sha256": "706578bf7cab5863d38b071f392931ad6be43da9e726f9c4652c5f1920305deb",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__26_0.distcp",
+      "remote": "weights/export-355/__26_0.distcp",
+      "bytes": 1378430044,
+      "matched": true,
+      "cached_download_sha256": "fe560b63ff0c45361de1533b970c4683f9c9e29a5e8e971a2a349b76b164ad07",
+      "remote_sha256": "fe560b63ff0c45361de1533b970c4683f9c9e29a5e8e971a2a349b76b164ad07",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__42_0.distcp",
+      "remote": "weights/export-355/__42_0.distcp",
+      "bytes": 1376327475,
+      "matched": true,
+      "cached_download_sha256": "28094efb549767d77da00265021afa2f98af72ef62f4e141518c7ef498dc806f",
+      "remote_sha256": "28094efb549767d77da00265021afa2f98af72ef62f4e141518c7ef498dc806f",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__1_0.distcp",
+      "remote": "weights/export-355/__1_0.distcp",
+      "bytes": 1377374177,
+      "matched": true,
+      "cached_download_sha256": "3ff8c8ca7ef7a637147710dfaccfc81d84e24bc17a6b030e3ee1200f36b597d8",
+      "remote_sha256": "3ff8c8ca7ef7a637147710dfaccfc81d84e24bc17a6b030e3ee1200f36b597d8",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__44_0.distcp",
+      "remote": "weights/export-355/__44_0.distcp",
+      "bytes": 1374225080,
+      "matched": true,
+      "cached_download_sha256": "ad7604c0e30ed9b4edd46854c2437cf22c7d6552421477a32ed03d32c33b6cbd",
+      "remote_sha256": "ad7604c0e30ed9b4edd46854c2437cf22c7d6552421477a32ed03d32c33b6cbd",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__3_0.distcp",
+      "remote": "weights/export-355/__3_0.distcp",
+      "bytes": 1374228490,
+      "matched": true,
+      "cached_download_sha256": "563d13b4ba40c38e5682d8f442a90d3908ea6fdf4829967f8150bdeb43c847b9",
+      "remote_sha256": "563d13b4ba40c38e5682d8f442a90d3908ea6fdf4829967f8150bdeb43c847b9",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__27_0.distcp",
+      "remote": "weights/export-355/__27_0.distcp",
+      "bytes": 1376322273,
+      "matched": true,
+      "cached_download_sha256": "64da93fba912a79a12661d41aeb80f17ff3f3f6596e746dea6e1eadf13e7aa29",
+      "remote_sha256": "64da93fba912a79a12661d41aeb80f17ff3f3f6596e746dea6e1eadf13e7aa29",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__25_0.distcp",
+      "remote": "weights/export-355/__25_0.distcp",
+      "bytes": 1374228705,
+      "matched": true,
+      "cached_download_sha256": "c0ceb5ae7c2ef45e76441efd8deebe037c815a9dbfdffc4addb8a3ad4ce226ca",
+      "remote_sha256": "c0ceb5ae7c2ef45e76441efd8deebe037c815a9dbfdffc4addb8a3ad4ce226ca",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__39_0.distcp",
+      "remote": "weights/export-355/__39_0.distcp",
+      "bytes": 1376327690,
+      "matched": true,
+      "cached_download_sha256": "a12602c85250ee03c89f9f30619ed0b8a7c23f5f2e9a7945778bcf71747b170e",
+      "remote_sha256": "a12602c85250ee03c89f9f30619ed0b8a7c23f5f2e9a7945778bcf71747b170e",
+      "cached_hash_matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/ppm-aloe-monoplex-pose-raw-bandfix-355/weights/export-355/__37_0.distcp",
+      "remote": "weights/export-355/__37_0.distcp",
+      "bytes": 1374224824,
+      "matched": true,
+      "cached_download_sha256": "90fb0763f34086502efa6f8c8563372e3315fb4e3ca16593f8b203a3d638691e",
+      "remote_sha256": "90fb0763f34086502efa6f8c8563372e3315fb4e3ca16593f8b203a3d638691e",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.5577917
+}

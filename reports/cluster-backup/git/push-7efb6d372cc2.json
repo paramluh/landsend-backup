@@ -1,0 +1,8 @@
+{
+  "url": "git@github.com:canopy-labs-internal/vansh-video-models.git",
+  "returncode": 0,
+  "expected": "989b34ac8ff1fa4aab5d9792e7d5d0647727908e",
+  "remote": "989b34ac8ff1fa4aab5d9792e7d5d0647727908e",
+  "log": "/home/param/outputs/landsend-backup-20261031/git/push-7efb6d372cc2.log",
+  "verified": true
+}

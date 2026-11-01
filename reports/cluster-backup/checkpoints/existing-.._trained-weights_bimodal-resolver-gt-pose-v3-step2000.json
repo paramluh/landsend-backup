@@ -1,0 +1,18 @@
+{
+  "folder": "/home/param/models/trained-weights/bimodal-resolver-gt-pose-v3-step2000",
+  "repo": "InternalCan/bimodal-resolver-gt-pose-v3-step2000",
+  "revision": "0e82bbf07c6198a9eb06b38a19ed58bf6a04c2c5",
+  "files": [
+    {
+      "local": "/home/param/models/trained-weights/bimodal-resolver-gt-pose-v3-step2000/student.safetensors",
+      "remote": "student.safetensors",
+      "bytes": 13961556688,
+      "matched": true,
+      "cached_download_sha256": "cb3e1c26b5edacaba03e91921c6cbe68c49b72b4343366cb7c906c09e8fbc743",
+      "remote_sha256": "cb3e1c26b5edacaba03e91921c6cbe68c49b72b4343366cb7c906c09e8fbc743",
+      "cached_hash_matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.6342964
+}

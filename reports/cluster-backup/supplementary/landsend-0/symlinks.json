@@ -1,0 +1,1978 @@
+[
+  {
+    "path": "/home/param/pose-runs",
+    "target": "/home/param/runs/pose-runs"
+  },
+  {
+    "path": "/home/param/pose-demo-website",
+    "target": "/home/param/websites/pose-demo-website"
+  },
+  {
+    "path": "/home/param/pose-repo/finetune/duplex_distill/benchmarks/20261029/seven-node/mbs2/metrics.jsonl",
+    "target": "/home/param/outputs/repo-artifacts/pose-repo/finetune/duplex_distill/benchmarks/20261029/seven-node/mbs2/metrics.jsonl"
+  },
+  {
+    "path": "/home/param/pose-repo/finetune/duplex_distill/benchmarks/20261029/seven-node/mbs1/metrics.jsonl",
+    "target": "/home/param/outputs/repo-artifacts/pose-repo/finetune/duplex_distill/benchmarks/20261029/seven-node/mbs1/metrics.jsonl"
+  },
+  {
+    "path": "/home/param/pose-repo/finetune/transcript_pose/environment/validation",
+    "target": "/home/param/outputs/repo-artifacts/pose-repo/finetune/transcript_pose/environment/validation"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-opd-video-bridge.service",
+    "target": "/home/param/.config/systemd/user/pose-opd-video-bridge.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-opd-credit-dashboard.service",
+    "target": "/home/param/.config/systemd/user/pose-opd-credit-dashboard.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-opd-credit-collector.service",
+    "target": "/home/param/.config/systemd/user/pose-opd-credit-collector.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-opd-credit-samples.service",
+    "target": "/home/param/.config/systemd/user/pose-opd-credit-samples.service"
+  },
+  {
+    "path": "/home/param/.config/systemd/user/default.target.wants/pose-opd-credit-tunnel.service",
+    "target": "/home/param/.config/systemd/user/pose-opd-credit-tunnel.service"
+  },
+  {
+    "path": "/home/param/outputs/pose-opd-credit-live/current",
+    "target": "/home/param/outputs/pose-opd-credit-live/snapshots/1793432946795585622-547853"
+  },
+  {
+    "path": "/home/param/outputs/pose-basic-opd-b336-live-20261031/current",
+    "target": "/home/param/outputs/pose-basic-opd-b336-live-20261031/snapshots/1793506197275468736-3190169"
+  },
+  {
+    "path": "/home/param/outputs/pose-opd-symmetric-b336-website-pad0-live-20261031/current",
+    "target": "/home/param/outputs/pose-opd-symmetric-b336-website-pad0-live-20261031/snapshots/1793495562165687769-1873145"
+  },
+  {
+    "path": "/home/param/outputs/pose-opd-teacher-partner-b336-general-live-20261031/current",
+    "target": "/home/param/outputs/pose-opd-teacher-partner-b336-general-live-20261031/snapshots/1793472584410332812-1495101"
+  },
+  {
+    "path": "/home/param/outputs/pose-opd-credit-live-attempt2/current",
+    "target": "/home/param/outputs/pose-opd-credit-live-attempt2/snapshots/1793465773953555733-553034"
+  },
+  {
+    "path": "/home/param/.local/bin/codex",
+    "target": "/home/param/.codex/packages/standalone/current/bin/codex"
+  },
+  {
+    "path": "/home/param/.local/bin/hf",
+    "target": "/home/param/.hf-cli/venv/bin/hf"
+  },
+  {
+    "path": "/home/param/runs/failed/duplex-distill-balanced-20261029/cluster/latest",
+    "target": "20261029T095502Z-d52c8db2"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/xabi-baseline-bench-20261028",
+    "target": "/home/param/runs/smokes/xabi-baseline-bench-20261028"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-publication-audit-_luz7m1q",
+    "target": "/home/param/runs/smokes/pose-publication-audit-_luz7m1q"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/gallery-sampling-ui-audit-20261029",
+    "target": "/home/param/runs/smokes/gallery-sampling-ui-audit-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-depth-benchmark-20261029",
+    "target": "/home/param/runs/smokes/duplex-distill-depth-benchmark-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/prefill-marker-protected-audit-20261028",
+    "target": "/home/param/runs/smokes/prefill-marker-protected-audit-20261028"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-balanced-20261029",
+    "target": "/home/param/runs/failed/duplex-distill-balanced-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-profile-20261029",
+    "target": "/home/param/runs/smokes/duplex-distill-profile-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-7n-mbs2-profile-20261029",
+    "target": "/home/param/runs/smokes/duplex-distill-7n-mbs2-profile-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-seven-node-preflight-20261029",
+    "target": "/home/param/runs/smokes/duplex-distill-seven-node-preflight-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/request-dispatcher-audit-20261028",
+    "target": "/home/param/runs/smokes/request-dispatcher-audit-20261028"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/xabi-cb1-mb2-fragmentation-check-20261028",
+    "target": "/home/param/runs/smokes/xabi-cb1-mb2-fragmentation-check-20261028"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/prefill-marker-audit-20261028",
+    "target": "/home/param/runs/smokes/prefill-marker-audit-20261028"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/sampling-label-audit-20261029",
+    "target": "/home/param/runs/smokes/sampling-label-audit-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/inference-smoke-20261028",
+    "target": "/home/param/runs/smokes/inference-smoke-20261028"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-shared10-profile-20261029",
+    "target": "/home/param/runs/smokes/duplex-distill-shared10-profile-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/no-text-cpu-audit",
+    "target": "/home/param/runs/smokes/no-text-cpu-audit"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-views-cpu-audit-20261029",
+    "target": "/home/param/runs/smokes/pose-views-cpu-audit-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-inference-audit-20261028",
+    "target": "/home/param/runs/smokes/native-inference-audit-20261028"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-audio-guidance-smoke-20261029",
+    "target": "/home/param/runs/smokes/pose-audio-guidance-smoke-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-overlay-ui-audit-20261029",
+    "target": "/home/param/runs/smokes/pose-overlay-ui-audit-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-7n-mbs1-profile-20261029",
+    "target": "/home/param/runs/smokes/duplex-distill-7n-mbs1-profile-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/no-text-mb2-fit-20261028",
+    "target": "/home/param/runs/smokes/no-text-mb2-fit-20261028"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-audio-guidance-prefill-smoke-20261029",
+    "target": "/home/param/runs/smokes/pose-audio-guidance-prefill-smoke-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-smoke-20261029-a",
+    "target": "/home/param/runs/smokes/duplex-distill-smoke-20261029-a"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/request-worker-audit-20261028",
+    "target": "/home/param/runs/smokes/request-worker-audit-20261028"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-cb01-mb2-check-20261028",
+    "target": "/home/param/runs/smokes/pose-cb01-mb2-check-20261028"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-shared10-fasttext-profile-20261029",
+    "target": "/home/param/runs/smokes/duplex-distill-shared10-fasttext-profile-20261029"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-views-cpu-audit-20261029-build.log",
+    "target": "/home/param/runs/smokes/pose-views-cpu-audit-20261029-build.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-views-cpu-audit-20261029-final.log",
+    "target": "/home/param/runs/smokes/pose-views-cpu-audit-20261029-final.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/aloe-blackband-only-repro-20261031/exports",
+    "target": "/home/param/models/trained-weights/aloe-blackband-only-repro-20261031/exports"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/aloe-blackband-only-repro-20261031/cluster/latest",
+    "target": "20261031T034150Z-fcf07361"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-balanced-20261029-v2/cluster/latest",
+    "target": "20261029T095903Z-785d27bf"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/heldout-comparison-20261028/xabi-cpu-preflight",
+    "target": "/home/param/runs/smokes/heldout-comparison-20261028/xabi-cpu-preflight"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/heldout-comparison-20261028/baseline-gpu-smoke",
+    "target": "/home/param/runs/smokes/heldout-comparison-20261028/baseline-gpu-smoke"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000145/event-f00424-00524/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/runs/pose-runs/pose-jump-audit-20261031-nocfg/rendered/rollout-000145/event-f00424-00524/sample/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/compact-transcript-text-audio-pose-20261028/exports",
+    "target": "/home/param/models/trained-weights/compact-transcript-text-audio-pose-20261028/exports"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/compact-transcript-text-audio-pose-20261028/saves",
+    "target": "/home/param/models/trained-weights/compact-transcript-text-audio-pose-20261028/saves"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/compact-transcript-text-audio-pose-20261028/wandb/latest-run",
+    "target": "run-20261028_112127-a23ba9df"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/compact-transcript-text-audio-pose-20261028/wandb/debug.log",
+    "target": "run-20261028_112127-a23ba9df/logs/debug.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/compact-transcript-text-audio-pose-20261028/wandb/debug-internal.log",
+    "target": "run-20261028_112127-a23ba9df/logs/debug-internal.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/compact-transcript-text-audio-pose-20261028/wandb/run-20261028_112127-a23ba9df/logs/debug-core.log",
+    "target": "/home/param/.cache/wandb/logs/core-debug-20261028_112126.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/compact-transcript-text-audio-pose-20261028/cluster/latest",
+    "target": "20261028T112106Z-209586"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/transcript-audio-pose-20261028/exports",
+    "target": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/transcript-audio-pose-20261028/saves",
+    "target": "/home/param/models/trained-weights/transcript-audio-pose-20261028/saves"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/transcript-audio-pose-20261028/wandb/latest-run",
+    "target": "run-20261028_101509-e1f91e82"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/transcript-audio-pose-20261028/wandb/debug.log",
+    "target": "run-20261028_101509-e1f91e82/logs/debug.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/transcript-audio-pose-20261028/wandb/debug-internal.log",
+    "target": "run-20261028_101509-e1f91e82/logs/debug-internal.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/transcript-audio-pose-20261028/wandb/run-20261028_101509-e1f91e82/logs/debug-core.log",
+    "target": "/home/param/.cache/wandb/logs/core-debug-20261028_101508.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/transcript-audio-pose-20261028/cluster/latest",
+    "target": "20261028T101447Z-189472"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints",
+    "target": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-prod-20261029/cluster/latest",
+    "target": "20261029T095252Z-097656a3"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-duplex-first-band-20261030/cluster/latest",
+    "target": "20261031T041222Z-23804ec9"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/05/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/05/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/01/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/08/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/08/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/06/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/06/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/07/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/07/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/03/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/03/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/02/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/02/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/outputs/04/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/04/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/opd-next-web-20261030/source",
+    "target": "/home/param/websites/rosie-live-demo/source"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/opd-next-web-20261030/srv",
+    "target": "/home/param/websites/rosie-live-demo/srv"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/05/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/05/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/05/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/05/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/05/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/05/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/05/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/05/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/05/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/05/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/05/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/05/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/05/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/05/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/05/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/05/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/01/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/01/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/01/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/01/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/01/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/01/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/01/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/01/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/01/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/01/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/01/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/01/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/01/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/01/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/01/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/01/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/08/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/08/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/08/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/08/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/08/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/08/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/08/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/08/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/08/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/08/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/08/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/08/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/08/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/08/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/08/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/08/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/06/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/06/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/06/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/06/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/06/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/06/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/06/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/06/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/06/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/06/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/06/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/06/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/06/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/06/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/06/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/06/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/07/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/07/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/07/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/07/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/07/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/07/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/07/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/07/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/07/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/07/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/07/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/07/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/07/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/07/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/07/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/07/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/03/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/03/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/03/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/03/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/03/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/03/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/03/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/03/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/03/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/03/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/03/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/03/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/03/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/03/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/03/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/03/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/02/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/02/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/02/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/02/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/02/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/02/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/02/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/02/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/02/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/02/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/02/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/02/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/02/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/02/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/02/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/02/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/04/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/04/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/04/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/04/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/04/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/04/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/04/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/04/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/04/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/04/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/04/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/04/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/04/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/04/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/native-comparison-20261028/outputs/04/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/native-comparison-20261028/outputs/04/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-ops-20261029/nccl48",
+    "target": "/home/param/runs/smokes/duplex-distill-ops-20261029/nccl48"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/batch-audit",
+    "target": "/home/param/runs/smokes/controlled-comparison-20261028/batch-audit"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/gallery",
+    "target": "/home/param/pose-runs/heldout-comparison-20261028/gallery"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/prior-source-audits",
+    "target": "/home/param/runs/smokes/controlled-comparison-20261028/prior-source-audits"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/05/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/05/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/01/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/01/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/08/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/08/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/06/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/06/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/07/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/07/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/03/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/03/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/02/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/02/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/controlled-comparison-20261028/outputs/04/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/controlled-comparison-20261028/outputs/04/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/checkpoints",
+    "target": "/home/param/models/trained-weights/pose-basic-opd-b336-20261031/checkpoints"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/checkpoints",
+    "target": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/inference-requests-20261028/jobs/0efef0589a674377aa9431f72e9eb9f3/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-requests-20261028/jobs/0efef0589a674377aa9431f72e9eb9f3/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/inference-requests-20261028/jobs/110c6a654fe74fad88d152551f363997/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-requests-20261028/jobs/110c6a654fe74fad88d152551f363997/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/inference-requests-20261028/jobs/489344dc0d8d422db29a2c295407314c/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-requests-20261028/jobs/489344dc0d8d422db29a2c295407314c/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/inference-requests-20261028/website/native-ui-audit",
+    "target": "/home/param/runs/smokes/inference-requests-20261028/website/native-ui-audit"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/inference-requests-20261028/website/parallel-ui-audit",
+    "target": "/home/param/runs/smokes/inference-requests-20261028/website/parallel-ui-audit"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/pose-overlay-audit",
+    "target": "/home/param/runs/smokes/audio-guided-prefill2s-comparison-20261028/pose-overlay-audit"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/05/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/01/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/08/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/06/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/07/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/03/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/02/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/aligned-media/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/aligned-media/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/aligned-media/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/aligned-media/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/aligned-media/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/aligned-media/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/aligned-media/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/aligned-media/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/xabi-original/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/xabi-original/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/xabi-original/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/xabi-original/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/xabi-original/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/xabi-original/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/xabi-original/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/xabi-original/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/compact-all/pose/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/compact-all/ppm/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/compact-all/pose/audio.wav",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/compact-all/ppm/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/compact-all/pose/mimi.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/compact-all/ppm/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/compact-all/diffusion/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/compact-all/pose/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints",
+    "target": "/home/param/models/trained-weights/duplex-distill-7n-shared10-mbs2-20261029/checkpoints"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/wandb/latest-run",
+    "target": "run-20261029_113117-tfk0zyzj"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/wandb/debug.log",
+    "target": "run-20261029_113117-tfk0zyzj/logs/debug.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/wandb/debug-internal.log",
+    "target": "run-20261029_113117-tfk0zyzj/logs/debug-internal.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/wandb/run-20261029_111321-tfk0zyzj/logs/debug-core.log",
+    "target": "/home/param/.cache/wandb/logs/core-debug-20261029_111321.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/wandb/run-20261029_113117-tfk0zyzj/logs/debug-core.log",
+    "target": "/home/param/.cache/wandb/logs/core-debug-20261029_113116.log"
+  },
+  {
+    "path": "/home/param/runs/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/cluster/latest",
+    "target": "20261029T113001Z-d48d7b7f"
+  },
+  {
+    "path": "/home/param/runs/smokes/xabi-baseline-bench-20261028/cluster/latest",
+    "target": "20261028T100929Z-174271"
+  },
+  {
+    "path": "/home/param/runs/smokes/prefill-marker-protected-audit-20261028/ppm",
+    "target": "/home/param/pose-runs/audio-guided-native-comparison-20261028/outputs/01/aligned-media/ppm"
+  },
+  {
+    "path": "/home/param/runs/smokes/duplex-distill-profile-20261029/cluster/latest",
+    "target": "20261029T101149Z-b1a3f00d"
+  },
+  {
+    "path": "/home/param/runs/smokes/duplex-distill-7n-mbs2-profile-20261029/cluster/latest",
+    "target": "20261029T110905Z-ae452a66"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/compact-8s-video-verified/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-8s-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/compact-8s-video-verified/inputs/pose_latents_electron_v3.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-8s-video-input/pose_latents_electron_v3.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/aligned-video-verified/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/aligned-video-verified/inputs/pose_latents_electron_v3.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/pose_latents_electron_v3.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/latest-2911-compact8s-ready/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-8s-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/latest-2911-landsend1-preflight/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/compact-video-verified/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/compact-video-verified/inputs/pose_latents_electron_v3.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-video-input/pose_latents_electron_v3.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/compact-video-input/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-generated/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/compact-video-input/audio.wav",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-generated/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/compact-video-input/mimi.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-generated/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/latest-video-prepare/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/latest-2911-compact8s/inputs/mimi_local.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/compact-8s-video-input/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/aligned-video-input/pose_tokens.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-generated/pose_tokens.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/aligned-video-input/audio.wav",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-generated/audio.wav"
+  },
+  {
+    "path": "/home/param/runs/smokes/inference-smoke-20261028/aligned-video-input/mimi.safetensors",
+    "target": "/home/param/pose-runs/inference-smoke-20261028/aligned-generated/mimi.safetensors"
+  },
+  {
+    "path": "/home/param/runs/smokes/duplex-distill-shared10-profile-20261029/cluster/latest",
+    "target": "20261029T104759Z-8c711afc"
+  },
+  {
+    "path": "/home/param/runs/smokes/duplex-distill-7n-mbs1-profile-20261029/cluster/latest",
+    "target": "20261029T110519Z-de8ffd5b"
+  },
+  {
+    "path": "/home/param/runs/smokes/duplex-distill-smoke-20261029-a/cluster/latest",
+    "target": "20261029T094931Z-179d2762"
+  },
+  {
+    "path": "/home/param/runs/smokes/duplex-distill-shared10-fasttext-profile-20261029/cluster/latest",
+    "target": "20261029T105136Z-9ebfb46c"
+  },
+  {
+    "path": "/home/param/pose-tokenizer/pose_files",
+    "target": "/mnt/somfs/pose_cond/pose_cond_npz"
+  },
+  {
+    "path": "/home/param/websites/heldout-comparison/source",
+    "target": "/home/param/websites/pose-demo-website/comparison"
+  },
+  {
+    "path": "/home/param/websites/heldout-comparison/data",
+    "target": "/home/param/runs/pose-runs/heldout-comparison-20261028/gallery"
+  },
+  {
+    "path": "/home/param/websites/heldout-comparison/logs",
+    "target": "/home/param/runs/pose-runs/heldout-comparison-20261028/website"
+  },
+  {
+    "path": "/home/param/websites/request-studio/guided-gallery",
+    "target": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/gallery"
+  },
+  {
+    "path": "/home/param/websites/request-studio/source",
+    "target": "/home/param/websites/pose-demo-website/comparison"
+  },
+  {
+    "path": "/home/param/websites/request-studio/outputs",
+    "target": "/home/param/runs/pose-runs/inference-requests-20261028"
+  },
+  {
+    "path": "/home/param/websites/request-studio/native-gallery",
+    "target": "/home/param/runs/pose-runs/native-comparison-20261028/gallery"
+  },
+  {
+    "path": "/home/param/websites/request-studio/guided-prefill-gallery",
+    "target": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/gallery"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/voiceclips",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/voiceclips"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/render",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/render"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/people_extra",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/people_extra"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/weights_live",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/weights_live"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/runs",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/runs"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/user_presets",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/user_presets"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/state",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/state"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/uploads",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/uploads"
+  },
+  {
+    "path": "/home/param/websites/pose-playground/logs",
+    "target": "/home/param/runs/pose-runs/pose-sites-20261030/playground/logs"
+  },
+  {
+    "path": "/home/param/websites/rosie-live-demo/conditioning",
+    "target": "/home/param/pose-runs/opd-next-web-20261030/conditioning"
+  },
+  {
+    "path": "/home/param/websites/rosie-live-demo/srv/conditioning.json",
+    "target": "../conditioning/conditioning.json"
+  },
+  {
+    "path": "/home/param/.codex/app-server-control/app-server-control.sock",
+    "target": "/tmp/codex-daemon-1003/980ca50f39b41df229cdf4af2fd27cfc2b008578c87d4019fd501b67bfe1dbf9"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0ArzcCq/codex-linux-sandbox",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0ArzcCq/apply_patch",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0ArzcCq/applypatch",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0SDueHM/codex-linux-sandbox",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0SDueHM/apply_patch",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  },
+  {
+    "path": "/home/param/.codex/tmp/arg0-linux/codex-arg0SDueHM/applypatch",
+    "target": "/home/param/.codex/packages/standalone/releases/0.165.0-x86_64-unknown-linux-musl/bin/codex"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "state": "verified",
+  "repo": "InternalCan/landsend-artifacts-backup-param",
+  "hf_path": "landsend-1/artifacts/part-0001.tar.zst",
+  "archive_bytes": 125319438,
+  "archive_sha256": "fa21384fe89f71c548e6ab8f71fbc8978cd720e7e8a4530e8e703c5c989ed643",
+  "members_read": 16,
+  "sample_files_restored": [
+    {
+      "path": "home/param/runs/pose-runs/teacher-partner-layout-benchmark-v3/code/pose-repo.bundle",
+      "bytes": 3302621,
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f"
+    }
+  ],
+  "checked_unix": 1793506364.8104846
+}

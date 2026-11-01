@@ -1,0 +1,1857 @@
+[
+  {
+    "path": "/home/param/.bash_history",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/vansh-video-models",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/pose-repo",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/outputs",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/pose-runs",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.local",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/runs",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/datasets",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.cache",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.triton",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.bashrc",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.ssh",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.codex",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/bin",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.profile",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.nv",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/models",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.hf-cli",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.netrc",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/.bash_logout",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/home/param/pose-demo-website",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_ms9r9t2w",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpl1d5wksr",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpmbuir5an",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_17uljo4q",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpp0d_s9i5",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpozlmdk5b",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-git-lfs.deb",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmppj0uw_e_",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpe9jelqoy",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_ajsu8rfm",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpqo2aq06k",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_uqikh1lj",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/hf-cli-install-param.sh",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp8uqu8i5t",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpnm0j15rbwandb-artifacts",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpl_hfa2uj",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp2zjwjnn1",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmptqlltzar",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmppfiaoiqh",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpzrncccq9",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpz0mntjmg",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp_7scnkg2wandb-media",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/debug-cli.param.log",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpvd7exopm",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpbf1yip33",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpjqtvr3_g",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpvzj10ozy",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpbt52rjsm",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpj45cieke",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpzc1s0ul3",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp5asl42ks",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp3it545wm",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmproxiv3ml",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_hea4fco0",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp6e92jo9i",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpw3hv6su9",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_9gkz3v9q",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp4gooauqu",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpd_jvyqs0",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_07wplm49",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpqhpxnut2",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpbaio3mp6",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp1cwh6urb",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchinductor_param",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": true,
+    "target": "/home/param/pose-repo/.cache/torchinductor"
+  },
+  {
+    "path": "/tmp/tmp0yojaypj",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_w3j8j3b3",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpv1lt7etp",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp4y_9jt3g",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpjlatnx04",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp4txap2k3wandb-media",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpjeyqie2w",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_8wf4xj3u",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmptb2kpc0i",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpzwufapbu",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpwtkrx90h",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp18ndfh77wandb-artifacts",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_52ul5pt8",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpf8dsvscm",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpnts7xbw9",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpo31vkq1u",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/request-api-check-z6365oaa",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp068z1yty",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpajpyd2pv",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_8lz_spo1",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpbnzqnmas",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp2voeq74e",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_qgjg6h6r",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp4lws5gyo",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_m7_aswwk",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpeagsj2k_",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpfv47iv45",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp8wtf52ea",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpgihy0edl",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpv9q0jkg_",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_bwzfyzq2",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp68bi4_jnwandb-media",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpk_u3tl8jwandb-media",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_9d0so_if",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp_gv0g_kj",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpo28kqvwe",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmperxpyw27wandb-media",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-environment-landsend-1.json",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpkagpbhqx",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_yalglo_4",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp7cw2s8x6",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_sg9oyhbn",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp22g8sx1a",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_4b0micv_",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpovolriu5",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpupg47tuo",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_clrqknwe",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpm5w4lkpb",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpoc34jr7d",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic__3p1zaz9",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpbizw3j5h",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmplldb0xjc",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmppnb0hy_t",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmps3pwmq6uwandb-artifacts",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpgu02doo2",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp_czu_iim",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmptr_hgzw7",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_5lpkyo2d",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpeskx40pg",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp80jmx7v7",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpenpynz4j",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp8by_hgup",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_tkep2rm_",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp12qeoa64",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpmwyas92v",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp5shxw45e",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_pdewb3p7",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpnv4dhf8m",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpys3pdjnu",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpv3ue1ysr",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_jz4jbosi",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpjvo1rq28",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpc8wgtbmu",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpylcho262",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp0ijkca3e",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmprjgyr988",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp63yx1pbg",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_x1kw4_gi",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp2he55hct",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpohp62i5t",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpvkx1_mu8",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_3hx9x8sp",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpo41okv22",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmux-1003",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpzc4c4ii8",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpdawplsn9",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpzuclxib6",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-comparison-browser",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_hqhzwowp",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpz2b2ey8m",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-parallel-web-test",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp_spmdrtt",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp_it2lkn1",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp2dbf5ngg",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_pl7jfahg",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp7u6vflp3",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_m0n4f2m5",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_blb_yrui",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpt04m33a9",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmplp3unzwq",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp2twzquzj",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_yzesckt8",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp_oml8_5w",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpznnhecf6",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpwf1hts1k",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_rmaa2f5r",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpfyhw_gqm",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmphykgjx9_",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_28uil44m",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmps2zk4cbj",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpgs778gz6",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpysr3bzld",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp4ppe24_5",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp2183sw4hwandb-artifacts",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpy6yqkb0a",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp9i5brndgwandb-artifacts",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp6k83nxr2",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpvcatbjl1",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmp9oph_49o",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-git-lfs-install.log",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpts7dcizl",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpu1flsvvg",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpzxl5iiaz",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpkfkxvngp",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/tmpohkfr8ex",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/hf-get-pip-param.py",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/torchelastic_ry9vdyjw",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/tmp/pose-native-web-test",
+    "owner_uid": 1003,
+    "directory": true,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-fwrVeG",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-BenDuf",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-WMipgf",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-kWzm2g",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-8aIpJN",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-Ik9nV9",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-LW514q",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-lzatsnaq",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-gzwe9yma",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-_fyvy3q1",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-x3bkivkm",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-0cfxhxmi",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-0sa4dsu3",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-2x4u1t0k",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-g1wtrglg",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-x4zx_62v",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-46q5cyzr",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-i4t2x913",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-kdu8oxb7",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-lygdr6ry",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-o26rr91n",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-cgqufrim",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-fvxsng13",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-kc0acreu",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-vjg1rs2j",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-24otias5",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-pird9p9x",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-x44lsoen",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-5980ql3o",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-1rdku_yl",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-896ik6bh",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-_v3b6gyu",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-dw2kcmbd",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-y4vhxpyo",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-zp0w0wyc",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-vft35nbp",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-tl5toj8o",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-gzqc3xfa",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-uns9lm8f",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-ubjuaou7",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-ohurkx4u",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-kw7m3olr",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-lnlm_mdc",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-3gt2rjv9",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-8j58os0h",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-6bwbahrj",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/sem.mp-w8wehbqt",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-O1VCBc",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-1jIXdb",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-eenmc1",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-3fq09C",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-1Z5BBW",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-RVZDfS",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-6ynssK",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-JPI8fb",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-UorRAr",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-IifH3O",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-jItbOY",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-V5Aa6k",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-BHeQZF",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-kOY3DB",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-SPeHNW",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-SEBoNd",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-76p6SW",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-huaPuo",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-G5wMHE",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-DFawaG",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-LZ8k38",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-99N9lP",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-1IFWbO",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-RkhVpe",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-cHvptO",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-91tJDU",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-9oVuFb",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-Ar7Smm",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-lhofEt",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-b8lMMO",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-9trDiC",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-TxTLuW",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-FCcYrg",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-RbBEDi",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-RwAcQX",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-SP8iXx",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-s8uU5b",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-rTACps",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-NbhLWt",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-rt8Kxq",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-dECG6s",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-4HDDgs",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-kEHoBq",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-i5iJMT",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-uya8tr",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-oxZNHp",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-YZ63pA",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-71rfw1",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-SFCdCL",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-jSZsVU",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-K5wq8c",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-UTrDGS",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-gemsO2",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-XS0K9G",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-NR7dFr",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-TDZD4J",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-WztWLD",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-XmnJf9",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-eetOZy",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-6I85bE",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-hTvkm7",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-c9ivN8",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-5KK7Ju",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-SwzNhO",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-SdswVa",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-IM1AOH",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-7f78ZT",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-idwxX5",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  },
+  {
+    "path": "/dev/shm/nccl-o7BdRR",
+    "owner_uid": 1003,
+    "directory": false,
+    "symlink": false
+  }
+]

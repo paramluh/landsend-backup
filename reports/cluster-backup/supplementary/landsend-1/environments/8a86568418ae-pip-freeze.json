@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/tmp/pose-comparison-browser/bin/python",
+    "-m",
+    "pip",
+    "freeze",
+    "--all"
+  ],
+  "returncode": 0,
+  "stdout": "greenlet==3.5.6\npip==24.0\nplaywright==1.64.1\npyee==14.0.0\ntyping_extensions==4.16.0\n",
+  "stderr": ""
+}

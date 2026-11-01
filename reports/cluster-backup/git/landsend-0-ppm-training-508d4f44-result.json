@@ -1,0 +1,31 @@
+{
+  "host": "landsend-0",
+  "repo": "/home/param/ppm-training",
+  "common": "/home/param/ppm-training/.git",
+  "commit": "fd964b2240cb5ffc18bdaad7f2e5371050205ee7",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-0-ppm-training-508d4f44.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/home/param/ppm-training",
+      "common": "/home/param/ppm-training/.git",
+      "branch": "codex/credit-assignment-training",
+      "original_head": "0f30a14ac5646b31707ade4e3c1843accdc4d960",
+      "staged_commit": null,
+      "working_commit": "08a187bc489d7cbe043183cf1b2d87a9e660d58c",
+      "tree": "5b21add812bede4da7ede67fdec6f98bbc00b2ac",
+      "excluded": [],
+      "untracked_added": 42,
+      "status_count": 1,
+      "remotes": [
+        "origin\tgit@github.com:canopy-labs-internal/ppm-training.git (fetch)",
+        "origin\tgit@github.com:canopy-labs-internal/ppm-training.git (push)"
+      ]
+    }
+  ],
+  "local_branches": [
+    "refs/heads/codex/credit-assignment-training 0f30a14ac5646b31707ade4e3c1843accdc4d960",
+    "refs/heads/codex/opd-next-finishing-sft-prep e15c437fa8b7850517f8667035b9d940e9639d5a",
+    "refs/heads/main e15c437fa8b7850517f8667035b9d940e9639d5a"
+  ]
+}

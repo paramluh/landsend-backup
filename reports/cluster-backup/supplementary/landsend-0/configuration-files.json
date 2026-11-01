@@ -1,0 +1,116 @@
+[
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-video-bridge.service",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-video-bridge.service",
+    "mode": 420,
+    "sha256": "f1345c120250c54992692d9facb7413f8c49296de56e9bf94d37197243c6850c"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-credit-dashboard.service",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-credit-dashboard.service",
+    "mode": 436,
+    "sha256": "0d80173f1b518066bc5b3aca499cc26a3d01bbcd5574a6aca300db9d236183b6"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-credit-collector.service",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-credit-collector.service",
+    "mode": 436,
+    "sha256": "74ae778294781820c868ab09db829ecfdfa4f556cf7cd7eec8c7d6e0eb0a81ba"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-credit-samples.service",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-credit-samples.service",
+    "mode": 436,
+    "sha256": "007ca260a7064e0bb7c83854b1f58585421f88149e47ac86cb13769b884d070b"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-credit-tunnel.service",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-credit-tunnel.service",
+    "mode": 436,
+    "sha256": "72da1f42e426d5ddf9de8be925519add33a79dbd97d93d49e3d9a04effa74649"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-video-bridge.service.d/80-basic-opd.conf",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-video-bridge.service.d/80-basic-opd.conf",
+    "mode": 436,
+    "sha256": "ac138b24c4204522f435878464ed4484a5ad5a80e39c73907063ff2fcfeffd8d"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-video-bridge.service.d/70-symmetric-streaming.conf",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-video-bridge.service.d/70-symmetric-streaming.conf",
+    "mode": 436,
+    "sha256": "87144fde1421037838bc6429d2b6d4a19ff2eefb28e6666f7e6133af38284714"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-credit-samples.service.d/80-basic-opd.conf",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-credit-samples.service.d/80-basic-opd.conf",
+    "mode": 436,
+    "sha256": "defdb633c352d3dd55248b2b4f4e7a94871ae7443ed9e77e38ec61e7b15977af"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-credit-samples.service.d/70-symmetric-streaming.conf",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-credit-samples.service.d/70-symmetric-streaming.conf",
+    "mode": 436,
+    "sha256": "1620f3824d257e1ffbdc57b65152a3049652ef2b9df03c1c6ced7281c3197b76"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-credit-samples.service.d/60-general-parent.conf",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-credit-samples.service.d/60-general-parent.conf",
+    "mode": 436,
+    "sha256": "005634e8cb9f999ae1e455cc85f963d043c6a22d05a95001795edfc61deeb938"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-credit-collector.service.d/80-basic-opd.conf",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-credit-collector.service.d/80-basic-opd.conf",
+    "mode": 436,
+    "sha256": "2b9d34a6e4e903d02aaa51ec2c33620598434dce3db6566cb46f06a6c65bdc75"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-credit-collector.service.d/70-symmetric-streaming.conf",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-credit-collector.service.d/70-symmetric-streaming.conf",
+    "mode": 436,
+    "sha256": "12e83b466811c134f6520bc6eb71ebead70decd0e889fa23f8a01b397a7cd70b"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-opd-credit-collector.service.d/60-general-parent.conf",
+    "backup": "files/home/param/.config/systemd/user/pose-opd-credit-collector.service.d/60-general-parent.conf",
+    "mode": 436,
+    "sha256": "2c03645ab7cd14ae46d7f53a177e4f292644dac5dc58fb9f74cc136b0949b095"
+  },
+  {
+    "source": "/home/param/.config/uv/uv-receipt.json",
+    "backup": "files/home/param/.config/uv/uv-receipt.json",
+    "mode": 436,
+    "sha256": "0d1e9132cda4576e555750971b897e74c77c80f537f3f0b89e8a4be058430eb9"
+  },
+  {
+    "source": "/etc/systemd/system/param-gpu-reservation.service",
+    "backup": "files/etc/systemd/system/param-gpu-reservation.service",
+    "mode": 420,
+    "sha256": "f4f16475f8d1f000710440ece1955ee1b8facf6528660b5a6c9af7527b3f1a2d"
+  },
+  {
+    "source": "/home/param/.bashrc",
+    "backup": "files/home/param/.bashrc",
+    "mode": 420,
+    "sha256": "4997765fd2cecb9c38d32df2db0bde240c7a984eaab2e81900d58a8bd7ce71d0"
+  },
+  {
+    "source": "/home/param/.profile",
+    "backup": "files/home/param/.profile",
+    "mode": 420,
+    "sha256": "28b4a453b68dde64f814e94bab14ee651f4f162e15dd9920490aa1d49f05d2a4"
+  },
+  {
+    "source": "/home/param/.bash_logout",
+    "backup": "files/home/param/.bash_logout",
+    "mode": 420,
+    "sha256": "26882b79471c25f945c970f8233d8ce29d54e9d5eedcd2884f88affa84a18f56"
+  },
+  {
+    "source": "/home/param/.bash_history",
+    "backup": "files/home/param/.bash_history",
+    "mode": 384,
+    "sha256": "2c68279764d566b9a2c46f64e6a3a4cbdd99929a5862d6528a9f75877e6b9f29"
+  }
+]

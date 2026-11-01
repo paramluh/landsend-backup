@@ -1,0 +1,44 @@
+[
+  {
+    "host": "landsend-1",
+    "pid": 594531,
+    "started_unix": 1793506271.0241165,
+    "resumed": true,
+    "hf_repo": "InternalCan/landsend-artifacts-backup-param"
+  },
+  {
+    "host": "landsend-2",
+    "pid": 423750,
+    "started_unix": 1793506271.0414412,
+    "resumed": true,
+    "hf_repo": "InternalCan/landsend-artifacts-backup-param"
+  },
+  {
+    "host": "landsend-3",
+    "pid": 4019796,
+    "started_unix": 1793506271.0261707,
+    "resumed": true,
+    "hf_repo": "InternalCan/landsend-artifacts-backup-param"
+  },
+  {
+    "host": "landsend-4",
+    "pid": 3756073,
+    "started_unix": 1793506271.053791,
+    "resumed": true,
+    "hf_repo": "InternalCan/landsend-artifacts-backup-param"
+  },
+  {
+    "host": "landsend-5",
+    "pid": 3505911,
+    "started_unix": 1793506271.0182896,
+    "resumed": true,
+    "hf_repo": "InternalCan/landsend-artifacts-backup-param"
+  },
+  {
+    "host": "landsend-12",
+    "pid": 3401302,
+    "started_unix": 1793506271.0333974,
+    "resumed": true,
+    "hf_repo": "InternalCan/landsend-artifacts-backup-param"
+  }
+]

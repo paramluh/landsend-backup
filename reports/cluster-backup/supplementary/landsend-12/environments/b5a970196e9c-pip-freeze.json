@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/home/param/.hf-cli/venv/bin/python",
+    "-m",
+    "pip",
+    "freeze",
+    "--all"
+  ],
+  "returncode": 0,
+  "stdout": "anyio==4.15.1\nclick==8.5.0\nfilelock==4.2.4\nfsspec==2026.9.0\nh11==0.16.0\nhf-xet==1.7.0\nhttpcore2==2.16.0\nhttpx2==2.16.0\nhuggingface_hub==2.3.0\nidna==3.20\npackaging==26.3\npip==26.2.2\nPyYAML==6.0.3\ntqdm==4.70.1\ntruststore==0.10.5\ntyping_extensions==4.16.0\n",
+  "stderr": ""
+}

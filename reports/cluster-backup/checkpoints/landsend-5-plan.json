@@ -1,0 +1,166 @@
+{
+  "host": "landsend-5",
+  "repo": "InternalCan/landsend-checkpoints-backup-param",
+  "tasks": [
+    {
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "bytes": 88012583526,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "bytes": 87900175591,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/saves/step-00200",
+      "bytes": 86944343335,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/saves/step-00167",
+      "bytes": 86944343335,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
+      "bytes": 76217507880,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/resume",
+      "bytes": 106309429448,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/resume",
+      "bytes": 76217508136,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/duplex-distill-step-000284-inference",
+      "bytes": 88503584955,
+      "weight_files": 57
+    },
+    {
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/export",
+      "bytes": 14669562785,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-duplex-first-band-20261030/checkpoints/pose-duplex-first-band-20261030/dcp-227",
+      "bytes": 117322931583,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/exports/export-200",
+      "bytes": 12350457512,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-200",
+      "bytes": 12350457512,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-167",
+      "bytes": 12350457512,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-133",
+      "bytes": 12350457512,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/export",
+      "bytes": 12704126904,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-100",
+      "bytes": 12350457512,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/export",
+      "bytes": 17719565240,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-67",
+      "bytes": 12350457512,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000060/export",
+      "bytes": 17719565240,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000060/export",
+      "bytes": 12704126904,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000036/export",
+      "bytes": 14669562785,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-33",
+      "bytes": 12350457512,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/export",
+      "bytes": 12704126904,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/aloe-blackband-only-repro-20261031/exports/export-7",
+      "bytes": 28733812920,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/inference/pose-opd-credit-step60",
+      "bytes": 88504060058,
+      "weight_files": 40
+    },
+    {
+      "source": "/home/param/outputs/pose-mono-dcp227-export",
+      "bytes": 17254129888,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/opd-next-rosie-conditioned-20261030/training/epoch-1/model",
+      "bytes": 156474210563,
+      "weight_files": 16
+    },
+    {
+      "source": "/home/param/pose-runs/opd-next-rosie-conditioned-20261030/training/epoch-2/model",
+      "bytes": 156474210563,
+      "weight_files": 16
+    },
+    {
+      "source": "/home/param/pose-runs/opd-next-rosie-sft-20261030/training/epoch-1/model",
+      "bytes": 156474210563,
+      "weight_files": 16
+    },
+    {
+      "source": "/home/param/pose-runs/opd-next-rosie-sft-20261030/training/epoch-2/model",
+      "bytes": 156474210563,
+      "weight_files": 16
+    },
+    {
+      "source": "/home/param/pose-runs/opd-next-web-20261030/export-conditioned-epoch-2",
+      "bytes": 78237261678,
+      "weight_files": 16
+    },
+    {
+      "source": "/home/param/pose-runs/opd-next-web-20261030/export-epoch-2",
+      "bytes": 78237261678,
+      "weight_files": 16
+    }
+  ]
+}

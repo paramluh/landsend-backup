@@ -1,0 +1,399 @@
+{
+  "folder": "/home/param/models/imported-weights/transcript-pose",
+  "repo": "InternalCan/ppm-aloe-v2pure-main-17850-final",
+  "revision": "7beed89de7ca01803cf84ff2c4bff928322403c7",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank49.pt",
+      "remote": "export-200/rank49.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank5.pt",
+      "remote": "export-200/rank5.pt",
+      "bytes": 1345037661,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank7.pt",
+      "remote": "export-200/rank7.pt",
+      "bytes": 1345037661,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank50.pt",
+      "remote": "export-200/rank50.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank15.pt",
+      "remote": "export-200/rank15.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank19.pt",
+      "remote": "export-200/rank19.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank51.pt",
+      "remote": "export-200/rank51.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank4.pt",
+      "remote": "export-200/rank4.pt",
+      "bytes": 1345037661,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank29.pt",
+      "remote": "export-200/rank29.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank22.pt",
+      "remote": "export-200/rank22.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank20.pt",
+      "remote": "export-200/rank20.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank47.pt",
+      "remote": "export-200/rank47.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank60.pt",
+      "remote": "export-200/rank60.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank43.pt",
+      "remote": "export-200/rank43.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank24.pt",
+      "remote": "export-200/rank24.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank18.pt",
+      "remote": "export-200/rank18.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank38.pt",
+      "remote": "export-200/rank38.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank37.pt",
+      "remote": "export-200/rank37.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank28.pt",
+      "remote": "export-200/rank28.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank11.pt",
+      "remote": "export-200/rank11.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank56.pt",
+      "remote": "export-200/rank56.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank30.pt",
+      "remote": "export-200/rank30.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank42.pt",
+      "remote": "export-200/rank42.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank27.pt",
+      "remote": "export-200/rank27.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank46.pt",
+      "remote": "export-200/rank46.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank26.pt",
+      "remote": "export-200/rank26.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank59.pt",
+      "remote": "export-200/rank59.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank36.pt",
+      "remote": "export-200/rank36.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank6.pt",
+      "remote": "export-200/rank6.pt",
+      "bytes": 1345037661,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank63.pt",
+      "remote": "export-200/rank63.pt",
+      "bytes": 1344404309,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank0.pt",
+      "remote": "export-200/rank0.pt",
+      "bytes": 1345068573,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank54.pt",
+      "remote": "export-200/rank54.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank53.pt",
+      "remote": "export-200/rank53.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank48.pt",
+      "remote": "export-200/rank48.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank2.pt",
+      "remote": "export-200/rank2.pt",
+      "bytes": 1345037661,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank62.pt",
+      "remote": "export-200/rank62.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank34.pt",
+      "remote": "export-200/rank34.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank33.pt",
+      "remote": "export-200/rank33.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank55.pt",
+      "remote": "export-200/rank55.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank52.pt",
+      "remote": "export-200/rank52.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank35.pt",
+      "remote": "export-200/rank35.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank1.pt",
+      "remote": "export-200/rank1.pt",
+      "bytes": 1345037661,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rep.pt",
+      "remote": "export-200/rep.pt",
+      "bytes": 2301002223,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank44.pt",
+      "remote": "export-200/rank44.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank13.pt",
+      "remote": "export-200/rank13.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank8.pt",
+      "remote": "export-200/rank8.pt",
+      "bytes": 1345037661,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank17.pt",
+      "remote": "export-200/rank17.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank57.pt",
+      "remote": "export-200/rank57.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank40.pt",
+      "remote": "export-200/rank40.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank45.pt",
+      "remote": "export-200/rank45.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank12.pt",
+      "remote": "export-200/rank12.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank32.pt",
+      "remote": "export-200/rank32.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank9.pt",
+      "remote": "export-200/rank9.pt",
+      "bytes": 1345037661,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank14.pt",
+      "remote": "export-200/rank14.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank23.pt",
+      "remote": "export-200/rank23.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank39.pt",
+      "remote": "export-200/rank39.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank58.pt",
+      "remote": "export-200/rank58.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank10.pt",
+      "remote": "export-200/rank10.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank3.pt",
+      "remote": "export-200/rank3.pt",
+      "bytes": 1345037661,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank21.pt",
+      "remote": "export-200/rank21.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank61.pt",
+      "remote": "export-200/rank61.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank25.pt",
+      "remote": "export-200/rank25.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank31.pt",
+      "remote": "export-200/rank31.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank41.pt",
+      "remote": "export-200/rank41.pt",
+      "bytes": 1345039189,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/transcript-pose/xabi-original/export-200/rank16.pt",
+      "remote": "export-200/rank16.pt",
+      "bytes": 1345039189,
+      "matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.481146
+}

@@ -1,0 +1,98 @@
+[
+  {
+    "host": "landsend-0",
+    "files": 1951,
+    "bytes": 2499444916663,
+    "error": null
+  },
+  {
+    "host": "landsend-1",
+    "files": 1415,
+    "bytes": 2564268433359,
+    "error": null
+  },
+  {
+    "host": "landsend-2",
+    "files": 1421,
+    "bytes": 2833082235293,
+    "error": null
+  },
+  {
+    "host": "landsend-3",
+    "files": 1355,
+    "bytes": 2829209010686,
+    "error": null
+  },
+  {
+    "host": "landsend-4",
+    "files": 1566,
+    "bytes": 3095998659503,
+    "error": null
+  },
+  {
+    "host": "landsend-5",
+    "files": 1436,
+    "bytes": 3185197409676,
+    "error": null
+  },
+  {
+    "host": "landsend-6",
+    "files": 0,
+    "bytes": 0,
+    "error": "ssh: Could not resolve hostname landsend-6: Temporary failure in name resolution\n"
+  },
+  {
+    "host": "landsend-7",
+    "files": 0,
+    "bytes": 0,
+    "error": "ssh: Could not resolve hostname landsend-7: Temporary failure in name resolution\n"
+  },
+  {
+    "host": "landsend-8",
+    "files": 0,
+    "bytes": 0,
+    "error": "ssh: Could not resolve hostname landsend-8: Temporary failure in name resolution\n"
+  },
+  {
+    "host": "landsend-9",
+    "files": 0,
+    "bytes": 0,
+    "error": "ssh: Could not resolve hostname landsend-9: Temporary failure in name resolution\n"
+  },
+  {
+    "host": "landsend-10",
+    "files": 0,
+    "bytes": 0,
+    "error": "ssh: Could not resolve hostname landsend-10: Temporary failure in name resolution\n"
+  },
+  {
+    "host": "landsend-11",
+    "files": 0,
+    "bytes": 0,
+    "error": "ssh: Could not resolve hostname landsend-11: Temporary failure in name resolution\n"
+  },
+  {
+    "host": "landsend-12",
+    "files": 1547,
+    "bytes": 2432710318827,
+    "error": null
+  },
+  {
+    "host": "landsend-13",
+    "files": 0,
+    "bytes": 0,
+    "error": "ssh: Could not resolve hostname landsend-13: Temporary failure in name resolution\n"
+  },
+  {
+    "host": "landsend-14",
+    "files": 0,
+    "bytes": 0,
+    "error": "ssh: Could not resolve hostname landsend-14: Temporary failure in name resolution\n"
+  },
+  {
+    "host": "landsend-15",
+    "files": 0,
+    "bytes": 0,
+    "error": "ssh: Could not resolve hostname landsend-15: Temporary failure in name resolution\n"
+  }
+]

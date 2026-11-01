@@ -1,0 +1,93 @@
+{
+  "source": "/home/param/.codex/goals_1.sqlite",
+  "snapshot_unix": 1793506199.7884324,
+  "tables": [
+    {
+      "name": "_sqlx_migrations",
+      "sql": "CREATE TABLE _sqlx_migrations (\n    version BIGINT PRIMARY KEY,\n    description TEXT NOT NULL,\n    installed_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n    success BOOLEAN NOT NULL,\n    checksum BLOB NOT NULL,\n    execution_time BIGINT NOT NULL\n)",
+      "columns": [
+        "version",
+        "description",
+        "installed_on",
+        "success",
+        "checksum",
+        "execution_time"
+      ],
+      "row_count": 2,
+      "exported": true,
+      "rows": [
+        [
+          1,
+          "thread goals",
+          "2026-10-27 21:37:22",
+          1,
+          {
+            "__base64__": "jOYoAkSgtLOcfDfH9nr/FnDslj0kAc3yq8/qmQQQLbbNmbe+3zZiZ3kaResS8XcT"
+          },
+          236106
+        ],
+        [
+          2,
+          "thread goal continuation deferrals",
+          "2026-10-27 21:37:22",
+          1,
+          {
+            "__base64__": "8/994v2JkUggvvNxCB6IX9F98YpvvcQyOZqDJVqKAaoy+37qXk3iGhe9o9oWxJWE"
+          },
+          189577
+        ]
+      ]
+    },
+    {
+      "name": "thread_goals",
+      "sql": "CREATE TABLE thread_goals (\n    thread_id TEXT PRIMARY KEY NOT NULL,\n    goal_id TEXT NOT NULL,\n    objective TEXT NOT NULL,\n    status TEXT NOT NULL CHECK(status IN (\n        'active',\n        'paused',\n        'blocked',\n        'usage_limited',\n        'budget_limited',\n        'complete'\n    )),\n    token_budget INTEGER,\n    tokens_used INTEGER NOT NULL DEFAULT 0,\n    time_used_seconds INTEGER NOT NULL DEFAULT 0,\n    created_at_ms INTEGER NOT NULL,\n    updated_at_ms INTEGER NOT NULL\n)",
+      "columns": [
+        "thread_id",
+        "goal_id",
+        "objective",
+        "status",
+        "token_budget",
+        "tokens_used",
+        "time_used_seconds",
+        "created_at_ms",
+        "updated_at_ms"
+      ],
+      "row_count": 2,
+      "exported": true,
+      "rows": [
+        [
+          "01a18ea9-873a-7643-ad2e-1c2026338760",
+          "13b7ef53-2761-4e50-adc9-23dd6b603175",
+          "Wait actually stop this. Here's what I want you to do: please use the three nodes to run a finetune of the original aloe on *only* black bands. Then run inference on 20 clips. By only black bands, I mean I want you to pick only the dataset rows which have at least one black band section. Train on 1min clips which include the black bands and batch this up to 10mins (10 1 min clips per sequence).&#x20;\nset this up and get training super fast. No need to log on wandb and just save the final checkpoint.",
+          "paused",
+          null,
+          207105,
+          307,
+          1793417386640,
+          1793418873243
+        ],
+        [
+          "01a1949b-cd8c-7b83-a918-894ac1c9824a",
+          "fff68213-79c4-4edc-9577-c308c4ee7d6a",
+          "Before cluster access expires at midnight San Francisco time, back up checkpoints not already on Hugging Face; commit and push unfinished work in each home repository to tmp/landsend-backup-param; back up code and other non-repository project material to a new private landsend-backup repository in the user's personal GitHub account, verify backups, and report any gaps.",
+          "active",
+          null,
+          300518,
+          467,
+          1793505708608,
+          1793506175777
+        ]
+      ]
+    },
+    {
+      "name": "thread_goal_continuation_deferrals",
+      "sql": "CREATE TABLE thread_goal_continuation_deferrals (\n    thread_id TEXT PRIMARY KEY NOT NULL REFERENCES thread_goals(thread_id) ON DELETE CASCADE\n)",
+      "columns": [
+        "thread_id"
+      ],
+      "row_count": 0,
+      "exported": true,
+      "rows": []
+    }
+  ]
+}

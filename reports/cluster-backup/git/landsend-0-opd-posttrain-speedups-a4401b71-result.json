@@ -1,0 +1,29 @@
+{
+  "host": "landsend-0",
+  "repo": "/home/param/opd-posttrain-speedups",
+  "common": "/home/param/opd-posttrain-speedups/.git",
+  "commit": "f1874b208c0e34ca54cafc8d1a239021a2fe0fc2",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-0-opd-posttrain-speedups-a4401b71.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/home/param/opd-posttrain-speedups",
+      "common": "/home/param/opd-posttrain-speedups/.git",
+      "branch": "main",
+      "original_head": "ad716884cdfe64088e64b8dd1207e7e52c9bf797",
+      "staged_commit": null,
+      "working_commit": "a91d14ecf057ad9acb5cb863bb43a472ff0ba284",
+      "tree": "2c18a42f7f75810ea7e4c7380d656b109028805a",
+      "excluded": [],
+      "untracked_added": 0,
+      "status_count": 0,
+      "remotes": [
+        "origin\thttps://huggingface.co/InternalCan/opd-posttrain-speedups (fetch)",
+        "origin\thttps://huggingface.co/InternalCan/opd-posttrain-speedups (push)"
+      ]
+    }
+  ],
+  "local_branches": [
+    "refs/heads/main ad716884cdfe64088e64b8dd1207e7e52c9bf797"
+  ]
+}

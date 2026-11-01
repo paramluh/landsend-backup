@@ -1,0 +1,19 @@
+[
+  {
+    "host": "landsend-12",
+    "path": "/home/param/pose-repo",
+    "common": "/home/param/pose-repo/.git",
+    "branch": "main",
+    "original_head": "17f08f761468f901b4699c93233c27b58df46c24",
+    "staged_commit": null,
+    "working_commit": "cf471150c73e94a340857ece1e38cb41bc719ad6",
+    "tree": "6417c85ff5f65766ab181e95f7bb04e7040f6514",
+    "excluded": [],
+    "untracked_added": 348,
+    "status_count": 13,
+    "remotes": [
+      "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+      "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+    ]
+  }
+]

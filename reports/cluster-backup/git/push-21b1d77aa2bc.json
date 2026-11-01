@@ -1,0 +1,8 @@
+{
+  "url": "git@github.com:canopy-labs-internal/aloe-pose-duplex.git",
+  "returncode": 0,
+  "expected": "7533c61f0b4a06786b7ad86c1ff7156f60d923e9",
+  "remote": "7533c61f0b4a06786b7ad86c1ff7156f60d923e9",
+  "log": "/home/param/outputs/landsend-backup-20261031/git/push-21b1d77aa2bc.log",
+  "verified": true
+}

@@ -1,0 +1,8 @@
+{
+  "url": "git@github.com:canopy-labs-internal/param-pose.git",
+  "returncode": 0,
+  "expected": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
+  "remote": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
+  "log": "/home/param/outputs/landsend-backup-20261031/git/push-0e62b7d95701.log",
+  "verified": true
+}

@@ -1,0 +1,99 @@
+{
+  "source": "/home/param/.codex/memories_1.sqlite",
+  "snapshot_unix": 1793506199.7878246,
+  "tables": [
+    {
+      "name": "_sqlx_migrations",
+      "sql": "CREATE TABLE _sqlx_migrations (\n    version BIGINT PRIMARY KEY,\n    description TEXT NOT NULL,\n    installed_on TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,\n    success BOOLEAN NOT NULL,\n    checksum BLOB NOT NULL,\n    execution_time BIGINT NOT NULL\n)",
+      "columns": [
+        "version",
+        "description",
+        "installed_on",
+        "success",
+        "checksum",
+        "execution_time"
+      ],
+      "row_count": 2,
+      "exported": true,
+      "rows": [
+        [
+          1,
+          "memories",
+          "2026-10-27 21:37:22",
+          1,
+          {
+            "__base64__": "oa9Q2lB3WnD5jaaAAGt99FAZVnU66YURq3J6opWRXZrm9BkLTqpavE/XiRZC99Id"
+          },
+          378415
+        ],
+        [
+          2,
+          "consolidation progress",
+          "2026-10-27 21:37:22",
+          1,
+          {
+            "__base64__": "GPCo3X/pqEezDXGQKQZtenjgvGQxDcZuT3cIutbxoKWUwNvRT+wcy0EM16513XsQ"
+          },
+          179487
+        ]
+      ]
+    },
+    {
+      "name": "stage1_outputs",
+      "sql": "CREATE TABLE stage1_outputs (\n    thread_id TEXT PRIMARY KEY,\n    source_updated_at INTEGER NOT NULL,\n    raw_memory TEXT NOT NULL,\n    rollout_summary TEXT NOT NULL,\n    rollout_slug TEXT,\n    generated_at INTEGER NOT NULL,\n    usage_count INTEGER,\n    last_usage INTEGER,\n    selected_for_phase2 INTEGER NOT NULL DEFAULT 0,\n    selected_for_phase2_source_updated_at INTEGER\n)",
+      "columns": [
+        "thread_id",
+        "source_updated_at",
+        "raw_memory",
+        "rollout_summary",
+        "rollout_slug",
+        "generated_at",
+        "usage_count",
+        "last_usage",
+        "selected_for_phase2",
+        "selected_for_phase2_source_updated_at"
+      ],
+      "row_count": 0,
+      "exported": true,
+      "rows": []
+    },
+    {
+      "name": "jobs",
+      "sql": "CREATE TABLE jobs (\n    kind TEXT NOT NULL,\n    job_key TEXT NOT NULL,\n    status TEXT NOT NULL,\n    worker_id TEXT,\n    ownership_token TEXT,\n    started_at INTEGER,\n    finished_at INTEGER,\n    lease_until INTEGER,\n    retry_at INTEGER,\n    retry_remaining INTEGER NOT NULL,\n    last_error TEXT,\n    input_watermark INTEGER,\n    last_success_watermark INTEGER,\n    PRIMARY KEY (kind, job_key)\n)",
+      "columns": [
+        "kind",
+        "job_key",
+        "status",
+        "worker_id",
+        "ownership_token",
+        "started_at",
+        "finished_at",
+        "lease_until",
+        "retry_at",
+        "retry_remaining",
+        "last_error",
+        "input_watermark",
+        "last_success_watermark"
+      ],
+      "row_count": 0,
+      "exported": true,
+      "rows": []
+    },
+    {
+      "name": "consolidation_progress",
+      "sql": "CREATE TABLE consolidation_progress (\n    singleton INTEGER PRIMARY KEY CHECK (singleton = 1),\n    max_thread_count INTEGER NOT NULL DEFAULT 0\n)",
+      "columns": [
+        "singleton",
+        "max_thread_count"
+      ],
+      "row_count": 1,
+      "exported": true,
+      "rows": [
+        [
+          1,
+          0
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "url": "git@github.com:canopy-labs-internal/ppm-training.git",
+  "returncode": 0,
+  "expected": "4dadc58a62c781352590e89559282191f67880bf",
+  "remote": "4dadc58a62c781352590e89559282191f67880bf",
+  "log": "/home/param/outputs/landsend-backup-20261031/git/push-83121c0ddd9d.log",
+  "verified": true
+}

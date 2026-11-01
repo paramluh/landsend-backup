@@ -1,0 +1,92 @@
+[
+  {
+    "source": "/home/param/.config/systemd/user/pose-duplex-proxy.service",
+    "backup": "files/home/param/.config/systemd/user/pose-duplex-proxy.service",
+    "mode": 436,
+    "sha256": "b73220e5d8b03047125faf791cf1c5e9b6560fd6dc24403c669ee0075a2ffb0a"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-overlay-data.service",
+    "backup": "files/home/param/.config/systemd/user/pose-overlay-data.service",
+    "mode": 436,
+    "sha256": "189b2afd6537cb83e943c460645a6aef82ff81753001e0f6cf23e834eeff2948"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-duplex-worker.service",
+    "backup": "files/home/param/.config/systemd/user/pose-duplex-worker.service",
+    "mode": 436,
+    "sha256": "4400a8b58c30a050ae690b3eb134df175d372e01f7a8417b43598ae764ab4c4f"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-duplex-live.service",
+    "backup": "files/home/param/.config/systemd/user/pose-duplex-live.service",
+    "mode": 436,
+    "sha256": "fb949da8bc460be1989e1e2ceb6928de464ffd4ffa749f5c06da33963487ee54"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-playground.service",
+    "backup": "files/home/param/.config/systemd/user/pose-playground.service",
+    "mode": 436,
+    "sha256": "97535dbe5a6c7c479e07d7769b7bfefa40564d292ff75162c29bd789fc5d4ef9"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-duplex-tunnel.service",
+    "backup": "files/home/param/.config/systemd/user/pose-duplex-tunnel.service",
+    "mode": 436,
+    "sha256": "56ecc31c203d496750e3ebb6bf9c6bc1137bc995dcb7c217cde84eab4be32231"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-renderer.service",
+    "backup": "files/home/param/.config/systemd/user/pose-renderer.service",
+    "mode": 436,
+    "sha256": "76c1f503fb56b5a07706b11247fadfa93d733b0303048a3a544c67097651c869"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-playground-front.service",
+    "backup": "files/home/param/.config/systemd/user/pose-playground-front.service",
+    "mode": 436,
+    "sha256": "20032092095dc52b8123d6ab33fb3394cf7e6857d75f4550f8e31bb0d474237f"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-playground-tunnel.service",
+    "backup": "files/home/param/.config/systemd/user/pose-playground-tunnel.service",
+    "mode": 436,
+    "sha256": "9243e18f23bbd21b68525b933b6e819854bce918f1e0d46fb28e00e24f9eb22f"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-monoplex-worker.service",
+    "backup": "files/home/param/.config/systemd/user/pose-monoplex-worker.service",
+    "mode": 436,
+    "sha256": "b5424d0a537a1e7a1aeb0b16e456fda67bfc387fa8151ae206debff76524a017"
+  },
+  {
+    "source": "/home/param/.config/systemd/user/pose-live-preview.service",
+    "backup": "files/home/param/.config/systemd/user/pose-live-preview.service",
+    "mode": 436,
+    "sha256": "c28d08dcb8522d0f6ef12a176bec090f3ecfbc3339d1c6d9702786e874d5b24b"
+  },
+  {
+    "source": "/home/param/.bashrc",
+    "backup": "files/home/param/.bashrc",
+    "mode": 420,
+    "sha256": "4997765fd2cecb9c38d32df2db0bde240c7a984eaab2e81900d58a8bd7ce71d0"
+  },
+  {
+    "source": "/home/param/.profile",
+    "backup": "files/home/param/.profile",
+    "mode": 420,
+    "sha256": "28b4a453b68dde64f814e94bab14ee651f4f162e15dd9920490aa1d49f05d2a4"
+  },
+  {
+    "source": "/home/param/.bash_logout",
+    "backup": "files/home/param/.bash_logout",
+    "mode": 420,
+    "sha256": "26882b79471c25f945c970f8233d8ce29d54e9d5eedcd2884f88affa84a18f56"
+  },
+  {
+    "source": "/home/param/.bash_history",
+    "backup": "files/home/param/.bash_history",
+    "mode": 384,
+    "sha256": "b1351f2924a4c172999a1734605a5dabc997f500a1a11e941a087bcb00e3f627"
+  }
+]

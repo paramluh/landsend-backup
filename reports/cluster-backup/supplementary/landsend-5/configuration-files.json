@@ -1,0 +1,44 @@
+[
+  {
+    "source": "/etc/systemd/system/param-next-opd-demo.service",
+    "backup": "files/etc/systemd/system/param-next-opd-demo.service",
+    "mode": 420,
+    "sha256": "4abb0ac20329e987f3a053f851bf9ce26214b6469df59233835addeb10c89ae7"
+  },
+  {
+    "source": "/etc/systemd/system/param-opd-rosie-web.service",
+    "backup": "files/etc/systemd/system/param-opd-rosie-web.service",
+    "mode": 420,
+    "sha256": "bbf8becd2e3849e6d3e1be3b170d7070c0cb79c3b7450e93164d9b78eeb25464"
+  },
+  {
+    "source": "/etc/systemd/system/param-rosie-voice-clips.service",
+    "backup": "files/etc/systemd/system/param-rosie-voice-clips.service",
+    "mode": 420,
+    "sha256": "f81943dceaacfcbc92a41cb01fe372dc6149dfdc56eb8eb8bbd1ae6aa23c3323"
+  },
+  {
+    "source": "/etc/systemd/system/param-opd-rosie-backend.service",
+    "backup": "files/etc/systemd/system/param-opd-rosie-backend.service",
+    "mode": 420,
+    "sha256": "03f10331e18a56e0470532ad0ba69611617f415e2165b1a8e3a15830fbf5becc"
+  },
+  {
+    "source": "/home/param/.bashrc",
+    "backup": "files/home/param/.bashrc",
+    "mode": 420,
+    "sha256": "4997765fd2cecb9c38d32df2db0bde240c7a984eaab2e81900d58a8bd7ce71d0"
+  },
+  {
+    "source": "/home/param/.profile",
+    "backup": "files/home/param/.profile",
+    "mode": 420,
+    "sha256": "28b4a453b68dde64f814e94bab14ee651f4f162e15dd9920490aa1d49f05d2a4"
+  },
+  {
+    "source": "/home/param/.bash_logout",
+    "backup": "files/home/param/.bash_logout",
+    "mode": 420,
+    "sha256": "26882b79471c25f945c970f8233d8ce29d54e9d5eedcd2884f88affa84a18f56"
+  }
+]

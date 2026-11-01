@@ -1,0 +1,29 @@
+{
+  "host": "landsend-1",
+  "repo": "/home/param/pose-repo",
+  "common": "/home/param/pose-repo/.git",
+  "commit": "c33d7ab2a63dbeec7664aa0c23a8d2f04a9969f2",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-1-pose-repo-b5df36b3.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-1",
+      "path": "/home/param/pose-repo",
+      "common": "/home/param/pose-repo/.git",
+      "branch": "main",
+      "original_head": "17f08f761468f901b4699c93233c27b58df46c24",
+      "staged_commit": null,
+      "working_commit": "474c99aaff8fc924822aa0cdfc1d414c38034b61",
+      "tree": "dfd613cf9676093b5c38306bff12a5dadd54bb1e",
+      "excluded": [],
+      "untracked_added": 182,
+      "status_count": 9,
+      "remotes": [
+        "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+        "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+      ]
+    }
+  ],
+  "local_branches": [
+    "refs/heads/main 17f08f761468f901b4699c93233c27b58df46c24"
+  ]
+}

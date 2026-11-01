@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/home/param/vansh-video-models/.venv/bin/python",
+    "-m",
+    "pip",
+    "freeze",
+    "--all"
+  ],
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "/home/param/vansh-video-models/.venv/bin/python: No module named pip\n"
+}

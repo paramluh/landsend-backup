@@ -1,0 +1,12 @@
+{
+  "state": "uploading",
+  "host": "landsend-3",
+  "source": "/home/param/pose-runs/pose-cb01-text-lr3e4-20261028/saves/step-00200",
+  "prefix": "hosts/landsend-3/pose-runs/pose-cb01-text-lr3e4-20261028/saves/step-00200",
+  "bytes": 129110880020,
+  "completed_tasks": 4,
+  "total_tasks": 37,
+  "attempt": 1,
+  "time": 1793506397.5855904,
+  "started": 1793505842.7807682
+}

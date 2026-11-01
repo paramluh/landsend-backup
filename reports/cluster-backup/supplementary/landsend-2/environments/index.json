@@ -1,0 +1,30 @@
+[
+  {
+    "path": "/home/param/.hf-cli/venv",
+    "label": "b5a970196e9c",
+    "pyvenv_cfg": "home = /usr/bin\ninclude-system-site-packages = false\nversion = 3.12.3\nexecutable = /usr/bin/python3.12\ncommand = /usr/bin/python3 -m venv /home/param/.hf-cli/venv\n",
+    "metadata_returncode": 0,
+    "freeze_returncode": 0
+  },
+  {
+    "path": "/home/param/pose-repo/.venv",
+    "label": "65f7a4ef98ed",
+    "pyvenv_cfg": "home = /usr/bin\ninclude-system-site-packages = false\nversion = 3.12.3\nexecutable = /usr/bin/python3.12\ncommand = /usr/bin/python3 -m venv /home/param/pose-repo/.venv\n",
+    "metadata_returncode": 0,
+    "freeze_returncode": 0
+  },
+  {
+    "path": "/home/param/vansh-video-models/.venv",
+    "label": "a9baeccc3af1",
+    "pyvenv_cfg": "home = /usr/bin\nimplementation = CPython\nuv = 0.13.6\nversion_info = 3.12.3\ninclude-system-site-packages = false\n",
+    "metadata_returncode": 0,
+    "freeze_returncode": 1
+  },
+  {
+    "path": "/opt/torchenv",
+    "label": "ded27b1b6c50",
+    "pyvenv_cfg": "home = /usr/bin\nimplementation = CPython\nuv = 0.13.6\nversion_info = 3.12.3\ninclude-system-site-packages = false\n",
+    "metadata_returncode": 0,
+    "freeze_returncode": 1
+  }
+]

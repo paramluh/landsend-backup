@@ -1,0 +1,23 @@
+{
+  "exports": [
+    {
+      "source": "/home/param/.codex/state_5.sqlite",
+      "export": "landsend-0/codex/state_5.sqlite.sanitized.sql",
+      "bytes": 308296,
+      "restore_integrity_check": "ok"
+    },
+    {
+      "source": "/home/param/.codex/memories_1.sqlite",
+      "export": "landsend-0/codex/memories_1.sqlite.sanitized.sql",
+      "bytes": 1845,
+      "restore_integrity_check": "ok"
+    },
+    {
+      "source": "/home/param/.codex/goals_1.sqlite",
+      "export": "landsend-0/codex/goals_1.sqlite.sanitized.sql",
+      "bytes": 2537,
+      "restore_integrity_check": "ok"
+    }
+  ],
+  "redactions": 0
+}

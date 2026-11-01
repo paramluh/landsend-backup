@@ -1,0 +1,29 @@
+{
+  "host": "landsend-0",
+  "repo": "/tmp/pose-research-tokenizer",
+  "common": "/tmp/pose-research-tokenizer/.git",
+  "commit": "341cc5f84813c9ad1c07a9838f93dbd3b0800957",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-0-pose-research-tokenizer-ae84bde4.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/tmp/pose-research-tokenizer",
+      "common": "/tmp/pose-research-tokenizer/.git",
+      "branch": "main",
+      "original_head": "9ff6bf667c84cf33ec713cf7916095a145f00db9",
+      "staged_commit": null,
+      "working_commit": "1b7bc162e9f4f7a110a00db0b6aec5c29271a037",
+      "tree": "7f383e3f45cdbbcce69560678b713c33f759be9b",
+      "excluded": [],
+      "untracked_added": 0,
+      "status_count": 0,
+      "remotes": [
+        "origin\tgit@github.com:canopy-labs-internal/pose-tokenizer.git (fetch)",
+        "origin\tgit@github.com:canopy-labs-internal/pose-tokenizer.git (push)"
+      ]
+    }
+  ],
+  "local_branches": [
+    "refs/heads/main 9ff6bf667c84cf33ec713cf7916095a145f00db9"
+  ]
+}

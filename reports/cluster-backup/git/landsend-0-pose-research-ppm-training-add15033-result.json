@@ -1,0 +1,29 @@
+{
+  "host": "landsend-0",
+  "repo": "/tmp/pose-research-ppm-training",
+  "common": "/tmp/pose-research-ppm-training/.git",
+  "commit": "fc519fe193b67f66bc923551456dff7861648bb0",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-0-pose-research-ppm-training-add15033.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/tmp/pose-research-ppm-training",
+      "common": "/tmp/pose-research-ppm-training/.git",
+      "branch": "main",
+      "original_head": "e15c437fa8b7850517f8667035b9d940e9639d5a",
+      "staged_commit": null,
+      "working_commit": "df156cf04d4f2abf7bc2a9786f2d7d9a5ccd3817",
+      "tree": "eb383a19b65c3db0afddb58f663a8e387e669733",
+      "excluded": [],
+      "untracked_added": 0,
+      "status_count": 0,
+      "remotes": [
+        "origin\tgit@github.com:canopy-labs-internal/ppm-training.git (fetch)",
+        "origin\tgit@github.com:canopy-labs-internal/ppm-training.git (push)"
+      ]
+    }
+  ],
+  "local_branches": [
+    "refs/heads/main e15c437fa8b7850517f8667035b9d940e9639d5a"
+  ]
+}

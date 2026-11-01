@@ -1,0 +1,8 @@
+{
+  "url": "git@github.com:canopy-labs-internal/pose-demo-website.git",
+  "returncode": 0,
+  "expected": "a1c5ead06455835274ff4395f9b9571c9965af03",
+  "remote": "a1c5ead06455835274ff4395f9b9571c9965af03",
+  "log": "/home/param/outputs/landsend-backup-20261031/git/push-ab77a27c362c.log",
+  "verified": true
+}

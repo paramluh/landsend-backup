@@ -1,0 +1,177 @@
+{
+  "folder": "/home/param/models/imported-weights/next-opd-v110",
+  "repo": "InternalCan/ppm-opd-repro-slinky",
+  "revision": "188691b40d2962892431bd765e6179e3dd471579",
+  "files": [
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__4_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__4_0.distcp",
+      "bytes": 5597708284,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__24_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__24_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__9_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__9_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__0_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__0_0.distcp",
+      "bytes": 5597774519,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__18_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__18_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__11_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__11_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__15_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__15_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__8_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__8_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__16_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__16_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__17_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__17_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__21_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__21_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__6_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__6_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__14_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__14_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__12_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__12_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__10_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__10_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__5_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__5_0.distcp",
+      "bytes": 5597708284,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__22_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__22_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__7_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__7_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__19_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__19_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__13_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__13_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__23_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__23_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__20_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__20_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__2_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__2_0.distcp",
+      "bytes": 5597708284,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__26_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__26_0.distcp",
+      "bytes": 5597303059,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__1_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__1_0.distcp",
+      "bytes": 5597708348,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__3_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__3_0.distcp",
+      "bytes": 5597708284,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__27_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__27_0.distcp",
+      "bytes": 5384398931,
+      "matched": true
+    },
+    {
+      "local": "/home/param/models/imported-weights/next-opd-v110/model/__25_0.distcp",
+      "remote": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b/model/__25_0.distcp",
+      "bytes": 5597706771,
+      "matched": true
+    }
+  ],
+  "matched": true,
+  "time": 1793505938.623033
+}

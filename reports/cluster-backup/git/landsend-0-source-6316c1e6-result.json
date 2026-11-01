@@ -1,0 +1,30 @@
+{
+  "host": "landsend-0",
+  "repo": "/home/param/training-registry/source",
+  "common": "/home/param/training-registry/source/.git",
+  "commit": "2bb183f173fb9ffded786d03d29a569bfd550af3",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-0-source-6316c1e6.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/home/param/training-registry/source",
+      "common": "/home/param/training-registry/source/.git",
+      "branch": "codex/registry-snapshot",
+      "original_head": "4054908fc69473a80df5514efa7f0d65b1d516a1",
+      "staged_commit": null,
+      "working_commit": "f331210769f8567d2851f591c6eb98cdefaa7b58",
+      "tree": "9b76c27b08a188a5892e6201c860c9497546aa44",
+      "excluded": [],
+      "untracked_added": 0,
+      "status_count": 0,
+      "remotes": [
+        "origin\thttps://huggingface.co/InternalCan/training-registry (fetch)",
+        "origin\thttps://huggingface.co/InternalCan/training-registry (push)"
+      ]
+    }
+  ],
+  "local_branches": [
+    "refs/heads/codex/registry-snapshot 4054908fc69473a80df5514efa7f0d65b1d516a1",
+    "refs/heads/master 3c8a7702972a52682bfff33a909a5292c7839d47"
+  ]
+}

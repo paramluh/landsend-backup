@@ -1,0 +1,166 @@
+{
+  "host": "landsend-1",
+  "repo": "InternalCan/landsend-checkpoints-backup-param",
+  "tasks": [
+    {
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
+      "bytes": 88012758862,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/saves/step-00200",
+      "bytes": 87900267595,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/saves/step-00200",
+      "bytes": 141225807319,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/pose-cb01-text-lr15e4-20261028/saves/step-00200",
+      "bytes": 129111010600,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/pose-cb01-text-lr3e4-20261028/saves/step-00200",
+      "bytes": 129111010600,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/saves/step-00200",
+      "bytes": 86944436155,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/saves/step-00167",
+      "bytes": 141225807319,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/saves/step-00167",
+      "bytes": 86944436155,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
+      "bytes": 76217785840,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/resume",
+      "bytes": 76217785840,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/export",
+      "bytes": 14669573283,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/models/transcript-pose/aligned-media/export-200",
+      "bytes": 88378481623,
+      "weight_files": 57
+    },
+    {
+      "source": "/home/param/models/transcript-pose/compact-all/export-200",
+      "bytes": 88378481623,
+      "weight_files": 57
+    },
+    {
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/exports/export-200",
+      "bytes": 12350541496,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-200",
+      "bytes": 23817707927,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/pose-cb01-text-lr15e4-20261028/exports/export-200",
+      "bytes": 21519989160,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/pose-cb01-text-lr3e4-20261028/exports/export-200",
+      "bytes": 21519989160,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-200",
+      "bytes": 12350541496,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-167",
+      "bytes": 23817707927,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-167",
+      "bytes": 12350541496,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-133",
+      "bytes": 23817707927,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-133",
+      "bytes": 12350541496,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/export",
+      "bytes": 12704171986,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-100",
+      "bytes": 23817707927,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-100",
+      "bytes": 12350541496,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-67",
+      "bytes": 23817707927,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-67",
+      "bytes": 12350541496,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000060/export",
+      "bytes": 12704171986,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000036/export",
+      "bytes": 14669573283,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-33",
+      "bytes": 23817707927,
+      "weight_files": 9
+    },
+    {
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-33",
+      "bytes": 12350541496,
+      "weight_files": 8
+    },
+    {
+      "source": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/export",
+      "bytes": 12704171986,
+      "weight_files": 8
+    }
+  ]
+}
