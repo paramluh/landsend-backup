@@ -70,6 +70,10 @@ def main():
             if not receipt.exists() or json.loads(receipt.read_text()).get('state')!='verified':continue
             for r in json.loads(manifest.read_text()):
                 if not r.get('error'):old[r['path']]=(r['bytes'],r['mtime_ns'])
+        for aliases in (B.BASE/'archives').glob('artifacts*/aliases.json'):
+            for item in json.loads(aliases.read_text()):
+                original='/'+item['target'];alias='/'+item['path']
+                if original in old:old[alias]=old[original]
         rows=[r for r in rows if old.get(r['path'])!=(r['bytes'],r['mtime_ns'])]
     B.atomic_json(B.BASE/'selection.json',rows)
     B.atomic_json(B.BASE/'symlinks.json',links);B.atomic_json(B.BASE/'empty-directories.json',empty);B.atomic_json(B.BASE/'exclusions.json',skipped)

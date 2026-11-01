@@ -8,10 +8,11 @@ def main():
     ap.add_argument('download',type=Path)
     ap.add_argument('--destination',type=Path,required=True)
     ap.add_argument('--host',help='Restore only this host; otherwise each host gets a separate subdirectory')
-    ap.add_argument('--include-partial',action='store_true',help='Also restore verified archives from incomplete sets, with warnings')
+    ap.add_argument('--complete-only',action='store_true',help='Skip verified archive parts belonging to incomplete sets')
     args=ap.parse_args();root=args.destination.resolve();root.mkdir(parents=True,exist_ok=True)
     sets=list(args.download.rglob('COMPLETE.json'))
-    if args.include_partial:sets+=list(args.download.rglob('PARTIAL.json'))
+    if not args.complete_only:sets+=list(args.download.rglob('PARTIAL.json'))
+    pending_aliases=[];pending_symlinks=[]
     for complete in sorted(sets):
         data=json.loads(complete.read_text())
         if 'archives' not in data:continue
@@ -37,8 +38,46 @@ def main():
             for item in json.loads(aliases.read_text()):
                 source=(dest/item['target']).resolve();target=(dest/item['path']).resolve()
                 if dest not in source.parents or dest not in target.parents:raise RuntimeError('Unsafe alias')
-                target.parent.mkdir(parents=True,exist_ok=True)
-                if not target.exists():os.link(source,target)
+                pending_aliases.append((source,target))
+        directories=complete.parent/'metadata/empty-directories.json'
+        if directories.exists():
+            for name in json.loads(directories.read_text()):
+                directory=(dest/name.lstrip('/')).resolve()
+                if dest not in directory.parents:raise RuntimeError('Unsafe empty directory')
+                directory.mkdir(parents=True,exist_ok=True)
+        symlinks=complete.parent/'metadata/symlinks.json'
+        if symlinks.exists():
+            pending_symlinks.extend((dest,item) for item in json.loads(symlinks.read_text()))
+    # Apply after all baseline/delta sets. A surviving alias can also recover
+    # the canonical pathname of a rotating snapshot pruned during backup.
+    remaining=pending_aliases
+    while remaining:
+        deferred=[];progress=False
+        for source,target in remaining:
+            if target.exists() and source.exists():continue
+            if source.exists():
+                target.parent.mkdir(parents=True,exist_ok=True);os.link(source,target);progress=True
+            elif target.exists():
+                source.parent.mkdir(parents=True,exist_ok=True);os.link(target,source);progress=True
+            else:deferred.append((source,target))
+        if not progress:
+            if deferred:print('WARNING: unresolved hardlink aliases:',len(deferred),flush=True)
+            break
+        remaining=deferred
+    external=0
+    for dest,item in pending_symlinks:
+        link=dest/item['path'].lstrip('/')
+        original=item['target']
+        if original.startswith('/'):
+            if not original.startswith(('/home/param/','/tmp/')):external+=1;continue
+            target=dest/original.lstrip('/')
+        else:target=link.parent/original
+        target=target.resolve()
+        if dest not in link.resolve().parents or dest not in target.parents:external+=1;continue
+        if link.exists() or link.is_symlink():continue
+        link.parent.mkdir(parents=True,exist_ok=True)
+        link.symlink_to(os.path.relpath(target,link.parent))
+    if external:print('External/system symlinks left in metadata for manual review:',external)
     print('Restore finished:',root)
 
 if __name__=='__main__':main()
