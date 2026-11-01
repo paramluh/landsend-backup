@@ -1,0 +1,11 @@
+{
+  "state": "passed",
+  "repo": "InternalCan/landsend-artifacts-backup-param",
+  "revision": "3d8e7c4845e153a0b6f99807b06cb207c16ad563",
+  "archive": "landsend-1/datasets/part-0000.tar.zst",
+  "archive_sha256": "f30dc28e0a6acd796c33ea5a79d596a44ea17773bf68b14e6d8d9b5e1b25baa7",
+  "restored_files_verified": [
+    "home/param/datasets/aloe-duplex/DATASET_READY.json",
+    "home/param/datasets/zoom-strangers-5k/DATASET_READY.json"
+  ]
+}

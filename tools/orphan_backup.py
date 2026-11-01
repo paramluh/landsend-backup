@@ -121,7 +121,7 @@ def gather():
         reason=None
         if excluded(p):reason='credential_or_regenerable_cache'
         elif BASE.parent in p.parents:reason='backup_workspace'
-        elif p.suffix=='.tar' and 'datasets' not in p.parts:reason='source_archive_with_possible_embedded_credentials; expanded source backed up separately'
+        elif p.suffix=='.tar' and 'datasets' not in p.parts:reason='source_archive_preserved_by_separate_sanitized_source_archives_group'
         elif 'pose-mono-dcp227-export' in p.parts:reason='checkpoint_agent_scope'
         try:s=p.lstat()
         except OSError:continue

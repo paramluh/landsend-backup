@@ -1,0 +1,17 @@
+{
+  "total_parts": 79,
+  "targets": [
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449147304861981.tar.gz",
+      "expected_part": "part-0051.tar.zst"
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449335445611894.tar.gz",
+      "expected_part": "part-0051.tar.zst"
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449370252348769.tar.gz",
+      "expected_part": "part-0051.tar.zst"
+    }
+  ]
+}

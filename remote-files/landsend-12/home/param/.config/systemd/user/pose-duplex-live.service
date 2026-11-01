@@ -1,0 +1,15 @@
+[Unit]
+Description=Raw pose duplex export-424 live inference
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/param/websites/pose-duplex-engine
+ExecStart=/home/param/websites/pose-duplex-engine/start_live.sh
+Restart=on-failure
+RestartSec=15
+StandardOutput=append:/home/param/runs/pose-runs/pose-sites-20261030/duplex-live/service.log
+StandardError=append:/home/param/runs/pose-runs/pose-sites-20261030/duplex-live/service.log
+
+[Install]
+WantedBy=default.target

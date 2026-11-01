@@ -1,12 +1,12 @@
 {
   "state": "uploading",
   "host": "landsend-2",
-  "source": "/home/param/models/transcript-pose/aligned-media/export-200",
-  "prefix": "hosts/landsend-2/models/transcript-pose/aligned-media/export-200",
-  "bytes": 88378491092,
-  "completed_tasks": 13,
+  "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-67",
+  "prefix": "hosts/landsend-2/pose-runs/no-text-audio-pose-20261028/exports/export-67",
+  "bytes": 21516683960,
+  "completed_tasks": 28,
   "total_tasks": 37,
   "attempt": 1,
-  "time": 1793507215.751126,
+  "time": 1793507570.7405338,
   "started": 1793505842.8640044
 }

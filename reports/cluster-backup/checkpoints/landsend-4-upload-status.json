@@ -1,12 +1,12 @@
 {
   "state": "uploading",
   "host": "landsend-4",
-  "source": "/home/param/models/trained-weights/pose-duplex-first-band-20261030/checkpoints/pose-duplex-first-band-20261030/dcp-227",
-  "prefix": "hosts/landsend-4/models/trained-weights/pose-duplex-first-band-20261030/checkpoints/pose-duplex-first-band-20261030/dcp-227",
-  "bytes": 117322947522,
-  "completed_tasks": 12,
+  "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-133",
+  "prefix": "hosts/landsend-4/pose-runs/transcript-audio-pose-20261028/exports/export-133",
+  "bytes": 12350544552,
+  "completed_tasks": 23,
   "total_tasks": 39,
   "attempt": 1,
-  "time": 1793507177.386142,
+  "time": 1793507595.6883135,
   "started": 1793505842.8498242
 }

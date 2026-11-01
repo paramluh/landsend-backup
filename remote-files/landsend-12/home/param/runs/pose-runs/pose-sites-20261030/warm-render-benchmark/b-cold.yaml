@@ -1,0 +1,42 @@
+audio:
+  cross_attention_codes: 4
+  drop: 2
+  in_dim: 512
+  injection_interval: 3
+  injection_offset: 4
+  max_blocks: 8
+  model_name: /home/param/models/mimi
+  num_codebooks: 16
+  num_layers: 4
+batch_size: 1
+compile: true
+cuda_graph: true
+fps: 25
+max_latent_frames: 28
+mimi_file: mimi_local.safetensors
+minimum_latent_frames: 28
+output_dir: /home/param/runs/pose-runs/pose-sites-20261030/warm-render-benchmark/b-cold
+pose_file: pose_latents_electron_v3.safetensors
+refs:
+  actor_id: ddb967bd-fd26-46ea-8eea-cfa9297879cf
+  bank: /home/param/datasets/pose-demo/prompts/heldout_01/reference-bank
+  clip_key: recordings/56a7b2ec313db5a206552cdfd31157715cf482c5/speaker_2/segments/000011
+renoising: false
+resolving:
+  checkpoint_path: /home/param/models/trained-weights/full-gt-nine-ref-endpoint-unguided-20261020/step-002911/student.safetensors
+  num_history: 2
+  num_present: 1
+  num_steps: 1
+  t_start: 0.2
+runtime_audio_guidance_scale: 1.0
+sample_dir: /home/param/runs/pose-runs/pose-sites-20261030/playground/runs/20261030-235733-0277/avatar-render/diffusion/inputs
+seed: 0
+stabilising:
+  checkpoint_path: /home/param/models/trained-weights/full-gt-nine-ref-endpoint-unguided-20261020/step-002911/student.safetensors
+  history_t: 0.2
+  num_history: 3
+  num_present: 4
+  substeps: 2
+type: universal_wide_bimodal
+vae_path: /home/param/models/wan22-vae/Wan2.2_VAE.pth
+wavefront: true

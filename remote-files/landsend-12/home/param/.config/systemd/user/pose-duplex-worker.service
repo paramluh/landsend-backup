@@ -1,0 +1,15 @@
+[Unit]
+Description=Raw pose duplex export-424 batch inference
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/param/websites/pose-playground
+ExecStart=/home/param/websites/pose-duplex-engine/start_worker.sh
+Restart=on-failure
+RestartSec=15
+StandardOutput=append:/home/param/runs/pose-runs/pose-sites-20261030/duplex-worker.log
+StandardError=append:/home/param/runs/pose-runs/pose-sites-20261030/duplex-worker.log
+
+[Install]
+WantedBy=default.target

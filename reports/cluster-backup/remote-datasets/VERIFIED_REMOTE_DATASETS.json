@@ -1,0 +1,482 @@
+{
+  "state": "complete",
+  "hf_repo": "InternalCan/landsend-artifacts-backup-param",
+  "verified_at_revision": "a074dc6aceaf7046d6646761e88808910c7adffc",
+  "remote_nodes": 6,
+  "remote_regular_files": 316766,
+  "remote_bytes_hashed": 1872762324435,
+  "files_matched_to_existing_hf": 145946,
+  "files_matched_to_node0_archives": 167364,
+  "unique_files_uploaded": 3454,
+  "unique_bytes_uploaded": 20727001641,
+  "cross_node_aliases": 2,
+  "symlinks_recorded": 54,
+  "errors": [],
+  "nodes": [
+    {
+      "host": "landsend-1",
+      "state": "verified",
+      "files": 52161,
+      "GiB": 286.9429158670828,
+      "matched": 52159,
+      "original_hf_matches": 24291,
+      "node0_archive_matches": 27868,
+      "upload_required": 2,
+      "upload_GiB": 2.4009495973587036e-06,
+      "errors": [],
+      "symlinks": 9,
+      "seconds": 546.9830095767975,
+      "unique_files_uploaded": 2,
+      "unique_bytes_uploaded": 2578,
+      "cross_node_aliases": 0,
+      "archives": 1
+    },
+    {
+      "host": "landsend-2",
+      "state": "verified",
+      "files": 52161,
+      "GiB": 286.9429158670828,
+      "matched": 52158,
+      "original_hf_matches": 24291,
+      "node0_archive_matches": 27867,
+      "upload_required": 3,
+      "upload_GiB": 3.1692907214164734e-06,
+      "errors": [],
+      "symlinks": 9,
+      "seconds": 571.1866185665131,
+      "unique_files_uploaded": 3,
+      "unique_bytes_uploaded": 3403,
+      "cross_node_aliases": 0,
+      "archives": 1
+    },
+    {
+      "host": "landsend-3",
+      "state": "verified",
+      "files": 52161,
+      "GiB": 286.9429158670828,
+      "matched": 52154,
+      "original_hf_matches": 24291,
+      "node0_archive_matches": 27863,
+      "upload_required": 7,
+      "upload_GiB": 1.106318086385727e-05,
+      "errors": [],
+      "symlinks": 9,
+      "seconds": 531.5743689537048,
+      "unique_files_uploaded": 7,
+      "unique_bytes_uploaded": 11879,
+      "cross_node_aliases": 0,
+      "archives": 1
+    },
+    {
+      "host": "landsend-4",
+      "state": "verified",
+      "files": 52176,
+      "GiB": 286.94344411604106,
+      "matched": 52169,
+      "original_hf_matches": 24291,
+      "node0_archive_matches": 27878,
+      "upload_required": 7,
+      "upload_GiB": 1.106318086385727e-05,
+      "errors": [],
+      "symlinks": 9,
+      "seconds": 524.2388601303101,
+      "unique_files_uploaded": 6,
+      "unique_bytes_uploaded": 9760,
+      "cross_node_aliases": 1,
+      "archives": 1
+    },
+    {
+      "host": "landsend-5",
+      "state": "verified",
+      "files": 55808,
+      "GiB": 309.28191493079066,
+      "matched": 52374,
+      "original_hf_matches": 24491,
+      "node0_archive_matches": 27883,
+      "upload_required": 3434,
+      "upload_GiB": 19.303502678871155,
+      "errors": [],
+      "symlinks": 9,
+      "seconds": 208.3952124118805,
+      "unique_files_uploaded": 3433,
+      "unique_bytes_uploaded": 20726970787,
+      "cross_node_aliases": 1,
+      "archives": 12
+    },
+    {
+      "host": "landsend-12",
+      "state": "verified",
+      "files": 52299,
+      "GiB": 287.0917229875922,
+      "matched": 52296,
+      "original_hf_matches": 24291,
+      "node0_archive_matches": 28005,
+      "upload_required": 3,
+      "upload_GiB": 3.0118972063064575e-06,
+      "errors": [],
+      "symlinks": 9,
+      "seconds": 179.6370713710785,
+      "unique_files_uploaded": 3,
+      "unique_bytes_uploaded": 3234,
+      "cross_node_aliases": 0,
+      "archives": 1
+    }
+  ],
+  "verified_uploaded_objects": [
+    {
+      "hf_path": "landsend-0/datasets/part-0000.tar.zst",
+      "sha256": "c8cf16fb1f63c5441615b9da5122460246ad653be7e0d68236e0721e181d2115",
+      "bytes": 1632199376,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-0/datasets/part-0001.tar.zst",
+      "sha256": "8661857690a0fe17295b99bfba2359273a895499374dd1bdae649b445875fddd",
+      "bytes": 1632063997,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-0/datasets/part-0002.tar.zst",
+      "sha256": "aec4a0f334fca58b7c670029234e0e25d4f9e67453ec2025df32b1aa4acfc8d3",
+      "bytes": 1631848547,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-0/datasets/part-0003.tar.zst",
+      "sha256": "0543b6b4eed0ad32174701fb166d3e29ac0c8ec9936787e6965d5134aa7a9a5f",
+      "bytes": 569640358,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-0/datasets/part-0004.tar.zst",
+      "sha256": "f4d3f7d26df366f409ac7e45a55ba527833ac147160ae94ee9a7cdfbc6a20585",
+      "bytes": 594150363,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-0/datasets/part-0005.tar.zst",
+      "sha256": "8dab86b496c8056b73aa92b4241095abc5dceafaf543c8ec5d1c2338a1ddc4ed",
+      "bytes": 698129439,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-0/datasets/part-0006.tar.zst",
+      "sha256": "2a224c65af95c075b5dfdfb246eb5a9eed8c95050a8c2a33814d54f3b0433a42",
+      "bytes": 595397364,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-0/datasets/part-0007.tar.zst",
+      "sha256": "df14f04c36b29d08472ce92b20b514e1f75a65bff1ade6cb97084ed275fbc147",
+      "bytes": 698460179,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-0/datasets/part-0008.tar.zst",
+      "sha256": "b28f8f6601833491439bdb7ca801f75b84b6f8f8b9596ef46dd08da139703bf9",
+      "bytes": 593934651,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-0/datasets/part-0009.tar.zst",
+      "sha256": "2a7efb6ba1c8a5254987fc03d4693ec89b1f9b0de4846f2f89854b0b2442d7cf",
+      "bytes": 697201252,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-0/datasets/part-0010.tar.zst",
+      "sha256": "8be02b9e9de63fc60c6345a1b17450880e3004bdf50fc4b94ca043b350364a96",
+      "bytes": 597635550,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-0/datasets/part-0011.tar.zst",
+      "sha256": "4a39687eb69b92668a170a035ff29dd9994b000bf8276fc41804f3d364ccd453",
+      "bytes": 885910532,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-1/datasets/part-0000.tar.zst",
+      "sha256": "f30dc28e0a6acd796c33ea5a79d596a44ea17773bf68b14e6d8d9b5e1b25baa7",
+      "bytes": 1319,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-2/datasets/part-0000.tar.zst",
+      "sha256": "41c2e025c19db651e5f47a97b3ccb9b0d3a2e05f4eeb55404c352b4387bd1260",
+      "bytes": 1720,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-3/datasets/part-0000.tar.zst",
+      "sha256": "3643af7c34258deb9d32d54d192a59592f24eaf0a865c0c9f1331e5f9076dab5",
+      "bytes": 3090,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-4/datasets/part-0000.tar.zst",
+      "sha256": "e0d502f9e71a3be2fdf1791ac4d4dc86c53df986a3f285689a940483ba020f0f",
+      "bytes": 2951,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0000.tar.zst",
+      "sha256": "47109bfbc85c0f554aaeb0d37848197b7b664158d16b36bf2db0e467c2989b49",
+      "bytes": 1710978284,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0001.tar.zst",
+      "sha256": "ff945cde9a8985c00dcba9888321934e1e218cb5b0c1d924a575333c29f156b4",
+      "bytes": 1373488684,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0002.tar.zst",
+      "sha256": "4b85b6255a280d0534367e77fd21deaa151c45d04a763268ee5d1078c7e4b4f3",
+      "bytes": 1423802226,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0003.tar.zst",
+      "sha256": "1c9b05133e2b11e4c980eecca79b705adc18e61eebc33fec6f830f95dc17ea95",
+      "bytes": 1448764751,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0004.tar.zst",
+      "sha256": "057456a6ef025c438f616de7459800bc4ac934b7ab9dd1c0851903c072a1733c",
+      "bytes": 1419993508,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0005.tar.zst",
+      "sha256": "ec52fd88b07d6757fe28d9d0144d95bfdbb909fb5070e9d6cba882e85df8bc1b",
+      "bytes": 1432540219,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0006.tar.zst",
+      "sha256": "ed3689e70ac46e7081ce6eb055c971f0884c95c0f15e156556ebcc6dc35a09a7",
+      "bytes": 1418868536,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0007.tar.zst",
+      "sha256": "2285fff3aefa15f8b3015f2f577568b1c33e342c1532620d0ccc6b76277acd97",
+      "bytes": 2102538413,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0008.tar.zst",
+      "sha256": "34b1f5d0812a5ad225c0826a20c34bc6b79ca7c126c02f4ee3175bbf2d909057",
+      "bytes": 2089998562,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0009.tar.zst",
+      "sha256": "b47918f8b4f853347a5c715017d1da6092c55eee0d4495d54ea5c3026e967434",
+      "bytes": 2093520116,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0010.tar.zst",
+      "sha256": "9ec0c74eadaf4c70eee4680b01bc2a8355757ee4615d3440f6501fb4a3f9ef12",
+      "bytes": 2069263746,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/part-0011.tar.zst",
+      "sha256": "93f0d40e0a2320d153ec356ea8bba483862dda8086e2b83e7314dd148dba88ee",
+      "bytes": 1288299193,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-12/datasets/part-0000.tar.zst",
+      "sha256": "b56dba1a53cc5ef921e278eb1598c9e95f7f697ed4e356bf7f86c2e51e1847da",
+      "bytes": 1580,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-1/datasets/verification/SUMMARY.json",
+      "sha256": "2684527daf5c2238a94d068f324ab1165769835cd2f8f6246edf600bedd07638",
+      "bytes": 311,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-1/datasets/verification/verification.json",
+      "sha256": "0ba85077d3ad0673f661ee1a4a9c9136b05df06b3792efceb9250674b500f4a4",
+      "bytes": 46575631,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-1/datasets/verification/upload-required.json",
+      "sha256": "72e9149a1ecf846b4d93d0cfc4efa91aacbe093ef55a194a3f548c3b6078ecbb",
+      "bytes": 1012,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-1/datasets/verification/upload-selected.json",
+      "sha256": "72e9149a1ecf846b4d93d0cfc4efa91aacbe093ef55a194a3f548c3b6078ecbb",
+      "bytes": 1012,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-1/datasets/verification/cross-node-aliases.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-2/datasets/verification/SUMMARY.json",
+      "sha256": "ab94fbe183d8300fed85f520eba295499823af7c326b01a3a2b01ecfcfe5dc9e",
+      "bytes": 311,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-2/datasets/verification/verification.json",
+      "sha256": "251b255997db2bf20bc48f878ad6d091b7cff0a9d64623992ae3283ab3ceb300",
+      "bytes": 46575369,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-2/datasets/verification/upload-required.json",
+      "sha256": "35592243533fac48568d7ceae3ca6edcf7910cd52aeb50598fd3e80aa0a0faba",
+      "bytes": 1582,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-2/datasets/verification/upload-selected.json",
+      "sha256": "35592243533fac48568d7ceae3ca6edcf7910cd52aeb50598fd3e80aa0a0faba",
+      "bytes": 1582,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-2/datasets/verification/cross-node-aliases.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-3/datasets/verification/SUMMARY.json",
+      "sha256": "83653537f77ded735d36e0044b469c9511227c7bc20c3e8733c9f265e7b06e0c",
+      "bytes": 310,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-3/datasets/verification/verification.json",
+      "sha256": "4ed991a74fe4cf35b84b7ab2118932ddbaf6b36b4b967092528b8b5c37cb201a",
+      "bytes": 46574381,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-3/datasets/verification/upload-required.json",
+      "sha256": "3f606b8849dc01ed9e78a018fcb401d648ec476dcf39572c939daa9c7ffe0646",
+      "bytes": 3770,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-3/datasets/verification/upload-selected.json",
+      "sha256": "3f606b8849dc01ed9e78a018fcb401d648ec476dcf39572c939daa9c7ffe0646",
+      "bytes": 3770,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-3/datasets/verification/cross-node-aliases.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-4/datasets/verification/SUMMARY.json",
+      "sha256": "1582ff16dd18372a16546cbbd54eaffce7bb34c320655d9f0627a09441357fde",
+      "bytes": 311,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-4/datasets/verification/verification.json",
+      "sha256": "57fedf9ff135b25bb27212af87ab11a73d91ee1058f51db712c2c83ce29d4e3c",
+      "bytes": 46587888,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-4/datasets/verification/upload-required.json",
+      "sha256": "4adfccc6862f70b48f73fa894bc00fb09cc46571525487696ebff34254daf7a0",
+      "bytes": 3770,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-4/datasets/verification/upload-selected.json",
+      "sha256": "4d842ed9a039200b3cddaaf43fd586e7a43ea6a72269fe9981ad366feabdc9b6",
+      "bytes": 3223,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-4/datasets/verification/cross-node-aliases.json",
+      "sha256": "c379d235cf8fb0bf42f822e0d5e7a543678a218ad5e59dee0e7e271bc04ebc33",
+      "bytes": 395,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/verification/SUMMARY.json",
+      "sha256": "82edca22dca90e96b1ff382544764893b24ecfc832484f6c8bc019bcf81cfb5e",
+      "bytes": 311,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/verification/verification.json",
+      "sha256": "53d46e756b93788c636d954c92ac5d99d6a76e7f8832ab64f704b206743bae97",
+      "bytes": 49024607,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/verification/upload-required.json",
+      "sha256": "877cd4743fd71819e477bc7aa051b4f32107fc17cf289a253cea63919c9cef9b",
+      "bytes": 2560322,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/verification/upload-selected.json",
+      "sha256": "de0df0c27fce8620e6b24e8a988eee54491e53e70a3905c49f7cb6837b0da30f",
+      "bytes": 2559792,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-5/datasets/verification/cross-node-aliases.json",
+      "sha256": "68d2e161bb54278fd321bad059c17fedeed0ee19fbba23018bf1a556d536bf5d",
+      "bytes": 383,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-12/datasets/verification/SUMMARY.json",
+      "sha256": "7d6befffdfb570818551323a2c85b3a5e37fcd4abac50fa789274edb0caf2c60",
+      "bytes": 312,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-12/datasets/verification/verification.json",
+      "sha256": "94faf57057754479b29cbf4409cf2d438ad72c29f2b8140d0522dfed8672f3c4",
+      "bytes": 46693874,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-12/datasets/verification/upload-required.json",
+      "sha256": "aa3af881c87fe1ecf962bf7b1f0d8448ed7a3dfc9943ac06f56e129c60eda67b",
+      "bytes": 1516,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-12/datasets/verification/upload-selected.json",
+      "sha256": "aa3af881c87fe1ecf962bf7b1f0d8448ed7a3dfc9943ac06f56e129c60eda67b",
+      "bytes": 1516,
+      "verified": true
+    },
+    {
+      "hf_path": "landsend-12/datasets/verification/cross-node-aliases.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3,
+      "verified": true
+    }
+  ],
+  "completed_unix": 1793507440.9203732
+}

@@ -1,0 +1,49 @@
+{
+  "state": "verified",
+  "repo": "InternalCan/landsend-artifacts-backup-param",
+  "revision": "fc241a8d028b47e0fb862d0dc5e99e5b698f8b6a",
+  "files": [
+    {
+      "path": "datasets-audit/VERIFIED_REMOTE_DATASETS.json",
+      "bytes": 15857,
+      "sha256": "9284ffa0d0b3749ba0ef41e90e2d8d3c7273561691f091cba6e483d15c85b404"
+    },
+    {
+      "path": "datasets-audit/README.md",
+      "bytes": 2414,
+      "sha256": "2c6051726943505eb383b8cc7040db8066afcd8789e316c21e2f0a412ae9b97c"
+    },
+    {
+      "path": "datasets-audit/restore_remote_dataset.py",
+      "bytes": 4399,
+      "sha256": "0de6a72c4eb0ea08754ff383b1bb44426aac76a5fc5a81122f605bbe90d94815"
+    },
+    {
+      "path": "datasets-audit/node0-derived-archive-proof.json",
+      "bytes": 5297,
+      "sha256": "4c1ebd78f008645f315657d9676d078d79a00b26739fabfe35c3714083429bc2"
+    },
+    {
+      "path": "datasets-audit/catalog-uploaded.json",
+      "bytes": 289,
+      "sha256": "68d56ea03af1ae550d42cb77ef8be0b7fda1b399e236f6e9b2e10855cb3ef2f5"
+    },
+    {
+      "path": "datasets-audit/upload-plan.json",
+      "bytes": 1047,
+      "sha256": "a3ca29be4d9cb055e1acdf24f81efaa0dc67cf0d1a04af278b6e2b2089b82987"
+    },
+    {
+      "path": "datasets-audit/restore-test.json",
+      "bytes": 221,
+      "sha256": "82f7d5c87364434ef91fc21ccd49cb016d62ea023166bb837c5ea88df7223646"
+    },
+    {
+      "path": "datasets-audit/remote-download-restore-test.json",
+      "bytes": 438,
+      "sha256": "7e7d841be2859ecfcdc3cd095438e6865d61555b3671364e561441e360f18721"
+    }
+  ],
+  "all_dataset_writes_settled": true,
+  "completed_unix": 1793507444.587101
+}

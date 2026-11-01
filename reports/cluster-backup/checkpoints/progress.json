@@ -1,5 +1,5 @@
 {
-  "checked": 1793507231.4141958,
+  "checked": 1793507598.3177783,
   "states": [
     {
       "state": "complete",
@@ -13,67 +13,67 @@
     {
       "state": "uploading",
       "host": "landsend-1",
-      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-167",
-      "prefix": "hosts/landsend-1/pose-runs/no-text-audio-pose-20261028/exports/export-167",
-      "bytes": 23817712913,
-      "completed_tasks": 18,
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-33",
+      "prefix": "hosts/landsend-1/pose-runs/no-text-audio-pose-20261028/exports/export-33",
+      "bytes": 23817712911,
+      "completed_tasks": 29,
       "total_tasks": 32,
       "attempt": 1,
-      "time": 1793507203.5197308,
+      "time": 1793507554.4587681,
       "started": 1793505842.8108814,
-      "completed_bytes": 1325896924212
+      "completed_bytes": 1510648015444
     },
     {
       "state": "uploading",
       "host": "landsend-2",
-      "source": "/home/param/models/transcript-pose/aligned-media/export-200",
-      "prefix": "hosts/landsend-2/models/transcript-pose/aligned-media/export-200",
-      "bytes": 88378491092,
-      "completed_tasks": 13,
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-67",
+      "prefix": "hosts/landsend-2/pose-runs/no-text-audio-pose-20261028/exports/export-67",
+      "bytes": 21516683960,
+      "completed_tasks": 28,
       "total_tasks": 37,
       "attempt": 1,
-      "time": 1793507215.751126,
+      "time": 1793507570.7405338,
       "started": 1793505842.8640044,
-      "completed_bytes": 1281213176159
+      "completed_bytes": 1679253121595
     },
     {
       "state": "uploading",
       "host": "landsend-3",
-      "source": "/home/param/models/trained-weights/pose-duplex-first-band-20261030/checkpoints/pose-duplex-first-band-20261030/dcp-227",
-      "prefix": "hosts/landsend-3/models/trained-weights/pose-duplex-first-band-20261030/checkpoints/pose-duplex-first-band-20261030/dcp-227",
-      "bytes": 117322840554,
-      "completed_tasks": 12,
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-133",
+      "prefix": "hosts/landsend-3/pose-runs/no-text-audio-pose-20261028/exports/export-133",
+      "bytes": 21516687016,
+      "completed_tasks": 22,
       "total_tasks": 37,
       "attempt": 1,
-      "time": 1793507155.6318746,
+      "time": 1793507589.8277571,
       "started": 1793505842.7807682,
-      "completed_bytes": 1163890733566
+      "completed_bytes": 1581095505034
     },
     {
       "state": "uploading",
       "host": "landsend-4",
-      "source": "/home/param/models/trained-weights/pose-duplex-first-band-20261030/checkpoints/pose-duplex-first-band-20261030/dcp-227",
-      "prefix": "hosts/landsend-4/models/trained-weights/pose-duplex-first-band-20261030/checkpoints/pose-duplex-first-band-20261030/dcp-227",
-      "bytes": 117322947522,
-      "completed_tasks": 12,
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-133",
+      "prefix": "hosts/landsend-4/pose-runs/transcript-audio-pose-20261028/exports/export-133",
+      "bytes": 12350544552,
+      "completed_tasks": 23,
       "total_tasks": 39,
       "attempt": 1,
-      "time": 1793507177.386142,
+      "time": 1793507595.6883135,
       "started": 1793505842.8498242,
-      "completed_bytes": 1163883472247
+      "completed_bytes": 1602603501699
     },
     {
       "state": "uploading",
       "host": "landsend-5",
-      "source": "/home/param/outputs/pose-mono-dcp227-export",
-      "prefix": "hosts/landsend-5/outputs/pose-mono-dcp227-export",
-      "bytes": 17254132068,
-      "completed_tasks": 25,
+      "source": "/home/param/pose-runs/opd-next-rosie-sft-20261030/training/epoch-1/model",
+      "prefix": "hosts/landsend-5/pose-runs/opd-next-rosie-sft-20261030/training/epoch-1/model",
+      "bytes": 156476122648,
+      "completed_tasks": 28,
       "total_tasks": 32,
       "attempt": 1,
-      "time": 1793507211.5562136,
+      "time": 1793507512.0512776,
       "started": 1793505842.7908795,
-      "completed_bytes": 1120955304719
+      "completed_bytes": 1451161682099
     },
     {
       "state": "complete",
@@ -85,6 +85,6 @@
       "completed_bytes": 1206574103640
     }
   ],
-  "completed_bytes": 8199783894144,
+  "completed_bytes": 9968706109112,
   "all_complete": false
 }

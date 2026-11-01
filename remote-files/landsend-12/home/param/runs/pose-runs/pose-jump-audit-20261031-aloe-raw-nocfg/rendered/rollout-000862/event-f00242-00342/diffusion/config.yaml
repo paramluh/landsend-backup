@@ -1,0 +1,42 @@
+sample_dir: /home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000862/event-f00242-00342/diffusion/inputs
+output_dir: /home/param/runs/pose-runs/pose-jump-audit-20261031-aloe-raw-nocfg/rendered/rollout-000862/event-f00242-00342/diffusion/generation
+pose_file: pose_latents_electron_v3.safetensors
+mimi_file: mimi_local.safetensors
+type: universal_wide_bimodal
+seed: 8018024
+batch_size: 1
+max_latent_frames: 39
+minimum_latent_frames: 39
+fps: 25
+compile: true
+cuda_graph: true
+wavefront: true
+renoising: false
+runtime_audio_guidance_scale: 1.0
+vae_path: /home/param/models/wan22-vae/Wan2.2_VAE.pth
+refs:
+  bank: /home/param/datasets/pose-demo/prompts/heldout_02/reference-bank
+  actor_id: 69453b43-e5d4-4a3e-8ff2-4f970ae533db
+  clip_key: recordings/53862782b916570909322c061ce073edbb69394f/speaker_1/segments/000001
+stabilising:
+  checkpoint_path: /home/param/models/trained-weights/full-gt-nine-ref-endpoint-unguided-20261020/step-002911/student.safetensors
+  num_history: 3
+  num_present: 4
+  history_t: 0.2
+  substeps: 2
+resolving:
+  checkpoint_path: /home/param/models/trained-weights/full-gt-nine-ref-endpoint-unguided-20261020/step-002911/student.safetensors
+  num_history: 2
+  num_present: 1
+  t_start: 0.2
+  num_steps: 1
+audio:
+  model_name: /home/param/models/mimi
+  in_dim: 512
+  num_codebooks: 16
+  num_layers: 4
+  cross_attention_codes: 4
+  drop: 2
+  injection_offset: 4
+  injection_interval: 3
+  max_blocks: 8

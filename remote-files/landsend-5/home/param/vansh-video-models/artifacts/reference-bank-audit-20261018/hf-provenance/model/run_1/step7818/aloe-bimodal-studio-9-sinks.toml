@@ -1,0 +1,94 @@
+root_dir = '/home/vansh/aloe-studio/conv-4.3k-5mins-muon-neutrino-256x480-v1'
+clipnames_root = '/home/vansh/vansh-video-models/csvs'
+train_csv = '/home/vansh/aloe-studio/shard.csv'
+node_sharded = true
+pose_latents = 'pose_latents_electron_v3.safetensors'
+mimi_codes = 'mimi_local.safetensors'
+eval_csvs.seen = 'aloe-studio-seen-eval'
+eval_csvs.unseen = 'aloe-studio-unseen-eval'
+
+eval_every_n_steps = 500
+eval_step_zero = true
+num_dataloader_workers = 8
+eval_num_dataloader_workers = 4
+save_every_n_steps = 2606
+save_optimizer_every_n_steps = 2606
+output_dir = '/home/vansh/vansh-video-models/pose-checkpoints/universal-experiments/aloe-bimodal-studio-9-sinks'
+
+bad_audio = 1
+packed = true
+
+epochs = 2
+micro_batch_size_per_gpu = 2
+eval_micro_batch_size_per_gpu = 2
+gradient_accumulation_steps = 10
+gradient_clipping = 1.0
+warmup_steps = 500
+lr = 5e-5
+min_lr = 1e-5
+ema_decay = 0.9995
+
+activation_checkpointing = false
+activation_checkpoint_skip = 30
+flex_attention = true
+compile_blocks = true
+
+[loss_weights]
+stabilising = 0.8
+resolving = 0.2
+
+[stabilising]
+num_history = 3
+num_present = 4
+history_dropout = [0.1, 0.1, 0.0]
+history_t = 0.2
+history_raise_p = 0.25
+history_t_max = 0.4
+
+[resolving]
+num_history = 2
+num_present = 1
+present_t_bands = [0.2, 0.4]
+present_t_weights = [1.0, 2.0]
+
+[refs]
+bank = '/home/vansh/aloe-studio/reference-bank-256x480-muon-encoded'
+folder = 'bank'
+drop_counts = [0]
+drop_p = [1.0]
+
+[model]
+type = 'universal_wide_bimodal'
+arch = 'wan_5b_wide'
+checkpoint_path = '/home/vansh/vansh-video-models/pose-checkpoints/universal-low-resolution/h6-squeaky/run_3/step44675/model_ema.safetensors'
+ref_patch_embedding = true
+dtype = 'bfloat16'
+transformer_dtype = 'bfloat16'
+debug_shapes = true
+
+[model.audio]
+model_name = 'kyutai/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+initialization = 'zero'
+audio_dropout = 0.1
+window_seconds = 10
+history_drop_p = 0.25
+history_drop_min_seconds = 1.0
+
+[wandb]
+project = 'universal-2-models'
+run_name = 'aloe-bimodal-studio-9-sinks'
+
+[optimizer]
+type = 'stableadamw'
+betas = [0.9, 0.99]
+weight_decay = 1e-3
+eps = 1e-8

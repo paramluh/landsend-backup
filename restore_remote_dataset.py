@@ -58,6 +58,17 @@ def main():
    with source.open('rb') as src:shutil.copyfileobj(src,f,4*1024**2)
   os.chmod(temporary,r['mode']);os.utime(temporary,ns=(r['mtime_ns'],r['mtime_ns']));os.replace(temporary,dst)
   done+=1
- print(json.dumps({'verified_regular_files':done,'symlinks_in_report':len(report.get('symlinks',[])),'note':'Restore symlinks from the archived metadata with restore_archives.py.'}))
+ links=0;root=args.destination.resolve();original=Path('/home/param/datasets')
+ for row in report.get('symlinks',[]):
+  dst=child(args.destination,Path(row['path']).relative_to(original));target=row['target']
+  if Path(target).is_absolute():target=str(child(args.destination,Path(target).relative_to(original)))
+  resolved=(dst.parent/target).resolve()
+  if resolved!=root and root not in resolved.parents:raise ValueError('Dataset symlink escapes destination: '+str(dst))
+  if dst.is_symlink() and os.readlink(dst)==target:links+=1;continue
+  if os.path.lexists(dst):
+   if not args.overwrite:raise FileExistsError('Existing symlink destination differs: '+str(dst))
+   dst.unlink()
+  dst.parent.mkdir(parents=True,exist_ok=True);dst.symlink_to(target);links+=1
+ print(json.dumps({'verified_regular_files':done,'restored_symlinks':links}))
 
 if __name__=='__main__':main()

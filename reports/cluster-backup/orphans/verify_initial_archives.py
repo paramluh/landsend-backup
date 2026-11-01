@@ -34,10 +34,12 @@ def collect(node):
 
 def main():
     nodes=list(concurrent.futures.ThreadPoolExecutor(max_workers=7).map(collect,[0,1,2,3,4,5,12]))
-    result={'checked_unix':time.time(),'nodes':nodes,'hf_repo':B.HF_REPO}
-    if any(n['workers'] or any(g['state']=='in_progress' for g in n['groups']) for n in nodes):
+    dataset_receipt=B.BASE.parent/'remote-datasets/FINAL_UPLOAD.json'
+    dataset_state=json.loads(dataset_receipt.read_text()) if dataset_receipt.exists() else {}
+    result={'checked_unix':time.time(),'nodes':nodes,'hf_repo':B.HF_REPO,'dataset_final_evidence':dataset_state}
+    if not dataset_state.get('all_dataset_writes_settled') or any(n['workers'] or any(g['state']=='in_progress' for g in n['groups']) for n in nodes):
         result['state']='writers_running';B.atomic_json(B.BASE.parent/'INITIAL_ARTIFACT_VERIFICATION.json',result)
-        print(json.dumps({'state':result['state'],'workers':{n['host']:n['workers'] for n in nodes if n['workers']}}));return
+        print(json.dumps({'state':result['state'],'dataset_evidence_settled':dataset_state.get('all_dataset_writes_settled',False),'workers':{n['host']:n['workers'] for n in nodes if n['workers']}}));return
     from huggingface_hub import HfApi
     api=HfApi();info=api.repo_info(B.HF_REPO,repo_type='dataset');assert info.private;revision=info.sha
     expected={}

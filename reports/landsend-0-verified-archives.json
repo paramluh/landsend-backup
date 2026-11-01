@@ -14,6 +14,19 @@
   },
   {
     "group": "artifacts",
+    "archive": "part-0018.tar.zst",
+    "bytes": 2228676050,
+    "sha256": "47902e76ec6a3a0b101454622fefdade9eb095b356fe03cd174911611e54d269",
+    "files": 341,
+    "errors": 0,
+    "created_unix": 1793507317.2464476,
+    "revision": "6183c36f0902e682e85f8e9acbd5421d18c4b48f",
+    "upload_seconds": 14.303060531616211,
+    "state": "verified",
+    "hf_path": "landsend-0/artifacts/part-0018.tar.zst"
+  },
+  {
+    "group": "artifacts",
     "archive": "part-0000.tar.zst",
     "bytes": 1318743441,
     "sha256": "c8a64f4caa0e74f2b1543c86c3e21c192ecb05ee2a4d1d0c6056482c5e9b618d",
@@ -24,6 +37,19 @@
     "upload_seconds": 6.175568103790283,
     "state": "verified",
     "hf_path": "landsend-0/artifacts/part-0000.tar.zst"
+  },
+  {
+    "group": "artifacts",
+    "archive": "part-0025.tar.zst",
+    "bytes": 1899796321,
+    "sha256": "fa46336d940042e6703c4bf42af12ed93bb5be58ee5600a200c875f246136e46",
+    "files": 275,
+    "errors": 12,
+    "created_unix": 1793507556.6341453,
+    "revision": "52f95e1491fc6abe0df7eb3f6ebc8e806e8c8156",
+    "upload_seconds": 14.903403997421265,
+    "state": "verified",
+    "hf_path": "landsend-0/artifacts/part-0025.tar.zst"
   },
   {
     "group": "artifacts",
@@ -50,6 +76,32 @@
     "upload_seconds": 6.230381727218628,
     "state": "verified",
     "hf_path": "landsend-0/artifacts/part-0001.tar.zst"
+  },
+  {
+    "group": "artifacts",
+    "archive": "part-0020.tar.zst",
+    "bytes": 1840751128,
+    "sha256": "fd08c2208e685709bdb07b243b4ae388d14adde7daf0c6ea26e9872d83927e87",
+    "files": 85,
+    "errors": 0,
+    "created_unix": 1793507327.3639567,
+    "revision": "cba7f23206757b9ccddde4df56815208b2c1c3dc",
+    "upload_seconds": 13.795668125152588,
+    "state": "verified",
+    "hf_path": "landsend-0/artifacts/part-0020.tar.zst"
+  },
+  {
+    "group": "artifacts",
+    "archive": "part-0023.tar.zst",
+    "bytes": 1600209741,
+    "sha256": "1ecf9709da95085cb640c5bbb57f60539e1114778e706eceff78d670a4e65cfb",
+    "files": 190,
+    "errors": 0,
+    "created_unix": 1793507428.6486723,
+    "revision": "bf8ab3e26ef32abb9dc7cca1f35357755ff61560",
+    "upload_seconds": 12.868687629699707,
+    "state": "verified",
+    "hf_path": "landsend-0/artifacts/part-0023.tar.zst"
   },
   {
     "group": "artifacts",
@@ -131,6 +183,19 @@
   },
   {
     "group": "artifacts",
+    "archive": "part-0024.tar.zst",
+    "bytes": 1712612973,
+    "sha256": "1ef93f5ec83962cdb0c01f8e595428d6ca2e78a58ff6aeed9b08012a581d824d",
+    "files": 206,
+    "errors": 0,
+    "created_unix": 1793507460.9565623,
+    "revision": "388998925ac5d265bd5a404836e207cc75dacd3b",
+    "upload_seconds": 11.8063063621521,
+    "state": "verified",
+    "hf_path": "landsend-0/artifacts/part-0024.tar.zst"
+  },
+  {
+    "group": "artifacts",
     "archive": "part-0015.tar.zst",
     "bytes": 633171641,
     "sha256": "3896461e651dd57b52352ee8fb2cede0abb403958e98e3fffce255a776c7c059",
@@ -141,6 +206,19 @@
     "upload_seconds": 8.652056694030762,
     "state": "verified",
     "hf_path": "landsend-0/artifacts/part-0015.tar.zst"
+  },
+  {
+    "group": "artifacts",
+    "archive": "part-0021.tar.zst",
+    "bytes": 1725019532,
+    "sha256": "025dcd494e16865e68c4935fe301650b8b5b15ab7e15370f54e35e48300509c2",
+    "files": 137,
+    "errors": 0,
+    "created_unix": 1793507349.333346,
+    "revision": "d838045273c1d1d4b34c459fb7583e394a506b09",
+    "upload_seconds": 11.25415825843811,
+    "state": "verified",
+    "hf_path": "landsend-0/artifacts/part-0021.tar.zst"
   },
   {
     "group": "artifacts",
@@ -180,6 +258,19 @@
     "upload_seconds": 11.750278949737549,
     "state": "verified",
     "hf_path": "landsend-0/artifacts/part-0002.tar.zst"
+  },
+  {
+    "group": "artifacts",
+    "archive": "part-0022.tar.zst",
+    "bytes": 1594977181,
+    "sha256": "f09217573fae80615b84c09e07e9fe798889819d0958e78df3441991daecb88f",
+    "files": 190,
+    "errors": 0,
+    "created_unix": 1793507389.288328,
+    "revision": "dc2646df83964572526ab56f8b97d4b3befd3519",
+    "upload_seconds": 37.690346479415894,
+    "state": "verified",
+    "hf_path": "landsend-0/artifacts/part-0022.tar.zst"
   },
   {
     "group": "artifacts",
@@ -232,6 +323,19 @@
     "upload_seconds": 23.15359616279602,
     "state": "verified",
     "hf_path": "landsend-0/artifacts/part-0008.tar.zst"
+  },
+  {
+    "group": "artifacts",
+    "archive": "part-0019.tar.zst",
+    "bytes": 1859717961,
+    "sha256": "28afbe05f38a4bbcad9740acc7ee1de9736d472e2bfee19f9c7c266255f998fd",
+    "files": 97,
+    "errors": 0,
+    "created_unix": 1793507322.025548,
+    "revision": "bfc190ae3554c636d267d4062312d0f36bc3b724",
+    "upload_seconds": 13.201877117156982,
+    "state": "verified",
+    "hf_path": "landsend-0/artifacts/part-0019.tar.zst"
   },
   {
     "group": "datasets",

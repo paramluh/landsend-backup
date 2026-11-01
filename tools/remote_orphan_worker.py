@@ -60,7 +60,7 @@ def main():
             if p.suffix.lower() in {'.pt','.pth','.bin','.safetensors','.ckpt','.onnx','.gguf'} and s.st_size>=10*1024**2:
                 skipped.append({'path':str(p),'reason':'model_weight_checkpoint_agent_scope'});continue
         if p.suffix=='.tar' and 'datasets' not in p.parts:
-            skipped.append({'path':str(p),'reason':'source_archive_retained_as_expanded_source; credentials_may_be_embedded'});continue
+            skipped.append({'path':str(p),'reason':'source_archive_preserved_by_separate_sanitized_source_archives_group'});continue
         if p.suffix in {'.sqlite','.sqlite-wal','.sqlite-shm'}:continue
         rows.append({'path':str(p),'archive_path':str(p).lstrip('/'),'bytes':s.st_size,'mtime_ns':s.st_mtime_ns,'mode':stat.S_IMODE(s.st_mode),'inode':[s.st_dev,s.st_ino]})
     if args.delta:

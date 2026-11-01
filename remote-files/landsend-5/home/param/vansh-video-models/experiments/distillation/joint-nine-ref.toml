@@ -1,0 +1,106 @@
+# Five-node deployment; source assets and the rebuilt actor bank are on paramfs.
+# All ranks read the SAME full-corpus CSV and actor bank; no node-local shards.
+root_dir = '/mnt/paramfs/vansh/aloe-conversational/conv-4.3k-5mins-muon-neutrino-256x480-v1'
+clipnames_root = '/mnt/paramfs/param/outputs/joint-nine-ref-20261018/assets/data'
+train_csv = 'aloe-studio-no-blackbands-high-quality-no-crossbleed.csv'
+node_sharded = false
+pose_latents = 'pose_latents_electron_v3.safetensors'
+mimi_codes = 'mimi_local.safetensors'
+bad_audio = true
+output_dir = '/mnt/paramfs/param/outputs/joint-nine-ref-20261018/training'
+seed = 42
+epoch = 0
+epochs = 1
+
+# Global batch is TARGET FRAMES per objective: 40 four-target rows each.
+# Accumulate a full stabilizer batch then a full resolver batch before stepping.
+# At 40 GPUs this takes one microbatch/mode; at 8 GPUs it takes five/mode.
+global_batch_size = 160
+micro_batch_size_per_gpu = 1
+objective_schedule = ['stabilizer', 'resolver']
+# Same coefficient for critic FM and student DMD, applied to each mode's mean.
+# Nine-reference universal FM: five equally weighted noise-band slots,
+# grouped as four stabilizer slots and one resolver slot. Bimodal FM agrees.
+objective_weights = {stabilizer = 0.8, resolver = 0.2}
+critic_updates = 4
+# Extra warmup does not consume the student's one full epoch.
+critic_warmup_steps = 150
+band_steps = [2, 2, 2, 2]
+history_t = 0.2
+# Intentional user-selected asymmetry: student10frames, critic7frames.
+stabilizer_prefix_frames = 6
+critic_prefix_frames = 3
+# Independent drop probabilities, nearest prefix frame first. Bootstrap
+# generation stays undropped; one sticky mask conditions targets and scoring.
+# All four tracked targets stay valid, including as later target conditioning.
+stabilizer_history_dropout = [0.0, 0.1, 0.2, 0.2]
+teacher_guidance_scale = 2.5
+resolver_steps = 1
+# Existing GT resolver's parent-window categorical history dropout.
+# Effective packed-resolver effect: first target's older history drops 10%.
+resolver_history_dropout = [0.1, 0.1, 0.0]
+res_t_min = 0.02
+res_t_max = 0.2
+normalizer_epsilon = 1e-8
+gradient_clipping = 2.0
+lr_warmup_steps = 100
+critic_lr_warmup_steps = 200
+lr_final_ratio = 0.1
+ema_decay = 0.999
+compile_mode = 'block'
+compile_blocks = true
+cache_references = true
+compile_cache_size_limit = 64
+compile_accumulated_cache_size_limit = 256
+checkpoint = 'block'
+shard_teacher = true
+num_dataloader_workers = 4
+prefetch_factor = 2
+
+# Keep eight completed raw student/critic/EMA sets, latest optimizer + RNG state.
+# Every 1,000 total rounds plus manual/final saves; every save has eval.
+# Retention also applies at resume startup.
+save_every_n_steps = 1000
+checkpoint_keep_last = 8
+eval_weights = 'raw' # 'both' also evaluates EMA; doubles probe work.
+sensitivity_frames = 8
+sensitivity_seeds = [1729]
+sensitivity_rms = 0.01
+sensitivity_history_indices = [0, 1, 2]
+sensitivity_reference_indices = [0, 4, 8] # Set 0..8 for all nine properties.
+
+[refs]
+bank = '/mnt/paramfs/param/outputs/reference-bank-rebuild-20261018/studio-training-policy/reference-bank-256x480-muon-encoded'
+require_validated_bank = true
+train_split = 'bank'
+drop_counts = [0]
+drop_p = [1.0]
+
+[model]
+num_refs = 9
+checkpoint_path = '/mnt/paramfs/param/outputs/joint-nine-ref-20261018/assets/teacher/run_1/step10424/model_ema.safetensors'
+
+[model.audio]
+model_name = '/mnt/paramfs/param/outputs/joint-nine-ref-20261018/assets/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+
+[optimizer]
+lr = 2e-6
+betas = [0.9, 0.99]
+weight_decay = 1e-4
+eps = 1e-8
+
+[wandb]
+enabled = true
+mode = 'online'
+entity = 'canopy-labs'
+project = 'param-distillation'
+run_name = 'joint-nine-ref-nogt-guided-paired160-weight4to1-epoch'

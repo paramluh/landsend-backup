@@ -1,0 +1,128 @@
+# Single-target full-GT distillation, with nine actor-bank references.
+# All ranks read the SAME studio-only corpus CSV; no node-local shards.
+training_method = 'full_gt_single_target'
+root_dir = '/mnt/paramfs/vansh/aloe-conversational/conv-4.3k-5mins-muon-neutrino-256x480-v1'
+clipnames_root = '/mnt/paramfs/param/outputs/joint-nine-ref-20261018/assets/data'
+train_csv = 'aloe-studio-no-blackbands-high-quality-no-crossbleed.csv'
+node_sharded = false
+pose_latents = 'pose_latents_electron_v3.safetensors'
+mimi_codes = 'mimi_local.safetensors'
+bad_audio = true
+output_dir = '/mnt/paramfs/param/outputs/full-gt-nine-ref/training'
+seed = 42
+epoch = 0
+epochs = 1
+# Train this many student updates within the unchanged full-corpus epoch plan.
+max_student_steps = 8000
+
+# Each objective uses 160 SINGLE-TARGET rows on 40 GPUs. Source microbatches
+# stay at two rows; regroup prepared inputs for each model execution policy.
+global_batch_size = 160
+micro_batch_size_per_gpu = 2
+rollout_pool_batch_size_per_gpu = 16
+critic_stabilizer_micro_batch_size = 4
+critic_resolver_micro_batch_size = 4
+student_stabilizer_micro_batch_size = 2
+student_resolver_micro_batch_size = 4
+critic_stabilizer_checkpoint = 'block'
+critic_resolver_checkpoint = 'block'
+student_stabilizer_checkpoint = 'block'
+student_resolver_checkpoint = 'block'
+reference_checkpoint = 'block'
+full_gt_trim = false
+full_gt_pool_trim = true
+objective_schedule = ['stabilizer', 'resolver']
+objective_weights = {stabilizer = 0.5, resolver = 0.5}
+critic_updates = 4
+# Four disjoint critic batches and a separate student batch in each round.
+# Warmup does not advance the student's full-epoch cursor.
+critic_warmup_steps = 150
+eligibility_history = 6
+band_steps = [2, 2, 2, 2]
+history_t = 0.2
+# Independent nearest-predecessor-first probabilities; older two are retained.
+# One identity mask is fixed across target rollout and all three models.
+# Resolver uses the final two GT predecessors from this same policy.
+stabilizer_history_dropout = [0.0, 0.1, 0.2, 0.2]
+# Teacher-only audio CFG in the highest-noise stabilizer band (.8,1]; every
+# other band and resolver remain conditional. Null audio covers the whole clip.
+teacher_guidance_scale = 2.5
+# When resuming the original 1.0-guidance run, the launch config must explicitly
+# set resume_allow_teacher_guidance_change=true; optimizer/EMA state is restored.
+resolver_steps = 1
+res_t_min = 0.02
+res_t_max = 0.2
+normalizer_epsilon = 1e-8
+gradient_clipping = 2.0
+lr_warmup_steps = 100
+critic_lr_warmup_steps = 200
+lr_final_ratio = 0.1
+ema_decay = 0.999
+compile_mode = 'block'
+compile_blocks = true
+cache_references = true
+compile_cache_size_limit = 256
+compile_accumulated_cache_size_limit = 512
+compile_fail_on_limit = true
+checkpoint = 'block'
+shard_teacher = true
+num_dataloader_workers = 4
+prefetch_factor = 2
+
+# Every 800 student updates (after the 150-round critic headstart), plus manual/final saves.
+# Keep eight completed raw/critic/EMA sets and only the latest optimizer state.
+save_every_n_steps = 800
+eval_every_n_steps = 400
+checkpoint_keep_last = 8
+eval_weights = 'raw' # 'both' also evaluates EMA and doubles probe work.
+# Autoregressive inference probes use a separate six-frame generated startup.
+# This is not the full-GT training construction.
+sensitivity_seeds = [1729]
+sensitivity_rms = 0.01
+sensitivity_validate_half_rms = false
+
+[rollout_eval]
+batch_index = 0
+latent_frames = 189
+fps = 25
+height = 480
+width = 256
+seed = 1729
+vae_path = '/mnt/paramfs/param/outputs/bimodal-inference/wan22-5b-weights/Wan2.2_VAE.pth'
+vae_sha256 = '20eb789667fa5e60e7516bf509512f6cb61f01b0aa0695eadaea930c13892b36'
+
+[refs]
+bank = '/mnt/paramfs/param/outputs/reference-bank-richmond-strict/studio/reference-bank-256x480-muon-encoded'
+require_validated_bank = true
+train_split = 'bank'
+drop_counts = [0]
+drop_p = [1.0]
+
+[model]
+num_refs = 9
+checkpoint_path = '/mnt/paramfs/param/outputs/joint-nine-ref-20261018/assets/teacher/run_1/step10424/model_ema.safetensors'
+
+[model.audio]
+model_name = '/mnt/paramfs/param/outputs/joint-nine-ref-20261018/assets/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+
+[optimizer]
+lr = 2e-6
+betas = [0.9, 0.99]
+weight_decay = 1e-4
+eps = 1e-8
+
+[wandb]
+enabled = true
+mode = 'online'
+entity = 'canopy-labs'
+project = 'param-distillation'
+run_name = 'full-gt-nine-ref-single-target-endpoint-b160-8k'

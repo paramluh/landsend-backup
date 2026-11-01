@@ -23,6 +23,6 @@ for host in landsend-1 landsend-2 landsend-3 landsend-4 landsend-5 landsend-12; 
 done
 ```
 
-The remote restore helper verifies every regular file against its recorded SHA256 or Git-blob SHA1. It refuses to overwrite mismatching files unless `--overwrite` is explicit. It downloads referenced files from pinned HF revisions and fills verified cross-host aliases. Dataset symlink metadata is retained in the reports; artifact symlinks are restored by `restore_archives.py`.
+The remote restore helper verifies every regular file against its recorded SHA256 or Git-blob SHA1. It refuses to overwrite mismatching files unless `--overwrite` is explicit. It downloads referenced files from pinned HF revisions and fills verified cross-host aliases. The helper also recreates and validates dataset symlinks, including aliases within the same node; artifact symlinks are restored by `restore_archives.py`.
 
 Dataset audit summaries, upload receipts and the baseline derivative proof are under `reports/cluster-backup/remote-datasets/`.

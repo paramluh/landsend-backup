@@ -1,12 +1,12 @@
 {
   "state": "uploading",
   "host": "landsend-1",
-  "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-167",
-  "prefix": "hosts/landsend-1/pose-runs/no-text-audio-pose-20261028/exports/export-167",
-  "bytes": 23817712913,
-  "completed_tasks": 18,
+  "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-33",
+  "prefix": "hosts/landsend-1/pose-runs/no-text-audio-pose-20261028/exports/export-33",
+  "bytes": 23817712911,
+  "completed_tasks": 29,
   "total_tasks": 32,
   "attempt": 1,
-  "time": 1793507203.5197308,
+  "time": 1793507554.4587681,
   "started": 1793505842.8108814
 }

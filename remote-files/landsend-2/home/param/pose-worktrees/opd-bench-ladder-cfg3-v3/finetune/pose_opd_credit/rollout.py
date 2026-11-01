@@ -1,0 +1,415 @@
+"""Cached student rollouts with explicit sampling provenance.
+
+The numpy orchestration is CPU-importable. ``make_fastppm_class`` specializes
+the existing cached inference engine without changing its shared source. Its
+input hook injects the student's own Voxtral-adapter output in both prefill and
+incremental backbone calls. Sampling is the untruncated, temperature-one
+categorical policy on executable text IDs and every audio/pose codebook.
+"""
+from __future__ import annotations
+
+from dataclasses import dataclass
+import time
+from types import MethodType
+from typing import Any
+
+import numpy as np
+
+
+FPS = 12.5
+CODE_DELAY = 2
+CODEBOOKS = 32
+CODEBOOK_SIZE = 2048
+PAD = 151670
+EXECUTABLE_VOCAB_SIZE = 151682
+
+NATURAL_SAMPLING = {
+    "text_temp": 1.0, "text_topk": 0, "text_topp": 1.0,
+    "min_p": 0.0, "min_p_rel": 0, "freq_pen": 0.0,
+    "text_rep": 1.0, "word_greedy": 0, "free_text": 1,
+    "allow_eob": 1, "cb0_temp": 1.0, "cb0_topk": 0,
+    "light_temp": 1.0, "light_topk": 0, "audio_rep_pen": 1.0,
+    "pose_temp": 1.0, "pose_topk": 0, "pose_light_temp": 1.0,
+    "pose_light_topk": 0, "pose_rep_cb0": 1.0,
+    "pose_rep_light": 1.0, "pose_cfg_on": 0, "adaptive_rep_on": 0,
+}
+
+
+@dataclass
+class Rollout:
+    """Global-offset media arrays on the native, delayed model timeline."""
+
+    text: np.ndarray
+    audio: np.ndarray
+    pose: np.ndarray
+    sampled_masks: dict[str, np.ndarray]
+    behavior_logprobs: dict[str, np.ndarray]
+    prefix: int
+    conversation_frames: int
+    prefill_frames: int
+
+
+def _scalar(value: Any, name: str) -> int:
+    raw = np.asarray(value)
+    if raw.size != 1 or not np.issubdtype(raw.dtype, np.integer):
+        raise ValueError(f"{name} must be one integer")
+    return int(raw.reshape(-1)[0])
+
+
+def rollout_masks(prefix: int, frames: int, prefill: int, delay: int = CODE_DELAY):
+    """Forced prefix, physical prefill and terminal text never become actions."""
+    if prefix < 1 or not 0 <= prefill < frames or delay != CODE_DELAY:
+        raise ValueError("Invalid prefix, prefill, row length or native code delay")
+    total = prefix + frames + delay
+    text = np.zeros(total, dtype=bool)
+    media = np.zeros(total, dtype=bool)
+    text[prefix + prefill:prefix + frames] = True
+    media[prefix + prefill + delay:total] = True
+    return {"text": text, "audio": media.copy(), "pose": media.copy()}
+
+
+def _validate_seed(row, prefill):
+    prefix = _scalar(row.get("P", np.asarray(row["vin"])[0]), "P")
+    frames = _scalar(row.get("conversation_frames", np.asarray(row["vin"])[1]), "conversation_frames")
+    if _scalar(row.get("speech_delay", CODE_DELAY), "speech_delay") != CODE_DELAY:
+        raise ValueError("Speech generation requires native CD=2")
+    if _scalar(row.get("pose_delay", CODE_DELAY), "pose_delay") != CODE_DELAY:
+        raise ValueError("Pose generation requires native CD=2")
+    masks = rollout_masks(prefix, frames, prefill)
+    total = prefix + frames + CODE_DELAY
+    arrays = {key: np.asarray(row[key]) for key in ("ids", "depth", "present", "pdepth")}
+    shapes = {"ids": (2, total), "depth": (2, total, CODEBOOKS),
+              "present": (2, total), "pdepth": (total, CODEBOOKS)}
+    for key, shape in shapes.items():
+        if arrays[key].shape != shape:
+            raise ValueError(f"{key} must have shape {shape}, got {arrays[key].shape}")
+    for key in ("ids", "depth", "pdepth"):
+        if not np.issubdtype(arrays[key].dtype, np.integer):
+            raise ValueError(f"{key} must contain integer IDs")
+    supplied = row.get("sampled_masks")
+    if supplied is not None:
+        for stream, expected in masks.items():
+            if not np.array_equal(np.asarray(supplied[stream]), expected):
+                raise ValueError(f"{stream} sampling mask does not match the prefill/delay contract")
+    if not np.all(arrays["ids"][1, prefix + prefill:] == PAD):
+        raise ValueError("Future B text must be removed before student generation")
+    if not np.all(arrays["depth"][1, masks["audio"]] == -1):
+        raise ValueError("Future B audio must be removed before student generation")
+    if not np.all(arrays["pdepth"][masks["pose"]] == -1):
+        raise ValueError("Future B pose must be removed before student generation")
+    offsets = np.arange(CODEBOOKS, dtype=np.int64) * CODEBOOK_SIZE
+    known = slice(prefix + CODE_DELAY, prefix + CODE_DELAY + prefill)
+    for key, value in (("audio", arrays["depth"][1, known]), ("pose", arrays["pdepth"][known])):
+        local = value - offsets
+        if np.any((local < 0) | (local >= CODEBOOK_SIZE)):
+            raise ValueError(f"The full physical prefill requires valid {key} codes")
+    return prefix, frames, arrays, masks
+
+
+def rollout_row(engine, row, *, seed: int, prefill_frames: int | None = None, graphs: bool = True) -> Rollout:
+    """Generate one entire row with KV caches, including every conversation turn.
+
+    ``row`` must already have future B values scrubbed. A remains fixed. EOB and
+    silence do not stop generation. At the two final model positions text is
+    forced to PAD while the final physical media frames are generated.
+    """
+    prefill = _scalar(row.get("prefill_frames", 25) if prefill_frames is None else prefill_frames,
+                      "prefill_frames")
+    prefix, frames, arrays, masks = _validate_seed(row, prefill)
+    total = prefix + frames + CODE_DELAY
+    instance = {key: value.copy() for key, value in arrays.items()}
+    instance.update(P=prefix, a_mode="file")
+    if hasattr(engine, "check_audio_features"):
+        engine.check_audio_features(prefix, frames)
+    engine.start([instance], int(seed), params=dict(NATURAL_SAMPLING), f0=prefill)
+    for frame in range(prefill, frames + CODE_DELAY):
+        force = {}
+        if frame < prefill + CODE_DELAY:
+            force["codes"] = arrays["depth"][1, prefix + frame][None]
+            force["pose"] = arrays["pdepth"][prefix + frame][None]
+        if frame >= frames:
+            force["lane"] = np.full(1, PAD, dtype=np.int64)
+        engine.step(frame, graphs=bool(graphs), force=force or None, cold_pad=False)
+    return _collect_rollout(engine, row, prefill)
+
+
+def rollout_rows(engine, rows, *, seeds, prefill_frames=None, graphs=True, progress=None):
+    """Batch independent full-row conversations in the same cached actor.
+
+    Prefixes and durations may differ. Finished rows are discarded after their
+    two delayed media frames; their later batch slots cannot affect other rows.
+    Every instance has its own RNG streams, including across repeated starts.
+    """
+    rows, seeds = list(rows), list(seeds)
+    if not rows or len(seeds) != len(rows) or getattr(engine, "NI", len(rows)) != len(rows):
+        raise ValueError("Provide one row and seed per actor instance")
+    prefills = [_scalar(row.get("prefill_frames", 25) if prefill_frames is None else prefill_frames,
+                        "prefill_frames") for row in rows]
+    if len(set(prefills)) != 1:
+        raise ValueError("A cached batch requires the same physical prefill length")
+    prefill = prefills[0]
+    validated = [_validate_seed(row, prefill) for row in rows]
+    instances = []
+    for i, (prefix, frames, arrays, _masks) in enumerate(validated):
+        instance = {key: value.copy() for key, value in arrays.items()}
+        instance.update(P=prefix, a_mode="file")
+        instances.append(instance)
+        if hasattr(engine, "check_audio_features"):
+            engine.check_audio_features(prefix, frames, instance=i)
+    engine.start(instances, list(map(int, seeds)), params=dict(NATURAL_SAMPLING), f0=prefill)
+    lengths = np.asarray([value[1] for value in validated])
+    total_frames = int(lengths.max()) + CODE_DELAY
+    started = time.monotonic()
+    for frame in range(prefill, total_frames):
+        force = {}
+        if frame < prefill + CODE_DELAY:
+            force["codes"] = np.stack([arrays["depth"][1, prefix + frame]
+                                       for prefix, _, arrays, _ in validated])
+            force["pose"] = np.stack([arrays["pdepth"][prefix + frame]
+                                      for prefix, _, arrays, _ in validated])
+        if np.any(frame >= lengths):
+            force["lane"] = np.where(frame >= lengths, PAD, -1).astype(np.int64)
+        engine.step(frame, graphs=bool(graphs), force=force or None, cold_pad=False)
+        if progress is not None and ((frame + 1 - prefill) % 250 == 0 or frame + 1 == total_frames):
+            # Submission progress only: never force a device/host synchronization.
+            progress(current_frame=frame + 1, total_frames=total_frames,
+                     seconds_elapsed=time.monotonic() - started)
+    return [_collect_rollout(engine, row, prefill, instance=i) for i, row in enumerate(rows)]
+
+
+def _collect_rollout(engine, row, prefill, instance=0):
+    prefix, frames, arrays, masks = _validate_seed(row, prefill)
+    total = prefix + frames + CODE_DELAY
+    generated = engine.readback(instance, total)
+    text = np.asarray(generated["lane_b"]).copy()
+    audio = np.asarray(generated["dep_b"]).copy()
+    pose = np.asarray(generated["pdep"]).copy()
+    for stream, actual, expected in (("text", text, arrays["ids"][1]),
+                                     ("audio", audio, arrays["depth"][1]),
+                                     ("pose", pose, arrays["pdepth"])):
+        if actual.shape != expected.shape or not np.array_equal(actual[~masks[stream]], expected[~masks[stream]]):
+            raise RuntimeError(f"Actor changed forced {stream} prefix/prefill/tail values")
+    if not np.array_equal(generated["lane_a"], arrays["ids"][0]):
+        raise RuntimeError("Actor changed fixed A text conditioning")
+    if not np.array_equal(generated["dep_a"], arrays["depth"][0]):
+        raise RuntimeError("Actor changed fixed A audio conditioning")
+    offsets = np.arange(CODEBOOKS, dtype=np.int64) * CODEBOOK_SIZE
+    if np.any((text[masks["text"]] < 0) | (text[masks["text"]] >= EXECUTABLE_VOCAB_SIZE)):
+        raise RuntimeError("Actor sampled a padded/non-executable text ID")
+    for stream, value in (("audio", audio), ("pose", pose)):
+        local = value[masks[stream]] - offsets
+        if np.any((local < 0) | (local >= CODEBOOK_SIZE)):
+            raise RuntimeError(f"Actor did not generate every {stream} codebook")
+    behavior = (engine.behavior_logprobs(total) if getattr(engine, "NI", 1) == 1
+                else engine.behavior_logprobs(total, instance=instance))
+    for stream, mask in masks.items():
+        expected_shape = (total,) if stream == "text" else (total, CODEBOOKS)
+        lp = np.asarray(behavior[stream], dtype=np.float32).copy()
+        if lp.shape != expected_shape or not np.isfinite(lp[mask]).all() or (lp[mask] > 1e-6).any():
+            raise RuntimeError(f"Missing/invalid sampled {stream} behavior likelihoods")
+        lp[~mask] = 0.0
+        behavior[stream] = lp
+    return Rollout(text, audio, pose, masks, behavior, prefix, frames, prefill)
+
+
+def audio_features_from_latents(engine, latents):
+    """Apply THIS student's adapter/gain to shared frozen causal Voxtral latents."""
+    import torch
+    if not hasattr(engine.m, "vadapter") or not hasattr(engine.m, "vgain"):
+        raise ValueError("The duplex student must have its trained audio adapter and gain")
+    with torch.no_grad(), torch.autocast("cuda", dtype=torch.bfloat16):
+        latents = torch.as_tensor(latents, device=engine.d0, dtype=torch.bfloat16)
+        if latents.ndim != 3 or latents.shape[0] != 1 or latents.shape[1] % 4:
+            raise ValueError("Voxtral latents must be [1, 4 * conversation_frames, hidden]")
+        return engine.m.vgain(engine.m.vadapter(latents)[0]).detach()
+
+
+def make_fastppm_class(native):
+    """Create the concrete cached actor class after the caller loads native code.
+
+    Imports are deliberately lazy so CPU orchestration/tests need neither CUDA
+    extensions nor the production model's global import names. This class uses
+    native trunk/tower caches and decoder kernels; it never replays a growing
+    full sequence at each generation frame.
+    """
+    import torch
+
+    class NaturalCachedFastPPM(native.FastPPM):
+        def __init__(self, *args, executable_vocab_size=EXECUTABLE_VOCAB_SIZE, **kwargs):
+            for key, required in (("cfg_rows", False), ("front", False), ("mimi_stream", False)):
+                if key in kwargs and kwargs[key] != required:
+                    raise ValueError(f"OPD actor requires {key}={required!r}")
+                kwargs[key] = required
+            kwargs.setdefault("n_inst", 1)
+            if int(kwargs["n_inst"]) > 1 and kwargs.get("per_instance_rng") is False:
+                raise ValueError("Batched OPD requires independent per-instance RNG streams")
+            kwargs.setdefault("per_instance_rng", True)
+            super().__init__(*args, **kwargs)
+            if not self.pose:
+                raise ValueError("Pose OPD needs a student with both speech and pose branches")
+            self._opd_executable = int(executable_vocab_size)
+            if not 0 < self._opd_executable <= self.V:
+                raise ValueError("Executable text vocabulary exceeds the actor head")
+            self._opd_audio = torch.zeros(self.NI, self.lmax, self.H, dtype=torch.bfloat16, device=self.d0)
+            self._opd_audio_span = [None] * self.NI
+            self._opd_prefill_instance = 0
+            self._opd_input_mode = None
+            self._opd_force = None
+            self._opd_history = {"text": torch.full((self.NI, self.lmax), float("nan"), device=self.dl),
+                                 "audio": torch.full((self.NI, self.lmax, CODEBOOKS), float("nan"), device=self.dl),
+                                 "pose": torch.full((self.NI, self.lmax, CODEBOOKS), float("nan"), device=self.dp)}
+            self._opd_now = {"audio": torch.zeros(self.NI, CODEBOOKS, device=self.dl),
+                             "pose": torch.zeros(self.NI, CODEBOOKS, device=self.dp)}
+            self._opd_lane_force = torch.full((self.NI,), -1, dtype=torch.long, device=self.dl)
+            self._opd_hook = self.m.inp.register_forward_hook(self._add_audio)
+            for stream, decoder in (("audio", self.dec_s), ("pose", self.dec_p)):
+                decoder._opd_logprobs = self._opd_now[stream]
+                decoder.gen = MethodType(natural_depth_gen, decoder)
+
+        def _add_audio(self, _module, _inputs, output):
+            if self._opd_input_mode == "prefill":
+                return output + self._opd_audio[self._opd_prefill_instance, :output.shape[0]].to(output.dtype)
+            if self._opd_input_mode == "step":
+                selected = self._opd_audio[self.arI[self.d0], self.Tv[self.d0][:self.NI]]
+                return output + selected.to(output.dtype)
+            return output
+
+        def set_audio_features(self, features, *, prefix, instance=0):
+            features = torch.as_tensor(features, device=self.d0)
+            if features.ndim != 2 or features.shape[1] != self.H or not torch.isfinite(features).all():
+                raise ValueError("Audio features must be finite [conversation_frames, backbone_hidden]")
+            prefix = int(prefix)
+            instance = int(instance)
+            if not 0 <= instance < self.NI or prefix < 1 or prefix + len(features) + CODE_DELAY > self.lmax:
+                raise ValueError("Audio feature timeline exceeds the actor cache")
+            self._opd_audio[instance].zero_()
+            self._opd_audio[instance, prefix:prefix + len(features)].copy_(features)
+            self._opd_audio_span[instance] = (prefix, len(features))
+
+        def check_audio_features(self, prefix, frames, instance=0):
+            if self._opd_audio_span[int(instance)] != (int(prefix), int(frames)):
+                raise ValueError("Set the student's exact full-row A audio features before rollout")
+
+        @torch.no_grad()
+        def _prefill_row(self, r, *args, **kwargs):
+            previous = self._opd_input_mode
+            self._opd_input_mode = "prefill"
+            self._opd_prefill_instance = int(r)
+            try:
+                return super()._prefill_row(r, *args, **kwargs)
+            finally:
+                self._opd_input_mode = previous
+
+        def _seg(self, si):
+            previous = self._opd_input_mode
+            self._opd_input_mode = "step"
+            try:
+                return super()._seg(si)
+            finally:
+                self._opd_input_mode = previous
+
+        @torch.no_grad()
+        def start(self, insts, seed, params=None, f0=0):
+            settings = dict(NATURAL_SAMPLING)
+            for key, value in (params or {}).items():
+                if key not in settings or value != settings[key]:
+                    raise ValueError(f"Unsupported OPD sampling override: {key}={value!r}")
+            for history in self._opd_history.values():
+                history.fill_(float("nan"))
+            self._opd_force = None
+            self._opd_lane_force.fill_(-1)
+            super().start(insts, seed, params=settings, f0=f0)
+
+        def _text(self):
+            # Own PAD/NW/EOB output rows are already replaced by text_logits.
+            # Exclude ONLY padded head rows, as in Amu's executable-vocab scorer.
+            positions = self.Tv[self.dl][:self.NI]
+            self.adapt[:, 0].zero_()
+            self.adapt[:, 1:].fill_(1.0)
+            logits = self.text_logits(self.hn_prev[:self.NI])
+            logits[:, self._opd_executable:] = float("-inf")
+            self.zt.copy_(logits)
+            logp = logits.log_softmax(-1)
+            probability = logp.exp()
+            sampled = native.row_multinomial(probability, self.gen_t)
+            force = self._opd_lane_force >= 0
+            token = torch.where(force, self._opd_lane_force, sampled)
+            lp = torch.where(force, torch.zeros_like(token, dtype=torch.float32),
+                             logp.gather(1, sampled[:, None])[:, 0])
+            self.probs[:, 0].copy_(probability[:, native.PAD])
+            self.probs[:, 1].copy_(probability[:, native.NW])
+            self.ptok[:, 0].copy_(lp.exp()); self.ptok[:, 1].copy_(lp.exp())
+            self.laneB.scatter_(1, positions[:, None], token[:, None])
+            self.tok_now.copy_(token)
+            self.ring.push(token)
+            self._opd_history["text"][self.arI[self.dl], positions] = lp
+
+        def _speech(self, full):
+            forced = self._opd_force is not None and self._opd_force.get("codes") is not None
+            active = full and not forced
+            super()._speech(active)
+            if active:
+                positions = self.Tv[self.dl][:self.NI]
+                cb0 = self.depB[self.arI[self.dl], positions, 0]
+                self._opd_now["audio"][:, 0].copy_(self.z0.log_softmax(-1).gather(1, cb0[:, None])[:, 0])
+                self._opd_history["audio"][self.arI[self.dl], positions] = self._opd_now["audio"]
+
+        def _pose(self, full, cfgdec=False):
+            if cfgdec:
+                raise ValueError("CFG is outside the OPD natural sampling policy")
+            forced = self._opd_force is not None and self._opd_force.get("pose") is not None
+            active = full and not forced
+            super()._pose(active, False)
+            if active:
+                positions = self.Tv[self.dp][:self.NI]
+                cb0 = self.pdepB[self.arI[self.dp], positions, 0]
+                self._opd_now["pose"][:, 0].copy_(self.zp0[:self.NI].log_softmax(-1).gather(1, cb0[:, None])[:, 0])
+                self._opd_history["pose"][self.arI[self.dp], positions] = self._opd_now["pose"]
+
+        @torch.no_grad()
+        def step(self, f, graphs=True, force=None, cold_pad=False):
+            force = dict(force or {})
+            lane = force.pop("lane", None)
+            if lane is None:
+                self._opd_lane_force.fill_(-1)
+            else:
+                self._opd_lane_force.copy_(torch.as_tensor(np.asarray(lane), device=self.dl, dtype=torch.long))
+            self._opd_force = force or None
+            try:
+                # Only the first two media-prefill steps need eager execution.
+                # Per-row terminal PAD forcing stays inside the captured text graph.
+                return super().step(f, graphs=graphs and not force, force=force or None, cold_pad=False)
+            finally:
+                self._opd_force = None
+
+        def behavior_logprobs(self, total, instance=0):
+            return {key: value[int(instance), :int(total)].detach().float().cpu().numpy().copy()
+                    for key, value in self._opd_history.items()}
+
+        def close(self):
+            self._opd_hook.remove()
+            # Remove instance-bound overrides, which otherwise form reference
+            # cycles retaining actor weights until Python's next GC pass.
+            for decoder in (self.dec_s, self.dec_p):
+                if "gen" in decoder.__dict__:
+                    del decoder.gen
+                if hasattr(decoder, "_opd_logprobs"):
+                    del decoder._opd_logprobs
+
+    def natural_depth_gen(decoder, hv, c0, gen, temp, topk, zb=None, pres=None,
+                          rp=None, cfg_w=None, cfg_on=None):
+        if hv.shape[0] != c0.shape[0] or cfg_on is not None:
+            raise ValueError("Natural OPD depth sampling does not accept CFG rows")
+        x = torch.cat([decoder.slot0(hv, zb)[:, None], decoder.dec.cb0_emb(c0)[:, None].float()], 1)
+        codes = [c0]
+        for codebook in range(1, CODEBOOKS):
+            logits = decoder.head(decoder.step(x, codebook - 1), codebook)
+            logp = logits.log_softmax(-1)
+            code = native.row_multinomial(logp.exp(), gen)
+            decoder._opd_logprobs[:, codebook].copy_(logp.gather(1, code[:, None])[:, 0])
+            codes.append(code)
+            if codebook < CODEBOOKS - 1:
+                x = decoder.emb(code, codebook)
+        return torch.stack(codes, 1)
+
+    return NaturalCachedFastPPM

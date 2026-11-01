@@ -32,6 +32,8 @@ for f,rel in selected:
     else:target.write_bytes(data)
 for script in B.BASE.glob('*.py'):shutil.copy2(script,REPO/'tools'/script.name)
 shutil.copy2(B.BASE/'checkpoint-scopes.json',REPO/'tools/checkpoint-scopes.json')
+remote_restore=ROOT/'remote-datasets/restore_remote_dataset.py'
+if remote_restore.exists():shutil.copy2(remote_restore,REPO/'restore_remote_dataset.py')
 statuses=[]
 for p in (B.BASE/'archives').glob('*/*.uploaded.json'):
     x=json.loads(p.read_text());statuses.append({'group':p.parent.name,**x})
