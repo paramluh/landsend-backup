@@ -1,0 +1,8 @@
+{
+  "original_sha256": "cf6d360c804296597f9f6ada563d24f581b816f9b908facfe9a5621e17904bee",
+  "source": "/home/param/outputs/pose-opd-credit-bench/b320-static-v7.tar",
+  "members": 1788,
+  "removed_credential_or_unsafe_members": [],
+  "redactions": 1,
+  "repacked": true
+}

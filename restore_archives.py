@@ -12,9 +12,24 @@ def main():
     args=ap.parse_args();root=args.destination.resolve();root.mkdir(parents=True,exist_ok=True)
     sets=list(args.download.rglob('COMPLETE.json'))
     if not args.complete_only:sets+=list(args.download.rglob('PARTIAL.json'))
-    pending_aliases=[];pending_symlinks=[]
-    for complete in sorted(sets):
-        data=json.loads(complete.read_text())
+    pending_aliases=[];pending_symlinks={}
+    def apply_aliases(remaining):
+        while remaining:
+            deferred=[];progress=False
+            for source,target in remaining:
+                if target.exists() and source.exists():continue
+                if source.exists():
+                    target.parent.mkdir(parents=True,exist_ok=True);os.link(source,target);progress=True
+                elif target.exists():
+                    source.parent.mkdir(parents=True,exist_ok=True);os.link(target,source);progress=True
+                else:deferred.append((source,target))
+            if not progress:return deferred
+            remaining=deferred
+        return []
+    # Names such as artifacts-final sort before artifacts/ lexically.
+    # Restore by completion time so newer delta data always wins.
+    records=[(p,json.loads(p.read_text())) for p in sets]
+    for complete,data in sorted(records,key=lambda x:(x[1].get('completed_unix',0),str(x[0]))):
         if 'archives' not in data:continue
         host=complete.relative_to(args.download).parts[0]
         if args.host and args.host!=host:continue
@@ -30,6 +45,9 @@ def main():
                 for member in tar:
                     path=(dest/member.name).resolve()
                     if dest not in path.parents:raise RuntimeError('Unsafe archive path: '+member.name)
+                    # Replacing a pathname must not mutate its previous hardlink
+                    # aliases when a later delta contains a new inode.
+                    if member.isfile() and (path.is_file() or path.is_symlink()):path.unlink()
                     tar.extract(member,dest,filter='data')
             process.stdout.close()
             if process.wait()!=0:raise RuntimeError('zstd failed: '+str(archive))
@@ -39,6 +57,7 @@ def main():
                 source=(dest/item['target']).resolve();target=(dest/item['path']).resolve()
                 if dest not in source.parents or dest not in target.parents:raise RuntimeError('Unsafe alias')
                 pending_aliases.append((source,target))
+        pending_aliases=apply_aliases(pending_aliases)
         directories=complete.parent/'metadata/empty-directories.json'
         if directories.exists():
             for name in json.loads(directories.read_text()):
@@ -47,25 +66,12 @@ def main():
                 directory.mkdir(parents=True,exist_ok=True)
         symlinks=complete.parent/'metadata/symlinks.json'
         if symlinks.exists():
-            pending_symlinks.extend((dest,item) for item in json.loads(symlinks.read_text()))
-    # Apply after all baseline/delta sets. A surviving alias can also recover
-    # the canonical pathname of a rotating snapshot pruned during backup.
-    remaining=pending_aliases
-    while remaining:
-        deferred=[];progress=False
-        for source,target in remaining:
-            if target.exists() and source.exists():continue
-            if source.exists():
-                target.parent.mkdir(parents=True,exist_ok=True);os.link(source,target);progress=True
-            elif target.exists():
-                source.parent.mkdir(parents=True,exist_ok=True);os.link(target,source);progress=True
-            else:deferred.append((source,target))
-        if not progress:
-            if deferred:print('WARNING: unresolved hardlink aliases:',len(deferred),flush=True)
-            break
-        remaining=deferred
+            for item in json.loads(symlinks.read_text()):pending_symlinks[(str(dest),item['path'])]=(dest,item)
+    # A surviving later alias can recover a canonical rotating-cache pathname.
+    pending_aliases=apply_aliases(pending_aliases)
+    if pending_aliases:print('WARNING: unresolved hardlink aliases:',len(pending_aliases),flush=True)
     external=0
-    for dest,item in pending_symlinks:
+    for dest,item in pending_symlinks.values():
         link=dest/item['path'].lstrip('/')
         original=item['target']
         if original.startswith('/'):

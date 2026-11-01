@@ -1,0 +1,14 @@
+{
+  "host": "landsend-12",
+  "state": "verified",
+  "files": 52299,
+  "GiB": 287.0917229875922,
+  "matched": 52296,
+  "original_hf_matches": 24291,
+  "node0_archive_matches": 28005,
+  "upload_required": 3,
+  "upload_GiB": 3.0118972063064575e-06,
+  "errors": [],
+  "symlinks": 9,
+  "seconds": 179.6370713710785
+}

@@ -1,0 +1,142 @@
+{
+  "state": "verified",
+  "group": "source-archives",
+  "revision": "43b318027d82f19a9908e927fbfbd42cc83bd94d",
+  "archives": 1,
+  "archive_bytes": 303884748,
+  "verified_remote_files": 5,
+  "canonical_files": 0,
+  "canonical_missing": [],
+  "verified_unix": 1793506748.4466898,
+  "host": "landsend-1",
+  "source_archives": 14,
+  "sanitized_archives": 14,
+  "audit": [
+    {
+      "original_sha256": "56daf1ca15ed55f1226827f64de3e53babc264bd9f89c3ef433ac3341a9fd646",
+      "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+      "members": 1868,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/56daf1ca15ed55f1226827f64de3e53babc264bd9f89c3ef433ac3341a9fd646.tar"
+    },
+    {
+      "original_sha256": "7546163fe83e26092d49efc8326c92a81b967da329cdf697aa9c1919b7617269",
+      "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+      "members": 1871,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/7546163fe83e26092d49efc8326c92a81b967da329cdf697aa9c1919b7617269.tar"
+    },
+    {
+      "original_sha256": "f8f43c726b5c2356ee1a35a97109f21073aea9bf26d44167b1cd4f67b4b3d9e7",
+      "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+      "members": 1823,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/f8f43c726b5c2356ee1a35a97109f21073aea9bf26d44167b1cd4f67b4b3d9e7.tar"
+    },
+    {
+      "original_sha256": "36531b1f3170c2c65c2238efd0bbf5f9234c8cc763cd18fd86752dfd932a1b67",
+      "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+      "members": 1868,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/36531b1f3170c2c65c2238efd0bbf5f9234c8cc763cd18fd86752dfd932a1b67.tar"
+    },
+    {
+      "original_sha256": "54aea7bbdb392871364bd5b99503df2116f0ac9b281682381feaef9abaee6269",
+      "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+      "members": 1823,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/54aea7bbdb392871364bd5b99503df2116f0ac9b281682381feaef9abaee6269.tar"
+    },
+    {
+      "original_sha256": "6b19f6b035b7b46a2efd27ad7d058ad950b71d36fa69134882d30c4a23737c94",
+      "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+      "members": 1865,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/6b19f6b035b7b46a2efd27ad7d058ad950b71d36fa69134882d30c4a23737c94.tar"
+    },
+    {
+      "original_sha256": "9363b631181af4295e0d962401790da114745768992ae18be56b79e110902905",
+      "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+      "members": 1870,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/9363b631181af4295e0d962401790da114745768992ae18be56b79e110902905.tar"
+    },
+    {
+      "original_sha256": "f80d49ae77034539bbc5740eaa742a11949c45d4bc18954d7969911800805ed6",
+      "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+      "members": 1892,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/f80d49ae77034539bbc5740eaa742a11949c45d4bc18954d7969911800805ed6.tar"
+    },
+    {
+      "original_sha256": "8e9b0cff44075715946323c6a2d12fa15b0bea033f8a72998ad963003842a3e1",
+      "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+      "members": 1851,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/8e9b0cff44075715946323c6a2d12fa15b0bea033f8a72998ad963003842a3e1.tar"
+    },
+    {
+      "original_sha256": "b81681993a907b3cc53d7466dfedf6d75aba7dc869dad196f97a24cf0cf0a923",
+      "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+      "members": 1865,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/b81681993a907b3cc53d7466dfedf6d75aba7dc869dad196f97a24cf0cf0a923.tar"
+    },
+    {
+      "original_sha256": "f6a0c7b1c313c4f3319f978d49cb86214fde59a24cbfcdf9302a5f7325132b53",
+      "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+      "members": 1891,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/f6a0c7b1c313c4f3319f978d49cb86214fde59a24cbfcdf9302a5f7325132b53.tar"
+    },
+    {
+      "original_sha256": "3df09bd8506c898137d2e5d77bf60efa0fb91dccd8dc7a16074dd20c2dbd86bc",
+      "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+      "members": 1891,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/3df09bd8506c898137d2e5d77bf60efa0fb91dccd8dc7a16074dd20c2dbd86bc.tar"
+    },
+    {
+      "original_sha256": "e0717b584cb053a747be7432830bf0667fe6023e57ff86957bc4d93c83b74208",
+      "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+      "members": 1891,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/e0717b584cb053a747be7432830bf0667fe6023e57ff86957bc4d93c83b74208.tar"
+    },
+    {
+      "original_sha256": "3df09bd8506c898137d2e5d77bf60efa0fb91dccd8dc7a16074dd20c2dbd86bc",
+      "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+      "members": 1891,
+      "removed_credential_or_unsafe_members": [],
+      "redactions": 1,
+      "repacked": true,
+      "archived_source": "/home/param/outputs/landsend-backup-20261031/orphans/sanitized-source-archives/3df09bd8506c898137d2e5d77bf60efa0fb91dccd8dc7a16074dd20c2dbd86bc.tar"
+    }
+  ]
+}

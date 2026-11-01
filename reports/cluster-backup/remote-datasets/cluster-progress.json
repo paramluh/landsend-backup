@@ -1,0 +1,62 @@
+[
+  {
+    "host": "landsend-1",
+    "processed": 35500,
+    "total": 52161,
+    "matched": 35498,
+    "upload_required": 2,
+    "errors": 0,
+    "GiB": 18.48474038671702,
+    "seconds": 69.43294525146484
+  },
+  {
+    "host": "landsend-2",
+    "processed": 35500,
+    "total": 52161,
+    "matched": 35498,
+    "upload_required": 2,
+    "errors": 0,
+    "GiB": 18.48474038671702,
+    "seconds": 72.55038928985596
+  },
+  {
+    "host": "landsend-3",
+    "processed": 35500,
+    "total": 52161,
+    "matched": 35498,
+    "upload_required": 2,
+    "errors": 0,
+    "GiB": 18.48474038671702,
+    "seconds": 65.18277192115784
+  },
+  {
+    "host": "landsend-4",
+    "processed": 35500,
+    "total": 52176,
+    "matched": 35498,
+    "upload_required": 2,
+    "errors": 0,
+    "GiB": 18.482662889175117,
+    "seconds": 76.17744493484497
+  },
+  {
+    "host": "landsend-5",
+    "processed": 43500,
+    "total": 55808,
+    "matched": 40066,
+    "upload_required": 3434,
+    "errors": 0,
+    "GiB": 127.95270877331495,
+    "seconds": 94.45977663993835
+  },
+  {
+    "host": "landsend-12",
+    "processed": 42000,
+    "total": 52299,
+    "matched": 41997,
+    "upload_required": 3,
+    "errors": 0,
+    "GiB": 132.625334543176,
+    "seconds": 91.02600526809692
+  }
+]

@@ -1,0 +1,210 @@
+{
+  "host": "landsend-0",
+  "files": [
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470839/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/rollout-opt-full-1793458224/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-shortmatrix-v1/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471684/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-layout-serial-v1/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v1/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v2/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/duplex-distill-inference/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-opd-credit-decoder-54a82b324ba6d2dd77ae08a8d6fb0aec2ab37a90/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/duplex-distill/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-opd-credit-decoder-085d9ba76d02c006dd0072760ad0f9ffcf6614aa/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-opd-live-demo/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-opd-credit-decoder-044c6b4e5dbcf81939857907f6769dd79a60bd9c/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-opd-credit-decoder-d226a8f7293d344c1913d47090007139ea452516/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-opd-credit/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-basic-opd/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-opd-credit-decoder-c41886c9fe22b1698359b8182870c04aac28cb2d/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-repo/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/training-registry/training-registry.bundle",
+      "sha256": "ccfe76688e286e14180d05c736b02c2bbbc0b8057863ef4aae02dd5ff5ad58ef",
+      "bytes": 19413674,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/training-registry/source/training-registry.bundle",
+      "sha256": "ccfe76688e286e14180d05c736b02c2bbbc0b8057863ef4aae02dd5ff5ad58ef",
+      "bytes": 19413674,
+      "git_bundle": true
+    }
+  ],
+  "errors": []
+}

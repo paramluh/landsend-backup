@@ -1,0 +1,3065 @@
+[
+  {
+    "host": "landsend-0",
+    "bundles": [
+      {
+        "source": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449370252348769.tar.gz",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449335445611894.tar.gz",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449147304861981.tar.gz",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470839/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/rollout-opt-full-1793458224/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-shortmatrix-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471684/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-layout-serial-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v2/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/duplex-distill-inference/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-decoder-54a82b324ba6d2dd77ae08a8d6fb0aec2ab37a90/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/duplex-distill/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-decoder-085d9ba76d02c006dd0072760ad0f9ffcf6614aa/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-live-demo/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-decoder-044c6b4e5dbcf81939857907f6769dd79a60bd9c/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-decoder-d226a8f7293d344c1913d47090007139ea452516/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-basic-opd/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-decoder-c41886c9fe22b1698359b8182870c04aac28cb2d/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-repo/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/training-registry/training-registry.bundle",
+        "member": null,
+        "sha256": "ccfe76688e286e14180d05c736b02c2bbbc0b8057863ef4aae02dd5ff5ad58ef",
+        "bytes": 19413674
+      },
+      {
+        "source": "/home/param/training-registry/source/training-registry.bundle",
+        "member": null,
+        "sha256": "ccfe76688e286e14180d05c736b02c2bbbc0b8057863ef4aae02dd5ff5ad58ef",
+        "bytes": 19413674
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-launch-attempt2/d226a8f7293d344c1913d47090007139ea452516/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-launch-attempt2/044c6b4e5dbcf81939857907f6769dd79a60bd9c/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-launch-attempt2/c41886c9fe22b1698359b8182870c04aac28cb2d/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-teacher-partner-faststate/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-basic-opd-benchmark-20261031-b/snapshot-1793494923929082015/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-basic-opd-benchmark-20261031-c/snapshot-1793495107490709394/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-symmetric-production-launch-20261031/snapshot-1793472444394221943/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-teacher-partner-b336-fullbench/snapshot-1793456751706697298/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-teacher-partner-shortmatrix/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-symmetric-pad-sweep-20261031/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-symmetric-pad-sweep-20261031/retry1/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-symmetric-pad-sweep-20261031/validation1/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-symmetric-pad-sweep-20261031/validation075/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-teacher-partner-b336-quickbench/snapshot-1793456500144305793/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/mb2-cfg3-v2.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/actor8-fp32-60s-v6.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/b320-static-adversarial-v8.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/b320-resident-prefetch-v9.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/actor8-fp32-60s-v6s.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/b320-cache-handoff-v10.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/actor8-ladder-v4.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/actor8-fp32-60s-v6r.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/actor8-fp32-mb4-v6.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/b320-static-v7.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/ladder-cfg3-v3.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/actor8-cdf-mb4-v5.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-bench/mb2-cfg3-v1.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-general-parent-validation-20261031/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-conversation-trials-20261031/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-symmetric-train-smoke-20261031/1793471934/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-symmetric-train-smoke-20261031/1793471186/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-teacher-partner-b336-quickbench-v2/snapshot-1793456658036044427/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-teacher-partner-launch/snapshot-1793450446728000042/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-basic-opd-benchmark-20261031-d/snapshot-1793495208405357370/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-rollout-opt-full/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-rollout-opt-projections/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-credit-launch/085d9ba76d02c006dd0072760ad0f9ffcf6614aa/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-rollout-opt-mimi/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-teacher-partner-launch-20261031/snapshot-1793465194668585013/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-teacher-partner-b336-fullbench-v2/snapshot-1793456863140887944/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-basic-opd-benchmark-20261031/snapshot-1793494822223840319/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-basic-opd-launch-20261031/snapshot-1793495462283404348/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-general-parent-trials-20261031/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-delay72-benchmark/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-website-pad-sweep-20261031/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/outputs/pose-opd-website-pad-sweep-20261031/validation1/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470839/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/rollout-opt-full-1793458224/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-shortmatrix-v1/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471684/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      }
+    ],
+    "unique_hashes": [
+      "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "ccfe76688e286e14180d05c736b02c2bbbc0b8057863ef4aae02dd5ff5ad58ef"
+    ]
+  },
+  {
+    "host": "landsend-1",
+    "bundles": [
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-layout-benchmark-v2/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-layout-benchmark-v4/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-layout-benchmark-v3/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-layout-benchmark-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-repo/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      }
+    ],
+    "unique_hashes": [
+      "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f"
+    ]
+  },
+  {
+    "host": "landsend-2",
+    "bundles": [
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470839/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-faststate-check-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b320-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/code-matrix-v3/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/code-matrix-v2/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-fanout-check-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471684/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-cache-handoff-v10/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-mb4-v6/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-cdf-mb4-v5/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-085d9ba76d02c006dd0072760ad0f9ffcf6614aa/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-044c6b4e5dbcf81939857907f6769dd79a60bd9c/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-ladder-cfg3-v3/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v1/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6r/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v2/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-ladder-v4/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6s/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-static-v7/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-c41886c9fe22b1698359b8182870c04aac28cb2d/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-static-adversarial-v8/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-d226a8f7293d344c1913d47090007139ea452516/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-resident-prefetch-v9/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-repo/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470839/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-v7/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-ladder-v4/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b320-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-mb4-v6/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6r/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-cdf-mb4-v5/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6s/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471684/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-ladder-cfg3-v3/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-resident-prefetch-v9/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-adversarial-v8/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-cache-handoff-v10/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      }
+    ],
+    "unique_hashes": [
+      "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f"
+    ]
+  },
+  {
+    "host": "landsend-3",
+    "bundles": [
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b320-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/code-audio-v2/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-shortmatrix-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v2/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-cache-handoff-v10/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-mb4-v6/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-cdf-mb4-v5/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-085d9ba76d02c006dd0072760ad0f9ffcf6614aa/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-044c6b4e5dbcf81939857907f6769dd79a60bd9c/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-ladder-cfg3-v3/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v1/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6r/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v2/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-ladder-v4/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6s/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-static-v7/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-c41886c9fe22b1698359b8182870c04aac28cb2d/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-static-adversarial-v8/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-d226a8f7293d344c1913d47090007139ea452516/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-resident-prefetch-v9/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-repo/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-v7/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-ladder-v4/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b320-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-mb4-v6/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6r/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-cdf-mb4-v5/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6s/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-shortmatrix-v1/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-ladder-cfg3-v3/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-resident-prefetch-v9/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-adversarial-v8/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-cache-handoff-v10/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      }
+    ],
+    "unique_hashes": [
+      "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f"
+    ]
+  },
+  {
+    "host": "landsend-4",
+    "bundles": [
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b320-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/rollout-opt-projections-1793457680/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/rollout-opt-projections-1793458147/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-cache-handoff-v10/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-mb4-v6/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-cdf-mb4-v5/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-085d9ba76d02c006dd0072760ad0f9ffcf6614aa/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-044c6b4e5dbcf81939857907f6769dd79a60bd9c/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-ladder-cfg3-v3/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v1/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6r/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v2/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-ladder-v4/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6s/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-static-v7/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-c41886c9fe22b1698359b8182870c04aac28cb2d/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-static-adversarial-v8/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-d226a8f7293d344c1913d47090007139ea452516/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-resident-prefetch-v9/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-repo/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-v7/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-ladder-v4/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b320-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-mb4-v6/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6r/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-cdf-mb4-v5/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6s/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/rollout-opt-projections-1793457680/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-ladder-cfg3-v3/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-resident-prefetch-v9/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-adversarial-v8/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-cache-handoff-v10/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/rollout-opt-projections-1793458147/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      }
+    ],
+    "unique_hashes": [
+      "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f"
+    ]
+  },
+  {
+    "host": "landsend-5",
+    "bundles": [
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470839/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b320-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/conversation-trials-1793463493/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/rollout-delay72-1793460615/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/general-parent-trials-landsend-5-1793464975/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-shortmatrix-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471684/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-faststate-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-layout38-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/conversation-trials-1793464935/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v2/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/general-parent-trials-landsend-5-1793464961/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-cache-handoff-v10/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-mb4-v6/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-cdf-mb4-v5/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-085d9ba76d02c006dd0072760ad0f9ffcf6614aa/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-044c6b4e5dbcf81939857907f6769dd79a60bd9c/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-ladder-cfg3-v3/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v1/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6r/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v2/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-ladder-v4/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6s/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-static-v7/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-c41886c9fe22b1698359b8182870c04aac28cb2d/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-static-adversarial-v8/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-d226a8f7293d344c1913d47090007139ea452516/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-resident-prefetch-v9/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-repo/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470839/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-v7/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-ladder-v4/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b320-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-mb4-v6/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6r/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/conversation-trials-1793463493/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-cdf-mb4-v5/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6s/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/rollout-delay72-1793460615/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/general-parent-trials-landsend-5-1793464975/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-shortmatrix-v1/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471684/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-ladder-cfg3-v3/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-faststate-v1/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-resident-prefetch-v9/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-adversarial-v8/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-cache-handoff-v10/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/conversation-trials-1793464935/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/general-parent-trials-landsend-5-1793464961/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      }
+    ],
+    "unique_hashes": [
+      "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f"
+    ]
+  },
+  {
+    "host": "landsend-12",
+    "bundles": [
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b320-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470995/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/rollout-opt-mimi-1793458112/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/code/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-cache-handoff-v10/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-mb4-v6/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-cdf-mb4-v5/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-085d9ba76d02c006dd0072760ad0f9ffcf6614aa/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-044c6b4e5dbcf81939857907f6769dd79a60bd9c/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-ladder-cfg3-v3/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v1/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6r/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v2/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-ladder-v4/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6s/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-static-v7/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-c41886c9fe22b1698359b8182870c04aac28cb2d/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-static-adversarial-v8/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/pose-opd-credit-production-d226a8f7293d344c1913d47090007139ea452516/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-worktrees/opd-bench-b320-resident-prefetch-v9/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/pose-repo/pose-repo.bundle",
+        "member": null,
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-v7/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-ladder-v4/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b320-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-mb4-v6/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470995/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6r/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-cdf-mb4-v5/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6s/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-ladder-cfg3-v3/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-resident-prefetch-v9/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v1/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-adversarial-v8/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/rollout-opt-mimi-1793458112/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v2/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-bench-b320-cache-handoff-v10/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      },
+      {
+        "source": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+        "member": "pose-repo.bundle",
+        "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+        "bytes": 3302621
+      }
+    ],
+    "unique_hashes": [
+      "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f"
+    ]
+  }
+]

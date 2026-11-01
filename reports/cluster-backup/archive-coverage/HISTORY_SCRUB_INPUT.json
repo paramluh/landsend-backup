@@ -1,0 +1,15 @@
+{
+  "state": "requires_history_scrub",
+  "repo_id": "InternalCan/landsend-artifacts-backup-param",
+  "known_bad_revisions": [
+    "8a207fba983ddbd6a9735f4201dcd1eb7e56ac81",
+    "919b8c4cdb61047e029a27a8a5ea25b520a3e446"
+  ],
+  "bad_parts": [
+    "landsend-2/artifacts/part-0016.tar.zst",
+    "landsend-3/artifacts/part-0011.tar.zst"
+  ],
+  "current_replacements_verified": true,
+  "bundle_audit": "/home/param/outputs/landsend-backup-20261031/archive-coverage/BUNDLE_AUDIT_VERIFIED.json",
+  "time": 1793506977.2762587
+}

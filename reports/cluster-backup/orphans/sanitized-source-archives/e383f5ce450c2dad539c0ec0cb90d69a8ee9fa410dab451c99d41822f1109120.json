@@ -1,0 +1,8 @@
+{
+  "original_sha256": "e383f5ce450c2dad539c0ec0cb90d69a8ee9fa410dab451c99d41822f1109120",
+  "source": "/home/param/outputs/pose-opd-conversation-trials-20261031/source.tar",
+  "members": 2067,
+  "removed_credential_or_unsafe_members": [],
+  "redactions": 1,
+  "repacked": true
+}

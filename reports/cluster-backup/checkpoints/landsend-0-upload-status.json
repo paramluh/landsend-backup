@@ -1,12 +1,12 @@
 {
   "state": "uploading",
   "host": "landsend-0",
-  "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
-  "prefix": "hosts/landsend-0/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
-  "bytes": 76217888926,
-  "completed_tasks": 4,
+  "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-33",
+  "prefix": "hosts/landsend-0/models/trained-weights/transcript-audio-pose-20261028/exports/export-33",
+  "bytes": 14651570534,
+  "completed_tasks": 18,
   "total_tasks": 21,
   "attempt": 1,
-  "time": 1793506360.6652575,
+  "time": 1793507003.9058397,
   "started": 1793505841.8633068
 }

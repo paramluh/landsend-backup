@@ -1,0 +1,23 @@
+{
+  "state": "sanitized",
+  "source_sha256": "77169c5a792e525c6a68a45c508bb689b1f4d8fe4e4584911d7e44fbd51370e5",
+  "source_bytes": 11801558,
+  "redactions": 1,
+  "redacted_blobs": [
+    {
+      "original": "90b6f61602f20a1300c37e9dd4a288c93e5b1ff9",
+      "sanitized": "3952af7469e00bffa846724ac9aaf4c8a67fa6ae"
+    }
+  ],
+  "nested_bundles": [],
+  "sanitized_sha256": "acdbd67cd2bb9475020c06b7a463f02c4db685a0513aed0c4e9f9cb90719359b",
+  "sanitized_bytes": 15553147,
+  "commit_map": "77169c5a792e525c6a68a45c508bb689b1f4d8fe4e4584911d7e44fbd51370e5.commit-map.csv",
+  "original_refs": [
+    "refs/heads/tmp/landsend-backup-param 89960fbdfe88b984735a4ae57b56aab862b0f7f6"
+  ],
+  "sanitized_refs": [
+    "refs/heads/tmp/landsend-backup-param 5d97d0db3e8fe02178f0df0c42a72624c0de348d"
+  ],
+  "verified_secret_blob_absent": true
+}

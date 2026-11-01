@@ -1,0 +1,47 @@
+{
+  "state": "complete",
+  "errors": 0,
+  "hf_repo": "InternalCan/landsend-artifacts-backup-param",
+  "group": "source-archives",
+  "archives": [
+    {
+      "archive": "part-0000.tar.zst",
+      "bytes": 464620536,
+      "sha256": "5135d91cf061b3d9cbd73816d846ceae599cc3e96e5c99866464e64328051aa4",
+      "files": 20,
+      "errors": 0,
+      "created_unix": 1793506846.4661224,
+      "revision": "bb8552097482f012fcafcef3b4c61462973407b8",
+      "upload_seconds": 20.19828701019287,
+      "state": "verified",
+      "hf_path": "landsend-0/source-archives/part-0000.tar.zst"
+    },
+    {
+      "archive": "part-0001.tar.zst",
+      "bytes": 443276802,
+      "sha256": "a51bb71c62519ff214a5d9cb13f213d689e398302b8fa7aa3d86a0b17018c469",
+      "files": 20,
+      "errors": 0,
+      "created_unix": 1793506850.3084514,
+      "revision": "9425d49bc09d75f468f2ecadaf496dfed4cc25ec",
+      "upload_seconds": 16.40754747390747,
+      "state": "verified",
+      "hf_path": "landsend-0/source-archives/part-0001.tar.zst"
+    },
+    {
+      "archive": "part-0002.tar.zst",
+      "bytes": 69687967,
+      "sha256": "1f52bedcd282ca5b818e6e408b9ad14965b7a52af76acd9237893b523a55c17c",
+      "files": 3,
+      "errors": 0,
+      "created_unix": 1793506850.8977404,
+      "revision": "987b52ec104172b0e106014f823490f28805395d",
+      "upload_seconds": 6.557847499847412,
+      "state": "verified",
+      "hf_path": "landsend-0/source-archives/part-0002.tar.zst"
+    }
+  ],
+  "files": 43,
+  "aliases": 24,
+  "completed_unix": 1793506878.787516
+}

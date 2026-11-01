@@ -1,0 +1,8 @@
+{
+  "original_sha256": "fe64e6e35fd7b3f5633c0bd67d5b1c3735dbcf57abdaa31d58b67f4fa8d95c84",
+  "source": "/home/param/outputs/pose-opd-credit-bench/mb2-cfg3-v1.tar",
+  "members": 1769,
+  "removed_credential_or_unsafe_members": [],
+  "redactions": 1,
+  "repacked": true
+}

@@ -1,0 +1,153 @@
+{
+  "state": "complete",
+  "derived_files": 28007,
+  "archive_files": 28007,
+  "errors": [],
+  "redacted": [],
+  "archives": [
+    {
+      "archive": "part-0000.tar.zst",
+      "bytes": 1632199376,
+      "sha256": "c8cf16fb1f63c5441615b9da5122460246ad653be7e0d68236e0721e181d2115",
+      "files": 8278,
+      "errors": 0,
+      "created_unix": 1793506244.6632423,
+      "revision": "7293d4a0a28b2f0708010693f1f7f02b70339f8c",
+      "upload_seconds": 26.771021366119385,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0000.tar.zst"
+    },
+    {
+      "archive": "part-0001.tar.zst",
+      "bytes": 1632063997,
+      "sha256": "8661857690a0fe17295b99bfba2359273a895499374dd1bdae649b445875fddd",
+      "files": 8254,
+      "errors": 0,
+      "created_unix": 1793506257.7282434,
+      "revision": "6baffab7b192fed6485f884e2e0671b79ad7cd20",
+      "upload_seconds": 54.98221206665039,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0001.tar.zst"
+    },
+    {
+      "archive": "part-0002.tar.zst",
+      "bytes": 1631848547,
+      "sha256": "aec4a0f334fca58b7c670029234e0e25d4f9e67453ec2025df32b1aa4acfc8d3",
+      "files": 8528,
+      "errors": 0,
+      "created_unix": 1793506275.251381,
+      "revision": "8b884d07d1fd6bdd09e8774af399e26381686435",
+      "upload_seconds": 13.435171604156494,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0002.tar.zst"
+    },
+    {
+      "archive": "part-0003.tar.zst",
+      "bytes": 569640358,
+      "sha256": "0543b6b4eed0ad32174701fb166d3e29ac0c8ec9936787e6965d5134aa7a9a5f",
+      "files": 2903,
+      "errors": 0,
+      "created_unix": 1793506289.4858663,
+      "revision": "eae263975193b94ad622249d276810922f1c6d8e",
+      "upload_seconds": 9.372565507888794,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0003.tar.zst"
+    },
+    {
+      "archive": "part-0004.tar.zst",
+      "bytes": 594150363,
+      "sha256": "f4d3f7d26df366f409ac7e45a55ba527833ac147160ae94ee9a7cdfbc6a20585",
+      "files": 1,
+      "errors": 0,
+      "created_unix": 1793506292.5728695,
+      "revision": "108e3b3846429d98c02d4ccf65ed5cf8f6975317",
+      "upload_seconds": 9.126174211502075,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0004.tar.zst"
+    },
+    {
+      "archive": "part-0005.tar.zst",
+      "bytes": 698129439,
+      "sha256": "8dab86b496c8056b73aa92b4241095abc5dceafaf543c8ec5d1c2338a1ddc4ed",
+      "files": 4,
+      "errors": 0,
+      "created_unix": 1793506321.2765563,
+      "revision": "f159435ceba992630ae2edadf4a8c0ffde0b4978",
+      "upload_seconds": 8.863866806030273,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0005.tar.zst"
+    },
+    {
+      "archive": "part-0006.tar.zst",
+      "bytes": 595397364,
+      "sha256": "2a224c65af95c075b5dfdfb246eb5a9eed8c95050a8c2a33814d54f3b0433a42",
+      "files": 1,
+      "errors": 0,
+      "created_unix": 1793506324.1972272,
+      "revision": "a8f5995a219b9c42207a990b6ec33b93e355aa92",
+      "upload_seconds": 8.898298740386963,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0006.tar.zst"
+    },
+    {
+      "archive": "part-0007.tar.zst",
+      "bytes": 698460179,
+      "sha256": "df14f04c36b29d08472ce92b20b514e1f75a65bff1ade6cb97084ed275fbc147",
+      "files": 4,
+      "errors": 0,
+      "created_unix": 1793506327.837735,
+      "revision": "cb0be70a37f9d3bce514f6fab27979e63679249f",
+      "upload_seconds": 40.936999559402466,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0007.tar.zst"
+    },
+    {
+      "archive": "part-0008.tar.zst",
+      "bytes": 593934651,
+      "sha256": "b28f8f6601833491439bdb7ca801f75b84b6f8f8b9596ef46dd08da139703bf9",
+      "files": 1,
+      "errors": 0,
+      "created_unix": 1793506330.75965,
+      "revision": "369feaf6778447f3dca77d40336b261d222cb1de",
+      "upload_seconds": 14.760830402374268,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0008.tar.zst"
+    },
+    {
+      "archive": "part-0009.tar.zst",
+      "bytes": 697201252,
+      "sha256": "2a7efb6ba1c8a5254987fc03d4693ec89b1f9b0de4846f2f89854b0b2442d7cf",
+      "files": 4,
+      "errors": 0,
+      "created_unix": 1793506334.4966075,
+      "revision": "95b6d7e62b706f9178469504a1e70f12923cb72e",
+      "upload_seconds": 7.830959320068359,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0009.tar.zst"
+    },
+    {
+      "archive": "part-0010.tar.zst",
+      "bytes": 597635550,
+      "sha256": "8be02b9e9de63fc60c6345a1b17450880e3004bdf50fc4b94ca043b350364a96",
+      "files": 1,
+      "errors": 0,
+      "created_unix": 1793506337.4572926,
+      "revision": "e385fc56b0554cdbd1939843486620b2f21f08a8",
+      "upload_seconds": 7.874635696411133,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0010.tar.zst"
+    },
+    {
+      "archive": "part-0011.tar.zst",
+      "bytes": 885910532,
+      "sha256": "4a39687eb69b92668a170a035ff29dd9994b000bf8276fc41804f3d364ccd453",
+      "files": 28,
+      "errors": 0,
+      "created_unix": 1793506378.8088052,
+      "revision": "cf8d2f9444e98fbe63a52b108417e15ee7a0027a",
+      "upload_seconds": 11.174165964126587,
+      "state": "verified",
+      "hf_path": "landsend-0/datasets/part-0011.tar.zst"
+    }
+  ]
+}

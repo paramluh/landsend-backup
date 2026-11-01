@@ -17,7 +17,7 @@ def main():
     # Discover every non-hidden top-level project, including legacy real
     # pose-runs/pose-demo-website directories on other cluster hosts.
     roots=[p for p in B.HOME_ROOT.iterdir() if not p.name.startswith('.') and p.name!='datasets']
-    roots.extend([B.HOME_ROOT/'.config/systemd',B.HOME_ROOT/'.config/uv',B.HOME_ROOT/'.codex/sessions',B.HOME_ROOT/'.codex/attachments'])
+    roots.extend([B.HOME_ROOT/'.config',B.HOME_ROOT/'.local/bin',B.HOME_ROOT/'.codex/sessions',B.HOME_ROOT/'.codex/attachments',B.HOME_ROOT/'.codex/visualizations',B.HOME_ROOT/'.codex/rules'])
     if args.include_datasets:roots.append(B.HOME_ROOT/'datasets')
     scopes_path=B.BASE/'checkpoint-scopes.json'
     scopes=json.loads(scopes_path.read_text()).get(socket.gethostname(),{}) if scopes_path.exists() else {}
@@ -43,7 +43,7 @@ def main():
                 if x.is_symlink():links.append({'path':str(x),'target':os.readlink(x)})
                 elif d=='snapshots' and ('-live-' in p.name or p.name.endswith('-live')):
                     skipped.append({'path':str(x),'reason':'regenerable_rotating_dashboard_cache; canonical_run_data_archived'})
-                elif not B.excluded(x) and d not in {'site-packages','packages','dist-packages'}:kept.append(d)
+                elif not B.excluded(x) and d not in {'site-packages','dist-packages'}:kept.append(d)
             ds[:]=kept
             for f in fs:files[str(p/f)]=p/f
     rows=[]
@@ -51,7 +51,7 @@ def main():
         try:s=p.lstat()
         except OSError:continue
         if stat.S_ISLNK(s.st_mode):links.append({'path':str(p),'target':os.readlink(p)});continue
-        if not stat.S_ISREG(s.st_mode) or s.st_uid!=os.getuid():continue
+        if not stat.S_ISREG(s.st_mode) or (str(p).startswith('/tmp/') and s.st_uid!=os.getuid()):continue
         if B.excluded(p):skipped.append({'path':str(p),'reason':'credentials_or_regenerable_cache'});continue
         if p.suffix.lower()=='.distcp':skipped.append({'path':str(p),'reason':'distributed_checkpoint_agent_scope'});continue
         checkpoint_scope=('/models/' in str(p) or any(x in p.parts for x in ('checkpoints','saves','exports','resume'))

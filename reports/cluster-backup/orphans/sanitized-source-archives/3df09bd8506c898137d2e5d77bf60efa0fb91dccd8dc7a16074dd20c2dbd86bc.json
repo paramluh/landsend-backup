@@ -1,0 +1,8 @@
+{
+  "original_sha256": "3df09bd8506c898137d2e5d77bf60efa0fb91dccd8dc7a16074dd20c2dbd86bc",
+  "source": "/home/param/outputs/pose-basic-opd-benchmark-20261031-c/snapshot-1793495107490709394/source.tar",
+  "members": 1891,
+  "removed_credential_or_unsafe_members": [],
+  "redactions": 1,
+  "repacked": true
+}

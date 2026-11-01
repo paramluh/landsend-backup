@@ -1,12 +1,12 @@
 {
   "state": "uploading",
   "host": "landsend-2",
-  "source": "/home/param/pose-runs/pose-cb01-text-lr15e4-20261028/saves/step-00200",
-  "prefix": "hosts/landsend-2/pose-runs/pose-cb01-text-lr15e4-20261028/saves/step-00200",
-  "bytes": 129110867056,
-  "completed_tasks": 3,
+  "source": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/resume",
+  "prefix": "hosts/landsend-2/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/resume",
+  "bytes": 76218066786,
+  "completed_tasks": 10,
   "total_tasks": 37,
   "attempt": 1,
-  "time": 1793506248.7941046,
+  "time": 1793507015.8102489,
   "started": 1793505842.8640044
 }

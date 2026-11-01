@@ -1,0 +1,38 @@
+[
+  {
+    "pid": 608208,
+    "host": "landsend-1",
+    "started_unix": 1793506615.203735,
+    "log": "/home/param/outputs/landsend-backup-20261031/archive-coverage/source-archives-landsend-1.log"
+  },
+  {
+    "pid": 436254,
+    "host": "landsend-2",
+    "started_unix": 1793506615.2103038,
+    "log": "/home/param/outputs/landsend-backup-20261031/archive-coverage/source-archives-landsend-2.log"
+  },
+  {
+    "pid": 4032026,
+    "host": "landsend-3",
+    "started_unix": 1793506615.1838658,
+    "log": "/home/param/outputs/landsend-backup-20261031/archive-coverage/source-archives-landsend-3.log"
+  },
+  {
+    "pid": 3768228,
+    "host": "landsend-4",
+    "started_unix": 1793506615.214768,
+    "log": "/home/param/outputs/landsend-backup-20261031/archive-coverage/source-archives-landsend-4.log"
+  },
+  {
+    "pid": 3518418,
+    "host": "landsend-5",
+    "started_unix": 1793506615.214654,
+    "log": "/home/param/outputs/landsend-backup-20261031/archive-coverage/source-archives-landsend-5.log"
+  },
+  {
+    "pid": 3412389,
+    "host": "landsend-12",
+    "started_unix": 1793506615.1968653,
+    "log": "/home/param/outputs/landsend-backup-20261031/archive-coverage/source-archives-landsend-12.log"
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "host": "landsend-4",
+  "run_id": "20261101T042323Z",
+  "groups": [
+    {
+      "host": "landsend-4",
+      "repo": "/home/param/pose-repo",
+      "common": "/home/param/pose-repo/.git",
+      "worktrees": [
+        {
+          "host": "landsend-4",
+          "path": "/home/param/pose-repo",
+          "common": "/home/param/pose-repo/.git",
+          "branch": "main",
+          "original_head": "17f08f761468f901b4699c93233c27b58df46c24",
+          "staged_commit": null,
+          "working_commit": "079145051080bdfa4887014679489fa139562e2a",
+          "tree": "6baf2a7492aecfccb7a4b7d14983859b1b8c3514",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 351,
+          "status_count": 13,
+          "remotes": [
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+          ],
+          "staged_tree": "3cc65500f89e484d54ada5a8f87fc93bb3c2b0f0"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/main 17f08f761468f901b4699c93233c27b58df46c24"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    }
+  ],
+  "errors": [
+    {
+      "path": "/home/param/vansh-video-models",
+      "error": "git add: fatal: pathspec 'setup.sh' did not match any files\n"
+    }
+  ]
+}

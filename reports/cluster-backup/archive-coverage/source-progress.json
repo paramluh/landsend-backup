@@ -1,0 +1,44 @@
+[
+  {
+    "host": "landsend-0",
+    "audited_archives": 0,
+    "redacted_archives": 0,
+    "complete": null
+  },
+  {
+    "host": "landsend-1",
+    "audited_archives": 0,
+    "redacted_archives": 0,
+    "complete": null
+  },
+  {
+    "host": "landsend-2",
+    "audited_archives": 0,
+    "redacted_archives": 0,
+    "complete": null
+  },
+  {
+    "host": "landsend-3",
+    "audited_archives": 0,
+    "redacted_archives": 0,
+    "complete": null
+  },
+  {
+    "host": "landsend-4",
+    "audited_archives": 0,
+    "redacted_archives": 0,
+    "complete": null
+  },
+  {
+    "host": "landsend-5",
+    "audited_archives": 0,
+    "redacted_archives": 0,
+    "complete": null
+  },
+  {
+    "host": "landsend-12",
+    "audited_archives": 0,
+    "redacted_archives": 0,
+    "complete": null
+  }
+]

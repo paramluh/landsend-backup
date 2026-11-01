@@ -1,0 +1,34 @@
+[
+  {
+    "path": "/home/param/datasets/zoom-strangers-5k/DATASET_READY.json",
+    "relative": "zoom-strangers-5k/DATASET_READY.json",
+    "archive_path": "home/param/datasets/zoom-strangers-5k/DATASET_READY.json",
+    "bytes": 560,
+    "mtime_ns": 1793337883767862843,
+    "mode": 436,
+    "inode": [
+      64769,
+      28860288
+    ],
+    "algorithm": "sha256",
+    "digest": "ec0f6fca9b69e6b5e249224f23359dc427231eaa614e680edf955fb8a61338e5",
+    "state": "upload_required",
+    "reason": "content_differs"
+  },
+  {
+    "path": "/home/param/datasets/aloe-duplex/DATASET_READY.json",
+    "relative": "aloe-duplex/DATASET_READY.json",
+    "archive_path": "home/param/datasets/aloe-duplex/DATASET_READY.json",
+    "bytes": 2018,
+    "mtime_ns": 1793228287951123446,
+    "mode": 436,
+    "inode": [
+      64769,
+      15270159
+    ],
+    "algorithm": "sha256",
+    "digest": "fac0d6ed68585b58967e415b5213d645b1c66ca0e91a87c8a9369ac8166c2581",
+    "state": "upload_required",
+    "reason": "content_differs"
+  }
+]

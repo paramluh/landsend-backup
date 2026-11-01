@@ -1,0 +1,11 @@
+[
+  {
+    "path": "/home/param/datasets/rosie-stamp-conversations-v1/hf/README.md",
+    "relative": "rosie-stamp-conversations-v1/hf/README.md",
+    "bytes": 7389,
+    "algorithm": "sha256",
+    "digest": "33a6ab9b7bc6facf2e533c90466eaaa546cfd20631e3743c087bc877ad59cd35",
+    "owner_host": "landsend-5",
+    "owner_relative": "rosie-stamp-conversations-v1/prepared/README.md"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "path": "/home/param/datasets/zoom-strangers-5k/DATASET_READY.json",
+    "relative": "zoom-strangers-5k/DATASET_READY.json",
+    "archive_path": "home/param/datasets/zoom-strangers-5k/DATASET_READY.json",
+    "bytes": 560,
+    "mtime_ns": 1793337883881452731,
+    "mode": 436,
+    "inode": [
+      64769,
+      15258503
+    ],
+    "algorithm": "sha256",
+    "digest": "1850ba65b3d6c3566a29f7f205e1a6dba9de0211a74830162155446014201413",
+    "state": "upload_required",
+    "reason": "content_differs"
+  },
+  {
+    "path": "/home/param/datasets/aloe-duplex/DATASET_READY.json",
+    "relative": "aloe-duplex/DATASET_READY.json",
+    "archive_path": "home/param/datasets/aloe-duplex/DATASET_READY.json",
+    "bytes": 2018,
+    "mtime_ns": 1793228288147115805,
+    "mode": 436,
+    "inode": [
+      64769,
+      14749879
+    ],
+    "algorithm": "sha256",
+    "digest": "a9ca953377189b64095dc46c628aa7b058fa2df924eae5966da7a050771a687d",
+    "state": "upload_required",
+    "reason": "content_differs"
+  },
+  {
+    "path": "/home/param/datasets/aloe-duplex/s2h-m1-samsep/provenance/build_summary.json",
+    "relative": "aloe-duplex/s2h-m1-samsep/provenance/build_summary.json",
+    "archive_path": "home/param/datasets/aloe-duplex/s2h-m1-samsep/provenance/build_summary.json",
+    "bytes": 825,
+    "mtime_ns": 1793227271863919269,
+    "mode": 436,
+    "inode": [
+      64769,
+      14727770
+    ],
+    "algorithm": "sha256",
+    "digest": "7e9c85828c5909f785b833ffb46592083cb5ae018c553a1c6a1388b40f457690",
+    "state": "upload_required",
+    "reason": "content_differs"
+  }
+]

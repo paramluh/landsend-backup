@@ -1,0 +1,33 @@
+{
+  "state": "verified",
+  "known_credential_blob": "90b6f61602f20a1300c37e9dd4a288c93e5b1ff9",
+  "bundle_instances": 501,
+  "hosts": 7,
+  "unique_bundle_hashes": 2,
+  "all_selected_and_directly_nested_bundles_absent_known_credential": true,
+  "receipts": {
+    "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f": {
+      "state": "unchanged",
+      "source_sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "source_bytes": 3302621,
+      "redactions": 0,
+      "redacted_blobs": [],
+      "nested_bundles": [],
+      "sanitized_sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "sanitized_bytes": 3302621,
+      "verified_secret_blob_absent": true
+    },
+    "ccfe76688e286e14180d05c736b02c2bbbc0b8057863ef4aae02dd5ff5ad58ef": {
+      "state": "unchanged",
+      "source_sha256": "ccfe76688e286e14180d05c736b02c2bbbc0b8057863ef4aae02dd5ff5ad58ef",
+      "source_bytes": 19413674,
+      "redactions": 0,
+      "redacted_blobs": [],
+      "nested_bundles": [],
+      "sanitized_sha256": "ccfe76688e286e14180d05c736b02c2bbbc0b8057863ef4aae02dd5ff5ad58ef",
+      "sanitized_bytes": 19413674,
+      "verified_secret_blob_absent": true
+    }
+  },
+  "verified_unix": 1793506977.2761414
+}

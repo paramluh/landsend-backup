@@ -1,0 +1,11 @@
+{
+  "state": "passed",
+  "checks": [
+    "fast_forward_prior_mirror",
+    "large_blob_converted_to_lfs",
+    "lfs_object_exact_bytes",
+    "two_worktree_commit_map",
+    "git_push_ref_verified"
+  ],
+  "test_directory": "/home/param/outputs/landsend-backup-20261031/git/mirror-test-ixg56r__"
+}

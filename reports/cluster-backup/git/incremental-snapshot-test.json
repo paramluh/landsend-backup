@@ -1,0 +1,9 @@
+{
+  "state": "passed",
+  "checks": [
+    "real_index_unchanged",
+    "unsafe_staged_content_excluded",
+    "safe_working_version_preserved"
+  ],
+  "test_directory": "/home/param/outputs/landsend-backup-20261031/git/snapshot-test-jyyhr_j3"
+}

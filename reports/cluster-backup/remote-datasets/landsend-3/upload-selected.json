@@ -1,0 +1,114 @@
+[
+  {
+    "path": "/home/param/datasets/zoom-strangers-5k/DATASET_READY.json",
+    "relative": "zoom-strangers-5k/DATASET_READY.json",
+    "archive_path": "home/param/datasets/zoom-strangers-5k/DATASET_READY.json",
+    "bytes": 560,
+    "mtime_ns": 1793337883873786715,
+    "mode": 436,
+    "inode": [
+      64769,
+      27543256
+    ],
+    "algorithm": "sha256",
+    "digest": "c2720e84fbcfc6209b2a0db8dd98f7e09ec079fe2489e4346c4f4e4424520f5c",
+    "state": "upload_required",
+    "reason": "content_differs"
+  },
+  {
+    "path": "/home/param/datasets/aloe-duplex/DATASET_READY.json",
+    "relative": "aloe-duplex/DATASET_READY.json",
+    "archive_path": "home/param/datasets/aloe-duplex/DATASET_READY.json",
+    "bytes": 2018,
+    "mtime_ns": 1793228288145508592,
+    "mode": 436,
+    "inode": [
+      64769,
+      14746907
+    ],
+    "algorithm": "sha256",
+    "digest": "01e48b092ae5d9b1630f222f4dc8ca83bb0161bb39fa8cb8bf1cd5662b478ebd",
+    "state": "upload_required",
+    "reason": "content_differs"
+  },
+  {
+    "path": "/home/param/datasets/aloe-duplex/s2h-m1-samsep/stores/m1n0/NODE.json",
+    "relative": "aloe-duplex/s2h-m1-samsep/stores/m1n0/NODE.json",
+    "archive_path": "home/param/datasets/aloe-duplex/s2h-m1-samsep/stores/m1n0/NODE.json",
+    "bytes": 2119,
+    "mtime_ns": 1793227272071109016,
+    "mode": 436,
+    "inode": [
+      64769,
+      14735661
+    ],
+    "algorithm": "sha256",
+    "digest": "24b975475b4ed175564b525a8a661efeb79af324f1e2fe1bedbc3b98a8e44a6e",
+    "state": "upload_required",
+    "reason": "content_differs"
+  },
+  {
+    "path": "/home/param/datasets/aloe-duplex/s2h-m1-samsep/stores/m1n1/NODE.json",
+    "relative": "aloe-duplex/s2h-m1-samsep/stores/m1n1/NODE.json",
+    "archive_path": "home/param/datasets/aloe-duplex/s2h-m1-samsep/stores/m1n1/NODE.json",
+    "bytes": 2119,
+    "mtime_ns": 1793227272456109427,
+    "mode": 436,
+    "inode": [
+      64769,
+      14735675
+    ],
+    "algorithm": "sha256",
+    "digest": "a5a4e43a0dc6b7a160f295cce796fde6a590d208525a06135269f16c502fb6aa",
+    "state": "upload_required",
+    "reason": "content_differs"
+  },
+  {
+    "path": "/home/param/datasets/aloe-duplex/s2h-m1-samsep/stores/m1n2/NODE.json",
+    "relative": "aloe-duplex/s2h-m1-samsep/stores/m1n2/NODE.json",
+    "archive_path": "home/param/datasets/aloe-duplex/s2h-m1-samsep/stores/m1n2/NODE.json",
+    "bytes": 2119,
+    "mtime_ns": 1793227272853109850,
+    "mode": 436,
+    "inode": [
+      64769,
+      14735694
+    ],
+    "algorithm": "sha256",
+    "digest": "1ce419d32b393ce4330f223445d2fc37fbabcdc9a54678edf4909feeed5018b7",
+    "state": "upload_required",
+    "reason": "content_differs"
+  },
+  {
+    "path": "/home/param/datasets/aloe-duplex/s2h-m1-samsep/stores/m1n3/NODE.json",
+    "relative": "aloe-duplex/s2h-m1-samsep/stores/m1n3/NODE.json",
+    "archive_path": "home/param/datasets/aloe-duplex/s2h-m1-samsep/stores/m1n3/NODE.json",
+    "bytes": 2119,
+    "mtime_ns": 1793227273244110266,
+    "mode": 436,
+    "inode": [
+      64769,
+      14735720
+    ],
+    "algorithm": "sha256",
+    "digest": "4915775b47086ee4d850e05676512c7d007565318896903f68a4e1bc22cd77f8",
+    "state": "upload_required",
+    "reason": "content_differs"
+  },
+  {
+    "path": "/home/param/datasets/aloe-duplex/s2h-m1-samsep/provenance/build_summary.json",
+    "relative": "aloe-duplex/s2h-m1-samsep/provenance/build_summary.json",
+    "archive_path": "home/param/datasets/aloe-duplex/s2h-m1-samsep/provenance/build_summary.json",
+    "bytes": 825,
+    "mtime_ns": 1793227273348110377,
+    "mode": 436,
+    "inode": [
+      64769,
+      14735732
+    ],
+    "algorithm": "sha256",
+    "digest": "de383c7bb23b14948795d8996f91e788a8914714a39550ffc3b1160aa82b7bca",
+    "state": "upload_required",
+    "reason": "content_differs"
+  }
+]

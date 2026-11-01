@@ -1,0 +1,56 @@
+[
+  {
+    "host": "landsend-1",
+    "files": 52161,
+    "matched": 52159,
+    "errors": [],
+    "upload_files": 2,
+    "upload_bytes": 2578,
+    "cross_node_aliases": 0
+  },
+  {
+    "host": "landsend-2",
+    "files": 52161,
+    "matched": 52158,
+    "errors": [],
+    "upload_files": 3,
+    "upload_bytes": 3403,
+    "cross_node_aliases": 0
+  },
+  {
+    "host": "landsend-3",
+    "files": 52161,
+    "matched": 52154,
+    "errors": [],
+    "upload_files": 7,
+    "upload_bytes": 11879,
+    "cross_node_aliases": 0
+  },
+  {
+    "host": "landsend-4",
+    "files": 52176,
+    "matched": 52169,
+    "errors": [],
+    "upload_files": 6,
+    "upload_bytes": 9760,
+    "cross_node_aliases": 1
+  },
+  {
+    "host": "landsend-5",
+    "files": 55808,
+    "matched": 52374,
+    "errors": [],
+    "upload_files": 3433,
+    "upload_bytes": 20726970787,
+    "cross_node_aliases": 1
+  },
+  {
+    "host": "landsend-12",
+    "files": 52299,
+    "matched": 52296,
+    "errors": [],
+    "upload_files": 3,
+    "upload_bytes": 3234,
+    "cross_node_aliases": 0
+  }
+]

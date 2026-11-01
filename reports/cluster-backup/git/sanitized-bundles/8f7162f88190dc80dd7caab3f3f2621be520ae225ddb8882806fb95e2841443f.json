@@ -1,0 +1,11 @@
+{
+  "state": "unchanged",
+  "source_sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+  "source_bytes": 3302621,
+  "redactions": 0,
+  "redacted_blobs": [],
+  "nested_bundles": [],
+  "sanitized_sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+  "sanitized_bytes": 3302621,
+  "verified_secret_blob_absent": true
+}

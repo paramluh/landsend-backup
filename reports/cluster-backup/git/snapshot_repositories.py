@@ -33,6 +33,15 @@ def snapshot(repo):
  index_path=Path(strgit(repo,'rev-parse','--path-format=absolute','--git-path','index'))
  if index_path.exists():shutil.copyfile(index_path,temp)
  else:run(repo,'read-tree',head,env=env)
+ staged_excluded=[]
+ # Scan the staged bytes themselves: a safe working file can hide an older unsafe staged version.
+ for raw in run(repo,'diff','--cached','--name-only','-z',head,env=env).split(b'\0'):
+  if not raw:continue
+  rel=raw.decode();blob=run(repo,'show',':'+rel,env=env,check=False)
+  reason='credential-content' if SECRETS.search(blob) else ('large-file-to-artifact-backup' if len(blob)>50_000_000 else None)
+  if Path(rel).name in {'.env','.netrc','.git-credentials','credentials','token','stored_tokens','id_rsa','id_ed25519'}:reason='credential-filename'
+  if reason:
+   staged_excluded.append({'path':rel,'reason':reason});run(repo,'reset','-q',head,'--',rel,env=env)
  staged_tree=strgit(repo,'write-tree',env=env)
  staged_commit=None
  if staged_tree!=strgit(repo,'rev-parse',head+'^{tree}'):
@@ -46,6 +55,10 @@ def snapshot(repo):
   rel=raw.decode();reason=safe(repo/rel)
   if reason:excludes.append({'path':rel,'reason':reason,'tracked':True})
  run(repo,'add','-u',env=env)
+ # Paths newly staged in the real index are not reported as untracked; explicitly snapshot their current bytes too.
+ if any(changed):
+  tracked_spec=OUT/(label+'.tracked.pathspec');tracked_spec.write_bytes(b'\0'.join(x for x in changed if x)+b'\0')
+  run(repo,'add','--all','--pathspec-from-file='+str(tracked_spec),'--pathspec-file-nul',env=env)
  # Restore unsafe tracked files to HEAD in snapshot only, leaving real index/worktree intact.
  for item in excludes:
   run(repo,'reset','-q',head,'--',item['path'],env=env)
@@ -68,7 +81,7 @@ def snapshot(repo):
  run(repo,'update-ref','refs/landsend-backup/'+HOST+'/'+label,commit)
  temp.unlink(missing_ok=True)
  assert status_before==run(repo,'status','--porcelain=v1','-z'),'Working-tree status changed concurrently'
- return dict(host=HOST,path=str(repo),common=common,branch=branch,original_head=head,staged_commit=staged_commit,working_commit=commit,tree=tree,excluded=excludes,untracked_added=len(allowed),status_count=len([x for x in status_before.split(b'\0') if x]),remotes=strgit(repo,'remote','-v').splitlines())
+ return dict(host=HOST,path=str(repo),common=common,branch=branch,original_head=head,staged_commit=staged_commit,working_commit=commit,tree=tree,excluded=excludes,staged_excluded=staged_excluded,untracked_added=len(allowed),status_count=len([x for x in status_before.split(b'\0') if x]),remotes=strgit(repo,'remote','-v').splitlines())
 
 paths=json.loads(sys.argv[1]);rows=[]
 for path in paths:

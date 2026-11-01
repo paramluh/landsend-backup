@@ -1,0 +1,216 @@
+{
+  "host": "landsend-12",
+  "files": [
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b320-v1/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470995/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/rollout-opt-mimi-1793458112/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/code/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-b320-cache-handoff-v10/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-actor8-fp32-mb4-v6/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-actor8-cdf-mb4-v5/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-opd-credit-production-085d9ba76d02c006dd0072760ad0f9ffcf6614aa/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-opd-credit-production-044c6b4e5dbcf81939857907f6769dd79a60bd9c/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-ladder-cfg3-v3/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v1/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6r/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-mb2-cfg3-v2/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-actor8-ladder-v4/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-actor8-fp32-60s-v6s/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-b320-static-v7/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-opd-credit-production-c41886c9fe22b1698359b8182870c04aac28cb2d/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-b320-static-adversarial-v8/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/pose-opd-credit-production-d226a8f7293d344c1913d47090007139ea452516/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-worktrees/opd-bench-b320-resident-prefetch-v9/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    },
+    {
+      "path": "/home/param/pose-repo/pose-repo.bundle",
+      "sha256": "8f7162f88190dc80dd7caab3f3f2621be520ae225ddb8882806fb95e2841443f",
+      "bytes": 3302621,
+      "git_bundle": true
+    }
+  ],
+  "errors": []
+}

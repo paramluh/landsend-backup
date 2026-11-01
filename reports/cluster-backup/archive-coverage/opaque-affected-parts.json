@@ -1,0 +1,105 @@
+[
+  {
+    "host": "landsend-0",
+    "flagged_paths": [
+      "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449335445611894.tar.gz",
+      "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449147304861981.tar.gz",
+      "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449370252348769.tar.gz"
+    ],
+    "affected_parts": []
+  },
+  {
+    "host": "landsend-1",
+    "flagged_paths": [],
+    "affected_parts": []
+  },
+  {
+    "host": "landsend-2",
+    "flagged_paths": [
+      "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz"
+    ],
+    "affected_parts": [
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+        "manifest": "/home/param/outputs/landsend-backup-20261031/orphans/archives/artifacts/part-0016.tar.zst.files.json",
+        "receipt": {
+          "archive": "part-0016.tar.zst",
+          "bytes": 1082613056,
+          "sha256": "372d3d803d845a73052b5e93cbad0a2c20f0b774e42979f96f8d999ac1ee9ed7",
+          "files": 67,
+          "errors": 0,
+          "created_unix": 1793506525.8686192,
+          "revision": "8a207fba983ddbd6a9735f4201dcd1eb7e56ac81",
+          "upload_seconds": 22.700268745422363,
+          "state": "verified",
+          "hf_path": "landsend-2/artifacts/part-0016.tar.zst"
+        },
+        "row": {
+          "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+          "archive_path": "home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+          "bytes": 28198073,
+          "mtime_ns": 1793449371152647194,
+          "mode": 436,
+          "inode": [
+            64769,
+            31753688
+          ],
+          "archived_bytes": 28198073,
+          "redactions": 0
+        }
+      }
+    ]
+  },
+  {
+    "host": "landsend-3",
+    "flagged_paths": [
+      "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz"
+    ],
+    "affected_parts": [
+      {
+        "source": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+        "manifest": "/home/param/outputs/landsend-backup-20261031/orphans/archives/artifacts/part-0011.tar.zst.files.json",
+        "receipt": {
+          "archive": "part-0011.tar.zst",
+          "bytes": 1033529142,
+          "sha256": "83d406e59a0e723aaaadb75afcb21ab3da64f1450638834fae01338a5bda8d04",
+          "files": 40,
+          "errors": 0,
+          "created_unix": 1793506460.8472476,
+          "revision": "919b8c4cdb61047e029a27a8a5ea25b520a3e446",
+          "upload_seconds": 21.93424081802368,
+          "state": "verified",
+          "hf_path": "landsend-3/artifacts/part-0011.tar.zst"
+        },
+        "row": {
+          "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+          "archive_path": "home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+          "bytes": 28198073,
+          "mtime_ns": 1793449371152647194,
+          "mode": 436,
+          "inode": [
+            64769,
+            28354713
+          ],
+          "archived_bytes": 28198073,
+          "redactions": 0
+        }
+      }
+    ]
+  },
+  {
+    "host": "landsend-4",
+    "flagged_paths": [],
+    "affected_parts": []
+  },
+  {
+    "host": "landsend-5",
+    "flagged_paths": [],
+    "affected_parts": []
+  },
+  {
+    "host": "landsend-12",
+    "flagged_paths": [],
+    "affected_parts": []
+  }
+]

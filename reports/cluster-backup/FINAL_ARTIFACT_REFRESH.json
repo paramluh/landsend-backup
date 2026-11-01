@@ -1,0 +1,9 @@
+{
+  "state": "waiting_for_final_training_backup",
+  "hosts": {},
+  "started_unix": 1793506957.4446983,
+  "pid": 3871646,
+  "expires_utc": "2026-11-01T07:00:00Z",
+  "updated_unix": 1793507017.446269,
+  "training_state": "armed"
+}

@@ -1,0 +1,9 @@
+{
+  "state": "awaiting_sanitized_replacements",
+  "repo_id": "InternalCan/landsend-artifacts-backup-param",
+  "repo_type": "dataset",
+  "created_unix": 1793506870.985831,
+  "reason": "Embedded vendor credential in pre-existing source archives and Git bundles; sanitize newly created artifact backups and scrub their temporary history. Existing home Git histories remain untouched.",
+  "credential_path": "ref/pose-tokenizer/speechsdk-d38d45d63ae4 (2).json",
+  "credential_blob_sha1": "90b6f61602f20a1300c37e9dd4a288c93e5b1ff9"
+}

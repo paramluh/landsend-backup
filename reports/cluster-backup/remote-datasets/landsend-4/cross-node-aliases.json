@@ -1,0 +1,11 @@
+[
+  {
+    "path": "/home/param/datasets/aloe-duplex/s2h-m1-samsep/stores/m1n2/NODE.json",
+    "relative": "aloe-duplex/s2h-m1-samsep/stores/m1n2/NODE.json",
+    "bytes": 2119,
+    "algorithm": "sha256",
+    "digest": "1ce419d32b393ce4330f223445d2fc37fbabcdc9a54678edf4909feeed5018b7",
+    "owner_host": "landsend-3",
+    "owner_relative": "aloe-duplex/s2h-m1-samsep/stores/m1n2/NODE.json"
+  }
+]

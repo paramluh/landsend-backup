@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Sanitized, deduplicated orphan backup; checkpoints and Git histories have separate owners."""
-import argparse, collections, concurrent.futures, gzip, hashlib, io, json, os, re, shutil, socket, stat, subprocess, tarfile, tempfile, time
+import argparse, collections, concurrent.futures, gzip, hashlib, io, json, os, re, shutil, socket, stat, subprocess, tarfile, tempfile, time, zipfile
 from pathlib import Path
+from sanitize_git_bundle import sanitize_bundle_file, sanitize_bundle_stream
 
 BASE=Path('/home/param/outputs/landsend-backup-20261031/orphans')
 HOME_ROOT=Path('/home/param')
@@ -29,6 +30,59 @@ def sanitize(data):
     for pattern in SECRET_PATTERNS:
         data,n=pattern.subn(b'[REDACTED_CREDENTIAL]',data);count+=n
     return data,count
+
+def is_container(name):
+    return str(name).lower().endswith(('.tar','.tar.gz','.tgz','.zip'))
+
+def _sanitize_container_stream(stream,name,depth=0):
+    """Return a sanitized seekable container, with no credentials in opaque members."""
+    output=tempfile.TemporaryFile();redactions=removed=0
+    def clean_member(source,member_name):
+        nonlocal redactions,removed
+        if str(member_name).lower().endswith('.bundle'):
+            data,n=sanitize_bundle_stream(source);redactions+=n;return data
+        if is_container(member_name):
+            if depth>=8:removed+=1;return None
+            nested,n,r=_sanitize_container_stream(source,member_name,depth+1);redactions+=n;removed+=r;return nested
+        data=source.read()
+        if Path(member_name).suffix.lower() in TEXT_EXT or (len(data)<16*1024**2 and b'\x00' not in data[:4096]):
+            data,n=sanitize(data);redactions+=n
+        return io.BytesIO(data)
+    try:
+        if str(name).lower().endswith('.zip'):
+            with zipfile.ZipFile(stream) as original,zipfile.ZipFile(output,'w',compression=zipfile.ZIP_DEFLATED,compresslevel=1) as target:
+                for member in original.infolist():
+                    if excluded(member.filename) or member.filename.startswith('/') or '..' in Path(member.filename).parts:
+                        removed+=1;continue
+                    if member.is_dir():target.writestr(member,b'');continue
+                    with original.open(member) as source:
+                        data=clean_member(source,member.filename)
+                        if data is not None:
+                            with data:target.writestr(member,data.read())
+        else:
+            mode='w:gz' if str(name).lower().endswith(('.tar.gz','.tgz')) else 'w'
+            options={'compresslevel':1} if mode=='w:gz' else {}
+            with tarfile.open(fileobj=stream,mode='r:*') as original,tarfile.open(fileobj=output,mode=mode,**options) as target:
+                for member in original:
+                    if excluded(member.name) or member.name.startswith('/') or '..' in Path(member.name).parts:
+                        removed+=1;continue
+                    if not member.isfile():target.addfile(member);continue
+                    with original.extractfile(member) as source:
+                        data=clean_member(source,member.name)
+                        if data is not None:
+                            with data:
+                                data.seek(0,2);member.size=data.tell();data.seek(0);target.addfile(member,data)
+        output.seek(0);return output,redactions,removed
+    except BaseException:
+        output.close();raise
+
+def sanitize_container_file(path):
+    """Return (binary stream, redactions, removed members), leaving source untouched."""
+    with Path(path).open('rb') as original:
+        result,n,r=_sanitize_container_stream(original,str(path))
+    if not n and not r:
+        result.close();return Path(path).open('rb'),0,0
+    return result,n,r
 
 def atomic_json(path,obj):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
@@ -153,7 +207,16 @@ def pack(rows,group):
                         p=Path(r['path'])
                         try:
                             info=tar.gettarinfo(str(p),arcname=r['archive_path']);info.uid=info.gid=0;info.uname=info.gname=''
-                            if p.suffix.lower() in TEXT_EXT or p.name in {'.bashrc','.profile','.gitattributes','Dockerfile','Makefile'}:
+                            removed=0
+                            if p.suffix.lower()=='.bundle':
+                                data,n=sanitize_bundle_file(p)
+                                with data:
+                                    data.seek(0,2);info.size=data.tell();data.seek(0);tar.addfile(info,data)
+                            elif is_container(p.name):
+                                data,n,removed=sanitize_container_file(p)
+                                with data:
+                                    data.seek(0,2);info.size=data.tell();data.seek(0);tar.addfile(info,data)
+                            elif p.suffix.lower() in TEXT_EXT or p.name in {'.bashrc','.profile','.gitattributes','Dockerfile','Makefile'}:
                                 data,n=sanitize(p.read_bytes());info.size=len(data);tar.addfile(info,io.BytesIO(data))
                             elif p.suffix=='.gz' and p.name.endswith(('.json.gz','.jsonl.gz','.log.gz','.txt.gz')):
                                 data,n=sanitize(gzip.decompress(p.read_bytes()));data=gzip.compress(data,compresslevel=1,mtime=0);info.size=len(data);tar.addfile(info,io.BytesIO(data))
@@ -165,7 +228,7 @@ def pack(rows,group):
                                 with tempfile.TemporaryFile(dir=output) as snapshot:
                                     with p.open('rb') as f:shutil.copyfileobj(f,snapshot,4*1024**2)
                                     info.size=snapshot.tell();snapshot.seek(0);tar.addfile(info,snapshot)
-                            manifest.append({**r,'archived_bytes':info.size,'redactions':n})
+                            manifest.append({**r,'archived_bytes':info.size,'redactions':n,'removed_archive_members':removed})
                         except (OSError,EOFError,tarfile.TarError) as exc:
                             manifest.append({**r,'error':str(exc)})
                 z.stdin.close()

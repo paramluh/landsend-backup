@@ -1,0 +1,8 @@
+{
+  "original_sha256": "7546163fe83e26092d49efc8326c92a81b967da329cdf697aa9c1919b7617269",
+  "source": "/home/param/outputs/pose-opd-symmetric-production-launch-20261031/snapshot-1793472444394221943/source.tar",
+  "members": 1871,
+  "removed_credential_or_unsafe_members": [],
+  "redactions": 1,
+  "repacked": true
+}

@@ -1,0 +1,417 @@
+{
+  "host": "landsend-0",
+  "archives": [
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449370252348769.tar.gz",
+      "bytes": 28198073,
+      "sha256": "9f439be66fbf5e3cab3e6dbf08cd1d4a42e1df0c534a9a73b6e3ae97eb465e5d",
+      "selection_source": "selection.json",
+      "members": 1817,
+      "expanded_bytes": 104108575,
+      "flagged_members": [
+        {
+          "name": "ref/pose-tokenizer/speechsdk-d38d45d63ae4 (2).json",
+          "credential_pattern_matches": 1,
+          "credential_filename": false,
+          "unsafe_path": false
+        }
+      ],
+      "extensions": {
+        "": 5,
+        ".tsv": 1,
+        ".md": 101,
+        ".txt": 59,
+        ".json": 118,
+        ".env": 31,
+        ".py": 1019,
+        ".sh": 228,
+        ".sbatch": 174,
+        ".diff": 17,
+        ".tmpl": 2,
+        ".patch": 6,
+        ".lock": 2,
+        ".cu": 1,
+        ".html": 6,
+        ".service": 3,
+        ".example": 1,
+        ".js": 11,
+        ".bundle": 1,
+        ".yaml": 26,
+        ".toml": 2,
+        ".ipynb": 3
+      },
+      "state": "needs_review"
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/matrix-v2-package.tar.gz",
+      "bytes": 216875,
+      "sha256": "3fd3a774020621a74c53bf10f1cf116578609c4b29ffd2d3e8823feed3474878",
+      "selection_source": "selection.json",
+      "members": 75,
+      "expanded_bytes": 804058,
+      "flagged_members": [],
+      "extensions": {
+        ".py": 67,
+        ".md": 4,
+        ".json": 4
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449335445611894.tar.gz",
+      "bytes": 28198023,
+      "sha256": "7fe1012bdc22bc96097ee6b0bcaaeda51948ee3bb71eadeadc9b96088f82ca5a",
+      "selection_source": "selection.json",
+      "members": 1817,
+      "expanded_bytes": 104108546,
+      "flagged_members": [
+        {
+          "name": "ref/pose-tokenizer/speechsdk-d38d45d63ae4 (2).json",
+          "credential_pattern_matches": 1,
+          "credential_filename": false,
+          "unsafe_path": false
+        }
+      ],
+      "extensions": {
+        "": 5,
+        ".tsv": 1,
+        ".md": 101,
+        ".txt": 59,
+        ".json": 118,
+        ".env": 31,
+        ".py": 1019,
+        ".sh": 228,
+        ".sbatch": 174,
+        ".diff": 17,
+        ".tmpl": 2,
+        ".patch": 6,
+        ".lock": 2,
+        ".cu": 1,
+        ".html": 6,
+        ".service": 3,
+        ".example": 1,
+        ".js": 11,
+        ".bundle": 1,
+        ".yaml": 26,
+        ".toml": 2,
+        ".ipynb": 3
+      },
+      "state": "needs_review"
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449147304861981.tar.gz",
+      "bytes": 28183187,
+      "sha256": "f2c338450484b291ded77efe06deac66620fff1b79783991164647f3f453bdd6",
+      "selection_source": "selection.json",
+      "members": 1811,
+      "expanded_bytes": 104063064,
+      "flagged_members": [
+        {
+          "name": "ref/pose-tokenizer/speechsdk-d38d45d63ae4 (2).json",
+          "credential_pattern_matches": 1,
+          "credential_filename": false,
+          "unsafe_path": false
+        }
+      ],
+      "extensions": {
+        "": 5,
+        ".tsv": 1,
+        ".md": 100,
+        ".txt": 59,
+        ".json": 117,
+        ".env": 31,
+        ".py": 1015,
+        ".sh": 228,
+        ".sbatch": 174,
+        ".diff": 17,
+        ".tmpl": 2,
+        ".patch": 6,
+        ".lock": 2,
+        ".cu": 1,
+        ".html": 6,
+        ".service": 3,
+        ".example": 1,
+        ".js": 11,
+        ".bundle": 1,
+        ".yaml": 26,
+        ".toml": 2,
+        ".ipynb": 3
+      },
+      "state": "needs_review"
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/matrix-v3-package.tar.gz",
+      "bytes": 219172,
+      "sha256": "2514d2b7048f598b3cc9d84643f8bdd4d5355d07c98dc554a3277898fce4c596",
+      "selection_source": "selection.json",
+      "members": 78,
+      "expanded_bytes": 823433,
+      "flagged_members": [],
+      "extensions": {
+        ".md": 4,
+        ".py": 70,
+        ".json": 4
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/audio-v2-package.tar.gz",
+      "bytes": 213931,
+      "sha256": "c76de1dcdb4a322c7cf99a8ec358fd89d06ef7397bce932b40b968ab7a5b2534",
+      "selection_source": "selection.json",
+      "members": 74,
+      "expanded_bytes": 792525,
+      "flagged_members": [],
+      "extensions": {
+        ".py": 66,
+        ".md": 4,
+        ".json": 4
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/outputs/pose-ar-logits-20261030/site.tar.gz",
+      "bytes": 25233358,
+      "sha256": "931fbb0935006e4d024ab900ef4abb7effed062ac7b236f48f32e22994607a1d",
+      "selection_source": "selection.json",
+      "members": 14,
+      "expanded_bytes": 56946992,
+      "flagged_members": [],
+      "extensions": {
+        ".js": 2,
+        ".html": 1,
+        ".json": 8,
+        ".gz": 2,
+        ".css": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/outputs/pose-ar-diagnostics-20261030/site.tar.gz",
+      "bytes": 16973848,
+      "sha256": "02b81c2d3b71b39b157728eb018b72a710c59a766d8e0fcf66219427d6e51a20",
+      "selection_source": "selection.json",
+      "members": 10,
+      "expanded_bytes": 37310450,
+      "flagged_members": [],
+      "extensions": {
+        ".html": 1,
+        ".json": 6,
+        ".gz": 1,
+        ".js": 1,
+        ".css": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-loss-gradient-cuda-check/source.tar.gz",
+      "bytes": 763202,
+      "sha256": "612e9f790446a8a3e1d0b316d64bf5d921850577d88bc0ef01bcea6ef474b2ee",
+      "selection_source": "selection.json",
+      "members": 168,
+      "expanded_bytes": 2608320,
+      "flagged_members": [],
+      "extensions": {
+        ".py": 164,
+        ".json": 4
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-loss-gradient-cuda-check/source.corrected.tar.gz",
+      "bytes": 763295,
+      "sha256": "00f9f253cbc5810de6037706f327debdeda0292cf0f88269e2c09d4b6eb39daf",
+      "selection_source": "selection.json",
+      "members": 168,
+      "expanded_bytes": 2608569,
+      "flagged_members": [],
+      "extensions": {
+        ".py": 164,
+        ".json": 4
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/outputs/pose-ar-rollout-20261030/site-trimmed.tar.gz",
+      "bytes": 69495434,
+      "sha256": "7d9d1eba719133c405ac6dbeb6d4ec192a1a80308cb6eb363d3410ef03914c1d",
+      "selection_source": "selection.json",
+      "members": 44,
+      "expanded_bytes": 213917628,
+      "flagged_members": [],
+      "extensions": {
+        ".js": 3,
+        ".html": 1,
+        ".json": 37,
+        ".gz": 2,
+        ".css": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/outputs/pose-ar-rollout-20261030/site.tar.gz",
+      "bytes": 70073471,
+      "sha256": "593a2fe14a67aba80f9a9f890c123820b085531799a51675d46174b2483176ca",
+      "selection_source": "selection.json",
+      "members": 44,
+      "expanded_bytes": 227750609,
+      "flagged_members": [],
+      "extensions": {
+        ".js": 3,
+        ".html": 1,
+        ".json": 37,
+        ".gz": 2,
+        ".css": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/runs/pose-runs/xabi-cb1-tower-final-only-20261028/source.tar.gz",
+      "bytes": 64523,
+      "sha256": "bdb341711371b5c7b213062a2285e03d1f2a80f0eb4751da23dbfd904e039368",
+      "selection_source": "selection.json",
+      "members": 11,
+      "expanded_bytes": 200261,
+      "flagged_members": [],
+      "extensions": {
+        ".py": 5,
+        ".sh": 4,
+        ".md": 1,
+        ".env": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-cb01-text-lr15e4-20261028/source.tar.gz",
+      "bytes": 68624,
+      "sha256": "5c3778045e441941f8591c37f23a2201829b894409d8d3c35455be28f6261257",
+      "selection_source": "selection.json",
+      "members": 13,
+      "expanded_bytes": 214260,
+      "flagged_members": [],
+      "extensions": {
+        ".py": 5,
+        ".sh": 5,
+        ".md": 2,
+        ".env": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/runs/pose-runs/xabi-cb1-tower-validated-20261028/source.tar.gz",
+      "bytes": 65436,
+      "sha256": "7d326d5a4389750ba628a6a3a71d97e601a7326764fb358e00a421dd7e9931e3",
+      "selection_source": "selection.json",
+      "members": 11,
+      "expanded_bytes": 203340,
+      "flagged_members": [],
+      "extensions": {
+        ".py": 5,
+        ".sh": 4,
+        ".md": 1,
+        ".env": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/source/20261029T041620Z/source.tar.gz",
+      "bytes": 162554,
+      "sha256": "a8d68cd4a3b5da504412ae3614dd39b7c8a1e2b7b1cc82f75a876f72ebb42614",
+      "selection_source": "selection.json",
+      "members": 37,
+      "expanded_bytes": 551438,
+      "flagged_members": [],
+      "extensions": {
+        ".html": 1,
+        ".css": 1,
+        ".js": 1,
+        ".py": 33,
+        ".sh": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/source/20261029T041825Z/source.tar.gz",
+      "bytes": 162929,
+      "sha256": "b862a6fbfc66f520bab97a2141e50a39955881877a3126c3ff79699f8fdfdf7f",
+      "selection_source": "selection.json",
+      "members": 37,
+      "expanded_bytes": 552587,
+      "flagged_members": [],
+      "extensions": {
+        ".html": 1,
+        ".css": 1,
+        ".js": 1,
+        ".py": 33,
+        ".sh": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/source/20261029T041736Z/source.tar.gz",
+      "bytes": 162837,
+      "sha256": "ec5f1083a6eb6d073c122b7869153f8eebdb3b14f22fabc11e64717c82d35ed8",
+      "selection_source": "selection.json",
+      "members": 37,
+      "expanded_bytes": 552244,
+      "flagged_members": [],
+      "extensions": {
+        ".html": 1,
+        ".css": 1,
+        ".js": 1,
+        ".py": 33,
+        ".sh": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/runs/pose-runs/xabi-cb1-tower-20261028/source.tar.gz",
+      "bytes": 63465,
+      "sha256": "12567c53e9364968ac58b9b832cf53592857c7a9a3e062bcf419c64d0fe213c4",
+      "selection_source": "selection.json",
+      "members": 10,
+      "expanded_bytes": 197500,
+      "flagged_members": [],
+      "extensions": {
+        ".py": 5,
+        ".sh": 3,
+        ".md": 1,
+        ".env": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-cb01-text-lr3e4-20261028/source.tar.gz",
+      "bytes": 68644,
+      "sha256": "fc5cb025c499d655c1427a4f31755f15b961bb676d6e096a89dc7d7bd96c620f",
+      "selection_source": "selection.json",
+      "members": 13,
+      "expanded_bytes": 214268,
+      "flagged_members": [],
+      "extensions": {
+        ".py": 5,
+        ".sh": 5,
+        ".md": 2,
+        ".env": 1
+      },
+      "state": "inspected_no_credentials"
+    },
+    {
+      "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/source/20261029T044118Z/source.tar.gz",
+      "bytes": 181085,
+      "sha256": "d17664b174745d00c47416089b723f2b81964a62d0ef68cc4758ab9f399c6e4e",
+      "selection_source": "selection.json",
+      "members": 40,
+      "expanded_bytes": 620301,
+      "flagged_members": [],
+      "extensions": {
+        ".html": 2,
+        ".css": 1,
+        ".js": 1,
+        ".py": 35,
+        ".sh": 1
+      },
+      "state": "inspected_no_credentials"
+    }
+  ]
+}

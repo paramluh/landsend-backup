@@ -1,0 +1,68 @@
+{
+  "host": "landsend-2",
+  "run_id": "20261101T041840Z",
+  "groups": [
+    {
+      "host": "landsend-2",
+      "repo": "/home/param/pose-repo",
+      "common": "/home/param/pose-repo/.git",
+      "worktrees": [
+        {
+          "host": "landsend-2",
+          "path": "/home/param/pose-repo",
+          "common": "/home/param/pose-repo/.git",
+          "branch": "main",
+          "original_head": "17f08f761468f901b4699c93233c27b58df46c24",
+          "staged_commit": null,
+          "working_commit": "a433cb9fafce4737d69f596bd99508cb449fba5a",
+          "tree": "c856527481baf3e1dd85ac8d746a9d08f4a71ced",
+          "excluded": [],
+          "untracked_added": 287,
+          "status_count": 10,
+          "remotes": [
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+          ],
+          "staged_tree": "3cc65500f89e484d54ada5a8f87fc93bb3c2b0f0"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/main 17f08f761468f901b4699c93233c27b58df46c24"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-2",
+      "repo": "/home/param/vansh-video-models",
+      "common": "/home/param/vansh-video-models/.git",
+      "worktrees": [
+        {
+          "host": "landsend-2",
+          "path": "/home/param/vansh-video-models",
+          "common": "/home/param/vansh-video-models/.git",
+          "branch": "param/bimodal",
+          "original_head": "26cedf69db7257658de7f6e53bae4972dac0f20b",
+          "staged_commit": null,
+          "working_commit": "8f795276d648725e01d443efb697639a3ab48479",
+          "tree": "7d5c188132b20a331c26aba0f965df3eccc3b418",
+          "excluded": [],
+          "untracked_added": 0,
+          "status_count": 1,
+          "remotes": [
+            "origin\tgit@github.com:canopy-labs-internal/vansh-video-models.git (fetch)",
+            "origin\tgit@github.com:canopy-labs-internal/vansh-video-models.git (push)"
+          ],
+          "staged_tree": "9c567b6a95eb70272a8246be6a9f6b8effb87a86"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/param/bimodal 26cedf69db7257658de7f6e53bae4972dac0f20b",
+        "refs/heads/universal-main f4cf235e0eb6395396fca64ee5f8132824bd6d21"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,3107 @@
+{
+  "landsend-0": [
+    {
+      "path": "/home/param/outputs/pose-opd-video-worker-20261031/video-source.tar",
+      "bytes": 6686720,
+      "mtime_ns": 1793466342741133791,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49872444
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-launch-attempt2/d226a8f7293d344c1913d47090007139ea452516/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793433098097080342,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49595461
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-launch-attempt2/044c6b4e5dbcf81939857907f6769dd79a60bd9c/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793432924450947222,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49593445
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-launch-attempt2/c41886c9fe22b1698359b8182870c04aac28cb2d/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793432440386159475,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49593315
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-faststate/source.tar",
+      "bytes": 107253760,
+      "mtime_ns": 1793458020431044692,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49823604
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-basic-opd-benchmark-20261031-b/snapshot-1793494923929082015/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494924224354910,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        33592216
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-basic-opd-benchmark-20261031-c/snapshot-1793495107490709394/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495107790788657,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        34379953
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-symmetric-production-launch-20261031/snapshot-1793472444394221943/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793472444678579694,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50088336
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-b336-fullbench/snapshot-1793456751706697298/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49823224
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-shortmatrix/source.tar",
+      "bytes": 107223040,
+      "mtime_ns": 1793457704979492674,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49823214
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-symmetric-pad-sweep-20261031/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470519575015216,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50070547
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-symmetric-pad-sweep-20261031/retry1/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470546825068107,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50071231
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-symmetric-pad-sweep-20261031/validation1/source.tar",
+      "bytes": 107786240,
+      "mtime_ns": 1793470839033632300,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50076135
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-symmetric-pad-sweep-20261031/validation075/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793470995015931775,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50076048
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-b336-quickbench/snapshot-1793456500144305793/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456500430727683,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49822693
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/mb2-cfg3-v2.tar",
+      "bytes": 106516480,
+      "mtime_ns": 1793426850185478981,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49301742
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/actor8-fp32-60s-v6.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429271590764952,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49301979
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/b320-static-adversarial-v8.tar",
+      "bytes": 106752000,
+      "mtime_ns": 1793431061303796190,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49356610
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/b320-resident-prefetch-v9.tar",
+      "bytes": 106772480,
+      "mtime_ns": 1793431541481335690,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49319089
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/actor8-fp32-60s-v6s.tar",
+      "bytes": 106649600,
+      "mtime_ns": 1793429765324849648,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49350020
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/b320-cache-handoff-v10.tar",
+      "bytes": 106833920,
+      "mtime_ns": 1793432428726133184,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49302012
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/actor8-ladder-v4.tar",
+      "bytes": 106536960,
+      "mtime_ns": 1793427621965911765,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49350497
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/actor8-fp32-60s-v6r.tar",
+      "bytes": 106629120,
+      "mtime_ns": 1793429513050864142,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49319218
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/actor8-fp32-mb4-v6.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429208532442198,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49301981
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/b320-static-v7.tar",
+      "bytes": 106741760,
+      "mtime_ns": 1793430591625546212,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49318723
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/ladder-cfg3-v3.tar",
+      "bytes": 106526720,
+      "mtime_ns": 1793427081705944634,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49301754
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/actor8-cdf-mb4-v5.tar",
+      "bytes": 106557440,
+      "mtime_ns": 1793428577569472139,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49301764
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-bench/mb2-cfg3-v1.tar",
+      "bytes": 106496000,
+      "mtime_ns": 1793426595247928509,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49301730
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-general-parent-validation-20261031/source.tar",
+      "bytes": 107909120,
+      "mtime_ns": 1793464935594597601,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49870118
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-conversation-trials-20261031/source.tar",
+      "bytes": 107827200,
+      "mtime_ns": 1793463494352434619,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49865548
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-symmetric-train-smoke-20261031/1793471934/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471934722670951,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50085817
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-symmetric-train-smoke-20261031/1793471186/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471186514298386,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50078707
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-b336-quickbench-v2/snapshot-1793456658036044427/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49823347
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-launch/snapshot-1793450446728000042/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793450447048862181,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49608026
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-basic-opd-benchmark-20261031-d/snapshot-1793495208405357370/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495208711012286,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        34902186
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-rollout-opt-full/source.tar",
+      "bytes": 107591680,
+      "mtime_ns": 1793458224746412795,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49823504
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-rollout-opt-projections/source.tar",
+      "bytes": 107591680,
+      "mtime_ns": 1793458148008273838,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49823238
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-credit-launch/085d9ba76d02c006dd0072760ad0f9ffcf6614aa/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793431938685073571,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49591190
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-rollout-opt-mimi/source.tar",
+      "bytes": 107591680,
+      "mtime_ns": 1793458113080210853,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49823240
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-launch-20261031/snapshot-1793465194668585013/source.tar",
+      "bytes": 107581440,
+      "mtime_ns": 1793465194960070639,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49870071
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-b336-fullbench-v2/snapshot-1793456863140887944/source.tar",
+      "bytes": 107161600,
+      "mtime_ns": 1793456863426145726,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49823251
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-basic-opd-benchmark-20261031/snapshot-1793494822223840319/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494822519095319,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        33069869
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-basic-opd-launch-20261031/snapshot-1793495462283404348/source.tar",
+      "bytes": 108021760,
+      "mtime_ns": 1793495462580541956,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        33855948
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-general-parent-trials-20261031/source.tar",
+      "bytes": 107909120,
+      "mtime_ns": 1793464975902670636,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49869967
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-delay72-benchmark/source.tar",
+      "bytes": 107632640,
+      "mtime_ns": 1793460616476517031,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49864430
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-website-pad-sweep-20261031/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471415751736217,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50078677
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-website-pad-sweep-20261031/validation1/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471684325248147,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50080999
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470839/source.tar",
+      "bytes": 107786240,
+      "mtime_ns": 1793470839725633630,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50076289
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471416441737534,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50078680
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793472444678579694,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50088311
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/rollout-opt-full-1793458224/source.tar",
+      "bytes": 107591680,
+      "mtime_ns": 1793458225620414382,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49317988
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+      "bytes": 107161600,
+      "mtime_ns": 1793456863426145726,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49313810
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471187296299881,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50078714
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-shortmatrix-v1/source.tar",
+      "bytes": 107223040,
+      "mtime_ns": 1793457704979492674,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49317958
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471684/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471685014249277,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50083538
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49311752
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470547508069432,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50071503
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471935486672272,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50085822
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456500430727683,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49307471
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v2/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49309569
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+      "bytes": 108021760,
+      "mtime_ns": 1793495462580541956,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50121137
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+      "bytes": 107581440,
+      "mtime_ns": 1793465194960070639,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49870176
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470520270016565,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        50070310
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494924224354910,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49025628
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495107790788657,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49027773
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494822519095319,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        45387906
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495208711012286,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        49029900
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449370252348769.tar.gz",
+      "bytes": 28198073,
+      "mtime_ns": 1793449371152647194,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        49605617
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/matrix-v2-package.tar.gz",
+      "bytes": 216875,
+      "mtime_ns": 1793449749921719789,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        49590981
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449335445611894.tar.gz",
+      "bytes": 28198023,
+      "mtime_ns": 1793449336335640843,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        49607821
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449147304861981.tar.gz",
+      "bytes": 28183187,
+      "mtime_ns": 1793449148372607933,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        49607695
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/matrix-v3-package.tar.gz",
+      "bytes": 219172,
+      "mtime_ns": 1793450094731789376,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        49580155
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-teacher-partner-bench/audio-v2-package.tar.gz",
+      "bytes": 213931,
+      "mtime_ns": 1793449650397700209,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        49607892
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-ar-logits-20261030/site.tar.gz",
+      "bytes": 25233358,
+      "mtime_ns": 1793407426812715575,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        42743313
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-ar-diagnostics-20261030/site.tar.gz",
+      "bytes": 16973848,
+      "mtime_ns": 1793405550712355369,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        42742454
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-loss-gradient-cuda-check/source.tar.gz",
+      "bytes": 763202,
+      "mtime_ns": 1793463251839967296,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        49865765
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-opd-loss-gradient-cuda-check/source.corrected.tar.gz",
+      "bytes": 763295,
+      "mtime_ns": 1793463457577366751,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        49867010
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-ar-rollout-20261030/site-trimmed.tar.gz",
+      "bytes": 69495434,
+      "mtime_ns": 1793409759024501917,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        42744041
+      ]
+    },
+    {
+      "path": "/home/param/outputs/pose-ar-rollout-20261030/site.tar.gz",
+      "bytes": 70073471,
+      "mtime_ns": 1793408182291589924,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        42743893
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/xabi-cb1-tower-final-only-20261028/source.tar.gz",
+      "bytes": 64523,
+      "mtime_ns": 1793239059565413273,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        47196000
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-cb01-text-lr15e4-20261028/source.tar.gz",
+      "bytes": 68624,
+      "mtime_ns": 1793241035047458505,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        47198604
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/xabi-cb1-tower-validated-20261028/source.tar.gz",
+      "bytes": 65436,
+      "mtime_ns": 1793239452365193476,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        47196044
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/source/20261029T041620Z/source.tar.gz",
+      "bytes": 162554,
+      "mtime_ns": 1793247380344778058,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        47229847
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/source/20261029T041825Z/source.tar.gz",
+      "bytes": 162929,
+      "mtime_ns": 1793247505731236417,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        47229977
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/source/20261029T041736Z/source.tar.gz",
+      "bytes": 162837,
+      "mtime_ns": 1793247456146058984,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        47229895
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/xabi-cb1-tower-20261028/source.tar.gz",
+      "bytes": 63465,
+      "mtime_ns": 1793238598497552316,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        47196167
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-cb01-text-lr3e4-20261028/source.tar.gz",
+      "bytes": 68644,
+      "mtime_ns": 1793244553976952873,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        47228351
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/source/20261029T044118Z/source.tar.gz",
+      "bytes": 181085,
+      "mtime_ns": 1793248878215006031,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        47231672
+      ]
+    }
+  ],
+  "landsend-1": [
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471416710410137,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29647412
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793472444678579694,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29651724
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+      "bytes": 107161600,
+      "mtime_ns": 1793456863426145726,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29627272
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471187333041391,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29645279
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29624659
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470547545414033,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29643051
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471935763038301,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29649555
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+      "bytes": 108021760,
+      "mtime_ns": 1793495462580541956,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29662482
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+      "bytes": 107581440,
+      "mtime_ns": 1793465194960070639,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29638717
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470520296366459,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29640909
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494924224354910,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29656068
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495107790788657,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29658219
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494822519095319,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29653857
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495208711012286,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        29658204
+      ]
+    }
+  ],
+  "landsend-2": [
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470839/source.tar",
+      "bytes": 107786240,
+      "mtime_ns": 1793470839874334446,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31777740
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-v7/supervisor/source.tar",
+      "bytes": 106741760,
+      "mtime_ns": 1793430591625546212,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31737081
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320/supervisor/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793431938685073571,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31743396
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-ladder-v4/supervisor/source.tar",
+      "bytes": 106536960,
+      "mtime_ns": 1793427621965911765,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31724712
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471416814477206,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31782149
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b320-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793450447048862181,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31760589
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-mb4-v6/supervisor/source.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429208532442198,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31728911
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6r/supervisor/source.tar",
+      "bytes": 106629120,
+      "mtime_ns": 1793429513050864142,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31732913
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/supervisor/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793433098097080342,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31749564
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793472444678579694,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        32290482
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-cdf-mb4-v5/supervisor/source.tar",
+      "bytes": 106557440,
+      "mtime_ns": 1793428577569472139,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31726836
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+      "bytes": 107161600,
+      "mtime_ns": 1793456863426145726,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31764836
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6s/supervisor/source.tar",
+      "bytes": 106649600,
+      "mtime_ns": 1793429765324849648,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31728847
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471187441428679,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31779964
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471684/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471685373554841,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31784290
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-ladder-cfg3-v3/supervisor/source.tar",
+      "bytes": 106526720,
+      "mtime_ns": 1793427081705944634,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31722587
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31762783
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470547675233400,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31775601
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471935869639705,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        32290459
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-resident-prefetch-v9/supervisor/source.tar",
+      "bytes": 106772480,
+      "mtime_ns": 1793431541481335690,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31741285
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v1/supervisor/source.tar",
+      "bytes": 106496000,
+      "mtime_ns": 1793426595247928509,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31719522
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-adversarial-v8/supervisor/source.tar",
+      "bytes": 106752000,
+      "mtime_ns": 1793431061303796190,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31739247
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v2/supervisor/source.tar",
+      "bytes": 106516480,
+      "mtime_ns": 1793426850185478981,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31722520
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6/supervisor/source.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429271590764952,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31730912
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-cache-handoff-v10/supervisor/source.tar",
+      "bytes": 106833920,
+      "mtime_ns": 1793432428726133184,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31745468
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+      "bytes": 108021760,
+      "mtime_ns": 1793495462580541956,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        32303382
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+      "bytes": 107581440,
+      "mtime_ns": 1793465194960070639,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31771371
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470520428225024,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        31773488
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494924224354910,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        32296970
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495107790788657,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        32299120
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494822519095319,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        32294759
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495208711012286,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        32299105
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/matrix-v2-package.tar.gz",
+      "bytes": 216875,
+      "mtime_ns": 1793449750155174739,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        31756325
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/matrix-v3-package.tar.gz",
+      "bytes": 219172,
+      "mtime_ns": 1793450094964783068,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        31758448
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+      "bytes": 28198073,
+      "mtime_ns": 1793449371152647194,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        31753688
+      ]
+    }
+  ],
+  "landsend-3": [
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-v7/supervisor/source.tar",
+      "bytes": 106741760,
+      "mtime_ns": 1793430591625546212,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28337853
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320/supervisor/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793431938685073571,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28344454
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-ladder-v4/supervisor/source.tar",
+      "bytes": 106536960,
+      "mtime_ns": 1793427621965911765,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28325624
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471416580730632,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        54267934
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b320-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793450447048862181,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28358918
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-mb4-v6/supervisor/source.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429208532442198,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28329814
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6r/supervisor/source.tar",
+      "bytes": 106629120,
+      "mtime_ns": 1793429513050864142,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28333816
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/supervisor/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793433098097080342,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28350605
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793472444678579694,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        54272246
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-cdf-mb4-v5/supervisor/source.tar",
+      "bytes": 106557440,
+      "mtime_ns": 1793428577569472139,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28327742
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+      "bytes": 107161600,
+      "mtime_ns": 1793456863426145726,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28367340
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6s/supervisor/source.tar",
+      "bytes": 106649600,
+      "mtime_ns": 1793429765324849648,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28329750
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471187428117539,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        45351890
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-shortmatrix-v1/source.tar",
+      "bytes": 107223040,
+      "mtime_ns": 1793457704979492674,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28371488
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-ladder-cfg3-v3/supervisor/source.tar",
+      "bytes": 106526720,
+      "mtime_ns": 1793427081705944634,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28323429
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28365287
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470547665617001,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28376201
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471935859969868,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        54270075
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-resident-prefetch-v9/supervisor/source.tar",
+      "bytes": 106772480,
+      "mtime_ns": 1793431541481335690,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28342349
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v1/supervisor/source.tar",
+      "bytes": 106496000,
+      "mtime_ns": 1793426595247928509,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28319301
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-adversarial-v8/supervisor/source.tar",
+      "bytes": 106752000,
+      "mtime_ns": 1793431061303796190,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28340321
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v2/supervisor/source.tar",
+      "bytes": 106516480,
+      "mtime_ns": 1793426850185478981,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28323362
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6/supervisor/source.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429271590764952,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28331815
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-cache-handoff-v10/supervisor/source.tar",
+      "bytes": 106833920,
+      "mtime_ns": 1793432428726133184,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28346519
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456500430727683,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28361131
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v2/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28363214
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+      "bytes": 108021760,
+      "mtime_ns": 1793495462580541956,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        54283005
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+      "bytes": 107581440,
+      "mtime_ns": 1793465194960070639,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28371950
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470520422704834,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        28374060
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494924224354910,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        54276588
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495107790788657,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        54278742
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494822519095319,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        54274379
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495208711012286,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        54278727
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/loss-gradient-cuda-smoke-1793463266/source.tar.gz",
+      "bytes": 763202,
+      "mtime_ns": 1793463266890920273,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        28371532
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+      "bytes": 28198073,
+      "mtime_ns": 1793449371152647194,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        28354713
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/audio-v2-package.tar.gz",
+      "bytes": 213931,
+      "mtime_ns": 1793449650748499171,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        28356840
+      ]
+    }
+  ],
+  "landsend-4": [
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-v7/supervisor/source.tar",
+      "bytes": 106741760,
+      "mtime_ns": 1793430591625546212,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55576452
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320/supervisor/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793431938685073571,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55581185
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-ladder-v4/supervisor/source.tar",
+      "bytes": 106536960,
+      "mtime_ns": 1793427621965911765,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55367851
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471416680744101,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55618426
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b320-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793450447048862181,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55593552
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-mb4-v6/supervisor/source.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429208532442198,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55372076
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6r/supervisor/source.tar",
+      "bytes": 106629120,
+      "mtime_ns": 1793429513050864142,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55376079
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/supervisor/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793433098097080342,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55589444
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793472444678579694,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55622737
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-cdf-mb4-v5/supervisor/source.tar",
+      "bytes": 106557440,
+      "mtime_ns": 1793428577569472139,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55369978
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+      "bytes": 107161600,
+      "mtime_ns": 1793456863426145726,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55603251
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6s/supervisor/source.tar",
+      "bytes": 106649600,
+      "mtime_ns": 1793429765324849648,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55371986
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/rollout-opt-projections-1793457680/source.tar",
+      "bytes": 107509760,
+      "mtime_ns": 1793457682178008348,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55605352
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471187339299181,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55616291
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-ladder-cfg3-v3/supervisor/source.tar",
+      "bytes": 106526720,
+      "mtime_ns": 1793427081705944634,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55365274
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55601181
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470547563074840,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55614067
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471935739355594,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55620568
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-resident-prefetch-v9/supervisor/source.tar",
+      "bytes": 106772480,
+      "mtime_ns": 1793431541481335690,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55581190
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v1/supervisor/source.tar",
+      "bytes": 106496000,
+      "mtime_ns": 1793426595247928509,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55361223
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-adversarial-v8/supervisor/source.tar",
+      "bytes": 106752000,
+      "mtime_ns": 1793431061303796190,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55579157
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v2/supervisor/source.tar",
+      "bytes": 106516480,
+      "mtime_ns": 1793426850185478981,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55365222
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6/supervisor/source.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429271590764952,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55374078
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-cache-handoff-v10/supervisor/source.tar",
+      "bytes": 106833920,
+      "mtime_ns": 1793432428726133184,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55585356
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+      "bytes": 108021760,
+      "mtime_ns": 1793495462580541956,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55633496
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+      "bytes": 107581440,
+      "mtime_ns": 1793465194960070639,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55609817
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/rollout-opt-projections-1793458147/source.tar",
+      "bytes": 107591680,
+      "mtime_ns": 1793458148762994555,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55607457
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470520308007668,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55611926
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494924224354910,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55627080
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495107790788657,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55629234
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494822519095319,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55624870
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495208711012286,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        55629219
+      ]
+    }
+  ],
+  "landsend-5": [
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470839/source.tar",
+      "bytes": 107786240,
+      "mtime_ns": 1793470839725144774,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202423109
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-v7/supervisor/source.tar",
+      "bytes": 106741760,
+      "mtime_ns": 1793430591625546212,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200823247
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320/supervisor/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793431938685073571,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200829811
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-ladder-v4/supervisor/source.tar",
+      "bytes": 106536960,
+      "mtime_ns": 1793427621965911765,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200810686
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471416664249645,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202427407
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b320-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793450447048862181,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200840101
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-mb4-v6/supervisor/source.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429208532442198,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200814842
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6r/supervisor/source.tar",
+      "bytes": 106629120,
+      "mtime_ns": 1793429513050864142,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200818844
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/supervisor/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793433098097080342,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200835935
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/conversation-trials-1793463493/source.tar",
+      "bytes": 107827200,
+      "mtime_ns": 1793463495052301807,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200862139
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793472444678579694,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202433898
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-cdf-mb4-v5/supervisor/source.tar",
+      "bytes": 106557440,
+      "mtime_ns": 1793428577569472139,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200812754
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+      "bytes": 107161600,
+      "mtime_ns": 1793456863426145726,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200851755
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6s/supervisor/source.tar",
+      "bytes": 106649600,
+      "mtime_ns": 1793429765324849648,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200820848
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/rollout-delay72-1793460615/source.tar",
+      "bytes": 107632640,
+      "mtime_ns": 1793460617170575424,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200860059
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471187316609863,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202425297
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/general-parent-trials-landsend-5-1793464975/source.tar",
+      "bytes": 107909120,
+      "mtime_ns": 1793464976613340662,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        201129982
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-shortmatrix-v1/source.tar",
+      "bytes": 107223040,
+      "mtime_ns": 1793457704979492674,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200855876
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471684/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471685239528252,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202429595
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-ladder-cfg3-v3/supervisor/source.tar",
+      "bytes": 106526720,
+      "mtime_ns": 1793427081705944634,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200808060
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200849702
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470547509888797,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202420924
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-faststate-v1/source.tar",
+      "bytes": 107253760,
+      "mtime_ns": 1793458020431044692,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200855904
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471935721506640,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202431786
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-resident-prefetch-v9/supervisor/source.tar",
+      "bytes": 106772480,
+      "mtime_ns": 1793431541481335690,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200827727
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v1/supervisor/source.tar",
+      "bytes": 106496000,
+      "mtime_ns": 1793426595247928509,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200804041
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-adversarial-v8/supervisor/source.tar",
+      "bytes": 106752000,
+      "mtime_ns": 1793431061303796190,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200825644
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v2/supervisor/source.tar",
+      "bytes": 106516480,
+      "mtime_ns": 1793426850185478981,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200808026
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6/supervisor/source.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429271590764952,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200816843
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-cache-handoff-v10/supervisor/source.tar",
+      "bytes": 106833920,
+      "mtime_ns": 1793432428726133184,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200831858
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456500430727683,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200845567
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/conversation-trials-1793464935/source.tar",
+      "bytes": 107909120,
+      "mtime_ns": 1793464936316458186,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200864305
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-shape24-b144-bench-v2/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200847639
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+      "bytes": 108021760,
+      "mtime_ns": 1793495462580541956,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202638771
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+      "bytes": 107581440,
+      "mtime_ns": 1793465194960070639,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202416662
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/general-parent-trials-landsend-5-1793464961/source.tar",
+      "bytes": 107909120,
+      "mtime_ns": 1793464962948380533,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        200866431
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470520276957962,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202418812
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494924224354910,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202436023
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495107790788657,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202438194
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494822519095319,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        201326596
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495208711012286,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        202440319
+      ]
+    }
+  ],
+  "landsend-12": [
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-v7/supervisor/source.tar",
+      "bytes": 106741760,
+      "mtime_ns": 1793430591625546212,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946407
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320/supervisor/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793431938685073571,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946575
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-ladder-v4/supervisor/source.tar",
+      "bytes": 106536960,
+      "mtime_ns": 1793427621965911765,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946324
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793471415/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471416448491740,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14972369
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b320-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793450447048862181,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946689
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-mb4-v6/supervisor/source.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429208532442198,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946439
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470995/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793470995911079126,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14967958
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6r/supervisor/source.tar",
+      "bytes": 106629120,
+      "mtime_ns": 1793429513050864142,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946447
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-credit-2min-b320-attempt2/supervisor/source.tar",
+      "bytes": 105113600,
+      "mtime_ns": 1793433098097080342,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946644
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-b336-website-pad0-20261031/supervisor/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793472444678579694,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14976681
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-cdf-mb4-v5/supervisor/source.tar",
+      "bytes": 106557440,
+      "mtime_ns": 1793428577569472139,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946404
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v2/supervisor/source.tar",
+      "bytes": 107161600,
+      "mtime_ns": 1793456863426145726,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14957296
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6s/supervisor/source.tar",
+      "bytes": 106649600,
+      "mtime_ns": 1793429765324849648,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946367
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471186/source.tar",
+      "bytes": 107796480,
+      "mtime_ns": 1793471187291261311,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14970188
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-ladder-cfg3-v3/supervisor/source.tar",
+      "bytes": 106526720,
+      "mtime_ns": 1793427081705944634,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946243
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/teacher-partner-b336-full-bench-v1/supervisor/source.tar",
+      "bytes": 107151360,
+      "mtime_ns": 1793456658329885020,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14955241
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470546/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470547528695096,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14965820
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-symmetric-train-smoke-1793471934/source.tar",
+      "bytes": 107816960,
+      "mtime_ns": 1793471935739959159,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14974510
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-resident-prefetch-v9/supervisor/source.tar",
+      "bytes": 106772480,
+      "mtime_ns": 1793431541481335690,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946500
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v1/supervisor/source.tar",
+      "bytes": 106496000,
+      "mtime_ns": 1793426595247928509,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946216
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-static-adversarial-v8/supervisor/source.tar",
+      "bytes": 106752000,
+      "mtime_ns": 1793431061303796190,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946555
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/rollout-opt-mimi-1793458112/source.tar",
+      "bytes": 107591680,
+      "mtime_ns": 1793458114011446727,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14959457
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-mb2-cfg3-v2/supervisor/source.tar",
+      "bytes": 106516480,
+      "mtime_ns": 1793426850185478981,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946223
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-actor8-fp32-60s-v6/supervisor/source.tar",
+      "bytes": 106608640,
+      "mtime_ns": 1793429271590764952,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946442
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-bench-b320-cache-handoff-v10/supervisor/source.tar",
+      "bytes": 106833920,
+      "mtime_ns": 1793432428726133184,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14946615
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-basic-opd-b336-20261031/supervisor/source.tar",
+      "bytes": 108021760,
+      "mtime_ns": 1793495462580541956,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14987403
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-b336-general-20261031/supervisor/source.tar",
+      "bytes": 107581440,
+      "mtime_ns": 1793465194960070639,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14961574
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/symmetric-pad-sweep-1793470519/source.tar",
+      "bytes": 107765760,
+      "mtime_ns": 1793470520276674703,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14963707
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-b/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494924224354910,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14980984
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-c/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495107790788657,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14983140
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-a/supervisor/source.tar",
+      "bytes": 108001280,
+      "mtime_ns": 1793494822519095319,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14978814
+      ]
+    },
+    {
+      "path": "/home/param/runs/smokes/pose-basic-opd-synthetic-20261031-d/supervisor/source.tar",
+      "bytes": 108011520,
+      "mtime_ns": 1793495208711012286,
+      "source": "exclusions.json",
+      "reason": "source_archive_retained_as_expanded_source; credentials_may_be_embedded",
+      "inode": [
+        64769,
+        14983125
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/published/aloe_raw357/overlay-clips.zip",
+      "bytes": 38325125,
+      "mtime_ns": 1793416679745628915,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        21263482
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/published/bandfix355/overlay-clips.zip",
+      "bytes": 39274696,
+      "mtime_ns": 1793416678612620746,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        21310251
+      ]
+    },
+    {
+      "path": "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/published/xabi200/overlay-clips.zip",
+      "bytes": 29048782,
+      "mtime_ns": 1793416678987623452,
+      "source": "selection.json",
+      "reason": null,
+      "inode": [
+        64769,
+        21310248
+      ]
+    }
+  ]
+}

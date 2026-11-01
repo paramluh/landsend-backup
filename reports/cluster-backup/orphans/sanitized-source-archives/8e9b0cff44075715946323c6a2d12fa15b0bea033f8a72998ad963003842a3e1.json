@@ -1,0 +1,8 @@
+{
+  "original_sha256": "8e9b0cff44075715946323c6a2d12fa15b0bea033f8a72998ad963003842a3e1",
+  "source": "/home/param/outputs/pose-opd-teacher-partner-launch-20261031/snapshot-1793465194668585013/source.tar",
+  "members": 1851,
+  "removed_credential_or_unsafe_members": [],
+  "redactions": 1,
+  "repacked": true
+}

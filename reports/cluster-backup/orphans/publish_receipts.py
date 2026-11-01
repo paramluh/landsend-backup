@@ -16,7 +16,7 @@ for base,dirs,files in os.walk(ROOT):
         f=p/name
         if B.excluded(f) or f.is_symlink() or not f.is_file():continue
         rel=f.relative_to(ROOT)
-        if f.name.endswith('.process.json') or f.suffix in {'.py','.sh','.md','.sql'} or f.suffix=='.json':
+        if f.name.endswith('.process.json') or f.suffix in {'.py','.sh','.md','.sql'} or f.suffix=='.json' or (f.suffix=='.csv' and 'sanitized-bundles' in rel.parts):
             if f.name in {'selection.json','orphan-file-inventory.json','dataset-selection.json','repo-roots.json'}:continue
             if f.stat().st_size>96*1024**2:continue
             selected.append((f,rel))

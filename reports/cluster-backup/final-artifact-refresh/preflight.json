@@ -1,0 +1,80 @@
+{
+  "state": "passed",
+  "nodes": [
+    {
+      "host": "landsend-0",
+      "worker_pids": [
+        3821064
+      ],
+      "initial_marker": null,
+      "error_classes": {},
+      "final_groups": []
+    },
+    {
+      "host": "landsend-1",
+      "worker_pids": [],
+      "initial_marker": {
+        "state": "complete",
+        "errors": 0,
+        "hf_repo": "InternalCan/landsend-artifacts-backup-param",
+        "group": "artifacts",
+        "files": 36433,
+        "aliases": 0,
+        "completed_unix": 1793506280.721681
+      },
+      "error_classes": {},
+      "final_groups": []
+    },
+    {
+      "host": "landsend-2",
+      "worker_pids": [
+        423750
+      ],
+      "initial_marker": null,
+      "error_classes": {},
+      "final_groups": []
+    },
+    {
+      "host": "landsend-3",
+      "worker_pids": [
+        4019796
+      ],
+      "initial_marker": null,
+      "error_classes": {},
+      "final_groups": []
+    },
+    {
+      "host": "landsend-4",
+      "worker_pids": [
+        3756073
+      ],
+      "initial_marker": null,
+      "error_classes": {},
+      "final_groups": []
+    },
+    {
+      "host": "landsend-5",
+      "worker_pids": [
+        3505911
+      ],
+      "initial_marker": null,
+      "error_classes": {},
+      "final_groups": []
+    },
+    {
+      "host": "landsend-12",
+      "worker_pids": [
+        3401302
+      ],
+      "initial_marker": null,
+      "error_classes": {},
+      "final_groups": []
+    }
+  ],
+  "checks": [
+    "all_nodes_reachable",
+    "archive_sha_mismatch_rejected",
+    "metadata_blob_mismatch_rejected",
+    "valid_remote_evidence_accepted"
+  ]
+}

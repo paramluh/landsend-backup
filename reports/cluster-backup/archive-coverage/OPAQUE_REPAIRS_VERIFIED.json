@@ -1,0 +1,48 @@
+[
+  {
+    "host": "landsend-2",
+    "receipt": {
+      "state": "current_head_sanitized_history_scrub_required",
+      "host": "landsend-2",
+      "hf_repo": "InternalCan/landsend-artifacts-backup-param",
+      "parts": [
+        {
+          "part": "part-0016.tar.zst",
+          "sources": [
+            "home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz"
+          ],
+          "state": "verified",
+          "old_sha256": "372d3d803d845a73052b5e93cbad0a2c20f0b774e42979f96f8d999ac1ee9ed7",
+          "sha256": "753ee05a8b1a61a5db425e3da354c4e36ae3fee1989d49e727fbdad5b0c4fa72",
+          "revision": "21793d037b9894001fb5383d7f552a71595e2bc4",
+          "nested_credential_matches_after": 0
+        }
+      ],
+      "time": 1793506854.6303244
+    },
+    "log": "{\"state\": \"current_head_sanitized_history_scrub_required\", \"host\": \"landsend-2\", \"hf_repo\": \"InternalCan/landsend-artifacts-backup-param\", \"parts\": [{\"part\": \"part-0016.tar.zst\", \"sources\": [\"home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz\"], \"state\": \"verified\", \"old_sha256\": \"372d3d803d845a73052b5e93cbad0a2c20f0b774e42979f96f8d999ac1ee9ed7\", \"sha256\": \"753ee05a8b1a61a5db425e3da354c4e36ae3fee1989d49e727fbdad5b0c4fa72\", \"revision\": \"21793d037b9894001fb5383d7f552a71595e2bc4\", \"nested_credential_matches_after\": 0}], \"time\": 1793506854.6303244}\n"
+  },
+  {
+    "host": "landsend-3",
+    "receipt": {
+      "state": "current_head_sanitized_history_scrub_required",
+      "host": "landsend-3",
+      "hf_repo": "InternalCan/landsend-artifacts-backup-param",
+      "parts": [
+        {
+          "part": "part-0011.tar.zst",
+          "sources": [
+            "home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz"
+          ],
+          "state": "verified",
+          "old_sha256": "83d406e59a0e723aaaadb75afcb21ab3da64f1450638834fae01338a5bda8d04",
+          "sha256": "08c39b8b89bfcca06067f5b8d922798bdaa393d497e3e59868c0c8ef7e20dc5d",
+          "revision": "ae8e7d0d100d8e44f25fe2bb1600e472f5926c61",
+          "nested_credential_matches_after": 0
+        }
+      ],
+      "time": 1793506846.633243
+    },
+    "log": "{\"state\": \"current_head_sanitized_history_scrub_required\", \"host\": \"landsend-3\", \"hf_repo\": \"InternalCan/landsend-artifacts-backup-param\", \"parts\": [{\"part\": \"part-0011.tar.zst\", \"sources\": [\"home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz\"], \"state\": \"verified\", \"old_sha256\": \"83d406e59a0e723aaaadb75afcb21ab3da64f1450638834fae01338a5bda8d04\", \"sha256\": \"08c39b8b89bfcca06067f5b8d922798bdaa393d497e3e59868c0c8ef7e20dc5d\", \"revision\": \"ae8e7d0d100d8e44f25fe2bb1600e472f5926c61\", \"nested_credential_matches_after\": 0}], \"time\": 1793506846.633243}\n"
+  }
+]

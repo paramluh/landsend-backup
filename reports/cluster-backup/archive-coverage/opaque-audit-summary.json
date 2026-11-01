@@ -1,0 +1,141 @@
+[
+  {
+    "host": "landsend-0",
+    "archives": 21,
+    "flags": [
+      {
+        "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449370252348769.tar.gz",
+        "state": "needs_review",
+        "flagged_members": [
+          {
+            "name": "ref/pose-tokenizer/speechsdk-d38d45d63ae4 (2).json",
+            "credential_pattern_matches": 1,
+            "credential_filename": false,
+            "unsafe_path": false
+          }
+        ]
+      },
+      {
+        "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449335445611894.tar.gz",
+        "state": "needs_review",
+        "flagged_members": [
+          {
+            "name": "ref/pose-tokenizer/speechsdk-d38d45d63ae4 (2).json",
+            "credential_pattern_matches": 1,
+            "credential_filename": false,
+            "unsafe_path": false
+          }
+        ]
+      },
+      {
+        "path": "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449147304861981.tar.gz",
+        "state": "needs_review",
+        "flagged_members": [
+          {
+            "name": "ref/pose-tokenizer/speechsdk-d38d45d63ae4 (2).json",
+            "credential_pattern_matches": 1,
+            "credential_filename": false,
+            "unsafe_path": false
+          }
+        ]
+      }
+    ],
+    "sha256s": {
+      "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449370252348769.tar.gz": "9f439be66fbf5e3cab3e6dbf08cd1d4a42e1df0c534a9a73b6e3ae97eb465e5d",
+      "/home/param/outputs/pose-opd-teacher-partner-bench/matrix-v2-package.tar.gz": "3fd3a774020621a74c53bf10f1cf116578609c4b29ffd2d3e8823feed3474878",
+      "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449335445611894.tar.gz": "7fe1012bdc22bc96097ee6b0bcaaeda51948ee3bb71eadeadc9b96088f82ca5a",
+      "/home/param/outputs/pose-opd-teacher-partner-bench/source-1793449147304861981.tar.gz": "f2c338450484b291ded77efe06deac66620fff1b79783991164647f3f453bdd6",
+      "/home/param/outputs/pose-opd-teacher-partner-bench/matrix-v3-package.tar.gz": "2514d2b7048f598b3cc9d84643f8bdd4d5355d07c98dc554a3277898fce4c596",
+      "/home/param/outputs/pose-opd-teacher-partner-bench/audio-v2-package.tar.gz": "c76de1dcdb4a322c7cf99a8ec358fd89d06ef7397bce932b40b968ab7a5b2534",
+      "/home/param/outputs/pose-ar-logits-20261030/site.tar.gz": "931fbb0935006e4d024ab900ef4abb7effed062ac7b236f48f32e22994607a1d",
+      "/home/param/outputs/pose-ar-diagnostics-20261030/site.tar.gz": "02b81c2d3b71b39b157728eb018b72a710c59a766d8e0fcf66219427d6e51a20",
+      "/home/param/outputs/pose-opd-loss-gradient-cuda-check/source.tar.gz": "612e9f790446a8a3e1d0b316d64bf5d921850577d88bc0ef01bcea6ef474b2ee",
+      "/home/param/outputs/pose-opd-loss-gradient-cuda-check/source.corrected.tar.gz": "00f9f253cbc5810de6037706f327debdeda0292cf0f88269e2c09d4b6eb39daf",
+      "/home/param/outputs/pose-ar-rollout-20261030/site-trimmed.tar.gz": "7d9d1eba719133c405ac6dbeb6d4ec192a1a80308cb6eb363d3410ef03914c1d",
+      "/home/param/outputs/pose-ar-rollout-20261030/site.tar.gz": "593a2fe14a67aba80f9a9f890c123820b085531799a51675d46174b2483176ca",
+      "/home/param/runs/pose-runs/xabi-cb1-tower-final-only-20261028/source.tar.gz": "bdb341711371b5c7b213062a2285e03d1f2a80f0eb4751da23dbfd904e039368",
+      "/home/param/runs/pose-runs/pose-cb01-text-lr15e4-20261028/source.tar.gz": "5c3778045e441941f8591c37f23a2201829b894409d8d3c35455be28f6261257",
+      "/home/param/runs/pose-runs/xabi-cb1-tower-validated-20261028/source.tar.gz": "7d326d5a4389750ba628a6a3a71d97e601a7326764fb358e00a421dd7e9931e3",
+      "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/source/20261029T041620Z/source.tar.gz": "a8d68cd4a3b5da504412ae3614dd39b7c8a1e2b7b1cc82f75a876f72ebb42614",
+      "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/source/20261029T041825Z/source.tar.gz": "b862a6fbfc66f520bab97a2141e50a39955881877a3126c3ff79699f8fdfdf7f",
+      "/home/param/runs/pose-runs/audio-guided-native-comparison-20261028/source/20261029T041736Z/source.tar.gz": "ec5f1083a6eb6d073c122b7869153f8eebdb3b14f22fabc11e64717c82d35ed8",
+      "/home/param/runs/pose-runs/xabi-cb1-tower-20261028/source.tar.gz": "12567c53e9364968ac58b9b832cf53592857c7a9a3e062bcf419c64d0fe213c4",
+      "/home/param/runs/pose-runs/pose-cb01-text-lr3e4-20261028/source.tar.gz": "fc5cb025c499d655c1427a4f31755f15b961bb676d6e096a89dc7d7bd96c620f",
+      "/home/param/runs/pose-runs/audio-guided-prefill2s-comparison-20261028/source/20261029T044118Z/source.tar.gz": "d17664b174745d00c47416089b723f2b81964a62d0ef68cc4758ab9f399c6e4e"
+    }
+  },
+  {
+    "host": "landsend-1",
+    "archives": 0,
+    "flags": [],
+    "sha256s": {}
+  },
+  {
+    "host": "landsend-2",
+    "archives": 3,
+    "flags": [
+      {
+        "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+        "state": "needs_review",
+        "flagged_members": [
+          {
+            "name": "ref/pose-tokenizer/speechsdk-d38d45d63ae4 (2).json",
+            "credential_pattern_matches": 1,
+            "credential_filename": false,
+            "unsafe_path": false
+          }
+        ]
+      }
+    ],
+    "sha256s": {
+      "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/matrix-v2-package.tar.gz": "3fd3a774020621a74c53bf10f1cf116578609c4b29ffd2d3e8823feed3474878",
+      "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/matrix-v3-package.tar.gz": "2514d2b7048f598b3cc9d84643f8bdd4d5355d07c98dc554a3277898fce4c596",
+      "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz": "9f439be66fbf5e3cab3e6dbf08cd1d4a42e1df0c534a9a73b6e3ae97eb465e5d"
+    }
+  },
+  {
+    "host": "landsend-3",
+    "archives": 3,
+    "flags": [
+      {
+        "path": "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz",
+        "state": "needs_review",
+        "flagged_members": [
+          {
+            "name": "ref/pose-tokenizer/speechsdk-d38d45d63ae4 (2).json",
+            "credential_pattern_matches": 1,
+            "credential_filename": false,
+            "unsafe_path": false
+          }
+        ]
+      }
+    ],
+    "sha256s": {
+      "/home/param/runs/pose-runs/loss-gradient-cuda-smoke-1793463266/source.tar.gz": "612e9f790446a8a3e1d0b316d64bf5d921850577d88bc0ef01bcea6ef474b2ee",
+      "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/source.tar.gz": "9f439be66fbf5e3cab3e6dbf08cd1d4a42e1df0c534a9a73b6e3ae97eb465e5d",
+      "/home/param/runs/pose-runs/pose-opd-teacher-partner-bench/audio-v2-package.tar.gz": "c76de1dcdb4a322c7cf99a8ec358fd89d06ef7397bce932b40b968ab7a5b2534"
+    }
+  },
+  {
+    "host": "landsend-4",
+    "archives": 0,
+    "flags": [],
+    "sha256s": {}
+  },
+  {
+    "host": "landsend-5",
+    "archives": 0,
+    "flags": [],
+    "sha256s": {}
+  },
+  {
+    "host": "landsend-12",
+    "archives": 3,
+    "flags": [],
+    "sha256s": {
+      "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/published/aloe_raw357/overlay-clips.zip": "06cc89e79325366f6773ab65aeb4ecb713d906e830675a6170842a7ab2f21787",
+      "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/published/bandfix355/overlay-clips.zip": "252a970b62f4df6ea52769360ef420f99a062bddeaec55bcdb0dc6a6f8fe6bbc",
+      "/home/param/runs/pose-runs/pose-jump-audit-suite-20261031/published/xabi200/overlay-clips.zip": "df5cd33e268ecdd2dfeabed7e5281dcbec2196cd73222909adfea0e50431a476"
+    }
+  }
+]

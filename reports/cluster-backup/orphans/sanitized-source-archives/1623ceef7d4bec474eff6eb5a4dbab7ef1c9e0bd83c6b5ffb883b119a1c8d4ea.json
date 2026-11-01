@@ -1,0 +1,8 @@
+{
+  "original_sha256": "1623ceef7d4bec474eff6eb5a4dbab7ef1c9e0bd83c6b5ffb883b119a1c8d4ea",
+  "source": "/home/param/outputs/pose-opd-credit-bench/actor8-fp32-60s-v6.tar",
+  "members": 1776,
+  "removed_credential_or_unsafe_members": [],
+  "redactions": 1,
+  "repacked": true
+}
