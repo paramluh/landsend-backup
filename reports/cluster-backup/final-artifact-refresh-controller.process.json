@@ -1,5 +1,5 @@
 {
-  "pid": 3871646,
+  "pid": 3876880,
   "started_unix": 1793506574.7072914,
   "script": "/home/param/outputs/landsend-backup-20261031/final_artifact_refresh.py",
   "log": "/home/param/outputs/landsend-backup-20261031/final-artifact-refresh-controller.log",
@@ -13,11 +13,12 @@
     "landsend-5",
     "landsend-12"
   ],
-  "previous_pid": 3844642,
-  "restarted_unix": 1793506957.4166546,
+  "previous_pid": 3871646,
+  "restarted_unix": 1793507032.7966106,
   "new_guards": [
     "final_git_catchup",
     "verified_artifact_history_cleanup",
-    "four_worker_dependencies"
+    "recursive_bundle_sanitizer",
+    "final_source_tar_delta"
   ]
 }

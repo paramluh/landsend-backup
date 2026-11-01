@@ -1,0 +1,38 @@
+{
+  "state": "complete",
+  "run_id": "20261101T042433Z",
+  "audited_worktrees": 29,
+  "changed_groups": 1,
+  "receipts": [
+    {
+      "home": "github:canopy-labs-internal/param-pose",
+      "state": "verified",
+      "commit": "4fb0b025b2293053c6608aee385a9e89d6496b39",
+      "pushes": [
+        {
+          "url": "git@github.com:canopy-labs-internal/param-pose.git",
+          "commit": "4fb0b025b2293053c6608aee385a9e89d6496b39",
+          "verified": true
+        },
+        {
+          "url": "https://huggingface.co/InternalCan/pose-repo",
+          "commit": "7c4094d98c56ae82cc293261e0273e0bb1dc718e",
+          "verified": true,
+          "source_commit": "4fb0b025b2293053c6608aee385a9e89d6496b39",
+          "mirror_map": "LANDSEND_HF_INCREMENTAL_MAP.json"
+        }
+      ],
+      "changed_worktrees": [
+        "/home/param/pose-repo",
+        "/home/param/pose-worktrees/duplex-distill",
+        "/home/param/pose-worktrees/duplex-distill-inference",
+        "/home/param/pose-worktrees/pose-basic-opd",
+        "/home/param/pose-worktrees/pose-opd-credit",
+        "/home/param/pose-worktrees/pose-opd-credit-decoder-54a82b324ba6d2dd77ae08a8d6fb0aec2ab37a90",
+        "/home/param/pose-worktrees/pose-opd-live-demo"
+      ]
+    }
+  ],
+  "errors": [],
+  "completed_unix": 1793507097.340258
+}

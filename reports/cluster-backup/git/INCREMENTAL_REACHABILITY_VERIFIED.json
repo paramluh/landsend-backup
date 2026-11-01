@@ -1,0 +1,98 @@
+{
+  "run_id": "20261101T042433Z",
+  "state": "verified",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/home/param/pose-repo",
+      "working_commit": "8bb8790aa5e42ffa24c19769e507c6d2c5edccf2",
+      "reachable": true
+    },
+    {
+      "host": "landsend-0",
+      "path": "/home/param/pose-worktrees/duplex-distill",
+      "working_commit": "2e2e4004ccca66df969314f8aa8acbc69ced2a13",
+      "reachable": true
+    },
+    {
+      "host": "landsend-0",
+      "path": "/home/param/pose-worktrees/duplex-distill-inference",
+      "working_commit": "8e792e18ffac03950f79e8668885619783dc750a",
+      "reachable": true
+    },
+    {
+      "host": "landsend-0",
+      "path": "/home/param/pose-worktrees/pose-basic-opd",
+      "working_commit": "41ebcc8ffe5fe1fe7d206f5421f22872f5b6a626",
+      "reachable": true
+    },
+    {
+      "host": "landsend-0",
+      "path": "/home/param/pose-worktrees/pose-opd-credit",
+      "working_commit": "701230b4abbcc0ec8f8e0724fcf8437c64f85826",
+      "reachable": true
+    },
+    {
+      "host": "landsend-0",
+      "path": "/home/param/pose-worktrees/pose-opd-credit-decoder-54a82b324ba6d2dd77ae08a8d6fb0aec2ab37a90",
+      "working_commit": "db6ff1c67ff133db821ae60b63c8799e1029592e",
+      "reachable": true
+    },
+    {
+      "host": "landsend-0",
+      "path": "/home/param/pose-worktrees/pose-opd-live-demo",
+      "working_commit": "4a8393de688614a400f29b1f0336b53938ae1ee1",
+      "reachable": true
+    },
+    {
+      "host": "landsend-1",
+      "path": "/home/param/pose-repo",
+      "working_commit": "474c99aaff8fc924822aa0cdfc1d414c38034b61",
+      "reachable": true
+    },
+    {
+      "host": "landsend-2",
+      "path": "/home/param/pose-repo",
+      "working_commit": "7cedfd2f732dd1147c891f1e5c9122236efd959b",
+      "reachable": true
+    },
+    {
+      "host": "landsend-3",
+      "path": "/home/param/pose-repo",
+      "working_commit": "1c565b0f2d507cd81ad50cf1505a3441a7c8f317",
+      "reachable": true
+    },
+    {
+      "host": "landsend-4",
+      "path": "/home/param/pose-repo",
+      "working_commit": "69007ab1f4fdc46808369d5b4925e6e9c069bc2a",
+      "reachable": true
+    },
+    {
+      "host": "landsend-5",
+      "path": "/home/param/pose-repo",
+      "working_commit": "3ace477f09e7f07c690b670254142ea39faac5a7",
+      "reachable": true
+    },
+    {
+      "host": "landsend-12",
+      "path": "/home/param/pose-repo",
+      "working_commit": "cf471150c73e94a340857ece1e38cb41bc719ad6",
+      "reachable": true
+    }
+  ],
+  "pushes": [
+    {
+      "url": "git@github.com:canopy-labs-internal/param-pose.git",
+      "commit": "4fb0b025b2293053c6608aee385a9e89d6496b39",
+      "verified": true
+    },
+    {
+      "url": "https://huggingface.co/InternalCan/pose-repo",
+      "commit": "7c4094d98c56ae82cc293261e0273e0bb1dc718e",
+      "verified": true,
+      "source_commit": "4fb0b025b2293053c6608aee385a9e89d6496b39",
+      "mirror_map": "LANDSEND_HF_INCREMENTAL_MAP.json"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "state": "errors",
+  "run_id": "20261101T042323Z",
+  "audited_worktrees": 24,
+  "changed_groups": 1,
+  "receipts": [
+    {
+      "home": "github:canopy-labs-internal/param-pose",
+      "state": "verified",
+      "commit": "ae0e878b10abc90f786daec358caf312188aedce",
+      "pushes": [
+        {
+          "url": "git@github.com:canopy-labs-internal/param-pose.git",
+          "commit": "ae0e878b10abc90f786daec358caf312188aedce",
+          "verified": true
+        },
+        {
+          "url": "https://huggingface.co/InternalCan/pose-repo",
+          "commit": "a0d14dce6de9bdfcd7fe8ffdd3a5faffc17cc38b",
+          "verified": true,
+          "source_commit": "ae0e878b10abc90f786daec358caf312188aedce",
+          "mirror_map": "LANDSEND_HF_INCREMENTAL_MAP.json"
+        }
+      ],
+      "changed_worktrees": []
+    }
+  ],
+  "errors": [
+    {
+      "host": "landsend-0",
+      "path": "/home/param/pose-worktrees/duplex-distill-inference",
+      "error": "git add: fatal: pathspec 'infer/duplex_distill_demo/README.md' did not match any files\n"
+    },
+    {
+      "host": "landsend-1",
+      "path": "/home/param/vansh-video-models",
+      "error": "git add: fatal: pathspec 'setup.sh' did not match any files\n"
+    },
+    {
+      "host": "landsend-2",
+      "path": "/home/param/vansh-video-models",
+      "error": "git add: fatal: pathspec 'setup.sh' did not match any files\n"
+    },
+    {
+      "host": "landsend-3",
+      "path": "/home/param/vansh-video-models",
+      "error": "git add: fatal: pathspec 'setup.sh' did not match any files\n"
+    },
+    {
+      "host": "landsend-4",
+      "path": "/home/param/vansh-video-models",
+      "error": "git add: fatal: pathspec 'setup.sh' did not match any files\n"
+    }
+  ],
+  "completed_unix": 1793507028.1568406
+}

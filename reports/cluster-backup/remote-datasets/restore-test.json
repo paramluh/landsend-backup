@@ -1,0 +1,12 @@
+{
+  "state": "passed",
+  "checks": [
+    "derived_file_relocation",
+    "content_hash_verification",
+    "relative_symlink_restoration"
+  ],
+  "result": {
+    "verified_regular_files": 1,
+    "restored_symlinks": 1
+  }
+}

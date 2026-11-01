@@ -33,6 +33,9 @@ for common,worktrees in groups.items():
   prev=prior_trees.get(row['path'])
   if prev and 'staged_tree' not in prev:prev['staged_tree']=text(repo,'rev-parse',(prev['staged_commit'] or prev['original_head'])+'^{tree}')
   if not prev or any(row[k]!=prev[k] for k in ['tree','staged_tree','original_head','branch']):changed.append(row['path'])
+  else:
+   # Reuse already published identities for unchanged snapshots; fresh temporary commits were never pushed.
+   row['working_commit']=prev['working_commit'];row['staged_commit']=prev['staged_commit']
  change=bool(changed or sorted(refs)!=sorted(oldrefs) or len(prior_trees)!=len(worktrees))
  result={'host':HOST,'repo':repo,'common':common,'worktrees':worktrees,'local_branches':refs,'changed':change,'changed_worktrees':changed}
  if change:

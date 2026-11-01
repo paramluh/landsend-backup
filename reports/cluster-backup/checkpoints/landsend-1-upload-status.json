@@ -1,12 +1,12 @@
 {
   "state": "uploading",
   "host": "landsend-1",
-  "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/export",
-  "prefix": "hosts/landsend-1/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/export",
-  "bytes": 14669603506,
-  "completed_tasks": 10,
+  "source": "/home/param/pose-runs/no-text-audio-pose-20261028/exports/export-167",
+  "prefix": "hosts/landsend-1/pose-runs/no-text-audio-pose-20261028/exports/export-167",
+  "bytes": 23817712913,
+  "completed_tasks": 18,
   "total_tasks": 32,
   "attempt": 1,
-  "time": 1793507010.0823321,
+  "time": 1793507203.5197308,
   "started": 1793505842.8108814
 }

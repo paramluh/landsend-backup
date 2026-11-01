@@ -1,0 +1,558 @@
+{
+  "host": "landsend-0",
+  "run_id": "20261101T042433Z",
+  "groups": [
+    {
+      "host": "landsend-0",
+      "repo": "/home/param/opd-posttrain-speedups",
+      "common": "/home/param/opd-posttrain-speedups/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/home/param/opd-posttrain-speedups",
+          "common": "/home/param/opd-posttrain-speedups/.git",
+          "branch": "main",
+          "original_head": "ad716884cdfe64088e64b8dd1207e7e52c9bf797",
+          "staged_commit": null,
+          "working_commit": "a91d14ecf057ad9acb5cb863bb43a472ff0ba284",
+          "tree": "2c18a42f7f75810ea7e4c7380d656b109028805a",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "origin\thttps://huggingface.co/InternalCan/opd-posttrain-speedups (fetch)",
+            "origin\thttps://huggingface.co/InternalCan/opd-posttrain-speedups (push)"
+          ],
+          "staged_tree": "2c18a42f7f75810ea7e4c7380d656b109028805a"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/main ad716884cdfe64088e64b8dd1207e7e52c9bf797"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/home/param/pose-repo",
+      "common": "/home/param/pose-repo/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/home/param/pose-repo",
+          "common": "/home/param/pose-repo/.git",
+          "branch": "pose-duplex-training",
+          "original_head": "11c2ca666c09cf8c521db03f386c3229894c660e",
+          "staged_commit": null,
+          "working_commit": "8bb8790aa5e42ffa24c19769e507c6d2c5edccf2",
+          "tree": "619287ad8fd2e5fa4c98ab34a108ed14111772b4",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 225,
+          "status_count": 40,
+          "remotes": [
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (fetch)",
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (push)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+          ],
+          "staged_tree": "5af8f6372c3da24afccea3c4c1670d0b44d4a9e8"
+        },
+        {
+          "host": "landsend-0",
+          "path": "/home/param/pose-worktrees/duplex-distill",
+          "common": "/home/param/pose-repo/.git",
+          "branch": "codex/pose-duplex-distill",
+          "original_head": "6a6ea58aea96f3aeeb6abeeca5ccc7a2e13c706c",
+          "staged_commit": null,
+          "working_commit": "2e2e4004ccca66df969314f8aa8acbc69ced2a13",
+          "tree": "89e38a164fec63b605e7116c65362623a9bceaaf",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 1,
+          "status_count": 19,
+          "remotes": [
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (fetch)",
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (push)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+          ],
+          "staged_tree": "5ad81a1316676f0adbf2d5fc3f4250fcd78becd4"
+        },
+        {
+          "host": "landsend-0",
+          "path": "/home/param/pose-worktrees/duplex-distill-inference",
+          "common": "/home/param/pose-repo/.git",
+          "branch": "codex/duplex-distill-inference",
+          "original_head": "7537ebc7d258ecd28d910e63f10013e46389b40d",
+          "staged_commit": null,
+          "working_commit": "8e792e18ffac03950f79e8668885619783dc750a",
+          "tree": "89e38a164fec63b605e7116c65362623a9bceaaf",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 1,
+          "status_count": 234,
+          "remotes": [
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (fetch)",
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (push)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+          ],
+          "staged_tree": "6709902464e3de2ec5b478745de83407c2d62689"
+        },
+        {
+          "host": "landsend-0",
+          "path": "/home/param/pose-worktrees/pose-basic-opd",
+          "common": "/home/param/pose-repo/.git",
+          "branch": "codex/pose-basic-opd",
+          "original_head": "89af07430386cee4fe2d62865cb8b88d3b7924e2",
+          "staged_commit": null,
+          "working_commit": "41ebcc8ffe5fe1fe7d206f5421f22872f5b6a626",
+          "tree": "ea1b520e4ef1d7ad28c35d41b55dc00c21709d20",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (fetch)",
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (push)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+          ],
+          "staged_tree": "ea1b520e4ef1d7ad28c35d41b55dc00c21709d20"
+        },
+        {
+          "host": "landsend-0",
+          "path": "/home/param/pose-worktrees/pose-opd-credit",
+          "common": "/home/param/pose-repo/.git",
+          "branch": "pose-opd-credit",
+          "original_head": "7e661a73e3547a564085b6f064649ae329c896bb",
+          "staged_commit": null,
+          "working_commit": "701230b4abbcc0ec8f8e0724fcf8437c64f85826",
+          "tree": "2b7d54e0e48ce24d6f6c7c66597acb9ef365e0a7",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (fetch)",
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (push)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+          ],
+          "staged_tree": "2b7d54e0e48ce24d6f6c7c66597acb9ef365e0a7"
+        },
+        {
+          "host": "landsend-0",
+          "path": "/home/param/pose-worktrees/pose-opd-credit-decoder-54a82b324ba6d2dd77ae08a8d6fb0aec2ab37a90",
+          "common": "/home/param/pose-repo/.git",
+          "branch": "",
+          "original_head": "54a82b324ba6d2dd77ae08a8d6fb0aec2ab37a90",
+          "staged_commit": null,
+          "working_commit": "db6ff1c67ff133db821ae60b63c8799e1029592e",
+          "tree": "faa87a938139b3fe252d94cdd24058b179f31a86",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (fetch)",
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (push)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+          ],
+          "staged_tree": "faa87a938139b3fe252d94cdd24058b179f31a86"
+        },
+        {
+          "host": "landsend-0",
+          "path": "/home/param/pose-worktrees/pose-opd-live-demo",
+          "common": "/home/param/pose-repo/.git",
+          "branch": "codex/pose-opd-live-demo",
+          "original_head": "60d8d3f26ab33aedf57e26ab91610155252b011d",
+          "staged_commit": null,
+          "working_commit": "4a8393de688614a400f29b1f0336b53938ae1ee1",
+          "tree": "2541ea1d870e755b7acad076030c21e67d9a7a62",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (fetch)",
+            "github\tgit@github.com:canopy-labs-internal/param-pose.git (push)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (fetch)",
+            "origin\thttps://huggingface.co/InternalCan/pose-repo (push)"
+          ],
+          "staged_tree": "2541ea1d870e755b7acad076030c21e67d9a7a62"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/codex/duplex-distill-inference 7537ebc7d258ecd28d910e63f10013e46389b40d",
+        "refs/heads/codex/pose-basic-opd 89af07430386cee4fe2d62865cb8b88d3b7924e2",
+        "refs/heads/codex/pose-duplex-distill 6a6ea58aea96f3aeeb6abeeca5ccc7a2e13c706c",
+        "refs/heads/codex/pose-opd-live-demo 60d8d3f26ab33aedf57e26ab91610155252b011d",
+        "refs/heads/codex/transcript-audio-pose 21e0c88f714fbf7a4a8bb701f34e00ca9a4a6cac",
+        "refs/heads/main 3685b496b3a722b9233b7ad0c27152680cbf1150",
+        "refs/heads/pose-duplex-training 11c2ca666c09cf8c521db03f386c3229894c660e",
+        "refs/heads/pose-opd-credit 7e661a73e3547a564085b6f064649ae329c896bb"
+      ],
+      "changed": true,
+      "changed_worktrees": [
+        "/home/param/pose-repo",
+        "/home/param/pose-worktrees/duplex-distill",
+        "/home/param/pose-worktrees/duplex-distill-inference",
+        "/home/param/pose-worktrees/pose-basic-opd",
+        "/home/param/pose-worktrees/pose-opd-credit",
+        "/home/param/pose-worktrees/pose-opd-credit-decoder-54a82b324ba6d2dd77ae08a8d6fb0aec2ab37a90",
+        "/home/param/pose-worktrees/pose-opd-live-demo"
+      ],
+      "commit": "28c21c42bcaada2993cddf5b505aac3382609996",
+      "bundle": "/home/param/outputs/landsend-backup-20261031/git/incremental/20261101T042433Z/landsend-0/b5df36b3299e.bundle",
+      "bundle_ref": "refs/landsend-backup/incremental/20261101T042433Z"
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/home/param/pose-tokenizer",
+      "common": "/home/param/pose-tokenizer/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/home/param/pose-tokenizer",
+          "common": "/home/param/pose-tokenizer/.git",
+          "branch": "james-4cb-frame0-root",
+          "original_head": "1995b93265bcb7d23ffc57d47726dc2be81078d7",
+          "staged_commit": null,
+          "working_commit": "4f2ee5a4f6348d5f90836884bd4756121739893f",
+          "tree": "c2d557ea65f93e456d97cc04d3ba546bc99f318f",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "origin\tgit@github.com:canopy-labs-internal/pose-tokenizer.git (fetch)",
+            "origin\tgit@github.com:canopy-labs-internal/pose-tokenizer.git (push)"
+          ],
+          "staged_tree": "c2d557ea65f93e456d97cc04d3ba546bc99f318f"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/james-4cb-frame0-root 1995b93265bcb7d23ffc57d47726dc2be81078d7",
+        "refs/heads/main 9ff6bf667c84cf33ec713cf7916095a145f00db9"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/home/param/ppm-training",
+      "common": "/home/param/ppm-training/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/home/param/ppm-training",
+          "common": "/home/param/ppm-training/.git",
+          "branch": "codex/credit-assignment-training",
+          "original_head": "0f30a14ac5646b31707ade4e3c1843accdc4d960",
+          "staged_commit": null,
+          "working_commit": "08a187bc489d7cbe043183cf1b2d87a9e660d58c",
+          "tree": "5b21add812bede4da7ede67fdec6f98bbc00b2ac",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 42,
+          "status_count": 1,
+          "remotes": [
+            "origin\tgit@github.com:canopy-labs-internal/ppm-training.git (fetch)",
+            "origin\tgit@github.com:canopy-labs-internal/ppm-training.git (push)"
+          ],
+          "staged_tree": "0266c840098a4943c0d89445eb39f5a7737d229a"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/codex/credit-assignment-training 0f30a14ac5646b31707ade4e3c1843accdc4d960",
+        "refs/heads/codex/opd-next-finishing-sft-prep e15c437fa8b7850517f8667035b9d940e9639d5a",
+        "refs/heads/main e15c437fa8b7850517f8667035b9d940e9639d5a"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/home/param/training-registry/source",
+      "common": "/home/param/training-registry/source/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/home/param/training-registry/source",
+          "common": "/home/param/training-registry/source/.git",
+          "branch": "codex/registry-snapshot",
+          "original_head": "4054908fc69473a80df5514efa7f0d65b1d516a1",
+          "staged_commit": null,
+          "working_commit": "f331210769f8567d2851f591c6eb98cdefaa7b58",
+          "tree": "9b76c27b08a188a5892e6201c860c9497546aa44",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "origin\thttps://huggingface.co/InternalCan/training-registry (fetch)",
+            "origin\thttps://huggingface.co/InternalCan/training-registry (push)"
+          ],
+          "staged_tree": "9b76c27b08a188a5892e6201c860c9497546aa44"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/codex/registry-snapshot 4054908fc69473a80df5514efa7f0d65b1d516a1",
+        "refs/heads/master 3c8a7702972a52682bfff33a909a5292c7839d47"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/home/param/vansh-video-models",
+      "common": "/home/param/vansh-video-models/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/home/param/vansh-video-models",
+          "common": "/home/param/vansh-video-models/.git",
+          "branch": "param/bimodal",
+          "original_head": "26cedf69db7257658de7f6e53bae4972dac0f20b",
+          "staged_commit": null,
+          "working_commit": "9d503798c179df4e913ca68984a554b49410b643",
+          "tree": "9c567b6a95eb70272a8246be6a9f6b8effb87a86",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "origin\tgit@github.com:canopy-labs-internal/vansh-video-models.git (fetch)",
+            "origin\tgit@github.com:canopy-labs-internal/vansh-video-models.git (push)"
+          ],
+          "staged_tree": "9c567b6a95eb70272a8246be6a9f6b8effb87a86"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/param/bimodal 26cedf69db7257658de7f6e53bae4972dac0f20b",
+        "refs/heads/universal-main f4cf235e0eb6395396fca64ee5f8132824bd6d21"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/home/param/websites/aloe-pose-duplex",
+      "common": "/home/param/websites/aloe-pose-duplex/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/home/param/websites/aloe-pose-duplex",
+          "common": "/home/param/websites/aloe-pose-duplex/.git",
+          "branch": "main",
+          "original_head": "8e51968c7a282d2b7acd28d740ce533eab84ffaf",
+          "staged_commit": null,
+          "working_commit": "82a34af5ca01ad529108a40c2ccac9a80fa391a5",
+          "tree": "0267f44d1eaee1527af0e8661d26de516c579c48",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "origin\tgit@github.com:canopy-labs-internal/aloe-pose-duplex.git (fetch)",
+            "origin\tgit@github.com:canopy-labs-internal/aloe-pose-duplex.git (push)"
+          ],
+          "staged_tree": "0267f44d1eaee1527af0e8661d26de516c579c48"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/main 8e51968c7a282d2b7acd28d740ce533eab84ffaf"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/home/param/websites/aloe-pose-monoplex-infer",
+      "common": "/home/param/websites/aloe-pose-monoplex-infer/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/home/param/websites/aloe-pose-monoplex-infer",
+          "common": "/home/param/websites/aloe-pose-monoplex-infer/.git",
+          "branch": "main",
+          "original_head": "6ca0f89f5918cb5a72c89fbf8cfccbba3c229617",
+          "staged_commit": null,
+          "working_commit": "a6b42e35bb2d8a24a8cecc05db0a8eb3327fcb49",
+          "tree": "359f297343336f5e341a019420c76b3b46d0fa97",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "origin\tgit@github.com:canopy-labs-internal/aloe-pose-monoplex-infer.git (fetch)",
+            "origin\tgit@github.com:canopy-labs-internal/aloe-pose-monoplex-infer.git (push)"
+          ],
+          "staged_tree": "359f297343336f5e341a019420c76b3b46d0fa97"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/main 6ca0f89f5918cb5a72c89fbf8cfccbba3c229617"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/home/param/websites/page-templates",
+      "common": "/home/param/websites/page-templates/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/home/param/websites/page-templates",
+          "common": "/home/param/websites/page-templates/.git",
+          "branch": "main",
+          "original_head": "d42f14847f2ada28423ac334c6799eb1ffce8a96",
+          "staged_commit": null,
+          "working_commit": "b6d78d9fd87cd1ec085ec57247d60206fb9f851d",
+          "tree": "e6f7229dbee5009da208fe58927abda40dbb1c6e",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "origin\tgit@github.com:canopy-labs-internal/page-templates.git (fetch)",
+            "origin\tgit@github.com:canopy-labs-internal/page-templates.git (push)"
+          ],
+          "staged_tree": "e6f7229dbee5009da208fe58927abda40dbb1c6e"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/main d42f14847f2ada28423ac334c6799eb1ffce8a96"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/home/param/websites/pose-ar-diagnostics",
+      "common": "/home/param/websites/pose-ar-diagnostics/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/home/param/websites/pose-ar-diagnostics",
+          "common": "/home/param/websites/pose-ar-diagnostics/.git",
+          "branch": "main",
+          "original_head": "ef465635d2b5c4d446427ec59e1ee6e0060920b5",
+          "staged_commit": null,
+          "working_commit": "907e7ff5ede2885588b3e69c5265f71162278d5b",
+          "tree": "0194ffc9aa7cec729d9f633ec29409e6fcc1a585",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [],
+          "staged_tree": "0194ffc9aa7cec729d9f633ec29409e6fcc1a585"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/main ef465635d2b5c4d446427ec59e1ee6e0060920b5"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/home/param/websites/pose-demo-website",
+      "common": "/home/param/websites/pose-demo-website/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/home/param/websites/pose-demo-website",
+          "common": "/home/param/websites/pose-demo-website/.git",
+          "branch": "main",
+          "original_head": "30ab9b7847eda1c29f4888036907c63598943782",
+          "staged_commit": null,
+          "working_commit": "05b9560f11f8600651f9e8bd63e3e5da294d28a0",
+          "tree": "089d7ca03782bdaf43d84435f8e33718cc7ea3d7",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 5,
+          "remotes": [
+            "origin\tgit@github.com:canopy-labs-internal/pose-demo-website.git (fetch)",
+            "origin\tgit@github.com:canopy-labs-internal/pose-demo-website.git (push)"
+          ],
+          "staged_tree": "f8947d305601df7beea20783f0b2121ef3caadfa"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/main 30ab9b7847eda1c29f4888036907c63598943782"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/tmp/pose-research-ppm-training",
+      "common": "/tmp/pose-research-ppm-training/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/tmp/pose-research-ppm-training",
+          "common": "/tmp/pose-research-ppm-training/.git",
+          "branch": "main",
+          "original_head": "e15c437fa8b7850517f8667035b9d940e9639d5a",
+          "staged_commit": null,
+          "working_commit": "df156cf04d4f2abf7bc2a9786f2d7d9a5ccd3817",
+          "tree": "eb383a19b65c3db0afddb58f663a8e387e669733",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "origin\tgit@github.com:canopy-labs-internal/ppm-training.git (fetch)",
+            "origin\tgit@github.com:canopy-labs-internal/ppm-training.git (push)"
+          ],
+          "staged_tree": "eb383a19b65c3db0afddb58f663a8e387e669733"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/main e15c437fa8b7850517f8667035b9d940e9639d5a"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    },
+    {
+      "host": "landsend-0",
+      "repo": "/tmp/pose-research-tokenizer",
+      "common": "/tmp/pose-research-tokenizer/.git",
+      "worktrees": [
+        {
+          "host": "landsend-0",
+          "path": "/tmp/pose-research-tokenizer",
+          "common": "/tmp/pose-research-tokenizer/.git",
+          "branch": "main",
+          "original_head": "9ff6bf667c84cf33ec713cf7916095a145f00db9",
+          "staged_commit": null,
+          "working_commit": "1b7bc162e9f4f7a110a00db0b6aec5c29271a037",
+          "tree": "7f383e3f45cdbbcce69560678b713c33f759be9b",
+          "excluded": [],
+          "staged_excluded": [],
+          "untracked_added": 0,
+          "status_count": 0,
+          "remotes": [
+            "origin\tgit@github.com:canopy-labs-internal/pose-tokenizer.git (fetch)",
+            "origin\tgit@github.com:canopy-labs-internal/pose-tokenizer.git (push)"
+          ],
+          "staged_tree": "7f383e3f45cdbbcce69560678b713c33f759be9b"
+        }
+      ],
+      "local_branches": [
+        "refs/heads/main 9ff6bf667c84cf33ec713cf7916095a145f00db9"
+      ],
+      "changed": false,
+      "changed_worktrees": []
+    }
+  ],
+  "errors": []
+}

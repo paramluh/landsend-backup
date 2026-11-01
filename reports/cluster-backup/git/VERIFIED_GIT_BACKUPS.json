@@ -89,7 +89,7 @@
   {
     "home": "github:canopy-labs-internal/param-pose",
     "repo": "/home/param/pose-repo",
-    "commit": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
+    "commit": "4fb0b025b2293053c6608aee385a9e89d6496b39",
     "destinations": [
       "git@github.com:canopy-labs-internal/param-pose.git",
       "https://huggingface.co/InternalCan/pose-repo"
@@ -100,116 +100,134 @@
       {
         "url": "git@github.com:canopy-labs-internal/param-pose.git",
         "returncode": 0,
-        "expected": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
-        "remote": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
+        "expected": "4fb0b025b2293053c6608aee385a9e89d6496b39",
+        "remote": "4fb0b025b2293053c6608aee385a9e89d6496b39",
         "log": "/home/param/outputs/landsend-backup-20261031/git/push-0e62b7d95701.log",
-        "verified": true
+        "verified": true,
+        "initial_commit": "cdcf3d6db5facb01f5ceff270320d9225fdf9154"
       },
       {
         "url": "https://huggingface.co/InternalCan/pose-repo",
         "returncode": 0,
-        "expected": "84b99b91076a177b177095e0319781009690e6cb",
-        "remote": "84b99b91076a177b177095e0319781009690e6cb",
+        "expected": "7c4094d98c56ae82cc293261e0273e0bb1dc718e",
+        "remote": "7c4094d98c56ae82cc293261e0273e0bb1dc718e",
         "verified": true,
-        "original_github_commit": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
+        "original_github_commit": "4fb0b025b2293053c6608aee385a9e89d6496b39",
         "lfs_compatible_mirror": true,
         "commit_map": "LANDSEND_HF_COMMIT_MAP.csv",
-        "log": "/home/param/outputs/landsend-backup-20261031/git/push-hf-pose-mirror.log"
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-hf-pose-mirror.log",
+        "initial_commit": "84b99b91076a177b177095e0319781009690e6cb",
+        "incremental_commit_map": "LANDSEND_HF_INCREMENTAL_MAP.json"
       }
     ],
     "worktree_verification": [
       {
         "host": "landsend-0",
-        "path": "/home/param/pose-worktrees/duplex-distill-inference",
-        "commit": "aa141f67336a7fb73b23b3030418d3156fa31452",
-        "tree": "89e38a164fec63b605e7116c65362623a9bceaaf",
-        "verified_reachable": true
-      },
-      {
-        "host": "landsend-0",
-        "path": "/home/param/pose-worktrees/pose-opd-credit-decoder-54a82b324ba6d2dd77ae08a8d6fb0aec2ab37a90",
-        "commit": "97230de9ce89ec4d71e69e3314d0e63d257e0cb4",
-        "tree": "faa87a938139b3fe252d94cdd24058b179f31a86",
+        "path": "/home/param/pose-repo",
+        "working_commit": "8bb8790aa5e42ffa24c19769e507c6d2c5edccf2",
+        "reachable": true,
+        "commit": "8bb8790aa5e42ffa24c19769e507c6d2c5edccf2",
         "verified_reachable": true
       },
       {
         "host": "landsend-0",
         "path": "/home/param/pose-worktrees/duplex-distill",
-        "commit": "2c473e5e0d713dbe42b3a2b2f1d43321f4db6a87",
-        "tree": "89e38a164fec63b605e7116c65362623a9bceaaf",
+        "working_commit": "2e2e4004ccca66df969314f8aa8acbc69ced2a13",
+        "reachable": true,
+        "commit": "2e2e4004ccca66df969314f8aa8acbc69ced2a13",
         "verified_reachable": true
       },
       {
         "host": "landsend-0",
-        "path": "/home/param/pose-worktrees/pose-opd-live-demo",
-        "commit": "b5487cd90a8ccad18f82218b1e36ca475cc26a33",
-        "tree": "2541ea1d870e755b7acad076030c21e67d9a7a62",
-        "verified_reachable": true
-      },
-      {
-        "host": "landsend-0",
-        "path": "/home/param/pose-worktrees/pose-opd-credit",
-        "commit": "cc40383ae50b8d048683c0597577f365f3808b1c",
-        "tree": "2b7d54e0e48ce24d6f6c7c66597acb9ef365e0a7",
+        "path": "/home/param/pose-worktrees/duplex-distill-inference",
+        "working_commit": "8e792e18ffac03950f79e8668885619783dc750a",
+        "reachable": true,
+        "commit": "8e792e18ffac03950f79e8668885619783dc750a",
         "verified_reachable": true
       },
       {
         "host": "landsend-0",
         "path": "/home/param/pose-worktrees/pose-basic-opd",
-        "commit": "9d3859447fae7fe31febb0755a7fd862cb7f0497",
-        "tree": "ea1b520e4ef1d7ad28c35d41b55dc00c21709d20",
+        "working_commit": "41ebcc8ffe5fe1fe7d206f5421f22872f5b6a626",
+        "reachable": true,
+        "commit": "41ebcc8ffe5fe1fe7d206f5421f22872f5b6a626",
         "verified_reachable": true
       },
       {
         "host": "landsend-0",
-        "path": "/home/param/pose-repo",
-        "commit": "25fd5472e1fe504c6019d8a145e9cbf8ecd335af",
-        "tree": "619287ad8fd2e5fa4c98ab34a108ed14111772b4",
+        "path": "/home/param/pose-worktrees/pose-opd-credit",
+        "working_commit": "701230b4abbcc0ec8f8e0724fcf8437c64f85826",
+        "reachable": true,
+        "commit": "701230b4abbcc0ec8f8e0724fcf8437c64f85826",
         "verified_reachable": true
       },
       {
-        "host": "landsend-2",
-        "path": "/home/param/pose-repo",
-        "commit": "7cedfd2f732dd1147c891f1e5c9122236efd959b",
-        "tree": "c856527481baf3e1dd85ac8d746a9d08f4a71ced",
+        "host": "landsend-0",
+        "path": "/home/param/pose-worktrees/pose-opd-credit-decoder-54a82b324ba6d2dd77ae08a8d6fb0aec2ab37a90",
+        "working_commit": "db6ff1c67ff133db821ae60b63c8799e1029592e",
+        "reachable": true,
+        "commit": "db6ff1c67ff133db821ae60b63c8799e1029592e",
         "verified_reachable": true
       },
       {
-        "host": "landsend-5",
-        "path": "/home/param/pose-repo",
-        "commit": "3ace477f09e7f07c690b670254142ea39faac5a7",
-        "tree": "51a4d6f130043e25c6306eaff47ca41a694c56f7",
-        "verified_reachable": true
-      },
-      {
-        "host": "landsend-4",
-        "path": "/home/param/pose-repo",
-        "commit": "69007ab1f4fdc46808369d5b4925e6e9c069bc2a",
-        "tree": "6baf2a7492aecfccb7a4b7d14983859b1b8c3514",
+        "host": "landsend-0",
+        "path": "/home/param/pose-worktrees/pose-opd-live-demo",
+        "working_commit": "4a8393de688614a400f29b1f0336b53938ae1ee1",
+        "reachable": true,
+        "commit": "4a8393de688614a400f29b1f0336b53938ae1ee1",
         "verified_reachable": true
       },
       {
         "host": "landsend-1",
         "path": "/home/param/pose-repo",
+        "working_commit": "474c99aaff8fc924822aa0cdfc1d414c38034b61",
+        "reachable": true,
         "commit": "474c99aaff8fc924822aa0cdfc1d414c38034b61",
-        "tree": "dfd613cf9676093b5c38306bff12a5dadd54bb1e",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-2",
+        "path": "/home/param/pose-repo",
+        "working_commit": "7cedfd2f732dd1147c891f1e5c9122236efd959b",
+        "reachable": true,
+        "commit": "7cedfd2f732dd1147c891f1e5c9122236efd959b",
         "verified_reachable": true
       },
       {
         "host": "landsend-3",
         "path": "/home/param/pose-repo",
+        "working_commit": "1c565b0f2d507cd81ad50cf1505a3441a7c8f317",
+        "reachable": true,
         "commit": "1c565b0f2d507cd81ad50cf1505a3441a7c8f317",
-        "tree": "c856527481baf3e1dd85ac8d746a9d08f4a71ced",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-4",
+        "path": "/home/param/pose-repo",
+        "working_commit": "69007ab1f4fdc46808369d5b4925e6e9c069bc2a",
+        "reachable": true,
+        "commit": "69007ab1f4fdc46808369d5b4925e6e9c069bc2a",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-5",
+        "path": "/home/param/pose-repo",
+        "working_commit": "3ace477f09e7f07c690b670254142ea39faac5a7",
+        "reachable": true,
+        "commit": "3ace477f09e7f07c690b670254142ea39faac5a7",
         "verified_reachable": true
       },
       {
         "host": "landsend-12",
         "path": "/home/param/pose-repo",
+        "working_commit": "cf471150c73e94a340857ece1e38cb41bc719ad6",
+        "reachable": true,
         "commit": "cf471150c73e94a340857ece1e38cb41bc719ad6",
-        "tree": "6417c85ff5f65766ab181e95f7bb04e7040f6514",
         "verified_reachable": true
       }
-    ]
+    ],
+    "initial_commit": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
+    "latest_incremental_run": "20261101T042433Z"
   },
   {
     "home": "github:canopy-labs-internal/pose-demo-website",

@@ -219,7 +219,9 @@ def pack(rows,group):
                             elif p.suffix.lower() in TEXT_EXT or p.name in {'.bashrc','.profile','.gitattributes','Dockerfile','Makefile'}:
                                 data,n=sanitize(p.read_bytes());info.size=len(data);tar.addfile(info,io.BytesIO(data))
                             elif p.suffix=='.gz' and p.name.endswith(('.json.gz','.jsonl.gz','.log.gz','.txt.gz')):
-                                data,n=sanitize(gzip.decompress(p.read_bytes()));data=gzip.compress(data,compresslevel=1,mtime=0);info.size=len(data);tar.addfile(info,io.BytesIO(data))
+                                original=p.read_bytes();data,n=sanitize(gzip.decompress(original))
+                                data=gzip.compress(data,compresslevel=1,mtime=0) if n else original
+                                info.size=len(data);tar.addfile(info,io.BytesIO(data))
                             else:
                                 # A binary artifact may be replaced/truncated by a live worker.
                                 # Snapshot before emitting its tar header so a short read cannot

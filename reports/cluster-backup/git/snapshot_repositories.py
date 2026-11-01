@@ -56,8 +56,9 @@ def snapshot(repo):
   if reason:excludes.append({'path':rel,'reason':reason,'tracked':True})
  run(repo,'add','-u',env=env)
  # Paths newly staged in the real index are not reported as untracked; explicitly snapshot their current bytes too.
- if any(changed):
-  tracked_spec=OUT/(label+'.tracked.pathspec');tracked_spec.write_bytes(b'\0'.join(x for x in changed if x)+b'\0')
+ existing_changed=[x for x in changed if x and ((repo/x.decode()).exists() or (repo/x.decode()).is_symlink())]
+ if existing_changed:
+  tracked_spec=OUT/(label+'.tracked.pathspec');tracked_spec.write_bytes(b'\0'.join(existing_changed)+b'\0')
   run(repo,'add','--all','--pathspec-from-file='+str(tracked_spec),'--pathspec-file-nul',env=env)
  # Restore unsafe tracked files to HEAD in snapshot only, leaving real index/worktree intact.
  for item in excludes:

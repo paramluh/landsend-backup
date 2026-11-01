@@ -1,0 +1,48 @@
+{
+  "state": "archive_audit_completed_pending_root_history_scrub",
+  "time": 1793507049.1802578,
+  "source_archives": {
+    "hosts": 7,
+    "archives": 251,
+    "proof": "archive-coverage/SOURCE_ARCHIVES_VERIFICATION.json"
+  },
+  "opaque_containers": {
+    "inspected": 30,
+    "credential_bearing_originals": 5,
+    "node0_pending_initial_sanitized_pack": 3,
+    "already_uploaded_parts_repaired": 2,
+    "proof": "archive-coverage/OPAQUE_REPAIRS_VERIFIED.json"
+  },
+  "git_bundles": {
+    "instances": 501,
+    "unique_hashes": 2,
+    "all_absent_known_credential": true,
+    "proof": "archive-coverage/BUNDLE_AUDIT_VERIFIED.json"
+  },
+  "history_cleanup": {
+    "owner": "root",
+    "input": "archive-coverage/HISTORY_SCRUB_INPUT.json",
+    "required_receipt": "artifact-history-cleanup.json"
+  },
+  "final_refresh": {
+    "pid": 3876880,
+    "progress": "FINAL_ARTIFACT_REFRESH.json",
+    "stages": [
+      "wait_final_training_verified",
+      "all_node_artifact_delta",
+      "all_node_source_tar_delta",
+      "verify_remote_hashes_and_canonical_run_files",
+      "final_git_catchup",
+      "require_clean_artifact_history_ancestor",
+      "publish_personal_github_receipts"
+    ]
+  },
+  "tests": [
+    "archive_SHA_mismatch_rejected",
+    "metadata_blob_SHA_mismatch_rejected",
+    "seven_node_read_only_preflight",
+    "source_delta_group_metadata",
+    "canonical_hardlink_alias_coverage",
+    "sequential_runner_structure"
+  ]
+}

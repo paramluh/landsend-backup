@@ -1,12 +1,8 @@
 {
-  "state": "uploading",
+  "state": "complete",
   "host": "landsend-12",
-  "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000036/export",
-  "prefix": "hosts/landsend-12/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000036/export",
-  "bytes": 14292169503,
-  "completed_tasks": 21,
+  "completed_tasks": 27,
   "total_tasks": 27,
-  "attempt": 1,
-  "time": 1793507015.5135314,
+  "time": 1793507220.8548422,
   "started": 1793505842.7973862
 }

@@ -1,0 +1,40 @@
+{
+  "state": "complete",
+  "host": "landsend-2",
+  "hf_repo": "InternalCan/landsend-artifacts-backup-param",
+  "unique_files_uploaded": 3,
+  "unique_bytes_uploaded": 3403,
+  "metadata": [
+    {
+      "file": "SUMMARY.json",
+      "revision": "99bedf84173169476a1ad4ffb1009e69ddf57df2",
+      "bytes": 311,
+      "sha256": "ab94fbe183d8300fed85f520eba295499823af7c326b01a3a2b01ecfcfe5dc9e"
+    },
+    {
+      "file": "verification.json",
+      "revision": "eb594c599d7ca88fba000bd251e2569f9407e342",
+      "bytes": 46575369,
+      "sha256": "251b255997db2bf20bc48f878ad6d091b7cff0a9d64623992ae3283ab3ceb300"
+    },
+    {
+      "file": "upload-required.json",
+      "revision": "777a2923eb38cd37da535434f312cd276d9b3011",
+      "bytes": 1582,
+      "sha256": "35592243533fac48568d7ceae3ca6edcf7910cd52aeb50598fd3e80aa0a0faba"
+    },
+    {
+      "file": "upload-selected.json",
+      "revision": "a2736e375c230d7e9c660762345970c1d8f51bd4",
+      "bytes": 1582,
+      "sha256": "35592243533fac48568d7ceae3ca6edcf7910cd52aeb50598fd3e80aa0a0faba"
+    },
+    {
+      "file": "cross-node-aliases.json",
+      "revision": "aa3c596c3cc7f9eae7a906bec50a300dae5d3326",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    }
+  ],
+  "completed_unix": 1793507054.3543048
+}

@@ -22,6 +22,10 @@ statefile=BASE/'incremental-state.json'
 if statefile.exists():baseline=json.loads(statefile.read_text())['groups']
 else:
  files=list(BASE.glob('*-result.json'))+list((BASE/'remote').glob('*/*-result.json'));baseline=[json.loads(p.read_text()) for p in files]
+if os.environ.get('LANDSEND_GIT_FORCE_HOME'):
+ for row in baseline:
+  if row['host']=='landsend-0' and home(row)==os.environ['LANDSEND_GIT_FORCE_HOME']:
+   for worktree in row['worktrees']:worktree['branch']='forced-final-manifest-refresh'
 for host in HOSTS:atomic(OUT/(host+'-baseline.json'),[r for r in baseline if r['host']==host])
 def audit(host):
  source=OUT/(host+'-baseline.json');log=OUT/(host+'.log')
@@ -39,6 +43,8 @@ def audit(host):
  return report
 with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:reports=list(pool.map(audit,HOSTS))
 errors=[{'host':r['host'],**e} for r in reports for e in r['errors']];current=[g for r in reports for g in r['groups']]
+if errors:
+ result={'state':'errors','run_id':RUN,'errors':errors,'receipts':[],'note':'No remote pushes attempted because audit was incomplete.'};atomic(OUT/'COMPLETE.json',result);atomic(BASE/'INCREMENTAL_LATEST.json',result);print(json.dumps(result,indent=2));raise SystemExit(1)
 groups={}
 for row in current:groups.setdefault(home(row),[]).append(row)
 receipts=[]
@@ -95,7 +101,12 @@ for identity,rows in sorted(groups.items()):
   manifest={'format':'landsend-incremental-git-backup-v1','run_id':RUN,'home':identity,'current_snapshots':rows,'restore':'Checkout working_commit for any worktree. Earlier snapshots remain ancestors. staged_commit preserves the staged index.'}
   tree=write_tree(repo,treebase,{'LANDSEND_BACKUP_MANIFEST.json':(json.dumps(manifest,indent=2)+'\n').encode()},hashlib.sha256(identity.encode()).hexdigest()[:12]);args=[]
   for p in dict.fromkeys(parents):args.extend(['-p',p])
-  commit=text(repo,'commit-tree',tree,*args,data=('Incremental cluster backup '+RUN+'\n').encode());pushed=[push(repo,u,commit) for u in originalurls];git(repo,'update-ref',REF,commit)
+  commit=text(repo,'commit-tree',tree,*args,data=('Incremental cluster backup '+RUN+'\n').encode())
+  for group in rows:
+   for worktree in group['worktrees']:
+    git(repo,'merge-base','--is-ancestor',worktree['working_commit'],commit)
+    if worktree['staged_commit']:git(repo,'merge-base','--is-ancestor',worktree['staged_commit'],commit)
+  pushed=[push(repo,u,commit) for u in originalurls];git(repo,'update-ref',REF,commit)
   if identity.endswith('/param-pose') and any('huggingface.co' in u for u in allurls):pushed.append(hf_mirror(repo,commit,rows))
   receipts.append({'home':identity,'state':'verified','commit':commit,'pushes':pushed,'changed_worktrees':[p for r in changed for p in r['changed_worktrees']]})
  except Exception as exc:errors.append({'home':identity,'error':str(exc)})

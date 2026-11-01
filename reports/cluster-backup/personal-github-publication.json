@@ -1,8 +1,8 @@
 {
   "state": "verified",
   "github": "https://github.com/paramluh/landsend-backup",
-  "commit": "8d5b4884f5b3f20ba28bad200df3d34e6b31d733",
-  "published_unix": 1793506425.571717,
-  "receipt_files": 323,
-  "root_verified_archives": 15
+  "commit": "268d025c18612c1d747302b1569263e4d4ab5dba",
+  "published_unix": 1793507053.939156,
+  "receipt_files": 500,
+  "root_verified_archives": 24
 }

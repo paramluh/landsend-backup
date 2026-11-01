@@ -1,12 +1,8 @@
 {
-  "state": "uploading",
+  "state": "complete",
   "host": "landsend-0",
-  "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-33",
-  "prefix": "hosts/landsend-0/models/trained-weights/transcript-audio-pose-20261028/exports/export-33",
-  "bytes": 14651570534,
-  "completed_tasks": 18,
+  "completed_tasks": 21,
   "total_tasks": 21,
-  "attempt": 1,
-  "time": 1793507003.9058397,
+  "time": 1793507138.7543669,
   "started": 1793505841.8633068
 }

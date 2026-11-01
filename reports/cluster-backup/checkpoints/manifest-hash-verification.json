@@ -1,10 +1,10 @@
 {
   "repo": "InternalCan/landsend-checkpoints-backup-param",
-  "revision": "6b892dca2446cb233125589404967685b04d59c6",
-  "checked": 1793506773.079786,
-  "uploaded_leaf_count": 52,
-  "manifest_hash_files": 162,
-  "manifest_hash_bytes": 1321845783603,
+  "revision": "956097c06c377abec15ec151e22474b3a494e55f",
+  "checked": 1793507079.0327666,
+  "uploaded_leaf_count": 105,
+  "manifest_hash_files": 360,
+  "manifest_hash_bytes": 2224286641521,
   "mismatches": [],
   "verified": true,
   "leaf_checks": [
@@ -109,6 +109,106 @@
       "hash_files": 0
     },
     {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/transcript-pose/compact-all/export-200",
+      "prefix": "hosts/landsend-0/models/trained-weights/transcript-pose/compact-all/export-200",
+      "revision": "465acd10ea78272f0f6a38499741549273e4ef16",
+      "files": 60,
+      "bytes": 88378491174,
+      "completed": 1793506791.989898,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-167",
+      "prefix": "hosts/landsend-0/models/trained-weights/transcript-audio-pose-20261028/exports/export-167",
+      "revision": "7efb535e734ca2d8caafed0e1fa7e70a3688acf5",
+      "files": 11,
+      "bytes": 14651570536,
+      "completed": 1793506825.2224686,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-133",
+      "prefix": "hosts/landsend-0/models/trained-weights/transcript-audio-pose-20261028/exports/export-133",
+      "revision": "043ce1fd411cf82f4477983fb58f011e9639856d",
+      "files": 11,
+      "bytes": 14651570536,
+      "completed": 1793506856.1832714,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/export",
+      "prefix": "hosts/landsend-0/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/export",
+      "revision": "3f5fd10cbeab7aa991db1dfc5a3198bac9442971",
+      "files": 11,
+      "bytes": 12704032506,
+      "completed": 1793506885.169311,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-100",
+      "prefix": "hosts/landsend-0/models/trained-weights/transcript-audio-pose-20261028/exports/export-100",
+      "revision": "3ead923e3527dba84c61b93383c2c87a5de5b214",
+      "files": 11,
+      "bytes": 14651570536,
+      "completed": 1793506911.0720067,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-67",
+      "prefix": "hosts/landsend-0/models/trained-weights/transcript-audio-pose-20261028/exports/export-67",
+      "revision": "098d15139889852254d0df2e9a0634fa0254c91f",
+      "files": 11,
+      "bytes": 14651570534,
+      "completed": 1793506949.407525,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000060/export",
+      "prefix": "hosts/landsend-0/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000060/export",
+      "revision": "818962de2f772335769c22ddafea654881bdb906",
+      "files": 11,
+      "bytes": 12704032503,
+      "completed": 1793506976.6488497,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000036/export",
+      "prefix": "hosts/landsend-0/models/trained-weights/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000036/export",
+      "revision": "b98c76c577b8e0056194c784d83e1fea47e73a49",
+      "files": 11,
+      "bytes": 14669404509,
+      "completed": 1793507003.903252,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/transcript-audio-pose-20261028/exports/export-33",
+      "prefix": "hosts/landsend-0/models/trained-weights/transcript-audio-pose-20261028/exports/export-33",
+      "revision": "c1ca871c81361f635337d0183b1d60f057f06994",
+      "files": 11,
+      "bytes": 14651570534,
+      "completed": 1793507034.2719157,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-0",
+      "source": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/export",
+      "prefix": "hosts/landsend-0/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/export",
+      "revision": "5b9e5a2266d419ae5abdb60cc9a913ec1f498912",
+      "files": 11,
+      "bytes": 12704032407,
+      "completed": 1793507058.3116717,
+      "hash_files": 9
+    },
+    {
       "host": "landsend-1",
       "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
       "prefix": "hosts/landsend-1/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
@@ -166,6 +266,66 @@
       "files": 10,
       "bytes": 86944438242,
       "completed": 1793506600.6230075,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-1",
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/saves/step-00167",
+      "prefix": "hosts/landsend-1/pose-runs/no-text-audio-pose-20261028/saves/step-00167",
+      "revision": "32a8ba5b4e5209a7f0d4b7bbc1cf104aeca7ad34",
+      "files": 11,
+      "bytes": 141225810066,
+      "completed": 1793506789.7325509,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-1",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/saves/step-00167",
+      "prefix": "hosts/landsend-1/pose-runs/transcript-audio-pose-20261028/saves/step-00167",
+      "revision": "0b01824d321a86d43d6332fd68f8dad4d0ae55ed",
+      "files": 10,
+      "bytes": 86944438242,
+      "completed": 1793506867.6783404,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-1",
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
+      "prefix": "hosts/landsend-1/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
+      "revision": "df38ca0489171190f49195c926e9d18afe6a0107",
+      "files": 11,
+      "bytes": 76217976139,
+      "completed": 1793506928.5337243,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-1",
+      "source": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/resume",
+      "prefix": "hosts/landsend-1/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/resume",
+      "revision": "f2e451be6c888fd3e62587d1bbb817bdc274eca6",
+      "files": 11,
+      "bytes": 76217976039,
+      "completed": 1793507010.0810044,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-1",
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/export",
+      "prefix": "hosts/landsend-1/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/export",
+      "revision": "6b028586cb08ff8a86033b13104977d32f1147bd",
+      "files": 11,
+      "bytes": 14669603506,
+      "completed": 1793507027.8040848,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-1",
+      "source": "/home/param/models/transcript-pose/aligned-media/export-200",
+      "prefix": "hosts/landsend-1/models/transcript-pose/aligned-media/export-200",
+      "revision": "65e2b5160cb4678e0bb4be1c1bbfa35677dddfaf",
+      "files": 60,
+      "bytes": 88378491092,
+      "completed": 1793507060.102238,
       "hash_files": 0
     },
     {
@@ -229,6 +389,46 @@
       "hash_files": 0
     },
     {
+      "host": "landsend-2",
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/saves/step-00167",
+      "prefix": "hosts/landsend-2/pose-runs/no-text-audio-pose-20261028/saves/step-00167",
+      "revision": "9d0de35aab75975853284053f8f4bc13c14ef1f1",
+      "files": 10,
+      "bytes": 141225783370,
+      "completed": 1793506777.4450877,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-2",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/saves/step-00167",
+      "prefix": "hosts/landsend-2/pose-runs/transcript-audio-pose-20261028/saves/step-00167",
+      "revision": "6e222e22cd30bd8b5a6414dec044260d5472baff",
+      "files": 10,
+      "bytes": 86944450382,
+      "completed": 1793506858.4142818,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-2",
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
+      "prefix": "hosts/landsend-2/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
+      "revision": "541005a270d66fc72a28828b8d59d5cd91395fa9",
+      "files": 11,
+      "bytes": 76218066822,
+      "completed": 1793506919.9843922,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-2",
+      "source": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/resume",
+      "prefix": "hosts/landsend-2/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/resume",
+      "revision": "3aaa7af03ba7a9d6658c914c4885021e72da1f67",
+      "files": 11,
+      "bytes": 106309346515,
+      "completed": 1793507015.8088782,
+      "hash_files": 9
+    },
+    {
       "host": "landsend-3",
       "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
       "prefix": "hosts/landsend-3/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
@@ -289,6 +489,46 @@
       "hash_files": 0
     },
     {
+      "host": "landsend-3",
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/saves/step-00167",
+      "prefix": "hosts/landsend-3/pose-runs/no-text-audio-pose-20261028/saves/step-00167",
+      "revision": "061d92f93e577358bdf3331b2144cda6b0a1af23",
+      "files": 10,
+      "bytes": 141225795510,
+      "completed": 1793506779.9023607,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-3",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/saves/step-00167",
+      "prefix": "hosts/landsend-3/pose-runs/transcript-audio-pose-20261028/saves/step-00167",
+      "revision": "6592a4d34104d87bf626392cb0dd4b7138f620af",
+      "files": 10,
+      "bytes": 86944450382,
+      "completed": 1793506859.9850054,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-3",
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
+      "prefix": "hosts/landsend-3/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
+      "revision": "d7ca65ecaea18fc61718258b9175bc9c51bcc59d",
+      "files": 11,
+      "bytes": 76218067014,
+      "completed": 1793506931.698806,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-3",
+      "source": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/resume",
+      "prefix": "hosts/landsend-3/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/resume",
+      "revision": "322d6ae7d135a83d403fa00668d799e673885941",
+      "files": 11,
+      "bytes": 106309496449,
+      "completed": 1793507055.4727473,
+      "hash_files": 9
+    },
+    {
       "host": "landsend-4",
       "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
       "prefix": "hosts/landsend-4/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
@@ -347,6 +587,46 @@
       "bytes": 86944450382,
       "completed": 1793506630.1480844,
       "hash_files": 0
+    },
+    {
+      "host": "landsend-4",
+      "source": "/home/param/pose-runs/no-text-audio-pose-20261028/saves/step-00167",
+      "prefix": "hosts/landsend-4/pose-runs/no-text-audio-pose-20261028/saves/step-00167",
+      "revision": "552a7d5d1f0cb6aabd0723c5456170ce2e862924",
+      "files": 10,
+      "bytes": 141223952310,
+      "completed": 1793506810.4457786,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-4",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/saves/step-00167",
+      "prefix": "hosts/landsend-4/pose-runs/transcript-audio-pose-20261028/saves/step-00167",
+      "revision": "197363075a119a8e6f2eda884d67c0fde7c89db7",
+      "files": 10,
+      "bytes": 86944450382,
+      "completed": 1793506890.0451102,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-4",
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
+      "prefix": "hosts/landsend-4/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/resume",
+      "revision": "140b266611655d92a53c69b89b2bfd48946af827",
+      "files": 11,
+      "bytes": 76218067078,
+      "completed": 1793506970.7264192,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-4",
+      "source": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/resume",
+      "prefix": "hosts/landsend-4/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/resume",
+      "revision": "956097c06c377abec15ec151e22474b3a494e55f",
+      "files": 11,
+      "bytes": 106309607866,
+      "completed": 1793507077.7009504,
+      "hash_files": 9
     },
     {
       "host": "landsend-5",
@@ -439,6 +719,116 @@
       "hash_files": 9
     },
     {
+      "host": "landsend-5",
+      "source": "/home/param/models/trained-weights/pose-duplex-first-band-20261030/checkpoints/pose-duplex-first-band-20261030/dcp-227",
+      "prefix": "hosts/landsend-5/models/trained-weights/pose-duplex-first-band-20261030/checkpoints/pose-duplex-first-band-20261030/dcp-227",
+      "revision": "a1364c4eb4407d80b8f9ee710b6009f137f7ac23",
+      "files": 20,
+      "bytes": 117322947515,
+      "completed": 1793506776.6885664,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/exports/export-200",
+      "prefix": "hosts/landsend-5/pose-runs/compact-transcript-text-audio-pose-20261028/exports/export-200",
+      "revision": "5534ac1357c97a3a00151971e3110bfec1ecd5fc",
+      "files": 8,
+      "bytes": 12350457512,
+      "completed": 1793506813.939806,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-200",
+      "prefix": "hosts/landsend-5/pose-runs/transcript-audio-pose-20261028/exports/export-200",
+      "revision": "7ab3b93cf3f9a5405fa70f78db698044e6550a9b",
+      "files": 8,
+      "bytes": 12350457512,
+      "completed": 1793506822.2240868,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-167",
+      "prefix": "hosts/landsend-5/pose-runs/transcript-audio-pose-20261028/exports/export-167",
+      "revision": "0af02ffff1e91afd149fc07be24cbba5add5b203",
+      "files": 8,
+      "bytes": 12350457512,
+      "completed": 1793506852.4156811,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-133",
+      "prefix": "hosts/landsend-5/pose-runs/transcript-audio-pose-20261028/exports/export-133",
+      "revision": "ffc98c0fd15ab5ad4c6a42a2e0db70e5177f29ee",
+      "files": 8,
+      "bytes": 12350457512,
+      "completed": 1793506876.0892985,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/export",
+      "prefix": "hosts/landsend-5/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/export",
+      "revision": "25be559cf1720dabdab494c17c1aae79a6445351",
+      "files": 11,
+      "bytes": 12704190042,
+      "completed": 1793506911.601686,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-100",
+      "prefix": "hosts/landsend-5/pose-runs/transcript-audio-pose-20261028/exports/export-100",
+      "revision": "a54e6fac8cbfd40d4d1d9fc818ec124eb2f5d10c",
+      "files": 8,
+      "bytes": 12350457512,
+      "completed": 1793506955.9636908,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/export",
+      "prefix": "hosts/landsend-5/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/export",
+      "revision": "012f1115e640850bdc157fe783f8d77119803471",
+      "files": 11,
+      "bytes": 17719620676,
+      "completed": 1793506985.0628648,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-67",
+      "prefix": "hosts/landsend-5/pose-runs/transcript-audio-pose-20261028/exports/export-67",
+      "revision": "8ad7b89f9f93987f3d40bfb5b7b651f21697a27c",
+      "files": 8,
+      "bytes": 12350457512,
+      "completed": 1793507002.2518907,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000060/export",
+      "prefix": "hosts/landsend-5/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000060/export",
+      "revision": "7ba86464aad05ce291c460db5e1c9acffecd70a9",
+      "files": 11,
+      "bytes": 17719620674,
+      "completed": 1793507026.261803,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-5",
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000060/export",
+      "prefix": "hosts/landsend-5/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000060/export",
+      "revision": "8f8f96bfe6a8e31896bc0b67f6db03acc7ad3000",
+      "files": 11,
+      "bytes": 12704190039,
+      "completed": 1793507060.6681635,
+      "hash_files": 9
+    },
+    {
       "host": "landsend-12",
       "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
       "prefix": "hosts/landsend-12/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000284/resume",
@@ -526,6 +916,146 @@
       "files": 20,
       "bytes": 117025871287,
       "completed": 1793506750.6690254,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/models/transcript-pose/aligned-media/export-200",
+      "prefix": "hosts/landsend-12/models/transcript-pose/aligned-media/export-200",
+      "revision": "18df01768bed3e0898272bd2b34dcbcf05670088",
+      "files": 60,
+      "bytes": 88378491092,
+      "completed": 1793506790.3600514,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/models/transcript-pose/compact-all/export-200",
+      "prefix": "hosts/landsend-12/models/transcript-pose/compact-all/export-200",
+      "revision": "1cc68f750e651a0d9f51b0700d5823086f044973",
+      "files": 60,
+      "bytes": 88378491174,
+      "completed": 1793506815.6025743,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/pose-runs/compact-transcript-text-audio-pose-20261028/exports/export-200",
+      "prefix": "hosts/landsend-12/pose-runs/compact-transcript-text-audio-pose-20261028/exports/export-200",
+      "revision": "e7e64c0f229d57a5af9840368b76fea4cdf9644b",
+      "files": 8,
+      "bytes": 11974283496,
+      "completed": 1793506820.5737607,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-200",
+      "prefix": "hosts/landsend-12/pose-runs/transcript-audio-pose-20261028/exports/export-200",
+      "revision": "a4e1d9a017ad7f8a8cd4ff3fe8267ad40186d97a",
+      "files": 8,
+      "bytes": 11974283496,
+      "completed": 1793506825.8731775,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-167",
+      "prefix": "hosts/landsend-12/pose-runs/transcript-audio-pose-20261028/exports/export-167",
+      "revision": "87ddd8eede2d80fd144360eb53a075399899ddd7",
+      "files": 8,
+      "bytes": 11974283496,
+      "completed": 1793506852.0125473,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-133",
+      "prefix": "hosts/landsend-12/pose-runs/transcript-audio-pose-20261028/exports/export-133",
+      "revision": "28589693e173142304de7c4d85dd1efa3a67066a",
+      "files": 8,
+      "bytes": 11974283496,
+      "completed": 1793506876.2970479,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/export",
+      "prefix": "hosts/landsend-12/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000103/export",
+      "revision": "b31db78433050ac71bafeabe8927305e531a6a90",
+      "files": 11,
+      "bytes": 12289361756,
+      "completed": 1793506903.215845,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-100",
+      "prefix": "hosts/landsend-12/pose-runs/transcript-audio-pose-20261028/exports/export-100",
+      "revision": "1b9729556765151767edc44946d14cf34cf58bd0",
+      "files": 8,
+      "bytes": 11974283496,
+      "completed": 1793506927.59105,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/export",
+      "prefix": "hosts/landsend-12/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000089/export",
+      "revision": "528456faf9d427357700e0aa705319948d9c3627",
+      "files": 11,
+      "bytes": 17626317062,
+      "completed": 1793506951.6550362,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-67",
+      "prefix": "hosts/landsend-12/pose-runs/transcript-audio-pose-20261028/exports/export-67",
+      "revision": "debcd1e47c799be72a0c589d1e6e4908914a37e3",
+      "files": 8,
+      "bytes": 11974283496,
+      "completed": 1793506968.2124393,
+      "hash_files": 0
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000060/export",
+      "prefix": "hosts/landsend-12/models/trained-weights/pose-opd-credit-2min-b320-attempt2/checkpoints/step-000060/export",
+      "revision": "c6b0c6d62bc4120eba819e57897d638114f115be",
+      "files": 11,
+      "bytes": 17626317060,
+      "completed": 1793506998.8123271,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000060/export",
+      "prefix": "hosts/landsend-12/models/trained-weights/pose-opd-symmetric-b336-website-pad0-20261031/checkpoints/step-000060/export",
+      "revision": "506516d44e48ae485543fd7b5fee873d78583638",
+      "files": 11,
+      "bytes": 12289361753,
+      "completed": 1793507015.5114625,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000036/export",
+      "prefix": "hosts/landsend-12/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/checkpoints/step-000036/export",
+      "revision": "27c9372e570bdbed539dba82b4fb112280a21eab",
+      "files": 11,
+      "bytes": 14292169503,
+      "completed": 1793507031.6876168,
+      "hash_files": 9
+    },
+    {
+      "host": "landsend-12",
+      "source": "/home/param/pose-runs/transcript-audio-pose-20261028/exports/export-33",
+      "prefix": "hosts/landsend-12/pose-runs/transcript-audio-pose-20261028/exports/export-33",
+      "revision": "2f160fda0c9b7e1836fe14dc7f0c46846f6f3fee",
+      "files": 8,
+      "bytes": 11974283496,
+      "completed": 1793507047.337922,
       "hash_files": 0
     }
   ]

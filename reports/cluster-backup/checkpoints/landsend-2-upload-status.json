@@ -1,12 +1,12 @@
 {
   "state": "uploading",
   "host": "landsend-2",
-  "source": "/home/param/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/resume",
-  "prefix": "hosts/landsend-2/models/trained-weights/pose-opd-teacher-partner-b336-general-20261031/checkpoints/step-000013/resume",
-  "bytes": 76218066786,
-  "completed_tasks": 10,
+  "source": "/home/param/models/transcript-pose/aligned-media/export-200",
+  "prefix": "hosts/landsend-2/models/transcript-pose/aligned-media/export-200",
+  "bytes": 88378491092,
+  "completed_tasks": 13,
   "total_tasks": 37,
   "attempt": 1,
-  "time": 1793507015.8102489,
+  "time": 1793507215.751126,
   "started": 1793505842.8640044
 }
