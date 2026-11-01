@@ -1,0 +1,233 @@
+{
+ "row": "B-000",
+ "model": "Aloe pose-duplex FT (v5 w-18100 init)",
+ "ckpt": "/scratch/amartyavarma/pdsamples/test-333",
+ "step": 333,
+ "s": 0.0038025478501553236,
+ "s_src": "trainer fp32 s at step 333 (/data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/runs/ppm-aloe-poseduplex-v5-j30074/metrics.jsonl)",
+ "prov": {
+  "row_key": "ALOE/s2handover-none/12a30b79-c174-4bc8-bb98-bdd0585b5491/seg00/c00",
+  "chan_B_data_side": "assistant"
+ },
+ "dirs": [
+  {
+   "voice_drawn": 1,
+   "clips": [
+    {
+     "track": "B",
+     "data_side": "assistant",
+     "src_key": "ALOE/s2handover-none/12a30b79-c174-4bc8-bb98-bdd0585b5491/seg00/c01",
+     "src_chunk": 1,
+     "frames": [
+      2964,
+      3081
+     ],
+     "cov": 0.923
+    }
+   ],
+   "voice_clip": 1,
+   "P": 126,
+   "row_key": "ALOE/s2handover-none/12a30b79-c174-4bc8-bb98-bdd0585b5491/seg00/c00",
+   "swap": 0,
+   "chan_B_data_side": "assistant",
+   "n_frames": 7500,
+   "T": 7628,
+   "n_light": 755,
+   "chan_A": "voxtral_latents_only",
+   "aref": {
+    "row_key": "ALOE/s2handover-none/12a30b79-c174-4bc8-bb98-bdd0585b5491/seg00/c00",
+    "side": "user",
+    "flac": "12a30b79-c174-4bc8-bb98-bdd0585b5491/seg00/SPEAKER_01.flac",
+    "gain_db": 0.0,
+    "frame0": 0,
+    "n": 7500,
+    "kind": "gcs",
+    "gain_mode": "raw",
+    "gain_mimi_db": -6.531
+   },
+   "pose_src": "files/none/12a30b79-c174-4bc8-bb98-bdd0585b5491/seg00/w00.SPEAKER_00.pose_tokens.npy"
+  },
+  {
+   "voice_drawn": 1,
+   "clips": [
+    {
+     "track": "B",
+     "data_side": "user",
+     "src_key": "ALOE/s2handover-none/12a30b79-c174-4bc8-bb98-bdd0585b5491/seg00/c01",
+     "src_chunk": 1,
+     "frames": [
+      2656,
+      2723
+     ],
+     "cov": 0.896
+    }
+   ],
+   "voice_clip": 1,
+   "P": 76,
+   "row_key": "ALOE/s2handover-none/12a30b79-c174-4bc8-bb98-bdd0585b5491/seg00/c00",
+   "swap": 1,
+   "chan_B_data_side": "user",
+   "n_frames": 7500,
+   "T": 7578,
+   "n_light": 734,
+   "chan_A": "voxtral_latents_only",
+   "aref": {
+    "row_key": "ALOE/s2handover-none/12a30b79-c174-4bc8-bb98-bdd0585b5491/seg00/c00",
+    "side": "assistant",
+    "flac": "12a30b79-c174-4bc8-bb98-bdd0585b5491/seg00/SPEAKER_00.flac",
+    "gain_db": 0.0,
+    "frame0": 0,
+    "n": 7500,
+    "kind": "gcs",
+    "gain_mode": "raw",
+    "gain_mimi_db": -5.856
+   },
+   "pose_src": "files/none/12a30b79-c174-4bc8-bb98-bdd0585b5491/seg00/w00.SPEAKER_01.pose_tokens.npy"
+  }
+ ],
+ "prompt_s": 10.0,
+ "gen_s": 13.84,
+ "P": [
+  126,
+  76
+ ],
+ "cards": {
+  "s1": {
+   "text": "",
+   "n_tokens": 0,
+   "clip": {
+    "wav": "clip_s1.wav",
+    "seconds": 9.36
+   }
+  },
+  "s2": {
+   "text": "",
+   "n_tokens": 0,
+   "clip": {
+    "wav": "clip_s2.wav",
+    "seconds": 5.36
+   }
+  }
+ },
+ "order": [
+  {
+   "kind": "clip",
+   "spk": "s1"
+  },
+  {
+   "kind": "clip",
+   "spk": "s2"
+  }
+ ],
+ "audio": {
+  "s1_gen": {
+   "s": 13.84,
+   "rms": 0.0402,
+   "rms_dbfs": -27.9,
+   "peak": 0.7118,
+   "clip_frac": 0.0,
+   "silent_frac_100ms": 0.551
+  },
+  "gt_s1": {
+   "s": 23.84,
+   "rms": 0.0468,
+   "rms_dbfs": -26.6,
+   "peak": 0.5725,
+   "clip_frac": 0.0,
+   "silent_frac_100ms": 0.672
+  },
+  "s2_gen": {
+   "s": 13.84,
+   "rms": 0.0349,
+   "rms_dbfs": -29.1,
+   "peak": 0.5069,
+   "clip_frac": 0.0,
+   "silent_frac_100ms": 0.471
+  },
+  "gt_s2": {
+   "s": 23.84,
+   "rms": 0.1009,
+   "rms_dbfs": -19.9,
+   "peak": 1.0227,
+   "clip_frac": 3e-05,
+   "silent_frac_100ms": 0.265
+  }
+ },
+ "pose": {
+  "s1": {
+   "frames": 298,
+   "missing_frac_gen": 0.0
+  },
+  "s2": {
+   "frames": 298,
+   "missing_frac_gen": 0.0
+  }
+ },
+ "gen_words": {
+  "s1": 21,
+  "s2": 28
+ },
+ "gen_text": {
+  "s1": "I've seen I've seen I've seen a lot of the Chanelers recently. Not Chanel, but Chanel. Ha ha. Oh. That's precious",
+  "s2": "What's your Like it's not Chanel number fifteen, is it? Like I'm classy, obviously. That's what my name means. It means it's your grandmother. Like. I'm like she."
+ },
+ "seed": [
+  20261025,
+  20261035
+ ],
+ "engine_params": {
+  "text_temp": 1.0,
+  "text_topk": 0,
+  "text_topp": 1.0,
+  "min_p": 0.0,
+  "min_p_rel": 0,
+  "freq_pen": 0.0,
+  "freq_win": 20,
+  "text_rep": 1.0,
+  "text_rep_win": 64,
+  "cb0_temp": 1.0,
+  "cb0_topk": 30,
+  "light_temp": 1.0,
+  "light_topk": 30,
+  "audio_rep_pen": 1.0,
+  "audio_rep_win": 64,
+  "allow_eob": 0,
+  "free_text": 0,
+  "word_greedy": 0,
+  "pose_temp": 1.0,
+  "pose_topk": 30,
+  "pose_light_temp": 1.0,
+  "pose_light_topk": 30,
+  "pose_cfg_on": 0,
+  "pose_cfg_s": 3.0,
+  "pose_cfg_cb0": 1,
+  "pose_cfg_light": 1,
+  "pose_rep": 1.0,
+  "pose_rep_win": 0,
+  "adaptive_rep_on": 0,
+  "speak_window_frames": 25,
+  "audio_rep_speaking": 1.0,
+  "audio_rep_silent": 1.0,
+  "text_rep_speaking": 1.0,
+  "text_rep_silent": 1.0,
+  "pose_rep_speaking": 1.0,
+  "pose_rep_silent": 1.0
+ },
+ "line_delay_ms": 243.0,
+ "sampling": {
+  "text_temp": 1.0,
+  "text_topk": 0,
+  "text_min_p": 0,
+  "audio_temp": 1.0,
+  "audio_topk": 30,
+  "pose_temp": 1.0,
+  "pose_topk": 30,
+  "rep_pen": null,
+  "cfg": null,
+  "pose_cfg": null,
+  "dtype": "bf16"
+ },
+ "engine": "fastinfer/fast_ppm.py FastPPM x 2 (NI 1, Voxtral front, pose; shared weights), duo",
+ "gen_wall_s": 45.5,
+ "made": "2026-10-25 11:22:06 UTC"
+}

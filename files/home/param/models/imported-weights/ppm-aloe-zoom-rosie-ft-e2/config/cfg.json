@@ -1,0 +1,107 @@
+{
+ "trainer": "train_rosie_full.py",
+ "run_tag": "rosie-full-cotrain-1030-1710",
+ "run_root": "/workspace/rosie-ft/runs",
+ "init": "/workspace/rosie-ft/init/export-253",
+ "data_root": "/workspace/data/rosie",
+ "data_module": "data_rosie",
+ "epochs": 2,
+ "light_frac": 1.0,
+ "steps_env": "auto",
+ "warmup": 2,
+ "eval_every": 18,
+ "export_every": 54,
+ "export_steps": [
+  54
+ ],
+ "w_text": 5.0,
+ "w_cat_word": 1.0,
+ "w_tim": 1.0,
+ "w_nw": 1.0,
+ "w_eob": 1.0,
+ "w_cb0": 1.0,
+ "w_cb": 1.0,
+ "lr": {
+  "trunk": 2e-06,
+  "spec": 6e-05,
+  "proj": 3e-05,
+  "audio": 6e-05,
+  "tower_s": 1.5e-05,
+  "dec_s": 6e-05
+ },
+ "clip": {
+  "trunk": 0.5,
+  "spec": 1.0,
+  "proj": 1.0,
+  "audio": 1.0,
+  "tower_s": 1.0,
+  "dec_s": 1.0
+ },
+ "adam_beta2": 0.95,
+ "k_tower": 4,
+ "dec_k": 16,
+ "dec_seed": 20261011,
+ "dec_mb_max": 470,
+ "dec_dyn": true,
+ "dec_fast": true,
+ "dec_compile_mode": "default",
+ "eval_light_max": 2048,
+ "dl_workers": 3,
+ "cd": 2,
+ "trunk_offload": true,
+ "offload_chunk_m": 64,
+ "vadapter": {
+  "enc_hidden": 1280,
+  "hidden": 4096,
+  "stack": 4,
+  "norm": "none"
+ },
+ "vox_model": "/workspace/aloe-live/assets/voxtral-realtime",
+ "zoom_src": "/workspace/data/zoom-strangers-5k",
+ "zoom_table": "/workspace/data/zoom-strangers-5k/zoom_table.npz",
+ "zoom_eval_max": 100,
+ "rosie_eval_max": 0,
+ "test_steps": 0,
+ "test_depth": "",
+ "test_repeat": false,
+ "test_gradsplit": false,
+ "test_mergecheck": false,
+ "test_export0": false,
+ "wandb": false,
+ "paths": {
+  "qwen32": "/workspace/aloe-live/code/models/Qwen3-32B",
+  "qwen4b_cfg": "/workspace/aloe-live/code/ppm/configs/Qwen3-4B",
+  "fa3": "/workspace/aloe-live/assets/vllm-flash-attn3",
+  "voxtral": "/workspace/aloe-live/assets/voxtral-realtime",
+  "mimi": "/workspace/aloe-live/assets/mimi",
+  "q1": "/workspace/rosie-ft/code/q1/qwen-1ch",
+  "zoom_src": "/workspace/data/zoom-strangers-5k",
+  "zoom_table": "/workspace/data/zoom-strangers-5k/zoom_table.npz"
+ },
+ "groups": {
+  "mode": "mixed",
+  "rosie_logical_world": 6,
+  "zoom_logical_world": 6,
+  "w_rosie": 1.0,
+  "w_zoom": 1.0,
+  "slots_rank0": [
+   [
+    "rosie",
+    0
+   ],
+   [
+    "zoom",
+    0
+   ]
+  ]
+ },
+ "steps": 108,
+ "plan": {
+  "n_train": 322,
+  "n_eval": 6,
+  "steps_per_epoch": 54,
+  "epochs": 2,
+  "zoom_packs_per_epoch": 4900,
+  "zoom_table_key": "f33e97dc0358aa68"
+ }
+}

@@ -1,0 +1,11 @@
+{
+  "repo": "InternalCan/ppm-aloe-zoom-rosie-ft-e2",
+  "revision": "22b0184ed4b382dbfedfa7a0b7a6f0ed19fb24ae",
+  "checkpoint": "export-108",
+  "run_tag": "rosie-full-cotrain-1030-1710",
+  "files": 41,
+  "bytes": 78239575787,
+  "seconds": 55.47414040565491,
+  "metadata_sha256": "ca07a8e57dcfd070f1905b10855a85aadf977194eba633cb931f3756be58cff5",
+  "path": "/home/param/models/imported-weights/ppm-aloe-zoom-rosie-ft-e2"
+}

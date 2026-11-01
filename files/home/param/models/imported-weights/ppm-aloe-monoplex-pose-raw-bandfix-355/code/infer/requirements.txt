@@ -1,0 +1,17 @@
+# Python 3.10, Linux x86_64, CUDA 12.8 driver, Hopper GPUs (H100 80 GB). Pinned to the venv the 10-19 eval videos were generated with.
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.8.0+cu128
+triton==3.4.0
+transformers==5.13.0
+huggingface_hub==1.28.0
+safetensors==0.8.0
+tokenizers==0.22.2
+accelerate==1.14.0
+numpy==2.2.6
+scipy==1.15.3
+soundfile==0.14.0
+regex==2026.7.19
+pyyaml==6.0.3
+# --pose-latents / --video-sample only (pose tokenizer decode + electron encoder; the raster kernel is JIT-built: needs nvcc + ninja)
+einops==0.8.2
+ninja==1.13.0

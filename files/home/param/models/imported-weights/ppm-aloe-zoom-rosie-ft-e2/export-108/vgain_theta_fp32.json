@@ -1,0 +1,4 @@
+{
+ "vgain_theta_fp32": -5.78125,
+ "source": "rosie-ft rosie-full-cotrain-1030-1710 step 108 (vgain frozen: = the init's theta)"
+}

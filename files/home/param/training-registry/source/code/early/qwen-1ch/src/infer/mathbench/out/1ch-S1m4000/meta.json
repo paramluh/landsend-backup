@@ -1,0 +1,14 @@
+{
+ "kind": "1ch",
+ "ck": "/data/home/amartyavarma/qwen-1ch/stage1-final/q1ch-s0-mixrope-asst-j4866-w-4000",
+ "step": 4000,
+ "run_tag": "q1ch-s0-mixrope-asst-j4866",
+ "mixrope": true,
+ "frame_fix": true,
+ "system": null,
+ "gate": {
+  "verdict": "PASS",
+  "attn": "varlen",
+  "s": 38.2
+ }
+}

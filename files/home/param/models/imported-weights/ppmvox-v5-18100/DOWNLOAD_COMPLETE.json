@@ -1,0 +1,13 @@
+{
+  "host": "landsend-0",
+  "completed_utc": "2026-10-30T05:32:38.391472+00:00",
+  "repo": "InternalCan/ppmvox-v5-17850",
+  "revision": "9de2b20a48a4173a8aca15b3018566e2140ec1cf",
+  "target": "/home/param/models/imported-weights/ppmvox-v5-18100",
+  "checkpoint_file_count": 208,
+  "checkpoint_bytes": 123055647002,
+  "total_files": 225,
+  "total_bytes": 123055671917,
+  "all_hashes_pass": true,
+  "original_layout_preserved": true
+}

@@ -1,0 +1,22 @@
+{
+ "kind": "init",
+ "ck": "/data/home/amartyavarma/qwen-1ch/stage2/keep/j7862-w-4289",
+ "step": 4289,
+ "run_tag": "q32-s2-1ch-final-s1mix-adapt256-lra1e-3-sam-j7862",
+ "export_stage": 2,
+ "wpid": "both",
+ "eot_on_channel": false,
+ "frame_fix": true,
+ "swap": 0,
+ "gate": {
+  "verdict": "PASS",
+  "frames": 729,
+  "pieces": 160,
+  "s": 14.7,
+  "tv_mean": 0.006023766938596964,
+  "tv_max": 0.06217333301901817,
+  "top1": 0.9853479862213135,
+  "top1_decisive": 1.0,
+  "n_mismatch": 4
+ }
+}

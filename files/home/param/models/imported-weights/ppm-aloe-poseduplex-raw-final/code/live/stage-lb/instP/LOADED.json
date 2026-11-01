@@ -1,0 +1,59 @@
+{
+ "ck": "/data/home/amartyavarma/ppm/poseduplex-raw/export-poseduplex-raw-211",
+ "step": 211,
+ "label": "pose duplex RAW codes + zoom, 1 epoch (33111 export-211)",
+ "prompt_mode": "voice_clip_only",
+ "last_step": 424,
+ "loaded": "2026-10-30 07:30:37 UTC",
+ "info": {
+  "ck": "/data/home/amartyavarma/ppm/poseduplex-raw/export-poseduplex-raw-211",
+  "step": 211,
+  "kind": "local",
+  "s": 0.003813833578594529,
+  "s_src": "exp(meta.json vgain_theta_fp32 -5.569120407)",
+  "s_ckpt_theta": 0.0038391664740261636,
+  "s_metrics": 0.003813833578594529,
+  "metrics": "/data/home/amartyavarma/ppm/poseduplex-raw/runs/ppm-aloe-poseduplex-raw-j33111/metrics.jsonl",
+  "run_tag": "ppm-aloe-poseduplex-raw-j33111",
+  "total_steps": 424,
+  "adapter": "checkpoint",
+  "ldev": [
+   "cuda:0",
+   "cuda:1"
+  ],
+  "layers_per_dev": {
+   "cuda:0": 37,
+   "cuda:1": 27
+  },
+  "pose": true,
+  "decp_bb": true,
+  "decp_bb_alpha": 1.0
+ },
+ "load_s": 91.2,
+ "smoke": {
+  "frames": 12,
+  "ms_p50": 63.8,
+  "ms": [
+   49.0,
+   33.2,
+   69.0,
+   63.4,
+   63.8,
+   63.5,
+   64.0,
+   64.0,
+   63.9,
+   63.9,
+   63.4,
+   63.8
+  ],
+  "P": 94,
+  "cfg_on_all_knobs_ms_p50": 63.8,
+  "cfg_on_ms_p95": 63.9,
+  "all_knobs_incl_adaptive_rep": true,
+  "all_knobs_incl_adaptive_pad": true,
+  "pose_cfg_on_ms_p50": 67.6,
+  "pose_cfg_on_ms_p95": 67.7,
+  "pose_cfg_switched_on_at_frame": 10
+ }
+}

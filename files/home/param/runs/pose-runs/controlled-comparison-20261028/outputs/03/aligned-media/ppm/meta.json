@@ -1,0 +1,1851 @@
+{
+  "input": "cache",
+  "cache": "/home/param/datasets/xabi-v2pure-cache",
+  "clip_index": 80968,
+  "row_key": "ALOE/aloe-v2pure/b9b8e2c874dccb1d29fd18cca5d6e15179700440/c00004",
+  "cache_key": "b9b8e2c874dccb1d29fd18cca5d6e15179700440/speaker_1/000004",
+  "split": "eval",
+  "source_span": [
+    0,
+    752
+  ],
+  "transcript": "it's actually not as hard as I don't know. Some people make it sound incredibly. Hard or like it's rocket science. I promise it's not. First thing, remember it is social media, and you know because quite often like you might see a new brand, they come on and they're like, \"Look at my new book! Buy my new book! Buy my new book!\" And it's just like, \"Oh my gosh!\" So here, think about it this way, right? I'm going to a party with my friends, right? And you don't know my friends, but I said, \"Hey, come with me to the party.\" Okay, now we walk in. Now, how are you going to act? Are you going to walk into a party with my friends that you don't know and say, \"Buy my book! Buy my book! Buy my book!\" Right? Because people are going be to like, \"What the hell? Like, why is she?\" Yeah. Right. Okay. So exactly. So maybe I know. Maybe you would stick close with me for a while, and I would say, \"Oh, hey. Um, by the way, this is my friend. You know,",
+  "words": [
+    {
+      "text": "it's",
+      "start": 0.0,
+      "end": 0.24,
+      "start_frame": 0,
+      "end_frame": 3,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "actually",
+      "start": 0.32,
+      "end": 0.64,
+      "start_frame": 4,
+      "end_frame": 8,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "not",
+      "start": 0.64,
+      "end": 0.88,
+      "start_frame": 8,
+      "end_frame": 11,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "as",
+      "start": 1.04,
+      "end": 1.28,
+      "start_frame": 13,
+      "end_frame": 16,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "hard",
+      "start": 1.28,
+      "end": 1.52,
+      "start_frame": 16,
+      "end_frame": 19,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "as",
+      "start": 1.52,
+      "end": 1.84,
+      "start_frame": 19,
+      "end_frame": 23,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 1.92,
+      "end": 2.0,
+      "start_frame": 24,
+      "end_frame": 25,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "don't",
+      "start": 2.0,
+      "end": 2.08,
+      "start_frame": 25,
+      "end_frame": 26,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "know.",
+      "start": 2.08,
+      "end": 2.24,
+      "start_frame": 26,
+      "end_frame": 28,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Some",
+      "start": 2.24,
+      "end": 2.48,
+      "start_frame": 28,
+      "end_frame": 31,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "people",
+      "start": 2.48,
+      "end": 2.72,
+      "start_frame": 31,
+      "end_frame": 34,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "make",
+      "start": 2.72,
+      "end": 2.88,
+      "start_frame": 34,
+      "end_frame": 36,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 2.88,
+      "end": 2.96,
+      "start_frame": 36,
+      "end_frame": 37,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "sound",
+      "start": 2.96,
+      "end": 3.28,
+      "start_frame": 37,
+      "end_frame": 41,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "incredibly.",
+      "start": 3.28,
+      "end": 3.68,
+      "start_frame": 41,
+      "end_frame": 46,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Hard",
+      "start": 3.76,
+      "end": 4.24,
+      "start_frame": 47,
+      "end_frame": 53,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "or",
+      "start": 4.32,
+      "end": 4.4,
+      "start_frame": 54,
+      "end_frame": 55,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 4.4,
+      "end": 4.56,
+      "start_frame": 55,
+      "end_frame": 57,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it's",
+      "start": 4.56,
+      "end": 4.72,
+      "start_frame": 57,
+      "end_frame": 59,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "rocket",
+      "start": 4.72,
+      "end": 4.88,
+      "start_frame": 59,
+      "end_frame": 61,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "science.",
+      "start": 4.88,
+      "end": 5.28,
+      "start_frame": 61,
+      "end_frame": 66,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 5.76,
+      "end": 5.84,
+      "start_frame": 72,
+      "end_frame": 73,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "promise",
+      "start": 5.84,
+      "end": 6.32,
+      "start_frame": 73,
+      "end_frame": 79,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it's",
+      "start": 6.32,
+      "end": 6.48,
+      "start_frame": 79,
+      "end_frame": 81,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "not.",
+      "start": 6.48,
+      "end": 6.8,
+      "start_frame": 81,
+      "end_frame": 85,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "First",
+      "start": 7.68,
+      "end": 8.0,
+      "start_frame": 96,
+      "end_frame": 100,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "thing,",
+      "start": 8.0,
+      "end": 8.24,
+      "start_frame": 100,
+      "end_frame": 103,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "remember",
+      "start": 8.24,
+      "end": 8.88,
+      "start_frame": 103,
+      "end_frame": 111,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 8.88,
+      "end": 9.04,
+      "start_frame": 111,
+      "end_frame": 113,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "is",
+      "start": 9.04,
+      "end": 9.28,
+      "start_frame": 113,
+      "end_frame": 116,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "social",
+      "start": 9.28,
+      "end": 10.0,
+      "start_frame": 116,
+      "end_frame": 125,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "media,",
+      "start": 10.56,
+      "end": 10.96,
+      "start_frame": 132,
+      "end_frame": 137,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 12.0,
+      "end": 12.4,
+      "start_frame": 150,
+      "end_frame": 155,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you",
+      "start": 12.8,
+      "end": 12.96,
+      "start_frame": 160,
+      "end_frame": 162,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "know",
+      "start": 12.96,
+      "end": 13.04,
+      "start_frame": 162,
+      "end_frame": 163,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "because",
+      "start": 13.04,
+      "end": 13.2,
+      "start_frame": 163,
+      "end_frame": 165,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "quite",
+      "start": 13.2,
+      "end": 13.44,
+      "start_frame": 165,
+      "end_frame": 168,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "often",
+      "start": 13.44,
+      "end": 13.76,
+      "start_frame": 168,
+      "end_frame": 172,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 13.76,
+      "end": 14.0,
+      "start_frame": 172,
+      "end_frame": 175,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you",
+      "start": 14.0,
+      "end": 14.1,
+      "start_frame": 175,
+      "end_frame": 176,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "might",
+      "start": 14.0,
+      "end": 14.24,
+      "start_frame": 175,
+      "end_frame": 178,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "see",
+      "start": 14.24,
+      "end": 14.4,
+      "start_frame": 178,
+      "end_frame": 180,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 14.4,
+      "end": 14.48,
+      "start_frame": 180,
+      "end_frame": 181,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "new",
+      "start": 14.48,
+      "end": 14.64,
+      "start_frame": 181,
+      "end_frame": 183,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "brand,",
+      "start": 14.64,
+      "end": 15.36,
+      "start_frame": 183,
+      "end_frame": 192,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "they",
+      "start": 15.36,
+      "end": 15.44,
+      "start_frame": 192,
+      "end_frame": 193,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "come",
+      "start": 15.44,
+      "end": 15.76,
+      "start_frame": 193,
+      "end_frame": 197,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "on",
+      "start": 15.76,
+      "end": 16.16,
+      "start_frame": 197,
+      "end_frame": 202,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 16.24,
+      "end": 16.32,
+      "start_frame": 203,
+      "end_frame": 204,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "they're",
+      "start": 16.32,
+      "end": 16.4,
+      "start_frame": 204,
+      "end_frame": 205,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like,",
+      "start": 16.4,
+      "end": 16.56,
+      "start_frame": 205,
+      "end_frame": 207,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "\"Look",
+      "start": 17.44,
+      "end": 17.52,
+      "start_frame": 218,
+      "end_frame": 219,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "at",
+      "start": 17.52,
+      "end": 17.6,
+      "start_frame": 219,
+      "end_frame": 220,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 17.6,
+      "end": 17.68,
+      "start_frame": 220,
+      "end_frame": 221,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "new",
+      "start": 17.68,
+      "end": 17.84,
+      "start_frame": 221,
+      "end_frame": 223,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "book!",
+      "start": 17.84,
+      "end": 18.08,
+      "start_frame": 223,
+      "end_frame": 226,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Buy",
+      "start": 18.08,
+      "end": 18.24,
+      "start_frame": 226,
+      "end_frame": 228,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 18.24,
+      "end": 18.4,
+      "start_frame": 228,
+      "end_frame": 230,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "new",
+      "start": 18.4,
+      "end": 18.56,
+      "start_frame": 230,
+      "end_frame": 232,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "book!",
+      "start": 18.56,
+      "end": 18.8,
+      "start_frame": 232,
+      "end_frame": 235,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Buy",
+      "start": 18.8,
+      "end": 18.96,
+      "start_frame": 235,
+      "end_frame": 237,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 18.96,
+      "end": 19.04,
+      "start_frame": 237,
+      "end_frame": 238,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "new",
+      "start": 19.04,
+      "end": 19.2,
+      "start_frame": 238,
+      "end_frame": 240,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "book!\"",
+      "start": 19.2,
+      "end": 19.52,
+      "start_frame": 240,
+      "end_frame": 244,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "And",
+      "start": 19.76,
+      "end": 19.92,
+      "start_frame": 247,
+      "end_frame": 249,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it's",
+      "start": 19.92,
+      "end": 20.0,
+      "start_frame": 249,
+      "end_frame": 250,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "just",
+      "start": 20.0,
+      "end": 20.16,
+      "start_frame": 250,
+      "end_frame": 252,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like,",
+      "start": 20.16,
+      "end": 20.4,
+      "start_frame": 252,
+      "end_frame": 255,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "\"Oh",
+      "start": 20.64,
+      "end": 20.8,
+      "start_frame": 258,
+      "end_frame": 260,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 20.8,
+      "end": 20.96,
+      "start_frame": 260,
+      "end_frame": 262,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "gosh!\"",
+      "start": 20.96,
+      "end": 21.36,
+      "start_frame": 262,
+      "end_frame": 267,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 21.6,
+      "end": 21.76,
+      "start_frame": 270,
+      "end_frame": 272,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "here,",
+      "start": 21.76,
+      "end": 22.08,
+      "start_frame": 272,
+      "end_frame": 276,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "think",
+      "start": 22.4,
+      "end": 22.64,
+      "start_frame": 280,
+      "end_frame": 283,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "about",
+      "start": 22.64,
+      "end": 22.8,
+      "start_frame": 283,
+      "end_frame": 285,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 22.8,
+      "end": 22.96,
+      "start_frame": 285,
+      "end_frame": 287,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "this",
+      "start": 22.96,
+      "end": 23.12,
+      "start_frame": 287,
+      "end_frame": 289,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "way,",
+      "start": 23.12,
+      "end": 23.28,
+      "start_frame": 289,
+      "end_frame": 291,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "right?",
+      "start": 23.36,
+      "end": 23.52,
+      "start_frame": 292,
+      "end_frame": 294,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I'm",
+      "start": 24.16,
+      "end": 24.72,
+      "start_frame": 302,
+      "end_frame": 309,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "going",
+      "start": 24.96,
+      "end": 25.36,
+      "start_frame": 312,
+      "end_frame": 317,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 25.36,
+      "end": 25.44,
+      "start_frame": 317,
+      "end_frame": 318,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 25.44,
+      "end": 25.54,
+      "start_frame": 318,
+      "end_frame": 319,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "party",
+      "start": 25.44,
+      "end": 26.0,
+      "start_frame": 318,
+      "end_frame": 325,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "with",
+      "start": 26.4,
+      "end": 26.56,
+      "start_frame": 330,
+      "end_frame": 332,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 26.56,
+      "end": 26.72,
+      "start_frame": 332,
+      "end_frame": 334,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "friends,",
+      "start": 26.72,
+      "end": 27.28,
+      "start_frame": 334,
+      "end_frame": 341,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "right?",
+      "start": 27.52,
+      "end": 27.76,
+      "start_frame": 344,
+      "end_frame": 347,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "And",
+      "start": 27.84,
+      "end": 27.92,
+      "start_frame": 348,
+      "end_frame": 349,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you",
+      "start": 27.92,
+      "end": 28.08,
+      "start_frame": 349,
+      "end_frame": 351,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "don't",
+      "start": 28.08,
+      "end": 28.24,
+      "start_frame": 351,
+      "end_frame": 353,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "know",
+      "start": 28.24,
+      "end": 28.4,
+      "start_frame": 353,
+      "end_frame": 355,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 28.4,
+      "end": 28.56,
+      "start_frame": 355,
+      "end_frame": 357,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "friends,",
+      "start": 28.56,
+      "end": 28.88,
+      "start_frame": 357,
+      "end_frame": 361,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "but",
+      "start": 28.88,
+      "end": 29.04,
+      "start_frame": 361,
+      "end_frame": 363,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 29.04,
+      "end": 29.12,
+      "start_frame": 363,
+      "end_frame": 364,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "said,",
+      "start": 29.12,
+      "end": 29.28,
+      "start_frame": 364,
+      "end_frame": 366,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "\"Hey,",
+      "start": 29.28,
+      "end": 29.44,
+      "start_frame": 366,
+      "end_frame": 368,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "come",
+      "start": 29.44,
+      "end": 29.68,
+      "start_frame": 368,
+      "end_frame": 371,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "with",
+      "start": 29.68,
+      "end": 29.84,
+      "start_frame": 371,
+      "end_frame": 373,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "me",
+      "start": 29.84,
+      "end": 30.08,
+      "start_frame": 373,
+      "end_frame": 376,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 30.56,
+      "end": 30.64,
+      "start_frame": 382,
+      "end_frame": 383,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 30.64,
+      "end": 30.72,
+      "start_frame": 383,
+      "end_frame": 384,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "party.\"",
+      "start": 30.72,
+      "end": 31.2,
+      "start_frame": 384,
+      "end_frame": 390,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Okay,",
+      "start": 31.36,
+      "end": 31.52,
+      "start_frame": 392,
+      "end_frame": 394,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "now",
+      "start": 31.52,
+      "end": 31.76,
+      "start_frame": 394,
+      "end_frame": 397,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "we",
+      "start": 32.24,
+      "end": 32.72,
+      "start_frame": 403,
+      "end_frame": 409,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "walk",
+      "start": 32.72,
+      "end": 33.04,
+      "start_frame": 409,
+      "end_frame": 413,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in.",
+      "start": 33.04,
+      "end": 33.28,
+      "start_frame": 413,
+      "end_frame": 416,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Now,",
+      "start": 33.84,
+      "end": 34.08,
+      "start_frame": 423,
+      "end_frame": 426,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "how",
+      "start": 34.08,
+      "end": 34.32,
+      "start_frame": 426,
+      "end_frame": 429,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "are",
+      "start": 34.32,
+      "end": 34.42,
+      "start_frame": 429,
+      "end_frame": 430,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you",
+      "start": 34.32,
+      "end": 34.48,
+      "start_frame": 429,
+      "end_frame": 431,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "going",
+      "start": 34.48,
+      "end": 34.64,
+      "start_frame": 431,
+      "end_frame": 433,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 34.64,
+      "end": 34.74,
+      "start_frame": 433,
+      "end_frame": 434,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "act?",
+      "start": 34.64,
+      "end": 35.12,
+      "start_frame": 433,
+      "end_frame": 439,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Are",
+      "start": 36.4,
+      "end": 36.48,
+      "start_frame": 455,
+      "end_frame": 456,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you",
+      "start": 36.48,
+      "end": 36.64,
+      "start_frame": 456,
+      "end_frame": 458,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "going",
+      "start": 36.64,
+      "end": 36.8,
+      "start_frame": 458,
+      "end_frame": 460,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 36.8,
+      "end": 37.04,
+      "start_frame": 460,
+      "end_frame": 463,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "walk",
+      "start": 37.04,
+      "end": 37.28,
+      "start_frame": 463,
+      "end_frame": 466,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "into",
+      "start": 37.28,
+      "end": 37.52,
+      "start_frame": 466,
+      "end_frame": 469,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 37.52,
+      "end": 37.62,
+      "start_frame": 469,
+      "end_frame": 470,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "party",
+      "start": 37.52,
+      "end": 37.84,
+      "start_frame": 469,
+      "end_frame": 473,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "with",
+      "start": 37.84,
+      "end": 38.0,
+      "start_frame": 473,
+      "end_frame": 475,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 38.0,
+      "end": 38.24,
+      "start_frame": 475,
+      "end_frame": 478,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "friends",
+      "start": 38.24,
+      "end": 38.72,
+      "start_frame": 478,
+      "end_frame": 484,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that",
+      "start": 38.72,
+      "end": 38.8,
+      "start_frame": 484,
+      "end_frame": 485,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you",
+      "start": 38.8,
+      "end": 38.96,
+      "start_frame": 485,
+      "end_frame": 487,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "don't",
+      "start": 38.96,
+      "end": 39.2,
+      "start_frame": 487,
+      "end_frame": 490,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "know",
+      "start": 39.2,
+      "end": 39.52,
+      "start_frame": 490,
+      "end_frame": 494,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 40.0,
+      "end": 40.08,
+      "start_frame": 500,
+      "end_frame": 501,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "say,",
+      "start": 40.16,
+      "end": 40.48,
+      "start_frame": 502,
+      "end_frame": 506,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "\"Buy",
+      "start": 40.8,
+      "end": 40.96,
+      "start_frame": 510,
+      "end_frame": 512,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 40.96,
+      "end": 41.04,
+      "start_frame": 512,
+      "end_frame": 513,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "book!",
+      "start": 41.04,
+      "end": 41.28,
+      "start_frame": 513,
+      "end_frame": 516,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Buy",
+      "start": 41.28,
+      "end": 41.44,
+      "start_frame": 516,
+      "end_frame": 518,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 41.44,
+      "end": 41.6,
+      "start_frame": 518,
+      "end_frame": 520,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "book!",
+      "start": 41.6,
+      "end": 41.84,
+      "start_frame": 520,
+      "end_frame": 523,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Buy",
+      "start": 41.84,
+      "end": 41.92,
+      "start_frame": 523,
+      "end_frame": 524,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 42.0,
+      "end": 42.08,
+      "start_frame": 525,
+      "end_frame": 526,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "book!\"",
+      "start": 42.08,
+      "end": 42.4,
+      "start_frame": 526,
+      "end_frame": 530,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Right?",
+      "start": 43.36,
+      "end": 43.68,
+      "start_frame": 542,
+      "end_frame": 546,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Because",
+      "start": 43.92,
+      "end": 44.08,
+      "start_frame": 549,
+      "end_frame": 551,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "people",
+      "start": 44.08,
+      "end": 44.4,
+      "start_frame": 551,
+      "end_frame": 555,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "are",
+      "start": 44.48,
+      "end": 44.58,
+      "start_frame": 556,
+      "end_frame": 557,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "going",
+      "start": 44.48,
+      "end": 44.64,
+      "start_frame": 556,
+      "end_frame": 558,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "be",
+      "start": 44.64,
+      "end": 44.72,
+      "start_frame": 558,
+      "end_frame": 559,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 44.64,
+      "end": 44.74,
+      "start_frame": 558,
+      "end_frame": 559,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like,",
+      "start": 44.72,
+      "end": 44.96,
+      "start_frame": 559,
+      "end_frame": 562,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "\"What",
+      "start": 45.84,
+      "end": 46.0,
+      "start_frame": 573,
+      "end_frame": 575,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 46.08,
+      "end": 46.16,
+      "start_frame": 576,
+      "end_frame": 577,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "hell?",
+      "start": 46.16,
+      "end": 46.64,
+      "start_frame": 577,
+      "end_frame": 583,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Like,",
+      "start": 46.64,
+      "end": 46.8,
+      "start_frame": 583,
+      "end_frame": 585,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "why",
+      "start": 46.8,
+      "end": 47.12,
+      "start_frame": 585,
+      "end_frame": 589,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "is",
+      "start": 47.12,
+      "end": 47.2,
+      "start_frame": 589,
+      "end_frame": 590,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "she?\"",
+      "start": 47.2,
+      "end": 47.52,
+      "start_frame": 590,
+      "end_frame": 594,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Yeah.",
+      "start": 48.72,
+      "end": 49.04,
+      "start_frame": 609,
+      "end_frame": 613,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Right.",
+      "start": 49.12,
+      "end": 49.52,
+      "start_frame": 614,
+      "end_frame": 619,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Okay.",
+      "start": 49.52,
+      "end": 50.08,
+      "start_frame": 619,
+      "end_frame": 626,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 50.4,
+      "end": 50.96,
+      "start_frame": 630,
+      "end_frame": 637,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "exactly.",
+      "start": 51.6,
+      "end": 52.0,
+      "start_frame": 645,
+      "end_frame": 650,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 52.08,
+      "end": 52.32,
+      "start_frame": 651,
+      "end_frame": 654,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "maybe",
+      "start": 52.32,
+      "end": 52.96,
+      "start_frame": 654,
+      "end_frame": 662,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 53.28,
+      "end": 53.36,
+      "start_frame": 666,
+      "end_frame": 667,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "know.",
+      "start": 53.36,
+      "end": 53.52,
+      "start_frame": 667,
+      "end_frame": 669,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Maybe",
+      "start": 53.52,
+      "end": 53.76,
+      "start_frame": 669,
+      "end_frame": 672,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you",
+      "start": 53.76,
+      "end": 53.84,
+      "start_frame": 672,
+      "end_frame": 673,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "would",
+      "start": 53.84,
+      "end": 54.0,
+      "start_frame": 673,
+      "end_frame": 675,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "stick",
+      "start": 54.0,
+      "end": 54.24,
+      "start_frame": 675,
+      "end_frame": 678,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "close",
+      "start": 54.24,
+      "end": 54.56,
+      "start_frame": 678,
+      "end_frame": 682,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "with",
+      "start": 54.56,
+      "end": 54.72,
+      "start_frame": 682,
+      "end_frame": 684,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "me",
+      "start": 54.72,
+      "end": 54.96,
+      "start_frame": 684,
+      "end_frame": 687,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "for",
+      "start": 54.96,
+      "end": 55.12,
+      "start_frame": 687,
+      "end_frame": 689,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 55.12,
+      "end": 55.22,
+      "start_frame": 689,
+      "end_frame": 690,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "while,",
+      "start": 55.12,
+      "end": 55.52,
+      "start_frame": 689,
+      "end_frame": 694,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 55.52,
+      "end": 55.6,
+      "start_frame": 694,
+      "end_frame": 695,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 55.6,
+      "end": 55.76,
+      "start_frame": 695,
+      "end_frame": 697,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "would",
+      "start": 55.76,
+      "end": 55.84,
+      "start_frame": 697,
+      "end_frame": 698,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "say,",
+      "start": 55.84,
+      "end": 56.08,
+      "start_frame": 698,
+      "end_frame": 701,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "\"Oh,",
+      "start": 56.16,
+      "end": 56.32,
+      "start_frame": 702,
+      "end_frame": 704,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "hey.",
+      "start": 56.32,
+      "end": 56.64,
+      "start_frame": 704,
+      "end_frame": 708,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Um,",
+      "start": 56.64,
+      "end": 57.04,
+      "start_frame": 708,
+      "end_frame": 713,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "by",
+      "start": 57.68,
+      "end": 57.92,
+      "start_frame": 721,
+      "end_frame": 724,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 58.0,
+      "end": 58.1,
+      "start_frame": 725,
+      "end_frame": 726,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "way,",
+      "start": 58.0,
+      "end": 58.32,
+      "start_frame": 725,
+      "end_frame": 729,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "this",
+      "start": 58.32,
+      "end": 58.56,
+      "start_frame": 729,
+      "end_frame": 732,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "is",
+      "start": 58.56,
+      "end": 58.72,
+      "start_frame": 732,
+      "end_frame": 734,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 58.72,
+      "end": 58.88,
+      "start_frame": 734,
+      "end_frame": 736,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "friend.",
+      "start": 58.88,
+      "end": 59.36,
+      "start_frame": 736,
+      "end_frame": 742,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "You",
+      "start": 59.44,
+      "end": 59.52,
+      "start_frame": 743,
+      "end_frame": 744,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "know,",
+      "start": 59.52,
+      "end": 59.84,
+      "start_frame": 744,
+      "end_frame": 748,
+      "in_overlap": false,
+      "truncated": false
+    }
+  ],
+  "voice_provenance": {
+    "mode": "explicit",
+    "source": "/home/param/pose-runs/controlled-comparison-20261028/clip-03/voice_clip.npy"
+  },
+  "recipe": "aligned-media",
+  "frames": 752,
+  "seconds": 60.16,
+  "P": 863,
+  "conditioning_P": 109,
+  "transcript_span": [
+    109,
+    863
+  ],
+  "prefill_frames": 0,
+  "f0": 0,
+  "code_delay": 2,
+  "total_positions": 1617,
+  "voice_clip_frames": 100,
+  "force_text": true,
+  "text_generation": "forced aligned lane",
+  "transcript_end_token": 151681,
+  "voice_codes_sha256": "cb518cfaa2c47c8e9d6c771e1047d39d298ca31627f04426379645edc1b0c9a0",
+  "framewise_lane_sha256": "a1bb5034729be7481d8e488b30b3271acf8ee364e915d090299e54840fb45043",
+  "checkpoint": {
+    "ck": "/home/param/models/transcript-pose/aligned-media/export-200",
+    "step": 200,
+    "kind": "local",
+    "pose": true,
+    "decp_bb": true,
+    "decp_bb_alpha": 1.0,
+    "vadapter": false,
+    "ldev": [
+      "cuda:0",
+      "cuda:1"
+    ],
+    "layers_per_dev": {
+      "cuda:0": 37,
+      "cuda:1": 27
+    }
+  },
+  "sampling": {
+    "text_temp": 1.0,
+    "text_topk": 0,
+    "text_topp": 1.0,
+    "min_p": 0.0,
+    "min_p_rel": 0,
+    "freq_pen": 0.0,
+    "freq_win": 20,
+    "text_rep": 1.0,
+    "text_rep_win": 64,
+    "cb0_temp": 1.0,
+    "cb0_topk": 0,
+    "light_temp": 1.0,
+    "light_topk": 0,
+    "audio_rep_pen": 1.0,
+    "audio_rep_win": 64,
+    "allow_eob": 0,
+    "free_text": 0,
+    "word_greedy": 0,
+    "pose_temp": 1.0,
+    "pose_topk": 0,
+    "pose_light_temp": 1.0,
+    "pose_light_topk": 0,
+    "pose_cfg_on": 0,
+    "pose_cfg_s": 3.0,
+    "pose_cfg_cb0": 1,
+    "pose_cfg_light": 1,
+    "pose_cfg_speaking_only": 0,
+    "pose_rep_cb0": 1.0,
+    "pose_rep_light": 1.0,
+    "pose_rep_win": 0,
+    "adaptive_rep_on": 0,
+    "speak_window_frames": 25,
+    "audio_rep_speaking": 1.0,
+    "audio_rep_silent": 1.0,
+    "text_rep_speaking": 1.0,
+    "text_rep_silent": 1.0,
+    "pose_rep_cb0_speaking": 1.0,
+    "pose_rep_cb0_silent": 1.0,
+    "pose_rep_light_speaking": 1.0,
+    "pose_rep_light_silent": 1.0
+  },
+  "seed": 20261030,
+  "batch_size": 2,
+  "batch_row": 0,
+  "batch_clip_indices": [
+    80968,
+    331562
+  ],
+  "rng_policy": "per-instance per-modality generators; row-wise [1,vocab] multinomial; no text sampling",
+  "prefill_seconds": 0.6300606727600098,
+  "generation_seconds": 49.35886001586914,
+  "ms_per_step": 65.46267906613944,
+  "ground_truth_generation_media": false,
+  "fixed_duration": true,
+  "peak_gib": {
+    "cuda:0": 50.9187536239624,
+    "cuda:1": 38.61023998260498
+  },
+  "audio_stats": {
+    "s": 60.16,
+    "rms": 0.0659,
+    "rms_dbfs": -23.6,
+    "peak": 0.6719,
+    "clip_frac": 0.0,
+    "silent_frac_100ms": 0.042
+  },
+  "wall_seconds": 102.72265458106995
+}

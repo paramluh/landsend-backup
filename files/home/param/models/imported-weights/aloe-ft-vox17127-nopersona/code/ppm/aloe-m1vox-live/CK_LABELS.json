@@ -1,0 +1,8 @@
+{
+ "*": {
+  "label": "Aloe FT (no persona) · vox17127 export-249",
+  "prompt": "voice_clip_only",
+  "preset_codes": "samsep",
+  "default_preset": "aloe-1-1648-0"
+ }
+}

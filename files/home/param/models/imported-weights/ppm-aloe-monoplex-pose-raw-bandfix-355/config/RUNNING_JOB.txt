@@ -1,0 +1,2 @@
+job 33072 nodes slinky-0,slinky-1,slinky-2,slinky-3,slinky-5,slinky-6,slinky-7,slinky-8 started 2026-10-29 22:56:00 PT run ppm-pose6-monoband-j33072 base /data/home/amartyavarma/ppm/ckpt-infer/ppm-v1/local-17850 init /data/home/amartyavarma/ppm/ckpt-infer/ppm-v1/local-17850
+job 33072 nodes slinky-0,slinky-1,slinky-2,slinky-3,slinky-5,slinky-6,slinky-7,slinky-8 ended 2026-10-30 00:14:48 PT rc 0

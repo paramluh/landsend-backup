@@ -1,0 +1,44 @@
+aloe-ft-32-samsep POSE-DUPLEX (run ppm-aloe-poseduplex-v5): every resolved-config difference vs job 28511 (and 29345), 10-25 PT
+====================================================================================================================================
+Measured by the CPU dry resolution of run_poseduplex.env as rank 0 of the world-64 job (tests/cfg_dry.py on slinky-18; files tests/dry/):
+  - vs 26232 (the trainer's startup ABORT rule): 85 keys differ, 0 outside the allowed set -> VERDICT PASS; 204 keys identical.
+  - vs 28511 (report only): 70 keys differ, 211 identical (tests/dry/cfg_diff_28511.txt).   vs 29345: 69 differ, 211 identical.
+  - Dry-run artefacts in those lists (NOT real differences): accum.host_ranks.* (placeholder host names slinky-h0..h7; the real 8 hosts come from
+    launch_poseduplex.sh) and flac_root (the dry run reads the shared /data copy; the real run uses /scratch/amartyavarma/aloe-ft-samsep/flac ->
+    symlink to that same copy, = 28511 / 29345).
+
+IDENTICAL to 28511 / 29345 (the full speech-duplex recipe): per-module LRs trunk 3e-6 / spec 6e-5 / proj 3e-5 / audio 6e-5 / tower_s 1.5e-5 /
+vadapter 5e-4 / vgain 5e-4 / dec_s 1.5e-5; clips trunk 0.5, all else 1.0; AdamW (0.9, 0.95), eps 1e-8, wd 0, fused; WSD warm-up then linear to
+0 at the last step (decoders the same shape); loss weights text x5 factorised (word / pad / eob / NEW_WORD 1 each), cb0 1, light 1; dec_s K 1,
+seed 20261011, micro frames 300, mb max 470, even / dyn / fast, compile default; speech light_frac 0.1 train / 1.0 eval (max 2048), band
+[0.09, 0.11]; CD 2, attn32, S3_MIN_FRAMES 125, bf16; sam-sep stores (digests 7318ffb3 / 31ecb227 / 1759200f / 611b2e7e), first chunks, both
+orientations, plan seed 20261011, epoch 0 = 29345's plan d1a3e3721328da0a exactly; A = in-loop Voxtral latents of the partner's raw-gain FLAC
+(VOX_A_GAIN raw, same index / RAWGAIN); B voice clip 30 % ('aloe-v2-voice'), no persona; eval 316 micros, every 25 steps + exports + end;
+logical world 64, 1 slot / GPU, no offload; S3_SWAP none; full-state STOP / SAVE_NOW / END save; HF private only.
+
+DIFFERENT
+| key(s) | 28511 -> this run | why |
+|---|---|---|
+| init, vadapter.init, vadapter.sha_expect | dcp-16861 subset + ASR adapter w-480 (s recalibrated) -> PPMVOX v5 final export (its own vadapter + fp32 vgain theta, ALOE_INIT_VOX=1, no s recalibration) | main: init = v5; the init handling = 29345's from v3 w-17127 |
+| model_nopose | True -> False | pose parts built: inp.pose, tower_p, dec_p, decp_bb (pose_head never) |
+| lr.tower_p / clip.tower_p | absent -> 1.5e-5 / 1.0 | 26089 |
+| lr.decp_bb / clip.decp_bb, decp_bb_alpha, decp_bb_link | absent -> 1e-5 / 1.0, 1.0, 1 | 26089 'link on' (C2 knob POSEDUP_LINK; v5 itself trained with it OFF) |
+| dec_p.{lr, clip, k}, dec_p_sched | absent -> 2e-5, 1.0, K 1; WSD warm-up 16, decay to 0 at 498 | 26089's LR / clip; K 1 = C1 (26089 had 8) |
+| w_pcb0, w_pcb | absent -> 1.0, 1.0 | 26089 (= PPM) |
+| posedup.* | absent -> pose 1, items all, voice_rule v2_30, pose_light_frac 1.0, speech_light_frac 0.1, epoch_seed 20261011, pose index + sha, plan digest | the data knobs (C4 / C5 / C6 / C7); only pose / items / epochs change the micros |
+| steps, warmup, sched.*, dec_sched.*, export_steps | 249, 8, ..., [41, 83, 124, 166, 208] -> 498, 16, ..., [83, 165, 248, 333, 415] | QQA_STEPS knob (default 2 epochs); warm-up / exports by 29345's rules |
+| samsep.expect_train_micros | 15898 -> 31796 | 2 epochs (76 dummies: 38 at the end of each epoch, = 29345's last step) |
+| run_tag, log_root, control_dir, export, local_export_root, resume.root | -> poseduplex dirs / names | bookkeeping |
+
+MATHS NOT VISIBLE AS A CONFIG KEY (read from code; all = 26089 / PPM):
+  - Input: e[p] += inp.pose(pdepth[p]) on channel B at the B Mimi positions P + 2 + f (code table, -1 -> exactly 0). A micro whose B side has no
+    pose (14.6 %) gets pdepth -1 everywhere: its backbone input is bit-identical to 29345's.
+  - Group 'audio' now holds inp.aud (x2) AND inp.pose (PPM / 26089 grouping): its grad-norm clip (1.0) spans the three tables.
+  - Normalisation: pose cb0 by the step's pose cb0 labels / W; pose decoder by its per-nanostep frame totals (tokens_step, as cb0 / light).
+  - Pose-less micros: pose decoder joins its per-step all-reduce with zeros; hv_p / zb get zero root gradients (no pose loss, FSDP parity).
+  - Epochs >= 1: the same 15,898 items in a fresh default_rng([20261011, e]) permutation.
+  - Exports: meta.json adds pose 1, decp_bb 1, decp_bb_alpha, vgain_theta_fp32 (metadata only).
+
+KNOBS (run_poseduplex.env; main's defaults, the user still to confirm): QQA_STEPS_SET (249 / 374 / 498 / 747 / 996 all; 213 / 426 pose_ok),
+POSEDUP_DEC_P_K (C1, 1 | 8), POSEDUP_LINK (C2, 1 | 0), QQA_LW_WORD (C3, 1), POSEDUP_VOICE_RULE (C4, v2_30 | ppm_third), POSEDUP_POSE_LIGHT_FRAC /
+POSEDUP_SPEECH_LIGHT_FRAC (C5, 1.0 / 0.1), POSEDUP_ITEMS (C6, all | pose_ok), POSEDUP_EPOCH_SEED (C7), POSEDUP_POSE (0 = job 29345 exactly).

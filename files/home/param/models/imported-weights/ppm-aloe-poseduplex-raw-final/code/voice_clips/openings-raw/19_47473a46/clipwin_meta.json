@@ -1,0 +1,55 @@
+{
+ "person_id": "19_47473a46",
+ "what": "the voice_clip window: assistant (B) words lane, pose tokens and frame-0 state for exactly the voice_clip frames",
+ "window": {
+  "store_row": "ALOE/s2handover-none/4002929b-2ecb-4137-9e55-78c265575f3d/seg02/c00",
+  "store_node": "m1n0",
+  "row_in_shard": 2114,
+  "side": "assistant",
+  "frames_in_row": [
+   4443,
+   4568
+  ],
+  "conv_frames": [
+   4443,
+   4568
+  ],
+  "conv_s": [
+   355.44,
+   365.44
+  ],
+  "L": 125
+ },
+ "voice_clip_codes_sha256": "7486497abcc634de9026790558e572b44ff3a90339da81518b557bda2384beba",
+ "clipwin_codes_sha256": "7486497abcc634de9026790558e572b44ff3a90339da81518b557bda2384beba",
+ "sources": {
+  "pose_tokens": {
+   "path": "/data/home/amartyavarma/data/aloe-handover-full/DATA/files/none/4002929b-2ecb-4137-9e55-78c265575f3d/seg02/w00.SPEAKER_00.pose_tokens.npy",
+   "sha256": "4b8913c9728f7eb131fabccd7093d380fae85d24a0c997a7e5a5d283200c9d6f",
+   "rows": "[:, 4443:4568]",
+   "frame0": {
+    "source": "pose.json normalization = the CONVERSATION's frame 0 (the tokens are not re-anchored per window: the handover tokenizer normalises every frame by the conversation's frame-0 root / shoulder width, so this window's tokens are relative to that same state = meta.json's frame0)",
+    "fields": {
+     "frame0_root": [
+      0.578125,
+      0.49421295523643494
+     ],
+     "frame0_width": 0.6770833134651184
+    }
+   }
+  },
+  "words": {
+   "rule": "package words.json rule (speech_q.lane first-piece frames over the whole row, start = end = frame / 12.5), kept if the first-piece frame is in the window; times relative to the window start",
+   "n": 32
+  }
+ },
+ "first_words": "No, I know what you mean. Like. Um, I'm not gonna be able to explain it properly either, but I get what you mean because we're all told to to say something.",
+ "checks": {
+  "codes_eq_voice_clip": true,
+  "pose_T_eq_codes_T": true,
+  "pose_file_sha256_eq_index": true,
+  "words_in_window": true,
+  "n_words": 32
+ },
+ "raw_codes": "pdxhost 10-30: codes = RAW s2h-m1 lane (mapped raw row, same frames); pose / words unchanged from openings-sam"
+}

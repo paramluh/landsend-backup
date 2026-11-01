@@ -1,0 +1,11 @@
+{
+  "repo": "InternalCan/ppm-aloe-samsep-vox17127-final",
+  "revision": "dc670e1a75a3f1e980cc8de63ccaa368481125ad",
+  "root": "/home/param/models/ppm-aloe-samsep-vox17127-final",
+  "files_total": 67,
+  "files_verified": 67,
+  "bytes_verified": 78355244516,
+  "host": "landsend-0",
+  "verified_utc": "2026-10-29T08:37:39Z",
+  "verification": "HF LFS SHA-256 or Git blob SHA-1, every export file"
+}

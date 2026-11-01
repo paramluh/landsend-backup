@@ -1,0 +1,8 @@
+{
+ "kind": "base",
+ "ck": "/data/home/amartyavarma/models/Qwen3-32B",
+ "step": null,
+ "run_tag": "Qwen3-32B",
+ "template": "apply_chat_template(enable_thinking=False)",
+ "render_tail": " \\boxed{}.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n"
+}

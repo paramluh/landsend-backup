@@ -1,0 +1,26 @@
+{
+  "host": "landsend-0",
+  "repo": "/home/param/websites/pose-ar-diagnostics",
+  "common": "/home/param/websites/pose-ar-diagnostics/.git",
+  "commit": "75368941a9bb074e40a8fe99091e8d1b2a4a347e",
+  "bundle": "/home/param/outputs/landsend-backup-20261031/git/landsend-0-pose-ar-diagnostics-7b661f26.bundle",
+  "worktrees": [
+    {
+      "host": "landsend-0",
+      "path": "/home/param/websites/pose-ar-diagnostics",
+      "common": "/home/param/websites/pose-ar-diagnostics/.git",
+      "branch": "main",
+      "original_head": "ef465635d2b5c4d446427ec59e1ee6e0060920b5",
+      "staged_commit": null,
+      "working_commit": "907e7ff5ede2885588b3e69c5265f71162278d5b",
+      "tree": "0194ffc9aa7cec729d9f633ec29409e6fcc1a585",
+      "excluded": [],
+      "untracked_added": 0,
+      "status_count": 0,
+      "remotes": []
+    }
+  ],
+  "local_branches": [
+    "refs/heads/main ef465635d2b5c4d446427ec59e1ee6e0060920b5"
+  ]
+}

@@ -1,0 +1,142 @@
+[fastppm 07:20:37] [load] fastload off (no COMPLETE manifest at /data/home/amartyavarma/ppm/aloe-posedup-live/genweb/stage-fastload/manifests/data__home__amartyavarma__ppm__pose6__monoband__export-355) -> DCP path
+/data/home/amartyavarma/venvs/qwen-s2/lib/python3.10/site-packages/torch/distributed/checkpoint/state_dict_loader.py:153: UserWarning: torch.distributed is disabled, unavailable or uninitialized, assuming the intent is to load in a single process.
+  warnings.warn(
+[fastppm 07:21:35] [load] DCP /data/home/amartyavarma/ppm/pose6/monoband/export-355: 2150 tensors (58s); not used: []
+[fastppm 07:21:35] [build] /data/home/amartyavarma/ppm/pose6/monoband/export-355 step 355 (dcp): pose True (D33 alpha 1.0), vadapter False; layers {'cuda:0': 37, 'cuda:1': 27}; head / speech tower / speech decoder on cuda:1, pose tower / decoder on cuda:0
+Loading weights:   0%|          | 0/350 [00:00<?, ?it/s]Loading weights: 100%|██████████| 350/350 [00:00<00:00, 15483.50it/s]
+[fastppm 07:21:41] captured 8 graphs (text, speech, speech_full, pose, pose_full, pose_full_cfg, seg0, seg1) in 4.5s; NI 1 R 2; cuda:0 50.1 GiB, cuda:1 37.4 GiB
+[genweb-worker monoband35533168 07:21:41] model step 355 loaded + captured (/data/home/amartyavarma/ppm/pose6/monoband/export-355)
+[genweb-worker monoband35533168 07:21:41] live feed -> ws://slinky-10:8990/feed
+[genweb-worker monoband35533168 07:21:47] run 20261030-072146-7181 failed: Traceback (most recent call last):
+  File "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/worker.py", line 775, in loop
+    self.run(rd, req)
+  File "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/worker.py", line 444, in run
+    raise ValueError(f"unknown engine knobs: {bad}")
+ValueError: unknown engine knobs: ['seed', 'n_samples', 'clip_s', 'prefill_person', 'prefill_s', 'prefill_src', 'prefill_pose', 'prefill_audio', 'prefill_words', 'voice', 'persona']
+
+[genweb-worker monoband35533168 07:21:58] record feed (overlap render) -> ws://slinky-4:8985/feed
+[genweb-worker monoband35533168 07:21:58] 20261030-072157-81b0: record instance ws://slinky-4:8985/feed
+[genweb-worker monoband35533168 07:21:59] feed: connected to ws://slinky-4:8985/feed
+[genweb-worker monoband35533168 07:22:17] run 20261030-072157-81b0: 59 words · pose cb0 changes on 58% of generated frames · 67.2 ms/frame · seed 1
+[genweb-worker monoband35533168 07:22:22] 20261030-072157-81b0: overlap mp4 5.28 s after the gen
+[genweb-worker monoband35533168 07:31:13] 20261030-073112-1447: no free record instance -> queue render
+[genweb-worker monoband35533168 07:31:30] run 20261030-073112-1447: 35 words · pose cb0 changes on 41% of generated frames · 63.9 ms/frame · seed 2
+[genweb-worker monoband35533168 07:31:31] 20261030-073112-44fa: no free record instance -> queue render
+[genweb-worker monoband35533168 07:31:38] 20261030-073112-44fa: late-joined record instance ws://slinky-4:8985/feed at frame 100 (99 frames replayed)
+[genweb-worker monoband35533168 07:31:49] run 20261030-073112-44fa: 46 words · pose cb0 changes on 29% of generated frames · 65.2 ms/frame · seed 2
+[genweb-worker monoband35533168 07:31:49] 20261030-073112-4bcd: no free record instance -> queue render
+[genweb-worker monoband35533168 07:32:00] 20261030-073112-44fa: overlap mp4 11.29 s after the gen
+[genweb-worker monoband35533168 07:32:02] 20261030-073112-4bcd: late-joined record instance ws://slinky-4:8985/feed at frame 200 (199 frames replayed)
+[genweb-worker monoband35533168 07:32:07] run 20261030-073112-4bcd: 40 words · pose cb0 changes on 13% of generated frames · 65.0 ms/frame · seed 1
+[genweb-worker monoband35533168 07:32:07] 20261030-073112-55fc: no free record instance -> queue render
+[genweb-worker monoband35533168 07:32:24] 20261030-073112-4bcd: overlap mp4 17.31 s after the gen
+[genweb-worker monoband35533168 07:32:25] run 20261030-073112-55fc: 26 words · pose cb0 changes on 8% of generated frames · 64.2 ms/frame · seed 2
+[genweb-worker monoband35533168 07:32:25] 20261030-073112-86eb: record instance ws://slinky-4:8985/feed
+[genweb-worker monoband35533168 07:32:43] run 20261030-073112-86eb: 57 words · pose cb0 changes on 4% of generated frames · 65.6 ms/frame · seed 2
+[genweb-worker monoband35533168 07:32:43] 20261030-073112-89b6: no free record instance -> queue render
+[genweb-worker monoband35533168 07:32:48] 20261030-073112-86eb: overlap mp4 5.28 s after the gen
+[genweb-worker monoband35533168 07:32:50] 20261030-073112-89b6: late-joined record instance ws://slinky-4:8985/feed at frame 100 (99 frames replayed)
+[genweb-worker monoband35533168 07:33:00] run 20261030-073112-89b6: 59 words · pose cb0 changes on 58% of generated frames · 61.2 ms/frame · seed 1
+[genweb-worker monoband35533168 07:33:00] 20261030-073112-a00d: no free record instance -> queue render
+[genweb-worker monoband35533168 07:33:12] 20261030-073112-89b6: overlap mp4 12.05 s after the gen
+[genweb-worker monoband35533168 07:33:17] run 20261030-073112-a00d: 51 words · pose cb0 changes on 20% of generated frames · 60.3 ms/frame · seed 1
+[genweb-worker monoband35533168 07:33:17] 20261030-073112-abbe: no free record instance -> queue render
+[genweb-worker monoband35533168 07:33:34] run 20261030-073112-abbe: 39 words · pose cb0 changes on 48% of generated frames · 59.9 ms/frame · seed 1
+[genweb-worker monoband35533168 07:33:34] 20261030-073112-ad1e: no free record instance -> queue render
+[genweb-worker monoband35533168 07:33:36] 20261030-073112-ad1e: late-joined record instance ws://slinky-4:8985/feed at frame 25 (24 frames replayed)
+[genweb-worker monoband35533168 07:33:51] run 20261030-073112-ad1e: 21 words · pose cb0 changes on 44% of generated frames · 61.8 ms/frame · seed 1
+[genweb-worker monoband35533168 07:33:51] 20261030-073112-cfbe: no free record instance -> queue render
+[genweb-worker monoband35533168 07:33:59] 20261030-073112-ad1e: overlap mp4 7.53 s after the gen
+[genweb-worker monoband35533168 07:34:01] 20261030-073112-cfbe: late-joined record instance ws://slinky-4:8985/feed at frame 150 (149 frames replayed)
+[genweb-worker monoband35533168 07:34:08] run 20261030-073112-cfbe: 37 words · pose cb0 changes on 26% of generated frames · 61.2 ms/frame · seed 2
+[genweb-worker monoband35533168 07:34:08] 20261030-073112-d0a4: no free record instance -> queue render
+[genweb-worker monoband35533168 07:34:23] 20261030-073112-cfbe: overlap mp4 14.8 s after the gen
+[genweb-worker monoband35533168 07:34:25] run 20261030-073112-d0a4: 42 words · pose cb0 changes on 35% of generated frames · 59.9 ms/frame · seed 2
+[genweb-worker monoband35533168 07:34:25] 20261030-073112-f906: no free record instance -> queue render
+[genweb-worker monoband35533168 07:34:42] run 20261030-073112-f906: 47 words · pose cb0 changes on 20% of generated frames · 60.2 ms/frame · seed 1
+[genweb-worker monoband35533168 08:30:03] 20261030-083003-2f36: no free record instance -> queue render
+[genweb-worker monoband35533168 08:30:34] run 20261030-083003-2f36: 99 words · pose cb0 changes on 5% of generated frames · 58.8 ms/frame · seed 15124735
+[genweb-worker monoband35533168 08:30:34] 20261030-083003-0226: no free record instance -> queue render
+[genweb-worker monoband35533168 08:31:06] run 20261030-083003-0226: 56 words · pose cb0 changes on 15% of generated frames · 58.7 ms/frame · seed 504607
+[genweb-worker monoband35533168 08:31:06] 20261030-083003-6e2b: no free record instance -> queue render
+[genweb-worker monoband35533168 08:31:24] 20261030-083003-6e2b: late-joined record instance ws://slinky-4:8985/feed at frame 300 (299 frames replayed)
+[genweb-worker monoband35533168 08:31:37] run 20261030-083003-6e2b: 61 words · pose cb0 changes on 15% of generated frames · 59.6 ms/frame · seed 3670598
+[genweb-worker monoband35533168 08:31:37] 20261030-083003-bed0: no free record instance -> queue render
+[genweb-worker monoband35533168 08:32:07] 20261030-083003-6e2b: overlap mp4 29.6 s after the gen
+[genweb-worker monoband35533168 08:32:08] 20261030-083003-bed0: late-joined record instance ws://slinky-4:8985/feed at frame 525 (524 frames replayed)
+[genweb-worker monoband35533168 08:32:08] run 20261030-083003-bed0: 57 words · pose cb0 changes on 12% of generated frames · 58.9 ms/frame · seed 425547
+[genweb-worker monoband35533168 08:32:08] 20261030-083003-c3e5: no free record instance -> queue render
+[genweb-worker monoband35533168 08:32:39] run 20261030-083003-c3e5: 68 words · pose cb0 changes on 6% of generated frames · 58.7 ms/frame · seed 13482080
+[genweb-worker monoband35533168 08:32:51] 20261030-083003-bed0: overlap mp4 42.9 s after the gen
+[genweb-worker monoband35533168 08:32:55] 20261030-083254-9139: record instance ws://slinky-4:8985/feed
+[genweb-worker monoband35533168 08:33:29] run 20261030-083254-9139: 76 words · pose cb0 changes on 42% of generated frames · 64.2 ms/frame · seed 7968934
+[genweb-worker monoband35533168 08:33:29] 20261030-083255-14a8: no free record instance -> queue render
+[genweb-worker monoband35533168 08:33:38] 20261030-083254-9139: overlap mp4 9.8 s after the gen
+[genweb-worker monoband35533168 08:33:40] 20261030-083255-14a8: late-joined record instance ws://slinky-4:8985/feed at frame 175 (174 frames replayed)
+[genweb-worker monoband35533168 08:34:02] run 20261030-083255-14a8: 79 words · pose cb0 changes on 52% of generated frames · 63.6 ms/frame · seed 6232348
+[genweb-worker monoband35533168 08:34:03] 20261030-083255-7416: no free record instance -> queue render
+[genweb-worker monoband35533168 08:34:23] 20261030-083255-14a8: overlap mp4 20.57 s after the gen
+[genweb-worker monoband35533168 08:34:25] 20261030-083255-7416: late-joined record instance ws://slinky-4:8985/feed at frame 350 (349 frames replayed)
+[genweb-worker monoband35533168 08:34:36] run 20261030-083255-7416: 72 words · pose cb0 changes on 53% of generated frames · 63.1 ms/frame · seed 4114652
+[genweb-worker monoband35533168 08:34:36] 20261030-083255-b1d2: no free record instance -> queue render
+[genweb-worker monoband35533168 08:35:08] 20261030-083255-7416: overlap mp4 32.12 s after the gen
+[genweb-worker monoband35533168 08:35:09] run 20261030-083255-b1d2: 68 words · pose cb0 changes on 36% of generated frames · 62.4 ms/frame · seed 5448705
+[genweb-worker monoband35533168 08:35:09] 20261030-083255-be58: record instance ws://slinky-4:8985/feed
+[genweb-worker monoband35533168 08:35:43] run 20261030-083255-be58: 134 words · pose cb0 changes on 48% of generated frames · 64.2 ms/frame · seed 3296240
+[genweb-worker monoband35533168 08:35:53] 20261030-083255-be58: overlap mp4 9.79 s after the gen
+[genweb-worker monoband35533168 08:42:23] 20261030-084223-6b66: record instance ws://slinky-4:8985/feed
+[genweb-worker monoband35533168 08:42:57] run 20261030-084223-6b66: 69 words · pose cb0 changes on 60% of generated frames · 64.2 ms/frame · seed 4493362
+[genweb-worker monoband35533168 08:42:57] 20261030-084223-bc12: no free record instance -> queue render
+[genweb-worker monoband35533168 08:43:07] 20261030-084223-6b66: overlap mp4 9.79 s after the gen
+[genweb-worker monoband35533168 08:43:09] 20261030-084223-bc12: late-joined record instance ws://slinky-4:8985/feed at frame 175 (174 frames replayed)
+[genweb-worker monoband35533168 08:43:31] run 20261030-084223-bc12: 41 words · pose cb0 changes on 21% of generated frames · 63.7 ms/frame · seed 10321229
+[genweb-worker monoband35533168 08:43:31] 20261030-084223-cb8d: no free record instance -> queue render
+[genweb-worker monoband35533168 08:43:51] 20261030-084223-bc12: overlap mp4 20.33 s after the gen
+[genweb-worker monoband35533168 08:43:53] 20261030-084223-cb8d: late-joined record instance ws://slinky-4:8985/feed at frame 350 (349 frames replayed)
+[genweb-worker monoband35533168 08:44:05] run 20261030-084223-cb8d: 77 words · pose cb0 changes on 42% of generated frames · 63.1 ms/frame · seed 11047794
+[genweb-worker monoband35533168 08:44:05] 20261030-084224-04d0: no free record instance -> queue render
+[genweb-worker monoband35533168 08:44:36] 20261030-084223-cb8d: overlap mp4 31.35 s after the gen
+[genweb-worker monoband35533168 08:44:37] 20261030-084224-04d0: late-joined record instance ws://slinky-4:8985/feed at frame 525 (524 frames replayed)
+[genweb-worker monoband35533168 08:44:38] run 20261030-084224-04d0: 93 words · pose cb0 changes on 53% of generated frames · 62.5 ms/frame · seed 16405899
+[genweb-worker monoband35533168 08:44:38] 20261030-084224-ded7: no free record instance -> queue render
+[genweb-worker monoband35533168 08:45:06] run 20261030-084224-ded7 failed: Traceback (most recent call last):
+  File "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/worker.py", line 775, in loop
+    self.run(rd, req)
+  File "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/worker.py", line 665, in run
+    raise RuntimeError("cancelled")
+RuntimeError: cancelled
+
+[genweb-worker monoband35533168 08:45:06] 20261030-084506-c4c5: no free record instance -> queue render
+[genweb-worker monoband35533168 08:45:09] 20261030-084224-04d0: no overlap mp4 after 31.1 s -> queued as today
+[genweb-worker monoband35533168 08:45:10] 20261030-084506-c4c5: late-joined record instance ws://slinky-4:8985/feed at frame 25 (24 frames replayed)
+[genweb-worker monoband35533168 08:45:41] run 20261030-084506-c4c5: 43 words · pose cb0 changes on 27% of generated frames · 66.5 ms/frame · seed 10147206
+[genweb-worker monoband35533168 08:45:41] 20261030-084506-533c: no free record instance -> queue render
+[genweb-worker monoband35533168 08:46:02] 20261030-084506-c4c5: overlap mp4 20.58 s after the gen
+[genweb-worker monoband35533168 08:46:04] 20261030-084506-533c: late-joined record instance ws://slinky-4:8985/feed at frame 350 (349 frames replayed)
+[genweb-worker monoband35533168 08:46:15] run 20261030-084506-533c: 60 words · pose cb0 changes on 44% of generated frames · 63.1 ms/frame · seed 16702113
+[genweb-worker monoband35533168 08:46:15] 20261030-084506-c39b: no free record instance -> queue render
+[genweb-worker monoband35533168 08:46:47] 20261030-084506-533c: overlap mp4 31.86 s after the gen
+[genweb-worker monoband35533168 08:46:48] run 20261030-084506-c39b: 90 words · pose cb0 changes on 33% of generated frames · 62.4 ms/frame · seed 7327909
+[genweb-worker monoband35533168 08:46:48] 20261030-084507-1beb: record instance ws://slinky-4:8985/feed
+[genweb-worker monoband35533168 08:47:22] run 20261030-084507-1beb: 25 words · pose cb0 changes on 23% of generated frames · 64.1 ms/frame · seed 11254213
+[genweb-worker monoband35533168 08:47:22] 20261030-084507-e765: no free record instance -> queue render
+[genweb-worker monoband35533168 08:47:32] 20261030-084507-1beb: overlap mp4 9.79 s after the gen
+[genweb-worker monoband35533168 08:47:34] 20261030-084507-e765: late-joined record instance ws://slinky-4:8985/feed at frame 175 (174 frames replayed)
+[genweb-worker monoband35533168 08:47:56] run 20261030-084507-e765: 77 words · pose cb0 changes on 47% of generated frames · 63.7 ms/frame · seed 10653226
+[genweb-worker monoband35533168 08:48:16] 20261030-084507-e765: overlap mp4 20.57 s after the gen
+[genweb-worker monoband35533168 08:54:45] 20261030-085444-9a43: record instance ws://slinky-4:8985/feed
+[genweb-worker monoband35533168 08:55:19] run 20261030-085444-9a43: 60 words · pose cb0 changes on 46% of generated frames · 64.2 ms/frame · seed 929305
+[genweb-worker monoband35533168 08:55:19] 20261030-085445-29f8: no free record instance -> queue render
+[genweb-worker monoband35533168 08:55:28] 20261030-085444-9a43: overlap mp4 9.79 s after the gen
+[genweb-worker monoband35533168 08:55:30] 20261030-085445-29f8: late-joined record instance ws://slinky-4:8985/feed at frame 175 (174 frames replayed)
+[genweb-worker monoband35533168 08:55:52] run 20261030-085445-29f8: 94 words · pose cb0 changes on 57% of generated frames · 63.7 ms/frame · seed 13150095
+[genweb-worker monoband35533168 08:55:52] 20261030-085445-2ce4: no free record instance -> queue render
+[genweb-worker monoband35533168 08:56:13] 20261030-085445-29f8: overlap mp4 20.58 s after the gen
+[genweb-worker monoband35533168 08:56:15] 20261030-085445-2ce4: late-joined record instance ws://slinky-4:8985/feed at frame 350 (349 frames replayed)
+[genweb-worker monoband35533168 08:56:26] run 20261030-085445-2ce4: 85 words · pose cb0 changes on 61% of generated frames · 63.1 ms/frame · seed 8832335
+[genweb-worker monoband35533168 08:56:26] 20261030-085445-356b: no free record instance -> queue render
+[genweb-worker monoband35533168 08:56:59] 20261030-085445-2ce4: overlap mp4 33.11 s after the gen (close race)
+[genweb-worker monoband35533168 08:56:59] run 20261030-085445-356b: 56 words · pose cb0 changes on 42% of generated frames · 62.4 ms/frame · seed 8346535
+[genweb-worker monoband35533168 08:56:59] 20261030-085445-bff2: record instance ws://slinky-4:8985/feed
+[genweb-worker monoband35533168 08:57:33] run 20261030-085445-bff2: 113 words · pose cb0 changes on 68% of generated frames · 64.3 ms/frame · seed 5272671
+[genweb-worker monoband35533168 08:57:43] 20261030-085445-bff2: overlap mp4 10.05 s after the gen

@@ -1,0 +1,430 @@
+[
+  {
+    "home": "github:canopy-labs-internal/aloe-pose-duplex",
+    "repo": "/home/param/websites/aloe-pose-duplex",
+    "commit": "7533c61f0b4a06786b7ad86c1ff7156f60d923e9",
+    "destinations": [
+      "git@github.com:canopy-labs-internal/aloe-pose-duplex.git"
+    ],
+    "snapshots": 1,
+    "worktrees": 1,
+    "pushes": [
+      {
+        "url": "git@github.com:canopy-labs-internal/aloe-pose-duplex.git",
+        "returncode": 0,
+        "expected": "7533c61f0b4a06786b7ad86c1ff7156f60d923e9",
+        "remote": "7533c61f0b4a06786b7ad86c1ff7156f60d923e9",
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-21b1d77aa2bc.log",
+        "verified": true
+      }
+    ],
+    "worktree_verification": [
+      {
+        "host": "landsend-0",
+        "path": "/home/param/websites/aloe-pose-duplex",
+        "commit": "82a34af5ca01ad529108a40c2ccac9a80fa391a5",
+        "tree": "0267f44d1eaee1527af0e8661d26de516c579c48",
+        "verified_reachable": true
+      }
+    ]
+  },
+  {
+    "home": "github:canopy-labs-internal/aloe-pose-monoplex-infer",
+    "repo": "/home/param/websites/aloe-pose-monoplex-infer",
+    "commit": "06e1ee6c75ec25251bdfb5d880bc08e4e8ead7d1",
+    "destinations": [
+      "git@github.com:canopy-labs-internal/aloe-pose-monoplex-infer.git"
+    ],
+    "snapshots": 1,
+    "worktrees": 1,
+    "pushes": [
+      {
+        "url": "git@github.com:canopy-labs-internal/aloe-pose-monoplex-infer.git",
+        "returncode": 0,
+        "expected": "06e1ee6c75ec25251bdfb5d880bc08e4e8ead7d1",
+        "remote": "06e1ee6c75ec25251bdfb5d880bc08e4e8ead7d1",
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-952f814cc5ce.log",
+        "verified": true
+      }
+    ],
+    "worktree_verification": [
+      {
+        "host": "landsend-0",
+        "path": "/home/param/websites/aloe-pose-monoplex-infer",
+        "commit": "a6b42e35bb2d8a24a8cecc05db0a8eb3327fcb49",
+        "tree": "359f297343336f5e341a019420c76b3b46d0fa97",
+        "verified_reachable": true
+      }
+    ]
+  },
+  {
+    "home": "github:canopy-labs-internal/page-templates",
+    "repo": "/home/param/websites/page-templates",
+    "commit": "3cf4d801e360903f251142ef8a73c46be131f42b",
+    "destinations": [
+      "git@github.com:canopy-labs-internal/page-templates.git"
+    ],
+    "snapshots": 1,
+    "worktrees": 1,
+    "pushes": [
+      {
+        "url": "git@github.com:canopy-labs-internal/page-templates.git",
+        "returncode": 0,
+        "expected": "3cf4d801e360903f251142ef8a73c46be131f42b",
+        "remote": "3cf4d801e360903f251142ef8a73c46be131f42b",
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-f4d58a70c7d5.log",
+        "verified": true
+      }
+    ],
+    "worktree_verification": [
+      {
+        "host": "landsend-0",
+        "path": "/home/param/websites/page-templates",
+        "commit": "b6d78d9fd87cd1ec085ec57247d60206fb9f851d",
+        "tree": "e6f7229dbee5009da208fe58927abda40dbb1c6e",
+        "verified_reachable": true
+      }
+    ]
+  },
+  {
+    "home": "github:canopy-labs-internal/param-pose",
+    "repo": "/home/param/pose-repo",
+    "commit": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
+    "destinations": [
+      "git@github.com:canopy-labs-internal/param-pose.git",
+      "https://huggingface.co/InternalCan/pose-repo"
+    ],
+    "snapshots": 7,
+    "worktrees": 13,
+    "pushes": [
+      {
+        "url": "git@github.com:canopy-labs-internal/param-pose.git",
+        "returncode": 0,
+        "expected": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
+        "remote": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-0e62b7d95701.log",
+        "verified": true
+      },
+      {
+        "url": "https://huggingface.co/InternalCan/pose-repo",
+        "returncode": 0,
+        "expected": "84b99b91076a177b177095e0319781009690e6cb",
+        "remote": "84b99b91076a177b177095e0319781009690e6cb",
+        "verified": true,
+        "original_github_commit": "cdcf3d6db5facb01f5ceff270320d9225fdf9154",
+        "lfs_compatible_mirror": true,
+        "commit_map": "LANDSEND_HF_COMMIT_MAP.csv",
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-hf-pose-mirror.log"
+      }
+    ],
+    "worktree_verification": [
+      {
+        "host": "landsend-0",
+        "path": "/home/param/pose-worktrees/duplex-distill-inference",
+        "commit": "aa141f67336a7fb73b23b3030418d3156fa31452",
+        "tree": "89e38a164fec63b605e7116c65362623a9bceaaf",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-0",
+        "path": "/home/param/pose-worktrees/pose-opd-credit-decoder-54a82b324ba6d2dd77ae08a8d6fb0aec2ab37a90",
+        "commit": "97230de9ce89ec4d71e69e3314d0e63d257e0cb4",
+        "tree": "faa87a938139b3fe252d94cdd24058b179f31a86",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-0",
+        "path": "/home/param/pose-worktrees/duplex-distill",
+        "commit": "2c473e5e0d713dbe42b3a2b2f1d43321f4db6a87",
+        "tree": "89e38a164fec63b605e7116c65362623a9bceaaf",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-0",
+        "path": "/home/param/pose-worktrees/pose-opd-live-demo",
+        "commit": "b5487cd90a8ccad18f82218b1e36ca475cc26a33",
+        "tree": "2541ea1d870e755b7acad076030c21e67d9a7a62",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-0",
+        "path": "/home/param/pose-worktrees/pose-opd-credit",
+        "commit": "cc40383ae50b8d048683c0597577f365f3808b1c",
+        "tree": "2b7d54e0e48ce24d6f6c7c66597acb9ef365e0a7",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-0",
+        "path": "/home/param/pose-worktrees/pose-basic-opd",
+        "commit": "9d3859447fae7fe31febb0755a7fd862cb7f0497",
+        "tree": "ea1b520e4ef1d7ad28c35d41b55dc00c21709d20",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-0",
+        "path": "/home/param/pose-repo",
+        "commit": "25fd5472e1fe504c6019d8a145e9cbf8ecd335af",
+        "tree": "619287ad8fd2e5fa4c98ab34a108ed14111772b4",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-2",
+        "path": "/home/param/pose-repo",
+        "commit": "7cedfd2f732dd1147c891f1e5c9122236efd959b",
+        "tree": "c856527481baf3e1dd85ac8d746a9d08f4a71ced",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-5",
+        "path": "/home/param/pose-repo",
+        "commit": "3ace477f09e7f07c690b670254142ea39faac5a7",
+        "tree": "51a4d6f130043e25c6306eaff47ca41a694c56f7",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-4",
+        "path": "/home/param/pose-repo",
+        "commit": "69007ab1f4fdc46808369d5b4925e6e9c069bc2a",
+        "tree": "6baf2a7492aecfccb7a4b7d14983859b1b8c3514",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-1",
+        "path": "/home/param/pose-repo",
+        "commit": "474c99aaff8fc924822aa0cdfc1d414c38034b61",
+        "tree": "dfd613cf9676093b5c38306bff12a5dadd54bb1e",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-3",
+        "path": "/home/param/pose-repo",
+        "commit": "1c565b0f2d507cd81ad50cf1505a3441a7c8f317",
+        "tree": "c856527481baf3e1dd85ac8d746a9d08f4a71ced",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-12",
+        "path": "/home/param/pose-repo",
+        "commit": "cf471150c73e94a340857ece1e38cb41bc719ad6",
+        "tree": "6417c85ff5f65766ab181e95f7bb04e7040f6514",
+        "verified_reachable": true
+      }
+    ]
+  },
+  {
+    "home": "github:canopy-labs-internal/pose-demo-website",
+    "repo": "/home/param/websites/pose-demo-website",
+    "commit": "a1c5ead06455835274ff4395f9b9571c9965af03",
+    "destinations": [
+      "git@github.com:canopy-labs-internal/pose-demo-website.git"
+    ],
+    "snapshots": 1,
+    "worktrees": 1,
+    "pushes": [
+      {
+        "url": "git@github.com:canopy-labs-internal/pose-demo-website.git",
+        "returncode": 0,
+        "expected": "a1c5ead06455835274ff4395f9b9571c9965af03",
+        "remote": "a1c5ead06455835274ff4395f9b9571c9965af03",
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-ab77a27c362c.log",
+        "verified": true
+      }
+    ],
+    "worktree_verification": [
+      {
+        "host": "landsend-0",
+        "path": "/home/param/websites/pose-demo-website",
+        "commit": "05b9560f11f8600651f9e8bd63e3e5da294d28a0",
+        "tree": "089d7ca03782bdaf43d84435f8e33718cc7ea3d7",
+        "verified_reachable": true
+      }
+    ]
+  },
+  {
+    "home": "github:canopy-labs-internal/pose-tokenizer",
+    "repo": "/home/param/pose-tokenizer",
+    "commit": "d74dfea4cd98613f009fd380b13c5b14d6e4e163",
+    "destinations": [
+      "git@github.com:canopy-labs-internal/pose-tokenizer.git"
+    ],
+    "snapshots": 2,
+    "worktrees": 2,
+    "pushes": [
+      {
+        "url": "git@github.com:canopy-labs-internal/pose-tokenizer.git",
+        "returncode": 0,
+        "expected": "d74dfea4cd98613f009fd380b13c5b14d6e4e163",
+        "remote": "d74dfea4cd98613f009fd380b13c5b14d6e4e163",
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-225973dcebba.log",
+        "verified": true
+      }
+    ],
+    "worktree_verification": [
+      {
+        "host": "landsend-0",
+        "path": "/tmp/pose-research-tokenizer",
+        "commit": "1b7bc162e9f4f7a110a00db0b6aec5c29271a037",
+        "tree": "7f383e3f45cdbbcce69560678b713c33f759be9b",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-0",
+        "path": "/home/param/pose-tokenizer",
+        "commit": "4f2ee5a4f6348d5f90836884bd4756121739893f",
+        "tree": "c2d557ea65f93e456d97cc04d3ba546bc99f318f",
+        "verified_reachable": true
+      }
+    ]
+  },
+  {
+    "home": "github:canopy-labs-internal/ppm-training",
+    "repo": "/home/param/ppm-training",
+    "commit": "4dadc58a62c781352590e89559282191f67880bf",
+    "destinations": [
+      "git@github.com:canopy-labs-internal/ppm-training.git"
+    ],
+    "snapshots": 2,
+    "worktrees": 2,
+    "pushes": [
+      {
+        "url": "git@github.com:canopy-labs-internal/ppm-training.git",
+        "returncode": 0,
+        "expected": "4dadc58a62c781352590e89559282191f67880bf",
+        "remote": "4dadc58a62c781352590e89559282191f67880bf",
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-83121c0ddd9d.log",
+        "verified": true
+      }
+    ],
+    "worktree_verification": [
+      {
+        "host": "landsend-0",
+        "path": "/home/param/ppm-training",
+        "commit": "08a187bc489d7cbe043183cf1b2d87a9e660d58c",
+        "tree": "5b21add812bede4da7ede67fdec6f98bbc00b2ac",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-0",
+        "path": "/tmp/pose-research-ppm-training",
+        "commit": "df156cf04d4f2abf7bc2a9786f2d7d9a5ccd3817",
+        "tree": "eb383a19b65c3db0afddb58f663a8e387e669733",
+        "verified_reachable": true
+      }
+    ]
+  },
+  {
+    "home": "github:canopy-labs-internal/vansh-video-models",
+    "repo": "/home/param/vansh-video-models",
+    "commit": "989b34ac8ff1fa4aab5d9792e7d5d0647727908e",
+    "destinations": [
+      "git@github.com:canopy-labs-internal/vansh-video-models.git"
+    ],
+    "snapshots": 5,
+    "worktrees": 5,
+    "pushes": [
+      {
+        "url": "git@github.com:canopy-labs-internal/vansh-video-models.git",
+        "returncode": 0,
+        "expected": "989b34ac8ff1fa4aab5d9792e7d5d0647727908e",
+        "remote": "989b34ac8ff1fa4aab5d9792e7d5d0647727908e",
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-7efb6d372cc2.log",
+        "verified": true
+      }
+    ],
+    "worktree_verification": [
+      {
+        "host": "landsend-0",
+        "path": "/home/param/vansh-video-models",
+        "commit": "9d503798c179df4e913ca68984a554b49410b643",
+        "tree": "9c567b6a95eb70272a8246be6a9f6b8effb87a86",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-2",
+        "path": "/home/param/vansh-video-models",
+        "commit": "18da6b61993a261147de82327ba64e0489d05a01",
+        "tree": "7d5c188132b20a331c26aba0f965df3eccc3b418",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-4",
+        "path": "/home/param/vansh-video-models",
+        "commit": "34f8aab60712ad627cd937252d1a75eaff0d7166",
+        "tree": "7d5c188132b20a331c26aba0f965df3eccc3b418",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-1",
+        "path": "/home/param/vansh-video-models",
+        "commit": "17d4ff19e9883d7453bd5549a54fad97d68cd839",
+        "tree": "7d5c188132b20a331c26aba0f965df3eccc3b418",
+        "verified_reachable": true
+      },
+      {
+        "host": "landsend-3",
+        "path": "/home/param/vansh-video-models",
+        "commit": "dbb8e340990c443c0a114d44e5abe648f88e7bbb",
+        "tree": "7d5c188132b20a331c26aba0f965df3eccc3b418",
+        "verified_reachable": true
+      }
+    ]
+  },
+  {
+    "home": "https://huggingface.co/InternalCan/opd-posttrain-speedups",
+    "repo": "/home/param/opd-posttrain-speedups",
+    "commit": "a54f9eba1aee2dea77678fb1380e8ecab80e6fdb",
+    "destinations": [
+      "https://huggingface.co/InternalCan/opd-posttrain-speedups"
+    ],
+    "snapshots": 1,
+    "worktrees": 1,
+    "pushes": [
+      {
+        "url": "https://huggingface.co/InternalCan/opd-posttrain-speedups",
+        "returncode": 0,
+        "expected": "a54f9eba1aee2dea77678fb1380e8ecab80e6fdb",
+        "remote": "a54f9eba1aee2dea77678fb1380e8ecab80e6fdb",
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-121a5762f811.log",
+        "verified": true
+      }
+    ],
+    "worktree_verification": [
+      {
+        "host": "landsend-0",
+        "path": "/home/param/opd-posttrain-speedups",
+        "commit": "a91d14ecf057ad9acb5cb863bb43a472ff0ba284",
+        "tree": "2c18a42f7f75810ea7e4c7380d656b109028805a",
+        "verified_reachable": true
+      }
+    ]
+  },
+  {
+    "home": "https://huggingface.co/InternalCan/training-registry",
+    "repo": "/home/param/training-registry/source",
+    "commit": "8f7dcf0cfed76c8143740e660461840df9420722",
+    "destinations": [
+      "https://huggingface.co/InternalCan/training-registry"
+    ],
+    "snapshots": 1,
+    "worktrees": 1,
+    "pushes": [
+      {
+        "url": "https://huggingface.co/InternalCan/training-registry",
+        "returncode": 0,
+        "expected": "8f7dcf0cfed76c8143740e660461840df9420722",
+        "remote": "8f7dcf0cfed76c8143740e660461840df9420722",
+        "log": "/home/param/outputs/landsend-backup-20261031/git/push-d03dbf655742.log",
+        "verified": true
+      }
+    ],
+    "worktree_verification": [
+      {
+        "host": "landsend-0",
+        "path": "/home/param/training-registry/source",
+        "commit": "f331210769f8567d2851f591c6eb98cdefaa7b58",
+        "tree": "9b76c27b08a188a5892e6201c860c9497546aa44",
+        "verified_reachable": true
+      }
+    ]
+  }
+]

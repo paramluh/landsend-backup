@@ -1,0 +1,3 @@
+# genweb/openings-raw (pdxhost 10-30)
+
+The 15 genweb/openings-sam packages with B's Mimi codes (mimi_local.safetensors = conversation start, voice_clip.safetensors = the training-rule voice clip) swapped to the RAW s2h-m1 lane codes of the mapped raw row at the same frames (ALOE_SAMSEP_ROW_MAP; = poseduplex-raw/code/data_aloe_posedup.RawRows, what job 33111 'pdxraw' trained on as B). Pose tokens, words, clip-window words / pose and frame0 are byte-identical to openings-sam. Built by poseduplex-raw/host211/tools/build_openings_raw.py; every package's meta.json carries a raw_codes block (rows, frames, sha256, cb0 fraction that differs from SAM). Read by the pose-duplex live server via stage-lb/instP/OPENINGS_ROOT.txt while it serves the raw-codes model.

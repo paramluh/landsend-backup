@@ -1,0 +1,55 @@
+{
+ "person_id": "12_72cb45d3",
+ "what": "the voice_clip window: assistant (B) words lane, pose tokens and frame-0 state for exactly the voice_clip frames",
+ "window": {
+  "store_row": "ALOE/s2handover-none/a1c0d565-596f-4145-a90b-11cba9091f35/seg06/c00",
+  "store_node": "m1n3",
+  "row_in_shard": 2544,
+  "side": "assistant",
+  "frames_in_row": [
+   3429,
+   3554
+  ],
+  "conv_frames": [
+   3429,
+   3554
+  ],
+  "conv_s": [
+   274.32,
+   284.32
+  ],
+  "L": 125
+ },
+ "voice_clip_codes_sha256": "b635e5b04ac64aafe43bb3c627080aef36e7444688a6203a56cc68b1ff14adbb",
+ "clipwin_codes_sha256": "b635e5b04ac64aafe43bb3c627080aef36e7444688a6203a56cc68b1ff14adbb",
+ "sources": {
+  "pose_tokens": {
+   "path": "/data/home/amartyavarma/data/aloe-handover-full/DATA/files/none/a1c0d565-596f-4145-a90b-11cba9091f35/seg06/w00.SPEAKER_00.pose_tokens.npy",
+   "sha256": "632a6639fb87f6ba06a6a52fde46a26b0834b370dfd53cabd1a070c012a516ce",
+   "rows": "[:, 3429:3554]",
+   "frame0": {
+    "source": "pose.json normalization = the CONVERSATION's frame 0 (the tokens are not re-anchored per window: the handover tokenizer normalises every frame by the conversation's frame-0 root / shoulder width, so this window's tokens are relative to that same state = meta.json's frame0)",
+    "fields": {
+     "frame0_root": [
+      0.5748697519302368,
+      0.5202546119689941
+     ],
+     "frame0_width": 0.7291666865348816
+    }
+   }
+  },
+  "words": {
+   "rule": "package words.json rule (speech_q.lane first-piece frames over the whole row, start = end = frame / 12.5), kept if the first-piece frame is in the window; times relative to the window start",
+   "n": 35
+  }
+ },
+ "first_words": "trains are getting ridiculous, but you know, in um, basically, I go uni. I go to the University of Leicester. It's up in the Midlands. Uber over there is so che",
+ "checks": {
+  "codes_eq_voice_clip": true,
+  "pose_T_eq_codes_T": true,
+  "pose_file_sha256_eq_index": true,
+  "words_in_window": true,
+  "n_words": 35
+ },
+ "raw_codes": "pdxhost 10-30: codes = RAW s2h-m1 lane (mapped raw row, same frames); pose / words unchanged from openings-sam"
+}

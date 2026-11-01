@@ -1,0 +1,1959 @@
+{
+  "input": "cache",
+  "cache": "/home/param/datasets/xabi-v2pure-cache",
+  "clip_index": 155325,
+  "row_key": "ALOE/aloe-v2pure/56a7b2ec313db5a206552cdfd31157715cf482c5/c00010",
+  "cache_key": "56a7b2ec313db5a206552cdfd31157715cf482c5/speaker_2/000011",
+  "split": "eval",
+  "source_span": [
+    0,
+    752
+  ],
+  "transcript": "he's a. It really actually wasn't his fault. So that's kind of what I was touching on with people being really uninformed. I think a part of it is like the media and the news. Like when he came into office, we had like I want to say was it like three point two billion dollar deficit, and he closed that gap already. So like within his first couple of months, he closed the gap by taxing millionaires, including on the properties that they're that they're allowing to be vacant, right? So like if you if you own more than one property here, he's going to increase your tax rate, and people were pissed, and people are like, \"I'm moving out of New York. I'm going here. I'm going there.\" And it's like, do that, you know? It's okay, but you know, he essentially, and again, like I've been working in my job for a little bit over two years now, so I've I've gotten to see both mayors in office and how the expenses are different. And I'll say that with Mayor Adams, I noticed that there were a lot of contracts like city. Contracts being granted to companies that didn't deserve it,",
+  "words": [
+    {
+      "text": "he's",
+      "start": 0.0,
+      "end": 0.16,
+      "start_frame": 0,
+      "end_frame": 2,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a.",
+      "start": 0.16,
+      "end": 0.32,
+      "start_frame": 2,
+      "end_frame": 4,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "It",
+      "start": 0.4,
+      "end": 0.8,
+      "start_frame": 5,
+      "end_frame": 10,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "really",
+      "start": 0.88,
+      "end": 1.2,
+      "start_frame": 11,
+      "end_frame": 15,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "actually",
+      "start": 1.2,
+      "end": 1.52,
+      "start_frame": 15,
+      "end_frame": 19,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "wasn't",
+      "start": 1.52,
+      "end": 1.84,
+      "start_frame": 19,
+      "end_frame": 23,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "his",
+      "start": 1.84,
+      "end": 2.0,
+      "start_frame": 23,
+      "end_frame": 25,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "fault.",
+      "start": 2.0,
+      "end": 2.4,
+      "start_frame": 25,
+      "end_frame": 30,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 2.4,
+      "end": 2.48,
+      "start_frame": 30,
+      "end_frame": 31,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that's",
+      "start": 2.48,
+      "end": 2.64,
+      "start_frame": 31,
+      "end_frame": 33,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "kind",
+      "start": 2.64,
+      "end": 2.8,
+      "start_frame": 33,
+      "end_frame": 35,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "of",
+      "start": 2.8,
+      "end": 2.96,
+      "start_frame": 35,
+      "end_frame": 37,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "what",
+      "start": 2.96,
+      "end": 3.04,
+      "start_frame": 37,
+      "end_frame": 38,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 3.04,
+      "end": 3.12,
+      "start_frame": 38,
+      "end_frame": 39,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "was",
+      "start": 3.12,
+      "end": 3.2,
+      "start_frame": 39,
+      "end_frame": 40,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "touching",
+      "start": 3.2,
+      "end": 3.44,
+      "start_frame": 40,
+      "end_frame": 43,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "on",
+      "start": 4.16,
+      "end": 4.32,
+      "start_frame": 52,
+      "end_frame": 54,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "with",
+      "start": 4.32,
+      "end": 4.4,
+      "start_frame": 54,
+      "end_frame": 55,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "people",
+      "start": 4.4,
+      "end": 4.64,
+      "start_frame": 55,
+      "end_frame": 58,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "being",
+      "start": 4.64,
+      "end": 4.88,
+      "start_frame": 58,
+      "end_frame": 61,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "really",
+      "start": 4.88,
+      "end": 5.2,
+      "start_frame": 61,
+      "end_frame": 65,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "uninformed.",
+      "start": 5.2,
+      "end": 5.84,
+      "start_frame": 65,
+      "end_frame": 73,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 6.16,
+      "end": 6.24,
+      "start_frame": 77,
+      "end_frame": 78,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "think",
+      "start": 6.24,
+      "end": 6.48,
+      "start_frame": 78,
+      "end_frame": 81,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 6.48,
+      "end": 6.58,
+      "start_frame": 81,
+      "end_frame": 82,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "part",
+      "start": 6.48,
+      "end": 6.72,
+      "start_frame": 81,
+      "end_frame": 84,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "of",
+      "start": 6.8,
+      "end": 6.88,
+      "start_frame": 85,
+      "end_frame": 86,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 6.88,
+      "end": 7.04,
+      "start_frame": 86,
+      "end_frame": 88,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "is",
+      "start": 7.04,
+      "end": 7.2,
+      "start_frame": 88,
+      "end_frame": 90,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 7.2,
+      "end": 7.36,
+      "start_frame": 90,
+      "end_frame": 92,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 7.36,
+      "end": 7.44,
+      "start_frame": 92,
+      "end_frame": 93,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "media",
+      "start": 7.44,
+      "end": 7.84,
+      "start_frame": 93,
+      "end_frame": 98,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 7.84,
+      "end": 8.0,
+      "start_frame": 98,
+      "end_frame": 100,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 8.0,
+      "end": 8.08,
+      "start_frame": 100,
+      "end_frame": 101,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "news.",
+      "start": 8.08,
+      "end": 8.48,
+      "start_frame": 101,
+      "end_frame": 106,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Like",
+      "start": 8.72,
+      "end": 8.96,
+      "start_frame": 109,
+      "end_frame": 112,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "when",
+      "start": 8.96,
+      "end": 9.12,
+      "start_frame": 112,
+      "end_frame": 114,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "he",
+      "start": 9.12,
+      "end": 9.36,
+      "start_frame": 114,
+      "end_frame": 117,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "came",
+      "start": 9.36,
+      "end": 9.68,
+      "start_frame": 117,
+      "end_frame": 121,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "into",
+      "start": 9.68,
+      "end": 9.84,
+      "start_frame": 121,
+      "end_frame": 123,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "office,",
+      "start": 9.84,
+      "end": 10.48,
+      "start_frame": 123,
+      "end_frame": 131,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "we",
+      "start": 10.48,
+      "end": 10.72,
+      "start_frame": 131,
+      "end_frame": 134,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "had",
+      "start": 10.72,
+      "end": 11.04,
+      "start_frame": 134,
+      "end_frame": 138,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 11.12,
+      "end": 11.28,
+      "start_frame": 139,
+      "end_frame": 141,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 11.36,
+      "end": 11.52,
+      "start_frame": 142,
+      "end_frame": 144,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "want",
+      "start": 11.68,
+      "end": 11.84,
+      "start_frame": 146,
+      "end_frame": 148,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 11.84,
+      "end": 11.92,
+      "start_frame": 148,
+      "end_frame": 149,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "say",
+      "start": 11.92,
+      "end": 12.08,
+      "start_frame": 149,
+      "end_frame": 151,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "was",
+      "start": 12.08,
+      "end": 12.16,
+      "start_frame": 151,
+      "end_frame": 152,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 12.08,
+      "end": 12.18,
+      "start_frame": 151,
+      "end_frame": 152,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 12.16,
+      "end": 12.32,
+      "start_frame": 152,
+      "end_frame": 154,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "three",
+      "start": 12.32,
+      "end": 12.56,
+      "start_frame": 154,
+      "end_frame": 157,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "point",
+      "start": 12.56,
+      "end": 12.8,
+      "start_frame": 157,
+      "end_frame": 160,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "two",
+      "start": 12.8,
+      "end": 12.96,
+      "start_frame": 160,
+      "end_frame": 162,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "billion",
+      "start": 12.96,
+      "end": 13.36,
+      "start_frame": 162,
+      "end_frame": 167,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "dollar",
+      "start": 13.36,
+      "end": 13.68,
+      "start_frame": 167,
+      "end_frame": 171,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "deficit,",
+      "start": 13.68,
+      "end": 14.4,
+      "start_frame": 171,
+      "end_frame": 180,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 14.72,
+      "end": 15.28,
+      "start_frame": 184,
+      "end_frame": 191,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "he",
+      "start": 15.44,
+      "end": 16.44,
+      "start_frame": 193,
+      "end_frame": 205,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "closed",
+      "start": 17.2,
+      "end": 17.52,
+      "start_frame": 215,
+      "end_frame": 219,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that",
+      "start": 17.6,
+      "end": 17.76,
+      "start_frame": 220,
+      "end_frame": 222,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "gap",
+      "start": 17.76,
+      "end": 18.0,
+      "start_frame": 222,
+      "end_frame": 225,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "already.",
+      "start": 18.0,
+      "end": 18.48,
+      "start_frame": 225,
+      "end_frame": 231,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 18.56,
+      "end": 18.72,
+      "start_frame": 232,
+      "end_frame": 234,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 18.72,
+      "end": 18.88,
+      "start_frame": 234,
+      "end_frame": 236,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "within",
+      "start": 18.88,
+      "end": 19.12,
+      "start_frame": 236,
+      "end_frame": 239,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "his",
+      "start": 19.12,
+      "end": 19.28,
+      "start_frame": 239,
+      "end_frame": 241,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "first",
+      "start": 19.28,
+      "end": 19.52,
+      "start_frame": 241,
+      "end_frame": 244,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "couple",
+      "start": 19.52,
+      "end": 19.76,
+      "start_frame": 244,
+      "end_frame": 247,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "of",
+      "start": 19.76,
+      "end": 19.84,
+      "start_frame": 247,
+      "end_frame": 248,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "months,",
+      "start": 19.84,
+      "end": 20.08,
+      "start_frame": 248,
+      "end_frame": 251,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "he",
+      "start": 20.08,
+      "end": 20.16,
+      "start_frame": 251,
+      "end_frame": 252,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "closed",
+      "start": 20.16,
+      "end": 20.56,
+      "start_frame": 252,
+      "end_frame": 257,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 20.56,
+      "end": 20.66,
+      "start_frame": 257,
+      "end_frame": 258,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "gap",
+      "start": 20.56,
+      "end": 20.88,
+      "start_frame": 257,
+      "end_frame": 261,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "by",
+      "start": 20.88,
+      "end": 21.2,
+      "start_frame": 261,
+      "end_frame": 265,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "taxing",
+      "start": 21.52,
+      "end": 22.0,
+      "start_frame": 269,
+      "end_frame": 275,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "millionaires,",
+      "start": 22.0,
+      "end": 22.72,
+      "start_frame": 275,
+      "end_frame": 284,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "including",
+      "start": 22.8,
+      "end": 23.28,
+      "start_frame": 285,
+      "end_frame": 291,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "on",
+      "start": 23.28,
+      "end": 23.36,
+      "start_frame": 291,
+      "end_frame": 292,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 23.36,
+      "end": 23.44,
+      "start_frame": 292,
+      "end_frame": 293,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "properties",
+      "start": 23.44,
+      "end": 24.0,
+      "start_frame": 293,
+      "end_frame": 300,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that",
+      "start": 24.0,
+      "end": 24.16,
+      "start_frame": 300,
+      "end_frame": 302,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "they're",
+      "start": 24.16,
+      "end": 24.4,
+      "start_frame": 302,
+      "end_frame": 305,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that",
+      "start": 24.48,
+      "end": 24.72,
+      "start_frame": 306,
+      "end_frame": 309,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "they're",
+      "start": 24.72,
+      "end": 24.88,
+      "start_frame": 309,
+      "end_frame": 311,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "allowing",
+      "start": 24.88,
+      "end": 25.28,
+      "start_frame": 311,
+      "end_frame": 316,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 25.36,
+      "end": 25.44,
+      "start_frame": 317,
+      "end_frame": 318,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "be",
+      "start": 25.44,
+      "end": 25.6,
+      "start_frame": 318,
+      "end_frame": 320,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "vacant,",
+      "start": 25.6,
+      "end": 26.16,
+      "start_frame": 320,
+      "end_frame": 327,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "right?",
+      "start": 26.48,
+      "end": 26.88,
+      "start_frame": 331,
+      "end_frame": 336,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 27.28,
+      "end": 27.44,
+      "start_frame": 341,
+      "end_frame": 343,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 27.44,
+      "end": 27.76,
+      "start_frame": 343,
+      "end_frame": 347,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "if",
+      "start": 28.0,
+      "end": 28.16,
+      "start_frame": 350,
+      "end_frame": 352,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you",
+      "start": 28.16,
+      "end": 28.32,
+      "start_frame": 352,
+      "end_frame": 354,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "if",
+      "start": 28.48,
+      "end": 28.64,
+      "start_frame": 356,
+      "end_frame": 358,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you",
+      "start": 28.64,
+      "end": 28.8,
+      "start_frame": 358,
+      "end_frame": 360,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "own",
+      "start": 28.8,
+      "end": 29.04,
+      "start_frame": 360,
+      "end_frame": 363,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "more",
+      "start": 29.04,
+      "end": 29.28,
+      "start_frame": 363,
+      "end_frame": 366,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "than",
+      "start": 29.28,
+      "end": 29.44,
+      "start_frame": 366,
+      "end_frame": 368,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "one",
+      "start": 29.44,
+      "end": 29.6,
+      "start_frame": 368,
+      "end_frame": 370,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "property",
+      "start": 29.6,
+      "end": 30.08,
+      "start_frame": 370,
+      "end_frame": 376,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "here,",
+      "start": 30.08,
+      "end": 30.48,
+      "start_frame": 376,
+      "end_frame": 381,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "he's",
+      "start": 30.56,
+      "end": 30.8,
+      "start_frame": 382,
+      "end_frame": 385,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "going",
+      "start": 30.8,
+      "end": 30.96,
+      "start_frame": 385,
+      "end_frame": 387,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 31.04,
+      "end": 31.12,
+      "start_frame": 388,
+      "end_frame": 389,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "increase",
+      "start": 31.12,
+      "end": 31.6,
+      "start_frame": 389,
+      "end_frame": 395,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "your",
+      "start": 31.6,
+      "end": 31.68,
+      "start_frame": 395,
+      "end_frame": 396,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "tax",
+      "start": 31.68,
+      "end": 32.0,
+      "start_frame": 396,
+      "end_frame": 400,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "rate,",
+      "start": 32.0,
+      "end": 32.24,
+      "start_frame": 400,
+      "end_frame": 403,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 32.48,
+      "end": 32.64,
+      "start_frame": 406,
+      "end_frame": 408,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "people",
+      "start": 32.64,
+      "end": 32.88,
+      "start_frame": 408,
+      "end_frame": 411,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "were",
+      "start": 32.88,
+      "end": 33.04,
+      "start_frame": 411,
+      "end_frame": 413,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "pissed,",
+      "start": 33.04,
+      "end": 33.44,
+      "start_frame": 413,
+      "end_frame": 418,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 33.44,
+      "end": 33.52,
+      "start_frame": 418,
+      "end_frame": 419,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "people",
+      "start": 33.52,
+      "end": 33.76,
+      "start_frame": 419,
+      "end_frame": 422,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "are",
+      "start": 33.76,
+      "end": 33.84,
+      "start_frame": 422,
+      "end_frame": 423,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like,",
+      "start": 33.84,
+      "end": 33.92,
+      "start_frame": 423,
+      "end_frame": 424,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "\"I'm",
+      "start": 33.92,
+      "end": 34.08,
+      "start_frame": 424,
+      "end_frame": 426,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "moving",
+      "start": 34.08,
+      "end": 34.4,
+      "start_frame": 426,
+      "end_frame": 430,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "out",
+      "start": 34.4,
+      "end": 34.48,
+      "start_frame": 430,
+      "end_frame": 431,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "of",
+      "start": 34.48,
+      "end": 34.56,
+      "start_frame": 431,
+      "end_frame": 432,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "New",
+      "start": 34.56,
+      "end": 34.64,
+      "start_frame": 432,
+      "end_frame": 433,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "York.",
+      "start": 34.64,
+      "end": 35.04,
+      "start_frame": 433,
+      "end_frame": 438,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I'm",
+      "start": 35.04,
+      "end": 35.12,
+      "start_frame": 438,
+      "end_frame": 439,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "going",
+      "start": 35.12,
+      "end": 35.36,
+      "start_frame": 439,
+      "end_frame": 442,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "here.",
+      "start": 35.36,
+      "end": 35.6,
+      "start_frame": 442,
+      "end_frame": 445,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I'm",
+      "start": 35.6,
+      "end": 35.68,
+      "start_frame": 445,
+      "end_frame": 446,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "going",
+      "start": 35.68,
+      "end": 35.92,
+      "start_frame": 446,
+      "end_frame": 449,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "there.\"",
+      "start": 35.92,
+      "end": 36.08,
+      "start_frame": 449,
+      "end_frame": 451,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "And",
+      "start": 36.08,
+      "end": 36.24,
+      "start_frame": 451,
+      "end_frame": 453,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it's",
+      "start": 36.24,
+      "end": 36.32,
+      "start_frame": 453,
+      "end_frame": 454,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like,",
+      "start": 36.32,
+      "end": 36.56,
+      "start_frame": 454,
+      "end_frame": 457,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "do",
+      "start": 36.88,
+      "end": 37.04,
+      "start_frame": 461,
+      "end_frame": 463,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that,",
+      "start": 37.12,
+      "end": 37.36,
+      "start_frame": 464,
+      "end_frame": 467,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you",
+      "start": 37.68,
+      "end": 37.76,
+      "start_frame": 471,
+      "end_frame": 472,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "know?",
+      "start": 37.76,
+      "end": 37.92,
+      "start_frame": 472,
+      "end_frame": 474,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "It's",
+      "start": 37.92,
+      "end": 38.08,
+      "start_frame": 474,
+      "end_frame": 476,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "okay,",
+      "start": 38.16,
+      "end": 38.48,
+      "start_frame": 477,
+      "end_frame": 481,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "but",
+      "start": 38.48,
+      "end": 38.8,
+      "start_frame": 481,
+      "end_frame": 485,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you",
+      "start": 39.52,
+      "end": 39.6,
+      "start_frame": 494,
+      "end_frame": 495,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "know,",
+      "start": 39.6,
+      "end": 39.92,
+      "start_frame": 495,
+      "end_frame": 499,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "he",
+      "start": 39.92,
+      "end": 40.4,
+      "start_frame": 499,
+      "end_frame": 505,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "essentially,",
+      "start": 40.4,
+      "end": 41.04,
+      "start_frame": 505,
+      "end_frame": 513,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 41.36,
+      "end": 41.44,
+      "start_frame": 517,
+      "end_frame": 518,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "again,",
+      "start": 41.44,
+      "end": 41.68,
+      "start_frame": 518,
+      "end_frame": 521,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 41.68,
+      "end": 41.84,
+      "start_frame": 521,
+      "end_frame": 523,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I've",
+      "start": 41.84,
+      "end": 42.0,
+      "start_frame": 523,
+      "end_frame": 525,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "been",
+      "start": 42.0,
+      "end": 42.16,
+      "start_frame": 525,
+      "end_frame": 527,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "working",
+      "start": 42.16,
+      "end": 42.4,
+      "start_frame": 527,
+      "end_frame": 530,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in",
+      "start": 42.4,
+      "end": 42.48,
+      "start_frame": 530,
+      "end_frame": 531,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 42.48,
+      "end": 42.64,
+      "start_frame": 531,
+      "end_frame": 533,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "job",
+      "start": 42.64,
+      "end": 42.96,
+      "start_frame": 533,
+      "end_frame": 537,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "for",
+      "start": 42.96,
+      "end": 43.44,
+      "start_frame": 537,
+      "end_frame": 543,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 43.52,
+      "end": 43.6,
+      "start_frame": 544,
+      "end_frame": 545,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "little",
+      "start": 43.6,
+      "end": 43.76,
+      "start_frame": 545,
+      "end_frame": 547,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "bit",
+      "start": 43.76,
+      "end": 44.0,
+      "start_frame": 547,
+      "end_frame": 550,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "over",
+      "start": 44.0,
+      "end": 44.48,
+      "start_frame": 550,
+      "end_frame": 556,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "two",
+      "start": 44.56,
+      "end": 44.72,
+      "start_frame": 557,
+      "end_frame": 559,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "years",
+      "start": 44.72,
+      "end": 45.04,
+      "start_frame": 559,
+      "end_frame": 563,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "now,",
+      "start": 45.04,
+      "end": 45.28,
+      "start_frame": 563,
+      "end_frame": 566,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "so",
+      "start": 45.28,
+      "end": 45.44,
+      "start_frame": 566,
+      "end_frame": 568,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I've",
+      "start": 45.44,
+      "end": 45.68,
+      "start_frame": 568,
+      "end_frame": 571,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I've",
+      "start": 45.92,
+      "end": 46.16,
+      "start_frame": 574,
+      "end_frame": 577,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "gotten",
+      "start": 46.16,
+      "end": 46.4,
+      "start_frame": 577,
+      "end_frame": 580,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 46.48,
+      "end": 46.58,
+      "start_frame": 581,
+      "end_frame": 582,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "see",
+      "start": 46.48,
+      "end": 46.72,
+      "start_frame": 581,
+      "end_frame": 584,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "both",
+      "start": 46.72,
+      "end": 47.04,
+      "start_frame": 584,
+      "end_frame": 588,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "mayors",
+      "start": 47.04,
+      "end": 47.44,
+      "start_frame": 588,
+      "end_frame": 593,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in",
+      "start": 47.44,
+      "end": 47.52,
+      "start_frame": 593,
+      "end_frame": 594,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "office",
+      "start": 47.52,
+      "end": 47.92,
+      "start_frame": 594,
+      "end_frame": 599,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 47.92,
+      "end": 48.08,
+      "start_frame": 599,
+      "end_frame": 601,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "how",
+      "start": 48.4,
+      "end": 48.56,
+      "start_frame": 605,
+      "end_frame": 607,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 48.56,
+      "end": 48.64,
+      "start_frame": 607,
+      "end_frame": 608,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "expenses",
+      "start": 48.72,
+      "end": 49.36,
+      "start_frame": 609,
+      "end_frame": 617,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "are",
+      "start": 49.36,
+      "end": 49.44,
+      "start_frame": 617,
+      "end_frame": 618,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "different.",
+      "start": 49.44,
+      "end": 50.0,
+      "start_frame": 618,
+      "end_frame": 625,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "And",
+      "start": 50.32,
+      "end": 50.48,
+      "start_frame": 629,
+      "end_frame": 631,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I'll",
+      "start": 50.48,
+      "end": 50.64,
+      "start_frame": 631,
+      "end_frame": 633,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "say",
+      "start": 50.64,
+      "end": 50.96,
+      "start_frame": 633,
+      "end_frame": 637,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that",
+      "start": 50.96,
+      "end": 51.36,
+      "start_frame": 637,
+      "end_frame": 642,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "with",
+      "start": 51.52,
+      "end": 51.76,
+      "start_frame": 644,
+      "end_frame": 647,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Mayor",
+      "start": 51.84,
+      "end": 52.24,
+      "start_frame": 648,
+      "end_frame": 653,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Adams,",
+      "start": 52.24,
+      "end": 52.8,
+      "start_frame": 653,
+      "end_frame": 660,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 52.88,
+      "end": 53.04,
+      "start_frame": 661,
+      "end_frame": 663,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "noticed",
+      "start": 53.04,
+      "end": 53.44,
+      "start_frame": 663,
+      "end_frame": 668,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that",
+      "start": 53.52,
+      "end": 53.68,
+      "start_frame": 669,
+      "end_frame": 671,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "there",
+      "start": 53.68,
+      "end": 53.84,
+      "start_frame": 671,
+      "end_frame": 673,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "were",
+      "start": 53.84,
+      "end": 54.08,
+      "start_frame": 673,
+      "end_frame": 676,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 54.08,
+      "end": 54.24,
+      "start_frame": 676,
+      "end_frame": 678,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "lot",
+      "start": 54.24,
+      "end": 54.48,
+      "start_frame": 678,
+      "end_frame": 681,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "of",
+      "start": 54.48,
+      "end": 54.72,
+      "start_frame": 681,
+      "end_frame": 684,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "contracts",
+      "start": 54.8,
+      "end": 55.44,
+      "start_frame": 685,
+      "end_frame": 693,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 55.44,
+      "end": 55.6,
+      "start_frame": 693,
+      "end_frame": 695,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "city.",
+      "start": 55.6,
+      "end": 55.84,
+      "start_frame": 695,
+      "end_frame": 698,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Contracts",
+      "start": 55.92,
+      "end": 56.48,
+      "start_frame": 699,
+      "end_frame": 706,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "being",
+      "start": 56.48,
+      "end": 56.72,
+      "start_frame": 706,
+      "end_frame": 709,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "granted",
+      "start": 56.72,
+      "end": 57.36,
+      "start_frame": 709,
+      "end_frame": 717,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 57.76,
+      "end": 58.16,
+      "start_frame": 722,
+      "end_frame": 727,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "companies",
+      "start": 58.16,
+      "end": 58.88,
+      "start_frame": 727,
+      "end_frame": 736,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that",
+      "start": 58.96,
+      "end": 59.2,
+      "start_frame": 737,
+      "end_frame": 740,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "didn't",
+      "start": 59.2,
+      "end": 59.44,
+      "start_frame": 740,
+      "end_frame": 743,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "deserve",
+      "start": 59.44,
+      "end": 59.84,
+      "start_frame": 743,
+      "end_frame": 748,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it,",
+      "start": 59.84,
+      "end": 60.08,
+      "start_frame": 748,
+      "end_frame": 751,
+      "in_overlap": false,
+      "truncated": false
+    }
+  ],
+  "voice_provenance": {
+    "mode": "explicit",
+    "source": "/home/param/pose-runs/controlled-comparison-20261028/clip-01/voice_clip.npy"
+  },
+  "recipe": "aligned-media",
+  "frames": 752,
+  "seconds": 60.16,
+  "P": 863,
+  "conditioning_P": 109,
+  "transcript_span": [
+    109,
+    863
+  ],
+  "prefill_frames": 0,
+  "f0": 0,
+  "code_delay": 2,
+  "total_positions": 1617,
+  "voice_clip_frames": 100,
+  "force_text": true,
+  "text_generation": "forced aligned lane",
+  "transcript_end_token": 151681,
+  "voice_codes_sha256": "1579cb6d03bfc2f26212af3fed30f62bfdb86ce43f71173ecf231908c04b50b7",
+  "framewise_lane_sha256": "087ca7a37f8f106444dfafe7cdb68b102585c77bf59fa47d5a0a71a877273fe0",
+  "checkpoint": {
+    "ck": "/home/param/models/transcript-pose/aligned-media/export-200",
+    "step": 200,
+    "kind": "local",
+    "pose": true,
+    "decp_bb": true,
+    "decp_bb_alpha": 1.0,
+    "vadapter": false,
+    "ldev": [
+      "cuda:0",
+      "cuda:1"
+    ],
+    "layers_per_dev": {
+      "cuda:0": 37,
+      "cuda:1": 27
+    }
+  },
+  "sampling": {
+    "text_temp": 1.0,
+    "text_topk": 0,
+    "text_topp": 1.0,
+    "min_p": 0.0,
+    "min_p_rel": 0,
+    "freq_pen": 0.0,
+    "freq_win": 20,
+    "text_rep": 1.0,
+    "text_rep_win": 64,
+    "cb0_temp": 1.0,
+    "cb0_topk": 0,
+    "light_temp": 1.0,
+    "light_topk": 0,
+    "audio_rep_pen": 1.0,
+    "audio_rep_win": 64,
+    "allow_eob": 0,
+    "free_text": 0,
+    "word_greedy": 0,
+    "pose_temp": 1.0,
+    "pose_topk": 0,
+    "pose_light_temp": 1.0,
+    "pose_light_topk": 0,
+    "pose_cfg_on": 0,
+    "pose_cfg_s": 3.0,
+    "pose_cfg_cb0": 1,
+    "pose_cfg_light": 1,
+    "pose_cfg_speaking_only": 0,
+    "pose_rep_cb0": 1.0,
+    "pose_rep_light": 1.0,
+    "pose_rep_win": 0,
+    "adaptive_rep_on": 0,
+    "speak_window_frames": 25,
+    "audio_rep_speaking": 1.0,
+    "audio_rep_silent": 1.0,
+    "text_rep_speaking": 1.0,
+    "text_rep_silent": 1.0,
+    "pose_rep_cb0_speaking": 1.0,
+    "pose_rep_cb0_silent": 1.0,
+    "pose_rep_light_speaking": 1.0,
+    "pose_rep_light_silent": 1.0
+  },
+  "seed": 20261028,
+  "batch_size": 2,
+  "batch_row": 0,
+  "batch_clip_indices": [
+    155325,
+    108011
+  ],
+  "rng_policy": "per-instance per-modality generators; row-wise [1,vocab] multinomial; no text sampling",
+  "prefill_seconds": 0.5165510177612305,
+  "generation_seconds": 49.39826202392578,
+  "ms_per_step": 65.51493637125435,
+  "ground_truth_generation_media": false,
+  "fixed_duration": true,
+  "peak_gib": {
+    "cuda:0": 50.9187536239624,
+    "cuda:1": 38.61023998260498
+  },
+  "audio_stats": {
+    "s": 60.16,
+    "rms": 0.071,
+    "rms_dbfs": -23.0,
+    "peak": 1.031,
+    "clip_frac": 1e-06,
+    "silent_frac_100ms": 0.116
+  },
+  "wall_seconds": 101.72832751274109
+}

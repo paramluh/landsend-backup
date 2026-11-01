@@ -1,0 +1,29 @@
+# pose6 monoband CFG_DIFF (10-29 22:55 PT): resolved trainer CFG (pose6/kit/tools/dry_cfg.py, trainer's own module code, CPU job 33053 slinky-8)
+# vs job 31240's resolved CFG (pose6/mono17850/export-357/train_cfg.json); GO switches = 31240's: --saves none --final-export-only --link-on (world 64).
+# D0 control: the mono17850 env + pose6/code with run tag j31240 reproduces 31240's cfg with 0 keys different.
+# Intended differences ONLY: 7 names/paths, POSE_BAND_MASK (4 keys: on 1, input 0, dir, drop_items 25), steps 357 -> 355 and its derived
+# schedule horizons (sched 355, dec_sched 355 x K8 = 2840). Plan: 355 steps, rows digest ea070582180a59f0, plan digest f79c08442f8d9bc6.
+
+== MB env /data/home/amartyavarma/ppm/pose6/monoband/monoband.env code /data/home/amartyavarma/ppm/pose6/code_bandmask (138902cc 4bef145a c8ad042f) 22:54:08 on slinky-8
+PLAN {'steps': 355, 'n_rows': 22695, 'rows_digest': 'ea070582180a59f0', 'plan_digest': 'f79c08442f8d9bc6', 'R_sum': 355, 'R_mean': 1.0, 'R_min': 1, 'R_max': 1, 'micros_total': 22720, 'dummy_micros': 25, 'max_micro_tok_ub': 9502, 'n_eval_micros': 529, 'n_train_items': 27492, 'n_eval_items': 531, 'secs': 0.6}
+[cfgdiff] /data/home/amartyavarma/ppm/pose6/code_bandmask world 64 vs /data/home/amartyavarma/ppm/pose6/mono17850/export-357/train_cfg.json: 16 keys differ; every other key identical
+[cfgdiff]   control_dir: ref '/data/home/amartyavarma/ppm/pose6/mono17850/control' -> this '/data/home/amartyavarma/ppm/pose6/monoband/control'
+[cfgdiff]   dec_sched.horizon: ref 2856 -> this 2840
+[cfgdiff]   dec_sched.wsd_decay_end: ref 2856 -> this 2840
+[cfgdiff]   export: ref '/data/home/amartyavarma/ppm/pose6/mono17850/export-357' -> this '/data/home/amartyavarma/ppm/pose6/monoband/export-355'
+[cfgdiff]   local_export_root: ref '/scratch/amartyavarma/pose6-mono17850/exports' -> this '/scratch/amartyavarma/pose6-monoband/exports'
+[cfgdiff]   log_root: ref '/data/home/amartyavarma/ppm/pose6/mono17850/runs' -> this '/data/home/amartyavarma/ppm/pose6/monoband/runs'
+[cfgdiff]   plan_dir: ref '/data/home/amartyavarma/ppm/pose6/mono17850/plan' -> this '/data/home/amartyavarma/ppm/pose6/monoband/plan'
+[cfgdiff]   pose_band_mask.dir: ref '<absent>' -> this '/data/home/amartyavarma/ppm/aloe-pose-ft/bandmask'
+[cfgdiff]   pose_band_mask.drop_items: ref '<absent>' -> this 25
+[cfgdiff]   pose_band_mask.input: ref '<absent>' -> this 0
+[cfgdiff]   pose_band_mask.on: ref '<absent>' -> this 1
+[cfgdiff]   run_tag: ref 'ppm-pose6-mono17850-j31240' -> this 'ppm-pose6-monoband-jNNNNN'
+[cfgdiff]   save_root: ref '/scratch/amartyavarma/pose6-mono17850/saves' -> this '/scratch/amartyavarma/pose6-monoband/saves'
+[cfgdiff]   sched.horizon: ref 357 -> this 355
+[cfgdiff]   sched.wsd_decay_end: ref 357 -> this 355
+[cfgdiff]   steps: ref 357 -> this 355
+== D0 env /data/home/amartyavarma/ppm/pose6/mono17850/mono17850.env code /data/home/amartyavarma/ppm/pose6/code (212b1ee9 47a55ed5 df679691) 22:54:14 on slinky-8
+PLAN {'steps': 357, 'n_rows': 22825, 'rows_digest': '3681cc26ea97cad7', 'plan_digest': 'a5d995bcec45dc6f', 'R_sum': 357, 'R_mean': 1.0, 'R_min': 1, 'R_max': 1, 'micros_total': 22848, 'dummy_micros': 23, 'max_micro_tok_ub': 9502, 'n_eval_micros': 529, 'n_train_items': 27517, 'n_eval_items': 531, 'secs': 0.6}
+[cfgdiff] /data/home/amartyavarma/ppm/pose6/code world 64 vs /data/home/amartyavarma/ppm/pose6/mono17850/export-357/train_cfg.json: 0 keys differ; every other key identical
+== done 22:54:19

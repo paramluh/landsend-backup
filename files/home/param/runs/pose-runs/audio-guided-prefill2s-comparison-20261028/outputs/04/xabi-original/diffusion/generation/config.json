@@ -1,0 +1,48 @@
+{
+  "sample_dir": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/xabi-original/diffusion/inputs",
+  "output_dir": "/home/param/pose-runs/audio-guided-prefill2s-comparison-20261028/outputs/04/xabi-original/diffusion/generation",
+  "pose_file": "pose_latents_electron_v3.safetensors",
+  "mimi_file": "mimi_local.safetensors",
+  "type": "universal_wide_bimodal",
+  "seed": 2026,
+  "batch_size": 1,
+  "max_latent_frames": 376,
+  "minimum_latent_frames": 376,
+  "fps": 25,
+  "compile": true,
+  "cuda_graph": true,
+  "wavefront": true,
+  "renoising": false,
+  "runtime_audio_guidance_scale": 1.0,
+  "vae_path": "/home/param/models/wan22-vae/Wan2.2_VAE.pth",
+  "refs": {
+    "bank": "/home/param/pose-runs/controlled-comparison-20261028/clip-04/reference-bank",
+    "actor_id": "74807fe0-d903-4674-8ec0-a2355bc17cb9",
+    "clip_key": "recordings/2475e2aae95efdf950e00807681d83fa716a0a8f/speaker_1/segments/000004"
+  },
+  "stabilising": {
+    "checkpoint_path": "/home/param/models/full-gt-nine-ref-endpoint-unguided-20261020/step-002911/student.safetensors",
+    "num_history": 3,
+    "num_present": 4,
+    "history_t": 0.2,
+    "substeps": 2
+  },
+  "resolving": {
+    "checkpoint_path": "/home/param/models/full-gt-nine-ref-endpoint-unguided-20261020/step-002911/student.safetensors",
+    "num_history": 2,
+    "num_present": 1,
+    "t_start": 0.2,
+    "num_steps": 1
+  },
+  "audio": {
+    "model_name": "/home/param/models/mimi",
+    "in_dim": 512,
+    "num_codebooks": 16,
+    "num_layers": 4,
+    "cross_attention_codes": 4,
+    "drop": 2,
+    "injection_offset": 4,
+    "injection_interval": 3,
+    "max_blocks": 8
+  }
+}

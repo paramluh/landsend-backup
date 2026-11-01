@@ -1,0 +1,62 @@
+{
+ "06_74807fe0": {
+  "mimi_cb0_diff": 0.3467,
+  "clip_cb0_diff": 0.32
+ },
+ "09_d9ef3c94": {
+  "mimi_cb0_diff": 0.36,
+  "clip_cb0_diff": 0.288
+ },
+ "10_27286bdd": {
+  "mimi_cb0_diff": 0.2867,
+  "clip_cb0_diff": 0.208
+ },
+ "12_72cb45d3": {
+  "mimi_cb0_diff": 0.7,
+  "clip_cb0_diff": 0.32
+ },
+ "19_47473a46": {
+  "mimi_cb0_diff": 0.54,
+  "clip_cb0_diff": 0.336
+ },
+ "sam_0aa1475a_seg00_SPEAKER_01": {
+  "mimi_cb0_diff": 0.6867,
+  "clip_cb0_diff": 0.232
+ },
+ "sam_2b7ecb40_seg00_SPEAKER_00": {
+  "mimi_cb0_diff": 0.3067,
+  "clip_cb0_diff": 0.136
+ },
+ "sam_3059c48d_seg00_SPEAKER_00": {
+  "mimi_cb0_diff": 0.4333,
+  "clip_cb0_diff": 0.208
+ },
+ "sam_5c1b8a57_seg00_SPEAKER_00": {
+  "mimi_cb0_diff": 0.1267,
+  "clip_cb0_diff": 0.184
+ },
+ "sam_5f818bd1_seg00_SPEAKER_00": {
+  "mimi_cb0_diff": 0.2067,
+  "clip_cb0_diff": 0.184
+ },
+ "sam_6a183c1f_seg00_SPEAKER_00": {
+  "mimi_cb0_diff": 0.4,
+  "clip_cb0_diff": 0.136
+ },
+ "sam_8f29bd18_seg00_SPEAKER_01": {
+  "mimi_cb0_diff": 0.24,
+  "clip_cb0_diff": 0.2
+ },
+ "sam_979f990e_seg00_SPEAKER_01": {
+  "mimi_cb0_diff": 0.1133,
+  "clip_cb0_diff": 0.184
+ },
+ "sam_9dbdba7f_seg00_SPEAKER_01": {
+  "mimi_cb0_diff": 0.14,
+  "clip_cb0_diff": 0.088
+ },
+ "sam_dcb108d8_seg00_SPEAKER_00": {
+  "mimi_cb0_diff": 0.1733,
+  "clip_cb0_diff": 0.144
+ }
+}

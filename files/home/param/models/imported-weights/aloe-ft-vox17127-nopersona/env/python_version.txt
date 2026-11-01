@@ -1,0 +1,2 @@
+Python 3.10.12
+venv: /data/home/amartyavarma/venvs/qwen-s2 (the demo's PY in env_live.sh; also the trainer's)

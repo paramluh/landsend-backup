@@ -1,0 +1,50 @@
+{
+  "ok": true,
+  "source_step": 17850,
+  "source_run_tag": "ppm-v1-j27653",
+  "source_hf": "hf://InternalCan/ppm-v1-c@c9b2213751cb3f2ede1dce2c5b9ed275b5cc3ca2/dcp-17850",
+  "format": "ppm-local-bf16-shards-v1",
+  "source_world": 128,
+  "target_world": 56,
+  "target_reshard_row_coverage_passed": true,
+  "unique_parameters": 2150,
+  "sharded_parameters": 1522,
+  "replicated_parameters": 628,
+  "parameter_elements": 44175900672,
+  "dtype": "bfloat16",
+  "layer_counts": {
+    "backbone": 64,
+    "speech_tower": 36,
+    "pose_tower": 36,
+    "speech_decoder": 28,
+    "pose_decoder": 28
+  },
+  "d33": {
+    "decp_bb.weight": {
+      "shape": [
+        1024,
+        5120
+      ],
+      "dtype": "torch.bfloat16",
+      "nonzero": 5242880,
+      "sha256_raw_bf16": "d3a879d5efeee09f76c27a585378273f8234377a3667fb47a5d612c91d2e14eb"
+    },
+    "decp_bb.bias": {
+      "shape": [
+        1024
+      ],
+      "dtype": "torch.bfloat16",
+      "nonzero": 1024,
+      "sha256_raw_bf16": "e423bb3b67e5ae8eefdead2664ac2cfbe642e70a68a44962a8154871b4ad25fe"
+    }
+  },
+  "base_decp_bb_off": true,
+  "xabi_finetune_decp_bb_alpha": 1.0,
+  "pose_head_present": false,
+  "s2p_present": false,
+  "g0cond_present": false,
+  "optimizer_state_present": false,
+  "validation_scope": "All tensor headers/dtypes/shard shapes and world56 row coverage; learned D33 tensor contents are finite/nonzero and hashed. Full-file SHA256 separately verifies exact source-copy identity.",
+  "torch_version": "2.8.0+cu128",
+  "elapsed_s": 65.77
+}

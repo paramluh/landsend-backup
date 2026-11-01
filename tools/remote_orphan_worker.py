@@ -36,8 +36,9 @@ def main():
         if stat.S_ISLNK(s.st_mode):links.append({'path':str(p),'target':os.readlink(p)});continue
         if not stat.S_ISREG(s.st_mode) or s.st_uid!=os.getuid():continue
         if B.excluded(p):skipped.append({'path':str(p),'reason':'credentials_or_regenerable_cache'});continue
+        if p.suffix.lower()=='.distcp':skipped.append({'path':str(p),'reason':'distributed_checkpoint_agent_scope'});continue
         if '/models/' in str(p) or 'checkpoints' in p.parts:
-            if p.suffix.lower() in {'.pt','.pth','.bin','.safetensors','.ckpt','.onnx','.gguf'} or s.st_size>32*1024**2:
+            if p.suffix.lower() in {'.pt','.pth','.bin','.safetensors','.ckpt','.onnx','.gguf'} and s.st_size>=10*1024**2:
                 skipped.append({'path':str(p),'reason':'model_weight_checkpoint_agent_scope'});continue
         if p.suffix=='.tar' and 'datasets' not in p.parts:
             skipped.append({'path':str(p),'reason':'source_archive_retained_as_expanded_source; credentials_may_be_embedded'});continue
@@ -46,6 +47,8 @@ def main():
     if args.delta:
         old={}
         for manifest in (B.BASE/'archives').glob('artifacts*/part-*.files.json'):
+            receipt=manifest.with_name(manifest.name.removesuffix('.files.json')+'.uploaded.json')
+            if not receipt.exists() or json.loads(receipt.read_text()).get('state')!='verified':continue
             for r in json.loads(manifest.read_text()):
                 if not r.get('error'):old[r['path']]=(r['bytes'],r['mtime_ns'])
         rows=[r for r in rows if old.get(r['path'])!=(r['bytes'],r['mtime_ns'])]
@@ -56,5 +59,9 @@ def main():
         # Delta uses a fresh output/archive namespace, retaining initial immutable receipts.
         group='artifacts-final-'+str(int(time.time())) if args.delta else 'artifacts'
         B.pack(rows,group)
+        from huggingface_hub import HfApi
+        api=HfApi()
+        for name in ('selection.json','symlinks.json','empty-directories.json','exclusions.json'):
+            api.upload_file(path_or_fileobj=str(B.BASE/name),path_in_repo=f'{socket.gethostname()}/{group}/metadata/{name}',repo_id=B.HF_REPO,repo_type='dataset')
 
 if __name__=='__main__':main()

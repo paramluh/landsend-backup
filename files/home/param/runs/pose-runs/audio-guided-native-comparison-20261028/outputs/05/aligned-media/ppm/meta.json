@@ -1,0 +1,1641 @@
+{
+  "input": "cache",
+  "cache": "/home/param/datasets/xabi-v2pure-cache",
+  "clip_index": 215386,
+  "row_key": "ALOE/aloe-v2pure/a89d8ce6c4e9c1b2671d92d3a072909e390533c5/c00026",
+  "cache_key": "a89d8ce6c4e9c1b2671d92d3a072909e390533c5/speaker_1/000026",
+  "split": "eval",
+  "source_span": [
+    0,
+    752
+  ],
+  "transcript": "Yeah. No. I'm. I'm trying to think what we use the mint for. be To honest, my wife uses the mint mostly. But time probably just goes like just off a little bit, and then just chuck it in pretty much anything savoury that I fancy. So if I'm making like a pasta sauce, in in it goes. If I'm making like a casserole with beans or stuff like that, in it goes. And yeah, what can I say? I mean, I could. No. No. No. No. No. So are you? No, because you're the goat. So I'm vegetarian, everything except goat. No. So. So. So yeah, in it goes pretty much anything, but it's. It's also it's just a nice thing have to in the garden, isn't it? We've got actually got it under our olive trees, and it just smells really nice and is generally lovely. I have got some experience eating goat. So, what kind of goat?",
+  "words": [
+    {
+      "text": "Yeah.",
+      "start": 0.0,
+      "end": 0.32,
+      "start_frame": 0,
+      "end_frame": 4,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "No.",
+      "start": 0.32,
+      "end": 0.4,
+      "start_frame": 4,
+      "end_frame": 5,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I'm.",
+      "start": 0.4,
+      "end": 0.8,
+      "start_frame": 5,
+      "end_frame": 10,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I'm",
+      "start": 0.8,
+      "end": 0.96,
+      "start_frame": 10,
+      "end_frame": 12,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "trying",
+      "start": 0.96,
+      "end": 1.12,
+      "start_frame": 12,
+      "end_frame": 14,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 1.12,
+      "end": 1.52,
+      "start_frame": 14,
+      "end_frame": 19,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "think",
+      "start": 1.52,
+      "end": 1.76,
+      "start_frame": 19,
+      "end_frame": 22,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "what",
+      "start": 1.76,
+      "end": 1.92,
+      "start_frame": 22,
+      "end_frame": 24,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "we",
+      "start": 1.92,
+      "end": 2.08,
+      "start_frame": 24,
+      "end_frame": 26,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "use",
+      "start": 2.08,
+      "end": 2.16,
+      "start_frame": 26,
+      "end_frame": 27,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 2.16,
+      "end": 2.24,
+      "start_frame": 27,
+      "end_frame": 28,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "mint",
+      "start": 2.24,
+      "end": 2.48,
+      "start_frame": 28,
+      "end_frame": 31,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "for.",
+      "start": 2.48,
+      "end": 2.72,
+      "start_frame": 31,
+      "end_frame": 34,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "be",
+      "start": 2.72,
+      "end": 2.8,
+      "start_frame": 34,
+      "end_frame": 35,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "To",
+      "start": 2.72,
+      "end": 2.82,
+      "start_frame": 34,
+      "end_frame": 35,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "honest,",
+      "start": 2.88,
+      "end": 3.04,
+      "start_frame": 36,
+      "end_frame": 38,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "my",
+      "start": 3.04,
+      "end": 3.2,
+      "start_frame": 38,
+      "end_frame": 40,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "wife",
+      "start": 3.2,
+      "end": 3.52,
+      "start_frame": 40,
+      "end_frame": 44,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "uses",
+      "start": 3.52,
+      "end": 3.84,
+      "start_frame": 44,
+      "end_frame": 48,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 3.84,
+      "end": 3.94,
+      "start_frame": 48,
+      "end_frame": 49,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "mint",
+      "start": 3.84,
+      "end": 4.0,
+      "start_frame": 48,
+      "end_frame": 50,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "mostly.",
+      "start": 4.0,
+      "end": 4.48,
+      "start_frame": 50,
+      "end_frame": 56,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "But",
+      "start": 4.88,
+      "end": 5.12,
+      "start_frame": 61,
+      "end_frame": 64,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "time",
+      "start": 5.28,
+      "end": 6.08,
+      "start_frame": 66,
+      "end_frame": 76,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "probably",
+      "start": 6.16,
+      "end": 7.04,
+      "start_frame": 77,
+      "end_frame": 88,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "just",
+      "start": 8.96,
+      "end": 9.2,
+      "start_frame": 112,
+      "end_frame": 115,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "goes",
+      "start": 9.2,
+      "end": 9.76,
+      "start_frame": 115,
+      "end_frame": 122,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 9.84,
+      "end": 10.24,
+      "start_frame": 123,
+      "end_frame": 128,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "just",
+      "start": 10.24,
+      "end": 10.48,
+      "start_frame": 128,
+      "end_frame": 131,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "off",
+      "start": 11.28,
+      "end": 11.44,
+      "start_frame": 141,
+      "end_frame": 143,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 11.44,
+      "end": 11.54,
+      "start_frame": 143,
+      "end_frame": 144,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "little",
+      "start": 11.44,
+      "end": 11.68,
+      "start_frame": 143,
+      "end_frame": 146,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "bit,",
+      "start": 11.68,
+      "end": 12.16,
+      "start_frame": 146,
+      "end_frame": 152,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 12.16,
+      "end": 12.32,
+      "start_frame": 152,
+      "end_frame": 154,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "then",
+      "start": 12.32,
+      "end": 12.48,
+      "start_frame": 154,
+      "end_frame": 156,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "just",
+      "start": 12.48,
+      "end": 12.72,
+      "start_frame": 156,
+      "end_frame": 159,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "chuck",
+      "start": 12.72,
+      "end": 12.96,
+      "start_frame": 159,
+      "end_frame": 162,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 12.96,
+      "end": 13.2,
+      "start_frame": 162,
+      "end_frame": 165,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in",
+      "start": 13.2,
+      "end": 13.68,
+      "start_frame": 165,
+      "end_frame": 171,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "pretty",
+      "start": 13.92,
+      "end": 14.16,
+      "start_frame": 174,
+      "end_frame": 177,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "much",
+      "start": 14.16,
+      "end": 14.4,
+      "start_frame": 177,
+      "end_frame": 180,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "anything",
+      "start": 14.4,
+      "end": 14.88,
+      "start_frame": 180,
+      "end_frame": 186,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "savoury",
+      "start": 14.88,
+      "end": 15.52,
+      "start_frame": 186,
+      "end_frame": 194,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that",
+      "start": 15.76,
+      "end": 15.84,
+      "start_frame": 197,
+      "end_frame": 198,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 15.92,
+      "end": 16.08,
+      "start_frame": 199,
+      "end_frame": 201,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "fancy.",
+      "start": 16.08,
+      "end": 16.48,
+      "start_frame": 201,
+      "end_frame": 206,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 16.48,
+      "end": 16.72,
+      "start_frame": 206,
+      "end_frame": 209,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "if",
+      "start": 16.72,
+      "end": 16.82,
+      "start_frame": 209,
+      "end_frame": 210,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I'm",
+      "start": 16.72,
+      "end": 16.88,
+      "start_frame": 209,
+      "end_frame": 211,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "making",
+      "start": 16.88,
+      "end": 17.2,
+      "start_frame": 211,
+      "end_frame": 215,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 17.2,
+      "end": 17.3,
+      "start_frame": 215,
+      "end_frame": 216,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 17.36,
+      "end": 17.46,
+      "start_frame": 217,
+      "end_frame": 218,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "pasta",
+      "start": 17.44,
+      "end": 17.68,
+      "start_frame": 218,
+      "end_frame": 221,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "sauce,",
+      "start": 17.68,
+      "end": 18.08,
+      "start_frame": 221,
+      "end_frame": 226,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in",
+      "start": 18.56,
+      "end": 18.96,
+      "start_frame": 232,
+      "end_frame": 237,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in",
+      "start": 19.28,
+      "end": 19.36,
+      "start_frame": 241,
+      "end_frame": 242,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 19.36,
+      "end": 19.44,
+      "start_frame": 242,
+      "end_frame": 243,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "goes.",
+      "start": 19.44,
+      "end": 19.76,
+      "start_frame": 243,
+      "end_frame": 247,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "If",
+      "start": 19.76,
+      "end": 19.84,
+      "start_frame": 247,
+      "end_frame": 248,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I'm",
+      "start": 19.84,
+      "end": 19.92,
+      "start_frame": 248,
+      "end_frame": 249,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "making",
+      "start": 19.92,
+      "end": 20.16,
+      "start_frame": 249,
+      "end_frame": 252,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 20.16,
+      "end": 20.4,
+      "start_frame": 252,
+      "end_frame": 255,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 20.4,
+      "end": 20.64,
+      "start_frame": 255,
+      "end_frame": 258,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "casserole",
+      "start": 20.96,
+      "end": 21.68,
+      "start_frame": 262,
+      "end_frame": 271,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "with",
+      "start": 21.68,
+      "end": 21.92,
+      "start_frame": 271,
+      "end_frame": 274,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "beans",
+      "start": 21.92,
+      "end": 22.32,
+      "start_frame": 274,
+      "end_frame": 279,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "or",
+      "start": 22.32,
+      "end": 22.4,
+      "start_frame": 279,
+      "end_frame": 280,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "stuff",
+      "start": 22.4,
+      "end": 22.56,
+      "start_frame": 280,
+      "end_frame": 282,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 22.56,
+      "end": 22.8,
+      "start_frame": 282,
+      "end_frame": 285,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that,",
+      "start": 22.8,
+      "end": 22.96,
+      "start_frame": 285,
+      "end_frame": 287,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in",
+      "start": 23.28,
+      "end": 23.44,
+      "start_frame": 291,
+      "end_frame": 293,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 23.44,
+      "end": 23.52,
+      "start_frame": 293,
+      "end_frame": 294,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "goes.",
+      "start": 23.52,
+      "end": 23.92,
+      "start_frame": 294,
+      "end_frame": 299,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "And",
+      "start": 24.48,
+      "end": 25.04,
+      "start_frame": 306,
+      "end_frame": 313,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "yeah,",
+      "start": 25.12,
+      "end": 26.12,
+      "start_frame": 314,
+      "end_frame": 326,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "what",
+      "start": 27.68,
+      "end": 27.84,
+      "start_frame": 346,
+      "end_frame": 348,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "can",
+      "start": 27.84,
+      "end": 27.92,
+      "start_frame": 348,
+      "end_frame": 349,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 27.92,
+      "end": 28.02,
+      "start_frame": 349,
+      "end_frame": 350,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "say?",
+      "start": 27.92,
+      "end": 28.32,
+      "start_frame": 349,
+      "end_frame": 354,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 28.8,
+      "end": 28.88,
+      "start_frame": 360,
+      "end_frame": 361,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "mean,",
+      "start": 28.88,
+      "end": 28.96,
+      "start_frame": 361,
+      "end_frame": 362,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 28.96,
+      "end": 29.12,
+      "start_frame": 362,
+      "end_frame": 364,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "could.",
+      "start": 29.12,
+      "end": 29.36,
+      "start_frame": 364,
+      "end_frame": 367,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "No.",
+      "start": 30.4,
+      "end": 30.72,
+      "start_frame": 380,
+      "end_frame": 384,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "No.",
+      "start": 31.6,
+      "end": 31.84,
+      "start_frame": 395,
+      "end_frame": 398,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "No.",
+      "start": 32.08,
+      "end": 32.32,
+      "start_frame": 401,
+      "end_frame": 404,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "No.",
+      "start": 32.32,
+      "end": 32.72,
+      "start_frame": 404,
+      "end_frame": 409,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "No.",
+      "start": 32.72,
+      "end": 32.82,
+      "start_frame": 409,
+      "end_frame": 410,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 32.72,
+      "end": 33.12,
+      "start_frame": 409,
+      "end_frame": 414,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "are",
+      "start": 33.12,
+      "end": 33.36,
+      "start_frame": 414,
+      "end_frame": 417,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you?",
+      "start": 33.36,
+      "end": 33.76,
+      "start_frame": 417,
+      "end_frame": 422,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "No,",
+      "start": 34.0,
+      "end": 34.24,
+      "start_frame": 425,
+      "end_frame": 428,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "because",
+      "start": 34.24,
+      "end": 34.48,
+      "start_frame": 428,
+      "end_frame": 431,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "you're",
+      "start": 34.48,
+      "end": 34.56,
+      "start_frame": 431,
+      "end_frame": 432,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 34.56,
+      "end": 34.66,
+      "start_frame": 432,
+      "end_frame": 433,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "goat.",
+      "start": 34.64,
+      "end": 34.96,
+      "start_frame": 433,
+      "end_frame": 437,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 35.28,
+      "end": 35.68,
+      "start_frame": 441,
+      "end_frame": 446,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I'm",
+      "start": 35.68,
+      "end": 36.32,
+      "start_frame": 446,
+      "end_frame": 454,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "vegetarian,",
+      "start": 36.8,
+      "end": 37.44,
+      "start_frame": 460,
+      "end_frame": 468,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "everything",
+      "start": 37.44,
+      "end": 37.76,
+      "start_frame": 468,
+      "end_frame": 472,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "except",
+      "start": 37.76,
+      "end": 38.08,
+      "start_frame": 472,
+      "end_frame": 476,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "goat.",
+      "start": 38.08,
+      "end": 38.4,
+      "start_frame": 476,
+      "end_frame": 480,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "No.",
+      "start": 38.48,
+      "end": 38.8,
+      "start_frame": 481,
+      "end_frame": 485,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So.",
+      "start": 39.2,
+      "end": 39.52,
+      "start_frame": 490,
+      "end_frame": 494,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So.",
+      "start": 40.8,
+      "end": 41.04,
+      "start_frame": 510,
+      "end_frame": 513,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 41.04,
+      "end": 41.14,
+      "start_frame": 513,
+      "end_frame": 514,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "yeah,",
+      "start": 41.04,
+      "end": 41.52,
+      "start_frame": 513,
+      "end_frame": 519,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in",
+      "start": 41.92,
+      "end": 42.08,
+      "start_frame": 524,
+      "end_frame": 526,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 42.08,
+      "end": 42.24,
+      "start_frame": 526,
+      "end_frame": 528,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "goes",
+      "start": 42.24,
+      "end": 42.8,
+      "start_frame": 528,
+      "end_frame": 535,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "pretty",
+      "start": 42.88,
+      "end": 43.6,
+      "start_frame": 536,
+      "end_frame": 545,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "much",
+      "start": 43.6,
+      "end": 43.84,
+      "start_frame": 545,
+      "end_frame": 548,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "anything,",
+      "start": 43.84,
+      "end": 44.32,
+      "start_frame": 548,
+      "end_frame": 554,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "but",
+      "start": 44.56,
+      "end": 44.72,
+      "start_frame": 557,
+      "end_frame": 559,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it's.",
+      "start": 44.72,
+      "end": 44.8,
+      "start_frame": 559,
+      "end_frame": 560,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "It's",
+      "start": 44.8,
+      "end": 44.88,
+      "start_frame": 560,
+      "end_frame": 561,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "also",
+      "start": 44.88,
+      "end": 45.28,
+      "start_frame": 561,
+      "end_frame": 566,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it's",
+      "start": 45.28,
+      "end": 45.36,
+      "start_frame": 566,
+      "end_frame": 567,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "just",
+      "start": 45.36,
+      "end": 45.52,
+      "start_frame": 567,
+      "end_frame": 569,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 45.52,
+      "end": 45.6,
+      "start_frame": 569,
+      "end_frame": 570,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "nice",
+      "start": 45.6,
+      "end": 45.76,
+      "start_frame": 570,
+      "end_frame": 572,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "thing",
+      "start": 45.76,
+      "end": 45.92,
+      "start_frame": 572,
+      "end_frame": 574,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "have",
+      "start": 46.0,
+      "end": 46.08,
+      "start_frame": 575,
+      "end_frame": 576,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 46.0,
+      "end": 46.1,
+      "start_frame": 575,
+      "end_frame": 576,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in",
+      "start": 46.08,
+      "end": 46.16,
+      "start_frame": 576,
+      "end_frame": 577,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 46.16,
+      "end": 46.24,
+      "start_frame": 577,
+      "end_frame": 578,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "garden,",
+      "start": 46.24,
+      "end": 46.56,
+      "start_frame": 578,
+      "end_frame": 582,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "isn't",
+      "start": 46.56,
+      "end": 46.72,
+      "start_frame": 582,
+      "end_frame": 584,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it?",
+      "start": 46.72,
+      "end": 46.88,
+      "start_frame": 584,
+      "end_frame": 586,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "We've",
+      "start": 47.04,
+      "end": 47.2,
+      "start_frame": 588,
+      "end_frame": 590,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "got",
+      "start": 47.2,
+      "end": 47.36,
+      "start_frame": 590,
+      "end_frame": 592,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "actually",
+      "start": 47.36,
+      "end": 47.6,
+      "start_frame": 592,
+      "end_frame": 595,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "got",
+      "start": 47.6,
+      "end": 47.76,
+      "start_frame": 595,
+      "end_frame": 597,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 47.76,
+      "end": 47.84,
+      "start_frame": 597,
+      "end_frame": 598,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "under",
+      "start": 47.92,
+      "end": 48.32,
+      "start_frame": 599,
+      "end_frame": 604,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "our",
+      "start": 48.32,
+      "end": 48.56,
+      "start_frame": 604,
+      "end_frame": 607,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "olive",
+      "start": 48.56,
+      "end": 48.8,
+      "start_frame": 607,
+      "end_frame": 610,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "trees,",
+      "start": 48.8,
+      "end": 49.2,
+      "start_frame": 610,
+      "end_frame": 615,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 49.2,
+      "end": 49.28,
+      "start_frame": 615,
+      "end_frame": 616,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 49.28,
+      "end": 49.44,
+      "start_frame": 616,
+      "end_frame": 618,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "just",
+      "start": 49.44,
+      "end": 49.68,
+      "start_frame": 618,
+      "end_frame": 621,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "smells",
+      "start": 50.08,
+      "end": 50.48,
+      "start_frame": 626,
+      "end_frame": 631,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "really",
+      "start": 50.48,
+      "end": 50.64,
+      "start_frame": 631,
+      "end_frame": 633,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "nice",
+      "start": 50.64,
+      "end": 50.88,
+      "start_frame": 633,
+      "end_frame": 636,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 50.88,
+      "end": 50.96,
+      "start_frame": 636,
+      "end_frame": 637,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "is",
+      "start": 50.96,
+      "end": 51.04,
+      "start_frame": 637,
+      "end_frame": 638,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "generally",
+      "start": 51.04,
+      "end": 51.28,
+      "start_frame": 638,
+      "end_frame": 641,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "lovely.",
+      "start": 51.28,
+      "end": 51.6,
+      "start_frame": 641,
+      "end_frame": 645,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 51.92,
+      "end": 52.0,
+      "start_frame": 649,
+      "end_frame": 650,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "have",
+      "start": 52.0,
+      "end": 52.24,
+      "start_frame": 650,
+      "end_frame": 653,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "got",
+      "start": 52.24,
+      "end": 52.4,
+      "start_frame": 653,
+      "end_frame": 655,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "some",
+      "start": 52.4,
+      "end": 52.64,
+      "start_frame": 655,
+      "end_frame": 658,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "experience",
+      "start": 52.64,
+      "end": 53.28,
+      "start_frame": 658,
+      "end_frame": 666,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "eating",
+      "start": 53.28,
+      "end": 53.68,
+      "start_frame": 666,
+      "end_frame": 671,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "goat.",
+      "start": 53.68,
+      "end": 54.08,
+      "start_frame": 671,
+      "end_frame": 676,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So,",
+      "start": 56.16,
+      "end": 56.56,
+      "start_frame": 702,
+      "end_frame": 707,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "what",
+      "start": 57.6,
+      "end": 57.76,
+      "start_frame": 720,
+      "end_frame": 722,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "kind",
+      "start": 57.84,
+      "end": 58.08,
+      "start_frame": 723,
+      "end_frame": 726,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "of",
+      "start": 58.08,
+      "end": 58.16,
+      "start_frame": 726,
+      "end_frame": 727,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "goat?",
+      "start": 58.16,
+      "end": 58.56,
+      "start_frame": 727,
+      "end_frame": 732,
+      "in_overlap": false,
+      "truncated": false
+    }
+  ],
+  "voice_provenance": {
+    "mode": "explicit",
+    "source": "/home/param/pose-runs/controlled-comparison-20261028/clip-05/voice_clip.npy"
+  },
+  "recipe": "aligned-media",
+  "frames": 752,
+  "seconds": 60.16,
+  "P": 863,
+  "conditioning_P": 109,
+  "transcript_span": [
+    109,
+    863
+  ],
+  "prefill_frames": 0,
+  "f0": 0,
+  "code_delay": 2,
+  "total_positions": 1617,
+  "voice_clip_frames": 100,
+  "force_text": true,
+  "text_mode": "forced",
+  "source_transcript": "Yeah. No. I'm. I'm trying to think what we use the mint for. be To honest, my wife uses the mint mostly. But time probably just goes like just off a little bit, and then just chuck it in pretty much anything savoury that I fancy. So if I'm making like a pasta sauce, in in it goes. If I'm making like a casserole with beans or stuff like that, in it goes. And yeah, what can I say? I mean, I could. No. No. No. No. No. So are you? No, because you're the goat. So I'm vegetarian, everything except goat. No. So. So. So yeah, in it goes pretty much anything, but it's. It's also it's just a nice thing have to in the garden, isn't it? We've got actually got it under our olive trees, and it just smells really nice and is generally lovely. I have got some experience eating goat. So, what kind of goat?",
+  "supplied_transcript": "Yeah. No. I'm. I'm trying to think what we use the mint for. be To honest, my wife uses the mint mostly. But time probably just goes like just off a little bit, and then just chuck it in pretty much anything savoury that I fancy. So if I'm making like a pasta sauce, in in it goes. If I'm making like a casserole with beans or stuff like that, in it goes. And yeah, what can I say? I mean, I could. No. No. No. No. No. So are you? No, because you're the goat. So I'm vegetarian, everything except goat. No. So. So. So yeah, in it goes pretty much anything, but it's. It's also it's just a nice thing have to in the garden, isn't it? We've got actually got it under our olive trees, and it just smells really nice and is generally lovely. I have got some experience eating goat. So, what kind of goat?",
+  "upfront_transcript": true,
+  "text_generation": "forced aligned lane",
+  "transcript_end_token": 151681,
+  "voice_codes_sha256": "5aae733992eb22528e1ca40997fa83b38fe918d41bb1942c4c0da6dfad9168fb",
+  "framewise_lane_sha256": "b29ec15142c3570e6791d1086e2fa4487fae32154b2ed756fdd90e9b2d4ecc68",
+  "checkpoint": {
+    "ck": "/home/param/models/transcript-pose/aligned-media/export-200",
+    "step": 200,
+    "kind": "local",
+    "pose": true,
+    "decp_bb": true,
+    "decp_bb_alpha": 1.0,
+    "vadapter": false,
+    "ldev": [
+      "cuda:0",
+      "cuda:1"
+    ],
+    "layers_per_dev": {
+      "cuda:0": 37,
+      "cuda:1": 27
+    }
+  },
+  "sampling": {
+    "text_temp": 1.0,
+    "text_topk": 0,
+    "text_topp": 1.0,
+    "min_p": 0.0,
+    "min_p_rel": 0,
+    "freq_pen": 0.0,
+    "freq_win": 20,
+    "text_rep": 1.0,
+    "text_rep_win": 64,
+    "cb0_temp": 1.0,
+    "cb0_topk": 30,
+    "light_temp": 1.0,
+    "light_topk": 30,
+    "audio_rep_pen": 1.0,
+    "audio_rep_win": 64,
+    "allow_eob": 0,
+    "free_text": 0,
+    "word_greedy": 0,
+    "pose_temp": 1.0,
+    "pose_topk": 30,
+    "pose_light_temp": 1.0,
+    "pose_light_topk": 50,
+    "pose_cfg_on": 1,
+    "pose_cfg_s": 4.0,
+    "pose_cfg_cb0": 1,
+    "pose_cfg_light": 1,
+    "pose_cfg_speaking_only": 0,
+    "pose_rep_cb0": 1.0,
+    "pose_rep_light": 1.0,
+    "pose_rep_win": 0,
+    "adaptive_rep_on": 0,
+    "speak_window_frames": 25,
+    "audio_rep_speaking": 1.0,
+    "audio_rep_silent": 1.0,
+    "text_rep_speaking": 1.0,
+    "text_rep_silent": 1.0,
+    "pose_rep_cb0_speaking": 1.0,
+    "pose_rep_cb0_silent": 1.0,
+    "pose_rep_light_speaking": 1.0,
+    "pose_rep_light_silent": 1.0
+  },
+  "seed": 20261032,
+  "audio_guidance": {
+    "enabled": true,
+    "strength": 3.0,
+    "engine_scale": 4.0,
+    "formula": "audio + strength * (audio - silence)",
+    "scope": "all pose codebooks",
+    "silence_source": "Mimi encoding of digital silence",
+    "silence_sample_rate": 24000,
+    "silence_codec": "kyutai/mimi@89091b3e466eb6a9d11e537bf26b144f194978f7",
+    "silence_frames": 1623,
+    "silence_codes_sha256": "e2ee31e21ccfb2ef97d485be79c9e5f34bf8fe41b310bc46fb2ca7748208aa88",
+    "full_model_silence_pass": true,
+    "shared_text_and_pose": true,
+    "audit": {
+      "enabled": true,
+      "conditional_row": 0,
+      "silence_row": 2,
+      "guided_frames": 752,
+      "codebooks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "conditional_weight": 4.0,
+      "silence_weight": -3.0,
+      "backbone_cache_rows": 4,
+      "pose_tower_cache_rows": 4,
+      "pose_light_cache_rows": 4,
+      "independent_cache_rows": true,
+      "prefix_audio_frames_replaced_by_channel": [
+        0,
+        100
+      ],
+      "silence_codes_shape": [
+        32,
+        1623
+      ],
+      "silence_codes_sha256": "e2ee31e21ccfb2ef97d485be79c9e5f34bf8fe41b310bc46fb2ca7748208aa88",
+      "silence_scope": "all present Mimi codes in both channels, including voice prompt and media prefill",
+      "shared_conditions": "text tokens, previous pose frames, and current sampled pose-codebook prefix",
+      "d33_uses_separate_backbone_hidden": true,
+      "speaking_only": false
+    }
+  },
+  "generated_lane_sha256": "dde98b511580d3510eba191291e99766e70476d0edb9f7f8cfdb6b8b9303f5d4",
+  "batch_size": 2,
+  "batch_row": 0,
+  "batch_clip_indices": [
+    215386,
+    226966
+  ],
+  "rng_policy": "per-instance per-modality generators; row-wise [1,vocab] multinomial; no text sampling",
+  "prefill_seconds": 1.35178542137146,
+  "generation_seconds": 56.52422595024109,
+  "ms_per_step": 74.96581691013407,
+  "ground_truth_generation_media": false,
+  "fixed_duration": true,
+  "peak_gib": {
+    "cuda:0": 50.9187536239624,
+    "cuda:1": 38.64148998260498
+  },
+  "audio_stats": {
+    "s": 60.16,
+    "rms": 0.0354,
+    "rms_dbfs": -29.0,
+    "peak": 0.5602,
+    "clip_frac": 0.0,
+    "silent_frac_100ms": 0.26
+  },
+  "wall_seconds": 144.9915840625763
+}

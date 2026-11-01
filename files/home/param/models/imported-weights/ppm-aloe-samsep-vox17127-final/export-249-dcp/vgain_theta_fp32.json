@@ -1,0 +1,5 @@
+{
+ "vgain_theta_fp32": -5.621907711029053,
+ "s": 0.0036177329326430177,
+ "note": "Channel-A Voxtral gain of this fine-tune: the adapter output is multiplied by s = exp(theta) before it is added to the trunk input. This is the trainer's fp32 master theta after optimizer step 249 (run ppm-aloe-samsep-vox17127-j29345, from its end full save; s also logged as train/vox_a_scale at step 249). The DCP stores vgain.theta in bf16 (exp -> 0.0036065631, 0.31 % lower); serve with the fp32 value. The live demo reads s from the run's metrics.jsonl (live_ppm.s_from_metrics); the release code (code/ppm/aloe-m1vox-live/live_ppm.py) reads this file next to the weights instead."
+}

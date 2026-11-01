@@ -1,0 +1,8 @@
+{
+  "vgain_theta_fp32": -5.573008060455322,
+  "step": 498,
+  "run_tag": "ppm-aloe-poseduplex-v5-j30074",
+  "source": "hf://InternalCan/ppm-aloe-poseduplex-v5-final@8cc4375d9c76c0c68ab48a9ff67da5644bb51544/export-498/meta.json",
+  "source_git_blob_sha1": "292e993b6694b57e722aaef7d32e6201dc6d5e55",
+  "note": "Use exact fp32 training gain when loading the bf16 DCP. Derived from the verified original export metadata."
+}

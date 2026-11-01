@@ -1,0 +1,1419 @@
+{
+  "input": "cache",
+  "cache": "/home/param/datasets/xabi-v2pure-cache",
+  "clip_index": 226966,
+  "row_key": "ALOE/aloe-v2pure/e6cd5993482ffde0f391a4fd979813760b1bcb11/c00021",
+  "cache_key": "e6cd5993482ffde0f391a4fd979813760b1bcb11/speaker_1/000022",
+  "split": "eval",
+  "source_span": [
+    0,
+    752
+  ],
+  "transcript": "As well. I think I love. So I'm very into like different media,s like anime, animation, documentaries. So like, there's loads of series. That I've watched that show like historical fictions in different scenarios. So one of one what one is Vinland Saga, which yes, it's an anime that came out five years ago, but it follows Vikings. Yes, so and the author basically follows a real person called Thorfinn Karlsefni, and Thorfinn Karlsefni was one of the first people that found the Americas. Because in history knowledge, we believe Columbus was the first person to find the Americas. Yeah, it was it was a Viking called Leif Erikson, and Leif Erikson's an anime as well. But he does his own twist twist in the story, and to show his opinion on violence",
+  "words": [
+    {
+      "text": "As",
+      "start": 0.0,
+      "end": 0.24,
+      "start_frame": 0,
+      "end_frame": 3,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "well.",
+      "start": 0.24,
+      "end": 0.56,
+      "start_frame": 3,
+      "end_frame": 7,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 1.2,
+      "end": 1.92,
+      "start_frame": 15,
+      "end_frame": 24,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "think",
+      "start": 1.92,
+      "end": 2.08,
+      "start_frame": 24,
+      "end_frame": 26,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 2.08,
+      "end": 2.24,
+      "start_frame": 26,
+      "end_frame": 28,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "love.",
+      "start": 2.24,
+      "end": 2.56,
+      "start_frame": 28,
+      "end_frame": 32,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 2.56,
+      "end": 2.72,
+      "start_frame": 32,
+      "end_frame": 34,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I'm",
+      "start": 2.72,
+      "end": 3.2,
+      "start_frame": 34,
+      "end_frame": 40,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "very",
+      "start": 3.28,
+      "end": 3.52,
+      "start_frame": 41,
+      "end_frame": 44,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "into",
+      "start": 3.52,
+      "end": 3.68,
+      "start_frame": 44,
+      "end_frame": 46,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 3.68,
+      "end": 3.84,
+      "start_frame": 46,
+      "end_frame": 48,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "different",
+      "start": 3.84,
+      "end": 4.16,
+      "start_frame": 48,
+      "end_frame": 52,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "media,s",
+      "start": 4.24,
+      "end": 4.8,
+      "start_frame": 53,
+      "end_frame": 60,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 4.8,
+      "end": 5.2,
+      "start_frame": 60,
+      "end_frame": 65,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "anime,",
+      "start": 5.28,
+      "end": 6.08,
+      "start_frame": 66,
+      "end_frame": 76,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "animation,",
+      "start": 6.08,
+      "end": 6.8,
+      "start_frame": 76,
+      "end_frame": 85,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "documentaries.",
+      "start": 6.96,
+      "end": 7.68,
+      "start_frame": 87,
+      "end_frame": 96,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 8.24,
+      "end": 8.48,
+      "start_frame": 103,
+      "end_frame": 106,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like,",
+      "start": 8.48,
+      "end": 8.72,
+      "start_frame": 106,
+      "end_frame": 109,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "there's",
+      "start": 8.72,
+      "end": 8.88,
+      "start_frame": 109,
+      "end_frame": 111,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "loads",
+      "start": 8.88,
+      "end": 9.12,
+      "start_frame": 111,
+      "end_frame": 114,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "of",
+      "start": 9.12,
+      "end": 9.2,
+      "start_frame": 114,
+      "end_frame": 115,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "series.",
+      "start": 9.2,
+      "end": 9.52,
+      "start_frame": 115,
+      "end_frame": 119,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "That",
+      "start": 9.92,
+      "end": 10.4,
+      "start_frame": 124,
+      "end_frame": 130,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I've",
+      "start": 10.4,
+      "end": 10.5,
+      "start_frame": 130,
+      "end_frame": 131,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "watched",
+      "start": 10.4,
+      "end": 10.88,
+      "start_frame": 130,
+      "end_frame": 136,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that",
+      "start": 10.88,
+      "end": 11.2,
+      "start_frame": 136,
+      "end_frame": 140,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "show",
+      "start": 11.44,
+      "end": 11.68,
+      "start_frame": 143,
+      "end_frame": 146,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "like",
+      "start": 11.76,
+      "end": 12.0,
+      "start_frame": 147,
+      "end_frame": 150,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "historical",
+      "start": 12.0,
+      "end": 12.32,
+      "start_frame": 150,
+      "end_frame": 154,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "fictions",
+      "start": 12.32,
+      "end": 13.04,
+      "start_frame": 154,
+      "end_frame": 163,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in",
+      "start": 13.2,
+      "end": 13.6,
+      "start_frame": 165,
+      "end_frame": 170,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "different",
+      "start": 13.92,
+      "end": 14.32,
+      "start_frame": 174,
+      "end_frame": 179,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "scenarios.",
+      "start": 14.88,
+      "end": 15.52,
+      "start_frame": 186,
+      "end_frame": 194,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 15.92,
+      "end": 16.08,
+      "start_frame": 199,
+      "end_frame": 201,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "one",
+      "start": 16.08,
+      "end": 16.32,
+      "start_frame": 201,
+      "end_frame": 204,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "of",
+      "start": 16.32,
+      "end": 16.48,
+      "start_frame": 204,
+      "end_frame": 206,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "one",
+      "start": 16.8,
+      "end": 17.36,
+      "start_frame": 210,
+      "end_frame": 217,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "what",
+      "start": 17.36,
+      "end": 17.6,
+      "start_frame": 217,
+      "end_frame": 220,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "one",
+      "start": 17.6,
+      "end": 17.92,
+      "start_frame": 220,
+      "end_frame": 224,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "is",
+      "start": 17.92,
+      "end": 18.08,
+      "start_frame": 224,
+      "end_frame": 226,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Vinland",
+      "start": 18.08,
+      "end": 18.4,
+      "start_frame": 226,
+      "end_frame": 230,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Saga,",
+      "start": 18.4,
+      "end": 18.88,
+      "start_frame": 230,
+      "end_frame": 236,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "which",
+      "start": 19.68,
+      "end": 20.08,
+      "start_frame": 246,
+      "end_frame": 251,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "yes,",
+      "start": 20.96,
+      "end": 21.2,
+      "start_frame": 262,
+      "end_frame": 265,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it's",
+      "start": 21.2,
+      "end": 21.36,
+      "start_frame": 265,
+      "end_frame": 267,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "an",
+      "start": 21.52,
+      "end": 21.68,
+      "start_frame": 269,
+      "end_frame": 271,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "anime",
+      "start": 21.68,
+      "end": 21.92,
+      "start_frame": 271,
+      "end_frame": 274,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that",
+      "start": 21.92,
+      "end": 22.0,
+      "start_frame": 274,
+      "end_frame": 275,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "came",
+      "start": 22.0,
+      "end": 22.16,
+      "start_frame": 275,
+      "end_frame": 277,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "out",
+      "start": 22.16,
+      "end": 22.4,
+      "start_frame": 277,
+      "end_frame": 280,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "five",
+      "start": 22.4,
+      "end": 22.64,
+      "start_frame": 280,
+      "end_frame": 283,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "years",
+      "start": 22.64,
+      "end": 22.88,
+      "start_frame": 283,
+      "end_frame": 286,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "ago,",
+      "start": 22.88,
+      "end": 23.28,
+      "start_frame": 286,
+      "end_frame": 291,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "but",
+      "start": 24.0,
+      "end": 24.24,
+      "start_frame": 300,
+      "end_frame": 303,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 24.24,
+      "end": 24.4,
+      "start_frame": 303,
+      "end_frame": 305,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "follows",
+      "start": 24.4,
+      "end": 25.12,
+      "start_frame": 305,
+      "end_frame": 314,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Vikings.",
+      "start": 25.2,
+      "end": 26.2,
+      "start_frame": 315,
+      "end_frame": 327,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Yes,",
+      "start": 27.92,
+      "end": 28.32,
+      "start_frame": 349,
+      "end_frame": 354,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "so",
+      "start": 28.72,
+      "end": 29.2,
+      "start_frame": 359,
+      "end_frame": 365,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 30.32,
+      "end": 30.72,
+      "start_frame": 379,
+      "end_frame": 384,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 30.72,
+      "end": 30.8,
+      "start_frame": 384,
+      "end_frame": 385,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "author",
+      "start": 32.32,
+      "end": 33.04,
+      "start_frame": 404,
+      "end_frame": 413,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "basically",
+      "start": 33.6,
+      "end": 34.08,
+      "start_frame": 420,
+      "end_frame": 426,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "follows",
+      "start": 34.08,
+      "end": 34.64,
+      "start_frame": 426,
+      "end_frame": 433,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 34.64,
+      "end": 34.8,
+      "start_frame": 433,
+      "end_frame": 435,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "real",
+      "start": 34.8,
+      "end": 34.96,
+      "start_frame": 435,
+      "end_frame": 437,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "person",
+      "start": 34.96,
+      "end": 35.6,
+      "start_frame": 437,
+      "end_frame": 445,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "called",
+      "start": 36.0,
+      "end": 36.4,
+      "start_frame": 450,
+      "end_frame": 455,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Thorfinn",
+      "start": 36.4,
+      "end": 36.96,
+      "start_frame": 455,
+      "end_frame": 462,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Karlsefni,",
+      "start": 36.96,
+      "end": 37.68,
+      "start_frame": 462,
+      "end_frame": 471,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 38.32,
+      "end": 38.88,
+      "start_frame": 479,
+      "end_frame": 486,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Thorfinn",
+      "start": 39.2,
+      "end": 39.6,
+      "start_frame": 490,
+      "end_frame": 495,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Karlsefni",
+      "start": 39.6,
+      "end": 40.24,
+      "start_frame": 495,
+      "end_frame": 503,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "was",
+      "start": 40.24,
+      "end": 40.48,
+      "start_frame": 503,
+      "end_frame": 506,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "one",
+      "start": 40.48,
+      "end": 40.56,
+      "start_frame": 506,
+      "end_frame": 507,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "of",
+      "start": 40.56,
+      "end": 40.64,
+      "start_frame": 507,
+      "end_frame": 508,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 40.64,
+      "end": 40.72,
+      "start_frame": 508,
+      "end_frame": 509,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "first",
+      "start": 40.72,
+      "end": 40.96,
+      "start_frame": 509,
+      "end_frame": 512,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "people",
+      "start": 40.96,
+      "end": 41.12,
+      "start_frame": 512,
+      "end_frame": 514,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that",
+      "start": 41.12,
+      "end": 41.28,
+      "start_frame": 514,
+      "end_frame": 516,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "found",
+      "start": 41.28,
+      "end": 41.44,
+      "start_frame": 516,
+      "end_frame": 518,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 41.44,
+      "end": 41.52,
+      "start_frame": 518,
+      "end_frame": 519,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Americas.",
+      "start": 41.52,
+      "end": 42.0,
+      "start_frame": 519,
+      "end_frame": 525,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Because",
+      "start": 43.52,
+      "end": 43.76,
+      "start_frame": 544,
+      "end_frame": 547,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in",
+      "start": 43.76,
+      "end": 44.0,
+      "start_frame": 547,
+      "end_frame": 550,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "history",
+      "start": 44.56,
+      "end": 44.88,
+      "start_frame": 557,
+      "end_frame": 561,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "knowledge,",
+      "start": 44.88,
+      "end": 45.28,
+      "start_frame": 561,
+      "end_frame": 566,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "we",
+      "start": 45.28,
+      "end": 45.6,
+      "start_frame": 566,
+      "end_frame": 570,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "believe",
+      "start": 45.6,
+      "end": 46.08,
+      "start_frame": 570,
+      "end_frame": 576,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Columbus",
+      "start": 46.56,
+      "end": 47.36,
+      "start_frame": 582,
+      "end_frame": 592,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "was",
+      "start": 47.36,
+      "end": 47.44,
+      "start_frame": 592,
+      "end_frame": 593,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 47.44,
+      "end": 47.52,
+      "start_frame": 593,
+      "end_frame": 594,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "first",
+      "start": 47.52,
+      "end": 47.68,
+      "start_frame": 594,
+      "end_frame": 596,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "person",
+      "start": 47.68,
+      "end": 48.16,
+      "start_frame": 596,
+      "end_frame": 602,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 48.16,
+      "end": 48.24,
+      "start_frame": 602,
+      "end_frame": 603,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "find",
+      "start": 48.24,
+      "end": 48.48,
+      "start_frame": 603,
+      "end_frame": 606,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 48.64,
+      "end": 48.72,
+      "start_frame": 608,
+      "end_frame": 609,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Americas.",
+      "start": 48.72,
+      "end": 49.2,
+      "start_frame": 609,
+      "end_frame": 615,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Yeah,",
+      "start": 49.68,
+      "end": 49.92,
+      "start_frame": 621,
+      "end_frame": 624,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 49.92,
+      "end": 50.0,
+      "start_frame": 624,
+      "end_frame": 625,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "was",
+      "start": 50.0,
+      "end": 50.24,
+      "start_frame": 625,
+      "end_frame": 628,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "it",
+      "start": 50.4,
+      "end": 50.56,
+      "start_frame": 630,
+      "end_frame": 632,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "was",
+      "start": 50.56,
+      "end": 50.72,
+      "start_frame": 632,
+      "end_frame": 634,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a",
+      "start": 50.72,
+      "end": 50.8,
+      "start_frame": 634,
+      "end_frame": 635,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Viking",
+      "start": 50.8,
+      "end": 51.28,
+      "start_frame": 635,
+      "end_frame": 641,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "called",
+      "start": 51.28,
+      "end": 51.44,
+      "start_frame": 641,
+      "end_frame": 643,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Leif",
+      "start": 51.44,
+      "end": 51.6,
+      "start_frame": 643,
+      "end_frame": 645,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Erikson,",
+      "start": 51.68,
+      "end": 52.16,
+      "start_frame": 646,
+      "end_frame": 652,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 52.4,
+      "end": 52.64,
+      "start_frame": 655,
+      "end_frame": 658,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Leif",
+      "start": 52.64,
+      "end": 52.8,
+      "start_frame": 658,
+      "end_frame": 660,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "Erikson's",
+      "start": 52.8,
+      "end": 53.12,
+      "start_frame": 660,
+      "end_frame": 664,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "an",
+      "start": 53.12,
+      "end": 53.2,
+      "start_frame": 664,
+      "end_frame": 665,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "anime",
+      "start": 53.2,
+      "end": 53.52,
+      "start_frame": 665,
+      "end_frame": 669,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "as",
+      "start": 53.52,
+      "end": 53.6,
+      "start_frame": 669,
+      "end_frame": 670,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "well.",
+      "start": 53.6,
+      "end": 53.84,
+      "start_frame": 670,
+      "end_frame": 673,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "But",
+      "start": 54.08,
+      "end": 54.24,
+      "start_frame": 676,
+      "end_frame": 678,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "he",
+      "start": 54.64,
+      "end": 54.88,
+      "start_frame": 683,
+      "end_frame": 686,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "does",
+      "start": 54.88,
+      "end": 55.04,
+      "start_frame": 686,
+      "end_frame": 688,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "his",
+      "start": 55.04,
+      "end": 55.2,
+      "start_frame": 688,
+      "end_frame": 690,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "own",
+      "start": 55.2,
+      "end": 55.52,
+      "start_frame": 690,
+      "end_frame": 694,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "twist",
+      "start": 55.52,
+      "end": 56.0,
+      "start_frame": 694,
+      "end_frame": 700,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "twist",
+      "start": 56.08,
+      "end": 56.18,
+      "start_frame": 701,
+      "end_frame": 702,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "in",
+      "start": 56.08,
+      "end": 56.4,
+      "start_frame": 701,
+      "end_frame": 705,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "the",
+      "start": 57.28,
+      "end": 57.52,
+      "start_frame": 716,
+      "end_frame": 719,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "story,",
+      "start": 58.0,
+      "end": 58.48,
+      "start_frame": 725,
+      "end_frame": 731,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "and",
+      "start": 58.48,
+      "end": 59.12,
+      "start_frame": 731,
+      "end_frame": 739,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "to",
+      "start": 59.12,
+      "end": 59.2,
+      "start_frame": 739,
+      "end_frame": 740,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "show",
+      "start": 59.2,
+      "end": 59.36,
+      "start_frame": 740,
+      "end_frame": 742,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "his",
+      "start": 59.36,
+      "end": 59.44,
+      "start_frame": 742,
+      "end_frame": 743,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "opinion",
+      "start": 59.44,
+      "end": 59.76,
+      "start_frame": 743,
+      "end_frame": 747,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "on",
+      "start": 59.84,
+      "end": 59.92,
+      "start_frame": 748,
+      "end_frame": 749,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "violence",
+      "start": 59.92,
+      "end": 60.48,
+      "start_frame": 749,
+      "end_frame": 756,
+      "in_overlap": false,
+      "truncated": false
+    }
+  ],
+  "voice_provenance": {
+    "mode": "explicit",
+    "source": "/home/param/pose-runs/controlled-comparison-20261028/clip-06/voice_clip.npy"
+  },
+  "recipe": "xabi-original",
+  "frames": 752,
+  "seconds": 60.16,
+  "P": 109,
+  "conditioning_P": 109,
+  "transcript_span": [
+    109,
+    109
+  ],
+  "prefill_frames": 25,
+  "f0": 25,
+  "code_delay": 2,
+  "total_positions": 863,
+  "prefill_duration_seconds": 2.0,
+  "ground_truth_prefill_media": true,
+  "prefill_modalities": [
+    "audio",
+    "pose",
+    "text"
+  ],
+  "prefill_policy": "exact synchronized audio/pose/text prefix",
+  "prefill_sha256": {
+    "audio_codes": "e4aeca9fd49517bc8d651a7f36a7341072d30023377ab843ed4d1a46b28686cd",
+    "pose_codes": "d44a8fe145041eb1c05942c0a701e4f3e938d1e770d4b29b80efad3702e541ff",
+    "text_lane": "cf2890df8bee14bddedbf65f83fabc455fab154f02e3c8b1e8202f1fc6bbb157"
+  },
+  "voice_clip_frames": 100,
+  "force_text": false,
+  "text_mode": "native",
+  "source_transcript": "As well. I think I love. So I'm very into like different media,s like anime, animation, documentaries. So like, there's loads of series. That I've watched that show like historical fictions in different scenarios. So one of one what one is Vinland Saga, which yes, it's an anime that came out five years ago, but it follows Vikings. Yes, so and the author basically follows a real person called Thorfinn Karlsefni, and Thorfinn Karlsefni was one of the first people that found the Americas. Because in history knowledge, we believe Columbus was the first person to find the Americas. Yeah, it was it was a Viking called Leif Erikson, and Leif Erikson's an anime as well. But he does his own twist twist in the story, and to show his opinion on violence",
+  "supplied_transcript": null,
+  "upfront_transcript": false,
+  "text_generation": "sampled; initial frame PAD when no prefill",
+  "transcript_end_token": null,
+  "voice_codes_sha256": "dd5d3eb3312f2b6be8b5e18d02edeac6f76b407c41335f445c9df88d8377eab8",
+  "framewise_lane_sha256": null,
+  "checkpoint": {
+    "ck": "/home/param/models/transcript-pose/xabi-original/export-200",
+    "step": 200,
+    "kind": "local",
+    "pose": true,
+    "decp_bb": true,
+    "decp_bb_alpha": 1.0,
+    "vadapter": false,
+    "ldev": [
+      "cuda:0",
+      "cuda:1"
+    ],
+    "layers_per_dev": {
+      "cuda:0": 37,
+      "cuda:1": 27
+    }
+  },
+  "sampling": {
+    "text_temp": 1.0,
+    "text_topk": 0,
+    "text_topp": 1.0,
+    "min_p": 0.0,
+    "min_p_rel": 0,
+    "freq_pen": 0.0,
+    "freq_win": 20,
+    "text_rep": 1.0,
+    "text_rep_win": 64,
+    "cb0_temp": 1.0,
+    "cb0_topk": 30,
+    "light_temp": 1.0,
+    "light_topk": 30,
+    "audio_rep_pen": 1.0,
+    "audio_rep_win": 64,
+    "allow_eob": 0,
+    "free_text": 0,
+    "word_greedy": 0,
+    "pose_temp": 1.0,
+    "pose_topk": 30,
+    "pose_light_temp": 1.0,
+    "pose_light_topk": 50,
+    "pose_cfg_on": 1,
+    "pose_cfg_s": 4.0,
+    "pose_cfg_cb0": 1,
+    "pose_cfg_light": 1,
+    "pose_cfg_speaking_only": 0,
+    "pose_rep_cb0": 1.0,
+    "pose_rep_light": 1.0,
+    "pose_rep_win": 0,
+    "adaptive_rep_on": 0,
+    "speak_window_frames": 25,
+    "audio_rep_speaking": 1.0,
+    "audio_rep_silent": 1.0,
+    "text_rep_speaking": 1.0,
+    "text_rep_silent": 1.0,
+    "pose_rep_cb0_speaking": 1.0,
+    "pose_rep_cb0_silent": 1.0,
+    "pose_rep_light_speaking": 1.0,
+    "pose_rep_light_silent": 1.0
+  },
+  "seed": 20261033,
+  "audio_guidance": {
+    "enabled": true,
+    "strength": 3.0,
+    "engine_scale": 4.0,
+    "formula": "audio + strength * (audio - silence)",
+    "scope": "all pose codebooks",
+    "silence_source": "Mimi encoding of digital silence",
+    "silence_sample_rate": 24000,
+    "silence_codec": "kyutai/mimi@89091b3e466eb6a9d11e537bf26b144f194978f7",
+    "silence_frames": 869,
+    "silence_codes_sha256": "b53b8b3cd852937bf2928530e008e510514b8b54d10a26997aafbafa62da44de",
+    "full_model_silence_pass": true,
+    "shared_text_and_pose": true,
+    "audit": {
+      "enabled": true,
+      "conditional_row": 0,
+      "silence_row": 1,
+      "guided_frames": 727,
+      "codebooks": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "conditional_weight": 4.0,
+      "silence_weight": -3.0,
+      "backbone_cache_rows": 2,
+      "pose_tower_cache_rows": 2,
+      "pose_light_cache_rows": 2,
+      "independent_cache_rows": true,
+      "prefix_audio_frames_replaced_by_channel": [
+        0,
+        123
+      ],
+      "forced_audio_frames_replaced_by_channel": [
+        0,
+        2
+      ],
+      "total_supplied_audio_frames_replaced_by_channel": [
+        0,
+        125
+      ],
+      "forced_pose_frames": 2,
+      "silence_codes_shape": [
+        32,
+        869
+      ],
+      "silence_codes_sha256": "b53b8b3cd852937bf2928530e008e510514b8b54d10a26997aafbafa62da44de",
+      "silence_scope": "all present Mimi codes in both channels, including voice prompt and media prefill",
+      "shared_conditions": "text tokens, previous pose frames, and current sampled pose-codebook prefix",
+      "d33_uses_separate_backbone_hidden": true,
+      "speaking_only": false
+    }
+  },
+  "generated_lane_sha256": "2e740c18681143d4ea9da8881a4691446bad3c468e335c557b75788cb35c6ac4",
+  "batch_size": 1,
+  "batch_row": 0,
+  "batch_clip_indices": [
+    226966
+  ],
+  "rng_policy": "per-instance per-modality generators; row-wise [1,vocab] multinomial; native text sampling",
+  "prefill_seconds": 0.3976616859436035,
+  "generation_seconds": 47.99050951004028,
+  "ms_per_step": 65.83060289443111,
+  "ground_truth_generation_media": false,
+  "fixed_duration": true,
+  "peak_gib": {
+    "cuda:0": 50.9187536239624,
+    "cuda:1": 38.64148998260498
+  },
+  "audio_stats": {
+    "s": 60.16,
+    "rms": 0.0346,
+    "rms_dbfs": -29.2,
+    "peak": 0.6121,
+    "clip_frac": 0.0,
+    "silent_frac_100ms": 0.295
+  },
+  "wall_seconds": 109.463937997818
+}

@@ -1,0 +1,18 @@
+{
+  "ok": true,
+  "completed_at_utc": "2026-10-28T09:58:04.185328+00:00",
+  "repo": "InternalCan/ppm-811-17850-base-bf16",
+  "source_step": 17850,
+  "source_run_tag": "ppm-v1-j27653",
+  "weight_revision_verified": "876fa61d89fc5ff5e1aae28254b00a7bb31d4970",
+  "weight_files": 131,
+  "weight_bytes": 88413726150,
+  "package_hashed_files": 151,
+  "files_sha256": "fcebc220302772642ab9266c1356e4151433c4af1f9898461b4c726e3bd32fb5",
+  "source_copy_sha256_match": true,
+  "source_unchanged_during_copy": true,
+  "weight_validation_passed": true,
+  "hf_weight_verification_passed": true,
+  "source_world": 128,
+  "target_world_coverage_checked": 56
+}

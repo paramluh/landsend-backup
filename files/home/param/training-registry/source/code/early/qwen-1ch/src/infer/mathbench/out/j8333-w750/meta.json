@@ -1,0 +1,22 @@
+{
+ "kind": "s3",
+ "ck": "/data/home/amartyavarma/qwen-1ch/stage3/ckpt-weka/q32-s3-exp1-duplex-sp-split2-glu-r2-j8333/w-750",
+ "step": 750,
+ "run_tag": "q32-s3-exp1-duplex-sp-split2-glu-r2-j8333",
+ "export_stage": 3,
+ "wpid": "both",
+ "eot_on_channel": true,
+ "frame_fix": true,
+ "swap": 0,
+ "gate": {
+  "verdict": "PASS",
+  "frames": 619,
+  "pieces": 160,
+  "s": 11.6,
+  "tv_mean": 0.0036040523555129766,
+  "tv_max": 0.05298297107219696,
+  "top1": 0.9913420081138611,
+  "top1_decisive": 1.0,
+  "n_mismatch": 2
+ }
+}

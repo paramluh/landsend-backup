@@ -1,0 +1,174 @@
+{
+  "created_utc": "2026-10-31T03:36:02.526623+00:00",
+  "source": "/home/param/pose-repo/finetune/xabi-main-17850",
+  "files": [
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/build_poseB_rows.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/build_poseB_rows.py",
+      "bytes": 16228,
+      "sha256": "6ca4c14aed4ded2884f5dbf1ee1d4bc887abe2648c1f159997edcf07b3fa898d"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/build_v2pure_rows.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/build_v2pure_rows.py",
+      "bytes": 24987,
+      "sha256": "e1c63381af858d05e356bd39a489bb7669a11671ddc515f79584467b9da9eda9"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/ckpt_local_export.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/ckpt_local_export.py",
+      "bytes": 4092,
+      "sha256": "bdb6f249a176fa3de029b25635b7fcaaadf9e8f1f0c625d3d70f54d9e3d8d12e"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/ckpt_local_export.sh",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/ckpt_local_export.sh",
+      "bytes": 1738,
+      "sha256": "43f96cd3b0407e46c0f80347d84c6178475b3fefd5b8a8162e01ff776febfadd"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/data_aloe_pose.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/data_aloe_pose.py",
+      "bytes": 26151,
+      "sha256": "e8f084d852609698c031cb54c4f022cca8a679e74ac9af7d158cf631044030ab"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/data_ppm.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/data_ppm.py",
+      "bytes": 23968,
+      "sha256": "52338c92fa6b414e0dc9f51f21ec9e7bf06c4bf4dd4fbae4e09eb071955ed379"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/data_qqa.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/data_qqa.py",
+      "bytes": 6972,
+      "sha256": "946cf30702d04f0bf57d8d37a8b09b711c135d46d4f18be93bdf018547d45dfc"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/README_COPIES.txt",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/README_COPIES.txt",
+      "bytes": 912,
+      "sha256": "b6e5b06cb14b10738b2d4028a4571aac6376614c0c037fad02734f3916a11b81"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/codep_s3q.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/codep_s3q.py",
+      "bytes": 14631,
+      "sha256": "5a9ce28262910b06d84294376337bffc228a5a7e015bc6eec71326119aa9f32f"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/data_s3q.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/data_s3q.py",
+      "bytes": 34458,
+      "sha256": "310a6c14400a05e4f64ad9fa2516583503000f7250551bc6222e03ec37c4577f"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/heads_s2q.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/heads_s2q.py",
+      "bytes": 17284,
+      "sha256": "e8408db7efaaaba4ac2978d81d7e37c7f17ce4d4cf63328970bf83b8097d4105"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/lightms_s3q.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/lightms_s3q.py",
+      "bytes": 3094,
+      "sha256": "b78a0396418a5c861ae8faee24457ad20d8b6ddd30e7cf91ac4e14b8d6d7a773"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/persona_s3q.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/persona_s3q.py",
+      "bytes": 2492,
+      "sha256": "f7e59bd7fe6f122ed35f47c316361bdca3c9768ee0098980cee9cdf35fbb93ae"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/persona_text_s3q.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/persona_text_s3q.py",
+      "bytes": 10211,
+      "sha256": "a9015435a0079ad3dc7e2e9f6c587677ea92c66d48b942ad0bed8537d50f7137"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/pose_s3q.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/pose_s3q.py",
+      "bytes": 20380,
+      "sha256": "7b68e8e6544eb0c33239930491040f3b057985fd90cae03dba69097dd3601b1a"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/s3rows.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/s3rows.py",
+      "bytes": 8070,
+      "sha256": "8bfc7e14babc7cfcfb2d9a36c11fb1341b0dcdf3f2864da2146ac41ff8918c7a"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/sched_s3q.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/sched_s3q.py",
+      "bytes": 5756,
+      "sha256": "14312023b79c86efdefca60c6adbce0ed2f1c9b7e9a3cea7a534701c7eb74cc2"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/speech_q.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/speech_q.py",
+      "bytes": 25069,
+      "sha256": "7635d55d649c9714b826041eb7edd43dc64e6a70e3376b8424830ce9f32f78c9"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/sysprompt.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/sysprompt.py",
+      "bytes": 23700,
+      "sha256": "20a480a881a02a61c4125f508541c7e1cc7b143e1d15a9525bf8a3d803f5b122"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/lib/txtdup_s3q.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/lib/txtdup_s3q.py",
+      "bytes": 9588,
+      "sha256": "a5c8b7cc228e554a10b17300643125920844dad46eab9f4bf759df819578aee0"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/model_ppm.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/model_ppm.py",
+      "bytes": 43127,
+      "sha256": "c6e41a1ae2913938811a3720934105c03adfb7dfb1511ef967a35fb0290a3628"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/task_ppm.sh",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/task_ppm.sh",
+      "bytes": 2851,
+      "sha256": "80a862895e22445ceafd57629940695707c06a982572f920fcd95512392e90bb"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/train_aloe_pose.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/train_aloe_pose.py",
+      "bytes": 77459,
+      "sha256": "628ccdc54e00bb5aa729bf549ee043d4da1391e8b2e23ae845268a4e94664a7c"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/vendor/dec_attn32.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/vendor/dec_attn32.py",
+      "bytes": 6100,
+      "sha256": "6f0c41ff4d68e3c24f9855bbdd2babc720e60cd7d261111907e387a1e81bce5e"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/vendor/fa3_op.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/vendor/fa3_op.py",
+      "bytes": 6076,
+      "sha256": "0d36c30d976ada6163d1e4ffa6c6cc986fcfec12a8a52542e82856b86a220114"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/vendor/fused_triton.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/vendor/fused_triton.py",
+      "bytes": 20377,
+      "sha256": "e34ff8aeebafca3999d17fc9af268bd47a74993e03a4adbceb2f11a90e848deb"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/code/vendor/pinned_fa3.py",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/code/vendor/pinned_fa3.py",
+      "bytes": 2815,
+      "sha256": "7c0ec3243c36390d1d36bdc76f09be2b3b7511b88674cad70bc945f5445cecca"
+    },
+    {
+      "source": "/home/param/pose-repo/finetune/xabi-main-17850/run.env",
+      "snapshot": "/home/param/pose-repo/finetune/blackband_repro/engine/run.env",
+      "bytes": 7440,
+      "sha256": "ba7b609917d68f023477ff9685825b70c8d53160ac56398b900cd2ac781d97a2"
+    }
+  ]
+}

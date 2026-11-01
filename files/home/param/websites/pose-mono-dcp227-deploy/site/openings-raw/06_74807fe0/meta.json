@@ -1,0 +1,251 @@
+{
+ "person_id": "06_74807fe0",
+ "package_id": "06_74807fe0",
+ "kind": "s2handover-raw",
+ "mode": "samsep_conv_window",
+ "session": "19469f50-d01d-409f-b996-05a48bdac12b",
+ "seg": "seg04",
+ "speaker": "SPEAKER_00",
+ "actor_uuid": "74807fe0-d903-4674-8ec0-a2355bc17cb9",
+ "llm_split": "train",
+ "legit_opening": false,
+ "T": 150,
+ "frame_hz": 12.5,
+ "recording_t0_s": 60.8,
+ "window_s": [
+  60.8,
+  72.8
+ ],
+ "sources": {
+  "mimi_local": {
+   "path": "/data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores/m1n0/rows-00000-of-00001.codes_assistant.npy",
+   "rows": "row_in_shard 1950 [:, 760:910]",
+   "store_row": "ALOE/s2handover-none/19469f50-d01d-409f-b996-05a48bdac12b/seg04/c00",
+   "store_node": "m1n0",
+   "node_row": 1950,
+   "side": "assistant",
+   "recipe": "stage2-handover sam-sep-v1 SAM-ISOLATED stream (SAM stack x3 + strict chunk rule) -> mimi-stream-v5 (kyutai/mimi@89091b3e, -23 LUFS pure gain over the whole stem, one stateful stream, 30 s calls, fp32, H100 with the L4 pin waived); the codes the duplex export-498 trained on as B (s2h-m1-samsep stores, VERIFY.md)",
+   "hf_mirror": "InternalCan/stage2-sam-sep-v1-mimi tokens/mimi-stream-v5-samsep-0003.parquet row 105 SPEAKER_00_isolated_npy [:, 760:910]"
+  },
+  "pose_tokens": {
+   "path": "/data/home/amartyavarma/data/aloe-handover-full/DATA/files/none/19469f50-d01d-409f-b996-05a48bdac12b/seg04/w00.SPEAKER_00.pose_tokens.npy",
+   "sha256": "1b1a71ad819646092d450e25f4eb39c4d4d86954d54f7fd19124ec3bbfa0277d",
+   "rows": "[:, 760:910]",
+   "recipe": "tiktok-stage3-rtmw-v2frame0-onepass-v1",
+   "tokenizer": "InternalCan/pose-tokenizer-32cb-200k-noshift@1d6ff4f0de89408cb054da618e309d4334596252",
+   "normalization": "frame0-root-frame0-horizontal-shoulder-width-v1 (Xabi preprocess_frame0)",
+   "frame0": {
+    "source": "pose.json normalization = the CONVERSATION's frame 0, UNCHANGED for this window (build_clipwin.py rule: the handover tokenizer is one call over the whole cut and normalises every frame by the conversation's frame-0 root / shoulder width, so tokens at frames [760, 910) are relative to that same state); frame0_root = root0_yx_normalized [y, x], frame0_width = shoulder_width0_normalized",
+    "fields": {
+     "frame0_root": [
+      0.5724283456802368,
+      0.48119214177131653
+     ],
+     "frame0_width": 0.616319477558136,
+     "orig_w": 2160,
+     "orig_h": 3840,
+     "rotation": -90
+    }
+   },
+   "source_video": "gs://aloe-recordings-log/sessions-from-04-07-2026/19469f50-d01d-409f-b996-05a48bdac12b/users/74807fe0-d903-4674-8ec0-a2355bc17cb9/seg04/19469f50-d01d-409f-b996-05a48bdac12b_seg04.mov"
+  },
+  "words": {
+   "rule": "store words of B's side placed by speech_q.lane over the WHOLE row (pos = max(floor(start*12.5+1e-6), write+1)); start = end = (first-piece frame - 760) / 12.5; words with first-piece frame in [760, 910) (= build_clipwin.py's window rule)",
+   "store_row": "ALOE/s2handover-none/19469f50-d01d-409f-b996-05a48bdac12b/seg04/c00"
+  },
+  "voice_clip": {
+   "rule": "FALLBACK (single-chunk conversation: the training rule gives no clip): SPR.window over the SAME row's frames [max(n//2, 150), n) = [2572, 5145) with L0 := 125 (10 s) and the trainer's u draw",
+   "src": "same_row_2nd_half",
+   "src_row_key": "ALOE/s2handover-none/19469f50-d01d-409f-b996-05a48bdac12b/seg04/c00",
+   "src_side": "assistant",
+   "frames_in_src_row": [
+    4696,
+    4821
+   ],
+   "conv_frames": [
+    4696,
+    4821
+   ],
+   "cov": 0.808,
+   "trainer_draw_L0": 83,
+   "trainer_draw_u": 0.06461860814573028,
+   "n_chunks": 1,
+   "path": "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/openings-sam/06_74807fe0/voice_clip.safetensors"
+  }
+ },
+ "qc": {
+  "sam_sep_flags": [],
+  "mimi_flags": [],
+  "n_ambiguous_chunks": 0,
+  "n_swapped_chunks": 0,
+  "audit_redo": false,
+  "pose_status": "ok",
+  "crossbleed_side": "none"
+ },
+ "checks": {
+  "pose_T_eq_codes_T": true,
+  "codes_byte_equal_store_slice": true,
+  "codes_equal_hf_isolated_window": true,
+  "codes_equal_aloe_pose_ft_sam_store": true,
+  "pose_file_sha256_eq_index": true,
+  "pose_equal_aloe_pose_ft_sam_store": true,
+  "frame0_fields_eq_pose_json_conversation_frame0": true,
+  "words_in_window": true,
+  "words_equal_aloe_pose_ft_sam_store_lane": true,
+  "n_words": 38,
+  "voice_clip_unchanged": true,
+  "all_pass": true
+ },
+ "n_words": 38,
+ "first_word_s": 0.08,
+ "candidate": {
+  "id": "06_74807fe0",
+  "person": "06_74807fe0",
+  "has_avatar": true,
+  "session": "19469f50-d01d-409f-b996-05a48bdac12b",
+  "seg": "seg04",
+  "speaker": "SPEAKER_00",
+  "split": "train",
+  "start_s": 60.8,
+  "end_s": 72.8,
+  "first_words": "a Friday. No, it's it must be a Thursday. I think it's always a Thursday. Yeah, I had my. I got my results on the thirte",
+  "flags": [],
+  "package_dir": "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/stage-mono17850/recut/06_74807fe0"
+ },
+ "built": "samsep fork D 2026-10-26 (byte copies; no separation / encoding)",
+ "recut": {
+  "from_package": "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/openings-sam/06_74807fe0",
+  "window_frames_in_row": [
+   760,
+   910
+  ],
+  "window_frames_in_conversation": [
+   760,
+   910
+  ],
+  "window_s": [
+   60.8,
+   72.8
+  ],
+  "original_window_frames": [
+   0,
+   150
+  ],
+  "note": "10-28 recut (main-approved data choice, no maths change): the conversation-start window [0, 150) had a noisy prefill; this is the EARLIEST 150-frame window (5-frame stride scan of the same store row / side, ending before the voice clip) passing selection.rule: prefill (first 26 frames) conf / lowconf / oof (conversation frame 0) / cb0 not constant / B speech near the start, plus tokens 26-150 no worse than the row's typical. pose / mimi / words shifted together; frame0 unchanged (conversation frame 0); voice_clip + clipwin_* byte copies (the voice clip rule is not tied to the opening window).",
+  "selection": {
+   "windows_scored": 910,
+   "stride_frames": 5,
+   "row_median_prefill_conf": 0.472,
+   "rule": {
+    "prefill_conf_min": 0.442,
+    "prefill_lowconf_max": 0.05,
+    "prefill_oof_max": 0.05,
+    "prefill_cb0_longest_run_max": 8,
+    "prefill_cb0_distinct_min": 6,
+    "b_words_first_13_frames_min": 2,
+    "b_words_first_26_frames_min": 3,
+    "tokens_26_150_lowconf_max": 0.308,
+    "tokens_26_150_oof_max": 0.059
+   },
+   "n_passing": 7,
+   "passing_starts_first10": [
+    760,
+    765,
+    3370,
+    3375,
+    3380,
+    3385,
+    4290
+   ],
+   "chosen": {
+    "s": 760,
+    "pf_conf": 0.5553,
+    "pf_low": 0.0245,
+    "pf_oof": 0.049,
+    "pf_cb0rep": 0.44,
+    "pf_cb0dist": 13,
+    "pf_maxrun": 5,
+    "w_conf": 0.4825,
+    "w_low": 0.1316,
+    "w_oof": 0.0091,
+    "w_cb0rep": 0.74,
+    "nw_pf": 9,
+    "nw_1s": 6,
+    "nw_win": 38,
+    "first_word_tok": 1
+   }
+  },
+  "real_pose_stats": {
+   "scorer": "posefix/score/score.py definitions, window decoded from its token 0, denormalised with the conversation frame 0 above",
+   "new": {
+    "prefill_tokens_0_26": {
+     "oof_pct": 4.9,
+     "conf": 0.555,
+     "lowconf_pct": 2.5,
+     "cb0_repeat_pct": 44.0,
+     "cb0_distinct": 13
+    },
+    "tokens_26_150": {
+     "oof_pct": 0.9,
+     "conf": 0.482,
+     "lowconf_pct": 13.2,
+     "cb0_repeat_pct": 74.0,
+     "cb0_distinct": 14
+    }
+   },
+   "original_0_150": {
+    "prefill_tokens_0_26": {
+     "oof_pct": 3.9,
+     "conf": 0.335,
+     "lowconf_pct": 55.9,
+     "cb0_repeat_pct": 60.0,
+     "cb0_distinct": 10
+    },
+    "tokens_26_150": {
+     "oof_pct": 8.7,
+     "conf": 0.425,
+     "lowconf_pct": 29.0,
+     "cb0_repeat_pct": 67.5,
+     "cb0_distinct": 34
+    }
+   }
+  },
+  "built": "2026-10-28 recut"
+ },
+ "raw_codes": {
+  "what": "B Mimi codes swapped to the RAW s2h-m1 lane codes (raw-lane mimi-stream-v5, lufs23-local; = what 33111 pdxraw trained on as B, POSEDUP_RAW_CODES=1, RawRows rule); everything else = openings-sam byte for byte",
+  "row_map": "/data/home/amartyavarma/ppm/aloe-ft-32-samsep/data/row_map.json",
+  "raw_stores": "/data/home/amartyavarma/qwen-1ch-data/s2h-m1/stores",
+  "raw_digests": [
+   "c1c3b2517152741137cc4bb72dd6bdbb",
+   "09bdd43fef84574175caacf4abdddd1e",
+   "ecb1c731e8989b3f2e1b5266b51ea0fd",
+   "3b16fb8dd2660a2e8c1fe32c0d361d7b"
+  ],
+  "mimi_local": {
+   "raw_node": "m1n0",
+   "raw_row": 1971,
+   "sam_row": 1950,
+   "side": "assistant",
+   "frames": [
+    760,
+    910
+   ],
+   "sha256_int64": "7ea0a295e43f714486dda4c22d62704d898d69510806b18e9dd791a1ed61b8b7",
+   "cb0_frac_differs_from_sam": 0.3467
+  },
+  "voice_clip": {
+   "raw_node": "m1n0",
+   "raw_row": 1971,
+   "sam_row": 1950,
+   "side": "assistant",
+   "frames": [
+    4696,
+    4821
+   ],
+   "sha256_int64": "dca7238229420a238efb9b0384558ea79649cd2ea799a6ac968ff1668873a5e9",
+   "cb0_frac_differs_from_sam": 0.32
+  },
+  "built_from": "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/openings-sam/06_74807fe0"
+ }
+}

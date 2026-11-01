@@ -1,0 +1,90 @@
+[cfg-diff 26467] resolved config vs 26467 (/data/home/amartyavarma/ppm/aloe-ft-32-samsep/plan/ref_cfg_26467.json): 89 keys differ (report only), every other key of 230 identical
+  accum.aloe_ranks: 26467 64 -> this 32
+  accum.host_ranks.slinky-11: 26467 <absent> -> this 8
+  accum.host_ranks.slinky-12: 26467 <absent> -> this 8
+  accum.host_ranks.slinky-13: 26467 <absent> -> this 8
+  accum.host_ranks.slinky-14: 26467 <absent> -> this 8
+  accum.host_ranks.slinky-15: 26467 <absent> -> this 8
+  accum.host_ranks.slinky-16: 26467 <absent> -> this 8
+  accum.host_ranks.slinky-17: 26467 <absent> -> this 8
+  accum.host_ranks.slinky-19: 26467 <absent> -> this 8
+  accum.physical_world: 26467 128 -> this 64
+  accum.slots: 26467 1 -> this 2
+  accum.zoom_ranks: 26467 64 -> this 32
+  clip.decp_bb: 26467 <absent> -> this 1.0
+  clip.tower_p: 26467 <absent> -> this 1.0
+  control_dir: 26467 /data/home/amartyavarma/ppm/aloe-zoom-cotrain/control -> this /data/home/amartyavarma/ppm/poseduplex-raw/control
+  cotrain.aloe_hosts: 26467 ['slinky-5', 'slinky-6', 'slinky-8', 'slinky-10', 'slinky-11', 'slinky-16', 'slinky-17', 'slinky-19'] -> this ['slinky-11', 'slinky-12', 'slinky-13', 'slinky-14']
+  cotrain.zoom_pose: 26467 <absent> -> this noop: kind pose, pdepth -1, pcb0 -100, no pose frames; zero roots hv_p / zb; dec_p joined with zeros
+  dec_p.clip: 26467 <absent> -> this 1.0
+  dec_p.k: 26467 <absent> -> this 1
+  dec_p.lr: 26467 <absent> -> this 2e-05
+  dec_p_sched.horizon: 26467 <absent> -> this 424
+  dec_p_sched.min_lr_rate: 26467 <absent> -> this 0.0
+  dec_p_sched.s3_sched: 26467 <absent> -> this wsd
+  dec_p_sched.warmup: 26467 <absent> -> this 14
+  dec_p_sched.wsd_decay_end: 26467 <absent> -> this 424
+  dec_p_sched.wsd_decay_start: 26467 <absent> -> this 14
+  dec_p_sched.wsd_floor: 26467 <absent> -> this 0.0
+  dec_p_sched.wsd_shape: 26467 <absent> -> this linear
+  dec_sched.horizon: 26467 253 -> this 424
+  dec_sched.warmup: 26467 8 -> this 14
+  dec_sched.wsd_decay_end: 26467 253 -> this 424
+  dec_sched.wsd_decay_start: 26467 8 -> this 14
+  decp_bb_alpha: 26467 <absent> -> this 1.0
+  decp_bb_link: 26467 <absent> -> this 1
+  export: 26467 /data/home/amartyavarma/ppm/aloe-zoom-cotrain/export-253 -> this /data/home/amartyavarma/ppm/poseduplex-raw/export-poseduplex-raw-424
+  export_scratch_floor_gb: 26467 <absent> -> this 30.0
+  export_steps: 26467 [42, 84, 126, 169, 211] -> this [70, 141, 211, 283, 354]
+  flac_root: 26467 /scratch/amartyavarma/aloe-m1vox-ft/flac -> this /scratch/amartyavarma/aloe-ft-samsep/flac
+  init: 26467 /data/home/amartyavarma/ppm/ckpt-weka/ppm-v1/w-15973 -> this /scratch/amartyavarma/poseduplex-init/w-18100
+  local_export_root: 26467 /scratch/amartyavarma/aloe-zoom-cotrain/exports -> this /scratch/amartyavarma/poseduplex-raw/exports
+  log_root: 26467 /data/home/amartyavarma/ppm/aloe-zoom-cotrain/runs -> this /data/home/amartyavarma/ppm/poseduplex-raw/runs
+  lr.decp_bb: 26467 <absent> -> this 1e-05
+  lr.tower_p: 26467 <absent> -> this 1.5e-05
+  m1vox_index: 26467 /data/home/amartyavarma/ppm/aloe-m1vox-ft/plan/M1VOX_INDEX.json -> this /data/home/amartyavarma/ppm/aloe-ft-32-samsep/data/plan/M1VOX_INDEX_samsep.json
+  model_nopose: 26467 True -> this False
+  posedup.clean_target: 26467 <absent> -> this /data/home/amartyavarma/ppm/poseduplex-raw/data/CLEAN_TARGET.json
+  posedup.clean_target_sha: 26467 <absent> -> this 888b71a589c5103ee504a99fa1170caac4c2655cdde782d709d0644b17c8ec75
+  posedup.epoch_seed: 26467 <absent> -> this 20261011
+  posedup.items: 26467 <absent> -> this pose_ok
+  posedup.plan_digest: 26467 <absent> -> this 7da6116e9f61e36b
+  posedup.pose: 26467 <absent> -> this 1
+  posedup.pose_band_drop_items: 26467 <absent> -> this 12
+  posedup.pose_band_mask: 26467 <absent> -> this 1
+  posedup.pose_band_mask_dir: 26467 <absent> -> this /data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/data/bandmask
+  posedup.pose_band_mask_input: 26467 <absent> -> this 0
+  posedup.pose_index: 26467 <absent> -> this /data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/data/POSE_INDEX.json
+  posedup.pose_index_sha: 26467 <absent> -> this 7114d5a04f43778b29244e2ef1867d6d960d619f1515bf3c25f4b7f155f8d8a1
+  posedup.pose_light_frac: 26467 <absent> -> this 1.0
+  posedup.pose_seed_tag: 26467 <absent> -> this 36947
+  posedup.pose_sha_every_read: 26467 <absent> -> this 1
+  posedup.pose_src: 26467 <absent> -> this aloe-handover-full/DATA/files/none/<session>/<seg>/w00.SPEAKER_0N.pose_tokens.npy (B side, in place)
+  posedup.raw_codes: 26467 <absent> -> this 1
+  posedup.raw_digests: 26467 <absent> -> this ['c1c3b2517152741137cc4bb72dd6bdbb', '09bdd43fef84574175caacf4abdddd1e', 'ecb1c731e8989b3f2e1b5266b51ea0fd', '3b16fb8dd2660a2e8c1fe32c0d361d7b']
+  posedup.raw_row_map: 26467 <absent> -> this /data/home/amartyavarma/ppm/aloe-ft-32-samsep/data/row_map.json
+  posedup.raw_src: 26467 <absent> -> this s2h-m1 raw-lane mimi-stream-v5 codes of the mapped row (= job 26232's); rows / pose / plan = the sam-sep stores'
+  posedup.raw_stores: 26467 <absent> -> this /data/home/amartyavarma/qwen-1ch-data/s2h-m1/stores
+  posedup.speech_light_frac: 26467 <absent> -> this 0.1
+  posedup.voice_rule: 26467 <absent> -> this v2_30
+  rawgain_index: 26467 /data/home/amartyavarma/ppm/aloe-v2vox-raw/plan/RAWGAIN.json -> this /data/home/amartyavarma/ppm/aloe-ft-32-samsep/data/plan/RAWGAIN_samsep.json
+  rawgain_sha: 26467 2acb4c7e4fce2c9e -> this e2e679c638ea8f3a
+  resume.root: 26467 /scratch/amartyavarma/aloe-zoom-cotrain/resume -> this /scratch/amartyavarma/poseduplex-raw/saves
+  run_tag: 26467 ppm-aloe-zoom-cotrain-j26467 -> this ppm-aloe-poseduplex-raw-j33111
+  samsep.digests: 26467 <absent> -> this ['7318ffb3ea75cbcc3ff48b63b6cf8b88', '31ecb2273542310096936c0baf49efa8', '1759200f7818c6017dfb6a46e37fa5df', '611b2e7edb1503cc600a6489e49dcf40']
+  samsep.expect_eval_micros: 26467 <absent> -> this 316
+  samsep.expect_train_micros: 26467 <absent> -> this 27132
+  samsep.rawgain_plan_digest: 26467 <absent> -> this d1a3e3721328da0a
+  samsep.row_map: 26467 <absent> -> this /data/home/amartyavarma/ppm/aloe-ft-32-samsep/data/row_map.json
+  samsep.stores_src: 26467 <absent> -> this /data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores
+  sched.horizon: 26467 253 -> this 424
+  sched.warmup: 26467 8 -> this 14
+  sched.wsd_decay_end: 26467 253 -> this 424
+  sched.wsd_decay_start: 26467 8 -> this 14
+  steps: 26467 253 -> this 424
+  stores: 26467 ['/scratch/amartyavarma/aloe-ft/stores/m1n0', '/scratch/amartyavarma/aloe-ft/stores/m1n1', '/scratch/amartyavarma/aloe-ft/stores/m1n2', '/scratch/amartyavarma/aloe-ft/stores/m1n3'] -> this ['/data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores/m1n0', '/data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores/m1n1', '/data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores/m1n2', '/data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores/m1n3']
+  vadapter.init: 26467 /data/home/amartyavarma/ppm/aloe-v2vox-asr-w15973/adapter-init/asrppm-w15973-w-1441 -> this /scratch/amartyavarma/poseduplex-init/w-18100
+  vadapter.sha_expect: 26467 2b7c543cad150d96 -> this 
+  w_pcb: 26467 <absent> -> this 1.0
+  w_pcb0: 26467 <absent> -> this 1.0
+  warmup: 26467 8 -> this 14

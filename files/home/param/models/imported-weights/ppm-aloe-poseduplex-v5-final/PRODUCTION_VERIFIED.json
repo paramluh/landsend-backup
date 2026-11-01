@@ -1,0 +1,11 @@
+{
+  "repo": "InternalCan/ppm-aloe-poseduplex-v5-final",
+  "revision": "8cc4375d9c76c0c68ab48a9ff67da5644bb51544",
+  "root": "/home/param/models/ppm-aloe-poseduplex-v5-final",
+  "files_total": 67,
+  "files_verified": 67,
+  "bytes_verified": 88648895624,
+  "host": "landsend-0",
+  "verified_utc": "2026-10-29T08:37:39Z",
+  "verification": "HF LFS SHA-256 or Git blob SHA-1, every export file"
+}

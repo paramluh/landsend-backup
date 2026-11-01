@@ -1,0 +1,30 @@
+{
+ "new": "/data/home/amartyavarma/ppm/ckpt-infer/ppm-v1/local-17850",
+ "ref": "/data/home/amartyavarma/ppm/ckpt-infer/ppm-v1/local-17641",
+ "fail": [],
+ "files": 129,
+ "tensors": 195444,
+ "elements": 44175900672,
+ "meta_differ_keys": [
+  "src",
+  "step",
+  "run_tag",
+  "cfg",
+  "save_time",
+  "made"
+ ],
+ "meta_new": {
+  "format": "ppm-local-bf16-shards-v1",
+  "src": "hf://InternalCan/ppm-v1-c@c9b2213751cb3f2ede1dce2c5b9ed275b5cc3ca2/dcp-17850",
+  "step": 17850,
+  "world": 128,
+  "run_tag": "ppm-v1-j27653",
+  "run_base": "ppm-v1",
+  "save_time": "10-22 22:28:51 PT",
+  "made": "2026-10-27 22:58:03 UTC"
+ },
+ "complete": "17850",
+ "listing_equal": true,
+ "ok": true,
+ "secs": 801.5
+}

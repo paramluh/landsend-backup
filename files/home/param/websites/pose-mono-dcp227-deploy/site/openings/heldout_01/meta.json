@@ -1,0 +1,42 @@
+{
+  "label": "Held-out clip 01",
+  "person_id": "heldout_01",
+  "kind": "raw-xabi-heldout",
+  "split": "eval",
+  "recording_id": "56a7b2ec313db5a206552cdfd31157715cf482c5",
+  "source_start_seconds": 424.08,
+  "T": 752,
+  "frame_hz": 12.5,
+  "sources": {
+    "pose_tokens": {
+      "frame0": {
+        "fields": {
+          "frame0_root": [
+            0.5211588144302368,
+            0.50152587890625
+          ],
+          "frame0_width": 0.8941650390625,
+          "orig_h": 480.0,
+          "orig_w": 256.0,
+          "global_state0": [
+            0.5211588144302368,
+            0.50152587890625,
+            0.8941650390625
+          ],
+          "frame0_ok": true,
+          "yx_conf_pixels_shape": [
+            133,
+            3
+          ]
+        }
+      },
+      "path": "/home/param/runs/pose-runs/heldout-comparison-20261028/clip-01/reference-codes.npz",
+      "sha256": "a956a781fe2175d61365713e7be06b5a20a51b4c76c07363f7aec388ea2bb6d3"
+    },
+    "words": {
+      "path": "/home/param/runs/pose-runs/heldout-comparison-20261028/clip-01/words.json",
+      "sha256": "0727e9ff04a40520e58ce347896ca3f3e3694c7ab1b548704884785dd6fe5d6c"
+    }
+  },
+  "avatar_available": true
+}

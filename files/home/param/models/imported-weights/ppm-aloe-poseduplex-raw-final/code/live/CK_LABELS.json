@@ -1,0 +1,32 @@
+{
+ "/data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/export-poseduplex-v5-498": {
+  "label": "Aloe pose-duplex FT (v5, export-498)",
+  "prompt": "voice_clip_only",
+  "preset_codes": "samsep",
+  "default_preset": "aloe-1-1648-0"
+ },
+ "/scratch/amartyavarma/aloe-posedup-live/export-333": {
+  "label": "Aloe pose-duplex FT (v5, export-333, intermediate)",
+  "prompt": "voice_clip_only",
+  "preset_codes": "samsep",
+  "default_preset": "aloe-1-1648-0"
+ },
+ "/scratch/amartyavarma/aloe-posedup-live/export-498": {
+  "label": "Aloe pose-duplex FT (v5, export-498)",
+  "prompt": "voice_clip_only",
+  "preset_codes": "samsep",
+  "default_preset": "aloe-1-1648-0"
+ },
+ "/scratch/amartyavarma/aloe-posedup-live/export-498-dcp": {
+  "label": "Aloe pose-duplex FT (v5, export-498)",
+  "prompt": "voice_clip_only",
+  "preset_codes": "samsep",
+  "default_preset": "aloe-1-1648-0"
+ },
+ "/data/home/amartyavarma/ppm/poseduplex-raw/export-poseduplex-raw-211": {
+  "label": "pose duplex RAW codes + zoom, 1 epoch (33111 export-211)",
+  "prompt": "voice_clip_only",
+  "preset_codes": "raw",
+  "default_preset": "aloe-1-1648-0"
+ }
+}

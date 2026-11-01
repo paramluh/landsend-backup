@@ -1,0 +1,25 @@
+{
+ "base": "/data/home/amartyavarma/ppm/ckpt-infer/ppm-v1/local-17850",
+ "mods": "none",
+ "h_tower": 2560,
+ "h_trunk": 5120,
+ "ok": true,
+ "fail": [],
+ "base_info": {
+  "format": "ppm-local-bf16-shards-v1",
+  "world": 128,
+  "step": 17850,
+  "run_tag": "ppm-v1-j27653"
+ },
+ "n_keys_base": 2150,
+ "n_keys_want": 2150,
+ "missing": [],
+ "n_missing": 0,
+ "extra": [],
+ "n_extra": 0,
+ "shape_mismatch": [],
+ "n_shape_mismatch": 0,
+ "non_bf16": [],
+ "n_non_bf16": 0,
+ "secs": 67.6
+}

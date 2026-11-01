@@ -1,0 +1,14 @@
+{
+ "kind": "1ch",
+ "ck": "/data/home/amartyavarma/qwen-1ch/stage2/ckpt-weka/q32-s2-1ch-plainpt-noadapt-hiLR-lrt3e-5-br1150-lrdown-j9920/w-1190",
+ "step": 1190,
+ "run_tag": "q32-s2-1ch-plainpt-noadapt-hiLR-lrt3e-5-br1150-lrdown-j9920",
+ "mixrope": false,
+ "frame_fix": true,
+ "system": null,
+ "gate": {
+  "verdict": "PASS",
+  "attn": "varlen",
+  "s": 55.9
+ }
+}

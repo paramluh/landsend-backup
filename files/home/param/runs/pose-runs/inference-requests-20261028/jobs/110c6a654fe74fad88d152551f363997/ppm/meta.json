@@ -1,0 +1,271 @@
+{
+  "input": "cache",
+  "cache": "/home/param/datasets/xabi-v2pure-cache",
+  "clip_index": 155325,
+  "row_key": "ALOE/aloe-v2pure/56a7b2ec313db5a206552cdfd31157715cf482c5/c00010",
+  "cache_key": "56a7b2ec313db5a206552cdfd31157715cf482c5/speaker_2/000011",
+  "split": "eval",
+  "source_span": [
+    0,
+    52
+  ],
+  "transcript": "he's a. It really actually wasn't his fault. So that's kind of what I was touching",
+  "words": [
+    {
+      "text": "he's",
+      "start": 0.0,
+      "end": 0.16,
+      "start_frame": 0,
+      "end_frame": 2,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "a.",
+      "start": 0.16,
+      "end": 0.32,
+      "start_frame": 2,
+      "end_frame": 4,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "It",
+      "start": 0.4,
+      "end": 0.8,
+      "start_frame": 5,
+      "end_frame": 10,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "really",
+      "start": 0.88,
+      "end": 1.2,
+      "start_frame": 11,
+      "end_frame": 15,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "actually",
+      "start": 1.2,
+      "end": 1.52,
+      "start_frame": 15,
+      "end_frame": 19,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "wasn't",
+      "start": 1.52,
+      "end": 1.84,
+      "start_frame": 19,
+      "end_frame": 23,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "his",
+      "start": 1.84,
+      "end": 2.0,
+      "start_frame": 23,
+      "end_frame": 25,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "fault.",
+      "start": 2.0,
+      "end": 2.4,
+      "start_frame": 25,
+      "end_frame": 30,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So",
+      "start": 2.4,
+      "end": 2.48,
+      "start_frame": 30,
+      "end_frame": 31,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "that's",
+      "start": 2.48,
+      "end": 2.64,
+      "start_frame": 31,
+      "end_frame": 33,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "kind",
+      "start": 2.64,
+      "end": 2.8,
+      "start_frame": 33,
+      "end_frame": 35,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "of",
+      "start": 2.8,
+      "end": 2.96,
+      "start_frame": 35,
+      "end_frame": 37,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "what",
+      "start": 2.96,
+      "end": 3.04,
+      "start_frame": 37,
+      "end_frame": 38,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "I",
+      "start": 3.04,
+      "end": 3.12,
+      "start_frame": 38,
+      "end_frame": 39,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "was",
+      "start": 3.12,
+      "end": 3.2,
+      "start_frame": 39,
+      "end_frame": 40,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "touching",
+      "start": 3.2,
+      "end": 3.44,
+      "start_frame": 40,
+      "end_frame": 43,
+      "in_overlap": false,
+      "truncated": false
+    }
+  ],
+  "voice_provenance": {
+    "mode": "explicit",
+    "source": "/home/param/pose-runs/controlled-comparison-20261028/clip-01/voice_clip.npy"
+  },
+  "recipe": "compact-all",
+  "frames": 52,
+  "seconds": 4.16,
+  "P": 132,
+  "conditioning_P": 109,
+  "transcript_span": [
+    109,
+    132
+  ],
+  "prefill_frames": 0,
+  "f0": 0,
+  "code_delay": 2,
+  "total_positions": 186,
+  "voice_clip_frames": 100,
+  "force_text": false,
+  "text_mode": "native",
+  "source_transcript": "he's a. It really actually wasn't his fault. So that's kind of what I was touching",
+  "supplied_transcript": "he's a. It really actually wasn't his fault. So that's kind of what I was touching",
+  "upfront_transcript": true,
+  "text_generation": "sampled; initial frame PAD when no prefill",
+  "transcript_end_token": 151681,
+  "voice_codes_sha256": "1579cb6d03bfc2f26212af3fed30f62bfdb86ce43f71173ecf231908c04b50b7",
+  "framewise_lane_sha256": null,
+  "checkpoint": {
+    "ck": "/home/param/models/transcript-pose/compact-all/export-200",
+    "step": 200,
+    "kind": "local",
+    "pose": true,
+    "decp_bb": true,
+    "decp_bb_alpha": 1.0,
+    "vadapter": false,
+    "ldev": [
+      "cuda:0",
+      "cuda:1"
+    ],
+    "layers_per_dev": {
+      "cuda:0": 37,
+      "cuda:1": 27
+    }
+  },
+  "sampling": {
+    "text_temp": 1.0,
+    "text_topk": 0,
+    "text_topp": 1.0,
+    "min_p": 0.0,
+    "min_p_rel": 0,
+    "freq_pen": 0.0,
+    "freq_win": 20,
+    "text_rep": 1.0,
+    "text_rep_win": 64,
+    "cb0_temp": 1.0,
+    "cb0_topk": 0,
+    "light_temp": 1.0,
+    "light_topk": 0,
+    "audio_rep_pen": 1.0,
+    "audio_rep_win": 64,
+    "allow_eob": 0,
+    "free_text": 0,
+    "word_greedy": 0,
+    "pose_temp": 1.0,
+    "pose_topk": 0,
+    "pose_light_temp": 1.0,
+    "pose_light_topk": 0,
+    "pose_cfg_on": 0,
+    "pose_cfg_s": 3.0,
+    "pose_cfg_cb0": 1,
+    "pose_cfg_light": 1,
+    "pose_cfg_speaking_only": 0,
+    "pose_rep_cb0": 1.0,
+    "pose_rep_light": 1.0,
+    "pose_rep_win": 0,
+    "adaptive_rep_on": 0,
+    "speak_window_frames": 25,
+    "audio_rep_speaking": 1.0,
+    "audio_rep_silent": 1.0,
+    "text_rep_speaking": 1.0,
+    "text_rep_silent": 1.0,
+    "pose_rep_cb0_speaking": 1.0,
+    "pose_rep_cb0_silent": 1.0,
+    "pose_rep_light_speaking": 1.0,
+    "pose_rep_light_silent": 1.0
+  },
+  "seed": 20261028,
+  "generated_lane_sha256": "39b68ae95d57ed0220a0f0d1d268c560d5f29d7de0d5a470df45865554548d01",
+  "batch_size": 1,
+  "batch_row": 0,
+  "batch_clip_indices": [
+    155325
+  ],
+  "rng_policy": "per-instance per-modality generators; row-wise [1,vocab] multinomial; native text sampling",
+  "prefill_seconds": 0.34766387939453125,
+  "generation_seconds": 3.243654727935791,
+  "ms_per_step": 60.06768014695909,
+  "ground_truth_generation_media": false,
+  "fixed_duration": true,
+  "peak_gib": {
+    "cuda:0": 50.9187536239624,
+    "cuda:1": 38.61023998260498
+  },
+  "audio_stats": {
+    "s": 4.16,
+    "rms": 0.0432,
+    "rms_dbfs": -27.3,
+    "peak": 0.5091,
+    "clip_frac": 0.0,
+    "silent_frac_100ms": 0.39
+  },
+  "wall_seconds": 46.475223779678345
+}

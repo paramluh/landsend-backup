@@ -1,0 +1,64 @@
+resolved cfg diff job 30074 (poseduplex) -> poseduplex-raw (cfg_dry, rank 0): 63 of 234 keys differ
+accum.aloe_ranks: 64 -> 32
+accum.host_ranks.slinky-1: 8 -> <absent>
+accum.host_ranks.slinky-11: <absent> -> 8
+accum.host_ranks.slinky-12: <absent> -> 8
+accum.host_ranks.slinky-16: <absent> -> 8
+accum.host_ranks.slinky-19: <absent> -> 8
+accum.host_ranks.slinky-2: 8 -> <absent>
+accum.host_ranks.slinky-6: 8 -> <absent>
+accum.host_ranks.slinky-7: 8 -> <absent>
+accum.slots: 1 -> 2
+accum.zoom_ranks: 0 -> 32
+control_dir: /data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/control -> /data/home/amartyavarma/ppm/poseduplex-raw/control
+cotrain.aloe_hosts: <absent> -> ['slinky-11', 'slinky-12', 'slinky-13', 'slinky-14']
+cotrain.aloe_ranks: <absent> -> 0
+cotrain.group_mode: aloe_only -> hosts
+cotrain.w_zoom: <absent> -> 1.0
+cotrain.zoom_cap: <absent> -> 7500
+cotrain.zoom_chat_eob: <absent> -> True
+cotrain.zoom_chat_side: <absent> -> assistant
+cotrain.zoom_hf_repo: <absent> -> InternalCan/zoom-strangers-5k
+cotrain.zoom_logical_world: <absent> -> 64
+cotrain.zoom_plan_seed: <absent> -> 20261021
+cotrain.zoom_pose: <absent> -> noop: kind pose, pdepth -1, pcb0 -100, no pose frames; zero roots hv_p / zb; dec_p joined with zeros
+cotrain.zoom_seed_off.eval: <absent> -> 7100000000
+cotrain.zoom_seed_off.train: <absent> -> 7000000000
+cotrain.zoom_sha256.eval: <absent> -> afc014d9315e68f94ea3
+cotrain.zoom_sha256.train: <absent> -> 6c40f7707dd629fd17b3
+cotrain.zoom_src: <absent> -> /data/home/amartyavarma/zoom-charisma/full-5k
+cotrain.zoom_table: <absent> -> /data/home/amartyavarma/ppm/aloe-zoom-cotrain/plan/zoom_table.npz
+dec_p_sched.horizon: 498 -> 424
+dec_p_sched.warmup: 16 -> 14
+dec_p_sched.wsd_decay_end: 498 -> 424
+dec_p_sched.wsd_decay_start: 16 -> 14
+dec_sched.horizon: 498 -> 424
+dec_sched.warmup: 16 -> 14
+dec_sched.wsd_decay_end: 498 -> 424
+dec_sched.wsd_decay_start: 16 -> 14
+export: /data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/export-poseduplex-v5-498 -> /data/home/amartyavarma/ppm/poseduplex-raw/export-poseduplex-raw-424
+export_steps: [83, 165, 248, 333, 415] -> [70, 141, 211, 283, 354]
+local_export_root: /scratch/amartyavarma/aloe-ft-32-samsep/exports-poseduplex-v5 -> /scratch/amartyavarma/poseduplex-raw/exports
+log_root: /data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/runs -> /data/home/amartyavarma/ppm/poseduplex-raw/runs
+posedup.clean_target: <absent> -> /data/home/amartyavarma/ppm/poseduplex-raw/data/CLEAN_TARGET.json
+posedup.clean_target_sha: <absent> -> 888b71a589c5103ee504a99fa1170caac4c2655cdde782d709d0644b17c8ec75
+posedup.items: all -> pose_ok
+posedup.plan_digest: 2275f1eab21f3326 -> 7da6116e9f61e36b
+posedup.pose_band_drop_items: <absent> -> 12
+posedup.pose_band_mask: <absent> -> 1
+posedup.pose_band_mask_dir: <absent> -> /data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/data/bandmask
+posedup.pose_band_mask_input: <absent> -> 0
+posedup.raw_codes: <absent> -> 1
+posedup.raw_digests: <absent> -> ['c1c3b2517152741137cc4bb72dd6bdbb', '09bdd43fef84574175caacf4abdddd1e', 'ecb1c731e8989b3f2e1b5266b51ea0fd', '3b16fb8dd2660a2e8c1fe32c0d361d
+posedup.raw_row_map: <absent> -> /data/home/amartyavarma/ppm/aloe-ft-32-samsep/data/row_map.json
+posedup.raw_src: <absent> -> s2h-m1 raw-lane mimi-stream-v5 codes of the mapped row (= job 26232's); rows / pose / plan = the sam-sep stores'
+posedup.raw_stores: <absent> -> /data/home/amartyavarma/qwen-1ch-data/s2h-m1/stores
+resume.root: /scratch/amartyavarma/aloe-ft-32-samsep/saves-poseduplex -> /scratch/amartyavarma/poseduplex-raw/saves
+run_tag: ppm-aloe-poseduplex-v5-jDRY30074 -> ppm-aloe-poseduplex-raw-jDRYFINAL
+samsep.expect_train_micros: 31796 -> 27132
+sched.horizon: 498 -> 424
+sched.warmup: 16 -> 14
+sched.wsd_decay_end: 498 -> 424
+sched.wsd_decay_start: 16 -> 14
+steps: 498 -> 424
+warmup: 16 -> 14

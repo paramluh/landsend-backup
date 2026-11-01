@@ -1,0 +1,18 @@
+python 3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]
+platform Linux-6.8.0-1061-nvidia-x86_64-with-glibc2.35
+torch 2.8.0+cu128
+torch.version.cuda 12.8
+cudnn 91002
+nccl 2.27.3
+triton 3.4.0
+transformers 5.13.0
+tokenizers 0.22.2
+numpy 2.2.6
+aiohttp 3.14.3
+huggingface_hub 1.28.0
+safetensors 0.8.0
+soundfile 0.14.0
+pyloudnorm ?
+scipy 1.15.3
+pyarrow 25.0.1
+GPUs used by the demo: 2 x NVIDIA H100 80GB HBM3 per backend (slinky cluster); training: 64 x H100 80GB (8 nodes x 8)

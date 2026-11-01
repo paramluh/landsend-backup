@@ -1,0 +1,9 @@
+{
+  "repo": "InternalCan/ppm-pose6-mono17850-final",
+  "revision": "71c9b718e1d927e0b26d89a9b225459fc3270dc9",
+  "files_total": 69,
+  "files_verified": 69,
+  "bytes_verified": 88522383426,
+  "verified_at": 1793413832.9287171,
+  "verification": "HF LFS SHA256 or Git blob SHA1 for every file"
+}

@@ -1,0 +1,162 @@
+{
+ "aloe-1-1648-0": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Luke: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "aloe-0-9-0": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Mandy: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "aloe-0-609-1": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Nas: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "aloe-1-106-0": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Kathy: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "aloe-1-1142-1": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Portuguese: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "aloe-1-1408-0": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Brianna: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "aloe-1-1804-0": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Mohammed: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "aloe-2-1192-0": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Kathleen: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "aloe-3-378-0": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Jun: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "aloe-3-798-1": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Annabelle: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "aloe-3-1220-1": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Samuel: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "aloe-3-1434-1": {
+  "person": null,
+  "max_prefill_s": 0,
+  "reason": "Ruben: this voice's actor has no video on local disk (their source video is only in gs://aloe-app-recordings); avatar = default person until it is fetched"
+ },
+ "00_14b594aa": {
+  "person": "00_14b594aa",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 00_14b594aa: own studio bank + own 12 s video"
+ },
+ "01_ab63d745": {
+  "person": "01_ab63d745",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 01_ab63d745: own studio bank + own 12 s video"
+ },
+ "02_7ab994e5": {
+  "person": "02_7ab994e5",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 02_7ab994e5: own studio bank + own 12 s video"
+ },
+ "03_b437950e": {
+  "person": "03_b437950e",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 03_b437950e: own studio bank + own 12 s video"
+ },
+ "04_96cd17dc": {
+  "person": "04_96cd17dc",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 04_96cd17dc: own studio bank + own 12 s video"
+ },
+ "05_e25c6859": {
+  "person": "05_e25c6859",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 05_e25c6859: own studio bank + own 12 s video"
+ },
+ "06_74807fe0": {
+  "person": "06_74807fe0",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 06_74807fe0: own studio bank + own 12 s video"
+ },
+ "07_5d500dd8": {
+  "person": "07_5d500dd8",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 07_5d500dd8: own studio bank + own 12 s video"
+ },
+ "08_539e9577": {
+  "person": "08_539e9577",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 08_539e9577: own studio bank + own 12 s video"
+ },
+ "09_d9ef3c94": {
+  "person": "09_d9ef3c94",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 09_d9ef3c94: own studio bank + own 12 s video"
+ },
+ "10_27286bdd": {
+  "person": "10_27286bdd",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 10_27286bdd: own studio bank + own 12 s video"
+ },
+ "11_92acbbd0": {
+  "person": "11_92acbbd0",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 11_92acbbd0: own studio bank + own 12 s video"
+ },
+ "12_72cb45d3": {
+  "person": "12_72cb45d3",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 12_72cb45d3: own studio bank + own 12 s video"
+ },
+ "13_956c09af": {
+  "person": "13_956c09af",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 13_956c09af: own studio bank + own 12 s video"
+ },
+ "14_3a16ca65": {
+  "person": "14_3a16ca65",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 14_3a16ca65: own studio bank + own 12 s video"
+ },
+ "15_d1e1322c": {
+  "person": "15_d1e1322c",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 15_d1e1322c: own studio bank + own 12 s video"
+ },
+ "16_1aaba16c": {
+  "person": "16_1aaba16c",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 16_1aaba16c: own studio bank + own 12 s video"
+ },
+ "17_5486a66c": {
+  "person": "17_5486a66c",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 17_5486a66c: own studio bank + own 12 s video"
+ },
+ "18_1ffa9083": {
+  "person": "18_1ffa9083",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 18_1ffa9083: own studio bank + own 12 s video"
+ },
+ "19_47473a46": {
+  "person": "19_47473a46",
+  "max_prefill_s": 11.68,
+  "reason": "on-disk person 19_47473a46: own studio bank + own 12 s video"
+ }
+}

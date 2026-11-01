@@ -1,0 +1,287 @@
+PoseTokenizerModel(
+  (encoder): Encoder(
+    (init_conv): ParametrizedConv1d(
+      165, 1024, kernel_size=(1,), stride=(1,)
+      (parametrizations): ModuleDict(
+        (weight): ParametrizationList(
+          (0): _WeightNorm()
+        )
+      )
+    )
+    (init_norm): PermutedLayerNorm(
+      (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True, bias=True)
+    )
+    (init_act): SiLU()
+    (encoder_blocks): ModuleList(
+      (0): EncoderBlock(
+        (residual_blocks): ModuleList(
+          (0): ResidualBlock(
+            (units): ModuleList(
+              (0): ResidualUnit(
+                (conv1): CausalConv1d(
+                  (conv): ParametrizedConv1d(
+                    1024, 1024, kernel_size=(3,), stride=(1,)
+                    (parametrizations): ModuleDict(
+                      (weight): ParametrizationList(
+                        (0): _WeightNorm()
+                      )
+                    )
+                  )
+                )
+                (norm1): PermutedLayerNorm(
+                  (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True, bias=True)
+                )
+                (act1): SiLU()
+                (conv2): CausalConv1d(
+                  (conv): ParametrizedConv1d(
+                    1024, 1024, kernel_size=(3,), stride=(1,)
+                    (parametrizations): ModuleDict(
+                      (weight): ParametrizationList(
+                        (0): _WeightNorm()
+                      )
+                    )
+                  )
+                )
+                (norm2): PermutedLayerNorm(
+                  (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True, bias=True)
+                )
+                (act2): SiLU()
+              )
+            )
+            (act_final): SiLU()
+          )
+        )
+      )
+      (1): EncoderBlock(
+        (channel_proj_conv): ParametrizedConv1d(
+          1024, 2048, kernel_size=(1,), stride=(1,)
+          (parametrizations): ModuleDict(
+            (weight): ParametrizationList(
+              (0): _WeightNorm()
+            )
+          )
+        )
+        (channel_proj_norm): PermutedLayerNorm(
+          (layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True, bias=True)
+        )
+        (channel_proj_act): SiLU()
+        (residual_blocks): ModuleList(
+          (0): ResidualBlock(
+            (units): ModuleList(
+              (0): ResidualUnit(
+                (conv1): CausalConv1d(
+                  (conv): ParametrizedConv1d(
+                    2048, 2048, kernel_size=(3,), stride=(1,)
+                    (parametrizations): ModuleDict(
+                      (weight): ParametrizationList(
+                        (0): _WeightNorm()
+                      )
+                    )
+                  )
+                )
+                (norm1): PermutedLayerNorm(
+                  (layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True, bias=True)
+                )
+                (act1): SiLU()
+                (conv2): CausalConv1d(
+                  (conv): ParametrizedConv1d(
+                    2048, 2048, kernel_size=(3,), stride=(1,)
+                    (parametrizations): ModuleDict(
+                      (weight): ParametrizationList(
+                        (0): _WeightNorm()
+                      )
+                    )
+                  )
+                )
+                (norm2): PermutedLayerNorm(
+                  (layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True, bias=True)
+                )
+                (act2): SiLU()
+              )
+            )
+            (act_final): SiLU()
+          )
+        )
+        (downsample_conv): CausalConv1d(
+          (conv): ParametrizedConv1d(
+            2048, 2048, kernel_size=(3,), stride=(2,)
+            (parametrizations): ModuleDict(
+              (weight): ParametrizationList(
+                (0): _WeightNorm()
+              )
+            )
+          )
+        )
+        (downsample_norm): PermutedLayerNorm(
+          (layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True, bias=True)
+        )
+        (downsample_act): SiLU()
+      )
+    )
+    (bottleneck_conv): ParametrizedConv1d(
+      2048, 2048, kernel_size=(1,), stride=(1,)
+      (parametrizations): ModuleDict(
+        (weight): ParametrizationList(
+          (0): _WeightNorm()
+        )
+      )
+    )
+  )
+  (decoder): Decoder(
+    (bottleneck_conv): ParametrizedConv1d(
+      2048, 2048, kernel_size=(1,), stride=(1,)
+      (parametrizations): ModuleDict(
+        (weight): ParametrizationList(
+          (0): _WeightNorm()
+        )
+      )
+    )
+    (bottleneck_norm): PermutedLayerNorm(
+      (layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True, bias=True)
+    )
+    (bottleneck_act): SiLU()
+    (decoder_blocks): ModuleList(
+      (0): DecoderBlock(
+        (upsample): Upsample(scale_factor=2.0, mode='nearest')
+        (upsample_conv): CausalConv1d(
+          (conv): ParametrizedConv1d(
+            2048, 2048, kernel_size=(3,), stride=(1,)
+            (parametrizations): ModuleDict(
+              (weight): ParametrizationList(
+                (0): _WeightNorm()
+              )
+            )
+          )
+        )
+        (upsample_norm): PermutedLayerNorm(
+          (layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True, bias=True)
+        )
+        (upsample_act): SiLU()
+        (residual_blocks): ModuleList(
+          (0): ResidualBlock(
+            (units): ModuleList(
+              (0): ResidualUnit(
+                (conv1): CausalConv1d(
+                  (conv): ParametrizedConv1d(
+                    2048, 2048, kernel_size=(3,), stride=(1,)
+                    (parametrizations): ModuleDict(
+                      (weight): ParametrizationList(
+                        (0): _WeightNorm()
+                      )
+                    )
+                  )
+                )
+                (norm1): PermutedLayerNorm(
+                  (layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True, bias=True)
+                )
+                (act1): SiLU()
+                (conv2): CausalConv1d(
+                  (conv): ParametrizedConv1d(
+                    2048, 2048, kernel_size=(3,), stride=(1,)
+                    (parametrizations): ModuleDict(
+                      (weight): ParametrizationList(
+                        (0): _WeightNorm()
+                      )
+                    )
+                  )
+                )
+                (norm2): PermutedLayerNorm(
+                  (layer_norm): LayerNorm((2048,), eps=1e-05, elementwise_affine=True, bias=True)
+                )
+                (act2): SiLU()
+              )
+            )
+            (act_final): SiLU()
+          )
+        )
+        (channel_proj_conv): ParametrizedConv1d(
+          2048, 1024, kernel_size=(1,), stride=(1,)
+          (parametrizations): ModuleDict(
+            (weight): ParametrizationList(
+              (0): _WeightNorm()
+            )
+          )
+        )
+        (channel_proj_norm): PermutedLayerNorm(
+          (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True, bias=True)
+        )
+        (channel_proj_act): SiLU()
+      )
+      (1): DecoderBlock(
+        (residual_blocks): ModuleList(
+          (0): ResidualBlock(
+            (units): ModuleList(
+              (0): ResidualUnit(
+                (conv1): CausalConv1d(
+                  (conv): ParametrizedConv1d(
+                    1024, 1024, kernel_size=(3,), stride=(1,)
+                    (parametrizations): ModuleDict(
+                      (weight): ParametrizationList(
+                        (0): _WeightNorm()
+                      )
+                    )
+                  )
+                )
+                (norm1): PermutedLayerNorm(
+                  (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True, bias=True)
+                )
+                (act1): SiLU()
+                (conv2): CausalConv1d(
+                  (conv): ParametrizedConv1d(
+                    1024, 1024, kernel_size=(3,), stride=(1,)
+                    (parametrizations): ModuleDict(
+                      (weight): ParametrizationList(
+                        (0): _WeightNorm()
+                      )
+                    )
+                  )
+                )
+                (norm2): PermutedLayerNorm(
+                  (layer_norm): LayerNorm((1024,), eps=1e-05, elementwise_affine=True, bias=True)
+                )
+                (act2): SiLU()
+              )
+            )
+            (act_final): SiLU()
+          )
+        )
+      )
+    )
+    (final_conv): ParametrizedConv1d(
+      1024, 165, kernel_size=(1,), stride=(1,)
+      (parametrizations): ModuleDict(
+        (weight): ParametrizationList(
+          (0): _WeightNorm()
+        )
+      )
+    )
+  )
+  (quantizer): ResidualVectorQuantize(
+    (quantizers): ModuleList(
+      (0-31): 32 x VectorQuantize(
+        (in_proj): ParametrizedConv1d(
+          2048, 16, kernel_size=(1,), stride=(1,)
+          (parametrizations): ModuleDict(
+            (weight): ParametrizationList(
+              (0): _WeightNorm()
+            )
+          )
+        )
+        (out_proj): ParametrizedConv1d(
+          16, 2048, kernel_size=(1,), stride=(1,)
+          (parametrizations): ModuleDict(
+            (weight): ParametrizationList(
+              (0): _WeightNorm()
+            )
+          )
+        )
+        (codebook): Embedding(2048, 16)
+      )
+    )
+  )
+)
+
+Total parameters: 104,373,578
+Encoder parameters: 50,549,760
+Decoder parameters: 50,545,994
+Quantizer parameters: 3,277,824

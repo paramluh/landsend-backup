@@ -1,0 +1,47 @@
+{
+ "step": 999,
+ "prov": {
+  "chan_B_data_side": "assistant",
+  "row_key": "ALOE/s2handover-pose/00024c62-133e-4115-817e-d3f3a5416e47/seg00/c00"
+ },
+ "cards": {
+  "s1": {
+   "text": "",
+   "n_tokens": 0,
+   "clip": null
+  },
+  "s2": {
+   "text": "",
+   "n_tokens": 0,
+   "clip": null
+  }
+ },
+ "sampling": {
+  "text_temp": 1.0,
+  "text_topk": 50,
+  "audio_temp": 1.0,
+  "audio_topk": 30,
+  "pose_temp": 1.0,
+  "pose_topk": 30
+ },
+ "prompt_s": 10.0,
+ "gen_s": 30.0,
+ "order": [
+  {
+   "kind": "speech",
+   "spk": "s1"
+  },
+  {
+   "kind": "speech",
+   "spk": "s2"
+  }
+ ],
+ "gen_words": {
+  "s1": 36,
+  "s2": 36
+ },
+ "audio": {
+  "s1_gen": {},
+  "s2_gen": {}
+ }
+}

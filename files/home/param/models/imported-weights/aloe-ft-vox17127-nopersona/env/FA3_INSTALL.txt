@@ -1,0 +1,7 @@
+# FlashAttention-3 kernels used by the server: loaded BY FILE PATH (no pip package, no build step) by
+# code/ppm/aloe-m1vox-ft/code/vendor/pinned_fa3.py from $ALOE_FA3_DIR/build/torch28-cxx11-cu128-x86_64-linux/__init__.py.
+# Exact install (all 6 files of that build byte-identical to what the live demo serves with; sha256 in env/ASSETS_PINNED.json "fa3"):
+hf download kernels-community/vllm-flash-attn3 --revision 94e47890779e2a04d4994695f54a48057f0e8177 --include "build/torch28-cxx11-cu128-x86_64-linux/*" --local-dir "$ALOE_FA3_DIR"
+# Needs: torch 2.8.0+cu128 (env/pip_freeze.txt), Linux x86_64, Hopper GPUs (H100). Verify: "$ALOE_PY" -I code/release_tools/verify_assets.py --skip-weights
+# Provenance: the cluster copy was fetched at revision 905da40048cf96bb967d35c5bea4bf38a715ace0, which is no longer on the Hub; the v1
+# branch head 94e47890 (= main a92851c4 on 2026-10-25) carries the identical files (kernel source tag _vllm_flash_attn3_5630d32).

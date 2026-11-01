@@ -1,0 +1,37 @@
+{
+  "schema": "full-gt-student-weights-export-v1",
+  "repo": "InternalCan/full-gt-nine-ref-endpoint-unguided-20261020",
+  "source_run": "run-20261020-055010-607506",
+  "optimizer_state_included": false,
+  "critic_included": false,
+  "checkpoints": [
+    {
+      "student_updates": 2911,
+      "source_directory": "step-003061-d7752b2361f4",
+      "source_checkpoint_id": "78ed4705ae70448ea8232a685720a90f",
+      "counters": {
+        "rounds": 3061,
+        "warmup_step": 150,
+        "epoch_step": 2911,
+        "student_updates": 2911,
+        "critic_updates": 12244,
+        "student_rows_seen": 465760
+      },
+      "teacher_guidance_scale": 1.0,
+      "weights": [
+        {
+          "path": "step-002911/student.safetensors",
+          "source_filename": "student.safetensors",
+          "kind": "raw",
+          "bytes": 13964521376
+        },
+        {
+          "path": "step-002911/model_ema.safetensors",
+          "source_filename": "model_ema.safetensors",
+          "kind": "ema",
+          "bytes": 12988285752
+        }
+      ]
+    }
+  ]
+}

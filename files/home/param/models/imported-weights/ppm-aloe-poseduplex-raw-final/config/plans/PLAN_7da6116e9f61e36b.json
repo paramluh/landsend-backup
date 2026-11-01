@@ -1,0 +1,78 @@
+{
+ "knobs": {
+  "pose": 1,
+  "items": "pose_ok",
+  "voice_rule": "v2_30",
+  "pose_light_frac": 1.0,
+  "speech_light_frac": 0.1,
+  "epoch_seed": 20261011,
+  "pose_index": "/data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/data/POSE_INDEX.json",
+  "pose_index_sha": "7114d5a04f43778b29244e2ef1867d6d960d619f1515bf3c25f4b7f155f8d8a1",
+  "pose_sha_every_read": 1,
+  "pose_seed_tag": 36947,
+  "pose_src": "aloe-handover-full/DATA/files/none/<session>/<seg>/w00.SPEAKER_0N.pose_tokens.npy (B side, in place)",
+  "pose_band_mask": 1,
+  "pose_band_mask_input": 0,
+  "pose_band_mask_dir": "/data/home/amartyavarma/ppm/aloe-ft-32-samsep/poseduplex/data/bandmask",
+  "pose_band_drop_items": 12,
+  "raw_codes": 1,
+  "raw_stores": "/data/home/amartyavarma/qwen-1ch-data/s2h-m1/stores",
+  "raw_digests": [
+   "c1c3b2517152741137cc4bb72dd6bdbb",
+   "09bdd43fef84574175caacf4abdddd1e",
+   "ecb1c731e8989b3f2e1b5266b51ea0fd",
+   "3b16fb8dd2660a2e8c1fe32c0d361d7b"
+  ],
+  "raw_row_map": "/data/home/amartyavarma/ppm/aloe-ft-32-samsep/data/row_map.json",
+  "raw_src": "s2h-m1 raw-lane mimi-stream-v5 codes of the mapped row (= job 26232's); rows / pose / plan = the sam-sep stores'",
+  "clean_target": "/data/home/amartyavarma/ppm/poseduplex-raw/data/CLEAN_TARGET.json",
+  "clean_target_sha": "888b71a589c5103ee504a99fa1170caac4c2655cdde782d709d0644b17c8ec75"
+ },
+ "steps": 424,
+ "epoch_steps": 212,
+ "n_epochs": 2.0,
+ "plan_digest": "7da6116e9f61e36b",
+ "epoch0_digest": "f34b80af6cca9103",
+ "epoch0_is_29345": false,
+ "train_micros": 27132,
+ "dummy_micros": 4,
+ "eval_micros": 316,
+ "items_per_epoch": 13566,
+ "a_tracks": 13882,
+ "a_missing": 0,
+ "warmup_rule": 14,
+ "export_steps_rule": [
+  70,
+  141,
+  211,
+  283,
+  354
+ ],
+ "report": {
+  "steps": 424,
+  "epoch_steps": 212,
+  "n_epochs": 2.0,
+  "items_per_epoch": 13566,
+  "train_micros": 27132,
+  "dummy_micros": 4,
+  "epoch0": {
+   "micros": 13566,
+   "pose_ok": 13566,
+   "frac_pose_ok": 1.0,
+   "hours": 1835.8,
+   "pose_hours": 1835.8
+  },
+  "run": {
+   "micros": 27132,
+   "pose_ok": 27132,
+   "hours": 3671.6,
+   "pose_hours": 3671.6
+  },
+  "eval": {
+   "micros": 316,
+   "pose_ok": 279,
+   "hours": 42.6,
+   "pose_hours": 37.8
+  }
+ }
+}

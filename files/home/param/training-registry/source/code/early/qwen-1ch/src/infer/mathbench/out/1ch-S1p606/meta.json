@@ -1,0 +1,14 @@
+{
+ "kind": "1ch",
+ "ck": "/data/home/amartyavarma/qwen-1ch/train/ckpt-weka/q32-1ch-s0-lr2e-6-r288-w144-j4165/w-606",
+ "step": 606,
+ "run_tag": "q32-1ch-s0-lr2e-6-r288-w144-j4165",
+ "mixrope": false,
+ "frame_fix": true,
+ "system": null,
+ "gate": {
+  "verdict": "PASS",
+  "attn": "varlen",
+  "s": 85.2
+ }
+}

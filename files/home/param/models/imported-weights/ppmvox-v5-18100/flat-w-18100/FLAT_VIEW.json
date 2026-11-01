@@ -1,0 +1,12 @@
+{
+  "source": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100",
+  "flat_view": "/home/param/models/imported-weights/ppmvox-v5-18100/flat-w-18100",
+  "step": 18100,
+  "world": 128,
+  "rank_files": 128,
+  "metadata_source": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-0/meta.json",
+  "rep_source": "/home/param/models/imported-weights/ppmvox-v5-18100/w-18100/slinky-0/rep.pt",
+  "recorded_rep_sha256": "022db6fa5e4b3dfe7f6b527d56c91ff05727fc62a081e869575b29963004f43f",
+  "payload_converted": false,
+  "weights_rehashed": false
+}

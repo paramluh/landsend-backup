@@ -1,0 +1,11 @@
+{
+  "repo": "InternalCan/ppm-aloe-v2pure-main-17850-final",
+  "revision": "7beed89de7ca01803cf84ff2c4bff928322403c7",
+  "root": "/home/param/models/transcript-pose/xabi-original",
+  "files_total": 67,
+  "files_verified": 67,
+  "bytes_verified": 88382895539,
+  "host": "landsend-0",
+  "verified_utc": "2026-10-29T08:37:39Z",
+  "verification": "HF LFS SHA-256 or Git blob SHA-1, every export file"
+}

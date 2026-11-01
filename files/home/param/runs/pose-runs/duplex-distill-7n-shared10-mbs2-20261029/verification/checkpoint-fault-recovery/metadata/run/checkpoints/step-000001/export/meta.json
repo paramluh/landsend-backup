@@ -1,0 +1,46 @@
+{
+  "format": "ppm-local-bf16-shards-v1",
+  "storage_layout": "node-local-shards",
+  "step": 1,
+  "save_attempt": 0,
+  "world": 2,
+  "hosts": [
+    "landsend-0",
+    "landsend-0"
+  ],
+  "host": "landsend-0",
+  "run_dir": "/home/param/pose-runs/duplex-distill-7n-shared10-mbs2-20261029/verification/checkpoint-fault-recovery/metadata/run",
+  "run_tag": null,
+  "cfg": {
+    "checkpoint_reserve_gb": 0,
+    "keep_latest_optimizer_state": true
+  },
+  "files": [
+    {
+      "file": "rank0.pt",
+      "bytes": 1563,
+      "sha256": "3b83922a98bd9a71c064ec870e2477843da5787a96a4e47ba92a3534a61ac678",
+      "host": "landsend-0",
+      "rank": 0,
+      "section": "export"
+    },
+    {
+      "file": "rep.pt",
+      "bytes": 1549,
+      "sha256": "393f2996c38a2e0a6e5a8d680a4acd99641c3e84f0b41752d90f27fa4d0e9fc4",
+      "host": "landsend-0",
+      "section": "export"
+    },
+    {
+      "file": "rank1.pt",
+      "bytes": 1563,
+      "sha256": "e864568db046d4ab7acf606ddd694738d2d8db9399cce1401168f1f8d618c921",
+      "host": "landsend-0",
+      "rank": 1,
+      "section": "export"
+    }
+  ],
+  "pose": 0,
+  "decp_bb": 0,
+  "decp_bb_alpha": 1.0
+}

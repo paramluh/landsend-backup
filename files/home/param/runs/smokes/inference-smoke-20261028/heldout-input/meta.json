@@ -1,0 +1,61 @@
+{
+  "clip_index": 3142,
+  "clip": {
+    "shard": "eval",
+    "cache_index": 317,
+    "n": 57,
+    "swap": 0,
+    "rid": "118ff2f912e0bc315ead6b31c377af8c776ad70b",
+    "chunk": 5,
+    "store": 0,
+    "store_row": 3142,
+    "split": "eval",
+    "segment_id": "000005"
+  },
+  "duration_seconds": 4.56,
+  "source_span": [
+    0,
+    57
+  ],
+  "transcript": "Yeah, they also offer like like a year placement in jobs.",
+  "word_count": 11,
+  "conditioning_P": 117,
+  "aligned_P": 176,
+  "compact_P": 132,
+  "first_lane_token": 23336,
+  "provenance": {
+    "voice_drawn": 1,
+    "dropped_A": [
+      "speech"
+    ],
+    "clips": [
+      {
+        "track": "B",
+        "data_side": "assistant",
+        "src_key": "ALOE/aloe-v2pure/118ff2f912e0bc315ead6b31c377af8c776ad70b/c00013",
+        "src_chunk": 13,
+        "frames": [
+          16,
+          124
+        ],
+        "cov": 0.759
+      }
+    ],
+    "persona": [],
+    "persona_cut": 0,
+    "P": 117,
+    "row_key": "ALOE/aloe-v2pure/118ff2f912e0bc315ead6b31c377af8c776ad70b/c00005",
+    "swap": 0,
+    "chan_B_data_side": "assistant",
+    "chan_A": "empty",
+    "n_frames": 57,
+    "T": 176
+  },
+  "cache": "/home/param/datasets/xabi-v2pure-cache",
+  "tokenizer_path": "/home/param/models/ppm-811-17850-base-bf16/configs/Qwen3-32B",
+  "shard_columns": [
+    "key",
+    "n",
+    "words"
+  ]
+}

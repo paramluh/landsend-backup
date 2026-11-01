@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Sanitized, deduplicated orphan backup; checkpoints and Git histories have separate owners."""
-import argparse, collections, concurrent.futures, gzip, hashlib, io, json, os, re, shutil, socket, stat, subprocess, tarfile, time
+import argparse, collections, concurrent.futures, gzip, hashlib, io, json, os, re, shutil, socket, stat, subprocess, tarfile, tempfile, time
 from pathlib import Path
 
 BASE=Path('/home/param/outputs/landsend-backup-20261031/orphans')
@@ -158,8 +158,13 @@ def pack(rows,group):
                             elif p.suffix=='.gz' and p.name.endswith(('.json.gz','.jsonl.gz','.log.gz','.txt.gz')):
                                 data,n=sanitize(gzip.decompress(p.read_bytes()));data=gzip.compress(data,compresslevel=1,mtime=0);info.size=len(data);tar.addfile(info,io.BytesIO(data))
                             else:
+                                # A binary artifact may be replaced/truncated by a live worker.
+                                # Snapshot before emitting its tar header so a short read cannot
+                                # corrupt the remainder of the archive.
                                 n=0
-                                with p.open('rb') as f:tar.addfile(info,f)
+                                with tempfile.TemporaryFile(dir=output) as snapshot:
+                                    with p.open('rb') as f:shutil.copyfileobj(f,snapshot,4*1024**2)
+                                    info.size=snapshot.tell();snapshot.seek(0);tar.addfile(info,snapshot)
                             manifest.append({**r,'archived_bytes':info.size,'redactions':n})
                         except (OSError,EOFError,tarfile.TarError) as exc:
                             manifest.append({**r,'error':str(exc)})
@@ -179,9 +184,11 @@ def pack(rows,group):
     statuses.extend(f.result() for f in futures);upload_pool.shutdown()
     for p in [output/'aliases.json',*sorted(output.glob('*.files.json'))]:
         api.upload_file(path_or_fileobj=str(p),path_in_repo=f'{socket.gethostname()}/{group}/manifests/{p.name}',repo_id=HF_REPO,repo_type='dataset')
-    final={'state':'complete','hf_repo':HF_REPO,'group':group,'archives':statuses,'files':len(unique),'aliases':len(aliases),'completed_unix':time.time()}
-    atomic_json(done,final)
-    api.upload_file(path_or_fileobj=str(done),path_in_repo=f'{socket.gethostname()}/{group}/COMPLETE.json',repo_id=HF_REPO,repo_type='dataset')
+    errors=sum(r.get('errors',0) for r in all_records)
+    final={'state':'complete' if not errors else 'partial','errors':errors,'hf_repo':HF_REPO,'group':group,'archives':statuses,'files':len(unique),'aliases':len(aliases),'completed_unix':time.time()}
+    status_path=done if not errors else output/'PARTIAL.json'
+    atomic_json(status_path,final)
+    api.upload_file(path_or_fileobj=str(status_path),path_in_repo=f'{socket.gethostname()}/{group}/{status_path.name}',repo_id=HF_REPO,repo_type='dataset')
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('mode',choices=['gather','code','pack']);ap.add_argument('--group',default='artifacts',choices=['artifacts','datasets']);args=ap.parse_args()

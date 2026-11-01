@@ -1,0 +1,152 @@
+{
+ "person_id": "19_47473a46",
+ "package_id": "19_47473a46",
+ "kind": "s2handover-raw",
+ "mode": "samsep_conv_start",
+ "session": "4002929b-2ecb-4137-9e55-78c265575f3d",
+ "seg": "seg02",
+ "speaker": "SPEAKER_00",
+ "actor_uuid": "47473a46-1d74-41c0-9a77-7174ab5f96a5",
+ "llm_split": "train",
+ "legit_opening": true,
+ "T": 150,
+ "frame_hz": 12.5,
+ "recording_t0_s": 0.0,
+ "window_s": [
+  0.0,
+  12.0
+ ],
+ "sources": {
+  "mimi_local": {
+   "path": "/data/home/amartyavarma/qwen-1ch-data/s2h-m1-samsep/stores/m1n0/rows-00000-of-00001.codes_assistant.npy",
+   "rows": "row_in_shard 2114 [:, 0:150]",
+   "store_row": "ALOE/s2handover-none/4002929b-2ecb-4137-9e55-78c265575f3d/seg02/c00",
+   "store_node": "m1n0",
+   "node_row": 2114,
+   "side": "assistant",
+   "recipe": "stage2-handover sam-sep-v1 SAM-ISOLATED stream (SAM stack x3 + strict chunk rule) -> mimi-stream-v5 (kyutai/mimi@89091b3e, -23 LUFS pure gain over the whole stem, one stateful stream, 30 s calls, fp32, H100 with the L4 pin waived); the codes the duplex export-498 trained on as B (s2h-m1-samsep stores, VERIFY.md)",
+   "hf_mirror": "InternalCan/stage2-sam-sep-v1-mimi tokens/mimi-stream-v5-samsep-0008.parquet row 29 SPEAKER_00_isolated_npy"
+  },
+  "pose_tokens": {
+   "path": "/data/home/amartyavarma/data/aloe-handover-full/DATA/files/none/4002929b-2ecb-4137-9e55-78c265575f3d/seg02/w00.SPEAKER_00.pose_tokens.npy",
+   "sha256": "4b8913c9728f7eb131fabccd7093d380fae85d24a0c997a7e5a5d283200c9d6f",
+   "rows": "[:, 0:150]",
+   "recipe": "tiktok-stage3-rtmw-v2frame0-onepass-v1",
+   "tokenizer": "InternalCan/pose-tokenizer-32cb-200k-noshift@1d6ff4f0de89408cb054da618e309d4334596252",
+   "normalization": "frame0-root-frame0-horizontal-shoulder-width-v1 (Xabi preprocess_frame0)",
+   "frame0": {
+    "source": "pose.json normalization (conversation frame 0); frame0_root = root0_yx_normalized [y, x], frame0_width = shoulder_width0_normalized",
+    "fields": {
+     "frame0_root": [
+      0.578125,
+      0.49421295523643494
+     ],
+     "frame0_width": 0.6770833134651184,
+     "orig_w": 2160,
+     "orig_h": 3840,
+     "rotation": -90
+    }
+   },
+   "source_video": "gs://aloe-recordings-log/sessions-from-04-07-2026/4002929b-2ecb-4137-9e55-78c265575f3d/users/47473a46-1d74-41c0-9a77-7174ab5f96a5/seg02/4002929b-2ecb-4137-9e55-78c265575f3d_seg02.mov"
+  },
+  "words": {
+   "rule": "store words of B's side, placed by speech_q.lane (pos = max(floor(start*12.5+1e-6), write+1)); start = end = first-piece frame / 12.5 (= package_extras_from_row.py's rule); words with first frame < 150",
+   "store_row": "ALOE/s2handover-none/4002929b-2ecb-4137-9e55-78c265575f3d/seg02/c00"
+  },
+  "voice_clip": {
+   "rule": "FALLBACK (single-chunk conversation: the training rule gives no clip): SPR.window over the SAME row's frames [max(n//2, 150), n) = [3351, 6703) with L0 := 125 (10 s) and the trainer's u draw",
+   "src": "same_row_2nd_half",
+   "src_row_key": "ALOE/s2handover-none/4002929b-2ecb-4137-9e55-78c265575f3d/seg02/c00",
+   "src_side": "assistant",
+   "frames_in_src_row": [
+    4443,
+    4568
+   ],
+   "conv_frames": [
+    4443,
+    4568
+   ],
+   "cov": 0.72,
+   "trainer_draw_L0": 73,
+   "trainer_draw_u": 0.26676591690850826,
+   "n_chunks": 1,
+   "path": "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/openings-sam/19_47473a46/voice_clip.safetensors"
+  }
+ },
+ "qc": {
+  "sam_sep_flags": [],
+  "mimi_flags": [],
+  "n_ambiguous_chunks": 0,
+  "n_swapped_chunks": 0,
+  "audit_redo": false,
+  "pose_status": "ok",
+  "crossbleed_side": "none"
+ },
+ "checks": {
+  "pose_T_eq_codes_T": true,
+  "codes_byte_equal_store_slice": true,
+  "codes_equal_hf_isolated_0_150": true,
+  "hf_isolated_T": 6703,
+  "store_row_vs_hf_full_row": true,
+  "pose_file_sha256_eq_index": true,
+  "pose_full_T_eq_src_frames": true,
+  "words_in_window": true,
+  "n_words": 20,
+  "voice_clip_frames": 125,
+  "voice_clip_eq_hf": true,
+  "all_pass": true
+ },
+ "n_words": 20,
+ "first_word_s": 0.24,
+ "candidate": {
+  "id": "19_47473a46",
+  "person": "19_47473a46",
+  "has_avatar": true,
+  "session": "4002929b-2ecb-4137-9e55-78c265575f3d",
+  "seg": "seg02",
+  "speaker": "SPEAKER_00",
+  "split": "train",
+  "start_s": 0.0,
+  "end_s": 12.0,
+  "first_words": "Hey. How are you? Oh, I'm good. I'm good. What was gonna say? Oh, my name is Alina. What's yours?",
+  "flags": [],
+  "package_dir": "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/openings-sam/19_47473a46"
+ },
+ "built": "samsep fork D 2026-10-26 (byte copies; no separation / encoding)",
+ "raw_codes": {
+  "what": "B Mimi codes swapped to the RAW s2h-m1 lane codes (raw-lane mimi-stream-v5, lufs23-local; = what 33111 pdxraw trained on as B, POSEDUP_RAW_CODES=1, RawRows rule); everything else = openings-sam byte for byte",
+  "row_map": "/data/home/amartyavarma/ppm/aloe-ft-32-samsep/data/row_map.json",
+  "raw_stores": "/data/home/amartyavarma/qwen-1ch-data/s2h-m1/stores",
+  "raw_digests": [
+   "c1c3b2517152741137cc4bb72dd6bdbb",
+   "09bdd43fef84574175caacf4abdddd1e",
+   "ecb1c731e8989b3f2e1b5266b51ea0fd",
+   "3b16fb8dd2660a2e8c1fe32c0d361d7b"
+  ],
+  "mimi_local": {
+   "raw_node": "m1n0",
+   "raw_row": 2139,
+   "sam_row": 2114,
+   "side": "assistant",
+   "frames": [
+    0,
+    150
+   ],
+   "sha256_int64": "2290e20a794828586d9d79872a1329e744d74a8cf0c9708e0cfbc92cb215fa75",
+   "cb0_frac_differs_from_sam": 0.54
+  },
+  "voice_clip": {
+   "raw_node": "m1n0",
+   "raw_row": 2139,
+   "sam_row": 2114,
+   "side": "assistant",
+   "frames": [
+    4443,
+    4568
+   ],
+   "sha256_int64": "7486497abcc634de9026790558e572b44ff3a90339da81518b557bda2384beba",
+   "cb0_frac_differs_from_sam": 0.336
+  },
+  "built_from": "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/openings-sam/19_47473a46"
+ }
+}

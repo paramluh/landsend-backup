@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "repo": "InternalCan/ppm-811-17850-base-bf16",
+  "private": true,
+  "weight_revision": "876fa61d89fc5ff5e1aae28254b00a7bb31d4970",
+  "file_count": 131,
+  "bytes": 88413726150,
+  "checks": {
+    "lfs_sha256": 129,
+    "git_blob_sha1": 2
+  },
+  "verified_at_utc": "2026-10-28T09:58:04.118288+00:00"
+}

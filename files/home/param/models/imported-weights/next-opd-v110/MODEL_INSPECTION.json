@@ -1,0 +1,14 @@
+{
+  "checkpoint_id": "checkpoint-1793330493092033558-7e901371585b",
+  "student_version": 110,
+  "tensor_count": 1440,
+  "element_count": 39114889730,
+  "dtypes": {
+    "torch.float32": 1440
+  },
+  "vgain_theta_fp32": -5.7687225341796875,
+  "adapter_gain": 0.0031237454444369792,
+  "includes_adapter_buffer": true,
+  "optimizer_present": false,
+  "canonical_shape_sha256": "ffb9de164a181053b52246e967e6e818e0e35e46aa158d27934e4fa6171178fd"
+}

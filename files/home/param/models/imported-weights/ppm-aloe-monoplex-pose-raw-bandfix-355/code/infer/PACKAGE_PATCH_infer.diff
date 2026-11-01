@@ -1,0 +1,47 @@
+--- /data/home/amartyavarma/ppm/packages/aloe-monoplex-pose-raw-bandfix-355/code/infer/infer.py.orig-snapshot	2026-10-28 11:47:11.280988825 +0000
++++ /data/home/amartyavarma/ppm/packages/aloe-monoplex-pose-raw-bandfix-355/code/infer/infer.py	2026-10-30 09:16:43.203915443 +0000
+@@ -259,13 +259,20 @@
+ def params_of(a):
+     t = a.temp
+     tt, at, pt = (t if v is None else v for v in (a.text_temp, a.audio_temp, a.pose_temp))
+-    return {"text_temp": tt, "text_topk": int(a.text_topk), "text_topp": 1.0, "min_p": float(a.min_p), "min_p_rel": 0, "freq_pen": 0.0,
++    p = {"text_temp": tt, "text_topk": int(a.text_topk), "text_topp": 1.0, "min_p": float(a.min_p), "min_p_rel": 0, "freq_pen": 0.0,
+             "text_rep": 1.0, "word_greedy": 0,   # 10-28 USER ORDER: no lane grammar knobs (allow_eob / free_text gone)
+             "cb0_temp": at, "cb0_topk": int(a.audio_topk), "light_temp": at, "light_topk": int(a.audio_topk), "audio_rep_pen": 1.0,
+             "pose_temp": pt, "pose_topk": int(a.pose_topk), "pose_light_temp": pt, "pose_light_topk": int(a.pose_topk),
+             "pose_cfg_on": int(a.pose_cfg > 0), "pose_cfg_s": float(a.pose_cfg) if a.pose_cfg > 0 else 3.0, "pose_cfg_cb0": 1, "pose_cfg_light": 1,
+-            "pose_rep": 1.0, "pose_rep_win": 0, "adaptive_rep_on": 0, "audio_rep_speaking": 1.0, "audio_rep_silent": 1.0,
+-            "text_rep_speaking": 1.0, "text_rep_silent": 1.0, "pose_rep_speaking": 1.0, "pose_rep_silent": 1.0}
++            "pose_rep_cb0": 1.0, "pose_rep_light": 1.0, "pose_rep_win": 0, "adaptive_rep_on": 0, "audio_rep_speaking": 1.0,
++            "audio_rep_silent": 1.0, "text_rep_speaking": 1.0, "text_rep_silent": 1.0, "pose_rep_cb0_speaking": 1.0,
++            "pose_rep_cb0_silent": 1.0, "pose_rep_light_speaking": 1.0, "pose_rep_light_silent": 1.0}
++    # PACKAGE PATCH 10-30: the old combined pose_rep* keys are aliases since fast_ppm's 10-26 cb0 / light split; validate() expands them,
++    # so the old dict failed `clean == PARAMS`. Same values (1.0 = off). --params JSON then overrides any FP.PARAMS key (playground settings).
++    if getattr(a, "params", None):
++        import json as _json
++        p.update(_json.load(open(a.params)) if a.params.endswith(".json") else _json.loads(a.params))
++    return p
+ 
+ 
+ # the sampling of the 10-19 studio eval videos (gen_studio_nocfg.py PARAMS): the defaults must reproduce it exactly
+@@ -274,8 +281,9 @@
+            "cb0_temp": 1.0, "cb0_topk": 30, "light_temp": 1.0, "light_topk": 30, "audio_rep_pen": 1.0,
+            "pose_temp": 1.0, "pose_topk": 30, "pose_light_temp": 1.0, "pose_light_topk": 30,
+            "pose_cfg_on": 0, "pose_cfg_s": 3.0, "pose_cfg_cb0": 1, "pose_cfg_light": 1,
+-           "pose_rep": 1.0, "pose_rep_win": 0, "adaptive_rep_on": 0, "audio_rep_speaking": 1.0, "audio_rep_silent": 1.0,
+-           "text_rep_speaking": 1.0, "text_rep_silent": 1.0, "pose_rep_speaking": 1.0, "pose_rep_silent": 1.0}
++           "pose_rep_cb0": 1.0, "pose_rep_light": 1.0, "pose_rep_win": 0, "adaptive_rep_on": 0, "audio_rep_speaking": 1.0,
++           "audio_rep_silent": 1.0, "text_rep_speaking": 1.0, "text_rep_silent": 1.0, "pose_rep_cb0_speaking": 1.0,
++           "pose_rep_cb0_silent": 1.0, "pose_rep_light_speaking": 1.0, "pose_rep_light_silent": 1.0}   # PACKAGE PATCH: split keys
+ 
+ 
+ def main():
+@@ -306,6 +314,8 @@
+     ap.add_argument("--min-p", type=float, default=0.0, help="text min-p (default 0 = off)")
+     ap.add_argument("--pose-cfg", type=float, default=0.0, help="pose CFG scale (default 0 = OFF; >0 = silent-speech uncond, e.g. 3)")
+     ap.add_argument("--seed", type=int, default=0)
++    ap.add_argument("--params", default=None, help="PACKAGE PATCH: JSON file (.json) or JSON string overriding any fast_ppm PARAMS key, "
++                    "e.g. config/playground_sampling.json (the playground's monoband355 settings)")
+     ap.add_argument("--devs", default="0,1", help="CUDA devices (default 0,1; the 32B bf16 model needs 2 x 80 GB)")
+     ap.add_argument("--pose-latents", action="store_true", help="also write pose_latents_electron_v3.safetensors (package input)")
+     ap.add_argument("--video-sample", action="store_true", help="also write video_sample/ for pose-demo-website demo-v3/video.py (package)")

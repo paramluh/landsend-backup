@@ -1,0 +1,22 @@
+{
+ "kind": "s3",
+ "ck": "/data/home/amartyavarma/qwen-1ch/stage3/ckpt-weka/q32-s3-exp1-lr0.3-from750-j8815/w-5500",
+ "step": 5500,
+ "run_tag": "q32-s3-exp1-lr0.3-from750-j8815",
+ "export_stage": 3,
+ "wpid": "both",
+ "eot_on_channel": true,
+ "frame_fix": true,
+ "swap": 0,
+ "gate": {
+  "verdict": "PASS",
+  "frames": 614,
+  "pieces": 160,
+  "s": 11.6,
+  "tv_mean": 0.00347560690715909,
+  "tv_max": 0.044473279267549515,
+  "top1": 0.9913793206214905,
+  "top1_decisive": 1.0,
+  "n_mismatch": 2
+ }
+}

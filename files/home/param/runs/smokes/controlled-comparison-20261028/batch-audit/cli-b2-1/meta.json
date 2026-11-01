@@ -1,0 +1,177 @@
+{
+  "input": "cache",
+  "cache": "/home/param/datasets/xabi-v2pure-cache",
+  "clip_index": 108011,
+  "row_key": "ALOE/aloe-v2pure/53862782b916570909322c061ce073edbb69394f/c00001",
+  "cache_key": "53862782b916570909322c061ce073edbb69394f/speaker_1/000001",
+  "split": "eval",
+  "source_span": [
+    0,
+    18
+  ],
+  "transcript": "Yeah, good. No, good question. So,",
+  "words": [
+    {
+      "text": "Yeah,",
+      "start": 0.0,
+      "end": 0.24,
+      "start_frame": 0,
+      "end_frame": 3,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "good.",
+      "start": 0.32,
+      "end": 0.56,
+      "start_frame": 4,
+      "end_frame": 7,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "No,",
+      "start": 0.56,
+      "end": 0.72,
+      "start_frame": 7,
+      "end_frame": 9,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "good",
+      "start": 0.72,
+      "end": 0.88,
+      "start_frame": 9,
+      "end_frame": 11,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "question.",
+      "start": 0.88,
+      "end": 1.2,
+      "start_frame": 11,
+      "end_frame": 15,
+      "in_overlap": false,
+      "truncated": false
+    },
+    {
+      "text": "So,",
+      "start": 1.2,
+      "end": 1.44,
+      "start_frame": 15,
+      "end_frame": 18,
+      "in_overlap": false,
+      "truncated": false
+    }
+  ],
+  "voice_provenance": {
+    "mode": "explicit",
+    "source": "/home/param/pose-runs/controlled-comparison-20261028/clip-02/voice_clip.npy"
+  },
+  "recipe": "compact-all",
+  "frames": 18,
+  "seconds": 1.44,
+  "P": 122,
+  "conditioning_P": 109,
+  "transcript_span": [
+    109,
+    122
+  ],
+  "prefill_frames": 0,
+  "f0": 0,
+  "code_delay": 2,
+  "total_positions": 142,
+  "voice_clip_frames": 100,
+  "force_text": true,
+  "text_generation": "forced aligned lane",
+  "transcript_end_token": 151681,
+  "voice_codes_sha256": "515b7dea7d212b3142ae520e00b4af6f19dab153e3d674d529c8f699e35a390f",
+  "framewise_lane_sha256": "6eb647cf05b11fd4b4c54ad3a6b27a356345b576592992c126ea460e7ecad935",
+  "checkpoint": {
+    "ck": "/home/param/models/transcript-pose/compact-all/export-200",
+    "step": 200,
+    "kind": "local",
+    "pose": true,
+    "decp_bb": true,
+    "decp_bb_alpha": 1.0,
+    "vadapter": false,
+    "ldev": [
+      "cuda:0",
+      "cuda:1"
+    ],
+    "layers_per_dev": {
+      "cuda:0": 37,
+      "cuda:1": 27
+    }
+  },
+  "sampling": {
+    "text_temp": 1.0,
+    "text_topk": 0,
+    "text_topp": 1.0,
+    "min_p": 0.0,
+    "min_p_rel": 0,
+    "freq_pen": 0.0,
+    "freq_win": 20,
+    "text_rep": 1.0,
+    "text_rep_win": 64,
+    "cb0_temp": 1.0,
+    "cb0_topk": 30,
+    "light_temp": 1.0,
+    "light_topk": 30,
+    "audio_rep_pen": 1.0,
+    "audio_rep_win": 64,
+    "allow_eob": 0,
+    "free_text": 0,
+    "word_greedy": 0,
+    "pose_temp": 1.0,
+    "pose_topk": 30,
+    "pose_light_temp": 1.0,
+    "pose_light_topk": 30,
+    "pose_cfg_on": 0,
+    "pose_cfg_s": 3.0,
+    "pose_cfg_cb0": 1,
+    "pose_cfg_light": 1,
+    "pose_cfg_speaking_only": 0,
+    "pose_rep_cb0": 1.0,
+    "pose_rep_light": 1.0,
+    "pose_rep_win": 0,
+    "adaptive_rep_on": 0,
+    "speak_window_frames": 25,
+    "audio_rep_speaking": 1.0,
+    "audio_rep_silent": 1.0,
+    "text_rep_speaking": 1.0,
+    "text_rep_silent": 1.0,
+    "pose_rep_cb0_speaking": 1.0,
+    "pose_rep_cb0_silent": 1.0,
+    "pose_rep_light_speaking": 1.0,
+    "pose_rep_light_silent": 1.0
+  },
+  "seed": 20261029,
+  "batch_size": 2,
+  "batch_row": 1,
+  "batch_clip_indices": [
+    155325,
+    108011
+  ],
+  "rng_policy": "per-instance per-modality generators; row-wise [1,vocab] multinomial; no text sampling",
+  "prefill_seconds": 0.43966174125671387,
+  "generation_seconds": 1.2223362922668457,
+  "ms_per_step": 61.116814613342285,
+  "ground_truth_generation_media": false,
+  "fixed_duration": true,
+  "peak_gib": {
+    "cuda:0": 50.9187536239624,
+    "cuda:1": 38.61023998260498
+  },
+  "audio_stats": {
+    "s": 1.44,
+    "rms": 0.0738,
+    "rms_dbfs": -22.6,
+    "peak": 0.6654,
+    "clip_frac": 0.0,
+    "silent_frac_100ms": 0.0
+  },
+  "wall_seconds": 47.14757299423218
+}

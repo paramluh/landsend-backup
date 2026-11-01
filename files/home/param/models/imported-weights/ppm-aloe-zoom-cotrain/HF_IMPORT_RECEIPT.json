@@ -1,0 +1,11 @@
+{
+  "repo": "InternalCan/ppm-aloe-zoom-cotrain",
+  "revision": "8cdb31a0cd08d4b7ceeb7e1cc9b9ebbdebdc8ba4",
+  "checkpoint": "export-253",
+  "run_tag": "ppm-aloe-zoom-cotrain-j26467",
+  "files": 148,
+  "bytes": 78275367816,
+  "seconds": 89.27157616615295,
+  "metadata_sha256": "bcf557b2b8c35f96e84085e8ef9f968de5cba7c1690edcb03f793722e93dcc6e",
+  "path": "/home/param/models/imported-weights/ppm-aloe-zoom-cotrain"
+}

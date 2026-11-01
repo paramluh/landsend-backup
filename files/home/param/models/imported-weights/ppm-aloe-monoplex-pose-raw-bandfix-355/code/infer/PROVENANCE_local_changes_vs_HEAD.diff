@@ -1,0 +1,522 @@
+diff --git a/infer.py b/infer.py
+index 88bd222..48aed68 100755
+--- a/infer.py
++++ b/infer.py
+@@ -260,7 +260,7 @@ def params_of(a):
+     t = a.temp
+     tt, at, pt = (t if v is None else v for v in (a.text_temp, a.audio_temp, a.pose_temp))
+     return {"text_temp": tt, "text_topk": int(a.text_topk), "text_topp": 1.0, "min_p": float(a.min_p), "min_p_rel": 0, "freq_pen": 0.0,
+-            "text_rep": 1.0, "allow_eob": 0, "free_text": 0, "word_greedy": 0,
++            "text_rep": 1.0, "word_greedy": 0,   # 10-28 USER ORDER: no lane grammar knobs (allow_eob / free_text gone)
+             "cb0_temp": at, "cb0_topk": int(a.audio_topk), "light_temp": at, "light_topk": int(a.audio_topk), "audio_rep_pen": 1.0,
+             "pose_temp": pt, "pose_topk": int(a.pose_topk), "pose_light_temp": pt, "pose_light_topk": int(a.pose_topk),
+             "pose_cfg_on": int(a.pose_cfg > 0), "pose_cfg_s": float(a.pose_cfg) if a.pose_cfg > 0 else 3.0, "pose_cfg_cb0": 1, "pose_cfg_light": 1,
+@@ -270,7 +270,7 @@ def params_of(a):
+ 
+ # the sampling of the 10-19 studio eval videos (gen_studio_nocfg.py PARAMS): the defaults must reproduce it exactly
+ TONIGHT = {"text_temp": 1.0, "text_topk": 0, "text_topp": 1.0, "min_p": 0.0, "min_p_rel": 0, "freq_pen": 0.0, "text_rep": 1.0,
+-           "allow_eob": 0, "free_text": 0, "word_greedy": 0,
++           "word_greedy": 0,   # 10-28 USER ORDER: no lane grammar knobs (allow_eob / free_text gone)
+            "cb0_temp": 1.0, "cb0_topk": 30, "light_temp": 1.0, "light_topk": 30, "audio_rep_pen": 1.0,
+            "pose_temp": 1.0, "pose_topk": 30, "pose_light_temp": 1.0, "pose_light_topk": 30,
+            "pose_cfg_on": 0, "pose_cfg_s": 3.0, "pose_cfg_cb0": 1, "pose_cfg_light": 1,
+diff --git a/ppm/fast_ppm.py b/ppm/fast_ppm.py
+index 4df52ef..cc98b81 100644
+--- a/ppm/fast_ppm.py
++++ b/ppm/fast_ppm.py
+@@ -1,4 +1,4 @@
+-# VENDORED for aloe-pose-monoplex-infer. Upstream: ppm/fastinfer/fast_ppm.py. Edits (behaviour-neutral for this model): repo-local imports (ppm_io for infer_ppm); Voxtral front + streaming Mimi decoder imports removed and asserted off; no HF_HUB_OFFLINE / VOXTRAL_DIR defaults.
++# STAGED COPY (stage-fastload, 10-28): = live fast_ppm.py + the opt-in GENWEB_FASTLOAD path in load_weights (_fastload). VENDORED for aloe-pose-monoplex-infer. Upstream: ppm/fastinfer/fast_ppm.py. Edits (behaviour-neutral for this model): repo-local imports (ppm_io for infer_ppm); Voxtral front + streaming Mimi decoder imports removed and asserted off; no HF_HUB_OFFLINE / VOXTRAL_DIR defaults.
+ #!/usr/bin/env python3
+ """FAST PPM ENGINE WITH POSE (CUDA graphs, bf16): the live Aloe Voxtral demo engine (ppm/aloe-m1vox-live/live_ppm.py, copied, not imported)
+ extended with channel-B POSE generation, several instances per engine (rows), channel-A feed modes and pose CFG rows.
+@@ -20,7 +20,7 @@ CHANNEL A per instance: 'empty' (PAD / Mimi -1 / present 0: the monoplex pose-on
+           real partner), 'partner' (another instance's B text + Mimi at the same step: duo, = infer_pose_2side's cross-feed; never its
+           pose), 'voxtral' (live 24 kHz audio through the streaming Voxtral front, NI = 1).
+ PER FRAME f (T_r = P_r + f; every step a CUDA graph except the very first front frame; device-side frame index, no host sync):
+-  text   (last)   lane_B[T] ~ head(hn[T-1]) (live engine sampler: grammar, penalties, temperature, min-p, top-k, top-p).
++  text   (last)   lane_B[T] ~ head(hn[T-1]) (live engine sampler: in-vocab bound only (NO lane grammar, 10-28), penalties, temperature, min-p, top-k, top-p).
+   pose   (first)  pose tower step T on all rows (tok + pose codes T - 1 + cond(hn[T-1])) -> cb0 (pose CFG mix when on) -> fused 0.6B pose
+                   decoder cb1..31 (slot 0 + decp_bb link; CFG per codebook) for f >= CD; runs while the speech branch runs on the last GPU.
+   speech (last)   speech tower step T (instance rows) -> cb0 -> fused 0.6B speech decoder cb1..31 for f >= CD.
+@@ -32,7 +32,7 @@ POSE CFG  (= infer_pose_2side --pose-cfg w, SAM scope 'all'): uncond row = the s
+           Live knobs pose_cfg_on (default 0), pose_cfg_s (default 3 = the SAM released recipe / the duo CFG-3 samples), pose_cfg_cb0 /
+           pose_cfg_light (guide cb0 / cb1..31; both on = SAM scope 'all'); the uncond rows run every frame (switchable mid-session) when the
+           engine is built with cfg_rows.
+-POSE REP  CTRL repetition penalty per pose codebook (cb0 + cb1..31) on codes used in the last pose_rep_win conversation frames (pose_rep,
++POSE REP  CTRL repetition penalty on pose cb0 (pose_rep_cb0) and per codebook on cb1..31 (pose_rep_light; 10-26 split, old pose_rep = both) on codes used in the last pose_rep_win conversation frames (
+           default 1 = off; = the audio rep-pen's semantics) or, with pose_rep_win 0 (default; = PPM infer_ppm --pose-rep-win 0 and the
+           slow sampler's --pose-rep), on every code GENERATED so far in the session (per codebook); after the CFG mix, before temperature / top-k.
+ ADAPTIVE  (= aloe-m1vox-live/stage-adaptrep live_ppm, copied, + pose): per frame and instance a SPEAKING flag = B's lane holds a word piece
+@@ -67,6 +67,7 @@ import speech_q as SP  # noqa: E402
+ import ppm_io as IP  # noqa: E402   (vendored subset of ppm/code/infer_ppm.py: Mimi, wav io, tokenizer, lane words)
+ assert IP.M is M, "ppm_io must use the same model_ppm"
+ import light_kernels as LK  # noqa: E402
++import light_exact_ppm as LX  # noqa: E402   (10-26: trainer-exact 0.6B decoder kernels; next to this file, HERE is on sys.path)
+ VS = VoxStreamFast = MimiDecStream = None      # Voxtral front / streaming Mimi decoder: not vendored (unused by the monoplex pose model)
+ 
+ BF = torch.bfloat16
+@@ -287,12 +288,48 @@ def fast_dcp_load(params, path, threads=32):
+     return len(jobs)
+ 
+ 
++FASTLOAD_LIB = "/data/home/amartyavarma/ppm/aloe-posedup-live/genweb/stage-fastload"
++
++
++def _fastload(params, want, ci, t0):
++    """GENWEB_FASTLOAD=1 (10-28, opt-in): the same DCP files read by fastload.py's parallel direct reader (raw storage bytes -> pinned
++    buffers -> async H2D), ONLY when the checkpoint has a COMPLETE sha-manifest that still matches it on disk (per-tensor sha256 identity
++    vs dcp.load proven by `fastload.py prepare`). Anything else (no manifest, changed files, any error) -> False = the DCP path below,
++    which rewrites every tensor. GENWEB_FASTLOAD_VERIFY=1 also checks every tensor's sha256 while loading."""
++    import importlib.util
++    try:
++        lib = os.environ.get("GENWEB_FASTLOAD_LIB", FASTLOAD_LIB)
++        spec = importlib.util.spec_from_file_location("genweb_fastload", f"{lib}/fastload.py")
++        FL = importlib.util.module_from_spec(spec)
++        spec.loader.exec_module(FL)
++        ok, why = FL.usable(ci["path"])
++        if not ok:
++            log(f"[load] fastload off ({why}) -> DCP path")
++            return False
++        have = set(ci["shapes"])
++        assert want <= have, ("checkpoint lacks model tensors", sorted(want - have)[:6])
++        tgt = {n: (params[n] if params[n].dtype == BF else torch.empty(params[n].shape, dtype=BF, device=params[n].device)) for n in want}
++        vf = os.environ.get("GENWEB_FASTLOAD_VERIFY", "0") == "1"
++        st = FL.load_into(tgt, ci["path"], why, threads=int(os.environ.get("GENWEB_FASTLOAD_THREADS", "16")), verify=vf)
++        for n in want:
++            if tgt[n] is not params[n]:
++                params[n].copy_(tgt[n].float())
++        log(f"[load] FASTLOAD {ci['path']}: {len(want)} tensors, {st['bytes'] / 1e9:.1f} GB ({time.time() - t0:.1f}s, read {st['gbps']:.1f} GB/s"
++            f"{', sha256-verified' if vf else ''}); not used: {sorted(have - want)[:6]}")
++        return True
++    except Exception as e:                                                             # noqa: BLE001
++        log(f"[load] fastload FAILED ({e!r}) -> DCP path")
++        return False
++
++
+ @torch.no_grad()
+ def load_weights(m, ci):
+     t0 = time.time()
+     params = {n: p for n, p in m.named_parameters()}
+     want = set(params)
+-    if ci["kind"] == "dcp" and os.environ.get("FASTPPM_LOADER", "dcp") == "fast":          # parallel reader: same bytes, no faster (torch.load-bound)
++    if ci["kind"] == "dcp" and os.environ.get("GENWEB_FASTLOAD", "0") == "1" and _fastload(params, want, ci, t0):
++        pass
++    elif ci["kind"] == "dcp" and os.environ.get("FASTPPM_LOADER", "dcp") == "fast":          # parallel reader: same bytes, no faster (torch.load-bound)
+         have = set(ci["shapes"])
+         assert want <= have, ("checkpoint lacks model tensors", sorted(want - have)[:6])
+         tgt = {n: (params[n] if params[n].dtype == BF else torch.empty(params[n].shape, dtype=BF, device=params[n].device)) for n in want}
+@@ -450,7 +487,7 @@ class LiveRing:
+ 
+ PARAMS = {
+     "text_temp":     (float, 0.0, 3.0),    # text temperature (0 = greedy)
+-    "text_topk":     (int, 0, 256),        # text top-k over the grammar-allowed lane tokens (0 = off)
++    "text_topk":     (int, 0, 256),        # text top-k over the in-vocab lane tokens (0 = off)
+     "text_topp":     (float, 0.05, 1.0),   # text nucleus (1 = off)
+     "min_p":         (float, 0.0, 0.5),    # min-p on the WORD choice (0 = off)
+     "min_p_rel":     (int, 0, 1),
+@@ -464,8 +501,6 @@ PARAMS = {
+     "light_topk":    (int, 0, 2048),
+     "audio_rep_pen": (float, 1.0, 2.0),
+     "audio_rep_win": (int, 1, 256),
+-    "allow_eob":     (int, 0, 1),
+-    "free_text":     (int, 0, 1),
+     "word_greedy":   (int, 0, 1),
+     "pose_temp":     (float, 0.0, 3.0),    # pose codebook 0 (4B pose tower) temperature (0 = greedy)
+     "pose_topk":     (int, 0, 2048),       # pose cb0 top-k
+@@ -475,7 +510,9 @@ PARAMS = {
+     "pose_cfg_s":    (float, 1.0, 6.0),    # pose CFG strength w: l = l_uncond + w (l_cond - l_uncond); 1 = cond exactly
+     "pose_cfg_cb0":  (int, 0, 1),          # (with pose_cfg_on) guide pose cb0
+     "pose_cfg_light": (int, 0, 1),         # (with pose_cfg_on) guide pose cb1..31 (uncond rows through the pose decoder too)
+-    "pose_rep":      (float, 1.0, 2.0),    # CTRL repetition penalty per pose codebook (1 = off)
++    "pose_cfg_speaking_only": (int, 0, 1), # 10-26 (user): with pose_cfg_on, guide only while B is SPEAKING (uncond rows still run every frame)
++    "pose_rep_cb0":  (float, 1.0, 2.0),    # 10-26 (user: separate them): CTRL repetition penalty on pose codebook 0 (1 = off)
++    "pose_rep_light": (float, 1.0, 2.0),   # ... on pose codebooks 1-31, per codebook (1 = off); old 'pose_rep' = both (POSE_REP_ALIAS)
+     "pose_rep_win":  (int, 0, 256),        # its window in frames (conversation only); 0 = every pose frame generated so far
+     "adaptive_rep_on":     (int, 0, 1),    # adaptive repetition penalty: per-frame SPEAKING / SILENT penalties replace the static ones
+     "speak_window_frames": (int, 1, 250),  # SPEAKING = B emitted a word piece in the last N frames (25 = 2 s)
+@@ -483,19 +520,26 @@ PARAMS = {
+     "audio_rep_silent":    (float, 1.0, 2.0),
+     "text_rep_speaking":   (float, 1.0, 2.0),
+     "text_rep_silent":     (float, 1.0, 2.0),
+-    "pose_rep_speaking":   (float, 1.0, 2.0),
+-    "pose_rep_silent":     (float, 1.0, 2.0),
++    "pose_rep_cb0_speaking":   (float, 1.0, 2.0),
++    "pose_rep_cb0_silent":     (float, 1.0, 2.0),
++    "pose_rep_light_speaking": (float, 1.0, 2.0),
++    "pose_rep_light_silent":   (float, 1.0, 2.0),
+ }
++# 10-26: the pre-split combined pose knobs (old links / saved settings / infer.py presets) set BOTH new ones. The old key WINS over the
++# new ones in the same dict: only pre-split producers emit it, and start() merges DEFAULTS (which hold the new keys) under the request.
++POSE_REP_ALIAS = {"pose_rep": ("pose_rep_cb0", "pose_rep_light"), "pose_rep_speaking": ("pose_rep_cb0_speaking", "pose_rep_light_speaking"),
++                  "pose_rep_silent": ("pose_rep_cb0_silent", "pose_rep_light_silent")}
+ ADAPT_KEYS = ("adaptive_rep_on", "speak_window_frames", "audio_rep_speaking", "audio_rep_silent", "text_rep_speaking", "text_rep_silent",
+-              "pose_rep_speaking", "pose_rep_silent")
++              "pose_rep_cb0_speaking", "pose_rep_cb0_silent", "pose_rep_light_speaking", "pose_rep_light_silent")
+ DEFAULTS = {"text_temp": 1.0, "text_topk": 0, "text_topp": 1.0, "min_p": 0.0, "min_p_rel": 0, "freq_pen": 0.0, "freq_win": 20,
+             "text_rep": 1.0, "text_rep_win": 64, "cb0_temp": 1.0, "cb0_topk": 30, "light_temp": 1.0, "light_topk": 30, "audio_rep_pen": 1.0,
+-            "audio_rep_win": 64, "allow_eob": 0, "free_text": 0, "word_greedy": 0, "pose_temp": 1.0, "pose_topk": 30, "pose_light_temp": 1.0,
+-            "pose_light_topk": 30, "pose_cfg_on": 0, "pose_cfg_s": 3.0, "pose_cfg_cb0": 1, "pose_cfg_light": 1, "pose_rep": 1.0,
++            "audio_rep_win": 64, "word_greedy": 0, "pose_temp": 1.0, "pose_topk": 30, "pose_light_temp": 1.0,
++            "pose_light_topk": 30, "pose_cfg_on": 0, "pose_cfg_s": 3.0, "pose_cfg_cb0": 1, "pose_cfg_light": 1, "pose_cfg_speaking_only": 0, "pose_rep_cb0": 1.0, "pose_rep_light": 1.0,
+             "pose_rep_win": 0, "adaptive_rep_on": 0, "speak_window_frames": 25, "audio_rep_speaking": 1.0, "audio_rep_silent": 1.0,
+-            "text_rep_speaking": 1.0, "text_rep_silent": 1.0, "pose_rep_speaking": 1.0, "pose_rep_silent": 1.0}
++            "text_rep_speaking": 1.0, "text_rep_silent": 1.0, "pose_rep_cb0_speaking": 1.0, "pose_rep_cb0_silent": 1.0,
++            "pose_rep_light_speaking": 1.0, "pose_rep_light_silent": 1.0}
+ GROUPS = {k: ("adaptive repetition penalty" if k in ADAPT_KEYS else "pose CFG" if k.startswith("pose_cfg") else "pose" if k.startswith("pose")
+-              else "audio" if k.startswith(("cb0", "light", "audio")) else "text grammar" if k in ("allow_eob", "free_text", "word_greedy")
++              else "audio" if k.startswith(("cb0", "light", "audio"))
+               else "text") for k in PARAMS}
+ HINTS = {
+     "text_temp": "text temperature (0 = greedy)", "text_topk": "keep the k most likely lane tokens (0 = off)",
+@@ -510,22 +554,24 @@ HINTS = {
+     "light_temp": "audio codebooks 1-31 (0.6B decoder) temperature", "light_topk": "audio codebooks 1-31 top-k (0 = off)",
+     "audio_rep_pen": "CTRL repetition penalty per audio codebook on codes used in the window (1 = off)",
+     "audio_rep_win": "audio repetition window (conversation frames)",
+-    "allow_eob": "grammar: allow EOB (<|im_end|>) in B's lane (training: never)",
+-    "free_text": "grammar off: any lane token after any (off-distribution)",
+     "word_greedy": "when B starts / continues a word, take the most likely word piece (timing still sampled)",
+     "pose_temp": "pose codebook 0 (4B pose tower) temperature", "pose_topk": "pose codebook 0 top-k",
+     "pose_light_temp": "pose codebooks 1-31 (0.6B pose decoder) temperature", "pose_light_topk": "pose codebooks 1-31 top-k",
+     "pose_cfg_on": "pose CFG: uncond = the same input with every Mimi code (B's and A's) replaced by digital-silence codes (SAM / duo CFG-3 recipe)",
+     "pose_cfg_s": "pose CFG strength w: l = l_uncond + w (l_cond - l_uncond); 1 = cond exactly (released recipe: 3)",
+     "pose_cfg_cb0": "with pose CFG on: guide pose codebook 0", "pose_cfg_light": "with pose CFG on: guide pose codebooks 1-31",
+-    "pose_rep": "CTRL repetition penalty per pose codebook on codes used in the window (1 = off; PPM's old pose default was 1.2)",
++    "pose_cfg_speaking_only": "with pose CFG on: guide only while B is SPEAKING (a word piece in its last speak_window_frames frames, the adaptive rep-pen's rule); silent frames use the plain cond logits (the uncond rows still run every frame)",
++    "pose_rep_cb0": "pose cb0 rep-pen: CTRL repetition penalty on pose codebook 0 codes used in the window (1 = off; PPM's old pose default was 1.2 on all)",
++    "pose_rep_light": "pose light rep-pen: CTRL repetition penalty per pose codebook 1-31 on codes used in the window (1 = off)",
+     "pose_rep_win": "pose repetition window (conversation frames); 0 = every pose frame generated so far (PPM's default)",
+     "adaptive_rep_on": "on: each frame uses the SPEAKING or SILENT penalties below instead of the static audio / text / pose repetition penalties",
+     "speak_window_frames": "SPEAKING = B emitted a word piece (not PAD / NEW_WORD / EOB) in its last N frames (80 ms each; 25 = 2 s)",
+     "audio_rep_speaking": "audio repetition penalty while B is SPEAKING (1 = off)", "audio_rep_silent": "audio repetition penalty while B is SILENT (1 = off)",
+     "text_rep_speaking": "text repetition penalty while B is SPEAKING (1 = off)", "text_rep_silent": "text repetition penalty while B is SILENT (1 = off)",
+-    "pose_rep_speaking": "pose repetition penalty (all pose codebooks) while B is SPEAKING (1 = off)",
+-    "pose_rep_silent": "pose repetition penalty (all pose codebooks) while B is SILENT (1 = off)"}
++    "pose_rep_cb0_speaking": "pose cb0 repetition penalty while B is SPEAKING (1 = off)",
++    "pose_rep_cb0_silent": "pose cb0 repetition penalty while B is SILENT (1 = off)",
++    "pose_rep_light_speaking": "pose cb1-31 repetition penalty while B is SPEAKING (1 = off)",
++    "pose_rep_light_silent": "pose cb1-31 repetition penalty while B is SILENT (1 = off)"}
+ 
+ 
+ def params_schema():
+@@ -536,9 +582,18 @@ FKEYS = [k for k, v in PARAMS.items() if v[0] is float]
+ IKEYS = [k for k, v in PARAMS.items() if v[0] is int]
+ 
+ 
++GRAMMAR_GONE = ("free_text", "allow_eob")   # 10-28 USER ORDER: no lane grammar, ever: legacy knobs, dropped silently wherever they arrive
++
++
+ def validate(d):
+     out, bad = {}, []
+-    for k, v in (d or {}).items():
++    d = {k: v for k, v in dict(d or {}).items() if k not in GRAMMAR_GONE}   # 10-28 USER ORDER: legacy grammar keys dropped silently
++    for a, (c, l) in POSE_REP_ALIAS.items():                       # the old combined pose knob -> both new ones (POSE_REP_ALIAS)
++        if a in d:
++            v = d.pop(a)
++            d[c] = v
++            d[l] = v
++    for k, v in d.items():
+         if k not in PARAMS:
+             bad.append(f"unknown {k}"); continue
+         t, lo, hi = PARAMS[k]
+@@ -571,35 +626,24 @@ def silence_depth(depth, sil):
+ 
+ # ================================================================================================ fused 0.6B decoder (S rows, D33 slot-0 link, CFG)
+ class FusedDec:
+-    """the 0.6B depth decoder's Qwen3 layers with the fused kernels (fused_triton rms / add_rms + light_kernels gemv / light_attn /
+-    silu_mul_gu) and a static per-frame KV cache for S rows (= s3fast FusedLight.step_triton; live_ppm.FusedDec for S rows).
+-    step(x, j): j = 0 (cb1: the 2 tokens slot0, cb0_emb at positions 0, 1), j >= 1 (cb_{j+1}: one token at position j + 1)."""
++    """the 0.6B depth decoder for S rows with a static per-frame KV cache, TRAINER-EXACT dtype flow (10-26, main c7: light_exact_ppm's
++    module doc; was the pure-bf16 s3fast FusedLight.step_triton path): fp32 input rows / residual stream / RMSNorm / q-k norm / RoPE, bf16
++    GEMMs and SDPA operands (= model_ppm.Decoder.forward: fp32 masters under bf16 autocast). = live_ppm_pose.FusedDecS (aloe-posedup-live,
++    same kernels). step(x, j): j = 0 (cb1: the 2 rows slot 0, cb0_emb at positions 0, 1), j >= 1 (cb_{j+1}: one row at position j + 1)."""
+ 
+     def __init__(self, dec, dev, S, max_pos=64, split=None, share=None):
++        assert split is None, "split (per-group GEMVs) was never used by the engine; not carried into the exact decoder"
+         cfg = dec.model.config
+         self.dec, self.dev, self.S = dec, dev, int(S)
+-        self.split = split                       # optional: rows [cond split | uncond], every GEMV per group (unused by the engine)
++        self.split = None
+         self.nh, self.kv = cfg.num_attention_heads, cfg.num_key_value_heads
+         self.D = getattr(cfg, "head_dim", None) or cfg.hidden_size // cfg.num_attention_heads
+-        self.layers = [] if share is None else share.layers                       # share: reuse another instance's fused weights
+-        for L in (dec.model.layers if share is None else ()):
+-            at, mlp = L.self_attn, L.mlp
+-            assert at.q_proj.bias is None and at.o_proj.bias is None
+-            self.layers.append(dict(ln1=L.input_layernorm.weight, e1=float(L.input_layernorm.variance_epsilon),
+-                                    wqkv=torch.cat([at.q_proj.weight, at.k_proj.weight, at.v_proj.weight], 0).contiguous(), wo=at.o_proj.weight,
+-                                    qn=at.q_norm.weight, kn=at.k_norm.weight, eqk=float(at.q_norm.variance_epsilon), sc=float(at.scaling),
+-                                    ln2=L.post_attention_layernorm.weight, e2=float(L.post_attention_layernorm.variance_epsilon),
+-                                    wgu=torch.cat([mlp.gate_proj.weight, mlp.up_proj.weight], 0).contiguous(), wd=mlp.down_proj.weight))
+-        self.nw, self.ne = dec.model.norm.weight, float(dec.model.norm.variance_epsilon)
++        self.layers = LX.layer_weights(dec) if share is None else share.layers          # share: reuse another instance's weights
++        self.nw = dec.model.norm.weight.float().contiguous() if share is None else share.nw
++        self.ne = float(dec.model.norm.variance_epsilon)
+         self.K = [torch.zeros(self.S, max_pos, self.kv, self.D, dtype=BF, device=dev) for _ in self.layers]
+         self.V = [torch.zeros(self.S, max_pos, self.kv, self.D, dtype=BF, device=dev) for _ in self.layers]
+-        with torch.cuda.device(dev):
+-            c, s = dec.model.rotary_emb(torch.zeros(1, 1, 8, dtype=BF, device=dev), torch.arange(max_pos, device=dev)[None])
+-        c, s = c[0].contiguous(), s[0].contiguous()
+-        self.cs = []
+-        for j in range(DEPTH - 1):
+-            pos = torch.tensor([0, 1] if j == 0 else [j + 1], device=dev).repeat(self.S)
+-            self.cs.append((c.index_select(0, pos).contiguous(), s.index_select(0, pos).contiguous()))
++        self.cos, self.sin = LX.rope_f32(dec, dev, max_pos) if share is None else (share.cos, share.sin)
+         self.W = dec.heads.weight.view(DEPTH - 1, CBS, -1)
+ 
+     @staticmethod
+@@ -607,51 +651,38 @@ class FusedDec:
+         return LK.gemv(x, w) if x.numel() // x.shape[-1] <= 16 else F.linear(x, w)
+ 
+     def lin(self, x, w, L=1):
+-        """x [rows, K] (rows = streams x L, stream-major) @ w^T; with split: the cond streams' rows and the uncond rows separately."""
+-        if self.split is None:
+-            return self.lin1(x, w)
+-        n = self.split * L
+-        return torch.cat([self.lin1(x[:n], w), self.lin1(x[n:], w)], 0)
++        return self.lin1(x, w)
+ 
+     def step(self, x, j):
+-        S, L, Hl = x.shape
+-        assert S == self.S, (S, self.S)
+-        c, s = self.cs[j]
+-        t0 = 0 if j == 0 else j + 1
+-        nh, kv, D = self.nh, self.kv, self.D
+-        res = x.reshape(1, S * L, Hl)
+-        xn = FO.rms(res, self.layers[0]["ln1"], self.layers[0]["e1"])
+-        mo = None
+-        for i, Ly in enumerate(self.layers):
+-            if i:
+-                res, xn = FO.add_rms(res, mo, Ly["ln1"], Ly["e1"])
+-            qkv = self.lin(xn[0], Ly["wqkv"], L)
+-            a = LK.light_attn(qkv, Ly["qn"], Ly["kn"], Ly["eqk"], c, s, self.K[i], self.V[i], t0, L, nh, kv, D, Ly["sc"])
+-            a = self.lin(a, Ly["wo"], L)[None]
+-            res, h2 = FO.add_rms(res, a, Ly["ln2"], Ly["e2"])
+-            mo = self.lin(LK.silu_mul_gu(self.lin(h2[0], Ly["wgu"], L)), Ly["wd"], L)[None]
+-        _, xn = FO.add_rms(res, mo, self.nw, self.ne)
+-        return xn.view(S, L, Hl)[:, -1]
++        """x [S, L, Hl] fp32 -> the final-normed hidden of each row's last position, bf16 [S, Hl]."""
++        assert x.shape[0] == self.S, (x.shape, self.S)
++        return LX.trunk_step(self.layers, self.nw, self.ne, self.K, self.V, self.cos, self.sin, x, j, self.nh, self.kv, self.D, self.lin1,
++                             LK.silu_mul_gu)
+ 
+     def head(self, hl, d):
+-        return self.lin(hl, self.W[d - 1]).float()
++        return self.lin1(hl, self.W[d - 1]).float()
+ 
+     def slot0(self, hv, zb=None):
+-        """= model_ppm.Decoder.inputs slot 0 (bf16): proj(hv) (+ zb, D33 pose decoder)."""
+-        p = self.dec.proj(hv)
+-        return (p if zb is None else p.to(BF) + zb.to(BF)).to(BF)
++        """= model_ppm.Decoder.inputs slot 0 under autocast: proj(hv) (bf16 Linear) .to(fp32) (+ zb.to(fp32), D33 pose decoder) -> fp32."""
++        p = self.dec.proj(hv).float()
++        return p if zb is None else p + zb.float()
++
++    def emb(self, cd, d):
++        """input row of code cd of codebook d (1..30): the embed_tokens row (the trainer's fp32 table = the bf16 export upcast)."""
++        return self.dec.model.embed_tokens(cd + (d - 1) * CBS)[:, None].float()
+ 
+     def gen(self, hv, c0, gen, temp, topk, zb=None, pres=None, rp=None, cfg_w=None, cfg_on=None):
+         """hv [S, Hv] tower states (S = NI rows, or 2 NI = [cond, uncond] with CFG), c0 [NI] local cb0 (already sampled) -> codes [NI, 32] local.
+         CFG (S = 2 NI): per codebook l = lu + w (lc - lu) when cfg_on, one code per instance fed to both rows (= infer_pose_2side.DecoderCFG).
+-        pres [NI, 32, CBS] / rp: CTRL repetition penalty per codebook (speech decoder; = live_engine._audio_live)."""
++        pres [NI, 32, CBS] / rp: CTRL repetition penalty per codebook (speech decoder; = live_engine._audio_live). Sampling = the previous
++        FusedDec.gen line for line (same generator calls in the same order)."""
+         dec = self.dec
+         NI = c0.shape[0]
+         S = hv.shape[0]
+         two = S == 2 * NI
+         assert S == NI or two, (S, NI)
+         cc = torch.cat([c0, c0]) if two else c0
+-        x = torch.cat([self.slot0(hv, zb)[:, None], dec.cb0_emb(cc)[:, None].to(BF)], 1)
++        x = torch.cat([self.slot0(hv, zb)[:, None], dec.cb0_emb(cc)[:, None].float()], 1)
+         out = [c0]
+         for d in range(1, DEPTH):
+             zd = self.head(self.step(x, d - 1), d)
+@@ -663,19 +694,18 @@ class FusedDec:
+             cd = t_sample(zd, gen, temp, topk)
+             out.append(cd)
+             if d < DEPTH - 1:
+-                x = dec.model.embed_tokens((torch.cat([cd, cd]) if two else cd) + (d - 1) * CBS)[:, None].to(BF)
++                x = self.emb(torch.cat([cd, cd]) if two else cd, d)
+         return torch.stack(out, 1)
+ 
+     @torch.no_grad()
+     def teacher_logits(self, hv, codes, zb=None):
+         """teacher-forced cb1..31 logits [S, 31, CBS] fp32 (codes [S, 32] LOCAL ids of the frame) through the fused path (parity)."""
+-        dec = self.dec
+-        x = torch.cat([self.slot0(hv, zb)[:, None], dec.cb0_emb(codes[:, 0])[:, None].to(BF)], 1)
++        x = torch.cat([self.slot0(hv, zb)[:, None], self.dec.cb0_emb(codes[:, 0])[:, None].float()], 1)
+         out = []
+         for d in range(1, DEPTH):
+             out.append(self.head(self.step(x, d - 1), d))
+             if d < DEPTH - 1:
+-                x = dec.model.embed_tokens(codes[:, d] + (d - 1) * CBS)[:, None].to(BF)
++                x = self.emb(codes[:, d], d)
+         return torch.stack(out, 1)
+ 
+ 
+@@ -724,8 +754,12 @@ class FastPPM:
+         self.spec = torch.tensor(list(M.SPEC), device=dl)
+         self.V = h.lm_head.weight.shape[0]
+         V = self.V
+-        gs = [IP.Grammar(V, dl, "nw", e) for e in (False, True)]
+-        self.gb = torch.stack([g.base for g in gs]); self.gp = torch.stack([g.after_pad for g in gs]); self.gn = gs[0].after_nw
++        # 10-28 USER ORDER: no lane grammar, ever: no grammar stacks; the lane draw is masked by self.in_vocab only (vocabulary bound) =
++        # live_ppm_pose's pad mask: lane ids the model can take back as input (speech tower text_emb rows; trunk emb_B rows). The grammar
++        # used to be this engine's only bound (it kept ids >= TE except PAD / NEW_WORD / EOB out); the 254 unused Qwen padding rows >= 151682
++        # have no tower input row, so drawing one would index past text_emb next frame.
++        self.n_in = min(int(m.tower_s.text_emb.weight.shape[0]), int(m.inp.emb[1].weight.shape[0]), V)
++        self.in_vocab = torch.arange(V, device=dl) < self.n_in
+         self.is_word = torch.arange(V, device=dl) < TE
+         self.gen_t = torch.Generator(device=dl)
+         self.gen_a = torch.Generator(device=dl)
+@@ -770,7 +804,7 @@ class FastPPM:
+         self.zt = torch.zeros(NI, V, dtype=torch.float32, device=dl)
+         self.probs = torch.zeros(NI, 2, dtype=torch.float32, device=dl)
+         self.ptok = torch.zeros(NI, 2, dtype=torch.float32, device=dl)
+-        self.adapt = torch.ones(NI, 4, dtype=torch.float32, device=dl)      # this frame: SPEAKING, audio / text / pose rep-pen in effect
++        self.adapt = torch.ones(NI, 5, dtype=torch.float32, device=dl)      # this frame: SPEAKING, audio / text / pose cb0 / pose light rep-pen
+         self.arWS = torch.arange(WMAX_S, device=dl)
+         self.hv_s = torch.zeros(NI, c4.hidden_size, dtype=BF, device=dl)
+         self.pk = {d: torch.zeros(NI, 1 + DEPTH, dtype=torch.long, device=d) for d in self.sdevs}
+@@ -781,8 +815,9 @@ class FastPPM:
+             self.zp0 = torch.zeros(R, CBS, dtype=torch.float32, device=dp)
+             self.hv_p = torch.zeros(R, c4.hidden_size, dtype=BF, device=dp)
+             self.zb_p = torch.zeros(R, c06.hidden_size, dtype=BF, device=dp)
+-            self.adapt_p = torch.ones(NI, 4, dtype=torch.float32, device=dp)
++            self.adapt_p = torch.ones(NI, 5, dtype=torch.float32, device=dp)
+             self.pseen = torch.zeros(NI, DEPTH, CBS, dtype=torch.bool, device=dp)               # pose codes generated so far (pose_rep_win 0)
++            self.pcfg_guided = torch.zeros(NI, dtype=torch.long, device=dp)                      # 10-26: frames with the pose CFG mix applied
+             self.arWAp = torch.arange(WMAX_A, device=dp)
+             self.pkp = {d: torch.zeros(NI, DEPTH, dtype=torch.long, device=d) for d in self.sdevs}
+         # channel A (instances) on the first GPU: buffers for every position + the per-instance partner (duo) index
+@@ -905,7 +940,7 @@ class FastPPM:
+         return torch.where(self.prm("adaptive_rep_on") > 0, torch.where(spk, self.prm(speaking), self.prm(silent)), self.prm(static))
+ 
+     def _text(self):
+-        """= live_ppm._text per instance row (no text CFG): grammar -> penalties -> temperature -> word min-p -> top-k -> top-p -> draw.
++        """= live_ppm._text per instance row (no text CFG): in-vocab bound (NO lane grammar, 10-28) -> penalties -> temperature -> word min-p -> top-k -> top-p -> draw.
+         First: the frame's SPEAKING flag and the repetition penalties in effect (self.adapt: read by the speech / pose graphs)."""
+         dl = self.dl
+         T = self.Tv[dl][:self.NI]
+@@ -913,7 +948,8 @@ class FastPPM:
+         self.adapt[:, 0].copy_(spk.float())
+         self.adapt[:, 1].copy_(self._rep_eff(spk, "audio_rep_pen", "audio_rep_speaking", "audio_rep_silent"))
+         self.adapt[:, 2].copy_(self._rep_eff(spk, "text_rep", "text_rep_speaking", "text_rep_silent"))
+-        self.adapt[:, 3].copy_(self._rep_eff(spk, "pose_rep", "pose_rep_speaking", "pose_rep_silent"))
++        self.adapt[:, 3].copy_(self._rep_eff(spk, "pose_rep_cb0", "pose_rep_cb0_speaking", "pose_rep_cb0_silent"))
++        self.adapt[:, 4].copy_(self._rep_eff(spk, "pose_rep_light", "pose_rep_light_speaking", "pose_rep_light_silent"))
+         z = self.text_logits(self.hn_prev[:self.NI])
+         self.zt.copy_(z)
+         pr = torch.softmax(z, -1)
+@@ -923,12 +959,7 @@ class FastPPM:
+         fp, fw, rp = self.prm("freq_pen"), self.prm("freq_win"), self.adapt[:, 2:3]
+         cnt = self.ring.counts(fw)
+         cnt2 = self.ring.counts(self.prm("text_rep_win"), self.ring.cnt2)
+-        prev = self.laneB.gather(1, (T - 1)[:, None])[:, 0]
+-        ae = self.prm("allow_eob").clamp(0, 1)
+-        gm = torch.where((prev == NW)[:, None], self.gn[None],
+-                         torch.where(((prev == PAD) | (prev == EOB))[:, None], self.gp.index_select(0, ae.view(1)), self.gb.index_select(0, ae.view(1))))
+-        gm = gm | (self.prm("free_text") > 0)
+-        z = z.masked_fill(~gm, NINF)
++        z = z.masked_fill(~self.in_vocab[None], NINF)   # 10-28 USER ORDER: no lane grammar, ever: full in-vocab distribution (PAD / NEW_WORD / EOB / words after anything)
+         z = t_penalties(z, cnt, fp, rp, self.is_word, cnt2)
+         zt_ = t_word_min_p(z / tt.clamp_min(1e-4), self.is_word, mp, mrel)
+         zt_ = _topp_mask(_topk_mask(zt_, tk), tp)
+@@ -1005,7 +1036,9 @@ class FastPPM:
+                 self.zb_p.copy_(zb)
+             w = self.prm("pose_cfg_s", dp)
+             on = self.prm("pose_cfg_on", dp) > 0
+-            on0, onl = on & (self.prm("pose_cfg_cb0", dp) > 0), on & (self.prm("pose_cfg_light", dp) > 0)
++            gate = (self.prm("pose_cfg_speaking_only", dp) == 0) | (self.adapt_p[:, 0] > 0)     # [NI] 10-26 speaking-only (off: all True)
++            on0, onl = (on & (self.prm("pose_cfg_cb0", dp) > 0) & gate)[:, None], (on & (self.prm("pose_cfg_light", dp) > 0) & gate)[:, None]
++            self.pcfg_guided.add_((on0 | onl)[:, 0].long() if self.cfg_rows else torch.zeros_like(self.pcfg_guided))
+             zc = z0[:NI]
+             zmix = torch.where(on0, z0[NI:] + w * (zc - z0[NI:]), zc) if self.cfg_rows else zc
+             P = self.Pv[dp][:NI]
+@@ -1013,14 +1046,15 @@ class FastPPM:
+             win = self.pdepB[ar[:, None], idx.clamp_min(0)]
+             wv = self.prm("pose_rep_win", dp)
+             pres = torch.where(wv > 0, presence(win, self.offp, CBS, (idx >= (P + CD)[:, None]) & (idx >= TI[:, None] - wv)), self.pseen)
+-            prp = self.adapt_p[:, 3:4]                                                         # = pose_rep unless adaptive_rep_on
++            prp = self.adapt_p[:, 3:4]                                                         # = pose_rep_cb0 unless adaptive_rep_on
++            prl = self.adapt_p[:, 4:5]                                                         # = pose_rep_light unless adaptive_rep_on
+             p0 = t_sample(ctrl_penalty(zmix, pres[:, 0], prp), self.gen_p, self.prm("pose_temp", dp), self.prm("pose_topk", dp))
+             if cfgdec:
+                 codes = self.dec_pu.gen(hv, p0, self.gen_p, self.prm("pose_light_temp", dp), self.prm("pose_light_topk", dp), zb=zb,
+-                                        pres=pres, rp=prp, cfg_w=w, cfg_on=onl)
++                                        pres=pres, rp=prl, cfg_w=w, cfg_on=onl)
+             else:
+                 codes = self.dec_p.gen(hv[:NI], p0, self.gen_p, self.prm("pose_light_temp", dp), self.prm("pose_light_topk", dp),
+-                                       zb=None if zb is None else zb[:NI], pres=pres, rp=prp)
++                                       zb=None if zb is None else zb[:NI], pres=pres, rp=prl)
+             self.pdepB[ar, TI] = codes + self.offp
+             self.pseen.scatter_(2, codes[:, :, None], True)
+         self.pkp[dp].copy_(self.pdepB[ar, TI])
+@@ -1204,6 +1238,7 @@ class FastPPM:
+         if self.pose:
+             self.pdepB.fill_(-1)
+             self.pseen.zero_()
++            self.pcfg_guided.zero_()
+         for r, it in enumerate(insts):
+             P = int(it["P"])
+             Np = P + self.f0
+diff --git a/ppm/ppm_io.py b/ppm/ppm_io.py
+index cea5043..fa59166 100644
+--- a/ppm/ppm_io.py
++++ b/ppm/ppm_io.py
+@@ -1,6 +1,6 @@
+ # VENDORED for aloe-pose-monoplex-infer. Upstream: ppm/code/infer_ppm.py (the subset fast_ppm.py and infer.py use), copied verbatim
+ # except MIMI (= $MIMI_DIR, else kyutai/mimi at the pinned revision) and the unused tasks / eval paths dropped.
+-"""PPM helpers for the fast engine: KV-cached backbone Stack (prefill), lane Grammar, Mimi codec, wav io, audio stats, the Qwen3
++"""PPM helpers for the fast engine: KV-cached backbone Stack (prefill), lane Grammar (10-28: in-vocab bound only), Mimi codec, wav io, audio stats, the Qwen3
+ tokenizer, lane <-> words, the D33 link scale."""
+ import math
+ import os
+@@ -81,30 +81,21 @@ class Stack:
+ 
+ 
+ class Grammar:
+-    """lane grammar masks over the full head vocab (stage-3 TextGrammar). mode nw: after NEW_WORD a word piece; after PAD / EOB not a word
+-    piece; chat: words / PAD / EOB, no NEW_WORD; free: words / PAD / NEW_WORD (/ EOB)."""
+-
+-    def __init__(self, V, dev, mode, allow_eob):
+-        self.mode = mode
+-        base = torch.zeros(V, dtype=torch.bool, device=dev)
+-        base[:TE] = True
+-        base[PAD] = True
+-        if mode != "chat":
+-            base[NW] = True
+-        if allow_eob:
+-            base[EOB] = True
+-        self.base = base
+-        self.after_nw = torch.zeros(V, dtype=torch.bool, device=dev)
+-        self.after_nw[:TE] = True
+-        self.after_pad = base.clone()
+-        self.after_pad[:TE] = False
+-
+-    def mask(self, prev):
+-        if self.mode == "nw":
+-            if prev == NW:
+-                return self.after_nw
+-            if prev in (PAD, EOB):
+-                return self.after_pad
++    """10-28 USER ORDER (universal + permanent; = ppm/code/infer_ppm.Grammar): NO lane grammar. The word lane is drawn from the full
++    in-vocab distribution: every mask (any mode, any previous token) = ids < n_in, the vocabulary bound only (never an id the input table
++    never trained); PAD / NEW_WORD / EOB / word pieces are all allowed after anything. mode / allow_eob are accepted for call compatibility
++    and IGNORED (there is no switch back). base / after_nw / after_pad are kept (= the same in-vocab mask) for engines that read them.
++    fast_ppm no longer builds it (its own self.in_vocab)."""
++
++    def __init__(self, V, dev, mode=None, allow_eob=None, n_in=None):
++        n = int(V) if n_in is None else min(int(V), int(n_in))
++        self.mode = "none"
++        self.n_in = n
++        self.base = torch.arange(int(V), device=dev) < n
++        self.after_nw = self.base
++        self.after_pad = self.base
++
++    def mask(self, prev=None):
+         return self.base
+ 
+ 

@@ -1,0 +1,37 @@
+{
+ "format": "pose-band-mask-v1",
+ "built": "2026-10-29T13:06:56",
+ "pre_tokens": 1,
+ "post_tokens": 3,
+ "blip_pre_tokens": 1,
+ "blip_post_tokens": 3,
+ "run_min": 13,
+ "run_pre": 6,
+ "union_token_runs": 1,
+ "index": [
+  "/data/home/amartyavarma/ppm/stage2-pose-mimi-sam/.cache/index/conversations.parquet",
+  "/data/home/amartyavarma/ppm/stage2-pose-mimi-sam/.cache/tools/shard_index.parquet"
+ ],
+ "rule": "index no-detection intervals of the speaker [floor(s/0.08) - pre, ceil(e/0.08) + post) (sub-second intervals: blip_pre / blip_post) UNION (union_token_runs) runs of >= run_min identical pose frames (all 32 cb) padded [start - run_pre, end + post); conversation token grid, clip offset 0 (all 11,443 conversations: index T == our T, clip_start equal)",
+ "true_means": "masked (inside a no-detection band, incl. its entry / exit margins)",
+ "drop_rule": "a lane (conversation, speaker) whose index interval starts at t <= 0.04 s (clip starts inside a band: frame0_pose = the junk skeleton, so global_state0 / frame-0 normalisation are wrong for the WHOLE lane) is DROPPED, not masked: DROP_LANES.json next to the store dirs",
+ "grid": "row frame f (= conversation token frame_start + f); frames >= n_frames are False",
+ "dataset": "mono",
+ "store": 7,
+ "rows": 2233,
+ "store_root": "/data/home/amartyavarma/ppm/aloe-pose-ft/stores/p7",
+ "store_digest": "67c51c437367109e5d12b91d7d32bc7d",
+ "sha256": {
+  "user": "e3ba850e83fdbe8bf7d56c5442e6ac5d46e64fbe0489ef6075db47eee1d0e4a7",
+  "assistant": "298bc531c729d1f05f0f8e0e50c7f4209cbce5e9ccfae1c83bdeff237b13c3a0"
+ },
+ "counts": {
+  "user_sides": 1770,
+  "user_masked_frames": 7765,
+  "user_frames": 8753230,
+  "src_index": 3477,
+  "assistant_sides": 1707,
+  "assistant_masked_frames": 6828,
+  "assistant_frames": 8483019
+ }
+}

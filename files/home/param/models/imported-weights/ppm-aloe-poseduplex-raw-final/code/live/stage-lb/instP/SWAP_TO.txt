@@ -1,0 +1,2 @@
+# aloe-posedup-live hot-swap candidates (one export dir per line; the HIGHEST step COMPLETE + verified one wins, loaded between sessions)
+# 10-30 pdxhost: emptied while instance P serves the RAW-codes 33111 export-211 (498 would win on step); was: /scratch/amartyavarma/aloe-posedup-live/export-498-dcp (backup SWAP_TO.txt.bak-pre-raw211-1030)

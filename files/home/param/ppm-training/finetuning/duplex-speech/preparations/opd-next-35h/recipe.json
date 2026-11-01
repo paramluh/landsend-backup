@@ -1,0 +1,252 @@
+{
+  "schema": "duplex-finishing-sft-preparation-v1",
+  "status": "training_complete_2_epochs_54_steps",
+  "checkpoint": {
+    "requested_name": "opd-next",
+    "path": "/home/param/models/imported-weights/next-opd-v110/model",
+    "architecture": "PPM_32B_summed_streams_no_pose_with_4B_speech_tower_and_depth_decoder",
+    "model_code": "/home/param/pose-repo/finetune/duplex_distill/production/model_ppm.py",
+    "initialization": "weights_only_fresh_adamw",
+    "preserve_existing_audio_adapter_and_fp32_gain": true,
+    "recalibrate_existing_audio_gain": false,
+    "host": "landsend-5",
+    "checkpoint_id": "checkpoint-1793330493092033558-7e901371585b",
+    "student_version": 110,
+    "compatible_sft_source": "/home/param/pose-repo/finetune/duplex_distill/production/train_samsep_vox.py",
+    "parent_sft": "ppm-aloe-zoom-cotrain/export-253",
+    "model_parameters_source": "native_DCP_preferred_to_rounded_BF16_serving_export",
+    "format": "opd-dcp-v1/model",
+    "source_host": "together/slurm-login",
+    "source_path": "/data/home/amartyavarma/ppm/opd/nextrun/resume/checkpoint-1793330493092033558-7e901371585b/model",
+    "hf_repo": "InternalCan/ppm-opd-repro-slinky",
+    "hf_revision": "188691b40d2962892431bd765e6179e3dd471579",
+    "hf_prefix": "runs/opd-nextrun-b384-v3/rolling/checkpoint-1793330493092033558-7e901371585b",
+    "native_model_dtype": "float32",
+    "verification_status": "landsend-0_and_landsend-5_downloaded_and_SHA256_verified",
+    "gain_initialization": "Load exact FP32 v110 gain from native model DCP; do not reuse v95 gain.",
+    "vgain_theta_fp32": -5.7687225341796875,
+    "tensor_count": 1440,
+    "element_count": 39114889730,
+    "alternate_training_host": "landsend-5",
+    "alternate_host_path": "/home/param/models/imported-weights/next-opd-v110/model",
+    "alternate_host_status": "downloaded_and_SHA256_verified_identical_to_landsend-0"
+  },
+  "training": {
+    "method": "full_supervised_finetune",
+    "nodes": 1,
+    "gpus_per_node": 8,
+    "micro_batch_size_per_gpu": 1,
+    "gradient_accumulation_steps": 1,
+    "epochs": 2,
+    "compute_dtype": "bfloat16",
+    "master_weights_dtype": "float32",
+    "gradient_reduce_dtype": "float32",
+    "seed": 20261011,
+    "cotrain": false,
+    "evaluations": {
+      "startup": false,
+      "periodic": false,
+      "epoch_end": false,
+      "final": false
+    },
+    "saves": {
+      "epoch_end_weights": true,
+      "retain_epochs": [
+        1,
+        2
+      ],
+      "periodic": false,
+      "optimizer_state": false
+    },
+    "activation_checkpointing": true,
+    "host": "landsend-5",
+    "fsdp": "FSDP2 per-block sharding with activation checkpointing; replicated depth decoder",
+    "wandb": {
+      "enabled": true,
+      "mode": "online",
+      "base_url": "https://api.forge.coreweave.com",
+      "entity": "canopy-labs",
+      "project": "opd-next-finishing-sft",
+      "run_url": "https://forge.coreweave.com/wandb/canopy-labs/opd-next-finishing-sft/runs/5l66lxf0"
+    },
+    "run_directory": "/home/param/pose-runs/opd-next-rosie-sft-20261030/training",
+    "memory_fit": {
+      "passed": true,
+      "max_sequence_frames": 16933,
+      "max_allocated_gib": 67.64642524719238,
+      "max_reserved_gib": 76.833984375,
+      "report": "run-evidence/FIT_REPORT.json"
+    },
+    "completed_epochs": 2,
+    "completed_steps": 54,
+    "final_checkpoint": "/home/param/pose-runs/opd-next-rosie-sft-20261030/training/epoch-2"
+  },
+  "data": {
+    "manifest": "/home/param/datasets/rosie-stamp-conversations-v1/training-conversations.jsonl",
+    "estimated_hours": 34.96102722222222,
+    "reference_frame_rate_hz": 12.5,
+    "input_A": "voxtral_user_audio",
+    "target_B": "designated_assistant_text_and_mimi",
+    "train_both_orientations": false,
+    "crop_rows": false,
+    "split_rows": false,
+    "pack_multiple_rows": false,
+    "first_chunk_only": false,
+    "shuffle_each_epoch": true,
+    "drop_last": false,
+    "last_batch_policy": "zero_loss_dummy_ranks_without_repeated_training_rows",
+    "user_audio_gain": "raw",
+    "reference_code_delay_frames": 2,
+    "reference_prompt": {
+      "persona": false,
+      "assistant_voice_clip_draw_probability": 0.3,
+      "prefix_cap_frames": 2000,
+      "voice_clip_availability": "none; whole conversations have no later sibling chunks, so existing prefix builder uses its 5-token empty prefix"
+    },
+    "reference_max_frame_budget": 18928,
+    "reference_settings_require_checkpoint_compatibility_check": false,
+    "voxtral_encoder_trainable": false,
+    "light_frac": 1.0,
+    "host": "landsend-5",
+    "hf_repo": "InternalCan/rosie-stamp-conversations-v1",
+    "hf_revision": "3ebe74fb776dbb05b0a5f494b525dd356697e6b0",
+    "hf_local_dir": "/home/param/datasets/rosie-stamp-conversations-v1/hf",
+    "prepared_dir": "/home/param/datasets/rosie-stamp-conversations-v1/prepared",
+    "row_unit": "one_whole_conversation",
+    "source_conversations": 216,
+    "observed_max_row_seconds": 1354.02,
+    "observed_max_row_frames": 16926,
+    "rows_over_15_minutes": 50,
+    "assistant_role": "Rosie Stamp",
+    "verification_status": "snapshot_hashes_and_materialized_arrays_audio_verified",
+    "assistant_target_stream": "sam_isolated_when_available_else_original",
+    "user_audio_stream": "original",
+    "observed_max_training_frames": 16933
+  },
+  "optimizer": {
+    "name": "AdamW",
+    "betas": [
+      0.9,
+      0.95
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.0,
+    "groups": {
+      "trunk": {
+        "peak_lr": 3e-06,
+        "clip_norm": 0.5
+      },
+      "special_token_heads": {
+        "peak_lr": 6e-05,
+        "clip_norm": 1.0
+      },
+      "text_projector": {
+        "peak_lr": 3e-05,
+        "clip_norm": 1.0
+      },
+      "audio_embeddings": {
+        "peak_lr": 6e-05,
+        "clip_norm": 1.0
+      },
+      "depth_decoder": {
+        "peak_lr": 1.5e-05,
+        "clip_norm": 1.0
+      },
+      "speech_tower": {
+        "peak_lr": 1.5e-05,
+        "clip_norm": 1.0
+      },
+      "voxtral_adapter": {
+        "peak_lr": 0.0005,
+        "clip_norm": 1.0
+      },
+      "learned_audio_gain": {
+        "peak_lr": 0.0005,
+        "clip_norm": 1.0
+      }
+    },
+    "group_mapping_status": "production_group_mapping_integrated_in_trainer",
+    "state_offload": {
+      "enabled": true,
+      "scope": "main_AdamW_moments",
+      "device": "pinned_CPU_memory",
+      "chunk_gib": 2,
+      "reference": "production/optoff.py OffloadAdamW",
+      "reason": "FP32 weights, gradients and Adam moments for 39.1B parameters exceed eight 80GB GPUs once runtime allocations are included."
+    },
+    "speech_recovery_change": {
+      "speech_tower_peak_lr": 1.5e-05,
+      "speech_depth_peak_lr": 1.5e-05,
+      "rationale": "User retained the historical speech cb0 LR. Full-frame K8 depth training provides additional speech-code training without increasing either speech peak LR."
+    }
+  },
+  "schedule": {
+    "shape": "linear_warmup_then_linear_decay_to_zero",
+    "scope": "one_schedule_across_both_epochs_no_restart",
+    "warmup_steps_rule": "max(1, round(10 * total_steps / 306))",
+    "reference_rule_source": "aloe_samsep_and_speaker_full_sft",
+    "estimated_rows": 216,
+    "estimated_steps_per_epoch": 27,
+    "estimated_total_steps": 54,
+    "estimated_warmup_steps": 2,
+    "estimated_epoch_end_save_steps": [
+      27,
+      54
+    ],
+    "derive_exact_steps_from_delivered_manifest": true,
+    "decoder": {
+      "units": "decoder_updates",
+      "updates_per_main_step": 8,
+      "estimated_total_updates": 432,
+      "estimated_warmup_updates": 16,
+      "horizon_rule": "total_main_steps * 8",
+      "warmup_rule": "main_warmup_steps * 8",
+      "restart_at_epoch_boundary": false
+    },
+    "counts_source": "216 verified whole source conversations; user chose no splitting"
+  },
+  "loss": {
+    "target_channel": "B_only",
+    "normalization": "tokens_step_global_counts_excluding_dummies",
+    "text_objective": "existing_factorized_category_and_conditional_lexical_ce",
+    "conditional_word_ce_weight": 5.0,
+    "word_category_ce_weight": 1.0,
+    "pad_timing_ce_weight": 1.0,
+    "new_word_ce_weight": 1.0,
+    "end_of_burst_ce_weight": 1.0,
+    "speech_cb0_weight": 1.0,
+    "speech_depth_weight": 1.0,
+    "pose_weight": 0.0,
+    "decoder": {
+      "updates_per_main_step": 8,
+      "sampled_assistant_frame_fraction": 1.0,
+      "codebooks": "1_through_31",
+      "normalization": "per_update_global_frame_and_31_codebook_mean; upstream gradient weighted by group_frames/total_frames",
+      "note": "Match pose nanosteps: partition all eligible assistant frames into eight disjoint groups; accumulate capped frame microbatches, then one AdamW update per group; one main-model backward per row.",
+      "update_order_seed": 20261011,
+      "microbatch_max_frames": 470,
+      "microbatch_partition": "even_dynamic",
+      "target_selector": "cb0 >= 0 (excludes prefix and existing masked targets); dummy rows contribute no frames",
+      "globally_empty_update": "skip without optimizer step",
+      "upstream_gradient": "sum_j grad_hv_j * global_group_frames_j / global_total_frames",
+      "reference": "/home/param/pose-repo/finetune/xabi-main-17850/code/train_aloe_pose.py:nanosteps_multi",
+      "microbatch_examples": {
+        "7500_valid_frames": 16,
+        "11250_valid_frames": 24,
+        "16926_valid_frames": 40
+      }
+    }
+  },
+  "pending": [],
+  "implementation": {
+    "depth_optimizer": "depth_training.py:FullFrameDepthTrainer",
+    "supervised_backward": "sft_step.py:backward_speech_step",
+    "main_optimizer_groups": "sft_step.py:main_parameter_groups",
+    "depth_optimizer_factory": "sft_step.py:make_depth_trainer",
+    "scope": "Complete dataset-backed FSDP trainer, full-frame depth updates, online W&B and epoch-only model exports.",
+    "trainer": "train.py",
+    "data_adapter": "rosie_dataset.py",
+    "launcher": "launch.sh",
+    "memory_check": "fit_check.py"
+  }
+}

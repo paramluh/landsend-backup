@@ -1,0 +1,57 @@
+{
+ "prompt": "10_27286bdd",
+ "uuid": "27286bdd-0fe3-4a03-b828-272bb796c2f1",
+ "chunk": "1288bbe7bfcfec805dc6a4a0253ba4fa23b275e3/speaker_1/chunks/000000",
+ "ref_seed_key": "recordings/1288bbe7bfcfec805dc6a4a0253ba4fa23b275e3/speaker_1/chunks/000000",
+ "recording_id": "1288bbe7bfcfec805dc6a4a0253ba4fa23b275e3",
+ "speaker": 1,
+ "chunk_index": 0,
+ "kind": "studio",
+ "category": "studio-studio",
+ "window_s": [
+  0,
+  12.0
+ ],
+ "frames": 150,
+ "prefill_frames": 25,
+ "llm_split": "heldout",
+ "llm_split_rule": "v2pure model card: recording held out iff int(blake2b('aloe-pose-v1|'+recording_id, digest_size=8), big-endian) % 10000 < 100",
+ "video_chunk_split": "train",
+ "video_person_split": "train person",
+ "video_person_train_hours": 1.08,
+ "crossbleed": "no",
+ "av_drift": "no",
+ "n_refs": 9,
+ "refs": [
+  "property_1",
+  "property_2",
+  "property_3",
+  "property_4",
+  "property_5",
+  "property_6",
+  "property_7",
+  "property_8",
+  "property_9"
+ ],
+ "text": "Okay. Hi. Um. Do you think there is any such thing as unconditional love in whether it's a family or romantic interest?",
+ "n_words": 22,
+ "n_text_tokens": 27,
+ "first_word_s": 0.32,
+ "words_in_prefill": 5,
+ "sources": {
+  "text": "chunk words.json, words with local_end <= 12.0 s, ' '.join(word.strip())",
+  "text_ids": "InternalCan/sam-pose-aloe-v2pure-step636@cbd9c1e3a0d1f44ebc43dd54b610ef19d689898b tokenizer/, add_special_tokens=False",
+  "prefill_audio": "chunk mimi_local codes[:, :25] (kyutai/mimi@89091b3e, chunk-gain -23 LUFS, native sliding-window attention)",
+  "prefill_pose": "chunk pose_tokens codes[:, :25] (posev3 confidence-hold-03-frame0-init-v2, pose-tokenizer-32cb-200k-noshift)",
+  "frame0_pose": "chunk pose_tokens frame0_pose [133,3] (y, x, conf) px, sha256 == chunk.json frame0_pose_sha256",
+  "global_state": "chunk pose_tokens global_state[0] (frame-0 root y, x, shoulder width)",
+  "sink_latent": "chunk video_latents latents[0:1]",
+  "gt": "chunk video_latents / pose_latents_electron_v3 latents[:76]; mimi_local / mimi / pose_tokens codes[:, :150]"
+ },
+ "checks": {
+  "global_state_eq_derived_from_frame0": true,
+  "global_state_const": true,
+  "prefill_mimi_local_eq_mimi_cb0": 1.0,
+  "prefill_mimi_local_eq_mimi_all": 0.856249988079071
+ }
+}

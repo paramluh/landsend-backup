@@ -1,0 +1,803 @@
+{
+ "version": 4,
+ "written": "2026-10-09T11:13:57Z (model2 support filled)",
+ "owner": "hera live demo agent (qwen-1ch/hera-ft/live)",
+ "demos": {
+  "hera2": "qwen-1ch/hera-ft/live (server.py, hera_live.py)",
+  "model2": "qwen-1ch/infer/s4live (server.py, live_engine.py)"
+ },
+ "protocol": {
+  "start": "client -> server {'type': 'start', 'client': 'browser', 'preset': id, 'persona': text, <any param name>: value, ...}; omitted params = defaults",
+  "set": "client -> server {'type': 'set', <param name>: value, ...} at any time; live params apply from the next frame; on-Start params are rejected mid-session (echoed back unchanged). hera also accepts the legacy {'type': 'cfg', ...} until v2.",
+  "ready": "server -> client {'type': 'ready', ..., 'schema': <this file's params with this demo's support>, 'in_effect': {name: value}}",
+  "settings": "server -> client {'type': 'settings', 'f': frame the change took effect, 'in_effect': {name: value}, 'changed': [names], 'rejected': {name: reason}}",
+  "frame": "server -> client per frame {'type': 'f', ..., 's': cfg strength in effect, 'cd': mean |cond - uncond| text logit, 'tv': TV distance} (cd / tv null when no uncond stream)",
+  "validation": "servers clamp to range and snap enums; the clamped value is what 'in_effect' reports"
+ },
+ "params": [
+  {
+   "name": "text_temp",
+   "group": "Text sampling",
+   "type": "float",
+   "default": 1.0,
+   "range": [
+    0.05,
+    3.0
+   ],
+   "step": 0.05,
+   "live": true,
+   "hint": "Temperature of B's word-lane draw, applied after the frequency penalty and before min-p / top-k / top-p. 0.05 is effectively greedy.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "text_topk",
+   "group": "Text sampling",
+   "type": "float",
+   "default": 0,
+   "range": [
+    0,
+    256
+   ],
+   "step": 1,
+   "live": true,
+   "hint": "Keep only the k most likely lane tokens (0 = off). Cap 256 (GPU mask over a fixed top-256).",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live (cap 256)"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "text_topp",
+   "group": "Text sampling",
+   "type": "float",
+   "default": 1.0,
+   "range": [
+    0.05,
+    1.0
+   ],
+   "step": 0.01,
+   "live": true,
+   "hint": "Nucleus: keep the smallest set of tokens whose probability reaches p (1.0 = off). Applied after min-p and top-k.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "minp",
+   "group": "Text sampling",
+   "type": "float",
+   "default": 0.05,
+   "range": [
+    0.0,
+    0.5
+   ],
+   "step": 0.01,
+   "live": true,
+   "hint": "Min-p on the WORD choice only (PAD / NEW_WORD keep their probability; word mass preserved). 0 = off.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "minp_mode",
+   "group": "Text sampling",
+   "type": "enum",
+   "default": "absolute",
+   "range": null,
+   "step": null,
+   "live": true,
+   "hint": "absolute: keep word pieces with p >= min_p (top piece always kept); relative: keep p >= min_p x the top piece's p.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   },
+   "choices": [
+    "absolute",
+    "relative"
+   ]
+  },
+  {
+   "name": "freq_pen",
+   "group": "Text sampling",
+   "type": "float",
+   "default": 0.3,
+   "range": [
+    0.0,
+    3.0
+   ],
+   "step": 0.05,
+   "live": true,
+   "hint": "Word-piece logits lowered by strength x count among B's last N sampled word pieces; total word mass kept, PAD / NEW_WORD untouched. 0 = off.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live",
+     "reason": "model 2 has it (s4fast/text_freq_pen.py), per session"
+    }
+   }
+  },
+  {
+   "name": "freq_win",
+   "group": "Text sampling",
+   "type": "int",
+   "default": 20,
+   "range": [
+    1,
+    200
+   ],
+   "step": 1,
+   "live": true,
+   "hint": "Window N of the frequency penalty, in sampled word pieces.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "text_rep",
+   "group": "Text sampling",
+   "type": "float",
+   "default": 1.0,
+   "range": [
+    1.0,
+    2.0
+   ],
+   "step": 0.01,
+   "live": true,
+   "hint": "CTRL repetition penalty on B's text (word pieces seen in the last W sampled pieces: logit / pen if > 0 else x pen). 1.0 = off.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live (new in the demo; hera's own sampler has none, default off)"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "text_rep_win",
+   "group": "Text sampling",
+   "type": "int",
+   "default": 64,
+   "range": [
+    1,
+    200
+   ],
+   "step": 1,
+   "live": true,
+   "hint": "Window W of the text repetition penalty, in sampled word pieces.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "cb0_temp",
+   "group": "Audio sampling",
+   "type": "float",
+   "default": 1.0,
+   "range": [
+    0.05,
+    3.0
+   ],
+   "step": 0.05,
+   "live": true,
+   "hint": "Temperature of codebook 0 (semantic) of B's audio.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "cb0_topk",
+   "group": "Audio sampling",
+   "type": "int",
+   "default": 60,
+   "range": [
+    1,
+    256
+   ],
+   "step": 1,
+   "live": true,
+   "hint": "Top-k of codebook 0.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "light_temp",
+   "group": "Audio sampling",
+   "type": "float",
+   "default": 1.0,
+   "range": [
+    0.05,
+    3.0
+   ],
+   "step": 0.05,
+   "live": true,
+   "hint": "Temperature of codebooks 1-31 (the light / depth decoder).",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "light_topk",
+   "group": "Audio sampling",
+   "type": "int",
+   "default": 60,
+   "range": [
+    1,
+    256
+   ],
+   "step": 1,
+   "live": true,
+   "hint": "Top-k of codebooks 1-31.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "audio_rep",
+   "group": "Audio sampling",
+   "type": "float",
+   "default": 1.0,
+   "range": [
+    1.0,
+    2.0
+   ],
+   "step": 0.01,
+   "live": true,
+   "hint": "CTRL repetition penalty on every codebook for codes B produced in the last W frames. 1.0 = off (default, user decision 10-09; hera's offline samples used 1.05).",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live (default 1.0 = off, user decision)"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "audio_rep_win",
+   "group": "Audio sampling",
+   "type": "int",
+   "default": 64,
+   "range": [
+    1,
+    256
+   ],
+   "step": 1,
+   "live": true,
+   "hint": "Window W of the audio repetition penalty, in frames of B's own generated codes.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "cfg_on",
+   "group": "Audio CFG",
+   "type": "bool",
+   "default": false,
+   "range": null,
+   "step": null,
+   "live": true,
+   "hint": "Classifier-free guidance on what B hears: cond = your audio, uncond = training-like silence (same B tokens / codes fed to both every frame). Off = s 1 (exactly the normal model).",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": false,
+     "status": "coming ~05:00 PT",
+     "reason": "coming ~05:00 PT, needs an extra model copy"
+    }
+   }
+  },
+  {
+   "name": "cfg_s",
+   "group": "Audio CFG",
+   "type": "float",
+   "default": 1.5,
+   "range": [
+    1.0,
+    3.0
+   ],
+   "step": 0.1,
+   "live": true,
+   "hint": "Strength: logits = uncond + s x (cond - uncond). 1 = normal; >1 = more attention to the user.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": false,
+     "status": "coming ~05:00 PT",
+     "reason": "coming ~05:00 PT, needs an extra model copy"
+    }
+   }
+  },
+  {
+   "name": "cfg_cb0",
+   "group": "Audio CFG",
+   "type": "bool",
+   "default": false,
+   "range": null,
+   "step": null,
+   "live": true,
+   "hint": "Also apply CFG to the cb0 audio logits.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": false,
+     "status": "coming ~05:00 PT",
+     "reason": "coming ~05:00 PT, needs an extra model copy"
+    }
+   }
+  },
+  {
+   "name": "cfg_uncond_src",
+   "group": "Audio CFG",
+   "type": "enum",
+   "default": "quiet_frames",
+   "range": null,
+   "step": null,
+   "live": false,
+   "hint": "What the uncond stream hears: quiet_frames = real quiet A frames of held-out training rows (raw room noise to the ear + the data's own codes of those frames); digital_zero = encoded digital silence.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "on Start"
+    },
+    "model2": {
+     "supported": false,
+     "status": "coming ~05:00 PT",
+     "reason": "coming ~05:00 PT, needs an extra model copy"
+    }
+   },
+   "choices": [
+    "quiet_frames",
+    "digital_zero"
+   ]
+  },
+  {
+   "name": "seed",
+   "group": "Session",
+   "type": "int_or_random",
+   "default": null,
+   "range": null,
+   "step": null,
+   "live": false,
+   "hint": "RNG seed of the session (empty / null = random, echoed in 'ready').",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "on Start"
+    },
+    "model2": {
+     "supported": true,
+     "status": "on Start"
+    }
+   }
+  },
+  {
+   "name": "max_len_s",
+   "group": "Session",
+   "type": "int",
+   "default": 300,
+   "range": [
+    10,
+    300
+   ],
+   "step": 10,
+   "live": false,
+   "hint": "Maximum session length (s); buffers are sized for 300 s.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "on Start (<= 300)"
+    },
+    "model2": {
+     "supported": true,
+     "status": "on Start"
+    }
+   },
+   "unit": "s"
+  },
+  {
+   "name": "a_gain",
+   "group": "A input",
+   "type": "float",
+   "default": 0.0,
+   "range": [
+    -20.0,
+    20.0
+   ],
+   "step": 0.5,
+   "live": true,
+   "hint": "Gain applied to your mic audio before the model hears it (dB). hera trained on RAW audio: 0 dB = as trained. Model 2 uses its live -23 LUFS loudness match instead.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live",
+     "reason": "model 2 applies RunningLoudness (-23 LUFS); a gain knob would sit after it or replace g0_db"
+    }
+   },
+   "unit": "dB"
+  },
+  {
+   "name": "a_lufs_on",
+   "group": "A input",
+   "type": "bool",
+   "default": false,
+   "range": null,
+   "step": null,
+   "live": false,
+   "hint": "Live -23 LUFS loudness match of the mic (model 2's training preprocessing). hera trained on RAW audio, so hera keeps it off.",
+   "support": {
+    "hera2": {
+     "supported": false,
+     "status": "not applicable: hera trained on raw audio (no LUFS); exposing it would move hera off its training distribution"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live",
+     "reason": "model 2: on (its training codes were -23 LUFS)"
+    }
+   }
+  },
+  {
+   "name": "aec",
+   "group": "A input",
+   "type": "bool",
+   "default": false,
+   "range": null,
+   "step": null,
+   "live": false,
+   "hint": "Browser echo cancellation of the mic. Default OFF (closer to the raw training audio): USE HEADPHONES, otherwise B hears itself.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "on Start (page)"
+    },
+    "model2": {
+     "supported": true,
+     "status": "page-side, v2 toggle"
+    }
+   }
+  },
+  {
+   "name": "ns",
+   "group": "A input",
+   "type": "bool",
+   "default": false,
+   "range": null,
+   "step": null,
+   "live": false,
+   "hint": "Browser noise suppression. Default OFF (closer to the raw training audio): USE HEADPHONES, otherwise B hears itself.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "on Start (page)"
+    },
+    "model2": {
+     "supported": true,
+     "status": "page-side, v2 toggle"
+    }
+   }
+  },
+  {
+   "name": "agc",
+   "group": "A input",
+   "type": "bool",
+   "default": false,
+   "range": null,
+   "step": null,
+   "live": false,
+   "hint": "Browser automatic gain control. Default OFF (closer to the raw training audio): USE HEADPHONES, otherwise B hears itself.",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "on Start (page)"
+    },
+    "model2": {
+     "supported": true,
+     "status": "page-side, v2 toggle"
+    }
+   }
+  },
+  {
+   "name": "lim_ceiling",
+   "group": "B output",
+   "type": "float",
+   "default": 0.98,
+   "range": [
+    0.5,
+    1.0
+   ],
+   "step": 0.01,
+   "live": true,
+   "hint": "Soft peak limiter ceiling on B's audio before int16 (look-ahead, no hard clip).",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   }
+  },
+  {
+   "name": "lim_attack_ms",
+   "group": "B output",
+   "type": "float",
+   "default": 2.0,
+   "range": [
+    0.5,
+    10.0
+   ],
+   "step": 0.5,
+   "live": true,
+   "hint": "Limiter attack ramp (ms).",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   },
+   "unit": "ms"
+  },
+  {
+   "name": "lim_release_ms",
+   "group": "B output",
+   "type": "float",
+   "default": 50.0,
+   "range": [
+    10.0,
+    500.0
+   ],
+   "step": 10.0,
+   "live": true,
+   "hint": "Limiter release (ms).",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "live"
+    },
+    "model2": {
+     "supported": true,
+     "status": "live"
+    }
+   },
+   "unit": "ms"
+  },
+  {
+   "name": "persona",
+   "group": "Prompt",
+   "type": "text",
+   "default": "",
+   "range": null,
+   "step": null,
+   "live": false,
+   "hint": "B's persona (hera -sys / model-2 system prompt, Persona section only; a live call has no prior chunk).",
+   "support": {
+    "hera2": {
+     "supported": true,
+     "status": "on Start"
+    },
+    "model2": {
+     "supported": true,
+     "status": "on Start"
+    }
+   }
+  },
+  {
+   "name": "voice_clip",
+   "group": "Prompt",
+   "type": "clip",
+   "default": null,
+   "range": null,
+   "step": null,
+   "live": false,
+   "hint": "B's voice clip (model 2 only).",
+   "support": {
+    "hera2": {
+     "supported": false,
+     "status": "not applicable: hera has no voice-prompt input"
+    },
+    "model2": {
+     "supported": true,
+     "status": "on Start (model 2)"
+    }
+   }
+  }
+ ],
+ "fixed_not_exposed": [
+  {
+   "name": "grammar_mask",
+   "value": "after NEW_WORD: word pieces only; after PAD: PAD or NEW_WORD; else word pieces + PAD + NEW_WORD; control / EOB never",
+   "why_not_exposed": "the trained lane format (= hera_gen / model-2 samples)"
+  },
+  {
+   "name": "text_rep_pen",
+   "value": "none",
+   "why_not_exposed": "hera's sampler has no text repetition penalty (only the frequency penalty)"
+  },
+  {
+   "name": "pad_bias",
+   "value": "none",
+   "why_not_exposed": "no PAD bias exists in either sampler"
+  },
+  {
+   "name": "order",
+   "value": "CFG mix -> grammar mask -> freq penalty -> temperature -> min-p -> top-k -> top-p -> draw",
+   "why_not_exposed": "fixed pipeline; shown as a hint"
+  },
+  {
+   "name": "code_delay / text_lead",
+   "value": "3 / 1 (hera)",
+   "why_not_exposed": "trained model structure"
+  },
+  {
+   "name": "voxtral_front",
+   "value": "3 ms lookahead, mel floor global max - 8, 15 s sliding window",
+   "why_not_exposed": "must equal the training front end (streaming parity cos >= 0.9998)"
+  },
+  {
+   "name": "precision",
+   "value": "bf16 weights, fp32 logits / Mimi, TF32 off",
+   "why_not_exposed": "numerics only"
+  },
+  {
+   "name": "system_prompt_cap",
+   "value": "1024 tokens (hera collator)",
+   "why_not_exposed": "trained limit"
+  }
+ ],
+ "shared": {
+  "quiet_frame_bank": {
+   "method": "quiet A frames (frame RMS of the A audio exactly as the model's training input saw it < 1e-3), contiguous runs >= 4 frames, from held-out (split.json eval) chunk-00 rows, both speakers, excluding the test conversation; keep the raw audio of those frames (for the ear) AND the data's own A Mimi codes of the SAME frames (codes_user), so code and audio are paired as in training; 4,200 frames. Uncond stream: system block hears digital silence (as the collator), conversation frames f hear bank frame f (audio through the same streaming ear; codes from the bank).",
+   "builder": "$ALOE_ROOT/qwen-1ch/hera-ft/live/prep_noise.py",
+   "bank_hera": "$ALOE_ROOT/qwen-1ch/hera-ft/live/uncond_noise.npz (wav f32 [n*1920] raw, codes int16 [n, 32], prov)",
+   "tables_code": "$ALOE_ROOT/qwen-1ch/hera-ft/live/live_hooks.py _noise_tables (Voxtral over [200 silent frames + bank] in 256-frame chunks -> adapter) + install_uncond_noise",
+   "model2_note": "model 2's A input is -23 LUFS loudness-matched and its training codes were made after -23 LUFS: build its bank from ITS stores' codes_user and apply its own A preprocessing to the bank audio before its ear; do not reuse hera's raw-level bank as is.",
+   "finding": "encoded digital zero does NOT match training silence: 0 % of 521 quiet training frames of a held-out row share digital-zero codes"
+  }
+ },
+ "canonical_names": [
+  "text_temp",
+  "text_topk",
+  "text_topp",
+  "minp",
+  "minp_mode",
+  "freq_pen",
+  "freq_win",
+  "text_rep",
+  "text_rep_win",
+  "cb0_temp",
+  "cb0_topk",
+  "light_temp",
+  "light_topk",
+  "audio_rep",
+  "audio_rep_win",
+  "cfg_on",
+  "cfg_s",
+  "cfg_cb0",
+  "cfg_uncond_src",
+  "seed",
+  "max_len_s",
+  "a_gain",
+  "a_lufs_on",
+  "aec",
+  "ns",
+  "agc",
+  "lim_ceiling",
+  "lim_attack_ms",
+  "lim_release_ms",
+  "persona",
+  "voice_clip"
+ ]
+}

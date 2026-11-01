@@ -1,0 +1,73 @@
+{
+  "person_id": "sam_48f6d2d3_seg00_SPEAKER_01",
+  "package_id": "sam_48f6d2d3_seg00_SPEAKER_01",
+  "kind": "s2handover-raw",
+  "mode": "pkg_chunk0",
+  "session": "48f6d2d3-919f-4397-a898-e6f2cf162a21",
+  "seg": "seg00",
+  "speaker": "SPEAKER_01",
+  "legit_opening": true,
+  "T": 150,
+  "frame_hz": 12.5,
+  "recording_t0_s": 0.0,
+  "n_words": 18,
+  "sources": {
+    "mimi_local": {
+      "node": "/home/param/datasets/aloe-duplex/original/stores/m1n1",
+      "row": 546,
+      "store_row": "ALOE/s2handover-none/48f6d2d3-919f-4397-a898-e6f2cf162a21/seg00/c00",
+      "side": "user",
+      "frames": [
+        0,
+        150
+      ]
+    },
+    "voice_clip": {
+      "rule": "data_ppm.voice_clips later sibling, second half, nearest first, same speaker; sysprompt.window; 125-frame permitted duration",
+      "src": "later_2nd_half",
+      "src_row_key": "ALOE/s2handover-none/48f6d2d3-919f-4397-a898-e6f2cf162a21/seg00/c01",
+      "src_side": "user",
+      "frames_in_src_row": [
+        4084,
+        4209
+      ],
+      "conv_frames": [
+        11584,
+        11709
+      ],
+      "cov": 0.872,
+      "n_chunks": 2,
+      "seed": 20261011,
+      "u": 0.8240770946382822,
+      "natural_length_draw": 78,
+      "demo_length": 125,
+      "node_row": 547
+    },
+    "pose_tokens": {
+      "path": "/home/param/datasets/aloe-duplex/pose/data/files/none/48f6d2d3-919f-4397-a898-e6f2cf162a21/seg00/w00.SPEAKER_01.pose_tokens.npy",
+      "sha256": "b3a4191eaf36dacbd58de3fd3461dff21bd4199d6674a13af6fa383a694a6625",
+      "rows": "[:, 0:150]",
+      "frame0": {
+        "fields": {
+          "frame0_root": [
+            0.6090494394302368,
+            0.4667244851589203
+          ],
+          "frame0_width": 0.7494211792945862,
+          "orig_w": 1440,
+          "orig_h": 2560,
+          "rotation": 0
+        }
+      },
+      "source_video": "gs://aloe-app-recordings/sessions/48f6d2d3-919f-4397-a898-e6f2cf162a21/aligned/runs/1791288076499/seg0/original/actor_txbGH9m3wTfHStwTwHcTMVI0GOf2.mp4"
+    }
+  },
+  "raw_codes": {
+    "what": "original raw s2h-m1 store; no SAM separation",
+    "node": "/home/param/datasets/aloe-duplex/original/stores/m1n1",
+    "opening_row": 546,
+    "voice_row": 547,
+    "opening_sha256_int64": "e9697356bc70726a3ff10e1387ed99e98b67aba4fa819f39e3df90e0a287e8e7",
+    "voice_sha256_int64": "b778854d7a34070d31dae29c018601e7930eb925e1f06333a1eda8b74389bd64"
+  }
+}

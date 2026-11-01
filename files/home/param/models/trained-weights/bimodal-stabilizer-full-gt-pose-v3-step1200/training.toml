@@ -1,0 +1,68 @@
+# 150 critic warmup rounds, then 1050 joint rounds; four critic updates/round.
+root_dir = '/home/param/datasets/aloe-studio-10shards'
+clipnames_root = '/home/param/datasets/aloe-studio-10shards'
+train_csv = '/home/param/datasets/aloe-studio-10shards/paired.csv'
+node_sharded = true
+pose_latents = 'pose_latents_electron_v3.safetensors'
+mimi_codes = 'mimi_local.safetensors'
+bad_audio = 1
+output_dir = '/mnt/paramfs/param/outputs/stabilizer-limits-20261016/full_gt'
+seed = 42
+history_mode = 'full_gt'
+dataset_history = 6
+eligibility_history = 16
+# Independent sticky dropout, nearest predecessor first.
+history_dropout = [0.0, 0.1, 0.2, 0.2]
+global_batch_size = 160
+total_steps = 1200
+student_micro_rows = 2
+critic_micro_rows = 4
+critic_updates = 4
+pool_micro_batch = 16
+critic_warmup_steps = 150
+band_steps = [2, 2, 2, 2]
+history_t = 0.2
+normalizer_epsilon = 1e-8
+gradient_clipping = 2.0
+lr_warmup_steps = 100
+critic_lr_warmup_steps = 200
+lr_decay = 'cosine'
+lr_final_ratio = 0.1
+ema_decay_steps = 0
+compile_mode = 'block'
+compile_blocks = true
+checkpoint = 'block'
+trim_rollout = true
+shard_teacher = true
+num_dataloader_workers = 8
+prefetch_factor = 2
+save_every_n_steps = 200
+
+[checkpoint_by_role.teacher]
+mode = 'none'
+
+[model]
+checkpoint_path = '/home/param/richmond-assets/teacher-pose-v3-step200/model.safetensors'
+
+[model.audio]
+model_name = '/home/param/richmond-assets/mimi'
+in_dim = 512
+num_codebooks = 16
+min_codebooks = 8
+num_layers = 4
+cross_attention_codes = 4
+drop = 2
+injection_offset = 4
+injection_interval = 3
+max_blocks = 8
+
+[optimizer]
+lr = 2e-6
+betas = [0.9, 0.99]
+weight_decay = 1e-4
+eps = 1e-8
+
+[wandb]
+enabled = true
+project = 'param-distillation'
+run_name = 'stabilizer-limits-full-gt-pose-v3-b160'

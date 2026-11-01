@@ -1,0 +1,346 @@
+{
+ "time": "2026-10-25 04:06:49 UTC",
+ "assets": {
+  "voxtral_configs": {
+   "repo": "mistralai/Voxtral-Mini-4B-Realtime-2602",
+   "revision": "2769294da9567371363522aac9bbcfdd19447add",
+   "resolved_sha": "2769294da9567371363522aac9bbcfdd19447add",
+   "role": "Voxtral Realtime config + feature-extractor files (VOXTRAL_DIR)",
+   "local_copy": "/data/home/amartyavarma/models/voxtral-realtime",
+   "files": {
+    "config.json": {
+     "size": 1572,
+     "sha256": "96582f5809ad179531d47f9f89d76c696058fbdeff608d6611dcb7e076ea7e93",
+     "on_hf": true,
+     "hf_size": 1572,
+     "hf_git_blob_sha1": "442f2f739e26ebaf7dd3d4ebe2280c404f5adaf1",
+     "local_git_blob_sha1": "442f2f739e26ebaf7dd3d4ebe2280c404f5adaf1",
+     "match": true
+    },
+    "generation_config.json": {
+     "size": 191,
+     "sha256": "1fabdbadf2e0ea9e2c36e2a8460a53caa694c1324136e4158032b0a32ff6beec",
+     "on_hf": true,
+     "hf_size": 191,
+     "hf_git_blob_sha1": "81a5cdc3fca9825bd91576588333f05bf7ac7542",
+     "local_git_blob_sha1": "81a5cdc3fca9825bd91576588333f05bf7ac7542",
+     "match": true
+    },
+    "params.json": {
+     "size": 1343,
+     "sha256": "2ace010ebf7f0b62c60747d91c6d140e3c7238632d3e9c63d60a2bd2065ea301",
+     "on_hf": true,
+     "hf_size": 1343,
+     "hf_git_blob_sha1": "a60316a6010cf63138e0932a6d974ae77bd513b4",
+     "local_git_blob_sha1": "a60316a6010cf63138e0932a6d974ae77bd513b4",
+     "match": true
+    },
+    "processor_config.json": {
+     "size": 384,
+     "sha256": "5fbc4247e0b3b72c1b501b872c4fd6432b1f0fcc1939dcdf1fa5142c6d2ce070",
+     "on_hf": true,
+     "hf_size": 384,
+     "hf_git_blob_sha1": "806b2e13fc82235ad644cf89e351d5632c196a34",
+     "local_git_blob_sha1": "806b2e13fc82235ad644cf89e351d5632c196a34",
+     "match": true
+    },
+    "README.md": {
+     "size": 14942,
+     "sha256": "a5f8e9f596b6d933f8ad0ef4f9654b43b1f61a22bf9a40b63571804e869b2bc5",
+     "on_hf": true,
+     "hf_size": 14942,
+     "hf_git_blob_sha1": "4d9f2d31a2eb713f08912d0b208669fbeb3446d2",
+     "local_git_blob_sha1": "4d9f2d31a2eb713f08912d0b208669fbeb3446d2",
+     "match": true
+    }
+   },
+   "all_match": true
+  },
+  "voxtral_audio_tower": {
+   "role": "frozen Voxtral Realtime audio encoder: audio_tower.* cut out of the upstream model.safetensors (fetch script: code/qwen-1ch/stage4/voxtral_tools/fetch_voxtral_encoder.py); NOT a file of the public repo -> shipped in assets/voxtral-realtime/",
+   "local_file": "audio_tower.safetensors",
+   "size": 1940840872,
+   "sha256": "13161b8abfcb2ba5100691f555c02255d878a70d957cc518ce2b9e3ebc175637",
+   "upstream": {
+    "repo": "mistralai/Voxtral-Mini-4B-Realtime-2602",
+    "revision": "2769294da9567371363522aac9bbcfdd19447add",
+    "file": "model.safetensors",
+    "hf_size": 8859446848,
+    "hf_lfs_sha256": "e745e4902df6a4c48f29f2f8dc1f6d0fb4cc73c7156bc45923451a5bcdfcd1d6"
+   },
+   "tensors_local": 421,
+   "tensors_upstream_audio_tower": 421,
+   "header_mismatch": [],
+   "header_match": true
+  },
+  "mimi": {
+   "repo": "kyutai/mimi",
+   "revision": "89091b3e466eb6a9d11e537bf26b144f194978f7",
+   "resolved_sha": "89091b3e466eb6a9d11e537bf26b144f194978f7",
+   "role": "Mimi codec (ALOE_MIMI_DIR): MimiModel.from_pretrained",
+   "local_copy": "/data/home/amartyavarma/models/mimi",
+   "files": {
+    "config.json": {
+     "size": 1117,
+     "sha256": "aca6f44b04f7bc2e7466b71597d2d51e463ed1cf3cd7025d8848595580546c36",
+     "on_hf": true,
+     "hf_size": 1117,
+     "hf_git_blob_sha1": "907c57dc64c983785bfc68572e4e8ab8eddd64b8",
+     "local_git_blob_sha1": "907c57dc64c983785bfc68572e4e8ab8eddd64b8",
+     "match": true
+    },
+    "model.safetensors": {
+     "size": 384649828,
+     "sha256": "bac7e85083dcded655d24eaadde7e6eea34c0da1b35fa2d284e641bd2b942a5e",
+     "on_hf": true,
+     "hf_size": 384649828,
+     "hf_lfs_sha256": "bac7e85083dcded655d24eaadde7e6eea34c0da1b35fa2d284e641bd2b942a5e",
+     "match": true
+    },
+    "preprocessor_config.json": {
+     "size": 234,
+     "sha256": "fcb3805e597e786d4067706e602f6688524640f8d3396790e2e09b5942fcbdfb",
+     "on_hf": true,
+     "hf_size": 234,
+     "hf_git_blob_sha1": "ba40914f4f49ab98a8ca545d4892ef7291a39592",
+     "local_git_blob_sha1": "ba40914f4f49ab98a8ca545d4892ef7291a39592",
+     "match": true
+    },
+    "README.md": {
+     "size": 4357,
+     "sha256": "dd1070a95a83e4f07ccdf29f6ab2c387191c1cfa1deadcdc28dda9e83ad6e38b",
+     "on_hf": true,
+     "hf_size": 4357,
+     "hf_git_blob_sha1": "d1e30734ef1f02f47b5d4ade90707fbe5412151c",
+     "local_git_blob_sha1": "d1e30734ef1f02f47b5d4ade90707fbe5412151c",
+     "match": true
+    }
+   },
+   "all_match": true
+  },
+  "fa3": {
+   "repo": "kernels-community/vllm-flash-attn3",
+   "revision": "94e47890779e2a04d4994695f54a48057f0e8177",
+   "resolved_sha": "94e47890779e2a04d4994695f54a48057f0e8177",
+   "role": "FlashAttention-3 kernels (ALOE_FA3_DIR), loaded by file path by code/.../vendor/pinned_fa3.py (BUILD torch28-cxx11-cu128-x86_64-linux)",
+   "local_copy": "/data/home/amartyavarma/models/qwen-s2/vllm-flash-attn3",
+   "files": {
+    "build/torch28-cxx11-cu128-x86_64-linux/__init__.py": {
+     "size": 387,
+     "sha256": "29756640933e2a159cd94a9625eb2ea4268ffa6a80bd3c7bc86b9e1404e09471",
+     "on_hf": true,
+     "hf_size": 387,
+     "hf_git_blob_sha1": "3d12edd447e84d6e65c4fa9ab91ae3c3192884c1",
+     "local_git_blob_sha1": "3d12edd447e84d6e65c4fa9ab91ae3c3192884c1",
+     "match": true
+    },
+    "build/torch28-cxx11-cu128-x86_64-linux/_ops.py": {
+     "size": 233,
+     "sha256": "172a0015e20bb3e0a19573c2848e718ff25b4d3dbc7ff202cf4d1d8430ab88c0",
+     "on_hf": true,
+     "hf_size": 233,
+     "hf_git_blob_sha1": "b3f16ab2de623e1b7b5b9c00379da870bd952c70",
+     "local_git_blob_sha1": "b3f16ab2de623e1b7b5b9c00379da870bd952c70",
+     "match": true
+    },
+    "build/torch28-cxx11-cu128-x86_64-linux/_vllm_flash_attn3_5630d32.abi3.so": {
+     "size": 904953056,
+     "sha256": "119ea211c118bbca50750aa671a6a9a39be1ef108222cd9f4966464e83dc74a4",
+     "on_hf": true,
+     "hf_size": 904953056,
+     "hf_lfs_sha256": "119ea211c118bbca50750aa671a6a9a39be1ef108222cd9f4966464e83dc74a4",
+     "match": true
+    },
+    "build/torch28-cxx11-cu128-x86_64-linux/flash_attn_interface.py": {
+     "size": 28707,
+     "sha256": "91b565b1357461b48c29d12639a4baeea7db995148becc64a2e7847429a1ee6b",
+     "on_hf": true,
+     "hf_size": 28707,
+     "hf_git_blob_sha1": "7f29690eb05c7502141e9c57ed3273185e93e285",
+     "local_git_blob_sha1": "7f29690eb05c7502141e9c57ed3273185e93e285",
+     "match": true
+    },
+    "build/torch28-cxx11-cu128-x86_64-linux/metadata.json": {
+     "size": 42,
+     "sha256": "8b3dd246b49a19923c0ffbddf525fb031af9c9cc683ca618756ad7ed632cd50c",
+     "on_hf": true,
+     "hf_size": 42,
+     "hf_git_blob_sha1": "9cf5deed9898dce769f4cc73913d3530b92a0bd8",
+     "local_git_blob_sha1": "9cf5deed9898dce769f4cc73913d3530b92a0bd8",
+     "match": true
+    },
+    "build/torch28-cxx11-cu128-x86_64-linux/vllm_flash_attn3/__init__.py": {
+     "size": 1030,
+     "sha256": "0757fb1e297d4d48dfb3fe1ee969744dd1079c322d1227017527d8f791a6a62a",
+     "on_hf": true,
+     "hf_size": 1030,
+     "hf_git_blob_sha1": "03dbc1afe1cf156661a2b1b22003cd5f599a0309",
+     "local_git_blob_sha1": "03dbc1afe1cf156661a2b1b22003cd5f599a0309",
+     "match": true
+    }
+   },
+   "all_match": true,
+   "branch": "v1",
+   "note": "The cluster copy was downloaded at revision 905da40048cf96bb967d35c5bea4bf38a715ace0, which is no longer on the Hub; every file of the torch28-cxx11-cu128 build is byte-identical to the v1 branch head pinned here (also = main a92851c4 on 2026-10-25)."
+  },
+  "qwen3_32b_tokenizer": {
+   "repo": "Qwen/Qwen3-32B",
+   "revision": "9216db5781bf21249d130ec9da846c4624c16137",
+   "resolved_sha": "9216db5781bf21249d130ec9da846c4624c16137",
+   "role": "Qwen3-32B tokenizer + config only (ALOE_QWEN_DIR; shipped in code/models/Qwen3-32B)",
+   "local_copy": "/data/home/amartyavarma/models/Qwen3-32B",
+   "files": {
+    "LICENSE": {
+     "size": 11343,
+     "sha256": "832dd9e00a68dd83b3c3fb9f5588dad7dcf337a0db50f7d9483f310cd292e92e",
+     "on_hf": true,
+     "hf_size": 11343,
+     "hf_git_blob_sha1": "6634c8cc3133b3848ec74b9f275acaaa1ea618ab",
+     "local_git_blob_sha1": "6634c8cc3133b3848ec74b9f275acaaa1ea618ab",
+     "match": true
+    },
+    "config.json": {
+     "size": 728,
+     "sha256": "97e295b63283935788fac5e4f8860862a56d4089538cafc93f0431f2ebe483bb",
+     "on_hf": true,
+     "hf_size": 728,
+     "hf_git_blob_sha1": "d66d65fbc7960c2b3c254293f74df73b47fef6d3",
+     "local_git_blob_sha1": "d66d65fbc7960c2b3c254293f74df73b47fef6d3",
+     "match": true
+    },
+    "generation_config.json": {
+     "size": 239,
+     "sha256": "2325da0f15bb848e018c5ae071b7943332e9f871d6b60e2ed22ca97d4cb993d2",
+     "on_hf": true,
+     "hf_size": 239,
+     "hf_git_blob_sha1": "20a8a9156fc8c3f25295ca067f61fdf120d517c5",
+     "local_git_blob_sha1": "20a8a9156fc8c3f25295ca067f61fdf120d517c5",
+     "match": true
+    },
+    "merges.txt": {
+     "size": 1671853,
+     "sha256": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+     "on_hf": true,
+     "hf_size": 1671853,
+     "hf_git_blob_sha1": "31349551d90c7606f325fe0f11bbb8bd5fa0d7c7",
+     "local_git_blob_sha1": "31349551d90c7606f325fe0f11bbb8bd5fa0d7c7",
+     "match": true
+    },
+    "tokenizer.json": {
+     "size": 11422654,
+     "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+     "on_hf": true,
+     "hf_size": 11422654,
+     "hf_lfs_sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+     "match": true
+    },
+    "tokenizer_config.json": {
+     "size": 9732,
+     "sha256": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+     "on_hf": true,
+     "hf_size": 9732,
+     "hf_git_blob_sha1": "417d038a63fa3de29cfde265caedae14d1a58d92",
+     "local_git_blob_sha1": "417d038a63fa3de29cfde265caedae14d1a58d92",
+     "match": true
+    },
+    "vocab.json": {
+     "size": 2776833,
+     "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910",
+     "on_hf": true,
+     "hf_size": 2776833,
+     "hf_git_blob_sha1": "4783fe10ac3adce15ac8f358ef5462739852c569",
+     "local_git_blob_sha1": "4783fe10ac3adce15ac8f358ef5462739852c569",
+     "match": true
+    }
+   },
+   "all_match": true
+  }
+ },
+ "ALL_MATCH": true,
+ "shipped": {
+  "presets/clips/aloe-0-609-1.wav": {
+   "size": 238124,
+   "sha256": "29648154685fe9a36647438053bdeebbc156f3905a39ee005033a9730c4be257"
+  },
+  "presets/clips/aloe-0-9-0.wav": {
+   "size": 453164,
+   "sha256": "2d0f142c4c137cfe6409795976090e6ca6a0ee302dfc11bb3e23e24dab284f88"
+  },
+  "presets/clips/aloe-1-106-0.wav": {
+   "size": 418604,
+   "sha256": "629f48235dc1ee102310e11f82d7577920970eb57f1707bab6ab89fefb6824e5"
+  },
+  "presets/clips/aloe-1-1142-1.wav": {
+   "size": 184364,
+   "sha256": "8bc371e1b4ea556c14c879f01319157cdc72ddd848735c0a677d6dc1c9ff9ce9"
+  },
+  "presets/clips/aloe-1-1408-0.wav": {
+   "size": 391724,
+   "sha256": "bedd5c8e291cf814aee430e72f15047670051abf5d1c1807643ac0c674854001"
+  },
+  "presets/clips/aloe-1-1648-0.wav": {
+   "size": 326444,
+   "sha256": "6f618c42e0e982eb9473ea83f2e63565e86549d96ee61b3f3e75d0a6495b11d0"
+  },
+  "presets/clips/aloe-1-1804-0.wav": {
+   "size": 480044,
+   "sha256": "d1f09c903b7500dd2db87d2dca1da60d793a069fbee52daf236ab78cc527f6cb"
+  },
+  "presets/clips/aloe-2-1192-0.wav": {
+   "size": 426284,
+   "sha256": "debb20a074d9272402b7ae10e06a37d4f8450310f8c7d870083313d0db31a39a"
+  },
+  "presets/clips/aloe-3-1220-1.wav": {
+   "size": 245804,
+   "sha256": "ee46543d6175ad586d30efe99a330392c31ee7328cfc4b9991e19e0041e5c438"
+  },
+  "presets/clips/aloe-3-1434-1.wav": {
+   "size": 230444,
+   "sha256": "f29c514a02a9fc61a3fcfd9f1954ffba73e426a4f56e85136c6ba8a9dbed29b5"
+  },
+  "presets/clips/aloe-3-378-0.wav": {
+   "size": 326444,
+   "sha256": "b645ffe2acc7e9fa5d3696a53ef75489e226f34fd15a78f2007c48aec6687392"
+  },
+  "presets/clips/aloe-3-798-1.wav": {
+   "size": 380204,
+   "sha256": "4aa7e6d0bb4a3be0ab3d409c825eb89abbe5c72d94bdd70be30ad04dc47524f3"
+  },
+  "presets/preset_codes.npz": {
+   "size": 920520,
+   "sha256": "ad959cb4436a68f8ebb71de6a658551d5bf1b5219ef40fe1f3fefa1a4ecc03c9"
+  },
+  "presets/presets.json": {
+   "size": 6449,
+   "sha256": "02c7e9a40d97ac839015dd3da3e4f6d54310370b8c93e35764b34226d4299d45"
+  },
+  "quiet_bank/quiet_bank_m2.npz": {
+   "size": 47850744,
+   "sha256": "86c6c98815276d4feab8fff7b31eb685ca4304591c184e0888c962592da0e0da"
+  },
+  "voxtral/audio_tower.safetensors": {
+   "size": 1940840872,
+   "sha256": "13161b8abfcb2ba5100691f555c02255d878a70d957cc518ce2b9e3ebc175637"
+  },
+  "voxtral/audio_tower.source.json": {
+   "size": 125,
+   "sha256": "f88a32b1d4b794279d5d036ff2e9a5ec3a25af6a48329dcb345d1a780c7cccae"
+  },
+  "voxtral/config.json": {
+   "size": 1572,
+   "sha256": "96582f5809ad179531d47f9f89d76c696058fbdeff608d6611dcb7e076ea7e93"
+  },
+  "voxtral/generation_config.json": {
+   "size": 191,
+   "sha256": "1fabdbadf2e0ea9e2c36e2a8460a53caa694c1324136e4158032b0a32ff6beec"
+  },
+  "voxtral/params.json": {
+   "size": 1343,
+   "sha256": "2ace010ebf7f0b62c60747d91c6d140e3c7238632d3e9c63d60a2bd2065ea301"
+  },
+  "voxtral/processor_config.json": {
+   "size": 384,
+   "sha256": "5fbc4247e0b3b72c1b501b872c4fd6432b1f0fcc1939dcdf1fa5142c6d2ce070"
+  }
+ }
+}
