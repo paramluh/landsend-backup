@@ -5,8 +5,19 @@ from pathlib import Path
 import orphan_backup as B
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--inventory-only',action='store_true');ap.add_argument('--delta',action='store_true');ap.add_argument('--include-datasets',action='store_true');args=ap.parse_args()
-    roots=[B.HOME_ROOT/'outputs',B.HOME_ROOT/'runs',B.HOME_ROOT/'websites',B.HOME_ROOT/'pose-worktrees',B.HOME_ROOT/'pose-repo',B.HOME_ROOT/'vansh-video-models',B.HOME_ROOT/'vansh-video-models-handover',B.HOME_ROOT/'pose-tokenizer',B.HOME_ROOT/'ppm-training',B.HOME_ROOT/'opd-posttrain-speedups',B.HOME_ROOT/'training-registry',B.HOME_ROOT/'bin',B.HOME_ROOT/'models',B.HOME_ROOT/'.config/systemd',B.HOME_ROOT/'.codex/sessions',B.HOME_ROOT/'.codex/attachments']
+    ap=argparse.ArgumentParser();ap.add_argument('--inventory-only',action='store_true');ap.add_argument('--delta',action='store_true');ap.add_argument('--include-datasets',action='store_true');ap.add_argument('--resume',action='store_true');args=ap.parse_args()
+    if args.resume:
+        rows=json.loads((B.BASE/'selection.json').read_text())
+        B.pack(rows,'artifacts')
+        from huggingface_hub import HfApi
+        api=HfApi()
+        for name in ('selection.json','symlinks.json','empty-directories.json','exclusions.json'):
+            api.upload_file(path_or_fileobj=str(B.BASE/name),path_in_repo=f'{socket.gethostname()}/artifacts/metadata/{name}',repo_id=B.HF_REPO,repo_type='dataset')
+        return
+    # Discover every non-hidden top-level project, including legacy real
+    # pose-runs/pose-demo-website directories on other cluster hosts.
+    roots=[p for p in B.HOME_ROOT.iterdir() if not p.name.startswith('.') and p.name!='datasets']
+    roots.extend([B.HOME_ROOT/'.config/systemd',B.HOME_ROOT/'.config/uv',B.HOME_ROOT/'.codex/sessions',B.HOME_ROOT/'.codex/attachments'])
     if args.include_datasets:roots.append(B.HOME_ROOT/'datasets')
     for p in Path('/tmp').iterdir():
         try:

@@ -7,10 +7,18 @@ def main():
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('download',type=Path)
     ap.add_argument('--destination',type=Path,required=True)
-    args=ap.parse_args();dest=args.destination.resolve();dest.mkdir(parents=True,exist_ok=True)
-    for complete in sorted(args.download.rglob('COMPLETE.json')):
+    ap.add_argument('--host',help='Restore only this host; otherwise each host gets a separate subdirectory')
+    ap.add_argument('--include-partial',action='store_true',help='Also restore verified archives from incomplete sets, with warnings')
+    args=ap.parse_args();root=args.destination.resolve();root.mkdir(parents=True,exist_ok=True)
+    sets=list(args.download.rglob('COMPLETE.json'))
+    if args.include_partial:sets+=list(args.download.rglob('PARTIAL.json'))
+    for complete in sorted(sets):
         data=json.loads(complete.read_text())
         if 'archives' not in data:continue
+        host=complete.relative_to(args.download).parts[0]
+        if args.host and args.host!=host:continue
+        dest=root if args.host else root/host;dest.mkdir(parents=True,exist_ok=True)
+        if data.get('state')!='complete':print('WARNING: partial archive set',complete,'errors',data.get('errors'),flush=True)
         for item in data['archives']:
             archive=complete.parent/item['archive']
             with archive.open('rb') as stream:digest=hashlib.file_digest(stream,'sha256').hexdigest()
@@ -31,6 +39,6 @@ def main():
                 if dest not in source.parents or dest not in target.parents:raise RuntimeError('Unsafe alias')
                 target.parent.mkdir(parents=True,exist_ok=True)
                 if not target.exists():os.link(source,target)
-    print('Restore finished:',dest)
+    print('Restore finished:',root)
 
 if __name__=='__main__':main()

@@ -6,7 +6,7 @@ from pathlib import Path
 BASE=Path('/home/param/outputs/landsend-backup-20261031/orphans')
 HOME_ROOT=Path('/home/param')
 REPO=BASE/'repo'
-HF_REPO='paramluhadiya/landsend-backup-param-20261031'
+HF_REPO=os.environ.get('LANDSEND_BACKUP_HF_REPO','InternalCan/landsend-artifacts-backup-param')
 TEXT_EXT={'.py','.sh','.bash','.md','.txt','.json','.jsonl','.yaml','.yml','.toml','.ini','.cfg','.conf','.js','.ts','.tsx','.jsx','.html','.css','.csv','.tsv','.log','.patch','.diff','.sbatch','.service','.socket','.timer','.sql','.cu','.cpp','.h','.hpp','.c','.xml','.ipynb','.lock'}
 SMALL_CODE={'.py','.sh','.bash','.md','.yaml','.yml','.toml','.ini','.cfg','.conf','.js','.ts','.tsx','.jsx','.html','.css','.patch','.diff','.sbatch','.service','.socket','.timer','.sql','.cu','.cpp','.h','.hpp','.c','.xml'}
 PRUNE={'.git','.venv','venv','node_modules','__pycache__','.cache','.nv','.triton','.ssh','.gnupg','.hf-cli','hf-upload'}
